@@ -1,56 +1,58 @@
 // ═══════════════════════════════════════════════════════════════
-//  Sistema Loma Verde — Service Worker (PWA offline)
+//  Sistema Loma Verde — Service Worker v3 (compatible iOS)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v2';
+const CACHE = 'loma-verde-v3';
 
 const ARCHIVOS = [
-  '/sistema-loma-verde/',
-  '/sistema-loma-verde/index.html',
-  '/sistema-loma-verde/sync.js',
-  '/sistema-loma-verde/modulos/01-calificaciones.html',
-  '/sistema-loma-verde/modulos/02-planeador.html',
-  '/sistema-loma-verde/modulos/03-examenes.html',
-  '/sistema-loma-verde/modulos/04-examenes-11.html',
-  '/sistema-loma-verde/modulos/05-asistencia.html',
-  '/sistema-loma-verde/modulos/06-comunicados.html',
-  '/sistema-loma-verde/modulos/07-horario.html',
-  '/sistema-loma-verde/modulos/08-eventos.html',
-  '/sistema-loma-verde/Logo/logo.jpg',
+  './',
+  './index.html',
+  './sync.js',
+  './modulos/01-calificaciones.html',
+  './modulos/02-planeador.html',
+  './modulos/03-examenes.html',
+  './modulos/04-examenes-11.html',
+  './modulos/05-asistencia.html',
+  './modulos/06-comunicados.html',
+  './modulos/07-horario.html',
+  './modulos/08-eventos.html',
+  './Logo/logo.jpg',
 ];
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(ARCHIVOS))
+    caches.open(CACHE)
+      .then(c => c.addAll(ARCHIVOS))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    )
+    caches.keys()
+      .then(keys => Promise.all(
+        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
+      ))
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', e => {
-  // Peticiones a Supabase siempre van a la red directamente
   if (e.request.url.includes('supabase.co')) return;
+  if (e.request.method !== 'GET') return;
 
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      // Estrategia: caché primero, red como respaldo
-      const fetchPromise = fetch(e.request).then(resp => {
-        if (resp && resp.status === 200 && e.request.url.includes('sistema-loma-verde')) {
-          const respClone = resp.clone();
-          caches.open(CACHE).then(c => c.put(e.request, respClone));
-        }
-        return resp;
-      }).catch(() => null);
+    caches.open(CACHE).then(cache =>
+      cache.match(e.request).then(cached => {
+        const network = fetch(e.request).then(resp => {
+          if (resp && resp.status === 200) {
+            cache.put(e.request, resp.clone());
+          }
+          return resp;
+        }).catch(() => cached);
 
-      return cached || fetchPromise;
-    })
+        return cached || network;
+      })
+    )
   );
 });
