@@ -774,7 +774,7 @@ window.genStudent=id=>{
     +".lbl{font-size:.78rem;color:#64748b;margin-top:6px}.ans{background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:8px;font-size:.9rem;white-space:pre-wrap}.sug{background:#f0fdfa;border:1px solid #99f6e4;border-radius:6px;padding:8px;font-size:.88rem;white-space:pre-wrap}"
     +".gbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;align-items:center}.gb{border:1px solid #e2e8f0;background:#fff;border-radius:8px;padding:6px 10px;font-size:.8rem;font-weight:600;cursor:pointer}.gb.s100{background:#16a34a;color:#fff}.gb.s50{background:#d97706;color:#fff}.gb.s0{background:#dc2626;color:#fff}"
     +"@media print{.bar,.btn,.gbs,.no-print{display:none!important}body{background:#fff}.card{box-shadow:none;border:none}}";
-</body></html>';
+  const html='<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(exam.titulo||'Examen')+'</title><style>'+css+'</style></head><body><div id="app"></div><script>\nvar DATA=JSON.parse(decodeURIComponent(escape(atob("'+b64+'"))));\n('+__STUDENT_APP__.toString()+')(DATA);\n<\/script></body></html>';
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
   a.download='Examen - '+(exam.titulo||'examen').replace(/[\\/:*?"<>|]/g,'_')+'.html';a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),1500);
@@ -783,7 +783,7 @@ window.genStudent=id=>{
 
 // ---------- arranque ----------
 (function(){fillGrados();refreshEjes();renumber();
-  if(!PERSIST)document.querySelector('main').insertAdjacentHTML('beforeend','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
+  if(!PERSIST)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
 })();
 </script>
 </body>
