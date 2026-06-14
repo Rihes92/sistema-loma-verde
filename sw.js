@@ -2,7 +2,7 @@
 //  Sistema Loma Verde — Service Worker (PWA offline)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v1';
+const CACHE = 'loma-verde-v2';
 
 const ARCHIVOS = [
   '/sistema-loma-verde/',
@@ -19,7 +19,6 @@ const ARCHIVOS = [
   '/sistema-loma-verde/Logo/logo.jpg',
 ];
 
-// Instalación: guardar todos los archivos en caché
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE).then(c => c.addAll(ARCHIVOS))
@@ -27,7 +26,6 @@ self.addEventListener('install', e => {
   self.skipWaiting();
 });
 
-// Activación: limpiar cachés viejos
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
@@ -37,21 +35,22 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// Fetch: primero caché, luego red
 self.addEventListener('fetch', e => {
-  // Peticiones a Supabase siempre van a la red
+  // Peticiones a Supabase siempre van a la red directamente
   if (e.request.url.includes('supabase.co')) return;
 
   e.respondWith(
     caches.match(e.request).then(cached => {
-      if (cached) return cached;
-      return fetch(e.request).then(resp => {
-        // Guardar en caché si es un recurso del proyecto
-        if (e.request.url.includes('sistema-loma-verde')) {
-          caches.open(CACHE).then(c => c.put(e.request, resp.clone()));
+      // Estrategia: caché primero, red como respaldo
+      const fetchPromise = fetch(e.request).then(resp => {
+        if (resp && resp.status === 200 && e.request.url.includes('sistema-loma-verde')) {
+          const respClone = resp.clone();
+          caches.open(CACHE).then(c => c.put(e.request, respClone));
         }
         return resp;
-      }).catch(() => cached);
+      }).catch(() => null);
+
+      return cached || fetchPromise;
     })
   );
 });
