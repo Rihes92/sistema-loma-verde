@@ -324,7 +324,7 @@ const clone=o=>JSON.parse(JSON.stringify(o));
 let _mem={}; let PERSIST=true;
 function _ls(){ try{ const t=LS+'_t'; window.localStorage.setItem(t,'1'); window.localStorage.removeItem(t); return window.localStorage; }catch(_){ PERSIST=false; return null; } }
 function lsRead(store){ const s=_ls(); if(s){ try{ return JSON.parse(s.getItem(LS+store)||'[]'); }catch(_){} } return _mem[store]?clone(_mem[store]):[]; }
-function lsWrite(store,arr){ _mem[store]=clone(arr); const s=_ls(); if(s){ try{ s.setItem(LS+store,JSON.stringify(arr)); }catch(_){ PERSIST=false; } } }
+function lsWrite(store,arr){ _mem[store]=clone(arr); const s=_ls(); if(s){ try{ s.setItem(LS+store,JSON.stringify(arr)); }catch(_){ PERSIST=false; } } if(typeof LV_SYNC!=='undefined'&&Array.isArray(arr)){arr.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_'+store,r);});} }
 function openDB(){ _ls(); return Promise.resolve(); }
 function dbAll(store){return Promise.resolve(lsRead(store));}
 function dbGet(store,id){return Promise.resolve(lsRead(store).find(x=>x.id===id));}
