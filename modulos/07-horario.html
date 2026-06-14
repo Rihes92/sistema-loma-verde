@@ -188,7 +188,12 @@ const ASIG_CLS  ={soc:'asig-soc',  dem:'asig-dem',  fil:'asig-fil',  lib:'asig-l
 /* ── Persistencia ── */
 const LS_KEY='lv_horario';
 function lsR(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'{}')}catch(_){return{}}}
-function lsW(d){try{localStorage.setItem(LS_KEY,JSON.stringify(d))}catch(_){}}
+function lsW(d){
+  try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(_){}
+  if(typeof LV_SYNC!=='undefined'&&Array.isArray(d)){
+    d.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_horario',r);});
+  }
+}
 let DATA=lsR();
 
 /* ── Render ── */

@@ -236,7 +236,12 @@ var CAT = {
 };
 
 function lsR(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'[]');}catch(e){return[];}}
-function lsW(d){try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(e){}}
+function lsW(d){
+  try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(e){}
+  if(typeof LV_SYNC!=='undefined'&&Array.isArray(d)){
+    d.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_eventos',r);});
+  }
+}
 var eventos = lsR();
 
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}

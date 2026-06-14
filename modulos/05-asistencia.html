@@ -201,7 +201,15 @@
 // ── PERSISTENCIA localStorage ──────────────────────────────────
 const PRE = 'lv_as_';
 function lsR(k){try{return JSON.parse(localStorage.getItem(PRE+k))||null}catch{return null}}
-function lsW(k,v){localStorage.setItem(PRE+k,JSON.stringify(v))}
+function lsW(k,v){
+  localStorage.setItem(PRE+k,JSON.stringify(v));
+  if(typeof LV_SYNC!=='undefined'){
+    var mapa={'asistencia':'lv_as_asistencia','cursos':'lv_as_cursos','estudiantes':'lv_as_estudiantes'};
+    var lvKey=mapa[k]||('lv_as_'+k);
+    if(Array.isArray(v)){v.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio(lvKey,r);});}
+    else if(v&&typeof v==='object'){Object.entries(v).forEach(function(e){LV_SYNC.marcarCambio(lvKey,Object.assign({id:e[0]},e[1]));});}
+  }
+}
 
 // ── ESTADO ────────────────────────────────────────────────────
 // Sync bidireccional: al guardar cursos/estudiantes en Asistencia,
