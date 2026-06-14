@@ -17,6 +17,7 @@ const LV_SYNC = (() => {
     'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id' },
     'lv_eventos':        { tabla: 'eventos',      id: 'id' },
     'lv_horario':        { tabla: 'horario',      id: 'id' },
+    'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Utilidades ───────────────────────────────────────────────
@@ -65,7 +66,8 @@ const LV_SYNC = (() => {
     const cfg = MAPA[lvKey];
     if (!cfg) return;
     const uid = Date.now().toString(36) + Math.random().toString(36).slice(2);
-    pendientesAdd({ _uid: uid, tabla: cfg.tabla, id: registro[cfg.id], datos: registro });
+    const datos = cfg.transform ? cfg.transform(registro) : registro;
+    pendientesAdd({ _uid: uid, tabla: cfg.tabla, id: registro[cfg.id], datos: datos });
     if (online()) subirPendientes();
   }
 
