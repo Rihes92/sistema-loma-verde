@@ -1,0 +1,24 @@
+{
+  "name": "Sistema Loma Verde",
+  "short_name": "Loma Verde",
+  "description": "Portal Docente I.E. San José de Loma Verde",
+  "start_url": "/sistema-loma-verde/",
+  "scope": "/sistema-loma-verde/",
+  "display": "standalone",
+  "background_color": "#1e3a8a",
+  "theme_color": "#1e3a8a",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "Logo/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "Logo/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

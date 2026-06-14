@@ -113,6 +113,10 @@
   #ev-popup .pop-foot button{font-size:.78rem;font-weight:600;background:transparent;border:0;color:#64748b;cursor:pointer;padding:4px 8px}
 
   </style>
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Loma Verde">
 </head>
 <body>
 
@@ -552,5 +556,6 @@ document.getElementById('search-input').addEventListener('input',function(){
 </script>
 
 <script src="sync.js"></script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sistema-loma-verde/sw.js")}</script>
 </body>
 </html>
