@@ -783,7 +783,7 @@ window.genStudent=id=>{
 
 // ---------- arranque ----------
 (function(){fillGrados();refreshEjes();renumber();
-  if(!PERSIST)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
+  if(!PERSIST)document.querySelector('main').insertAdjacentHTML('beforeend','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
 })();
 </script>
 <script src="../sync.js"></script>
