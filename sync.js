@@ -103,7 +103,8 @@ const LV_SYNC = (() => {
         lsSet(lvKey, local);
       } else {
         // arrays normales
-        const local = lsGet(lvKey) || [];
+        let local = lsGet(lvKey) || [];
+        if (!Array.isArray(local)) local = [];
         const localMap = {};
         local.forEach(x => { localMap[x[cfg.id]] = x; });
         remotos.forEach(r => {
