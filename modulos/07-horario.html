@@ -191,7 +191,7 @@ function lsR(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'{}')}catch(_
 function lsW(d){
   try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(_){}
   if(typeof LV_SYNC!=='undefined'){
-    Object.keys(d).forEach(function(di){Object.keys(d[di]).forEach(function(bi){var r=d[di][bi];if(r){LV_SYNC.marcarCambio('lv_horario',Object.assign({},r,{id:di+'_'+bi,dia:di,bloque:bi}));}});});
+    Object.keys(d).forEach(function(di){Object.keys(d[di]).forEach(function(bi){var r=d[di][bi];if(r){LV_SYNC.marcarCambio('lv_horario',Object.assign({},{id:di+'_'+bi,dia:di,hora:bi,materia:r.asig||'',curso:(r.grado||'')+'°-'+(r.grupo||''),aula:r.nota||''}));}});});
   }
 }
 let DATA=lsR();
