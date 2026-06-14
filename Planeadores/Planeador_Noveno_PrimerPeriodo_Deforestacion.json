@@ -1,0 +1,298 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-13T00:00:00.000Z",
+  "planeadores": [
+    {
+      "id": "p9-1-deforestacion-002",
+      "creado": 1781410774370,
+      "grado": "Noveno",
+      "periodo": "Primer Periodo",
+      "ejeIdx": "12",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "2",
+      "grupos": "01 – 02 – 03",
+      "fecha": "13 de junio de 2026",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Preservación ambiental de geosistemas y recursos hídricos",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer: ubica geosistemas biodiversos en mapas temáticos y describe el impacto de la deforestación sobre las fuentes hídricas a escala local y nacional.\nSer: asume posición crítica frente al deterioro ambiental causado por la deforestación y propone acciones de cuidado desde su contexto campesino.",
+      "competencias": "• Pensamiento social: comprende la deforestación como un proceso histórico, económico y social con consecuencias directas sobre las comunidades rurales.\n• Pensamiento reflexivo y sistémico: analiza las relaciones de causa-efecto entre la pérdida de cobertura boscosa y la reducción de caudales hídricos que afectan la economía campesina.",
+      "contenidos": "• Concepto y causas de la deforestación en Colombia (ganadería extensiva, cultivos ilícitos, minería, expansión agrícola).\n• Consecuencias de la deforestación sobre las fuentes hídricas: erosión, sedimentación, reducción de caudales.\n• Cifras nacionales de deforestación: regiones más afectadas.\n• Impacto en la economía campesina cafetera: relación agua-café.\n• Estrategias de conservación: reforestación, sistemas silvopastoriles, corredores biológicos.",
+      "objetivo": "Analizar las principales causas y consecuencias de la deforestación en Colombia, con énfasis en su impacto sobre las fuentes hídricas y los ecosistemas que sostienen la economía campesina, para que los estudiantes de Loma Verde comprendan cómo la pérdida de bosque en la cordillera afecta directamente el agua disponible para el cultivo del café, la panela y el consumo humano en la vereda.",
+      "pregunta": "Si en Loma Verde una familia decide talar el bosque de la ladera para sembrar más pasto o cultivos, ¿a quién más afecta esa decisión además de a ellos mismos, y quién debería tener voz en esa decisión?",
+      "explora": "**Conversatorio inicial (15 min)**\n\nPregunta 1: ¿Han visto algún cerro o ladera en Loma Verde o en la región que antes tenía bosque y ahora no? ¿Qué hay en ese lugar hoy?\n\nPregunta 2: ¿Por qué creen que los campesinos talan el bosque? ¿Es una decisión que toman porque quieren o porque la necesidad los lleva a eso?\n\nPregunta 3: ¿Alguien ha escuchado de la 'ronda hídrica' de una quebrada? ¿Saben qué es y por qué es obligatorio protegerla?\n\nPregunta 4: Si el agua de la quebrada de la vereda bajara tanto que no alcanzara para regar el café durante el verano, ¿qué pasaría con los ingresos de las familias de Loma Verde ese año?\n\n**Actividad de exploración en parejas (10 min):**\nCada pareja dibuja en el cuaderno dos versiones de una ladera: una con bosque y una sin bosque. En cada versión deben dibujar qué pasa con la lluvia (cómo corre el agua, si hay quebrada, si hay erosión). Comparten en 2 minutos con el grupo.",
+      "glosario": [
+        {
+          "t": "Deforestación",
+          "d": "Eliminación del bosque o la cubierta arbórea de un terreno para destinarlos a otros usos (ganadería, agricultura, minería). En Colombia se deforestan en promedio más de 150.000 hectáreas al año."
+        },
+        {
+          "t": "Erosión",
+          "d": "Desgaste y pérdida del suelo por acción del agua o el viento, especialmente en laderas sin vegetación. Sin raíces que lo sostengan, el suelo de la montaña se deslava con cada lluvia, como una montaña de arena que se deshace."
+        },
+        {
+          "t": "Sedimentación",
+          "d": "Acumulación de partículas de suelo arrastradas por el agua en el fondo de ríos y quebradas. Los ríos se vuelven turbios y poco a poco se 'entierran', reduciendo su capacidad de flujo."
+        },
+        {
+          "t": "Ronda hídrica",
+          "d": "Franja de terreno que rodea a las fuentes de agua (quebradas, ríos, lagos). La ley colombiana (Decreto 2811 de 1974) obliga a proteger una franja de mínimo 30 metros sin tala ni construcciones."
+        },
+        {
+          "t": "Cubierta boscosa",
+          "d": "Área de un territorio cubierta por árboles y vegetación natural. Se mide en hectáreas o en porcentaje del territorio total. Colombia tenía 59,9 millones de ha de bosque en 2022, el 52% del territorio."
+        },
+        {
+          "t": "Caudal",
+          "d": "Cantidad de agua que pasa por un punto de un río o quebrada en un tiempo determinado. Se mide en metros cúbicos por segundo (m³/s). La deforestación reduce el caudal mínimo en épocas secas."
+        },
+        {
+          "t": "Sistema silvopastoril",
+          "d": "Modelo de producción agropecuaria que combina árboles, pasto y ganado en el mismo terreno. Permite mantener la ganadería mientras se restaura la cobertura boscosa y se protegen las fuentes de agua."
+        },
+        {
+          "t": "Corredor biológico",
+          "d": "Franja de vegetación que conecta dos o más parches de bosque. Permite que animales, plantas y agua fluyan entre ecosistemas fragmentados, como un 'puente verde' entre bosques."
+        },
+        {
+          "t": "Ganadería extensiva",
+          "d": "Sistema de cría de ganado en grandes extensiones de tierra con poca infraestructura. Es la principal causa de deforestación en Colombia: el 65% del área deforestada se convierte en potreros para ganado."
+        },
+        {
+          "t": "Reforestación",
+          "d": "Acción de plantar árboles en zonas donde el bosque fue eliminado. Para ser efectiva debe usar especies nativas del lugar, no árboles exóticos como eucalipto o pino, que consumen mucha agua y no sostienen la biodiversidad local."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "Bloque 1: La deforestación en Colombia — causas y magnitud",
+          "txt": "La deforestación es la eliminación permanente de la cobertura boscosa para convertir la tierra en otro uso: potreros, cultivos, minas o zonas urbanas. Colombia es el país con mayor pérdida de bosque tropical de América del Sur después de Brasil. Según el IDEAM, entre 2000 y 2022 el país perdió más de 3,5 millones de hectáreas de bosque. El año más crítico fue 2017, cuando se deforestaron 219.973 hectáreas en un solo año, un récord histórico que coincidió con el primer año del posacuerdo de paz, cuando se abrieron tierras en regiones antes controladas por las FARC.\n\nLas causas principales son cuatro. Primera: la ganadería extensiva, que explica el 65% de la deforestación; un finca ganadera puede requerir entre 1 y 2 hectáreas por cabeza de ganado, una presión enorme sobre el bosque. Segunda: los cultivos de coca, que en 2022 ocuparon 230.000 hectáreas según la ONU, especialmente en la Amazonía y el Pacífico. Tercera: la minería ilegal, que destruye bosque y contamina ríos con mercurio. Cuarta: la expansión de cultivos lícitos (palma, soya, arroz) en zonas de frontera agrícola.\n\nLas regiones más afectadas son: la Amazonía (Caquetá, Meta, Putumayo), la Sierra Nevada de Santa Marta, el Pacífico (Chocó) y el Nudo de Paramillo. Sin embargo, la zona cafetera también experimenta deforestación de bosque andino a medida que los cultivos se amplían hacia terrenos más altos o se convierte bosque en potreros.",
+          "pausa": "¿Cuáles son las cuatro causas principales de deforestación en Colombia y cuál es la más importante según las cifras? ¿Cuál de esas causas podría darse en Loma Verde?",
+          "resp": "Las cuatro causas son: ganadería extensiva (65% de la deforestación), cultivos de coca, minería ilegal y expansión de cultivos lícitos. La más importante es la ganadería. En Loma Verde la más probable es la ganadería extensiva cuando se tala bosque para ampliar potreros en las laderas."
+        },
+        {
+          "tit": "Bloque 2: Deforestación e impacto en las fuentes hídricas",
+          "txt": "El vínculo entre la pérdida de bosque y la escasez de agua es uno de los más documentados de la ecología. Funciona así: cuando existe bosque en una ladera, sus raíces actúan como millones de esponjas microscópicas que absorben el agua de lluvia y la liberan lentamente hacia el suelo profundo y las quebradas durante todo el año. Además, la capa de hojarasca y materia orgánica del piso del bosque retiene humedad y protege el suelo de la compactación.\n\nWhen the forest is removed, three processes are set in motion simultaneously. Primero, la erosión: sin raíces que sostengan el suelo, la lluvia lo arrastra ladera abajo. Se estima que una hectárea de bosque andino protege entre 10 y 20 toneladas de suelo al año; sin bosque, ese suelo se pierde en pocas lluvias. Segundo, la sedimentación: el suelo arrastrado llega a las quebradas y ríos, que se vuelven turbios, pierden profundidad y reducen su capacidad de conducir agua limpia. Tercero, la reducción del caudal mínimo: sin la esponja del bosque, en época seca no hay reservas de agua subterránea que alimenten las quebradas. Los ríos se vuelven torrentes en invierno pero casi se secan en verano.\n\nEstudios del IDEAM muestran que en cuencas del Eje Cafetero donde se deforestó más del 40% de la cobertura boscosa, el caudal mínimo de las quebradas se redujo entre un 25% y un 40% en los últimos 30 años. Para las familias cafeteras esto no es un dato abstracto: menos agua en verano significa menos riego, grano más pequeño, menor calidad y precio más bajo en el mercado.",
+          "pausa": "Explica los tres procesos que ocurren cuando se tala el bosque de una ladera y cómo cada uno afecta la calidad y cantidad del agua disponible para los cultivos.",
+          "resp": "1) Erosión: sin raíces el suelo se desprende con la lluvia, perdiendo la capa fértil. 2) Sedimentación: el suelo arrastrado llega a las quebradas, que se entierran y se vuelven turbias. 3) Reducción del caudal mínimo: sin la esponja del bosque no hay reservas subterráneas para la época seca, por lo que las quebradas se secan precisamente cuando más se necesitan para el riego del café."
+        },
+        {
+          "tit": "Bloque 3: Estrategias de conservación — del problema a la solución",
+          "txt": "Frente a la deforestación existen estrategias de conservación que permiten conciliar la producción agropecuaria con la protección de los bosques y el agua. Las principales son:\n\n**Reforestación con especies nativas:** Consiste en plantar árboles propios de la región (no exóticos como eucalipto o pino) en zonas degradadas. En Colombia, el Ministerio de Ambiente tiene el programa 'Colombia Planta' que buscaba reforestar 180.000 hectáreas anuales. La Federación Nacional de Cafeteros promueve la siembra de árboles de guamo, nogal cafetero y nacedero en los bordes de las fincas, mejorando la sombra del café, la regulación del agua y la biodiversidad.\n\n**Sistemas silvopastoriles:** Combinan árboles, pasto y ganado en el mismo terreno. El ganado se mantiene pero los árboles protegen el suelo, dan sombra, retienen humedad y eventualmente recuperan la función reguladora del agua. El CIPAV (Centro para la Investigación en Sistemas Sostenibles de Producción Agropecuaria) ha documentado que fincas con sistemas silvopastoriles tienen hasta un 30% más de agua en sus quebradas comparadas con fincas de ganadería convencional.\n\n**Protección de rondas hídricas:** La ley colombiana establece que nadie puede talar ni construir en la franja de 30 metros alrededor de ríos, quebradas y nacimientos de agua. En la práctica muchos campesinos desconocen esta norma o no la cumplen por presión económica. Las Corporaciones Autónomas Regionales (como la CRQ en el Quindío o la CVC en el Valle) tienen la función de hacer cumplir esta obligación y apoyar a los propietarios en la protección de sus fuentes hídricas.\n\n**Pago por Servicios Ambientales (PSA):** El Estado colombiano, a través de la Ley 1753 de 2015 y el Decreto 870 de 2017, reconoce y paga a los propietarios rurales que conservan sus bosques. Es decir, una familia de Loma Verde puede recibir un pago mensual por no talar el bosque de su finca. En 2022 se beneficiaron más de 9.000 familias campesinas en Colombia.",
+          "pausa": "¿Cuál de las estrategias de conservación estudiadas te parece más viable para una familia campesina de Loma Verde? Argumenta tu respuesta considerando las condiciones económicas reales de la comunidad.",
+          "resp": "Respuesta abierta; el estudiante debe argumentar. El silvopastoril es viable porque no exige dejar de producir; el PSA es atractivo porque genera ingresos adicionales sin sacrificar la finca. La reforestación de rondas hídricas es la más urgente porque protege el agua directamente. Se valora que el estudiante reconozca que la solución no puede ignorar la necesidad económica de las familias."
+        }
+      ],
+      "talleres": "**Taller de estructuración: Análisis de causa-efecto (25 min)**\n\n**Parte A — Cadena de consecuencias (individual, 15 min)**\n\nEn el cuaderno, construye una cadena de causa-efecto completando los siguientes eslabones. Escribe al menos 2 líneas en cada cuadro:\n\n**Causa inicial → Efecto 1 → Efecto 2 → Efecto 3 → Impacto en Loma Verde**\n\n_Una familia tala el bosque de la ladera para ampliar el potrero_ →\n[¿Qué le pasa al suelo?] →\n[¿Qué le pasa a la quebrada?] →\n[¿Qué pasa en época de verano con el agua?] →\n[¿Cómo afecta esto a los cafetales de la vereda?]\n\n**Parte B — Mapa de actores (parejas, 10 min)**\n\nEn una hoja, dibujen un círculo central con la palabra 'BOSQUE'. Alrededor coloquen con flechas todos los actores que se benefician de que el bosque exista (familias, cultivos, animales, ríos, municipios) y todos los actores que ejercen presión sobre él (ganaderos, mineros, cultivos ilícitos). Discutan: ¿quién tiene más poder en este conflicto? ¿Quién debería tener más responsabilidad?",
+      "transfer": "**Taller de transferencia — El dilema de Don Efraín (individual, 15 min)**\n\nLea la siguiente situación y responda:\n\n*Don Efraín tiene una finca en Loma Verde. En la parte alta de su terreno hay un parche de bosque nativo de 3 hectáreas. Un intermediario le ofrece comprarle la madera y él podría usar ese espacio para meter más ganado o sembrar más café. Pero la quebrada que abastece a 8 familias de la vereda nace precisamente en ese bosque.*\n\n1. Desde la perspectiva de los geosistemas, ¿qué consecuencias tendría que Don Efraín talara esas 3 hectáreas? Menciona al menos cuatro efectos concretos.\n2. ¿Tiene Don Efraín el derecho legal de talar ese bosque? Menciona la norma que aplica y explica qué debería hacer en cambio.\n3. Si fueras el alcalde del municipio, ¿qué propuesta le harías a Don Efraín para que no tenga que elegir entre su sustento económico y el agua de la comunidad?\n\n**Cierre grupal — Debate (10 min):**\n\nEl docente plantea la siguiente tesis al grupo: *'En Colombia, los campesinos pobres no son los culpables de la deforestación; son las víctimas de un sistema que no les da más opciones.'*\n\nDivide el grupo en dos: un equipo la defiende y el otro la rebate. Cada equipo tiene 3 minutos para argumentar. Al final, el grupo busca una conclusión común.",
+      "clave": "**Respuestas modelo — Taller de transferencia**\n\n1. Consecuencias de talar las 3 hectáreas: a) Erosión del suelo en la ladera alta, con riesgo de deslizamientos. b) Sedimentación de la quebrada: se vuelve turbia y pierde caudal. c) Reducción del caudal en verano: las 8 familias quedarán sin agua suficiente para riego y consumo. d) Pérdida de biodiversidad local (aves, insectos polinizadores, plantas). e) Aumento de la temperatura microclimática en la ladera, perjudicial para el café de sombra.\n\n2. No tiene derecho legal de talar si el bosque está en la ronda hídrica de la quebrada (mínimo 30 metros, Decreto 2811/1974) ni si el bosque excede ciertos umbrales sin permiso de la Corporación Autónoma Regional. En cambio, debería solicitar a la CRQ o CAR de su región información sobre el Pago por Servicios Ambientales (PSA), con el cual podría recibir un ingreso mensual por conservar ese bosque.\n\n3. Propuesta del alcalde: inscribir a Don Efraín en el programa de PSA para que reciba un pago por conservar el bosque; promover la conversión de su ganadería a un sistema silvopastoril con apoyo técnico del municipio; y gestionar con la CRQ un proyecto de reforestación de las rondas con participación comunitaria.",
+      "evaluacion": "**Criterios de evaluación — Escala 1.0 a 5.0**\n\n**Superior (4.6 – 5.0):** Explica con precisión las causas y efectos de la deforestación sobre las fuentes hídricas, usa datos concretos (cifras, nombres de normas, estrategias), conecta el fenómeno con la realidad de Loma Verde y propone soluciones argumentadas y viables para el contexto campesino.\n\n**Alto (4.0 – 4.5):** Identifica correctamente causas y consecuencias de la deforestación, establece la relación agua-bosque con claridad y reconoce al menos dos estrategias de conservación, con algunas imprecisiones en datos o argumentos.\n\n**Básico (3.0 – 3.9):** Comprende que la deforestación afecta el agua pero sus explicaciones son generales o incompletas; logra la cadena de causa-efecto con apoyo del docente o de los apuntes.\n\n**Bajo (1.0 – 2.9):** No establece la relación entre deforestación y agua, o confunde causas con consecuencias.\n\n**Instrumentos:**\n- Cadena de causa-efecto (35%)\n- Mapa de actores (20%)\n- Taller de transferencia 'Don Efraín' (35%)\n- Participación en el debate de cierre (10%)",
+      "recursos": "• Tablero y marcadores de colores (para dibujar la ladera con/sin bosque)\n• Cuadernos de los estudiantes\n• Hojas en blanco para el mapa de actores\n• Fotocopias del caso 'Don Efraín' (opcional; puede leerse en voz alta)\n• Mapa de Colombia con regiones deforestadas (dibujado en tablero por el docente)\n• Tiras de cartulina para el debate grupal (equipo A / equipo B)",
+      "referencias": "• Ministerio de Educación Nacional (2004). Estándares Básicos de Competencias en Ciencias Sociales, grado 9°. Bogotá: MEN.\n• MEN (2016). Derechos Básicos de Aprendizaje — Ciencias Sociales, grado 9°, DBA 1. Bogotá: MEN.\n• IDEAM (2022). Boletín de Detección Temprana de Deforestación. Bogotá: IDEAM.\n• Decreto 2811 de 1974 — Código Nacional de Recursos Naturales Renovables y de Protección al Medio Ambiente. Bogotá.\n• Decreto 870 de 2017 — Pago por Servicios Ambientales. Bogotá: Presidencia de la República.\n• Malla Curricular Institucional — I.E. San José de Loma Verde, Ciencias Sociales, grado 9°, Primer Periodo.",
+      "dua": "**Adaptaciones para Diseño Universal del Aprendizaje:**\n\n**Estudiantes con dificultades de lectura o ritmo lento:**\nEl caso de 'Don Efraín' puede leerse en voz alta por el docente y pausarse para que los estudiantes respondan oralmente antes de escribir. La cadena de causa-efecto puede completarse con dibujos o flechas en vez de texto completo. Permitir que trabajen en el taller de transferencia con un compañero de apoyo.\n\n**Estudiantes con ritmo avanzado:**\nInvestigar en casa (si tienen acceso) el programa de Pago por Servicios Ambientales en Colombia y presentar: ¿cuánto paga el Estado por hectárea conservada y cuáles son los requisitos? También pueden redactar una carta de Don Efraín dirigida a la Corporación Autónoma Regional solicitando información sobre PSA.\n\n**Trabajo cooperativo:**\nEn el mapa de actores, asignar roles fijos: uno dibuja, otro escribe los actores, el tercero traza las flechas, el cuarto es el vocero de la socialización. En el debate de cierre, el docente puede asignar estratégicamente quién va en cada equipo para equilibrar niveles de desempeño.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "• La deforestación en Colombia destruye en promedio más de 150.000 hectáreas de bosque al año, siendo la ganadería extensiva (65%) su principal causa.\n• La pérdida del bosque desencadena tres procesos que deterioran las fuentes hídricas: erosión del suelo, sedimentación de quebradas y ríos, y reducción del caudal mínimo en épocas secas.\n• Para una familia cafetera de Loma Verde, menos bosque equivale directamente a menos agua en verano, menos riego, menor calidad del grano y menor ingreso familiar.\n• Existen estrategias concretas de conservación compatibles con la producción campesina: sistemas silvopastoriles, reforestación con especies nativas, protección de rondas hídricas y Pago por Servicios Ambientales.\n• La deforestación no es solo un problema ambiental; es también un problema de justicia: los campesinos que no tienen opciones económicas son empujados a destruir el recurso natural del que depende toda la comunidad.",
+      "errores": "• Creer que talar el bosque de la propia finca es un derecho absoluto del propietario: la ley colombiana protege las rondas hídricas y la cobertura boscosa en zonas estratégicas, independientemente de quién sea el dueño del terreno.\n• Confundir reforestación con plantar cualquier árbol: plantar eucalipto o pino en una zona de bosque andino puede ser peor que no plantar nada, porque estas especies consumen más agua que las nativas y no sostienen la fauna local.\n• Creer que la deforestación solo afecta a quienes talan: los impactos hídricos y climáticos se distribuyen por toda la cuenca, afectando especialmente a quienes viven aguas abajo y no tomaron ninguna decisión.\n• Pensar que conservar el bosque y producir son objetivos incompatibles: los sistemas silvopastoriles y el PSA demuestran que es posible recibir ingresos mientras se protege el ecosistema.",
+      "tarea": "**Tarea — El detective del agua**\n\nDurante los próximos dos días, observa la fuente de agua más cercana a tu casa (una quebrada, un nacimiento, un canal de riego). Anota en el cuaderno:\n1. ¿El agua es clara u oscura? ¿Por qué crees que tiene ese color?\n2. ¿Hay árboles o vegetación en las orillas de esa fuente de agua? ¿Cuántos metros de ancho tienen esas orillas con árboles?\n3. Pregunta a un adulto de la familia: ¿esa fuente de agua tenía más o menos agua hace 10 o 20 años? ¿A qué lo atribuye?\n\nEscribe un párrafo con tus conclusiones: ¿el geosistema de tu quebrada está sano o en deterioro? ¿Qué evidencia usas para afirmarlo?",
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles son las cuatro causas principales de la deforestación en Colombia y cuál tiene el mayor impacto según las cifras del IDEAM? Explica por qué esa causa es tan difícil de controlar.",
+          "a": "Las cuatro causas son: ganadería extensiva (65% de la deforestación), cultivos de coca, minería ilegal y expansión de cultivos lícitos. La ganadería extensiva es la más importante porque requiere grandes extensiones de tierra, está culturalmente arraigada y es uno de los pocos medios de subsistencia disponibles para muchos campesinos sin acceso a crédito o asistencia técnica. Es difícil de controlar porque combina factores económicos, culturales y de desigualdad en la tenencia de la tierra."
+        },
+        {
+          "tipo": "abierta",
+          "q": "Explica la relación entre la pérdida del bosque andino y la reducción del caudal de las quebradas en épocas de verano. ¿Por qué este fenómeno afecta especialmente a los caficultores?",
+          "a": "El bosque andino actúa como esponja hídrica: sus raíces y hojarasca absorben la lluvia y la liberan lentamente hacia las quebradas durante todo el año. Sin bosque, el agua corre superficialmente en lluvias pero no se almacena, dejando las quebradas casi secas en verano. Los caficultores son especialmente afectados porque el café necesita riego constante en la floración y el desarrollo del grano; una sequía prolongada reduce la calidad y la cantidad de la cosecha, bajando directamente el ingreso familiar."
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué es el Pago por Servicios Ambientales (PSA) y cómo podría beneficiar a una familia campesina de Loma Verde que tiene bosque en su finca?",
+          "a": "El PSA es un mecanismo legal (Decreto 870 de 2017) por el cual el Estado colombiano paga a los propietarios rurales que conservan bosques nativos en su tierra. Una familia de Loma Verde que tenga un parche de bosque podría inscribirse en el programa y recibir un pago mensual por no talarlo, lo que representa un ingreso adicional sin sacrificar la función ecológica del bosque. Esto convierte la conservación en una actividad económicamente rentable, compatible con los demás cultivos de la finca."
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué es incorrecto culpar exclusivamente a los campesinos pobres de la deforestación en Colombia? ¿Qué factores estructurales los empujan a talar el bosque?",
+          "a": "Los campesinos que deforestan generalmente lo hacen por falta de opciones: no tienen tierra suficiente, no acceden a crédito o asistencia técnica, y la ampliación de la frontera agrícola es el único camino para subsistir. La desigualdad en la tenencia de la tierra (coeficiente Gini de 0,88), la ausencia histórica del Estado en territorios rurales y la falta de alternativas productivas son los verdaderos factores estructurales. La responsabilidad también recae en las empresas extractivas, los compradores de madera ilegal y el Estado que no ha garantizado condiciones dignas de vida en el campo."
+        },
+        {
+          "tipo": "abierta",
+          "q": "Una familia de Loma Verde quiere conservar el bosque de su finca pero necesita aumentar sus ingresos. ¿Qué dos estrategias de conservación compatibles con la producción le recomendarías y por qué?",
+          "a": "1) Sistema silvopastoril: combina árboles nativos con pasto y ganado; los árboles dan sombra, retienen agua y mejoran el suelo, mientras la ganadería continúa generando ingresos. El CIPAV ha documentado hasta un 30% más de agua en quebradas de fincas silvopastoriles. 2) Pago por Servicios Ambientales: la familia recibe un pago mensual por conservar el bosque sin necesidad de explotarlo, sumando un ingreso extra a las actividades ya existentes de la finca."
+        },
+        {
+          "tipo": "fv",
+          "q": "La ganadería extensiva es la principal causa de deforestación en Colombia, responsable de aproximadamente el 65% del área deforestada.",
+          "a": "",
+          "verdadero": true,
+          "justificacion": "Verdadero. Según el IDEAM y estudios del sector ambiental colombiano, la conversión de bosque en potreros para ganadería extensiva explica alrededor del 65% de la deforestación nacional, siendo la causa más importante por encima de los cultivos ilícitos, la minería y la expansión de otros cultivos."
+        },
+        {
+          "tipo": "fv",
+          "q": "Plantar eucalipto o pino en zonas de bosque andino deforestado es la mejor estrategia de reforestación para recuperar las fuentes hídricas.",
+          "a": "",
+          "verdadero": false,
+          "justificacion": "Falso. El eucalipto y el pino son especies exóticas que consumen grandes cantidades de agua, no sostienen la biodiversidad local y no reemplazan las funciones ecológicas del bosque nativo. La reforestación efectiva debe hacerse con especies nativas de la región (guamo, nogal cafetero, nacedero, etc.) que sí regulan el agua y sostienen la vida silvestre."
+        },
+        {
+          "tipo": "fv",
+          "q": "El Decreto 2811 de 1974 obliga a proteger una franja mínima de 30 metros alrededor de ríos, quebradas y nacimientos de agua, sin importar quién sea el dueño del terreno.",
+          "a": "",
+          "verdadero": true,
+          "justificacion": "Verdadero. El Código Nacional de Recursos Naturales (Decreto 2811/1974) establece la protección obligatoria de las rondas hídricas. Esta norma aplica a todos los propietarios, incluidos los campesinos, y prohíbe la tala, la construcción y la siembra en esa franja de protección."
+        },
+        {
+          "tipo": "fv",
+          "q": "La deforestación solo afecta a las familias que talaron el bosque; los vecinos aguas abajo no sufren ninguna consecuencia.",
+          "a": "",
+          "verdadero": false,
+          "justificacion": "Falso. La deforestación tiene efectos en toda la cuenca hidrográfica. Los impactos hídricos (erosión, sedimentación, reducción de caudal) se sienten especialmente en las comunidades y fincas ubicadas aguas abajo, que no participaron en la decisión de talar pero sufren la escasez de agua resultante."
+        },
+        {
+          "tipo": "fv",
+          "q": "El año 2017 fue el de mayor deforestación registrada en la historia del IDEAM en Colombia, con casi 220.000 hectáreas perdidas.",
+          "a": "",
+          "verdadero": true,
+          "justificacion": "Verdadero. El IDEAM registró en 2017 la cifra de 219.973 hectáreas deforestadas, el mayor valor histórico. Este pico coincidió con el primer año tras la firma del Acuerdo de Paz, cuando se abrieron territorios antes controlados por las FARC y aumentó la expansión de la frontera agrícola y los cultivos de coca en la Amazonía."
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál es el porcentaje de deforestación en Colombia atribuida a la ganadería extensiva?",
+          "a": "",
+          "enunciado": "Según estudios del IDEAM y el sector ambiental colombiano sobre las causas de la deforestación.",
+          "opciones": {
+            "A": "Aproximadamente el 30%.",
+            "B": "Aproximadamente el 50%.",
+            "C": "Aproximadamente el 65%.",
+            "D": "Aproximadamente el 80%."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué norma colombiana establece la protección obligatoria de la ronda hídrica alrededor de ríos y quebradas?",
+          "a": "",
+          "enunciado": "",
+          "opciones": {
+            "A": "La Constitución Política de 1991, Artículo 79.",
+            "B": "El Decreto 2811 de 1974 — Código Nacional de Recursos Naturales.",
+            "C": "La Ley 99 de 1993 — Sistema Nacional Ambiental.",
+            "D": "El Decreto 870 de 2017 — Pago por Servicios Ambientales."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál de los siguientes procesos explica por qué las quebradas tienen menos agua en verano después de que se tala el bosque de la ladera?",
+          "a": "",
+          "enunciado": "Una familia taló el bosque de la parte alta de su finca para ampliar el potrero.",
+          "opciones": {
+            "A": "El calor del sol evapora el agua más rápido sin la sombra de los árboles.",
+            "B": "Sin las raíces del bosque, el suelo no retiene el agua de lluvia que alimenta las quebradas en época seca.",
+            "C": "Los animales del bosque consumían el agua y al desaparecer la dejaron libre para la quebrada.",
+            "D": "La lluvia cayó menos ese año por el cambio climático global."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué es un sistema silvopastoril?",
+          "a": "",
+          "enunciado": "",
+          "opciones": {
+            "A": "Un sistema de riego tecnificado para fincas cafeteras en ladera.",
+            "B": "Un modelo que combina árboles, pasto y ganado en el mismo terreno para producir y proteger el ecosistema.",
+            "C": "Un programa del gobierno para pagar a los ganaderos que reduzcan su hato.",
+            "D": "Una técnica de siembra de café bajo sombra de guadua exclusivamente."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿En qué año Colombia registró su mayor tasa histórica de deforestación según el IDEAM?",
+          "a": "",
+          "enunciado": "",
+          "opciones": {
+            "A": "2010",
+            "B": "2014",
+            "C": "2017",
+            "D": "2020"
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál de las siguientes consecuencias de la deforestación afecta más directamente la calidad del agua en las quebradas?",
+          "a": "",
+          "enunciado": "",
+          "opciones": {
+            "A": "La reducción de la biodiversidad de insectos.",
+            "B": "La sedimentación: el suelo arrastrado por la lluvia se acumula en el fondo de los ríos y los enturbia.",
+            "C": "El aumento de la temperatura global.",
+            "D": "La desaparición de aves frugívoras que dispersan semillas."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Mediante qué decreto el Estado colombiano regula el Pago por Servicios Ambientales?",
+          "a": "",
+          "enunciado": "El PSA paga a propietarios rurales que conserven bosques y ecosistemas estratégicos.",
+          "opciones": {
+            "A": "Decreto 2811 de 1974.",
+            "B": "Ley 99 de 1993.",
+            "C": "Decreto 870 de 2017.",
+            "D": "Constitución Política de 1991, Artículo 80."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "Si una finca con sistema silvopastoril tiene hasta un 30% más de agua en sus quebradas que una finca de ganadería convencional, ¿cuál es la razón principal de esta diferencia?",
+          "a": "",
+          "enunciado": "Dato documentado por el CIPAV en fincas ganaderas de Colombia.",
+          "opciones": {
+            "A": "Los animales del silvopastoril consumen menos agua.",
+            "B": "Los árboles del sistema silvopastoril retienen la humedad del suelo y regulan el flujo de agua hacia las quebradas.",
+            "C": "El silvopastoril usa sistemas de riego artificial más eficientes.",
+            "D": "Los pastos del silvopastoril crecen más rápido y absorben menos agua del suelo."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál de los siguientes factores estructurales empuja a los campesinos colombianos a deforestar, según el análisis social?",
+          "a": "",
+          "enunciado": "Colombia tiene uno de los índices Gini de tierras más altos del mundo (0,88 según el IGAC).",
+          "opciones": {
+            "A": "La cultura campesina que valora la destrucción del bosque como símbolo de trabajo.",
+            "B": "La desigualdad en la tenencia de la tierra que obliga a los campesinos sin tierra a ampliar la frontera agrícola.",
+            "C": "La falta de interés de los campesinos en conservar el medio ambiente.",
+            "D": "El exceso de lluvias que dificulta la agricultura sin talar el bosque."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué área aproximada de bosque perdió Colombia entre 2000 y 2022 según el IDEAM?",
+          "a": "",
+          "enunciado": "",
+          "opciones": {
+            "A": "Aproximadamente 500.000 hectáreas en total.",
+            "B": "Aproximadamente 1,5 millones de hectáreas en total.",
+            "C": "Aproximadamente 3,5 millones de hectáreas en total.",
+            "D": "Aproximadamente 8 millones de hectáreas en total."
+          },
+          "correcta": "C"
+        }
+      ],
+      "fundamentacion": "## Deforestación e impacto en fuentes hídricas en Colombia\n\n### 1. Contexto histórico y magnitud\n\nLa deforestación en Colombia no es un fenómeno reciente. La colonización española inició un proceso de transformación del paisaje que eliminó buena parte de los bosques andinos durante los siglos XVI al XVIII para dar paso a haciendas, minas y ciudades. El siglo XIX aceleró este proceso con la extracción masiva de quina y caucho en el Amazonas (1850-1900), que fue documentada como un ecocidio por el propio cónsul británico Roger Casement en 1910. El siglo XX trajo la 'colonización cafetera' del Eje Cafetero (1870-1960) y los programas de colonización estatal de la Amazonía impulsados por el INCORA desde los años 1960.\n\nSegún el IDEAM, en 2000 Colombia tenía 64,5 millones de hectáreas de bosque natural. Para 2022 esa cifra era de 59,9 millones: una pérdida neta de 4,6 millones de hectáreas en 22 años. El promedio anual de deforestación entre 2000 y 2022 fue de aproximadamente 200.000 hectáreas. El año de mayor pérdida fue 2017 (219.973 ha), coincidiendo con la firma del Acuerdo de Paz y la expansión de la frontera agrícola en territorios antes bajo control de las FARC. Entre 2018 y 2022 la deforestación bajó a un promedio de 155.000 ha/año, gracias en parte a políticas de monitoreo satelital del IDEAM y la presión de organizaciones ambientales.\n\n### 2. Causas estructurales\n\nLa ganadería extensiva explica el 65% de la deforestación colombiana. El modelo dominante (1 o 2 ha de potrero por cabeza de ganado) requiere enormes extensiones de tierra y es altamente ineficiente desde el punto de vista productivo: Colombia tiene 40 millones de cabezas de ganado en 40 millones de hectáreas de pasturas, muchas de ellas de baja calidad. Este modelo persiste porque el ganado es el 'banco del campo' colombiano: una forma de ahorro y seguridad económica para familias que no tienen acceso al sistema financiero formal.\n\nLos cultivos de coca explicaron en 2022 el 25% de la deforestación, con 230.000 hectáreas sembradas (fuente: UNODC). La coca se expande hacia zonas de bosque virgen porque el campesino cocalero necesita tierra nueva cada 3-4 años cuando el suelo se agota. La minería ilegal de oro, especialmente en el Pacífico (Chocó, Bajo Cauca antioqueño, Nariño), usa retroexcavadoras que destruyen el bosque, contaminan los ríos con mercurio y dejan el suelo estéril.\n\n### 3. El mecanismo hídrico: cómo el bosque sostiene el agua\n\nLa relación bosque-agua opera a través de tres mecanismos. Primero, la intercepción: el dosel del bosque captura entre el 10% y el 40% de la lluvia, que se evapora o gotea lentamente, reduciendo el impacto directo de la lluvia sobre el suelo. Segundo, la infiltración: las raíces y la hojarasca crean canales de infiltración que permiten que hasta el 90% del agua de lluvia penetre al suelo en un bosque maduro, comparado con el 30-40% en un potrero compactado. Tercero, la regulación del flujo base: el agua infiltrada alimenta los acuíferos subterráneos que sostienen el caudal de las quebradas durante la época seca. Sin bosque, el agua corre superficialmente, produce inundaciones en lluvias y sequías en verano.\n\nEstudios del IDEAM en cuencas del Eje Cafetero documentan que en los últimos 30 años, el caudal mínimo (estiaje) de quebradas en microcuencas con más del 40% de deforestación se redujo entre 25% y 40%. Esto se traduce en períodos de estiaje más largos, mayor turbidez del agua y mayor frecuencia de deslizamientos en laderas descubiertas.\n\n### 4. Consecuencias para la economía cafetera\n\nEl café requiere entre 1.500 y 2.000 mm de lluvia bien distribuida al año y es especialmente sensible a la sequía durante la floración (que determina el tamaño de la cosecha) y el desarrollo del grano (que determina su calidad). La Federación Nacional de Cafeteros ha documentado que un período de sequía de más de 15 días durante la floración puede reducir la cosecha entre un 20% y un 40%. En zonas donde la deforestación ha reducido el caudal de quebradas, los caficultores no pueden compensar la falta de lluvia con riego, agravando el impacto.\n\nAdemás, la degradación del bosque andino está modificando el microclima de las zonas cafeteras: temperaturas mínimas más altas (el café de alta calidad necesita noches frescas), menor humedad relativa y mayor frecuencia de heladas tardías en zonas altas. Según la FNC, para 2050, si el calentamiento global supera 2°C, entre el 50% y el 60% de las áreas cafeteras colombianas actuales serán inhóspitas para el cultivo de café de calidad.\n\n### 5. Conexión con Loma Verde\n\nEn el contexto de Loma Verde, la deforestación no es un problema lejano. Las laderas de las veredas cafeteras del Eje Cafetero han perdido en las últimas décadas buena parte de su cobertura boscosa original por la expansión de los cafetales, los potreros y las zonas de vivienda. Cada metro de bosque que desaparece en la parte alta de una quebrada es menos agua disponible para las familias aguas abajo durante el verano. El reto para las familias de Loma Verde es encontrar el punto de equilibrio entre producir para vivir y conservar para seguir viviendo en el futuro: exactamente el dilema que enfrentan los programas de PSA y sistemas silvopastoriles que hoy ofrece el Estado colombiano.",
+      "lineatiempo": "1850 — Inicio de la 'fiebre del caucho' en la Amazonía colombiana: extracción masiva que destruye bosques y comunidades indígenas.\n1870 — Comienza la colonización cafetera del Eje Cafetero: millones de hectáreas de bosque andino convertidas en cafetales durante los siguientes 90 años.\n1960 — El INCORA inicia programas de colonización de la Amazonía como 'válvula de escape' a la presión por la tierra en las cordilleras.\n1974 — Decreto 2811: Colombia adopta el Código Nacional de Recursos Naturales, que protege rondas hídricas y bosques estratégicos.\n1991 — Constitución Política: artículos 79 y 80 consagran el derecho a un ambiente sano y el deber del Estado de proteger la diversidad e integridad del ambiente.\n1993 — Ley 99: crea el SINA y el Ministerio del Medio Ambiente; las Corporaciones Autónomas Regionales asumen el control de la deforestación en sus territorios.\n2000 — Colombia inicia el monitoreo satelital sistemático de la deforestación con apoyo del IDEAM. Bosque: 64,5 millones de hectáreas.\n2015 — Ley del Plan Nacional de Desarrollo (Ley 1753) incluye el marco legal para el Pago por Servicios Ambientales.\n2017 — Año de mayor deforestación histórica: 219.973 hectáreas. Coincide con el posacuerdo de paz y la apertura de territorios en la Amazonía.\n2017 — Decreto 870: regula el Pago por Servicios Ambientales (PSA). Más de 9.000 familias campesinas se benefician del programa en años siguientes.\n2022 — Colombia registra 59,9 millones de hectáreas de bosque: 4,6 millones menos que en 2000. El gobierno Petro declara emergencia climática y propone reforestar 600.000 ha/año."
+    }
+  ]
+}
