@@ -114,7 +114,7 @@ const LV_SYNC = (() => {
           const localItem = localMap[r[cfg.id]];
           // remoto gana si no existe local o si remoto es más reciente
           if (!localItem || new Date(r.actualizado_en) > new Date(localItem.actualizado_en || 0)) {
-            localMap[r[cfg.id]] = r;
+            localMap[r[cfg.id]] = (cfg.transform && r.datos) ? r.datos : r;
           }
         });
         lsSet(lvKey, Object.values(localMap));
