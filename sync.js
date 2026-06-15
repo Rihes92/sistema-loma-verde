@@ -19,6 +19,8 @@ const LV_SYNC = (() => {
     'lv_horario':        { tabla: 'horario',      id: 'id' },
     'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_com_historial':  { tabla: 'lv_comunicados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_examenes':       { tabla: 'lv_examenes',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_banco':          { tabla: 'lv_banco',          id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Utilidades ───────────────────────────────────────────────
