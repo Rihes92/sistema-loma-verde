@@ -550,6 +550,7 @@ function guardarHistorial(){
   };
   historial.unshift(reg);
   lsW('historial',historial);
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_com_historial', reg);
   toast('Comunicado guardado en el historial ✓');
 }
 

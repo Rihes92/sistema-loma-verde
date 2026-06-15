@@ -18,6 +18,7 @@ const LV_SYNC = (() => {
     'lv_eventos':        { tabla: 'eventos',      id: 'id' },
     'lv_horario':        { tabla: 'horario',      id: 'id' },
     'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_com_historial':  { tabla: 'lv_comunicados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Utilidades ───────────────────────────────────────────────
