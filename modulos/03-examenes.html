@@ -245,7 +245,7 @@ const LS='lv_'; let _mem={}; let PERSIST=true;
 const clone=o=>JSON.parse(JSON.stringify(o));
 function _ls(){try{const t=LS+'_t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage;}catch(_){PERSIST=false;return null;}}
 function lsRead(s){const x=_ls();if(x){try{return JSON.parse(x.getItem(LS+s)||'[]');}catch(_){}}return _mem[s]?clone(_mem[s]):[];}
-function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));return true;}catch(e){PERSIST=false;return false;}}return false;}
+function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));}catch(e){PERSIST=false;return false;}} if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){a.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_'+s,r);});} return true;}
 
 const MALLA = [
   {grado:"Sexto",periodo:"Primer Periodo",eje:"Sujeto, sociedad y civilización: la Tierra como geosistema vivo",temas:"<ul><li>El origen del universo: teorías científicas y mitológicas.</li><li>Estructura del sistema solar y la Tierra como planeta vivo.</li><li>Capas de la Tierra y geodinámica interna.</li><li>Fenómenos climáticos y gestión del riesgo.</li></ul>",ebcDba:"<strong>EBC:</strong> reconozco características de la Tierra que la hacen un planeta vivo.<br><br><strong>DBA 1:</strong> teorías sobre el origen del universo.<br><strong>DBA 2:</strong> la Tierra en transformación.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> interpreta teorías científicas.<br><strong>Ser:</strong> muestra interés científico y preventivo."},
