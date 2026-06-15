@@ -502,6 +502,7 @@ function editarEvento(id){
 
 function eliminarEvento(id){
   if(!confirm('¿Eliminar este evento?')) return;
+  const _r=eventos.find(function(e){return e.id===id;});if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_eventos',Object.assign({},_r,{_eliminado:true}));
   eventos = eventos.filter(function(e){ return e.id !== id; });
   lsW(eventos);
   cerrarModal();

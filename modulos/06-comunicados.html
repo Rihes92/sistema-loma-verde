@@ -603,6 +603,7 @@ function copiarWA(texto){
 }
 
 function eliminarHistorial(id){
+  const _r=historial.find(r=>r.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_com_historial',Object.assign({},_r,{_eliminado:true}));
   historial=historial.filter(r=>r.id!==id);
   lsW('historial',historial);
   renderHistorial();

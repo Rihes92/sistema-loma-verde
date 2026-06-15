@@ -429,7 +429,7 @@ window.editEx=id=>{const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;
   (x.items||[]).forEach(it=>addItem(it.tipo,it));
   $('#edit-flag').textContent='Editando un examen guardado.';window.scrollTo(0,0);
 };
-window.delEx=id=>{if(!confirm('¿Eliminar este examen?'))return;lsWrite('examenes',lsRead('examenes').filter(e=>e.id!==id));renderLista();toast('Eliminado');};
+window.delEx=id=>{if(!confirm('¿Eliminar este examen?'))return;const _r=lsRead('examenes').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_examenes',Object.assign({},_r,{_eliminado:true}));lsWrite('examenes',lsRead('examenes').filter(e=>e.id!==id));renderLista();toast('Eliminado');};
 window.verExam=id=>{
   const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;let showAns=false;
   function render(){

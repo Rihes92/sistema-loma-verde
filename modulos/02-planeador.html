@@ -670,7 +670,7 @@ function renderLista(){
       <button class="btn sm bad" onclick="delPlan('${p.id}')">Eliminar</button></div></div>`).join('');
 }
 window.editPlan=id=>{const p=lsRead('planeadores').find(x=>x.id===id);if(!p)return;document.querySelector('[data-tab="nuevo"]').click();loadInto(p);scrollTo(0,0);};
-window.delPlan=id=>{if(!confirm('¿Eliminar este planeador?'))return;lsWrite('planeadores',lsRead('planeadores').filter(x=>x.id!==id));renderLista();toast('Eliminado');};
+window.delPlan=id=>{if(!confirm('¿Eliminar este planeador?'))return;const _r=lsRead('planeadores').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_planeadores',Object.assign({},_r,{_eliminado:true}));lsWrite('planeadores',lsRead('planeadores').filter(x=>x.id!==id));renderLista();toast('Eliminado');};
 window.verDoc=id=>{
   const p=lsRead('planeadores').find(x=>x.id===id);if(!p)return;
   const F=(l,v)=>v?`<tr><th>${l}</th><td class="field">${esc(v)}</td></tr>`:'';
