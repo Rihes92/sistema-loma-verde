@@ -329,7 +329,7 @@ function openDB(){ _ls(); return Promise.resolve(); }
 function dbAll(store){return Promise.resolve(lsRead(store));}
 function dbGet(store,id){return Promise.resolve(lsRead(store).find(x=>x.id===id));}
 function dbPut(store,val){const a=lsRead(store);const i=a.findIndex(x=>x.id===val.id);if(i>=0)a[i]=val;else a.push(val);lsWrite(store,a);return Promise.resolve(val);}
-function dbDel(store,id){lsWrite(store,lsRead(store).filter(x=>x.id!==id));return Promise.resolve();}
+function dbDel(store,id){const _r=lsRead(store).find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_'+store,Object.assign({},_r,{_eliminado:true}));lsWrite(store,lsRead(store).filter(x=>x.id!==id));return Promise.resolve();}
 function dbClear(store){lsWrite(store,[]);return Promise.resolve();}
 
 // ---------- Motor de calificación centralizado ----------
