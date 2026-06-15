@@ -298,6 +298,11 @@ function guardarCelda(){
   lsW(DATA);cerrarModal();renderGrilla();
 }
 function eliminarCelda(di,bi){
+  if(DATA[di]&&DATA[di][bi]&&typeof LV_SYNC!=='undefined'){
+    const _id=di+'_'+bi;
+    const _r=DATA[di][bi];
+    LV_SYNC.marcarCambio('lv_horario',{id:_id,dia:di,hora:bi,materia:_r.asig||'',curso:(_r.grado||'')+'°-'+(_r.grupo||''),aula:_r.nota||'',_eliminado:true});
+  }
   if(DATA[di])delete DATA[di][bi];
   lsW(DATA);renderGrilla();
 }
