@@ -12,7 +12,7 @@ const LV_SYNC = (() => {
   // ── Mapeo: clave localStorage → tabla Supabase ──────────────
   const MAPA = {
     'lv_cursos':         { tabla: 'cursos',      id: 'id' },
-    'lv_estudiantes':    { tabla: 'estudiantes', id: 'id' },
+    'lv_estudiantes':    { tabla: 'estudiantes', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_notas':          { tabla: 'notas',       id: 'id' },
     'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id' },
     'lv_eventos':        { tabla: 'eventos',      id: 'id' },
