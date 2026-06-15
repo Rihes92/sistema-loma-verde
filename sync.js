@@ -16,7 +16,15 @@ const LV_SYNC = (() => {
     'lv_notas':          { tabla: 'notas',       id: 'id' },
     'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id' },
     'lv_eventos':        { tabla: 'eventos',      id: 'id' },
-    'lv_horario':        { tabla: 'horario',      id: 'id' },
+    'lv_horario':        { tabla: 'horario',      id: 'id', transformDown: (rows) => {
+      const obj = {};
+      rows.forEach(r => {
+        if(!r.dia || !r.hora || r._eliminado) return;
+        if(!obj[r.dia]) obj[r.dia] = {};
+        obj[r.dia][r.hora] = { asig: r.materia||'', grado: (r.curso||'').split('°-')[0], grupo: (r.curso||'').split('°-')[1]||'', nota: r.aula||'' };
+      });
+      return obj;
+    }},
     'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_com_historial':  { tabla: 'lv_comunicados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_examenes':       { tabla: 'lv_examenes',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
@@ -99,7 +107,10 @@ const LV_SYNC = (() => {
       if (!remotos || !remotos.length) continue;
 
       // Fusionar: remoto gana si es más reciente
-      if (cfg.tabla === 'asistencia') {
+      if (cfg.transformDown) {
+        // estructura especial con transformDown
+        lsSet(lvKey, cfg.transformDown(remotos));
+      } else if (cfg.tabla === 'asistencia') {
         // asistencia tiene estructura especial {cursoId_fecha: {...}}
         const local = lsGet(lvKey) || {};
         remotos.forEach(r => { local[r.id] = r; });
