@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T17:17:12.030Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Primer Periodo",
+    "unidad": "Preservación ambiental de geosistemas y recursos hídricos",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "mqgwn17i99m",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Explica, paso a paso, cómo el bosque regula el ciclo del agua en una cuenca. ¿Qué ocurre con cada uno de esos pasos cuando se tala el bosque?",
+      "respuesta": "El bosque regula el agua interceptando parte de la lluvia en sus copas (evitando que golpee el suelo), facilitando la infiltración del agua al suelo a través de raíces y hojarasca, recargando acuíferos gradualmente y realizando evapotranspiración que recicla vapor de vuelta a la atmósfera. Al talarlo: el agua golpea directo el suelo y lo compacta (menos infiltración), la escorrentía aumenta (más inundaciones en invierno), los acuíferos no se recargan (menos agua en verano) y se reduce la evapotranspiración (menos lluvias locales).",
+      "sugerida": true
+    },
+    {
+      "id": "mqgwn17ipt9",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué son los 'ríos voladores' y por qué su interrupción por deforestación amazónica puede afectar la disponibilidad de agua en la zona cafetera de Colombia?",
+      "respuesta": "Los 'ríos voladores' son corrientes de vapor de agua producidas por la evapotranspiración de la Amazonia que viajan por la atmósfera y generan lluvias en otras regiones, incluyendo la zona andina cafetera. Cuando se deforesta la Amazonia, se reduce la evapotranspiración, se debilitan estos ríos aéreos y disminuyen las lluvias en la región cafetera, afectando la disponibilidad de agua para cultivos y quebradas.",
+      "sugerida": true
+    },
+    {
+      "id": "mqgwn17ic2t",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Describe la 'cascada de efectos' que genera la deforestación sobre las fuentes hídricas. ¿Por qué se dice que estos efectos son sistémicos?",
+      "respuesta": "Son sistémicos porque cada efecto desencadena el siguiente en una cadena interconectada: tala → suelo expuesto → compactación → menos infiltración → más escorrentía → erosión → sedimentación en quebradas → agua más turbia → contaminación difusa → acuíferos sin recarga → nivel freático baja → nacimientos y pozos se secan. No es un problema puntual sino una degradación progresiva del sistema completo.",
+      "sugerida": true
+    },
+    {
+      "id": "mqgwn17ikb9",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Por qué reforestar con pinos o eucaliptos en zonas de recarga hídrica no es una solución adecuada? ¿Qué tipo de reforestación sería correcta?",
+      "respuesta": "Los pinos y eucaliptos son especies exóticas que consumen grandes cantidades de agua del suelo y acidifican el suelo con su hojarasca, reduciendo la biodiversidad y la recarga hídrica. La reforestación correcta en zonas de recarga usa especies nativas del ecosistema local: en zonas cafeteras, guadua, cedro, nogal, roble y alisos, que retienen agua, generan hojarasca biodegradable y se adaptan a las condiciones del suelo local.",
+      "sugerida": true
+    },
+    {
+      "id": "mqgwn17ic8y",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "En Loma Verde, una familia cafetera depende de una quebrada para el beneficiadero y el consumo del hogar. Explica por qué la conservación de los bosques en la parte alta de esa cuenca es, para esa familia, tanto un asunto ambiental como un asunto económico.",
+      "respuesta": "Es ambiental porque el bosque en la parte alta regula el ciclo del agua y garantiza el caudal de la quebrada. Es económico porque sin agua suficiente en el beneficiadero no se puede procesar el café, lo que reduce la producción y los ingresos familiares; sin agua de consumo, la familia gasta en acarrear agua de otro lugar; y en años de verano extremo, la pérdida de la cosecha por falta de riego puede ser la diferencia entre la subsistencia y la deuda. Proteger el bosque es proteger el sustento.",
+      "sugerida": true
+    },
+    {
+      "id": "mqgwn17ijs2",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La deforestación aumenta la escorrentía superficial, lo que provoca más inundaciones en invierno y menos agua disponible en verano.",
+      "correcta": true,
+      "justificacion": "Verdadero. Sin bosque que retenga el agua lluvia, esta escurre rápidamente por la superficie en invierno (inundaciones) y no queda reserva acumulada en el suelo para abastecer quebradas en verano (sequía). Es el efecto directo de perder la esponja natural del bosque."
+    },
+    {
+      "id": "mqgwn17inas",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El año con mayor deforestación registrada en la historia de Colombia fue 2010, coincidiendo con una fuerte temporada de lluvias.",
+      "correcta": false,
+      "justificacion": "Falso. El año con mayor deforestación registrada fue 2017, con 219.973 hectáreas perdidas. Este pico no se debió a lluvias sino al vacío de control territorial que dejó la desmovilización de las FARC tras el Acuerdo de Paz de 2016, que permitió la expansión de colonos y actividades extractivas en zonas amazónicas."
+    },
+    {
+      "id": "mqgwn17ikgs",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Los acuíferos se recargan principalmente a través de la lluvia que se infiltra en el suelo, proceso que el bosque facilita con sus raíces y su capa de hojarasca.",
+      "correcta": true,
+      "justificacion": "Verdadero. Las raíces de los árboles crean canales en el suelo que facilitan la infiltración del agua lluvia hacia el subsuelo, y la hojarasca actúa como esponja que retiene la humedad. Sin bosque, el suelo se compacta, la infiltración disminuye y los acuíferos dejan de recargarse adecuadamente."
+    },
+    {
+      "id": "mqgwn17ionl",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Reforestar con eucaliptos o pinos es la mejor estrategia para restaurar la regulación hídrica en cuencas deforestadas de la zona cafetera colombiana.",
+      "correcta": false,
+      "justificacion": "Falso. Los eucaliptos y pinos son especies exóticas de alto consumo hídrico que pueden reducir la disponibilidad de agua en el suelo y acidificarlo. Para restaurar la regulación hídrica en la zona cafetera se deben usar especies nativas como guadua, roble, cedro y alisos, que se adaptan al ecosistema local y promueven la biodiversidad."
+    },
+    {
+      "id": "mqgwn17io8m",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Según el IDEAM, más de 1.100 municipios colombianos presentan vulnerabilidad hídrica alta o muy alta, en parte como consecuencia de la deforestación histórica.",
+      "correcta": true,
+      "justificacion": "Verdadero. El IDEAM ha identificado que más de 1.100 municipios del país tienen vulnerabilidad hídrica alta o muy alta. La deforestación es uno de los principales factores estructurales de esta vulnerabilidad, al reducir la regulación natural del agua en las cuencas."
+    },
+    {
+      "id": "mqgwn17ijdf",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El ciclo del agua en una cuenca boscosa permite que haya agua disponible incluso meses después de la última lluvia.",
+      "enunciado": "¿Cuál de los siguientes procesos describe correctamente cómo el bosque regula la disponibilidad de agua en una cuenca durante la época seca?",
+      "opciones": [
+        "El bosque genera lluvia artificial mediante sus raíces profundas.",
+        "El bosque almacena agua superficial en sus troncos y la libera en verano.",
+        "El bosque facilita la infiltración que recarga acuíferos, los cuales abastecen las quebradas en época seca.",
+        "El bosque reduce la evaporación del suelo, concentrando el agua en la superficie."
+      ],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17i3e8",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Entre 2016 y 2018 Colombia vivió una transición política y social sin precedentes.",
+      "enunciado": "¿Cuál fue la principal causa del pico histórico de deforestación en Colombia en el año 2017?",
+      "opciones": [
+        "Un aumento global en la demanda de madera tropical.",
+        "El vacío de control territorial tras la desmovilización de las FARC.",
+        "Una sequía excepcional que facilitó los incendios forestales.",
+        "La expansión de la minería de carbón en la Amazonia."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17idaq",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Investigadores brasileños y colombianos han descrito un fenómeno atmosférico clave para entender las lluvias en Sudamérica.",
+      "enunciado": "¿Qué son los 'ríos voladores' en el contexto del ciclo hidrológico amazónico?",
+      "opciones": [
+        "Ríos subterráneos que conectan la Amazonia con los Andes.",
+        "Corrientes de vapor de agua producidas por la evapotranspiración amazónica que generan lluvias en otras regiones.",
+        "Sistemas de riego aéreo usados en proyectos de reforestación amazónica.",
+        "Crecientes extraordinarias del río Amazonas durante la temporada de lluvias."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17i9gk",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Varias familias de una vereda reportan que el agua de la quebrada llega más turbia desde que talaron el rastrojo de la parte alta.",
+      "enunciado": "¿Qué efecto inmediato tiene la deforestación sobre la calidad del agua de las quebradas en zonas cafeteras?",
+      "opciones": [
+        "El agua llega más fría porque pierde la sombra de los árboles.",
+        "El agua llega más turbia por la sedimentación del suelo erosionado sin cobertura vegetal.",
+        "El agua aumenta su caudal porque ya no es absorbida por las raíces.",
+        "El agua pierde minerales porque los árboles ya no los aportan al suelo."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17iyxa",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La normativa ambiental colombiana establece zonas de protección obligatoria para las fuentes hídricas.",
+      "enunciado": "Según el Decreto 1076 de 2015, ¿cuál es la franja mínima de vegetación que debe conservarse alrededor de ríos y quebradas?",
+      "opciones": [
+        "10 metros a cada lado.",
+        "20 metros a cada lado.",
+        "30 metros a cada lado.",
+        "50 metros a cada lado."
+      ],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17iewf",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El IDEAM monitorea la deforestación con imágenes satelitales desde 2010 y publica datos acumulados sobre pérdida de bosque.",
+      "enunciado": "¿Cuántas hectáreas de bosque perdió Colombia entre 2000 y 2022, según el IDEAM?",
+      "opciones": [
+        "Más de 500.000 hectáreas.",
+        "Más de 1 millón de hectáreas.",
+        "Más de 3,5 millones de hectáreas.",
+        "Más de 10 millones de hectáreas."
+      ],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17ir1n",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La deforestación genera múltiples efectos sobre el ciclo hidrológico, aunque no todos son igualmente directos.",
+      "enunciado": "¿Cuál de los siguientes efectos NO es una consecuencia directa de la deforestación sobre el ciclo del agua?",
+      "opciones": [
+        "Aumento de la escorrentía superficial.",
+        "Disminución de la infiltración al subsuelo.",
+        "Incremento de la biodiversidad acuática en ríos.",
+        "Reducción de la recarga de acuíferos."
+      ],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17ihlg",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La región andina ya perdió más del 70% de sus bosques originales antes del siglo XX.",
+      "enunciado": "¿Por qué la deforestación en la región andina cafetera colombiana es especialmente crítica para el recurso hídrico local?",
+      "opciones": [
+        "Porque la región andina tiene más lluvias que el resto del país.",
+        "Porque los fragmentos boscosos restantes son la última esponja que regula el agua local.",
+        "Porque el suelo andino no puede absorber agua sin cobertura arbórea.",
+        "Porque los ríos andinos nacen en la Amazonia y dependen de ella directamente."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17igxd",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Distintas actividades económicas presionan los bosques colombianos, pero algunas son más determinantes que otras.",
+      "enunciado": "¿Cuál es el principal uso del suelo que causa la deforestación en Colombia, según los estudios del IDEAM?",
+      "opciones": [
+        "Cultivos de palma aceitera.",
+        "Ganadería extensiva.",
+        "Tala ilegal para madera.",
+        "Expansión urbana."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta según el contenido del tema."
+    },
+    {
+      "id": "mqgwn17iwd3",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación e impacto hídrico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El CENICAFÉ ha documentado diferencias significativas de productividad entre fincas en cuencas boscosas y deforestadas.",
+      "enunciado": "Para una finca cafetera ubicada en una cuenca deforestada, ¿cuál es la consecuencia productiva más directa de la pérdida de regulación hídrica?",
+      "opciones": [
+        "Mayor producción de café por mayor exposición solar.",
+        "Necesidad de entre 20% y 40% más agua de riego para la misma productividad.",
+        "Reducción de plagas por eliminación de hábitats de insectos.",
+        "Mejora de la calidad del grano por menor humedad ambiental."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta según el contenido del tema."
+    }
+  ]
+}

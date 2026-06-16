@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de Preguntas — Noveno · Primer Periodo · Factores de Degradación</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f1f5f9; color: #1e293b; min-height: 100vh; }
+
+  header {
+    background: #1e3a8a; color: white; padding: 20px 24px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  header h1 { font-size: 1.15rem; font-weight: 700; }
+  header p { font-size: 0.85rem; opacity: 0.85; }
+
+  .toolbar {
+    background: white; border-bottom: 1px solid #e2e8f0;
+    padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    position: sticky; top: 0; z-index: 10;
+  }
+  .filter-btn {
+    padding: 6px 14px; border: 2px solid #cbd5e1; border-radius: 20px;
+    background: white; cursor: pointer; font-size: 0.82rem; font-weight: 600;
+    color: #475569; transition: all .15s;
+  }
+  .filter-btn:hover { border-color: #1e3a8a; color: #1e3a8a; }
+  .filter-btn.active { background: #1e3a8a; color: white; border-color: #1e3a8a; }
+  .spacer { flex: 1; }
+  .sel-count { font-size: 0.82rem; color: #64748b; padding: 6px 10px; }
+  .export-btn {
+    padding: 8px 18px; background: #16a34a; color: white; border: none;
+    border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
+    transition: background .15s;
+  }
+  .export-btn:hover { background: #15803d; }
+  .export-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+
+  .select-all-row {
+    padding: 8px 20px; background: #e0e7ff; font-size: 0.8rem;
+    display: flex; gap: 10px; align-items: center; color: #3730a3;
+    cursor: pointer; user-select: none;
+  }
+  .select-all-row:hover { background: #c7d2fe; }
+
+  main { padding: 16px 20px; max-width: 900px; margin: 0 auto; }
+
+  .q-card {
+    background: white; border-radius: 10px; margin-bottom: 12px;
+    border: 2px solid transparent; transition: border-color .15s;
+    overflow: hidden;
+  }
+  .q-card.selected { border-color: #1e3a8a; }
+
+  .q-header {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px; cursor: pointer;
+  }
+  .q-checkbox { width: 18px; height: 18px; cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+  .q-num { font-size: 0.75rem; color: #94a3b8; font-weight: 700; flex-shrink: 0; padding-top: 3px; }
+  .q-text { flex: 1; font-size: 0.92rem; line-height: 1.5; }
+  .badge {
+    flex-shrink: 0; padding: 2px 10px; border-radius: 12px; font-size: 0.72rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  }
+  .badge-abierta { background: #dbeafe; color: #1d4ed8; }
+  .badge-fv      { background: #fef3c7; color: #92400e; }
+  .badge-sm      { background: #d1fae5; color: #065f46; }
+
+  .q-body { padding: 0 16px 14px 46px; border-top: 1px solid #f1f5f9; }
+
+  .enunciado-box {
+    background: #f8fafc; border-left: 3px solid #94a3b8;
+    padding: 8px 12px; font-size: 0.85rem; color: #475569;
+    border-radius: 0 6px 6px 0; margin-bottom: 10px; margin-top: 10px;
+  }
+  .opciones { list-style: none; margin-top: 8px; }
+  .opciones li {
+    padding: 6px 10px; border-radius: 6px; font-size: 0.88rem;
+    margin-bottom: 4px; display: flex; gap: 8px;
+  }
+  .opciones li .letra { font-weight: 700; min-width: 20px; }
+  .opciones li.correcta { background: #dcfce7; color: #166534; }
+  .opciones li.incorrecta { background: #f1f5f9; color: #475569; }
+
+  .toggle-detail {
+    font-size: 0.78rem; color: #1e3a8a; cursor: pointer;
+    text-decoration: underline; margin-top: 8px; display: inline-block;
+  }
+  .detail-box {
+    background: #f0f9ff; border-left: 3px solid #0ea5e9;
+    padding: 10px 12px; font-size: 0.85rem; color: #0c4a6e;
+    border-radius: 0 6px 6px 0; margin-top: 8px;
+    display: none;
+  }
+  .detail-box.open { display: block; }
+
+  .vf-row { display: flex; gap: 10px; align-items: center; margin-top: 8px; }
+  .vf-badge {
+    padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 0.82rem;
+  }
+  .vf-v { background: #dcfce7; color: #166534; }
+  .vf-f { background: #fee2e2; color: #991b1b; }
+
+  .hidden { display: none; }
+
+  footer {
+    text-align: center; padding: 20px; color: #94a3b8; font-size: 0.78rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Banco de Preguntas — Ciencias Sociales</h1>
+  <p>Grado: Noveno &nbsp;|&nbsp; Periodo: Primero &nbsp;|&nbsp; Tema: Factores de degradación ambiental</p>
+  <p>I.E. San José de Loma Verde &nbsp;·&nbsp; Docente: Richard Miguel Hernández Sabié</p>
+</header>
+
+<div class="toolbar">
+  <button class="filter-btn active" onclick="filtrar('todas')">Todas (20)</button>
+  <button class="filter-btn" onclick="filtrar('abierta')">Abiertas (5)</button>
+  <button class="filter-btn" onclick="filtrar('fv')">F / V (5)</button>
+  <button class="filter-btn" onclick="filtrar('sm')">Selección múltiple (10)</button>
+  <span class="spacer"></span>
+  <span class="sel-count" id="sel-count">0 seleccionadas</span>
+  <button class="export-btn" id="export-btn" onclick="exportar()" disabled>Exportar selección (.json)</button>
+</div>
+
+<div class="select-all-row" onclick="toggleSelectAll()">
+  <input type="checkbox" id="chk-all" style="width:16px;height:16px;">
+  <span>Seleccionar / deseleccionar todas las visibles</span>
+</div>
+
+<main id="lista"></main>
+
+<footer>Sistema Loma Verde · Banco de preguntas interactivo</footer>
+
+<script>
+const BANCO = [
+  {
+    tipo: "abierta", num: 1,
+    q: "¿Por qué la pérdida de los páramos colombianos representa una amenaza directa para la seguridad hídrica de millones de personas, incluidas las familias campesinas de zonas cafeteras?",
+    a: "Los páramos actúan como reguladores naturales del ciclo del agua: absorben la lluvia y la liberan lentamente durante los meses secos, abasteciendo ríos y quebradas. Si se degradan por avance de la frontera agrícola o minería, las fuentes de agua se vuelven irregulares e insuficientes, afectando directamente el cultivo, el consumo doméstico y el beneficiadero de café en veredas como Loma Verde."
+  },
+  {
+    tipo: "abierta", num: 2,
+    q: "Explica la relación entre la ampliación de la frontera agrícola y la pérdida de biodiversidad en Colombia. ¿Qué consecuencias tiene esta pérdida a largo plazo para la agricultura?",
+    a: "Al ampliar la frontera agrícola se destruyen ecosistemas que albergan especies de plantas, insectos polinizadores y microorganismos del suelo fundamentales para la producción agrícola. A largo plazo, la pérdida de biodiversidad reduce la fertilidad natural del suelo, disminuye la polinización de cultivos y elimina especies que controlan plagas de forma natural, obligando al agricultor a gastar más en agroquímicos."
+  },
+  {
+    tipo: "abierta", num: 3,
+    q: "Describe el proceso por el cual la minería extractiva contamina una fuente de agua y afecta a las comunidades que dependen de ella. Menciona al menos dos derechos constitucionales vulnerados.",
+    a: "La minería usa mercurio o cianuro para separar el oro; estos químicos van al agua del río, se acumulan en los peces y en los sedimentos. Las personas que beben esa agua o consumen esos peces sufren daños neurológicos y renales. Se vulneran el derecho a un ambiente sano (Art. 79 de la Constitución) y el derecho a la salud (Art. 49), así como el derecho al agua como derecho fundamental reconocido por la jurisprudencia constitucional."
+  },
+  {
+    tipo: "abierta", num: 4,
+    q: "Compara el turismo desmedido con el turismo sostenible. ¿Bajo qué condiciones el turismo puede ser un aliado de la conservación ambiental en zonas rurales como Loma Verde?",
+    a: "El turismo desmedido supera la capacidad de carga del ecosistema, genera basuras, erosión y contaminación sin dejar beneficios reales a la comunidad local. El turismo sostenible controla el número de visitantes, involucra a guías y operadores locales, respeta los espacios naturales y destina parte de los ingresos a la conservación. En Loma Verde podría ser sostenible si las familias controlan los recorridos, se establecen cupos máximos para visitar nacimientos de agua y los beneficios económicos permanecen en la vereda."
+  },
+  {
+    tipo: "abierta", num: 5,
+    q: "En la vereda de Loma Verde, una familia nota que la quebrada que abastece su acueducto veredal tiene cada año menos agua en verano. Aplicando lo aprendido en clase, propón dos hipótesis sobre qué factor de degradación podría estar causando esto y qué se podría hacer para verificarlo y resolverlo.",
+    a: "Hipótesis 1: deforestación de la parte alta de la cuenca que elimina la vegetación que retenía el agua lluvia. Verificación: recorrer la cabecera de la quebrada y observar si hay zonas taladas o con pastos. Solución: reforestar con especies nativas, especialmente guadua y árboles de ribera. Hipótesis 2: ampliación de cultivos que aumenta el consumo de agua de riego aguas arriba. Verificación: identificar fincas que capturen agua del mismo nacimiento y cuánto consumen. Solución: acuerdo comunitario de uso eficiente del agua y revisión del acueducto veredal."
+  },
+  {
+    tipo: "fv", num: 6,
+    q: "Colombia posee el 49% de los páramos del mundo, lo que la convierte en el país con mayor cantidad de este tipo de ecosistema en el planeta.",
+    verdadero: true,
+    justificacion: "Verdadero. Colombia alberga aproximadamente el 49% de los páramos del mundo, ecosistemas de alta montaña que regulan el ciclo del agua. Su preservación es crucial para el abastecimiento hídrico de millones de colombianos."
+  },
+  {
+    tipo: "fv", num: 7,
+    q: "La deforestación de los bosques de ribera (franjas de vegetación junto a las quebradas) no tiene consecuencias significativas sobre la disponibilidad de agua en épocas de sequía.",
+    verdadero: false,
+    justificacion: "Falso. Los bosques de ribera son fundamentales para retener el agua lluvia en el suelo y liberarla gradualmente a las quebradas durante los meses secos. Su eliminación provoca que el agua escurra rápido en invierno y las fuentes se sequen en verano, afectando directamente a las familias campesinas."
+  },
+  {
+    tipo: "fv", num: 8,
+    q: "En 2016, la Corte Constitucional de Colombia declaró al río Atrato como sujeto de derechos, en respuesta a la grave contaminación causada por la minería ilegal con mercurio.",
+    verdadero: true,
+    justificacion: "Verdadero. Mediante la Sentencia T-622 de 2016, la Corte Constitucional reconoció al río Atrato como sujeto de derechos, ordenando al Estado protegerlo y descontaminarlo. Fue una respuesta a la crisis ambiental generada por la minería ilegal de oro en el Chocó."
+  },
+  {
+    tipo: "fv", num: 9,
+    q: "El turismo siempre genera beneficios para las comunidades rurales que se encuentran cerca de los atractivos naturales visitados.",
+    verdadero: false,
+    justificacion: "Falso. El turismo desmedido puede generar más perjuicios que beneficios para las comunidades locales: degrada los ecosistemas, contamina fuentes de agua y generalmente los ingresos son captados por operadores externos. Solo el turismo bien gestionado y con control comunitario genera beneficios reales y duraderos."
+  },
+  {
+    tipo: "fv", num: 10,
+    q: "La Ley 1658 de 2013 ordenó eliminar el uso de mercurio en la minería colombiana para el año 2023.",
+    verdadero: true,
+    justificacion: "Verdadero. La Ley 1658 de 2013 estableció la prohibición progresiva del mercurio en actividades mineras, con plazo final para 2023. Sin embargo, su incumplimiento ha sido masivo, especialmente en la minería ilegal, lo que mantiene la contaminación de ríos y el riesgo para las comunidades."
+  },
+  {
+    tipo: "sm", num: 11,
+    enunciado: "Las quebradas que abastecen muchas veredas cafeteras nacen en zonas boscosas de alta montaña.",
+    q: "¿Cuál es el principal efecto de la deforestación en las cuencas altas sobre las familias campesinas de la parte baja?",
+    opciones: ["Mayor disponibilidad de agua en todas las épocas del año.", "Reducción del caudal en épocas secas por pérdida de la esponja natural del bosque.", "Aumento de la fertilidad del suelo en la parte baja de la cuenca.", "Disminución de los costos de producción agrícola."],
+    correcta: 1
+  },
+  {
+    tipo: "sm", num: 12,
+    enunciado: "La minería de oro en ríos como el Atrato y el Nechí ha generado una grave crisis ambiental y sanitaria.",
+    q: "¿Qué sustancia tóxica usa principalmente la minería de aluvión ilegal para separar el oro del sedimento del río?",
+    opciones: ["Arsénico.", "Plomo.", "Mercurio.", "Azufre."],
+    correcta: 2
+  },
+  {
+    tipo: "sm", num: 13,
+    enunciado: "El turismo en zonas naturales colombianas ha crecido aceleradamente desde los acuerdos de paz de 2016.",
+    q: "¿Qué concepto define el número máximo de visitantes que un ecosistema puede recibir sin degradarse?",
+    opciones: ["Huella hídrica.", "Capacidad de carga.", "Resiliencia ecológica.", "Índice de biodiversidad."],
+    correcta: 1
+  },
+  {
+    tipo: "sm", num: 14,
+    enunciado: "La Constitución de 1991 incluyó una serie de derechos colectivos y del ambiente.",
+    q: "¿Qué artículo de la Constitución Política de Colombia de 1991 reconoce el derecho de todas las personas a gozar de un ambiente sano?",
+    opciones: ["Artículo 49.", "Artículo 58.", "Artículo 79.", "Artículo 86."],
+    correcta: 2
+  },
+  {
+    tipo: "sm", num: 15,
+    enunciado: "Caño Cristales, en el departamento del Meta, es conocido como 'el río más hermoso del mundo'.",
+    q: "¿Cuál fue la medida que tomó el Estado colombiano en 2009 con Caño Cristales ante el deterioro causado por el exceso de turistas?",
+    opciones: ["Declararlo área urbana para controlar el acceso.", "Cerrarlo temporalmente y reabrirlo con cupos controlados en 2012.", "Construir hoteles para mejorar la experiencia turística.", "Trasladar sus algas de colores a un parque temático nacional."],
+    correcta: 1
+  },
+  {
+    tipo: "sm", num: 16,
+    enunciado: "Colombia es uno de los países con mayor diversidad forestal del mundo, pero enfrenta una seria crisis de deforestación.",
+    q: "Aproximadamente, ¿cuántas hectáreas de bosque pierde Colombia cada año según el IDEAM?",
+    opciones: ["20.000 hectáreas.", "170.000 hectáreas.", "500.000 hectáreas.", "1.200.000 hectáreas."],
+    correcta: 1
+  },
+  {
+    tipo: "sm", num: 17,
+    enunciado: "En Colombia, la ganadería extensiva y los monocultivos agroindustriales avanzan sobre selvas y páramos.",
+    q: "¿Cuál de los siguientes es un efecto directo de la ampliación de la frontera agrícola sobre los ecosistemas?",
+    opciones: ["Aumento de la biodiversidad por la diversificación de cultivos.", "Mejora de la calidad del suelo por la incorporación de nutrientes.", "Pérdida de la cobertura boscosa y del hábitat de especies nativas.", "Mayor disponibilidad de agua por el aumento de zonas cultivadas."],
+    correcta: 2
+  },
+  {
+    tipo: "sm", num: 18,
+    enunciado: "Colombia ha sido pionera en el reconocimiento de los derechos de la naturaleza en América Latina.",
+    q: "¿Qué sentencia de la Corte Constitucional reconoció al río Atrato como sujeto de derechos?",
+    opciones: ["Sentencia C-035 de 2016.", "Sentencia T-622 de 2016.", "Sentencia SU-095 de 2018.", "Sentencia T-445 de 2016."],
+    correcta: 1
+  },
+  {
+    tipo: "sm", num: 19,
+    enunciado: "En zonas rurales colombianas el turismo ha crecido como alternativa económica, pero no siempre con planificación.",
+    q: "¿Cuál es la diferencia fundamental entre el turismo sostenible y el turismo desmedido?",
+    opciones: ["El turismo sostenible solo permite el acceso a turistas nacionales.", "El turismo desmedido es exclusivo de las ciudades capitales.", "El turismo sostenible respeta la capacidad de carga del ecosistema y distribuye beneficios localmente.", "El turismo sostenible elimina todas las actividades agropecuarias de la zona."],
+    correcta: 2
+  },
+  {
+    tipo: "sm", num: 20,
+    enunciado: "Estas comunidades han habitado las riberas de ríos como el Atrato durante siglos, dependiendo de ellos para su alimentación.",
+    q: "¿Por qué la minería de aluvión es especialmente dañina para las comunidades afrocolombianas e indígenas del Chocó?",
+    opciones: ["Porque genera ruido que perturba sus ceremonias tradicionales.", "Porque contamina los ríos con mercurio que se acumula en los peces que consumen.", "Porque reduce el nivel del río e impide la navegación comercial.", "Porque aumenta la temperatura del agua y destruye los cultivos de orilla."],
+    correcta: 1
+  }
+];
+
+let filtroActivo = 'todas';
+let seleccionadas = new Set();
+
+function filtrar(tipo) {
+  filtroActivo = tipo;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderizar();
+}
+
+function visibles() {
+  if (filtroActivo === 'todas') return BANCO;
+  return BANCO.filter(p => p.tipo === filtroActivo);
+}
+
+function renderizar() {
+  const lista = document.getElementById('lista');
+  const items = visibles();
+  if (items.length === 0) { lista.innerHTML = '<p style="color:#64748b;padding:20px">No hay preguntas en esta categoría.</p>'; return; }
+  lista.innerHTML = items.map(p => cardHTML(p)).join('');
+  actualizarContador();
+}
+
+function cardHTML(p) {
+  const sel = seleccionadas.has(p.num);
+  const badgeClass = { abierta: 'badge-abierta', fv: 'badge-fv', sm: 'badge-sm' }[p.tipo];
+  const badgeLabel = { abierta: 'Abierta', fv: 'F / V', sm: 'S. Múltiple' }[p.tipo];
+  let body = '';
+
+  if (p.tipo === 'sm') {
+    const letras = ['A','B','C','D'];
+    const enunciadoBox = p.enunciado ? `<div class="enunciado-box">${p.enunciado}</div>` : '';
+    const opts = p.opciones.map((o,i) => `<li class="${i===p.correcta?'correcta':'incorrecta'}"><span class="letra">${letras[i]}</span>${o}</li>`).join('');
+    body = `${enunciadoBox}<ul class="opciones">${opts}</ul>`;
+  } else if (p.tipo === 'fv') {
+    const vf = p.verdadero ? '<span class="vf-badge vf-v">VERDADERO</span>' : '<span class="vf-badge vf-f">FALSO</span>';
+    body = `<div class="vf-row">${vf}</div>
+      <span class="toggle-detail" onclick="toggleDetail(${p.num})">▶ Ver justificación</span>
+      <div class="detail-box" id="detail-${p.num}">${p.justificacion}</div>`;
+  } else {
+    body = `<span class="toggle-detail" onclick="toggleDetail(${p.num})">▶ Ver respuesta modelo</span>
+      <div class="detail-box" id="detail-${p.num}">${p.a}</div>`;
+  }
+
+  return `<div class="q-card${sel?' selected':''}" id="card-${p.num}">
+    <div class="q-header" onclick="toggleSel(${p.num})">
+      <input type="checkbox" class="q-checkbox" ${sel?'checked':''} onclick="event.stopPropagation();toggleSel(${p.num})">
+      <span class="q-num">#${p.num}</span>
+      <span class="q-text">${p.q}</span>
+      <span class="badge ${badgeClass}">${badgeLabel}</span>
+    </div>
+    <div class="q-body">${body}</div>
+  </div>`;
+}
+
+function toggleSel(num) {
+  if (seleccionadas.has(num)) seleccionadas.delete(num); else seleccionadas.add(num);
+  const card = document.getElementById('card-'+num);
+  if (card) {
+    card.classList.toggle('selected', seleccionadas.has(num));
+    const chk = card.querySelector('.q-checkbox');
+    if (chk) chk.checked = seleccionadas.has(num);
+  }
+  actualizarContador();
+}
+
+function toggleDetail(num) {
+  const box = document.getElementById('detail-'+num);
+  if (!box) return;
+  box.classList.toggle('open');
+  const toggle = box.previousElementSibling;
+  if (toggle) toggle.textContent = box.classList.contains('open') ? '▼ Ocultar' : '▶ Ver ' + (box.parentElement.parentElement.querySelector('.badge-fv') ? 'justificación' : 'respuesta modelo');
+}
+
+function toggleSelectAll() {
+  const items = visibles();
+  const chkAll = document.getElementById('chk-all');
+  const allSel = items.every(p => seleccionadas.has(p.num));
+  items.forEach(p => {
+    if (allSel) seleccionadas.delete(p.num); else seleccionadas.add(p.num);
+  });
+  chkAll.checked = !allSel;
+  renderizar();
+}
+
+function actualizarContador() {
+  document.getElementById('sel-count').textContent = seleccionadas.size + ' seleccionada' + (seleccionadas.size !== 1 ? 's' : '');
+  document.getElementById('export-btn').disabled = seleccionadas.size === 0;
+}
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,5); }
+
+function exportar() {
+  const letras = ['A','B','C','D'];
+  const preguntas = BANCO.filter(p => seleccionadas.has(p.num)).map(p => {
+    if (p.tipo === 'sm') return {
+      id: uid(), tipo: "multiple",
+      grado: "Noveno", tema: "Factores de degradación ambiental",
+      competencia: "Pensamiento reflexivo y sistémico",
+      contexto: p.enunciado || "",
+      enunciado: p.q,
+      opciones: p.opciones,
+      correcta: p.correcta,
+      justificacion: "La opción " + letras[p.correcta] + " es correcta según el contenido del tema."
+    };
+    if (p.tipo === 'fv') return {
+      id: uid(), tipo: "vf",
+      grado: "Noveno", tema: "Factores de degradación ambiental",
+      competencia: "Pensamiento reflexivo y sistémico",
+      contexto: "", enunciado: p.q,
+      correcta: p.verdadero,
+      justificacion: p.justificacion
+    };
+    return {
+      id: uid(), tipo: "abierta",
+      grado: "Noveno", tema: "Factores de degradación ambiental",
+      competencia: "Interpretación y análisis de perspectivas",
+      contexto: "", enunciado: p.q,
+      respuesta: p.a, sugerida: true
+    };
+  });
+
+  const payload = {
+    app: "loma_verde_banco_preguntas",
+    exportado: new Date().toISOString(),
+    origen: {
+      grado: "Noveno",
+      periodo: "Primer Periodo",
+      unidad: "Preservación ambiental de geosistemas y recursos hídricos",
+      docente: "Richard Miguel Hernández Sabié"
+    },
+    preguntas
+  };
+
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Banco_Noveno_PrimerPeriodo_FactoresDegradacion_export.json';
+  a.click();
+}
+
+renderizar();
+</script>
+</body>
+</html>
