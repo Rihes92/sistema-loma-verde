@@ -488,17 +488,18 @@ function renderBanco(){
   }
   const fg=$('#bq-grado').value,q=($('#bq-q').value||'').toLowerCase();
   const all=lsRead('banco');
-  const list=all.filter(x=>(!fg||x.grado===fg)&&(!q||((x.tema||'')+' '+(x.competencia||'')+' '+(x.enunciado||'')+' '+(x.contexto||'')).toLowerCase().includes(q)));
+  const list=all.filter(x=>(!fg||x.grado===fg)&&(!q||((x.periodo||'')+' '+(x.tema||'')+' '+(x.competencia||'')+' '+(x.enunciado||'')+' '+(x.contexto||'')).toLowerCase().includes(q)));
   $('#bq-count').textContent=`${list.length} de ${all.length} pregunta(s)`;
   $('#bq-list').innerHTML=list.length?list.map(bqCard).join(''):'<div class="card empty">No hay preguntas con ese filtro. Importa un .json de preguntas.</div>';
   $('#bq-list').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{if(!confirm('¿Eliminar esta pregunta del banco?'))return;lsWrite('banco',lsRead('banco').filter(y=>y.id!==b.dataset.del));renderBanco();});
 }
 function bqCard(x){
   const cor=x.tipo==='multiple'&&Number.isInteger(x.correcta)?'ABCD'[x.correcta]:(x.tipo==='vf'?(x.correcta?'V':'F'):'—');
-  const tag=x.competencia?esc(x.competencia):(x.tema?esc(x.tema):'');
+  const tag=[x.tema?esc(x.tema):'', x.competencia?esc(x.competencia):''].filter(Boolean).join(' · ');
   return `<div class="card" style="padding:14px">
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
       <span class="badge">${esc(x.grado)} ${BGLBL[x.grado]||''}</span>
+      ${x.periodo?`<span class="badge" style="background:#e0f2fe;color:#0369a1">${esc(x.periodo)}</span>`:''}
       ${tag?`<span class="hint" style="margin:0">${tag}</span>`:''}
       <span class="hint" style="margin:0">· ${TIPO_LBL[x.tipo]||x.tipo}</span>
       ${x.sugerida?'<span class="badge" style="background:#fef9c3;color:#854d0e">respuesta a verificar</span>':''}
@@ -517,7 +518,8 @@ $('#bq-export').addEventListener('click',()=>{
 $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
   try{const d=JSON.parse(await f.text());if(d.app!=='loma_verde_banco_preguntas')throw 0;
     const all=lsRead('banco');const ids=new Set(all.map(x=>x.id));let n=0;
-    (d.preguntas||[]).forEach(p=>{if(!p.id)p.id=uid();if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
+    const periodoGlobal = (d.origen && d.origen.periodo) || '';
+    (d.preguntas||[]).forEach(p=>{if(!p.id)p.id=uid();if(!p.periodo && periodoGlobal)p.periodo=periodoGlobal;if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
     if(JSON.stringify(all).length>4600000){toast('⚠️ El banco supera el límite de almacenamiento.');return;}
     lsWrite('banco',all);renderBanco();toast(n+' pregunta(s) importadas');
   }catch(_){toast('Archivo no válido');}e.target.value='';});
@@ -532,7 +534,7 @@ function openBankPicker(){
   $('#mb-list').innerHTML=list.map(x=>{const cor=x.tipo==='multiple'&&Number.isInteger(x.correcta)?'ABCD'[x.correcta]:(x.tipo==='vf'?(x.correcta?'V':'F'):'—');
     return `<label style="display:flex;gap:10px;padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;cursor:pointer">
       <input type="checkbox" class="mb-chk" value="${x.id}" style="width:auto;flex:0 0 auto;margin-top:3px">
-      <span><span class="badge">${esc(x.grado)} ${BGLBL[x.grado]||''}</span> <span class="hint">${esc(x.competencia||x.tema||'')} · ${TIPO_LBL[x.tipo]||x.tipo} · Correcta ${cor}</span><br>
+      <span><span class="badge">${esc(x.grado)} ${BGLBL[x.grado]||''}</span> ${x.periodo?`<span class="badge" style="background:#e0f2fe;color:#0369a1">${esc(x.periodo)}</span> `:''}<span class="hint">${[x.tema?esc(x.tema):'', x.competencia?esc(x.competencia):''].filter(Boolean).join(' · ')} · ${TIPO_LBL[x.tipo]||x.tipo} · Correcta ${cor}</span><br>
       <strong style="font-size:.88rem">${esc(x.enunciado||'')}</strong></span></label>`;}).join('');
   $('#modal-banco').classList.remove('hide');
 }
@@ -540,7 +542,7 @@ $('#mb-add').addEventListener('click',()=>{
   const ids=[...$('#mb-list').querySelectorAll('.mb-chk:checked')].map(c=>c.value);
   if(!ids.length)return toast('Marca al menos una pregunta');
   const byId={};lsRead('banco').forEach(x=>byId[x.id]=x);
-  ids.forEach(id=>{const x=byId[id];if(!x)return;addItem(x.tipo||'multiple',{contexto:x.contexto,enunciado:x.enunciado,opciones:x.opciones,correcta:x.correcta,evidencia:x.competencia||x.tema||'',respuesta:x.respuesta,imagen:x.imagen});});
+  ids.forEach(id=>{const x=byId[id];if(!x)return;const ev=[x.periodo||'',x.tema||'',x.competencia||''].filter(Boolean).join(' · ');addItem(x.tipo||'multiple',{contexto:x.contexto,enunciado:x.enunciado,opciones:x.opciones,correcta:x.correcta,evidencia:ev,respuesta:x.respuesta,imagen:x.imagen});});
   $('#modal-banco').classList.add('hide');document.querySelector('[data-tab="crear"]').click();toast(ids.length+' pregunta(s) añadidas al examen');
 });
 
