@@ -177,6 +177,7 @@
         <label class="fld">Grado<select id="bq-grado"><option value="">Todos</option></select></label>
         <label class="fld">Buscar<input id="bq-q" placeholder="tema, competencia o texto"></label>
         <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn bad" id="bq-del-sel">🗑️ Borrar seleccionadas</button></label>
+        <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn bad" id="bq-del-all" style="background:#991b1b">🗑️ Borrar todas</button></label>
         <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn sec" id="bq-export">⬇️ Respaldo</button></label>
         <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><label class="btn ok" style="cursor:pointer;text-align:center">⬆️ Importar preguntas<input type="file" id="bq-import" accept="application/json" class="hide"></label></label>
       </div>
@@ -492,7 +493,7 @@ function renderBanco(){
   const list=all.filter(x=>(!fg||x.grado===fg)&&(!q||((x.periodo||'')+' '+(x.tema||'')+' '+(x.competencia||'')+' '+(x.enunciado||'')+' '+(x.contexto||'')).toLowerCase().includes(q)));
   $('#bq-count').textContent=`${list.length} de ${all.length} pregunta(s)`;
   $('#bq-list').innerHTML=list.length?list.map(bqCard).join(''):'<div class="card empty">No hay preguntas con ese filtro. Importa un .json de preguntas.</div>';
-  $('#bq-list').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{if(!confirm('¿Eliminar esta pregunta del banco?'))return;lsWrite('banco',lsRead('banco').filter(y=>y.id!==b.dataset.del));renderBanco();});
+  $('#bq-list').querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{if(!confirm('¿Eliminar esta pregunta del banco?'))return;const _r=lsRead('banco').find(y=>y.id===b.dataset.del);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_banco',Object.assign({},_r,{_eliminado:true}));lsWrite('banco',lsRead('banco').filter(y=>y.id!==b.dataset.del));renderBanco();});
 }
 function bqCard(x){
   const cor=x.tipo==='multiple'&&Number.isInteger(x.correcta)?'ABCD'[x.correcta]:(x.tipo==='vf'?(x.correcta?'V':'F'):'—');
@@ -522,9 +523,19 @@ $('#bq-del-sel').addEventListener('click',()=>{
   if(!ids.length)return toast('Selecciona al menos una pregunta');
   if(!confirm(`¿Eliminar las ${ids.length} preguntas seleccionadas?`))return;
   const setIds=new Set(ids);
+  if(typeof LV_SYNC!=='undefined'){lsRead('banco').forEach(y=>{if(setIds.has(y.id))LV_SYNC.marcarCambio('lv_banco',Object.assign({},y,{_eliminado:true}));});}
   lsWrite('banco',lsRead('banco').filter(y=>!setIds.has(y.id)));
   renderBanco();
   toast(`${ids.length} preguntas eliminadas`);
+});
+$('#bq-del-all').addEventListener('click',()=>{
+  const all=lsRead('banco');
+  if(!all.length)return toast('El banco ya está vacío');
+  if(!confirm(`¿ELIMINAR TODAS LAS ${all.length} PREGUNTAS DEL BANCO DE FORMA PERMANENTE?`))return;
+  if(typeof LV_SYNC!=='undefined'){all.forEach(y=>LV_SYNC.marcarCambio('lv_banco',Object.assign({},y,{_eliminado:true})));}
+  lsWrite('banco',[]);
+  renderBanco();
+  toast(`Todas las preguntas han sido eliminadas`);
 });
 $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
   try{const d=JSON.parse(await f.text());if(d.app!=='loma_verde_banco_preguntas')throw 0;
