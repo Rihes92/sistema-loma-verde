@@ -129,7 +129,7 @@
   </select></label>
       </div>
       <div class="row">
-        <label class="fld">Unidad<input id="f-unidad" placeholder="Se completa con el eje"></label>
+        <label class="fld">Temática<input id="f-unidad" placeholder="Escribe el nombre de la temática específica"></label>
         <label class="fld">N° de sesiones<input id="f-sesiones" placeholder="Ej: 2"></label>
         <label class="fld">Duración por sesión<input id="f-duracion" placeholder="Ej: 55 min"></label>
       </div>
@@ -660,7 +660,7 @@ function renderLista(){
   all.sort((a,b)=>(b.actualizado||b.creado)-(a.actualizado||a.creado));$('#doc-out').innerHTML='';
   if(!all.length){out.innerHTML='<div class="empty">No hay planeadores con ese filtro.</div>';return;}
   out.innerHTML=all.map(p=>`<div class="plan-item">
-    <div><strong>${esc(p.unidad||p.contenidos||'(sin título)')}</strong><br>
+    <div><strong>${esc(p.tema||p.unidad||p.contenidos||'(sin título)')}</strong><br>
       <span class="badge">${esc(p.grado)} ${GLBL[p.grado]||''}</span>
       <span class="muted" style="font-size:.8rem"> · ${esc(p.periodo||'')}${p.fecha?' · '+esc(p.fecha):''}${p.anexos&&p.anexos.length?' · 📷'+p.anexos.length:''}</span></div>
     <div style="display:flex;gap:6px;flex-wrap:wrap">
@@ -687,7 +687,7 @@ window.verDoc=id=>{
       <div class="head"><h1 class="t">Planeador de Clases — I.E. San José de Loma Verde</h1>
       <table class="enc">
         ${F('Docente',p.docente)}${F('Periodo',p.periodo)}${F('Fecha',p.fecha)}
-        ${F('Área',p.area)}${F('Asignatura',p.asignatura)}${F('Unidad',p.unidad)}
+        ${F('Área',p.area)}${F('Asignatura',p.asignatura)}${F('Temática',p.tema||p.unidad)}
         ${F('N°',p.numero)}${F('Grado',(p.grado||'')+' '+(GLBL[p.grado]||''))}${F('Grupos',p.grupos)}
       </table></div>
       ${S('Evidencias de aprendizaje',p.evidencias)}
@@ -732,7 +732,7 @@ window.verGuia=id=>{
     <div class="doc">
       <div class="head"><h1 class="t">Guía de estudio — Ciencias Sociales</h1>
       <table class="enc"><tr><th>Estudiante</th><td>________________________________</td><th>Grado</th><td>${esc((p.grado||'')+' '+(GLBL[p.grado]||''))}</td></tr>
-      <tr><th>Tema</th><td>${esc(p.unidad||'')}</td><th>Fecha</th><td>${esc(p.fecha||'')}</td></tr></table></div>
+      <tr><th>Tema</th><td>${esc(p.tema||p.unidad||'')}</td><th>Fecha</th><td>${esc(p.fecha||'')}</td></tr></table></div>
       ${p.objetivo?`<h2 class="s">¿Qué vamos a aprender?</h2><div class="field">${esc(p.objetivo)}</div>`:''}
       ${p.lineatiempo?`<h2 class="s">Línea de tiempo</h2><div class="field">${esc(p.lineatiempo)}</div>`:''}
       ${glos.length?`<div class="glosario"><strong>Glosario:</strong><ul>${glos.map(g=>`<li><strong>${esc(g.t)}:</strong> ${esc(g.d)}</li>`).join('')}</ul></div>`:''}
