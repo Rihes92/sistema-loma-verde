@@ -176,6 +176,7 @@
       <div class="row" style="align-items:flex-end">
         <label class="fld">Grado<select id="bq-grado"><option value="">Todos</option></select></label>
         <label class="fld">Buscar<input id="bq-q" placeholder="tema, competencia o texto"></label>
+        <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn bad" id="bq-del-sel">🗑️ Borrar seleccionadas</button></label>
         <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn sec" id="bq-export">⬇️ Respaldo</button></label>
         <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><label class="btn ok" style="cursor:pointer;text-align:center">⬆️ Importar preguntas<input type="file" id="bq-import" accept="application/json" class="hide"></label></label>
       </div>
@@ -543,6 +544,7 @@ function bqCard(x){
   const tag=[x.tema?esc(x.tema):'', x.competencia?esc(x.competencia):''].filter(Boolean).join(' · ');
   return `<div class="card" style="padding:14px">
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+      <input type="checkbox" class="bq-chk" value="${x.id}" style="width:auto;flex:0 0 auto;margin-top:3px">
       <span class="badge">${esc(x.grado)} ${BGLBL[x.grado]||''}</span>
       ${x.periodo?`<span class="badge" style="background:#e0f2fe;color:#0369a1">${esc(x.periodo)}</span>`:''}
       ${tag?`<span class="hint" style="margin:0">${tag}</span>`:''}
@@ -559,6 +561,15 @@ function bqCard(x){
 $('#bq-export').addEventListener('click',()=>{
   const data={app:'loma_verde_banco_preguntas',exportado:new Date().toISOString(),preguntas:lsRead('banco')};
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'}));a.download='banco_preguntas_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Respaldo exportado');
+});
+$('#bq-del-sel').addEventListener('click',()=>{
+  const ids=[...$('#bq-list').querySelectorAll('.bq-chk:checked')].map(c=>c.value);
+  if(!ids.length)return toast('Selecciona al menos una pregunta');
+  if(!confirm(`¿Eliminar las ${ids.length} preguntas seleccionadas?`))return;
+  const setIds=new Set(ids);
+  lsWrite('banco',lsRead('banco').filter(y=>!setIds.has(y.id)));
+  renderBanco();
+  toast(`${ids.length} preguntas eliminadas`);
 });
 $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
   try{const d=JSON.parse(await f.text());if(d.app!=='loma_verde_banco_preguntas')throw 0;
