@@ -1,8 +1,8 @@
 // ═══════════════════════════════════════════════════════════════
-//  Sistema Loma Verde — Service Worker v3 (compatible iOS)
+//  Sistema Loma Verde — Service Worker v4 (Network First)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v3';
+const CACHE = 'loma-verde-v8';
 
 const ARCHIVOS = [
   './',
@@ -17,6 +17,8 @@ const ARCHIVOS = [
   './modulos/07-horario.html',
   './modulos/08-eventos.html',
   './Logo/logo.jpg',
+  './lib/xlsx.full.min.js',
+  './lib/chart.umd.js',
 ];
 
 self.addEventListener('install', e => {
@@ -41,18 +43,18 @@ self.addEventListener('fetch', e => {
   if (e.request.url.includes('supabase.co')) return;
   if (e.request.method !== 'GET') return;
 
+  // Estrategia: Network First, falling back to cache
   e.respondWith(
-    caches.open(CACHE).then(cache =>
-      cache.match(e.request).then(cached => {
-        const network = fetch(e.request).then(resp => {
-          if (resp && resp.status === 200) {
-            cache.put(e.request, resp.clone());
-          }
-          return resp;
-        }).catch(() => cached);
-
-        return cached || network;
+    fetch(e.request)
+      .then(resp => {
+        if (resp && resp.status === 200) {
+          const respClone = resp.clone();
+          caches.open(CACHE).then(cache => cache.put(e.request, respClone));
+        }
+        return resp;
       })
-    )
+      .catch(() => {
+        return caches.match(e.request);
+      })
   );
 });

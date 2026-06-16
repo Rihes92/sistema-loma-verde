@@ -108,6 +108,7 @@
   <button data-tab="banco">Banco de preguntas</button>
   <button data-tab="presentar">Presentar examen</button>
   <button data-tab="resultados">Resultados</button>
+  <button data-tab="analisis">Análisis Simulacros</button>
 </nav>
 
 <main>
@@ -220,6 +221,72 @@
     </div>
     <div id="rs-doc"></div>
   </section>
+
+  <section id="tab-analisis" class="hide">
+    <div class="card">
+      <h2>Cargar Resultados de Simulacro (Excel)</h2>
+      <p class="desc">Sube el archivo Excel entregado por el evaluador externo. Se procesará la pestaña <strong>GENERAL</strong>.</p>
+      <div class="row">
+        <label class="fld" style="flex:2">Nombre del Simulacro (Ej: 1er Simulacro DPE)
+          <input type="text" id="an-nombre" placeholder="Nombre descriptivo...">
+        </label>
+        <label class="fld" style="flex:1">Fecha
+          <input type="date" id="an-fecha">
+        </label>
+      </div>
+      <div class="row" style="margin-top:10px; align-items:flex-end">
+        <label class="fld" style="flex:2">Archivo Excel (.xlsx)
+          <input type="file" id="an-file" accept=".xlsx, .xls, .csv">
+        </label>
+        <label class="fld" style="flex:0 0 auto">
+          <span>&nbsp;</span>
+          <button class="btn ok" id="an-load">Cargar y Procesar</button>
+        </label>
+      </div>
+      <div id="an-status" style="margin-top:10px;font-size:0.85rem;color:var(--primary);font-weight:600"></div>
+    </div>
+    
+    <div class="card">
+      <h2>Evolución y Análisis</h2>
+      <div class="row" style="margin-bottom:14px;align-items:center">
+        <label class="fld" style="flex:1">Ver evolución de:
+          <select id="an-student-sel" style="max-width:300px"><option value="ALL">Promedio del Grupo</option></select>
+        </label>
+      </div>
+      <div style="margin-bottom:14px">
+        <strong style="font-size:0.85rem">Comparar Simulacros:</strong>
+        <div id="an-sim-filters" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;font-size:0.85rem"></div>
+      </div>
+      
+      <div id="an-tabs-nav" style="display:flex;gap:10px;margin-bottom:20px;border-bottom:2px solid var(--border);padding-bottom:10px">
+        <button class="btn ok" id="an-tab-btn-areas" onclick="switchAnTab('areas')">Resultados por Área</button>
+        <button class="btn outline" id="an-tab-btn-evo" onclick="switchAnTab('evo')">Evolución Histórica</button>
+      </div>
+
+      <div id="an-tab-content-areas">
+        <div id="an-charts" style="display:flex;gap:20px;flex-wrap:wrap">
+          <div style="flex:1;min-width:300px;background:#f8fafc;padding:10px;border-radius:8px;border:1px solid var(--border)">
+            <h3 style="font-size:0.9rem;text-align:center;margin-top:0">Evolución Puntaje Global</h3>
+            <canvas id="an-chart-line" width="400" height="250"></canvas>
+          </div>
+          <div style="flex:1;min-width:300px;background:#f8fafc;padding:10px;border-radius:8px;border:1px solid var(--border)">
+            <h3 style="font-size:0.9rem;text-align:center;margin-top:0">Comparativo por Áreas</h3>
+            <canvas id="an-chart-radar" width="400" height="250"></canvas>
+          </div>
+        </div>
+        <div id="an-details" style="margin-top:20px"></div>
+      </div>
+      
+      <div id="an-tab-content-evo" class="hide">
+        <div id="an-evo-table"></div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Simulacros Cargados</h2>
+      <div id="an-list"></div>
+    </div>
+  </section>
 </main>
 
 <!-- Modal: elegir del banco -->
@@ -246,7 +313,7 @@ const LS='lv11_'; let _mem={}; let PERSIST=true;
 const clone=o=>JSON.parse(JSON.stringify(o));
 function _ls(){try{const t=LS+'_t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage;}catch(_){PERSIST=false;return null;}}
 function lsRead(s){const x=_ls();if(x){try{return JSON.parse(x.getItem(LS+s)||'[]');}catch(_){}}return _mem[s]?clone(_mem[s]):[];}
-function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));}catch(e){PERSIST=false;return false;}} if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){a.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_'+s,r);});} return true;}
+function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));}catch(e){PERSIST=false;return false;}} if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){a.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio(LS+s,r);});} return true;}
 
 const MATRIZ11 = [{"competencia": "Pensamiento social", "afirmaciones": [{"n": "1", "t": "Comprende modelos conceptuales, sus características y contextos de aplicación.", "evidencias": ["1.1 Identifica y usa conceptos sociales básicos.", "1.2 Conoce el Estado social de derecho y su aplicación en Colombia.", "1.3 Conoce la organización del Estado: ramas del poder y organismos de control.", "1.4 Conoce los mecanismos de participación ciudadana."]}, {"n": "2", "t": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.", "evidencias": ["2.1 Localiza en el tiempo y el espacio eventos históricos.", "2.2 Analiza dimensiones históricas de eventos y problemáticas.", "2.3 Relaciona problemáticas con el espacio geográfico."]}]}, {"competencia": "Interpretación y análisis de perspectivas", "afirmaciones": [{"n": "3", "t": "Contextualiza y evalúa usos de fuentes y argumentos.", "evidencias": ["3.1 Inscribe una fuente primaria en su contexto.", "3.2 Evalúa posibilidades y limitaciones de una fuente.", "3.3 Devela prejuicios e intenciones en enunciados o argumentos."]}, {"n": "4", "t": "Comprende perspectivas de distintos actores y grupos sociales.", "evidencias": ["4.1 Reconoce y compara perspectivas de actores y grupos.", "4.2 Reconoce que cosmovisiones e ideologías influyen en argumentos.", "4.3 Relaciona perspectivas en una situación conflictiva con propuestas de solución."]}]}, {"competencia": "Pensamiento reflexivo y sistémico", "afirmaciones": [{"n": "5", "t": "Evalúa usos sociales de las ciencias sociales.", "evidencias": ["5.1 Analiza modelos conceptuales y sus usos en decisiones sociales."]}, {"n": "6", "t": "Comprende que los problemas y soluciones involucran distintas dimensiones y reconoce relaciones entre estas.", "evidencias": ["6.1 Establece relaciones entre dimensiones de una situación problemática.", "6.2 Analiza los efectos en distintas dimensiones de una intervención."]}]}]; const MALLA = [];
 const GRADOS=['Undécimo'];
@@ -283,11 +350,12 @@ $('#e-afir').addEventListener('change',()=>{const ci=$('#e-comp').value,aj=$('#e
 // ---------- Tabs ----------
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-  ['crear','lista','banco','presentar','resultados'].forEach(x=>$('#tab-'+x).classList.toggle('hide',x!==b.dataset.tab));
+  ['crear','lista','banco','presentar','resultados','analisis'].forEach(x=>$('#tab-'+x).classList.toggle('hide',x!==b.dataset.tab));
   if(b.dataset.tab==='lista')renderLista();
   if(b.dataset.tab==='banco')renderBanco();
   if(b.dataset.tab==='presentar')fillPresentar();
   if(b.dataset.tab==='resultados')renderResultados();
+  if(b.dataset.tab==='analisis')renderAnalisis();
 });
 
 // ---------- Ítems ----------
@@ -406,7 +474,7 @@ window.editEx=id=>{const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;
   (x.items||[]).forEach(it=>addItem(it.tipo,it));
   $('#edit-flag').textContent='Editando un examen guardado.';window.scrollTo(0,0);
 };
-window.delEx=id=>{if(!confirm('¿Eliminar este examen?'))return;const _r=lsRead('examenes').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_examenes',Object.assign({},_r,{_eliminado:true}));lsWrite('examenes',lsRead('examenes').filter(e=>e.id!==id));renderLista();toast('Eliminado');};
+window.delEx=id=>{if(!confirm('¿Eliminar este examen?'))return;const _r=lsRead('examenes').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv11_examenes',Object.assign({},_r,{_eliminado:true}));lsWrite('examenes',lsRead('examenes').filter(e=>e.id!==id));renderLista();toast('Eliminado');};
 window.verExam=id=>{
   const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;let showAns=false;
   function render(){
@@ -673,7 +741,396 @@ function renderResultados(){
     ${all.map(r=>`<tr style="border-top:1px solid var(--border)"><td style="padding:7px">${esc(r.estudiante)}</td><td style="text-align:center">${esc(r.grupo||'-')}</td><td>${esc(r.examTitulo)} <span class="hint">(${esc(r.grado)} ${GLBL[r.grado]||''})</span></td><td style="text-align:center;font-weight:800;color:${r.nota>=3.5?'var(--ok)':'var(--bad)'}">${r.nota.toFixed(1)}</td><td style="text-align:center"><button class="btn bad sm" onclick="delResult('${r.id}')">✕</button></td></tr>`).join('')}
     </tbody></table></div>`:'<div class="empty">Aún no hay resultados guardados.</div>';
 }
-window.delResult=id=>{if(!confirm('¿Eliminar este resultado?'))return;lsWrite('resultados',lsRead('resultados').filter(r=>r.id!==id));renderResultados();};
+window.delResult=id=>{if(!confirm('¿Eliminar este resultado?'))return;const _r=lsRead('resultados').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv11_resultados',Object.assign({},_r,{_eliminado:true}));lsWrite('resultados',lsRead('resultados').filter(r=>r.id!==id));renderResultados();};
+
+// ============================================================
+//  ANÁLISIS DE SIMULACROS EXTERNOS
+// ============================================================
+let anChartLine=null;
+let anChartRadar=null;
+
+function renderAnalisis(){
+  if(!$('#an-fecha').value) $('#an-fecha').value = new Date().toISOString().split('T')[0];
+  const sims = lsRead('simulacros_ext').sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+  
+  const sel = $('#an-student-sel');
+  const prevSel = sel.value;
+  sel.innerHTML = '<option value="ALL">Promedio del Grupo (Global)</option>';
+  const names = new Set();
+  sims.forEach(s => {
+    (s.resultados||[]).forEach(r => { if(r.nombre) names.add(r.nombre.trim()); });
+  });
+  Array.from(names).sort().forEach(n => {
+    const opt = document.createElement('option');
+    opt.value = n; opt.textContent = n;
+    sel.appendChild(opt);
+  });
+  sel.value = prevSel || 'ALL';
+  if(!sel.value) sel.value = 'ALL';
+  
+  let activeSimIds = JSON.parse(sessionStorage.getItem('lv11_active_sims') || 'null');
+  if(!activeSimIds) {
+    activeSimIds = sims.map(s => s.id);
+    sessionStorage.setItem('lv11_active_sims', JSON.stringify(activeSimIds));
+  }
+  
+  const filterDiv = $('#an-sim-filters');
+  filterDiv.innerHTML = sims.length ? sims.map(s => {
+    const isChecked = activeSimIds.includes(s.id);
+    const bg = isChecked ? 'var(--primary)' : '#f8fafc';
+    const color = isChecked ? '#fff' : '#64748b';
+    const border = isChecked ? 'var(--primary)' : '#e2e8f0';
+    return `<label style="display:flex;align-items:center;cursor:pointer;background:${bg};color:${color};padding:6px 14px;border-radius:20px;border:1px solid ${border};font-size:0.8rem;font-weight:600;transition:all 0.2s ease;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,0.05)">
+      <input type="checkbox" class="sim-cbx" value="${s.id}" ${isChecked?'checked':''} onchange="toggleSimFilter()" style="display:none"> 
+      ${isChecked ? '✓ ' : ''}${esc(s.nombre)}
+    </label>`;
+  }).join('') : '<span class="empty">Carga un simulacro para comenzar.</span>';
+  
+  const lst = $('#an-list');
+  if(!sims.length){
+    lst.innerHTML = '<div class="empty">No hay simulacros cargados.</div>';
+  } else {
+    lst.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+      <thead><tr style="background:#f1f5f9;border-bottom:2px solid var(--border)"><th style="padding:8px;text-align:left">Fecha</th><th style="padding:8px;text-align:left">Nombre</th><th style="padding:8px;text-align:center">Evaluados</th><th style="padding:8px;text-align:center">Prom. Global</th><th style="padding:8px;text-align:center">Acción</th></tr></thead>
+      <tbody>
+      ${sims.map(s=>{
+        const res = s.resultados||[];
+        const prom = res.length ? (res.reduce((a,b)=>a+(+b.global||0),0)/res.length).toFixed(1) : 0;
+        return `<tr style="border-bottom:1px solid var(--border)">
+          <td style="padding:8px">${esc(s.fecha)}</td>
+          <td style="padding:8px;font-weight:600">${esc(s.nombre)}</td>
+          <td style="padding:8px;text-align:center">${res.length}</td>
+          <td style="padding:8px;text-align:center;color:var(--primary);font-weight:bold">${prom}</td>
+          <td style="padding:8px;text-align:center;white-space:nowrap">
+            <button class="btn sm" onclick="editSimulacro('${s.id}')">✏️</button>
+            <button class="btn bad sm" onclick="delSimulacro('${s.id}')">✕</button>
+          </td>
+        </tr>`;
+      }).join('')}
+      </tbody></table>`;
+  }
+  
+  updateCharts();
+}
+
+window.switchAnTab = t => {
+  if(t === 'areas') {
+    $('#an-tab-btn-areas').className = 'btn ok';
+    $('#an-tab-btn-evo').className = 'btn outline';
+    $('#an-tab-content-areas').classList.remove('hide');
+    $('#an-tab-content-evo').classList.add('hide');
+  } else {
+    $('#an-tab-btn-areas').className = 'btn outline';
+    $('#an-tab-btn-evo').className = 'btn ok';
+    $('#an-tab-content-areas').classList.add('hide');
+    $('#an-tab-content-evo').classList.remove('hide');
+  }
+};
+
+window.toggleSimFilter = () => {
+  const cbs = document.querySelectorAll('.sim-cbx');
+  const activeIds = Array.from(cbs).filter(c=>c.checked).map(c=>c.value);
+  sessionStorage.setItem('lv11_active_sims', JSON.stringify(activeIds));
+  renderAnalisis();
+};
+
+window.editSimulacro = id => {
+  const all = lsRead('simulacros_ext');
+  const sim = all.find(x=>x.id===id);
+  if(!sim) return;
+  const nn = prompt('Nuevo nombre para el simulacro:', sim.nombre);
+  if(nn && nn.trim()){
+    sim.nombre = nn.trim();
+    if(typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv11_simulacros_ext', sim);
+    lsWrite('simulacros_ext', all);
+    renderAnalisis();
+  }
+};
+
+window.delSimulacro = id => {
+  if(!confirm('¿Eliminar este simulacro?'))return;
+  const _r = lsRead('simulacros_ext').find(x=>x.id===id);
+  if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv11_simulacros_ext',Object.assign({},_r,{_eliminado:true}));
+  lsWrite('simulacros_ext',lsRead('simulacros_ext').filter(r=>r.id!==id));
+  renderAnalisis();
+};
+
+$('#an-student-sel').addEventListener('change', updateCharts);
+
+function shortName(n) {
+  if(!n) return '';
+  const p = n.trim().split(/\\s+/);
+  if(p.length >= 3) return p[2] + ' ' + p[0];
+  return p.join(' ');
+}
+
+function createPodio(titulo, resultados, areaKey, color) {
+  let sorted = resultados.slice().sort((a,b) => {
+    let vA = areaKey === 'global' ? a.global : (a.materias&&a.materias[areaKey])||0;
+    let vB = areaKey === 'global' ? b.global : (b.materias&&b.materias[areaKey])||0;
+    return vB - vA;
+  });
+  if(sorted.length < 3) return ''; 
+  let val = (r) => Math.round(areaKey === 'global' ? r.global : (r.materias&&r.materias[areaKey])||0);
+  
+  return `
+  <div style="flex:1;min-width:240px;background:#fff;border:1px solid var(--border);border-top:4px solid ${color};border-radius:10px;padding:12px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1)">
+    <h4 style="margin:0 0 18px;color:${color};text-align:center;font-weight:800;font-size:0.95rem;text-transform:uppercase;border-bottom:1px solid #f1f5f9;padding-bottom:12px">${titulo}</h4>
+    <div style="display:flex;align-items:flex-end;justify-content:center;gap:4px;height:100px;margin-top:10px">
+      <!-- 2do Puesto -->
+      <div style="display:flex;flex-direction:column;align-items:center;width:32%">
+        <div style="font-size:0.6rem;text-align:center;font-weight:700;line-height:1.1;margin-bottom:4px;color:#475569;height:2.2em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical" title="${esc(sorted[1].nombre)}">${shortName(sorted[1].nombre)}</div>
+        <span style="font-weight:bold;color:${color};font-size:0.85rem">${val(sorted[1])}</span>
+        <div style="background:linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);width:100%;height:55px;border-radius:6px 6px 0 0;display:flex;justify-content:center;align-items:flex-start;padding-top:6px;font-weight:bold;color:#334155;font-size:0.8rem;border:1px solid #cbd5e1;border-bottom:none">🥈 2</div>
+      </div>
+      <!-- 1er Puesto -->
+      <div style="display:flex;flex-direction:column;align-items:center;width:36%">
+        <div style="font-size:0.65rem;text-align:center;font-weight:800;line-height:1.1;margin-bottom:4px;color:#1e293b;height:2.2em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical" title="${esc(sorted[0].nombre)}">${shortName(sorted[0].nombre)}</div>
+        <span style="font-weight:bold;color:${color};font-size:1rem">${val(sorted[0])}</span>
+        <div style="background:linear-gradient(180deg, #fde68a 0%, #f59e0b 100%);width:100%;height:75px;border-radius:6px 6px 0 0;display:flex;justify-content:center;align-items:flex-start;padding-top:6px;font-weight:bold;color:#78350f;font-size:0.9rem;border:1px solid #f59e0b;border-bottom:none;box-shadow:0 -4px 10px rgba(245,158,11,0.2)">🥇 1</div>
+      </div>
+      <!-- 3er Puesto -->
+      <div style="display:flex;flex-direction:column;align-items:center;width:32%">
+        <div style="font-size:0.6rem;text-align:center;font-weight:700;line-height:1.1;margin-bottom:4px;color:#475569;height:2.2em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical" title="${esc(sorted[2].nombre)}">${shortName(sorted[2].nombre)}</div>
+        <span style="font-weight:bold;color:${color};font-size:0.85rem">${val(sorted[2])}</span>
+        <div style="background:linear-gradient(180deg, #ffedd5 0%, #f97316 100%);width:100%;height:45px;border-radius:6px 6px 0 0;display:flex;justify-content:center;align-items:flex-start;padding-top:6px;font-weight:bold;color:#7c2d12;font-size:0.8rem;border:1px solid #ea580c;border-bottom:none">🥉 3</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function updateCharts(){
+  if(typeof Chart === 'undefined') return;
+  const allSims = lsRead('simulacros_ext').sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+  let activeSimIds = JSON.parse(sessionStorage.getItem('lv11_active_sims') || '[]');
+  const sims = allSims.filter(s => activeSimIds.includes(s.id));
+  
+  const sel = $('#an-student-sel').value;
+  const labels = sims.map(s => s.nombre.substring(0,15));
+  let dataGlobal = [];
+  
+  let radarLabels = ['L.CRITICA', 'MATEMATICA', 'SOCIALES', 'C. NATURALES', 'INGLES'];
+  let searchLabels = ['L.CRITICA', 'MATEMATICA', 'SOCIALES Y CIUDADANA', 'CIENCIAS NATURALES', 'INGLES'];
+  const colors = ['#8b5cf6', '#0ea5e9', '#10b981', '#f59e0b', '#ec4899', '#6366f1'];
+  
+  let barDatasets = [];
+  
+  sims.forEach((s, idx) => {
+    let dataForSim = [];
+    let gScore = 0;
+    if(sel === 'ALL'){
+      gScore = s.resultados&&s.resultados.length ? s.resultados.reduce((a,b)=>a+(+b.global||0),0)/s.resultados.length : 0;
+      dataForSim = searchLabels.map(area => {
+        return s.resultados&&s.resultados.length ? s.resultados.reduce((a,b)=>a+((b.materias&&+b.materias[area])||0),0)/s.resultados.length : 0;
+      });
+    } else {
+      const r = (s.resultados||[]).find(x=>x.nombre===sel);
+      gScore = r ? (+r.global||0) : 0;
+      dataForSim = searchLabels.map(area => r ? ((r.materias&&+r.materias[area])||0) : 0);
+    }
+    gScore = Math.round(gScore);
+    dataGlobal.push(gScore);
+    barDatasets.push({ label: s.nombre.substring(0,20), data: dataForSim.map(v=>Math.round(v)), backgroundColor: colors[idx % colors.length] });
+  });
+  
+  if(anChartLine) anChartLine.destroy();
+  anChartLine = new Chart(document.getElementById('an-chart-line'), {
+    type: 'bar',
+    data: { labels, datasets: [{ label: sel==='ALL'?'Promedio Global':'Puntaje Global', data: dataGlobal, backgroundColor: labels.map((_,i)=>colors[i%colors.length]), borderRadius: 4 }] },
+    options: { responsive: true, scales: { y: { beginAtZero: true, max: 500 } }, plugins: { legend: { display: false } } }
+  });
+  
+  if(anChartRadar) anChartRadar.destroy();
+  anChartRadar = new Chart(document.getElementById('an-chart-radar'), {
+    type: 'bar',
+    data: { labels: radarLabels, datasets: barDatasets },
+    options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } } }
+  });
+
+  const detailsDiv = $('#an-details');
+  const evoDiv = $('#an-evo-table');
+  if(!sims.length) { 
+    detailsDiv.innerHTML = '<div class="empty">Selecciona al menos un simulacro para ver detalles.</div>'; 
+    evoDiv.innerHTML = '';
+    return; 
+  }
+  
+  let htmlPodio = '';
+
+  if(sel === 'ALL') {
+    const lastSim = sims[sims.length-1];
+    htmlPodio += `<h3 style="font-size:1.1rem;margin-bottom:10px;color:var(--primary);text-transform:uppercase;border-bottom:2px solid var(--border);padding-bottom:5px">🏆 Podios Reales (${esc(lastSim.nombre)})</h3>`;
+    htmlPodio += `<div style="display:flex;gap:15px;flex-wrap:wrap;margin-bottom:30px;">`;
+    htmlPodio += createPodio('🏆 TOP GLOBAL', lastSim.resultados||[], 'global', '#b45309');
+    htmlPodio += createPodio('📖 L. CRÍTICA', lastSim.resultados||[], searchLabels[0], '#0369a1');
+    htmlPodio += createPodio('🧮 MATEMÁTICAS', lastSim.resultados||[], searchLabels[1], '#15803d');
+    htmlPodio += createPodio('🌍 SOCIALES', lastSim.resultados||[], searchLabels[2], '#c2410c');
+    htmlPodio += createPodio('🔬 C. NATURALES', lastSim.resultados||[], searchLabels[3], '#4d7c0f');
+    htmlPodio += createPodio('💬 INGLÉS', lastSim.resultados||[], searchLabels[4], '#7e22ce');
+    htmlPodio += `</div>`;
+    
+    // Tabla de Resultados por Área con porcentajes
+    let tableHtml = `<h3 style="font-size:1.1rem;margin-bottom:10px;color:var(--primary);text-transform:uppercase;border-bottom:2px solid var(--border);padding-bottom:5px">📊 Puntajes y Porcentajes (${esc(lastSim.nombre)})</h3>
+      <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:#fff"><table style="width:100%;border-collapse:collapse;font-size:0.85rem;text-align:center">
+      <thead><tr style="background:#f1f5f9;border-bottom:2px solid var(--border)">`;
+    
+    tableHtml += `<th style="padding:10px;text-align:left;font-weight:700">Estudiante</th><th style="padding:10px;font-weight:700">P. Global</th>`;
+    radarLabels.forEach(l => tableHtml += `<th style="padding:10px;font-weight:700">${l}</th>`);
+    tableHtml += `</tr></thead><tbody>`;
+    
+    const resSorted = (lastSim.resultados||[]).slice().sort((a,b)=>(b.global||0)-(a.global||0));
+    resSorted.forEach(r => {
+      let gVal = Math.round(r.global||0);
+      let gPct = Math.round((gVal / 500) * 100);
+      let bg = gVal < 250 ? '#fee2e2' : (gVal >= 300 ? '#dcfce7' : '#fef3c7');
+      tableHtml += `<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px;text-align:left;font-weight:600">${esc(r.nombre)}</td>
+      <td style="padding:10px;color:#000;background-color:${bg}"><strong style="font-size:0.95rem">${gVal}</strong><br><span style="font-size:0.7rem;color:#475569">(${gPct}%)</span></td>`;
+      searchLabels.forEach(area => {
+        let notaA = Math.round((r.materias&&r.materias[area])||0);
+        let bgA = notaA < 40 ? '#fee2e2' : (notaA >= 60 ? '#dcfce7' : '#fef3c7');
+        tableHtml += `<td style="padding:10px;color:#000;background-color:${bgA}"><strong style="font-size:0.95rem">${notaA}</strong><br><span style="font-size:0.7rem;color:#475569">(${notaA}%)</span></td>`;
+      });
+      tableHtml += `</tr>`;
+    });
+    tableHtml += `</tbody></table></div>`;
+    detailsDiv.innerHTML = htmlPodio + tableHtml;
+
+    // Tabla de Evolución Histórica (Pestaña 2)
+    let evoHtml = `<div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:#fff"><table style="width:100%;border-collapse:collapse;font-size:0.85rem;text-align:center">
+      <thead><tr style="background:#f1f5f9;border-bottom:2px solid var(--border)">
+      <th style="padding:10px;text-align:left;font-weight:700;width:200px">Estudiante</th>`;
+      
+    sims.forEach(s => { evoHtml += `<th style="padding:10px;font-weight:700" title="${esc(s.nombre)}">${esc(s.nombre.substring(0,10))}</th>`; });
+    evoHtml += `<th style="padding:10px;font-weight:700;color:var(--primary)">Tendencia</th></tr></thead><tbody>`;
+    
+    const stuMap = {};
+    sims.forEach((s, sIdx) => {
+      (s.resultados||[]).forEach(r => {
+         if(!stuMap[r.nombre]) stuMap[r.nombre] = new Array(sims.length).fill(null);
+         stuMap[r.nombre][sIdx] = Math.round(r.global||0);
+      });
+    });
+    
+    const stuNames = Object.keys(stuMap).sort();
+    stuNames.forEach(name => {
+      evoHtml += `<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px;text-align:left;font-weight:600" title="${esc(name)}">${esc(shortName(name))}</td>`;
+      const scores = stuMap[name];
+      let firstScore = null;
+      let lastScore = null;
+      scores.forEach(v => {
+        if(v !== null) {
+          if(firstScore === null) firstScore = v;
+          lastScore = v;
+          let bg = v < 250 ? '#fee2e2' : (v >= 300 ? '#dcfce7' : '#fef3c7');
+          evoHtml += `<td style="padding:10px;font-weight:bold;color:#000;background-color:${bg}">${v}</td>`;
+        } else {
+           evoHtml += `<td style="padding:10px;color:#94a3b8">-</td>`;
+        }
+      });
+      let diff = (lastScore !== null && firstScore !== null) ? (lastScore - firstScore) : 0;
+      let trendColor = diff > 0 ? 'var(--ok)' : (diff < 0 ? 'var(--bad)' : '#64748b');
+      let trendSign = diff > 0 ? '▲ +' : (diff < 0 ? '▼ ' : '⏸ ');
+      evoHtml += `<td style="padding:10px;font-weight:800;color:${trendColor};background:#f8fafc">${trendSign}${diff}</td></tr>`;
+    });
+    evoHtml += `</tbody></table></div>`;
+    evoDiv.innerHTML = evoHtml;
+    
+  } else {
+    // Modo individual
+    let tableHtml = `<h3 style="font-size:1.1rem;margin-bottom:10px;color:var(--primary);text-transform:uppercase;border-bottom:2px solid var(--border);padding-bottom:5px">📊 Evolución Detallada por Materia: ${esc(shortName(sel))}</h3>
+      <div style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:#fff"><table style="width:100%;border-collapse:collapse;font-size:0.85rem;text-align:center">
+      <thead><tr style="background:#f1f5f9;border-bottom:2px solid var(--border)">`;
+    tableHtml += `<th style="padding:10px;text-align:left;font-weight:700">Simulacro</th><th style="padding:10px;font-weight:700">P. Global</th>`;
+    radarLabels.forEach(l => tableHtml += `<th style="padding:10px;font-weight:700">${l}</th>`);
+    tableHtml += `</tr></thead><tbody>`;
+    
+    sims.forEach(s => {
+      const r = (s.resultados||[]).find(x=>x.nombre===sel);
+      if(r){
+        let gVal = Math.round(r.global||0);
+        let gPct = Math.round((gVal / 500) * 100);
+        let bg = gVal < 250 ? '#fee2e2' : (gVal >= 300 ? '#dcfce7' : '#fef3c7');
+        tableHtml += `<tr style="border-bottom:1px solid var(--border)"><td style="padding:10px;text-align:left;font-weight:600">${esc(s.nombre)}</td>
+        <td style="padding:10px;color:#000;background-color:${bg}"><strong style="font-size:0.95rem">${gVal}</strong><br><span style="font-size:0.7rem;color:#475569">(${gPct}%)</span></td>`;
+        searchLabels.forEach(area => {
+          let notaA = Math.round((r.materias&&r.materias[area])||0);
+          let bgA = notaA < 40 ? '#fee2e2' : (notaA >= 60 ? '#dcfce7' : '#fef3c7');
+          tableHtml += `<td style="padding:10px;color:#000;background-color:${bgA}"><strong style="font-size:0.95rem">${notaA}</strong><br><span style="font-size:0.7rem;color:#475569">(${notaA}%)</span></td>`;
+        });
+        tableHtml += `</tr>`;
+      }
+    });
+    tableHtml += `</tbody></table></div>`;
+    detailsDiv.innerHTML = tableHtml;
+    
+    evoDiv.innerHTML = '<div class="empty">La vista de Evolución Histórica está diseñada para visualizar el crecimiento de todo el salón a la vez. Selecciona "Promedio del Grupo".</div>';
+  }
+}
+
+$('#an-load').addEventListener('click', ()=>{
+  const nom = $('#an-nombre').value.trim();
+  const fec = $('#an-fecha').value;
+  const fileInput = document.getElementById('an-file');
+  if(!nom || !fec || !fileInput.files.length){ return toast('Faltan datos o el archivo'); }
+  if(typeof XLSX === 'undefined') return toast('Librería XLSX no cargada. Revisa conexión o caché.');
+  
+  $('#an-status').textContent = 'Leyendo archivo...';
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, {type: 'array'});
+      const sheetName = workbook.SheetNames.find(n => n.trim().toUpperCase() === 'GENERAL');
+      if(!sheetName) throw new Error('No se encontró la pestaña GENERAL en el Excel.');
+      
+      const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {header: 1});
+      if(rows.length < 2) throw new Error('La pestaña GENERAL está vacía.');
+      
+      const headers = rows[0].map(h => (h||'').toString().trim().toUpperCase());
+      const idxNom = headers.indexOf('APELLIDOS Y NOMBRES');
+      const idxGlobal = headers.indexOf('GLOBAL');
+      if(idxNom === -1 || idxGlobal === -1) throw new Error('Faltan las columnas APELLIDOS Y NOMBRES o GLOBAL.');
+      
+      const idxAreas = {
+        'L.CRITICA': headers.indexOf('L.CRITICA'),
+        'MATEMATICA': headers.indexOf('MATEMATICA'),
+        'SOCIALES Y CIUDADANA': headers.indexOf('SOCIALES Y CIUDADANA'),
+        'CIENCIAS NATURALES': headers.indexOf('CIENCIAS NATURALES'),
+        'INGLES': headers.indexOf('INGLES')
+      };
+      
+      const resultados = [];
+      for(let i=1; i<rows.length; i++){
+        const r = rows[i];
+        if(!r || !r[idxNom]) continue;
+        const mats = {};
+        for(let a in idxAreas) if(idxAreas[a]!==-1) mats[a] = r[idxAreas[a]];
+        resultados.push({
+          nombre: r[idxNom].toString().trim(),
+          global: r[idxGlobal],
+          materias: mats
+        });
+      }
+      
+      if(!resultados.length) throw new Error('No se encontraron estudiantes con datos.');
+      
+      const obj = { id: Date.now().toString(36), nombre: nom, fecha: fec, resultados };
+      const all = lsRead('simulacros_ext');
+      all.push(obj);
+      lsWrite('simulacros_ext', all);
+      
+      $('#an-status').textContent = `¡Éxito! Se cargaron ${resultados.length} estudiantes.`;
+      $('#an-nombre').value = '';
+      fileInput.value = '';
+      renderAnalisis();
+      toast('Simulacro guardado');
+    }catch(err){
+      $('#an-status').textContent = 'Error: ' + err.message;
+      toast('Error al procesar');
+    }
+  };
+  reader.readAsArrayBuffer(fileInput.files[0]);
+});
 
 // ============================================================
 //  HOJA DE RESPUESTAS (papel) + EXAMEN AUTÓNOMO PARA ESTUDIANTES (.html)
@@ -786,6 +1243,8 @@ window.genStudent=id=>{
   if(!PERSIST)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
 })();
 </script>
+<script src="../lib/xlsx.full.min.js"></script>
+<script src="../lib/chart.umd.js"></script>
 <script src="../sync.js"></script>
 </body>
 </html>

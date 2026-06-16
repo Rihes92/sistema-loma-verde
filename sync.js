@@ -13,13 +13,13 @@ const LV_SYNC = (() => {
   const MAPA = {
     'lv_cursos':         { tabla: 'cursos',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_estudiantes':    { tabla: 'estudiantes', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
-    'lv_notas':          { tabla: 'notas',       id: 'id' },
+    'lv_calificaciones': { tabla: 'notas',       id: 'id' },
     'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id' },
     'lv_eventos':        { tabla: 'eventos',      id: 'id' },
     'lv_horario':        { tabla: 'horario',      id: 'id', transformDown: (rows) => {
       const obj = {};
       rows.forEach(r => {
-        if(!r.dia || !r.hora || r._eliminado) return;
+        if(r.dia == null || r.hora == null || r._eliminado) return;
         if(!obj[r.dia]) obj[r.dia] = {};
         obj[r.dia][r.hora] = { asig: r.materia||'', grado: (r.curso||'').split('°-')[0], grupo: (r.curso||'').split('°-')[1]||'', nota: r.aula||'' };
       });
@@ -28,6 +28,10 @@ const LV_SYNC = (() => {
     'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_com_historial':  { tabla: 'lv_comunicados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_examenes':       { tabla: 'lv_examenes',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv11_examenes':     { tabla: 'lv11_examenes',    id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_resultados':     { tabla: 'lv_resultados',    id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv11_resultados':   { tabla: 'lv11_resultados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv11_simulacros_ext':{ tabla: 'lv11_simulacros_ext', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_banco':          { tabla: 'lv_banco',          id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 

@@ -696,7 +696,7 @@ function renderResultados(){
     ${all.map(r=>`<tr style="border-top:1px solid var(--border)"><td style="padding:7px">${esc(r.estudiante)}</td><td style="text-align:center">${esc(r.grupo||'-')}</td><td>${esc(r.examTitulo)} <span class="hint">(${esc(r.grado)} ${GLBL[r.grado]||''})</span></td><td style="text-align:center;font-weight:800;color:${r.nota>=3.5?'var(--ok)':'var(--bad)'}">${r.nota.toFixed(1)}</td><td style="text-align:center"><button class="btn bad sm" onclick="delResult('${r.id}')">✕</button></td></tr>`).join('')}
     </tbody></table></div>`:'<div class="empty">Aún no hay resultados guardados.</div>';
 }
-window.delResult=id=>{if(!confirm('¿Eliminar este resultado?'))return;lsWrite('resultados',lsRead('resultados').filter(r=>r.id!==id));renderResultados();};
+window.delResult=id=>{if(!confirm('¿Eliminar este resultado?'))return;const _r=lsRead('resultados').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_resultados',Object.assign({},_r,{_eliminado:true}));lsWrite('resultados',lsRead('resultados').filter(r=>r.id!==id));renderResultados();};
 
 // ============================================================
 //  HOJA DE RESPUESTAS (papel) + EXAMEN AUTÓNOMO PARA ESTUDIANTES (.html)

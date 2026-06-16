@@ -434,7 +434,13 @@ document.getElementById('search-input').addEventListener('input',function(){
 
   // ── 2. Asistencia ─────────────────────────────────
   const asist05 = safeJSON('lv_as_asistencia')||{};
-  const ests05  = safeJSON('lv_as_estudiantes')||{};
+  let ests05 = safeJSON('lv_as_estudiantes')||{};
+  if (Object.keys(ests05).length === 0 && ests01.length > 0) {
+    ests01.forEach(e => {
+      if (!ests05[e.cursoId]) ests05[e.cursoId] = [];
+      ests05[e.cursoId].push({ id: e.id, nombre: e.nombre });
+    });
+  }
   const hoy=new Date().toISOString().split('T')[0];
   const totalEsts05=Object.values(ests05).reduce((a,v)=>a+(Array.isArray(v)?v.length:0),0);
   document.getElementById('dv-asistencia').textContent=totalEsts05||'0';
@@ -558,7 +564,7 @@ document.getElementById('search-input').addEventListener('input',function(){
 })();
 </script>
 
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sistema-loma-verde/sw.js")}</script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js")}</script>
 <script src="sync.js"></script>
 </body>
 </html>
