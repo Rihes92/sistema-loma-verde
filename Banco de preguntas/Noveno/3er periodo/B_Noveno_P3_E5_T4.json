@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:43:50.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Formas de violencia de género y estrategias de mitigación en la sociedad justa",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Tipologías de violencia",
+      "competencia": "Pensamiento social",
+      "contexto": "Análisis de casos",
+      "enunciado": "Explique por qué la violencia económica es una forma de control sobre las mujeres en contextos rurales.",
+      "respuesta": "La violencia económica en la ruralidad es una forma de control porque al limitar el acceso de la mujer a la tierra, a la propiedad o a los ingresos generados por las actividades agrícolas, la mujer queda supeditada a la voluntad del hombre para su subsistencia. Esta dependencia impide que ella tome decisiones autónomas, dificulta su movilidad y reduce su capacidad para exigir sus derechos, convirtiéndose en un mecanismo de opresión que perpetúa el orden patriarcal bajo el disfraz de una aparente 'dependencia familiar naturalizada'.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Violencia psicológica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Relaciones interpersonales",
+      "enunciado": "Los celos extremos y el control sobre los contactos sociales de la pareja son considerados expresiones normales de amor.",
+      "correcta": false,
+      "justificacion": "Estas conductas son manifestaciones claras de violencia psicológica, ya que buscan ejercer poder y control sobre la integridad y la libertad de la persona, lo cual es una vulneración directa de su autonomía y no tiene ninguna relación con una dinámica afectiva sana basada en el respeto."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Mitigación",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Rutas de atención",
+      "enunciado": "Ante una situación de violencia física inminente, ¿cuál es la acción institucional más adecuada?",
+      "opciones": ["Esperar a que la situación mejore por sí sola", "Acudir a la comisaría de familia o acudir a la línea 155", "Consultar únicamente con líderes de la comunidad", "Ignorar el hecho para evitar problemas familiares"],
+      "correcta": 1,
+      "justificacion": "La línea 155 es la ruta nacional de orientación a mujeres víctimas de violencia, y las comisarías de familia son los entes encargados de dictar medidas de protección inmediatas, siendo estas las vías legales y eficaces para la atención."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Sociedad justa",
+      "competencia": "Pensamiento social",
+      "contexto": "Construcción de paz",
+      "enunciado": "Analice la importancia de la coeducación para mitigar la violencia de género en el aula.",
+      "respuesta": "La coeducación es fundamental porque permite desaprender los prejuicios y estereotipos que han sido construidos culturalmente sobre lo que es 'propio' de cada género. Al fomentar en el aula el respeto, la equidad en el uso de la palabra y el análisis crítico de la historia y los medios, se crean nuevas formas de relacionamiento que rompen con la lógica del poder y la fuerza, preparando a los estudiantes para construir relaciones interpersonales horizontales y democráticas en su vida adulta.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Violencia laboral",
+      "competencia": "Pensamiento social",
+      "contexto": "Derechos económicos",
+      "enunciado": "¿Qué constituye una forma de violencia laboral contra la mujer?",
+      "opciones": ["La capacitación constante por parte del empleador", "La discriminación en la contratación, salarios inferiores por igual cargo o acoso sexual", "El cumplimiento de un horario laboral estándar", "El uso de uniformes de trabajo"],
+      "correcta": 1,
+      "justificacion": "La discriminación y el acoso en el entorno laboral violan los derechos fundamentales al trabajo digno y a la igualdad, constituyendo formas directas de violencia que buscan limitar el acceso o la permanencia de la mujer en el mercado laboral."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Violencia doméstica",
+      "competencia": "Pensamiento social",
+      "contexto": "Legislación",
+      "enunciado": "La violencia doméstica es un asunto privado que debe resolverse exclusivamente dentro del hogar.",
+      "correcta": false,
+      "justificacion": "Bajo la Constitución de 1991 y leyes como la 1257 de 2008, la violencia doméstica es un asunto de interés público y una violación de Derechos Humanos, por lo cual el Estado tiene la obligación de intervenir y sancionar, superando la antigua concepción de que era un problema privado."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Sociedad justa",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Identidades y respeto",
+      "enunciado": "¿Por qué el respeto a las identidades es clave para mitigar la violencia en el entorno escolar?",
+      "respuesta": "El respeto a las identidades permite reconocer la pluralidad y la dignidad intrínseca de cada individuo. Cuando en el aula se valora la identidad del 'otro' (étnica, de género, política), se desarman los prejuicios que justifican el abuso y la segregación. La violencia a menudo nace del temor o la intolerancia a lo diferente; al promover el respeto, se transforma el entorno en un espacio seguro donde el diálogo y la concertación reemplazan la agresión como método de gestión de diferencias.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Violencia sexual",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Derechos humanos",
+      "enunciado": "¿Qué caracteriza la violencia sexual como un acto de violencia de género?",
+      "opciones": ["Solo ocurre fuera del hogar", "Implica cualquier acto sexual cometido sin consentimiento, siendo una grave vulneración a la integridad", "Es un comportamiento aceptado en ciertas culturas", "Se trata solo de un malentendido en las relaciones"],
+      "correcta": 1,
+      "justificacion": "La violencia sexual, definida como cualquier acto sexual no consentido, es una violación flagrante a la dignidad y la autonomía de la mujer, no admitiendo justificaciones culturales ni reducciones a errores de interpretación."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Violencia económica",
+      "competencia": "Pensamiento social",
+      "contexto": "Entorno rural",
+      "enunciado": "Impedir que una mujer trabaje fuera de la casa para 'cuidar a la familia' no es una forma de violencia.",
+      "correcta": false,
+      "justificacion": "Cualquier limitación impuesta para restringir la libertad económica y el desarrollo profesional de la mujer, basándose en la imposición de roles tradicionales sin consentimiento, constituye violencia económica y una forma de dominación sobre su proyecto de vida."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Tipologías de violencia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Análisis sistémico",
+      "enunciado": "Argumente la importancia de la denuncia en la ruptura de ciclos de violencia.",
+      "respuesta": "La denuncia es el punto de quiebre en un ciclo de violencia porque, por un lado, rompe el silencio que protege al agresor y, por otro, activa la maquinaria del Estado para la protección de la víctima. Sin denuncia, la violencia tiende a escalar, ya que la impunidad valida el comportamiento del agresor. Denunciar permite acceder a las rutas de atención, recibir medidas de protección legales y reconstruir la seguridad personal, pasos vitales para recuperar la autonomía y la dignidad que la violencia intentó destruir.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Mitigación",
+      "competencia": "Pensamiento social",
+      "contexto": "Roles institucionales",
+      "enunciado": "¿Cuál es la función principal de la Personería Municipal en relación con la violencia de género?",
+      "opciones": ["Sancionar económicamente a las empresas privadas", "Vigilar la garantía de derechos y asistir a las víctimas en su acceso a la justicia", "Gestionar exclusivamente los contratos de obras públicas", "Organizar eventos culturales de entretenimiento"],
+      "correcta": 1,
+      "justificacion": "El personero municipal actúa como guardián de los derechos humanos en el territorio, siendo un actor clave para asegurar que las mujeres víctimas reciban atención y que las instituciones locales cumplan con sus obligaciones de protección."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Sociedad justa",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Cultura de paz",
+      "enunciado": "Para alcanzar una sociedad justa, el cambio debe venir solo de las leyes y no de las personas.",
+      "correcta": false,
+      "justificacion": "Aunque las leyes son la base normativa de una sociedad justa, la paz y la equidad dependen del comportamiento ciudadano y de la transformación de los valores personales. La justicia social se construye en la práctica diaria de los individuos al rechazar la violencia y el prejuicio en sus relaciones."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Violencia psicológica",
+      "competencia": "Pensamiento social",
+      "contexto": "Entorno escolar",
+      "enunciado": "Proponga cómo detectar y actuar frente a comportamientos de acoso escolar basados en género.",
+      "respuesta": "Detectar el acoso requiere observar patrones como la exclusión sistemática, el uso de apodos denigrantes basados en el género, la difusión de rumores o la intimidación digital. Para actuar, el colegio debe tener una ruta clara de mediación y sanción pedagógica que involucre al comité de convivencia, asegurando que la víctima se sienta protegida, que se escuche su versión y que se trabaje profundamente con el agresor en la reflexión sobre el daño causado, promoviendo espacios donde se cuestionen las raíces sexistas del acoso.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Derechos fundamentales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Constitución de 1991",
+      "enunciado": "¿Qué derecho humano fundamental es vulnerado por todas las formas de violencia de género?",
+      "opciones": ["El derecho a la recreación", "El derecho a la integridad personal y la dignidad", "El derecho a la propiedad intelectual", "El derecho a la libre circulación comercial"],
+      "correcta": 1,
+      "justificacion": "Toda violencia de género atenta directamente contra la dignidad humana y el derecho fundamental a la integridad física, psicológica y moral, que son la base sobre la cual se erigen el resto de los derechos humanos."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Violencia laboral",
+      "competencia": "Pensamiento social",
+      "contexto": "Derechos laborales",
+      "enunciado": "Acosar a una mujer en el trabajo es aceptable si es para mejorar su productividad.",
+      "correcta": false,
+      "justificacion": "El acoso laboral es una conducta prohibida y sancionada que no puede justificarse bajo ninguna circunstancia, ni siquiera con fines de rendimiento o productividad, ya que atenta contra los derechos humanos y laborales de la persona."
+    }
+  ]
+}

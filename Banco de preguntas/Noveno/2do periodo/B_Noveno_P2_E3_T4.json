@@ -1,0 +1,236 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T21:45:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-ECO-9-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento social",
+      "contexto": "La inflación por costos constituye un desequilibrio macroeconómico caracterizado por el aumento generalizado y sostenido de los precios de los bienes de consumo final, gatillado de forma directa por el incremento en el valor de los factores productivos primarios, tales como los combustibles fósiles y los fletes de transporte terrestre.",
+      "enunciado": "Teniendo en cuenta la asimetría territorial en la infraestructura vial de Colombia, ¿cuál es el canal de transmisión logística que explica que un aumento en el precio nacional de los combustibles encarezca los víveres en las tiendas de un corregimiento aislado como Loma Verde, Montería?",
+      "opciones": [
+        "A) La evaporación química de las monedas de papel dentro de las cajas registradoras de las veredas debido al calor solar de las sabanas.",
+        "B) El incremento automático en los costos de los fletes de carga terrestre terrestres de los camiones, sobrecosto que los transportadores duplican debido al mal estado crónico de las vías terciarias veredales e indexan al precio final de los alimentos procesados.",
+        "C) La prohibición penal decretada por las Juntas de Acción Comunal que impide el ingreso de vehículos motorizados comerciales a las parcelas arables.",
+        "D) Un cambio electromagnético en el relieve del lomerío que atrae las mercancías caras exclusivamente hacia las cumbres andinas de la metrópoli."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía económica demuestra que las perturbaciones en los costos energéticos e impositivos de escala macro se transmiten hacia la microescala rural a través de las redes de infraestructura física de transporte. Al carecer Colombia de redes ferroviarias y depender de camiones por carretera, el alza de combustibles dispara el valor de los fletes logísticos de carga. Este sobrecosto se agudiza en Loma Verde por el pasivo histórico de abandono de sus vías terciarias; los transportadores elevan las tarifas para amortizar el deterioro mecánico y la demora en los caminos de tierra, forzando a los tenderos veredales a indexar ese sobrecosto al precio de venta de los víveres procesados, encareciendo la canasta básica familiar y deprimiendo el poder adquisitivo real del hogar campesino."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El modelo tradicional de la agricultura campesina de minifundio en el corregimiento de Loma Verde se fundamenta en el policultivo intensivo de pancoger (yuca, plátano, maíz), el cual dinamiza las redes tradicionales de reciprocidad y solidaridad social sin salario conocidas ancestralmente como la 'mano prestada' o 'el convite'.",
+      "enunciado": "Cuando las devaluaciones comerciales agrarias fuerzan la quiebra del minifundio y propician la venta de parcelas a grandes terratenientes para implantar ganadería extensiva de cría vacuna, ¿cuál es la consecuencia mecánica directa sobre el mercado laboral y la demografía juvenil de las veredas?",
+      "opciones": [
+        "A) Un incremento masivo en la oferta de jornales agrícolas bien remunerados financiados de forma gratuita por las corporaciones transnacionales de carne.",
+        "B) La generación de un desempleo rural estructural inducido, debido a que el monocultivo ganadero extensivo demanda un volumen mínimo de mano de obra por hectárea, destruyendo las fuentes de trabajo local y expulsando a la población joven hacia la informalidad urbana del mototaxismo en Montería.",
+        "C) La transformación automática de los pastizales ganaderos en laboratorios informáticos avanzados administrados de forma colectiva por los ancianos.",
+        "D) El aumento en la densidad de la fuerza de trabajo vecinal disponible para realizar obras de ingeniería hídrica artesanal en las colinas altas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye el fenómeno del desempleo agrario estructural a partir de los cambios en los regímenes de uso y tenencia de la tierra. A diferencia del policultivo tradicional de pancoger campesino —que exige el trabajo físico continuo e intensivo de múltiples miembros de las familias y jornaleros para limpiar malezas, sembrar y recolectar—, el modelo de la ganadería extensiva latifundista es un sistema extractivo de muy baja absorción de mano de obra que requiere apenas un vaquero para pastorear cientos de reses en extensiones kilométricas de potreros limpios. La ganaderización del lomerío de Loma Verde destruye las fuentes tradicionales de jornales y desestructura las redes solidarias de la mano prestada, provocando un vacío laboral forzado que expulsa a las cohortes de edad joven del corregimiento hacia los cinturones de marginalidad metropolitana a laborar de forma precarizada en el mototaxismo informal."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto de 'poder adquisitivo real' define la capacidad económica efectiva que posee una unidad doméstica familiar para adquirir un volumen determinado de mercancías, bienes y servicios básicos en el mercado a partir de la cuantía de sus ingresos monetarios netos disponibles.",
+      "enunciado": "Un aumento generalizado de la inflación por costos superior al 15% anual en los alimentos de tienda incrementa de forma directa el poder adquisitivo real de los hogares campesinos de Loma Verde, puesto que los obliga a consumir de forma exclusiva agua dulce limpia de sus pozos artesanales de excavación vertical sin gastar dinero en efectivo.",
+      "correcta": false,
+      "justificacion": "Es profundo y argumentadamente falso porque la inflación por costos deprime y erosiona severamente el poder adquisitivo del presupuesto familiar campesino. Al incrementarse los precios de los víveres industrializados procesados que el corregimiento no produce autónomamente (aceite, arroz procesado, medicamentos, herramientas) y mantenerse congelados o devaluados los ingresos que los campesinos reciben por la venta de su yuca o plátano debido al control de intermediarios de Montería, el presupuesto de la economía del hogar entra en un déficit crítico crónico. Las familias deben destinar la totalidad de sus escasos recursos monetarios líquidos a sufragar la subsistencia física inmediata menor, reduciendo la calidad nutricional de la canasta básica familiar y perdiendo la capacidad de adquirir insumos o capitalizar la tierra."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento social",
+      "contexto": "El Impuesto al Valor Agregado (IVA) constituye el tributo indirecto más generalizado del sistema fiscal en Colombia, el cual grava de forma homogénea las transacciones comerciales de bienes manufacturados, indumentaria, repuestos y herramientas industriales.",
+      "enunciado": "El IVA se clasifica científicamente como un impuesto regresivo debido a que aplica exactamente la misma tasa impositiva (19%) sobre el precio final de las mercancías sin considerar el nivel de ingresos reales del comprador, transfiriendo proporcionalmente una carga económica mucho más lesiva y severa a los hombros de las familias campesinas y de escasos recursos que a las clases adineradas urbanas.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que el análisis sociopolítico y geográfico de las políticas fiscales devela el carácter regresivo de los impuestos indirectos al consumo masivo. Al tasar por igual el consumo sin indexar la capacidad de pago real, el IVA extrae una fracción sustancialmente mayor y desproporcionada del frágil e inestable presupuesto de un hogar campesino minifundista en Loma Verde —cuyos ingresos monetarios diarios se sitúan frecuentemente por debajo de la línea de pobreza— que del presupuesto de un rentista o profesional adinerado metropolitano metropolitano, limitando la capacidad de compra de alimentos básicos del productor rural y profundizando las brechas de vulnerabilidad social."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En una mesa de concertación de política agraria municipal en Montería, un funcionario de hacienda afirma que 'los incrementos del 50% en las tarifas impositivas del impuesto predial rural en Loma Verde son positivos porque obligan a los pequeños campesinos ineficientes a modernizarse o a vender sus parcelas ociosas de yuca a grandes inversionistas que implementarán ganadería ganadera latifundista extensiva de exportación de alta rentabilidad de divisas'.",
+      "enunciado": "Desde la perspectiva de la ecología política agraria y la defensa de los derechos históricos del campesinado de subsistencia, ¿cuál es la falacia conceptual y el sesgo analítico dominante en el argumento de este funcionario?",
+      "opciones": [
+        "A) Supone erróneamente que las vacas destinadas a la exportación bovina poseen la capacidad biológica de flotar magnéticamente por la atmósfera sin rozar los horizontes edáficos arcillosos del lomerío.",
+        "B) Celebra y naturaliza la violencia económica institucionalizada de la desposesión agraria y el desarraigo demográfico, ocultando de forma deliberada que el monocultivo ganadero latifundista destruye la soberanía alimentaria regional y genera pasivos ambientales severos, como la compactación mecánica del suelo arcilloso por el pisoteo pesado de las reses, lo que suprime la infiltración hídrica vertical y seca de forma estacional los jagüeyes y aljibes domésticos comunitarios en las veredas de Loma Verde.",
+        "C) Olvida de forma ingeniosa que las comunidades campesinas rurales de pequeña escala no consumen alimentos de base biológica y que la totalidad de la nutrición humana de las metrópolis contemporáneas proviene de la síntesis del oxígeno puro.",
+        "D) Sostiene de forma errónea que las Juntas de Acción Comunal de Loma Verde son las corporaciones transnacionales dueñas de los principales puertos marítimos aduaneros andinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye de forma directa el discurso modernizador y agroextractivo de libre mercado que invisibiliza los pasivos ambientales y sociales de las políticas fiscales asimétricas. El funcionario presenta la ruina impositiva del campesino como un avance técnico de 'eficiencia' de mercado, ocultando que el cobro del impuesto predial rural indexado a valores inmobiliarios especulativos ganaderos de las grandes haciendas vecinas —y no a la productividad real de pancoger de la parcela minifundista— actúa como un mecanismo coactivo de estrangulamiento de la economía del hogar. Este cerco fuerza la venta de la tierra ancestral al latifundio, modelo extractivo ganadero que introduce la deforestación de micro-bosques y la compactación mecánica de los suelos arcillosos lateríticos mediante el pisoteo pesado de las reses, destruyendo la porosidad edáfica, suprimiendo la infiltración de lluvias invernales y desatando escorrentías torrenciales erosivas que colmatan de lodo los jagüeyes veredales, acelerando su evaporación termodinámica y secando los aljibes domésticos por vasos comunicantes durante los meses de verano intenso del Caribe, destruyendo la soberanía hídrica familiar."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las devaluaciones comerciales impuestas por los Tratados de Libre Comercio (TLC) del liberalismo de mercado permiten el ingreso libre de aranceles de toneladas de maíz criollo extranjero importado altamente subsidiado, provocando el desplome de los precios del grano nativo cosechado en las veredas de Loma Verde.",
+      "enunciado": "Rastree la secuencia causal de transmisión microeconómica que vincula esta devaluación arancelaria macroeconómica nacional con la alteración de las estructuras de consumo interno y la pérdida de la soberanía alimentaria autónoma en la economía del hogar rural del corregimiento.",
+      "opciones": [
+        "A) Libre mercado $\\rightarrow$ aumento arancelario municipal $\\rightarrow$ congelamiento del fondo del mar $\\rightarrow$ siembra automatizada satelital.",
+        "B) Libre mercado $\\rightarrow$ desplome del precio de venta del maíz criollo $\\rightarrow$ déficit y estrangulamiento financiero del presupuesto doméstico $\\rightarrow$ quiebra del minifundio $\\rightarrow$ emigración forzada juvenil hacia el mototaxismo informal urbano $\\rightarrow$ vaciamiento demográfico veredal $\\rightarrow$ colapso de la mano prestada solidaria $\\rightarrow$ contracción de hectáreas sembradas de pancoger $\\rightarrow$ dependencia absoluta de víveres externos costosos comprados en tienda.",
+        "C) Libre mercado $\\rightarrow$ absorción química de los gases de efecto invernadero $\\rightarrow$ solidificación de la urea sintética petroquímica $\\rightarrow$ nacimiento espontáneo de arrecifes de coral en el interior rural.",
+        "D) Libre mercado $\\rightarrow$ compactación mecánica por pezuñas $\\rightarrow$ incremento del nivel freático de los pozos profundos privados $\\rightarrow$ desvío de los ríos fluviales hacia las cumbres andinas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B describe con rigor metodológico y científico el efecto dominó geográfico multiescalar que destruye la autonomía del campesinado. La política aduanera abierta del Estado central despoja al pequeño productor del control de sus mercados tradicionales en Montería, haciendo inviable recuperar los costos invertidos en abonos químicos caros; esta quiebra destruye los ingresos de la economía del hogar, forzando la fragmentación demográfica familiar mediante el éxodo de la población joven hacia el subempleo precarizado metropolitano del mototaxismo informal. Al vaciarse las veredas de Loma Verde de su fuerza laboral vital, se destruye el relevo generacional y colapsa la mano prestada vecinal sin salario, obligando a los padres ancianos a contraer las hectáreas destinadas a cultivar alimentos de subsistencia, perdiendo la soberanía alimentaria y transformando al corregimiento en un espacio desestructurado dependiente del suministro externo de víveres caros de tienda."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento social",
+      "contexto": "El análisis crítico de los presupuestos domésticos comparados devela que la economía del hogar campesino tradicional de minifundio posee una ventaja estructural de resistencia frente a las crisis inflacionarias de mercado debido a la capacidad de autoabastecimiento alimentario autónomo que provee la posesión de la tierra.",
+      "enunciado": "La permanencia y diversificación de los cultivos tradicionales de pancoger (yuca, plátano, maíz, animales de corral) en la parcela familiar campesina desmercantiliza parcialmente la supervivencia biológica del hogar, protegiendo a la comunidad veredal de Loma Verde del impacto directo de la inflación de precios urbana urbana al reducir la dependencia absoluta del dinero en efectivo para alimentarse.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que en el enfoque de la ecología política agraria, la unidad agrícola minifundista policultural opera como un amortiguador de seguridad y resiliencia frente a los desequilibrios macroeconómicos del capitalismo de mercado. Al producir de forma autónoma sus propios bienes de subsistencia nutricional básica en el territorio veredal, el hogar rural edifica una barrera de protección que mitiga los efectos nocivos de la inflación por costos de fletes, los abusos de intermediación comercial en Montería y las cargas tributarias regresivas, garantizando la soberanía alimentaria familiar sin requerir flujos constantes de circulante monetario líquido."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las estadísticas oficiales del DANE demuestran que el encarecimiento inflacionario global del barril de crudo energético y la devaluación cambiaria del peso provocan un alza generalizada y sostenida en el costo de los insumos petroquímicos sintéticos importados caros (urea, abonos nitrogenados, herbicidas químicos) que el modelo agroindustrial de la revolución verde impuso al agro tradicional.",
+      "enunciado": "Explique detalladamente y con argumentos de geografía crítica de la población de qué manera este canal de transmisión de inflación por costos destruye de forma directa la rentabilidad de las unidades agrícolas de minifundio, rompe el relevo generacional y altera negativamente las propiedades físicas del suelo arcilloso laterítico y la seguridad hídrica estacional en las veredas del corregimiento de Loma Verde, Montería.",
+      "respuesta": "El encarecimiento inflacionario de la urea petroquímica sintética importada —provocado por los shocks petroleros globales macroeconómicos— opera como un vector de desposesión agraria indirecta que desestructura el metabolismo biofísico y social del corregimiento de Loma Verde a través de una cascada de alteraciones multiescalares. Debido a que el modelo tecnológico de la revolución verde impuso al agro de pequeña escala la dependencia de abonos químicos derivados de los hidrocarburos, el alza internacional del crudo eleva verticalmente el costo del bulto de abono en los almacenes comerciales de Montería, incrementando en un 45% los costos operativos de labranza que el campesinado debe sufragar en efectivo. Al coincidir este encarecimiento imprevisto de insumos con el desplome de los precios de venta de sus cosechas tradicionales de pancoger (yuca, maíz, plátano) debido a los TLC del libre mercado, la economía del hogar campesino entra en un estrangulamiento financiero crónico y deficitario. Este cerco de inviabilidad expulsa a las cohortes de edad joven del corregimiento hacia la economía informal urbana de Montería, insertándose de forma precarizada en el subempleo por ingresos del mototaxismo informal. Este vaciamiento demográfico juvenil anula el relevo generacional de las veredas y destruye las redes tradicionales de solidaridad campesina sin salario (*mano prestada* y *convite*), dejando las parcelas minifundistas habitadas exclusivamente por campesinos adultos mayores y ancianos cuyas capacidades físicas decrecen con el tiempo. El estrangulamiento financiero y el aislamiento forzan a los productores ancianos a tomar la decisión irreversible de vender sus parcelas de cinco o diez hectáreas a precios devaluados a grandes terratenientes dedicados a la ganadería extensiva de exportación de carne vacuna. Este cambio estructural en la tenencia de la propiedad agraria reconfigura de forma profundamente negativa las propiedades biofísicas del ecosistema local: el modelo ganadero latifundista introduce la quema y la tala indiscriminada de los últimos parches de bosque seco tropical de galería para sembrar pastizales comerciales homogéneos exóticos, eliminando la regulación climática biótica y la evapotranspiración local, lo cual intensifica la aridez del aire. Mecánicamente, el pisoteo continuo e intensivo del ganado vacuno pesado ejerce una inmensa presión mecánica por centímetro cuadrado que compacta los suelos arcillosos lateríticos del lomerío de Loma Verde, destruyendo su estructura porosa natural y sellando los macroporos y canales de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales. En consecuencia, el agua de lluvia se transforma instantáneamente en escorrentías superficiales torrenciales y caóticas que corren con fuerza ladera abajo, erosionando las laderas en cárcavas profundas, lavando la escasa capa orgánica fértil (*humus*) y arrastrando toneladas de sedimentos y lodos en suspensión hacia las depresiones del relieve. Este material arcilloso arrastrado se deposita por de-cantación física en el fondo de los jagüeyes veredales, provocando una colmatación o sedimentación acelerada que les resta profundidad útil. Al quedar reducidos a depósitos hídricos planos y de escasos centímetros, los jagüeyes comunitarios quedan expuestos a una evaporación termodinámica extrema debido a la radiación solar directa del Caribe y a la acción de vientos secos, vaciándose las reservas de agua dulce meses antes de finalizar la temporada estacional seca de verano y deprimiendo por vasos comunicantes el nivel freático de los pozos artesanales (*aljibes*) domésticos, condenando a las familias campesinas a una crisis crónica de escasez de agua potable y al marchitamiento absoluto de sus cultivos por estrés hídrico severo, forzando la desterritorialización final de la comunidad campesina.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-ECO-9-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento social",
+      "contexto": "El análisis de las trayectorias censales e institucionales emitidas por el DANE devela que el crecimiento demográfico y territorial horizontal de la mancha urbana informal de Montería ha estado alimentado de forma sostenida en las últimas tres décadas por flujos de población procedentes del éxodo rural.",
+      "enunciado": "Si un investigador de geografía humana evalúa las estadísticas oficiales de ocupación y los planos urbanos periféricos de la capital cordobesa, ¿cuál es el fenómeno de segregación socioespacial que detectará de forma empírica en las comunas populares receptoras?",
+      "opciones": [
+        "A) La erradicación absoluta de los circuitos del empleo informal gracias a la absorción total e inmediata de los migrantes en puestos directivos del sector financiero formal.",
+        "B) La consolidación y expansión descontrolada de asentamientos informales subnormales (tugurios e invasiones), caracterizados por el hacinamiento crítico, la precarización habitacional de los materiales y la ausencia estructural de redes formales de alcantarillado y agua potable dulce.",
+        "C) Un éxodo masivo planificado de empresarios urbanos adinerados hacia las colinas arcillosas de Loma Verde para incorporarse como peones en las labores del deshierbe manual del plátano.",
+        "D) La transformación radical de las barriadas populares en distritos tecnológicos automatizados exentos de cargas impositivas administrados por las juntas de acción comunal."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía urbana de la exclusión devela que las ciudades intermedias desindustrializadas del Caribe colombiano como Montería carecen de la infraestructura productiva y legal necesaria para asimilar de forma formal, regulada y digna las oleadas demográficas de campesinos desposeídos expulsados por la crisis estructural del campo y el conflicto armado. Al no contar con cualificación formal adaptada a los mercados corporativos y verse despojados de sus medios de producción (la tierra), los migrantes sufren una severa exclusión territorial, viéndose forzados a autoconstruir refugios en terrenos marginales periféricos propensos a inundaciones, donde el pasivo histórico de servicios públicos domiciliarios reproduce y profundiza las condiciones de pobreza material de origen."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La geografía de género devela que los impactos de los desequilibrios macroeconómicos, el encarecimiento imprevisto de la canasta familiar básica de tienda y la desarticulación demográfica de las familias transforman las cargas domésticas de forma asimétrica.",
+      "enunciado": "Cuando la emigración selectiva juvenil y el desempleo inducido vacían a las veredas de Loma Verde de su fuerza laboral vital en edad productiva, se genera una intensa sobrecarga laboral en las mujeres campesinas que permanecen en el territorio, quienes deben asumir simultáneamente la labranza ruda de la parcela, el control hídrico artesanal de los jagüeyes degradados y las jornadas de reproducción del cuidado doméstico del hogar.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque el análisis crítico con enfoque de género demuestra que las crisis de la economía del hogar campesino desestructuran la división sexual tradicional del trabajo agrícola. Las mujeres rurales que se quedan al frente de las unidades productivas minifundistas atomizadas en Loma Verde deben absorber tareas físicas pesadas (limpieza manual de potreros menores, siembra de semillas nativas, acarreo de agua limpia desde aljibes domésticos disminuidos) que antes se distribuían colectivamente dentro de la familia nuclear, soportando dobles o triples jornadas de trabajo sin percibir ningún tipo de remuneración salarial formal y bajo condiciones históricas de abandono institucional."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico agro-económico simulado en el corregimiento de Loma Verde en el año 2026 demuestra que las devaluaciones impositivas del predial rural municipal y la inflación por costos de fletes terrestres generan un déficit crónico del 30% en los presupuestos de las familias campesinas que comercializan sus productos de forma individual en Montería.",
+      "enunciado": "Utilizando estos indicadores de vulnerabilidad doméstica, determine la opción que explica la propuesta comunitaria de base tecnológica y organizativa más viable para recuperar la viabilidad económica del agro y defender la permanencia campesina en las veredas.",
+      "opciones": [
+        "A) Financiar mediante deudas usureras la adquisición de motocicletas comerciales para forzar a la totalidad de la población de las veredas a migrar hacia el mototaxismo informal de Montería.",
+        "B) Fortalecer la asociatividad campesina cooperativa independiente para suprimir la intermediación comercial abusiva, implementar canales digitales transmedia de venta directa y tecnificar el minifundio mediante sistemas artesanales de riego por goteo de bajo costo con captación pluvial techada.",
+        "C) Pavimentar con cemento y asfalto de alta densidad la totalidad de las hectáreas de suelos agrícolas arables de Loma Verde para erradicar las arcillas lateríticas y convertirlas en parqueaderos de exportación.",
+        "D) Solicitar formalmente al gobierno municipal que declare ilegal de forma penal cualquier forma de cultivo tradicional de pancoger minifundista en el lomerío cordobés."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque representa la única estrategia viable de adaptación geográfico-económica y resistencia soberana frente al libre mercado neoliberal y la regresividad fiscal. Al agruparse colectivamente los pequeños productores bajo esquemas cooperativos, adquieren poder de negociación frente a las redes de intermediación abusivas de la urbe, mejorando la rentabilidad neta del pancoger y rompiendo el cerco del precio de miseria. La introducción de ecotecnologías hídricas artesanales de bajo costo mitiga los efectos de las sequías estacionales severas y asegura la permanencia juvenil en las veredas de Loma Verde, recuperando la autonomía de la economía del hogar."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento social",
+      "contexto": "Las corporaciones autónomas regionales (CVS) y el IDEAM emiten informes institucionales científicos sobre los procesos de degradación edáfica, compactación y erosión hídrica superficial en los suelos de lomerío del departamento de Córdoba.",
+      "enunciado": "La deforestación y la compactación mecánica de los suelos arcillosos lateríticos provocada por el pisoteo intensivo del ganado vacuno pesado reduce de forma drástica la porosidad natural de la tierra, facilitando que el agua de lluvia invernal corra por escorrentía superficial arrastrando toneladas de lodo que colmatan y quitan profundidad útil a los jagüeyes de Loma Verde.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que los análisis físicos de la ciencia del suelo demuestran que las pezuñas endurecidas del ganado bovino extensivo ejercen una alta presión por centímetro cuadrado que sella los macroporos terrestres. Al impermeabilizarse la superficie edáfica en laderas desprovistas de cobertura forestal protectora, se suprime la infiltración y el agua corre de golpe erosionando el terreno, transportando sedimentos por decantación física hacia el fondo de los jagüeyes, acortando su vida útil y forzando la evaporación rápida estival."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante un debate académico en la institución educativa de Loma Verde, un estudiante afirma que 'los campesinos de nuestras veredas sufren escasez hídrica y pobreza en verano porque carecen de computadores avanzados para exportar su yuca a los mercados globales', mientras que otro sector argumenta que 'la escasez y la quiebra son causadas por un despojo económico estructural e histórico que desmontó aranceles, encareció los agroinsumos por crisis de costos y expandió la ganadería extensiva compactadora de suelos'.",
+      "enunciado": "Adoptando los principios analíticos de la geografía crítica y la ecología política agraria, ¿cuál es la forma correcta de dirimir la tensión conceptual expuesta?",
+      "opciones": [
+        "A) Validar la primera postura asumiendo que los suelos arcillosos de Loma Verde pierden su agua interna debido a la ausencia de software digital en las parcelas familiares.",
+        "B) Deconstruir la primera postura demostrando su sesgo moralista e individualista que invisibiliza las deudas históricas del Estado, y respaldar la segunda explicando que el libre mercado de la Apertura, el alza de la urea por shocks petroleros y la ganaderización latifundista privatizaron la tierra y compactaron mecánicamente los suelos destruyendo la infraestructura hídrica natural.",
+        "C) Sostener que la yuca nativa es un vegetal mineral que se reproduce de forma electromagnética por lo cual no requiere agua de lluvias orográficas.",
+        "D) Exigir que las Juntas de Acción Comunal pavimenten de forma obligatoria los patios de las escuelas para convertirlas en centrales de mototaxismo transnacional."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que desarmar el discurso de la responsabilidad individual o del rezago tecnológico como causas de la pobreza rural es una tarea central de las ciencias sociales críticas. El estudiante que culpabiliza al campesino ignora las asimetrías territoriales impuestas por el Estado central. El análisis científico demuestra que la crisis hidroclimática y la quiebra agraria en Loma Verde son el resultado material de decisiones macroeconómicas históricas (Apertura Económica, TLC, latifundización ganadera, shocks de la urea) que socializaron los pasivos de la apertura destruyendo los ecosistemas riparios, compactando el lomerío y arruinando el precio del pancoger."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El postulado económico funcionalista del 'mito de las remesas' sostiene que la emigración rural-urbana de la juventud constituye una estrategia eficiente de diversificación económica familiar que inyecta ingentes capitales monetarios urbanos para tecnificar e industrializar las parcelas agrarias de origen en las veredas.",
+      "enunciado": "La inserción laboral informal de los jóvenes emigrados de Loma Verde en el mototaxismo de Montería genera flujos de excedentes monetarios netos tan elevados que revalidan plenamente el mito de las remesas, financiando la construcción de distritos de riego tecnificados en sus hogares nativos.",
+      "correcta": false,
+      "justificacion": "Es profundo e individualmente falso porque la inserción en la economía informal urbana opera como una trampa de precarización laboral que anula la capacidad de ahorro neta del migrante. Los ingresos variables diarios devengados en el mototaxismo en Montería son absorbidos por los altos costos de la reproducción física del trabajador dentro de la urbe de mercado: pago de arriendos caros en barrios subnormales, compra de pimpinas de agua dulce y alimentos caros de tienda. Al carecer de excedentes, el flujo de remesas hacia Loma Verde es marginal o inexistente, desmitificando la tesis funcionalista y dejando al hogar rural desprovisto de capital humano y financiero."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-15",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La física y la química del suelo establecen que la compactación del terreno ocurre cuando una presión mecánica externa continuada elimina los macroporos e intersticios de aire existentes entre las partículas de arcilla fértil.",
+      "enunciado": "En las áreas deforestadas de los lomeríos de Loma Verde, ¿cuál es el factor de degradación antrópico que genera la compactación física sistemática del suelo arcilloso, destruyendo la seguridad hídrica veredal en invierno?",
+      "opciones": [
+        "A) La radiación cósmica solar solar que endurece los minerales del suelo de forma electromagnética.",
+        "B) El pisoteo continuo e intensivo del ganado vacuno pesado introducido en los potreros de las grandes haciendas extensivas colindantes que reemplazaron los cultivos tradicionales de pancoger.",
+        "C) El peso de los frutos de yuca y plátano acumulados sobre la superficie labrada por las familias campesinas.",
+        "D) El paso frecuente de las aves migratorias costeras que anidan en las copas de los arbustos bajos de rastrojo."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque el ganado vacuno ejerce una inmensa presión por centímetro cuadrado a través de sus pezuñas endurecidas. En potreros desprovistos de árboles y sometidos a pastoreo extensivo intensivo latifundista, este pisoteo continuo destruye mecánicamente la estructura porosa natural del suelo arcilloso laterítico de Loma Verde, sellando la superficie de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales, transformándose en escorrentías superficiales torrenciales destructivas que erosionan las laderas en cárcavas profundas, lavan los nutrientes orgánicos superficiales y arrastraron sedimentos que colmatan los jagüeyes."
+    },
+    {
+      "id": "LV-BANCO-ECO-9-16",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Consecuencias en la economía del hogar: inflación, desempleo, impuestos y pérdida de poder adquisitivo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, el centro de interés en STEM+ y Transmedia 'SteMedIA' desarrolla la estrategia 'Frecuenc-IA Rural' liderada por el docente Richard Miguel Hernández Sabié, donde los estudiantes de Noveno graban pódcast y documentales utilizando herramientas avanzadas de IA para documentar las consecuencias de la inflación por costos, el colapso del crédito y el mototaxismo informal en los hogares campesinos de sus familias.",
+      "enunciado": "Sustente de manera profunda, utilizando argumentos técnicos y conceptuales de la geografía crítica de la población estudiada en clase, de qué manera este proyecto de comunicación transmedia escolar actúa como un dispositivo de resistencia comunitaria para mitigar los impactos de las crisis macroeconómicas nacionales y defender la permanencia campesina en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' y el centro de interés 'SteMedIA' operan como un dispositivo de resistencia territorial y de geografía viva fundamental frente al vaciamiento demográfico y la desposesión agraria que imponen los canales de transmisión de las crisis macroeconómicas nacionales en Loma Verde. Desde el enfoque de la geografía crítica de la población, este proyecto de comunicación estratégica deconstruye y subvierte el discurso hegemónico urbano-industrial del capital que catalogan al espacio rural campesino como un paraje de 'atraso, ineficiencia e inviabilidad', narrativa corporativa que funciona como un motor ideológico para impulsar la emigración y el desarraigo de la juventud rural hacia el mototaxismo. Al empoderar a los estudiantes de Noveno en el uso de tecnologías avanzadas y lenguajes multimedia para documentar las realidades productivas y biofísicas de sus veredas, se redefine de forma radical la identidad de la juventud campesina: el joven deja de concebir la inserción precarizada informal urbana en Montería como la única ruta de progreso material posible y empieza a valorar la parcela familiar como un espacio soberano de creación técnica, intelectual y política. Metodológicamente, al registrar las memorias orales de los abuelos agricultores sobre los antiguos sistemas de fomento y deconstruir los impactos macro del UPAC o de los shocks petroleros en el precio de la urea, los jóvenes se apropian de forma directa del patrimonio intangible de manejo ecológico del suelo arcilloso, adaptaciones microclimáticas y técnicas ancestrales de policultivos de pancoger, restaurando el puente de transmisión de saberes agroecológicos indispensables para la soberanía alimentaria la canasta familiar local y mitigando el colapso de la mano prestada. Asimismo, al visibilizar las historias de vulnerabilidad económica y las capacidades de resiliencia del lomerío, el proyecto escolar fortalece las redes cooperativas de comercio directo autónomo sin los intermediarios usureros de Montería. Finalmente, al difundir pódcast y videos interactivos que denuncian técnicamente los pasivos institucionales y ambientales del corregimiento (escasez hídrica estructural por la compactación ganadera extensiva colindante, devaluación de la yuca criolla frente a las importaciones libres de aranceles), 'Frecuenc-IA Rural' dota al campesinado de herramientas de comunicación e incidencia política para exigir justicia ambiental y un ordenamiento territorial con criterios de equidad rural ante las autoridades del municipio de Montería y del departamento de Córdoba, demostrando de forma contundente que la permanencia digna, el arraigo juvenil y la defensa del minifundio agrícola tradicional constituyen la única garantía real para evitar la disolución material e intelectual del campesinado rural.",
+      "sugerida": true
+    }
+  ]
+}

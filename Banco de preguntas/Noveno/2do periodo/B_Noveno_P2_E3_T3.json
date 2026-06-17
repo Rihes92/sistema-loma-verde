@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T21:30:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-CRI-9-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento social",
+      "contexto": "El sistema financiero de la Unidad de Poder Adquisitivo Constante (UPAC) operó en Colombia desde 1972 como el principal mecanismo de captación de ahorro urbano y de otorgamiento de créditos hipotecarios a largo plazo para vivienda.",
+      "enunciado": "A partir de las transformaciones institucionales neoliberales de la década de 1990, ¿cuál fue la modificación normativa específica efectuada en la fórmula de cálculo de la UPAC que desencadenó el colapso financiero de los deudores hipotecarios?",
+      "opciones": [
+        "A) Haber exonerado a todos los usuarios del pago de intereses bancarios obligándolos a amortizar sus créditos únicamente mediante el trueque sólido de alimentos de pancoger.",
+        "B) Desvincular el indicador del comportamiento exclusivo de la inflación nacional para amarrar de forma matemática su valor a las tasas de interés comerciales especulativas (DTF) del mercado.",
+        "C) Prohibir legalmente mediante decretos ministeriales que los bancos privados cobraran deudas a los ciudadanos de las comunas periféricas marginadas.",
+        "D) Centralizar los flujos monetarios de los créditos hipotecarios dentro de los presupuestos de las Juntas de Acción Comunal de los corregimientos rurales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía financiera crítica devela que la trampa de la desregulación neoliberal de la década de 1990 radicó en ligar el UPAC a la tasa comercial DTF para favorecer los márgenes de ganancia de la banca privada. Cuando las tasas de interés se dispararon a niveles insostenibles superiores al 50% anual por presiones macroeconómicas externas, las deudas hipotecarias sufrieron una expansión geométrica incontrolable, volviéndose matemáticamente impagables para las familias trabajadoras, lo que desató embargos de viviendas en las urbes y el congelamiento del crédito de fomento para el agro en las periferias rurales."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El principio de la inflación por costos establece que el alza sostenida y generalizada de los precios de los bienes de consumo final de una sociedad puede ser gatillada de forma directa por el incremento en el valor de las materias primas primarias, los fletes logísticos de transporte y la energía.",
+      "enunciado": "A partir de la interconexión de escalas geográficas y económicas, ¿cuál es el canal de transmisión física que explica que un shock o aumento internacional en el precio del petróleo en las bolsas mundiales genere inflación por costos en la agricultura campesina de Loma Verde?",
+      "opciones": [
+        "A) La radiación electromagnética del crudo pesado evapora de forma sólida las nubes orográficas impidiendo que llueva sobre los cultivos de yuca.",
+        "B) El alza del crudo incrementa de forma directa el costo del transporte de carga terrestre nacional e incrementa el valor de fabricación industrial de los fertilizantes sintéticos petroquímicos (urea) indispensables para la siembra tradicional.",
+        "C) La desregulación energética obliga a las plantas de plátano a mutar biológicamente consumiendo gasolina en lugar de absorber agua dulce del subsuelo.",
+        "D) Las corporaciones de la OPEP confiscan los títulos de propiedad legal de los jagüeyes de uso común para transformarlos en refinerías de cemento."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque describe con rigor el efecto dominó macro-micro del metabolismo energético del capital. La urea sintética y la mayoría de los insumos agroquímicos exigidos por la revolución verde se fabrican a partir del procesamiento petroquímico de los hidrocarburos. Cuando el precio internacional del barril de petróleo se dispara, los costos industriales de importación y los fletes de transporte terrestre en camiones se encarecen verticalmente, transfiriéndose ese sobrecosto de forma directa al pequeño productor campesino de Loma Verde en forma de insumos caros que destruyen la frágil rentabilidad de su pancoger."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento social",
+      "contexto": "El Pacto Internacional del Café rigió de forma multilateral el mercado mundial desde 1962 hasta 1989 mediante un sistema rígido de asignación de cuotas de exportación entre países productores y compradores.",
+      "enunciado": "La ruptura del Pacto del Café en 1989 benefició sustancialmente los presupuestos de las familias campesinas andinas colombianas, ya que al eliminarse el control de las cuotas estatales, el precio internacional del grano se multiplicó de forma inmediata asegurando la riqueza agraria nacional.",
+      "correcta": false,
+      "justificacion": "Es profundo y argumentadamente falso porque la disolución de la gobernanza cafetera global desató el efecto contrario: al eliminarse el sistema de cuotas que regulaba la oferta, millones de sacos excedentes inundaron el mercado mundial provocando un desplome vertical y catastrófico del 40% en los precios internacionales del grano. Esta quiebra sistémica deprimió los ingresos de los pequeños minifundios cafeteros andinos, forzando la desestructuración de la economía rural andina y empujando a masas de jornaleros desposeídos a emigrar hacia las llanuras costeras y hacia las ciudades caribeñas."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El modelo de Industrialización por Sustitución de Importaciones (ISI) implementado en Colombia fomentó la sustitución de bienes extranjeros mediante aranceles protectores y la canalización de recursos financieros públicos hacia la manufactura nacional.",
+      "enunciado": "El agotamiento estructural del modelo ISI a finales de la década de 1970 forzó al Estado central a realizar recortes fiscales y desmontar subsidios agrarios debido a que las industrias urbanas andinas se tornaron tecnológicamente rezagadas, ineficientes y altamente dependientes de la importación de maquinaria costosa que no producían de forma autónoma.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la geografía económica crítica devela las contradicciones intrínsecas del proteccionismo ISI en Colombia. El modelo generó un desarrollo industrial artificial y altamente concentrado en las capitales andinas que no logró consolidar una base tecnológica pesada autónoma de bienes de capital. Al depender crónicamente de divisas públicas para importar maquinaria y estallar la crisis de la deuda de 1982, el Estado sacrificó los presupuestos de fomento del sector rural, inaugurando la era de vulnerabilidad e indefensión del campesinado minifundista."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un discurso económico de corte neoliberal afirma: 'La quiebra y desaparición de los pequeños productores campesinos tradicionales de maíz en las veredas de Loma Verde a raíz de los Tratados de Libre Comercio representa una consecuencia eficiente del libre mercado que depura la economía de actividades atrasadas para liberar los suelos arables en favor de haciendas ganaderas latifundistas de exportación'.",
+      "enunciado": "Desde el enfoque de la geografía crítica de la población y la ecología política agraria, ¿cuál es la falacia y el sesgo ideológico dominante en esta argumentación corporativa?",
+      "opciones": [
+        "A) Supone erróneamente que las vacas destinadas a la exportación de carne poseen la capacidad de flotar magnéticamente por la atmósfera sin pisar los horizontes arcillosos del relieve.",
+        "B) Celebra y naturaliza la violencia estructural de la desposesión agraria y el desarraigo demográfico, ocultando de manera deliberada que el monocultivo ganadero latifundista destruye la soberanía alimentaria, despoja al campesino de su territorio de origen y compacta mecánicamente los suelos arcillosos mediante el pisoteo de las reses, lo que suprime la infiltración hídrica e invalida la seguridad hídrica veredal en verano.",
+        "C) Olvida que las comunidades campesinas rurales de minifundio no consumen alimentos de base biológica y que la nutrición humana de las metrópolis contemporáneas proviene de la síntesis del oxígeno.",
+        "D) Sostiene de forma errónea que las Juntas de Acción Comunal de Loma Verde son las corporaciones transnacionales dueñas de los principales puertos marítimos andinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye de forma directa el discurso modernizador y colonial de libre mercado que invisibiliza los pasivos socioambientales del extractivismo ganadero latifundista. El analista presenta la ruina del campesino como un avance técnico de 'eficiencia', omitiendo que el monocultivo ganadero extensivo privatiza las ganancias y socializa los daños ecológicos (deforestación de micro-bosques riparios protectores, impermeabilización de la tierra, arrastre de sedimentos que colmatan los jagüeyes veredales y desecación de aljibes domésticos por vasos comunicantes) a la comunidad local subordinada de Loma Verde."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las instituciones sociales tradicionales no mercantiles en las veredas de Loma Verde, tales como 'el convite' o 'la mano prestada', permiten a las familias campesinas minifundistas abaratar los costos de preparación del suelo arcilloso, siembra y recolección de cultivos de pancoger de forma colectiva sin recurrir al empleo asalariado.",
+      "enunciado": "Cuando las crisis macroeconómicas nacionales del agro arruinan la rentabilidad de las cosechas provocando un flujo sostenido de emigración de la población joven hacia el subempleo urbano informal del mototaxismo en Montería, ¿cuál es el impacto mecánico directo sobre el funcionamiento de estas redes solidarias de trabajo veredal?",
+      "opciones": [
+        "A) Se industrializan de forma instantánea mediante la transferencia de maquinaria pesada financiada de forma colectiva por las remesas de los mototaxistas urbanos.",
+        "B) Se debilitan de forma crítica e irreversible debido al vaciamiento de la fuerza de trabajo vital de la vereda, forzando al campesino anciano a asumir costos de jornales asalariados caros que quiebran por completo su frágil presupuesto agrario.",
+        "C) Provocan que los cultivos de plátano y yuca multipliquen de manera sólida sus rendimientos biológicos sin necesidad de intervención de mano de obra humana.",
+        "D) Se transforman en corporaciones comerciales que monopolizan la importación de insumos químicos desde las grandes metrópolis andinas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las redes de reciprocidad social como la 'mano prestada' exigen una densidad de población mínima de brazos activos dentro de la vereda para operar por vasos comunicantes. Al vaciarse Loma Verde de su juventud por el despojo de mercados y la quiebra inducida que imponen las crisis del agro y de costos, las redes colapsan; los hogares agrarios remanentes, habitados por ancianos, se quedan aislados y se ven forzados a mercantilizar el trabajo contratando peones asalariados cuyos costos quiebran la rentabilidad del pancoger familiar."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento social",
+      "contexto": "La tasa de interés comercial DTF constituye el indicador macroeconómico que mide el costo promedio del dinero captado por las entidades financieras privadas a través de certificados de depósito a término fijo a noventa días.",
+      "enunciado": "La decisión institucional de la junta directiva del Banco de la República de amarrar el valor de la UPAC al comportamiento de la tasa DTF en la década de 1990 protegió la economía del hogar de las familias deudoras, puesto que estabilizó las cuotas de amortización independientemente de las crisis financieras internacionales.",
+      "correcta": false,
+      "justificacion": "Es falso porque la ligazón del UPAC a la tasa DTF expuso de forma directa los créditos de vivienda a la volatilidad y especulación del mercado de capitales transnacional. Cuando las crisis de los mercados globales forzaron el alza de las tasas de interés internas a niveles exorbitantes superiores al 50% anual para frenar la devaluación del peso, el valor del UPAC sufrió una expansión geométrica incontrolable, multiplicando los saldos de deudas hipotecarias y destruyendo los patrimonios de millones de familias."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde en Montería enfrenta recurrentes crisis de desabastecimiento hídrico estacional debido a que carece de redes de acueductos convencionales de cobertura total, obligando a las veredas a captar agua superficial en jagüeyes artesanales y agua freática en pozos verticales (*aljibes*).",
+      "enunciado": "A partir del enfoque geográfico sistémico y de ecología política estudiado en el curso, explique de manera profunda y detallada cómo el encarecimiento inflacionario del bulto de urea sintética provocado por los shocks petroleros globales termina alterando de forma negativa las propiedades físicas del suelo arcilloso, destruyendo el ciclo de los jagüeyes y deprimiendo el nivel freático doméstico de las familias en las veredas de Loma Verde.",
+      "respuesta": "El encarecimiento inflacionario del bulto de urea sintética provocado por los shocks petroleros globales opera como un vector de desposesión agraria indirecta que desestructura el metabolismo biofísico y social del corregimiento de Loma Verde a través de una cascada de alteraciones multiescalares. Debido a que el modelo tecnológico de la revolución verde impuso al agro tradicional el uso obligatorio de abonos petroquímicos sintéticos, el incremento del precio internacional del crudo eleva de forma inmediata el costo de fabricación de la urea nitrogenada en Montería. Al tornarse los insumos químicos económicamente impagables para el pequeño productor familiar, y coincidir con el desplome de los precios de venta de cultivos tradicionales de pancoger (yuca, maíz, plátano) impuesto por la desregulación aduanera liberal, la economía del hogar campesino entra en un estrangulamiento financiero crónico y deficitario. Este cerco de inviabilidad expulsa a la población joven del corregimiento hacia la informalidad urbana del mototaxismo, provocando un vaciamiento demográfico veredal que rompe el relevo generacional y destruye las redes tradicionales de solidaridad campesina sin salario (*mano prestada*). Los campesinos ancianos remanentes, incapacitados físicamente para labrar las laderas y cercados por deudas con los bancos rematadores, se ven forzados a tomar la decisión irreversible de vender sus pequeñas parcelas de minifundio a grandes terratenientes ganaderos extensivos a precios devaluados. Este cambio estructural en la tenencia de la tierra reconfigura de forma profundamente negativa las propiedades biofísicas del ecosistema local: el modelo ganadero latifundista introduce la quema y la tala indiscriminada de los últimos parches de bosque seco tropical de galería para sembrar pastizales comerciales homogéneos exóticos, eliminando la regulación climática biótica y la evapotranspiración local, lo cual intensifica la aridez del aire. Mecánicamente, el pisoteo continuo e intensivo del ganado vacuno pesado ejerce una inmensa presión mecánica por centímetro cuadrado que compacta los suelos arcillosos lateríticos del lomerío de Loma Verde, destruyendo su estructura porosa natural y sellando los macroporos y canales de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales. En consecuencia, el agua de lluvia se transforma instantáneamente en escorrentías superficiales torrenciales y caóticas que corren con fuerza ladera abajo, erosionando las laderas en cárcavas profundas, lavando la escasa capa orgánica fértil (*humus*) y arrastrando toneladas de sedimentos y lodos en suspensión hacia las depresiones del relieve. Este material arcilloso arrastrado se deposita por decantación física en el fondo de los jagüeyes veredales, provocando una colmatación o sedimentación acelerada que les resta profundidad útil. Al quedar reducidos a depósitos hídricos planos y de escasos centímetros, los jagüeyes comunitarios quedan expuestos a una evaporación termodinámica extrema debido a la radiación solar directa del Caribe y a la acción de vientos secos, vaciándose las reservas de agua dulce meses antes de finalizar la temporada estacional seca de verano y deprimiendo por vasos comunicantes el nivel freático de los pozos artesanales (*aljibes*) domésticos, condenando a las familias campesinas a una crisis crónica de escasez de agua potable y al marchitamiento absoluto de sus cultivos por estrés hídrico severo, forzando la desterritorialización final de la comunidad campesina.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-CRI-9-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento social",
+      "contexto": "El Producto Interno Burto (PIB) constituye el indicador macroeconómico agregado que mide el valor monetario total de la producción de bienes y servicios finales generados por un país durante un año determinado.",
+      "enunciado": "Al analizar la crisis terminal del sistema UPAC en 1999, los registros históricos e institucionales demuestran que la economía colombiana sufrió una contracción del PIB equivalente al:",
+      "opciones": [
+        "A) Un incremento positivo e industrializado del 25% anual financiado por la exportación de yuca sólida hacia mercados asiáticos.",
+        "B) Una caída o decrecimiento histórico del 4.2% del PIB nacional, inaugurando la recesión económica más profunda del siglo XX contemporáneo.",
+        "C) Una estabilización perfecta de nivel cero donde la inflación y el desempleo urbano desaparecieron por completo del asfalto.",
+        "D) Un crecimiento horizontal del 100% controlado de forma exclusiva por las cooperativas agropecuarias de Loma Verde."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque registra la magnitud real de la recesión de 1999 inducida por el colapso del sistema hipotecario UPAC y la desregulación bancaria. Esta contracción severa de la producción nacional destruyó miles de puestos de trabajo formales urbanos, disparó los niveles de informalidad y precarización en ciudades como Montería e interrumpió de forma drástica los flujos de inversión pública hacia las periferias rurales subordinadas del país."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La perspectiva de género en la geografía de la población devela que los pasivos económicos de las crisis financieras y el encarecimiento inflacionario por costos transforman los roles dentro de la unidad doméstica campesina de forma asimétrica.",
+      "enunciado": "Cuando el estrangulamiento financiero inducido por el alza de los agroinsumos importados expulsa a la población juvenil y masculina desde Loma Verde hacia el mototaxismo informal urbano, las mujeres campesinas que permanecen en las veredas experimentan una sobrecarga laboral severa, asumiendo simultáneamente la labranza ruda de las parcelas de pancoger, la gestión de los jagüeyes colmatados y las jornadas de cuidado doméstico familiar.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la emigración forzada por razones económicas y de mercado altera de forma drástica la división sexual tradicional del trabajo en el campo. Las mujeres rurales que se quedan al frente de los minifundios atomizados de Loma Verde deben absorber tareas físicas exigentes (limpieza de malezas, control hídrico artesanal de estanques, labrado de la tierra) que antes se distribuían colectivamente dentro de la familia, soportando triples jornadas de trabajo sin recibir remuneración salarial formal ni apoyo técnico del Estado central."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico agro-económico simulado en la vereda Las Palmitas demuestra que ante el alza inflacionaria de los fertilizantes nitrogenados derivados de los shocks petroleros globales, los productores de yuca y maíz criollo experimentan pérdidas financieras del 20% sobre el capital invertido debido al control de precios impuesto por los intermediarios usureros de Montería.",
+      "enunciado": "Utilizando estos indicadores de vulnerabilidad doméstica, determine la opción que explica la propuesta de resistencia comunitaria local más viable para recuperar la soberanía productiva y mitigar la escasez de agua en Loma Verde en el año 2026.",
+      "opciones": [
+        "A) Adquirir créditos bancarios comerciales usureros para comprar motocicletas comerciales y forzar a la totalidad de los habitantes de las veredas a migrar hacia el mototaxismo de Montería.",
+        "B) Transitar de forma agroecológica hacia la producción autónoma de abonos orgánicos y biofertilizantes basados en estiércol y leguminosas para eliminar la dependencia de la petroquímica internacional, consolidar cooperativas de comercio directo sin intermediarios e implementar sistemas artesanales de riego por goteo con captación pluvial.",
+        "C) Pavimentar con cemento y asfalto de alta densidad la totalidad de las hectáreas de suelos agrícolas arables de Loma Verde para erradicar las arcillas lateríticas.",
+        "D) Exigir que el gobierno nacional declare ilegal de forma penal cualquier forma de cultivo tradicional de pancoger minifundista en el lomerío cordobés."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque representa la única estrategia viable de adaptación geográfico-económica y soberanía frente a la inflación por costos petroleros y la desregulación liberal de los TLC. Al sustituir la urea petroquímica por bioinsumos producidos de forma autónoma en la vereda, se rompe el canal de transmisión de las crisis energéticas globales. La asociatividad cooperativa juvenil elimina a los intermediarios de Montería recuperando el ingreso justo, y las ecotecnologías hídricas de bajo costo mitigan los impactos de las sequías estacionales severas."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento social",
+      "contexto": "La Corporación Autónoma Regional de los Valles del Sinú y del San Jorge (CVS) y el IDEAM emiten informes institucionales científicos sobre los procesos de degradación edáfica y erosión hídrica superficial en los suelos de lomerío del departamento de Córdoba.",
+      "enunciado": "La deforestación y la compactación mecánica de los suelos arcillosos lateríticos provocada por el pisoteo intensivo del ganado vacuno pesado reduce la porosidad de la tierra, facilitando que el agua de lluvia invernal corra por escorrentía superficial arrastrando toneladas de lodo que colmatan y quitan profundidad útil a los jagüeyes de Loma Verde.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que los análisis físicos de la ciencia del suelo demuestran que las pezuñas endurecidas del ganado bovino ejercen una alta presión por centímetro cuadrado que sella los macroporos terrestres. Al impermeabilizarse la superficie edáfica en laderas desprovistas de cobertura forestal protectora, se suprime la infiltración y el agua corre de golpe erosionando el terreno, transportando sedimentos por decantación física hacia el fondo de los jagüeyes, acortando su vida útil."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante un debate académico en la institución educativa de Loma Verde, un estudiante afirma que 'los campesinos de nuestras veredas sufren escasez hídrica y pobreza en verano porque carecen de computadores avanzados para exportar su yuca a los mercados globales', mientras que otro sector argumenta que 'la escasez y la quiebra son causadas por un despojo económico estructural e histórico que desmontó aranceles, encareció los agroinsumos por crisis de costos y expandió la ganadería extensiva compactadora de suelos'.",
+      "enunciado": "Adoptando los principios analíticos de la geografía crítica y la ecología política agraria, ¿cuál es la forma correcta de dirimir la tensión conceptual expuesta?",
+      "opciones": [
+        "A) Validar la primera postura asumiendo que los suelos arcillosos de Loma Verde pierden su agua interna debido a la ausencia de software digital en las parcelas familiares.",
+        "B) Deconstruir la primera postura demostrando su sesgo moralista e individualista que invisibiliza las deudas históricas del Estado, y respaldar la segunda explicando que el libre mercado de la Apertura, el alza de la urea por shocks petroleros y la ganaderización latifundista privatizaron la tierra y compactaron mecánicamente los suelos destruyendo la infraestructura hídrica natural.",
+        "C) Sostener que la yuca nativa es un vegetal mineral que se reproduce de forma electromagnética por lo cual no requiere agua de lluvias orográficas.",
+        "D) Exigir que las Juntas de Acción Comunal pavimenten de forma obligatoria los patios de las escuelas para convertirlas en centros de mototaxismo transnacional."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que desarmar el discurso de la responsabilidad individual o del rezago tecnológico como causas de la pobreza rural es una tarea central de las ciencias sociales críticas. El estudiante que culpabiliza al campesino ignora las asimetrías territoriales impuestas por el Estado central. El análisis científico demuestra que la crisis hidroclimática y la quiebra agraria en Loma Verde son el resultado material de decisiones macroeconómicas históricas (Apertura Económica, TLC, latifundización ganadera, shocks de la urea) que socializaron los pasivos de la apertura destruyendo los ecosistemas riparios, compactando el lomerío y arruinando el precio del pancoger."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto de 'canasta básica familiar' hace referencia al conjunto de bienes y servicios indispensables (alimentos, servicios públicos, vestuario, transporte) que un hogar requiere consumir de forma mensual para garantizar su subsistencia biológica y social digna.",
+      "enunciado": "El encarecimiento inflacionario de los fletes de transporte terrestre terrestres provocado por los choques petroleros macroeconómicos reduce la vulnerabilidad de la canasta básica en Loma Verde, puesto que obliga a los campesinos a vender la totalidad de sus alimentos en las tiendas veredales a precios elevados duplicando las ganancias del hogar.",
+      "correcta": false,
+      "justificacion": "Es profundo e individualmente falso porque la inflación por fletes destruye el poder adquisitivo del presupuesto doméstico de las familias rurales. Al incrementarse el costo del transporte, los víveres industrializados y productos básicos que el corregimiento no produce de forma autónoma (aceite, sal, arroz procesado, medicamentos) llegan a las tiendas veredales de Loma Verde a precios inflacionarios exorbitantes, encareciendo la canasta básica familiar y forzando a los hogares a contraer su gasto nutricional básico."
+    },
+    {
+      "id": "LV-BANCO-CRI-9-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Casos de estudio de crisis nacionales: sustitución de importaciones, crisis financiera e hipotecaria (UPAC), ruptura del pacto del café y crisis del petróleo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, el centro de interés en STEM+ y Transmedia 'SteMedIA' desarrolla la estrategia 'Frecuenc-IA Rural' liderada por el docente Richard Miguel Hernández Sabié, donde los estudiantes de Noveno graban pódcast y documentales utilizando herramientas avanzadas de IA para documentar las consecuencias de la inflación por costos, el colapso del crédito y el mototaxismo informal en los hogares campesinos de sus familias.",
+      "enunciado": "Sustente de manera profunda, utilizando argumentos técnicos y conceptuales de la geografía crítica de la población estudiada en clase, de qué manera este proyecto de comunicación transmedia escolar actúa como un dispositivo de resistencia comunitaria para mitigar los impactos de las crisis macroeconómicas nacionales y defender la permanencia campesina en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' y el centro de interés 'SteMedIA' operan como un dispositivo de resistencia territorial y de geografía viva fundamental frente al vaciamiento demográfico y la desposesión agraria que imponen los canales de transmisión de las crisis macroeconómicas nacionales en Loma Verde. Desde el enfoque de la geografía crítica de la población, este proyecto de comunicación estratégica subvierte el discurso hegemónico urbano-industrial del capital que catalogan al espacio rural campesino como un paraje de 'atraso, ineficiencia e inviabilidad', narrativa corporativa que funciona como un motor ideológico para inducir la emigración y el desarraigo de la juventud rural hacia el mototaxismo. Al empoderar a los estudiantes de Noveno en el uso de tecnologías avanzadas y lenguajes multimedia para documentar las realidades productivas y biofísicas de sus veredas, se redefine de forma radical la identidad de la juventud campesina: el joven deja de concebir la inserción precarizada informal urbana en Montería como la única ruta de progreso material posible y empieza a valorar la parcela familiar como un espacio soberano de creación técnica, intelectual y política. Metodológicamente, al registrar las memorias orales de los abuelos agricultores sobre los antiguos sistemas de fomento y deconstruir los impactos macro del UPAC o de los shocks petroleros en el precio de la urea, los jóvenes se apropian de forma directa del patrimonio intangible de manejo ecológico del suelo arcilloso, adaptaciones microclimáticas y técnicas ancestrales de policultivos de pancoger, restaurando el puente de transmisión de saberes agroecológicos indispensables para la soberanía alimentaria local y mitigando el colapso de la mano prestada. Asimismo, al visibilizar las historias de vulnerabilidad económica y las capacidades de resiliencia del lomerío, el proyecto escolar fortalece las redes cooperativas de comercio directo autónomo sin los intermediarios usureros de Montería. Finalmente, al difundir pódcast y videos interactivos que denuncian técnicamente los pasivos institucionales y ambientales del corregimiento (escasez hídrica estructural por la compactación ganadera extensiva colindante, devaluación de la yuca criolla frente a las importaciones libres de aranceles), 'Frecuenc-IA Rural' dota al campesinado de herramientas de comunicación e incidencia política para exigir justicia ambiental y un ordenamiento territorial con criterios de equidad rural ante las autoridades del municipio de Montería y del departamento de Córdoba, demostrando de forma contundente que la permanencia digna, el arraigo juvenil y la defensa del minifundio agrícola tradicional constituyen la única garantía real para evitar la disolución material e intelectual del campesinado rural.",
+      "sugerida": true
+    }
+  ]
+}

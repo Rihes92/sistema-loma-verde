@@ -1,0 +1,89 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T15:52:10.000Z",
+  "planeadores": [
+    {
+      "id": "CS-09-P2-E4-SIND",
+      "creado": 1781625130000,
+      "grado": "Noveno",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "4",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "Guía Integrada N° 4",
+      "grupos": "9°A, 9°B",
+      "fecha": "2026-06-16",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "sesiones": "4",
+      "duracion": "240",
+      "evidencias": "Identifica las causas históricas y los procesos sociopolíticos que dieron origen al movimiento sindical en Colombia durante la primera mitad del siglo XX. Analiza las principales reivindicaciones de la clase obrera y su impacto en la construcción de los derechos laborales. Explica la importancia de la organización colectiva para la dignificación del trabajo en contextos de desigualdad, relacionando estos antecedentes históricos con la realidad laboral contemporánea en Loma Verde y el municipio de Montería.",
+      "competencias": "Pensamiento social / Interpretación y análisis de perspectivas / Pensamiento reflexivo y sistémico",
+      "contenidos": "El surgimiento de los sindicatos de base y las reivindicaciones obreras. Contexto histórico del sindicalismo en Colombia (principios del siglo XX). Principales luchas: jornadas laborales, salarios dignos, condiciones de seguridad y libertad de asociación. Relación entre la modernización económica y la emergencia del sujeto político obrero.",
+      "objetivo": "Comprender la génesis y evolución del sindicalismo de base en Colombia como una respuesta estructural a las condiciones de explotación laboral durante la modernización industrial, analizando cómo la organización obrera permitió la conquista de derechos fundamentales y cómo este legado de lucha colectiva es esencial para entender las garantías laborales actuales y los retos de la informalidad en las zonas rurales del corregimiento de Loma Verde.",
+      "pregunta": "¿De qué manera la organización colectiva y la creación de sindicatos permitieron a los trabajadores colombianos del siglo XX transformar una realidad de explotación en un derecho laboral consolidado, y cómo estas lecciones de unidad pueden aplicarse ante la actual vulnerabilidad laboral de nuestros trabajadores rurales en Loma Verde?",
+      "explora": "Paso 1: Dinámica introductoria 'El valor de la palabra'. El docente presenta una fotografía histórica de obreros de las bananeras de los años veinte o de trabajadores ferroviarios. Paso 2: Análisis de contraste. Se pregunta a los estudiantes: ¿Si un solo trabajador le pide a un patrón que trabaje menos horas, es probable que lo escuchen? ¿Qué pasa si lo piden 500 trabajadores al mismo tiempo? Paso 3: Lluvia de ideas en el tablero sobre las condiciones de trabajo antes de las leyes laborales, centrando el debate en los peligros y la falta de garantías en el campo y la ciudad.",
+      "glosario": [
+        {
+          "t": "sindicalismo de base",
+          "d": "forma de organización obrera que surge directamente en los lugares de trabajo, donde los propios empleados se agrupan para defender sus derechos inmediatos, sin intermediarios externos y con un enfoque democrático de participación directa."
+        },
+        {
+          "t": "reivindicación laboral",
+          "d": "petición expresa y organizada que realizan los trabajadores ante los empleadores o el Estado para obtener mejoras en las condiciones de trabajo, tales como aumentos salariales, reducción de la jornada, seguridad social o mejores entornos físicos."
+        },
+        {
+          "t": "proletariado",
+          "d": "clase social constituida por los trabajadores que, al no poseer medios de producción propios, se ven obligados a vender su fuerza de trabajo a cambio de un salario para poder subsistir, siendo un actor central en la industrialización."
+        },
+        {
+          "t": "huelga",
+          "d": "forma de protesta consistente en la interrupción colectiva y concertada de las actividades laborales por parte de los trabajadores, utilizada como mecanismo de presión máxima para obligar a la negociación de pliegos de peticiones."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "Génesis del Movimiento Obrero en Colombia",
+          "txt": "El surgimiento de los sindicatos en Colombia durante las primeras décadas del siglo XX no fue un hecho aislado, sino una respuesta directa a la inserción del país en un modelo de desarrollo capitalista industrial y agroexportador. Con la construcción de ferrocarriles, la expansión de las plantaciones bananeras y el inicio de la industria extractiva, se conformó una masa de trabajadores que laboraban en condiciones de precariedad extrema, con jornadas de hasta 14 horas, sin sistemas de salud y sujetos a la arbitrariedad de patrones nacionales y extranjeros. Los primeros gremios, inicialmente de carácter mutualista (de ayuda mutua), pronto se politizaron ante la necesidad de exigir derechos fundamentales. Este proceso fue fundamental para que el campesinado y el trabajador urbano comprendieran que su fuerza radicaba en la unidad. La historia del sindicalismo colombiano está marcada por luchas heroicas y una represión estatal severa, como la masacre de las bananeras en 1928, que dejó una lección imborrable sobre la importancia de la organización como contrapoder frente a intereses hegemónicos.",
+          "pausa": "¿Por qué el Estado y las empresas extranjeras de principios del siglo XX vieron la organización sindical como una amenaza que debía ser reprimida violentamente?",
+          "resp": "Porque la organización sindical rompía la asimetría de poder absoluto que los empleadores tenían sobre los trabajadores, permitiendo a estos últimos negociar sus condiciones y, potencialmente, cuestionar el modelo económico que basaba su rentabilidad en la precarización extrema de la mano de obra."
+        },
+        {
+          "tit": "La Lucha por la Dignidad: Reivindicaciones Fundamentales",
+          "txt": "Las reivindicaciones que dieron origen a los sindicatos fueron esencialmente vitales: la reducción de la jornada laboral a ocho horas, el establecimiento de salarios que permitieran la subsistencia digna, la eliminación del trabajo infantil y la creación de mecanismos de protección ante accidentes de trabajo. En el contexto de la Colombia rural y urbana, estas exigencias desafiaron una visión tradicional donde el trabajador era considerado casi como un objeto de propiedad del empleador. El sindicato permitió transitar del concepto de 'merced del patrón' al de 'derecho laboral', consolidando conquistas que hoy parecen naturales pero que costaron vidas y décadas de movilización. En regiones como Córdoba, donde el modelo ganadero extensivo predominaba, las luchas obreras fueron fundamentales para que el trabajador agrícola empezara a ser reconocido como un sujeto de derechos en un entorno que históricamente le negaba cualquier autonomía y bienestar.",
+          "pausa": "¿Cómo se relacionan las luchas obreras de hace un siglo con los derechos laborales que protegemos en la actualidad?",
+          "resp": "Las luchas obreras del siglo XX fueron el cimiento de nuestro actual Código Sustantivo del Trabajo; cada derecho que hoy garantiza un descanso dominical, primas o seguridad social, es el resultado directo de una reivindicación que fue peleada colectivamente por sindicatos pioneros."
+        }
+      ],
+      "talleres": "Taller: 'Análisis de Pliegos de Peticiones'. Los estudiantes trabajarán en grupos para redactar un pliego de peticiones simulado para trabajadores agrícolas de Loma Verde. Fase 1: Identificación de carencias laborales actuales en la vereda (ej. falta de seguros ante accidentes, inseguridad en el pago, jornadas extensas). Fase 2: Redacción argumentada de 3 peticiones concretas. Fase 3: Debate en clase sobre la viabilidad de dichas peticiones y la importancia de la negociación pacífica versus la confrontación.",
+      "transfer": "Estudio de Caso: 'La Informalidad frente a la Organización'. El estudiante debe entrevistar a un trabajador agrícola de su entorno (padre, vecino) sobre sus condiciones laborales. Posteriormente, deberá escribir un ensayo breve comparando la situación actual de informalidad veredal con los derechos que consiguieron los sindicatos de base del siglo XX, planteando una reflexión sobre la necesidad de formas asociativas modernas para los trabajadores rurales hoy.",
+      "clave": "Se valorará la capacidad del estudiante para identificar la relación histórica entre las luchas pasadas y los derechos actuales. El análisis debe demostrar comprensión de que la organización colectiva es un derecho protegido constitucionalmente y una herramienta necesaria para combatir la precariedad en entornos no industrializados.",
+      "evaluacion": "Rúbrica de evaluación: Desempeño Superior (4.6-5.0): Análisis profundo que vincula el contexto histórico nacional con la situación laboral local. Desempeño Alto (4.0-4.5): Comprende los hitos sindicales y los aplica correctamente a la realidad. Desempeño Básico (3.0-3.9): Describe hechos históricos de forma general con baja aplicación local. Desempeño Bajo (0.0-2.9): No logra conectar los conceptos estudiados con la historia ni con la realidad local.",
+      "recursos": "Documentos históricos, textos de apoyo sobre la historia del sindicalismo en Colombia, material impreso sobre derechos laborales constitucionales, cuadernos de clase.",
+      "referencias": "Urrutia, M. (1969). Historia del sindicalismo en Colombia. / Archivo General de la Nación. / Constitución Política de Colombia de 1991.",
+      "dua": "Adaptación de material: entrega de guías con diagramas para estudiantes con dificultades de lectura, uso de debates orales para fomentar la participación de estudiantes que prefieren la expresión verbal, tutorías entre pares durante el desarrollo de los talleres.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "El sindicalismo de base en Colombia fue el motor histórico que permitió la transformación de las condiciones laborales de precariedad absoluta a un marco de derechos. Su impacto fue total, cambiando no solo el ámbito productivo, sino también la concepción del trabajador como ciudadano con poder de concertación, un legado esencial para abordar los retos laborales actuales en las comunidades rurales dispersas.",
+      "errores": "Creer que los derechos laborales son concesiones voluntarias de los empleadores, ignorando que son conquistas sociales logradas mediante la lucha colectiva. Otro error común es desestimar la importancia de los sindicatos de base en las zonas rurales, pensando que solo son fenómenos urbanos o industriales.",
+      "banco": [
+        {
+          "id": "PREG-01",
+          "tipo": "abierta",
+          "grado": "Noveno",
+          "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+          "competencia": "Pensamiento social",
+          "contexto": "A principios del siglo XX, la falta de una regulación laboral llevó a que los trabajadores colombianos operaran bajo condiciones de casi total explotación.",
+          "enunciado": "Analice por qué la organización de los sindicatos de base fue el punto de inflexión necesario para que los trabajadores pasaran de ser subordinados sin derechos a sujetos con capacidad de negociación frente al capital.",
+          "respuesta": "La organización sindical permitió que la masa trabajadora, históricamente fragmentada y vulnerable, lograra un nivel de articulación y poder de presión real. Al negociar colectivamente (a través de los pliegos de peticiones), los trabajadores pudieron forzar a que el capital reconociera sus necesidades básicas, transformando la relación laboral de una imposición unilateral del patrón a una concertación, sentando así las bases de la legislación laboral moderna y el reconocimiento de la dignidad del trabajador.",
+          "sugerida": true
+        }
+      ],
+      "tarea": "Investigar con un abuelo o familiar mayor sobre cómo eran las condiciones de trabajo en el campo hace 40 o 50 años en la región, y redactar un párrafo comparativo frente a lo que se conoce hoy sobre las leyes laborales.",
+      "fundamentacion": "## Fundamentación Teórica: El Sindicalismo como Pilar de la Modernización y la Dignidad Laboral en Colombia\n\n### Contexto Histórico: El Despertar de una Conciencia de Clase\nLa emergencia de los movimientos obreros en Colombia durante las primeras décadas del siglo XX es un fenómeno intrínsecamente ligado al proceso de modernización capitalista. El país, que intentaba transitar de una economía agraria arcaica a un modelo de producción industrial y extractiva, encontró en la mano de obra campesina y artesanal a su principal motor, pero también a su sector más desprotegido. Los trabajadores de sectores clave como los ferrocarriles, las plantaciones bananeras y la minería, se enfrentaron a una estructura laboral basada en el despotismo y la carencia absoluta de garantías.\n\n### Causas Estructurales y la Necesidad de Organización\nLa desregulación total del mercado laboral, sumada a la influencia de empresas extranjeras con modelos de explotación intensiva, generó un caldo de cultivo para el malestar social. La ausencia de jornadas limitadas, de pago por horas extras y de mecanismos de salud, no solo eran injusticias económicas, sino barreras que impedían la reproducción de la vida social. Los sindicatos de base no surgieron como una moda, sino como una respuesta vital de supervivencia ante un sistema que veía al trabajador como un insumo reemplazable y desechable.\n\n### Consecuencias: Del Conflicto al Derecho\nLa historia del sindicalismo en el siglo XX en Colombia está marcada por una dialéctica constante entre represión y conquista. Los eventos de 1928, en las plantaciones bananeras de la Zona Bananera, marcan un hito sangriento que demostró que el poder establecido no estaba dispuesto a ceder privilegios fácilmente. No obstante, estas luchas fueron el catalizador para que el Estado colombiano empezara a intervenir en la regulación del mercado laboral, culminando décadas después en la formalización de los derechos en el Código Sustantivo del Trabajo. \n\nA nivel regional, en contextos rurales como el de Loma Verde, la lección es profunda. Mientras la modernización trajo consigo la promesa de progreso, la precariedad laboral ha persistido como una sombra debido a la informalidad. El legado del sindicalismo de base nos enseña que la única vía real para combatir la vulnerabilidad del trabajador rural es la capacidad de organización y la exigencia colectiva ante la institucionalidad y los grandes tenedores de capital.",
+      "lineatiempo": "1910-1920: Primeras asociaciones mutualistas y gremios artesanales. / 1928: Masacre de las Bananeras; hito de la lucha por condiciones dignas frente al capital extranjero. / 1936: Reforma constitucional y legal que empieza a reconocer el derecho a la huelga y la protección sindical. / 1950: Consolidación del Código Sustantivo del Trabajo que codifica las conquistas sociales de las décadas anteriores."
+    }
+  ]
+}

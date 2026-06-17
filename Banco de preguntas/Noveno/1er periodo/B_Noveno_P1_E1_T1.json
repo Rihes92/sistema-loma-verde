@@ -1,0 +1,207 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T14:14:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "1",
+    "unidad": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "BP-SOC9-1-001",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Recientes estudios climatológicos muestran una alarmante reducción de las lluvias en las sábanas de Córdoba durante los últimos años, coincidiendo con récords históricos de deforestación en la selva amazónica.",
+      "enunciado": "Explique exhaustivamente cuál es el mecanismo natural por el que la tala masiva en la selva amazónica altera de manera directa el régimen de lluvias que permite la agricultura campesina en el corregimiento de Loma Verde, Montería.",
+      "respuesta": "La selva amazónica funciona como una gigantesca bomba de agua natural. Mediante el proceso biológico de la evapotranspiración, miles de millones de árboles bombean humedad desde el suelo y la liberan a la atmósfera. Esta inmensa cantidad de vapor de agua forma los conocidos 'ríos voladores', que son transportados por los vientos alisios a lo largo del continente sudamericano, impactando la zona andina y el Caribe colombiano. Cuando la Amazonía es deforestada para dar paso a la ganadería o a monocultivos, este ciclo se fractura: hay menos árboles evaporando agua y, por tanto, disminuye drásticamente el caudal de los ríos voladores. Al no llegar suficiente humedad a la atmósfera de la región Caribe, se reducen las precipitaciones y se extienden las sequías, lo cual impacta severamente la fertilidad de los suelos y amenaza de muerte los cultivos agrícolas de pancoger (maíz, yuca, plátano) esenciales para el sustento económico y alimentario del campesinado de Loma Verde.",
+      "sugerida": true
+    },
+    {
+      "id": "BP-SOC9-1-002",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento social",
+      "contexto": "Los ecosistemas de páramo se ubican en las zonas altas de las cordilleras andinas. Organizaciones campesinas y ambientales luchan por evitar el avance de la megaminería en estos territorios.",
+      "enunciado": "Los suelos del páramo están formados principalmente por arena que permite un drenaje rápido del agua, lo que explica por qué no retienen agua durante las épocas de lluvias intensas.",
+      "correcta": false,
+      "justificacion": "El enunciado es fundamentalmente falso. Los suelos de los páramos no son arenosos ni drenan rápidamente. Por el contrario, son suelos andosoles (derivados de ceniza volcánica) ricos en materia orgánica que, debido a las bajas temperaturas, se descompone muy lentamente. Esto les confiere una estructura porosa sumamente especial que actúa como una verdadera esponja natural. Su función ecológica y geomorfológica esencial es absorber masivamente el agua durante el invierno y la lluvia horizontal (neblina capturada por frailejones), reteniéndola para filtrarla muy lentamente hacia las cuencas subterráneas y ríos, garantizando un flujo hídrico constante a lo largo de todo el año hacia las partes bajas de los valles."
+    },
+    {
+      "id": "BP-SOC9-1-003",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Los arrecifes coralinos protegen las costas y brindan refugio a una gran cantidad de peces. Sin embargo, en el mar Caribe se ha detectado una muerte masiva de corales (blanqueamiento).",
+      "enunciado": "¿Cuál es la principal combinación de factores globales y locales que está provocando el colapso de los arrecifes coralinos en las costas y territorios insulares de Colombia?",
+      "opciones": [
+        "A) La migración masiva de tortugas marinas y la sobreabundancia de algas debido a la falta de depredadores en el Caribe.",
+        "B) El aumento de las temperaturas oceánicas por el cambio climático global y la eutrofización causada por escorrentías de fertilizantes agrícolas desde los ríos.",
+        "C) La construcción de barreras artificiales de concreto y el hundimiento de barcos turísticos en el archipiélago de San Andrés y Providencia.",
+        "D) El enfriamiento de las aguas del océano Atlántico y el descenso del nivel del mar debido al congelamiento de los glaciares tropicales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción correcta es la B. El colapso (blanqueamiento coralino) ocurre fundamentalmente por el estrés térmico derivado del calentamiento global antropogénico, que obliga al coral a expulsar las microalgas simbióticas (zooxantelas) que lo alimentan. A nivel local, esta crisis es exacerbada por la eutrofización, la cual es producto de los químicos, pesticidas y fertilizantes utilizados en la agricultura (en regiones como los valles del Sinú y Magdalena) que son arrastrados por las lluvias hacia los ríos y desembocan en el mar, generando proliferación de algas nocivas que asfixian al coral y tapan la luz solar."
+    },
+    {
+      "id": "BP-SOC9-1-004",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la subregión de los Andes colombianos habitan comunidades dedicadas al cultivo de papa y cebolla, a veces cruzando la frontera límite de los páramos debido a la necesidad económica.",
+      "enunciado": "Teniendo en cuenta que los páramos son esenciales para la vida hídrica del país, argumente y proponga una estrategia económica, socialmente justa, para que las familias campesinas abandonen las actividades agropecuarias expansivas en las zonas de páramo sin que pierdan sus medios de subsistencia.",
+      "respuesta": "La solución exige integrar políticas ambientales con justicia social. No es viable expulsar violentamente a las comunidades ni condenarlas a la pobreza. La estrategia más sustentada es la implementación masiva del Pago por Servicios Ambientales (PSA). En este modelo, el Estado, y especialmente las industrias agropecuarias, hidroeléctricas y acueductos urbanos ubicados en las zonas bajas (que se benefician gratuitamente del agua), pagan un estipendio económico mensual a los habitantes del páramo. A cambio, los campesinos asumen el rol de 'guardianes del ecosistema', comprometiéndose a retirar el ganado, no expandir la frontera agrícola y participar en proyectos de restauración pasiva. Esto debe acompañarse con proyectos de ecoturismo científico regulado y la reconversión productiva en tierras más bajas fuera de la delimitación del páramo.",
+      "sugerida": true
+    },
+    {
+      "id": "BP-SOC9-1-005",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento social",
+      "contexto": "Las selvas húmedas tropicales como la Amazonía o el Chocó albergan especies endémicas. Una vez que un bloque de selva es talado, se suele reforestar sembrando árboles maderables de rápido crecimiento.",
+      "enunciado": "La reforestación con monocultivos de árboles de rápido crecimiento (como pino o eucalipto) logra recuperar en pocos años la biodiversidad original y la función climática de la selva virgen talada.",
+      "correcta": false,
+      "justificacion": "Es falso. La siembra de especies exóticas en formato de monocultivo no restaura un geosistema selvático. La selva originaria es una compleja red de biodiversidad que ha tardado miles de años en evolucionar, compuesta por miles de especies interdependientes (lianas, orquídeas, insectos, hongos, fauna endémica) que garantizan su resiliencia. Un monocultivo forestal (como un pinar) es prácticamente un 'desierto verde': carece de la diversidad biológica estructural, acidifica el suelo, no permite la vida de fauna originaria y consume altos volúmenes de agua sin replicar la eficiencia de los grandes árboles selváticos en el ciclo de la evapotranspiración."
+    },
+    {
+      "id": "BP-SOC9-1-006",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Los arrecifes coralinos colombianos forman complejas estructuras a pocos metros de profundidad. Su existencia provee servicios ecosistémicos valiosos no solo biológicos, sino mecánicos frente a desastres naturales.",
+      "enunciado": "En caso de que los arrecifes coralinos colombianos desaparezcan por completo, ¿cuál de los siguientes impactos geomorfológicos y socioeconómicos sufrirían más rápida y severamente las poblaciones costeras de Colombia?",
+      "opciones": [
+        "A) La disminución de huracanes y maremotos en el Caribe, ya que los corales atraen los vientos cálidos hacia la costa.",
+        "B) La desalinización drástica del agua del mar, lo que acabaría con las especies de peces de estuario.",
+        "C) El aumento devastador de la erosión de las playas y el impacto directo destructivo de las marejadas y tsunamis sobre las viviendas y la infraestructura costera.",
+        "D) El incremento inmediato de los glaciares en la Sierra Nevada de Santa Marta debido a la absorción rápida de calor por parte del mar."
+      ],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Una de las funciones mecánicas más críticas de los arrecifes coralinos es actuar como rompeolas naturales masivos. Las rugosidades de las formaciones coralinas disipan hasta el 97% de la energía destructiva de las olas, tormentas y huracanes antes de que estas golpeen la costa. Si los arrecifes mueren y se degradan hasta volverse escombros, esta barrera desaparece. La energía íntegra del mar golpearía los litorales, acelerando exponencialmente la erosión costera, destruyendo playas, infraestructuras portuarias, carreteras y arrasando con las poblaciones y hoteles construidos cerca al mar, generando una crisis humanitaria y económica insostenible."
+    },
+    {
+      "id": "BP-SOC9-1-007",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Estado colombiano se ha comprometido internacionalmente a reducir a cero la deforestación neta para 2030, una política que encuentra enormes resistencias y barreras debido a lógicas criminales y economías ilegales.",
+      "enunciado": "Basándose en los fenómenos sociopolíticos e históricos de Colombia, analice y explique tres razones estructurales por las cuales es tan difícil detener la deforestación de la selva amazónica y las selvas del Pacífico, a pesar de las regulaciones ambientales.",
+      "respuesta": "La deforestación en las selvas colombianas no es solo un problema ecológico, sino el reflejo de un conflicto estructural histórico. En primer lugar, la ausencia de una reforma agraria integral y la concentración de tierras productivas en pocas manos han forzado históricamente a miles de campesinos sin tierra a migrar hacia la frontera agrícola (selvas) para colonizar y talar en busca de subsistencia. En segundo lugar, el control territorial ejercido por actores armados ilegales impulsa economías ilícitas como la minería ilegal (extracción de oro a cielo abierto usando mercurio y retroexcavadoras que arrasan la selva) y los cultivos de uso ilícito. En tercer lugar, opera el modelo de acaparamiento mafioso de tierras: terratenientes ocultos pagan para talar inmensas extensiones de selva virgen, introducir ganado y así legitimar y valorizar terrenos que posteriormente son blanqueados, aprovechándose de la debilidad institucional del Estado en la periferia profunda.",
+      "sugerida": true
+    },
+    {
+      "id": "BP-SOC9-1-008",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento social",
+      "contexto": "En Montería y sus corregimientos aledaños la economía gira en torno a la ganadería y la agricultura, lo que demanda constantemente grandes volúmenes de agua fresca.",
+      "enunciado": "La destrucción del páramo de Paramillo tendría un impacto directo en el sector agrícola de Montería, dado que en ese complejo se encuentran los nacimientos de importantes cuerpos de agua que alimentan al río Sinú y a los valles cordobeses.",
+      "correcta": true,
+      "justificacion": "La afirmación es verdadera. El Parque Nacional Natural Paramillo no solo contiene zonas de bosque tropical y andino, sino que en sus picos más elevados alberga un ecosistema clave de páramo (el más septentrional de la cordillera occidental). Este geosistema actúa como un regulador natural y es la estrella hidrográfica originaria de ríos vitales como el Sinú y el San Jorge. Si las actividades extractivas o la tala destruyen su capacidad de retención de agua, los cauces que alimentan los acueductos, abrevaderos ganaderos y sistemas de riego agrícola en Loma Verde y Montería se verían seriamente disminuidos, amenazando el modelo productivo de todo el departamento."
+    },
+    {
+      "id": "BP-SOC9-1-009",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El ecosistema de páramo se caracteriza por poseer flora altamente especializada y endémica, como el frailejón, cuyo ciclo vital es increíblemente lento.",
+      "enunciado": "¿Qué característica biológica hace a los páramos ecosistemas extremadamente frágiles y de difícil recuperación una vez son destruidos por la minería o las quemas agrícolas?",
+      "opciones": [
+        "A) La gran velocidad a la que se descomponen los minerales y la alta temperatura que alcanzan sus suelos en verano.",
+        "B) El bajísimo ritmo de crecimiento y reproducción de su flora endémica (los frailejones crecen aproximadamente un centímetro al año) debido al estrés térmico de las bajas temperaturas y la radiación UV.",
+        "C) La nula presencia de especies animales en sus laderas que faciliten la dispersión de semillas.",
+        "D) Su dependencia total del agua salada subterránea, que al evaporarse, calcifica la tierra impidiendo nuevas siembras."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción correcta es la B. Los ecosistemas de páramo están sometidos a condiciones extremas: frío intenso durante la noche, altos niveles de radiación ultravioleta en el día y suelos ácidos. Esto ha forzado a su flora a desarrollar ciclos metabólicos extremadamente lentos. Un frailejón promedio apenas crece entre 1 y 2.5 centímetros por año. Por consiguiente, si una retroexcavadora o un incendio arrasa con una ladera poblada de frailejones que miden 3 metros, estamos hablando de la pérdida instantánea de individuos que tardaron más de 200 años en desarrollarse. La restauración ecológica de un páramo dañado no toma décadas, sino siglos, haciendo que el daño ambiental causado a corto plazo sea, en términos de vida humana, prácticamente irreversible."
+    },
+    {
+      "id": "BP-SOC9-1-010",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento social",
+      "contexto": "A nivel mundial, Colombia es catalogado como el país con mayor número de páramos. Pese a esto, existen presiones del sector extractivista que insiste en que las zonas de páramo son minas de oro por explotar.",
+      "enunciado": "Explique exhaustivamente, desde una perspectiva social y económica, el conflicto de intereses que surge cuando una empresa transnacional propone realizar minería de oro a cielo abierto en un páramo que provee de agua a una ciudad cercana.",
+      "respuesta": "El conflicto radica en el choque entre dos visiones diametralmente opuestas de desarrollo y valoración del territorio. Por un lado, la visión de la empresa transnacional minera (y del gobierno central, cuando prioriza las regalías) es puramente extractivista: el páramo se percibe como un contenedor de recursos (oro, carbón) cuyo valor monetario en los mercados bursátiles globales es inmenso y necesario para el crecimiento del PIB. Por otro lado, las comunidades locales, campesinos, ambientalistas y autoridades municipales ven el páramo desde la perspectiva del 'Derecho a la Vida y al Agua'. La minería a cielo abierto remueve toneladas de suelo superficial (destruyendo la esponja paramuna), altera flujos subterráneos y frecuentemente contamina con cianuro o metales pesados las fuentes hídricas. El conflicto se desencadena porque las ganancias económicas de la extracción se exportan y son de corto plazo (10-20 años de vida de la mina), mientras que el pasivo ambiental: sequía crónica, pérdida irreversible de agua potable y colapso de la economía agrícola local, lo asumen permanentemente las comunidades circundantes, precarizando su futuro socioeconómico.",
+      "sugerida": false
+    },
+    {
+      "id": "BP-SOC9-1-011",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El modelo de economía agraria de monocultivo en Colombia exige la utilización periódica de grandes volúmenes de agroquímicos y plaguicidas.",
+      "enunciado": "La contaminación por agroquímicos aplicados en fincas situadas a kilómetros de la costa nunca afecta a los arrecifes de coral debido a que la gran extensión del océano disuelve inmediatamente las toxinas.",
+      "correcta": false,
+      "justificacion": "La premisa es falsa, puesto que ignora el concepto de 'cuenca hidrográfica interconectada'. Los fertilizantes nitrogenados y plaguicidas usados en las llanuras agrícolas, como en los valles del Sinú o del Magdalena, son arrastrados por la lluvia hacia los arroyos y ríos (fenómeno de escorrentía superficial). Estos ríos desembocan finalmente en el mar Caribe. Al entrar al océano costero, el exceso de nutrientes (especialmente nitrógeno y fósforo) causa eutrofización, provocando explosiones de crecimiento de algas nocivas que asfixian al coral, impidiendo que reciba la luz solar vital para que sus algas simbióticas realicen la fotosíntesis. El mar no diluye infinitamente el daño; las corrientes concentran estos químicos en las franjas litorales precisamente donde se ubican los arrecifes."
+    },
+    {
+      "id": "BP-SOC9-1-012",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las selvas no son espacios uniformes; la selva del Chocó Biogeográfico presenta características diferentes a la de la Amazonía en términos de humedad y geografía.",
+      "enunciado": "Teniendo en cuenta la posición astronómica y geográfica de Colombia, ¿qué factor geográfico principal contribuye a que el Chocó Biogeográfico sea considerado una de las zonas selváticas más húmedas y lluviosas del planeta?",
+      "opciones": [
+        "A) La rotación lenta de la tierra en esa zona específica y la presencia de extensos desiertos que obligan al agua a precipitarse antes de tiempo.",
+        "B) La convergencia de los vientos alisios cargados de humedad provenientes del Océano Pacífico, los cuales chocan contra la imponente barrera natural de la Cordillera Occidental, provocando lluvia orográfica continua.",
+        "C) La existencia de grandes complejos industriales en el Pacífico colombiano que alteran la atmósfera y fuerzan condensaciones artificiales de manera masiva.",
+        "D) La ausencia total de montañas en la región occidental, lo cual permite que las nubes se estacionen perpetuamente sobre los valles del Chocó."
+      ],
+      "correcta": 1,
+      "justificacion": "La respuesta correcta es la B. Este fenómeno es un ejemplo clásico de 'lluvia orográfica' o de relieve. Las corrientes de aire cálido y sumamente húmedo viajan desde la inmensidad del Océano Pacífico empujadas por los vientos ecuatoriales hacia el continente. Al llegar al territorio del Chocó colombiano, estas masas de aire se estrellan con la majestuosa barrera natural que es la Cordillera Occidental. Al chocar, el aire se ve forzado a ascender a gran velocidad, enfriándose súbitamente en las alturas. Este enfriamiento hace que el vapor de agua se condense casi de inmediato en inmensas nubes de tormenta, que descargan lluvias torrenciales de forma constante y masiva sobre la vertiente del Pacífico, dotando a esta selva de una pluviosidad que supera los 9.000 milímetros anuales en algunos puntos."
+    },
+    {
+      "id": "BP-SOC9-1-013",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Dentro de un corregimiento agropecuario como Loma Verde, cada individuo interviene de manera indirecta o directa en el equilibrio de los ecosistemas, desde el método de siembra hasta el manejo de la basura.",
+      "enunciado": "A partir de lo estudiado, diseñe y detalle ampliamente tres medidas concretas y aplicables que un joven estudiante campesino de Loma Verde podría implementar en su finca o comunidad para disminuir la presión ambiental sobre los geosistemas hídricos locales.",
+      "respuesta": "Para fomentar la resiliencia ambiental local, el estudiante puede implementar: 1) Protección de bosques de galería (o rondas hídricas): Liderar jornadas comunitarias para no talar y reforestar las franjas de tierra adyacentes a los arroyos locales y cuerpos de agua de Loma Verde con especies nativas como la guadua o el roble, lo cual evita la erosión de las orillas y mantiene fresca la temperatura del agua. 2) Cosecha y almacenamiento de agua lluvia: Promover la instalación de sistemas de captación de agua mediante canales en los techos de las casas o escuelas de la vereda dirigidos a tanques cerrados, reduciendo la extracción de agua subterránea o la sobreexplotación de los caudales locales en épocas de estiaje. 3) Transición a abonos orgánicos (agroecología): Iniciar la producción masiva de compostaje y lombricultivo aprovechando los desechos animales y vegetales de la parcela. Esto reemplaza los fertilizantes químicos nitrogenados, evitando que estas toxinas se laven en las lluvias, contaminen el río Sinú y, consecuentemente, afecten los ecosistemas arrecifales en el litoral caribeño.",
+      "sugerida": true
+    },
+    {
+      "id": "BP-SOC9-1-014",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Pensamiento social",
+      "contexto": "En la concepción global, se afirma a menudo que el clima del mundo depende de factores desconectados, pero la ciencia geográfica afirma lo contrario a través del concepto de interdependencia sistémica.",
+      "enunciado": "Es correcto afirmar que los fenómenos de degradación en ecosistemas remotos, como el deshielo de los polos, carecen de cualquier impacto sobre los arrecifes coralinos del mar Caribe colombiano.",
+      "correcta": false,
+      "justificacion": "La aseveración es falsa por desconocer la interconexión global termodinámica e hidrológica. El deshielo acelerado de las masas polares provocado por el calentamiento global introduce inmensas cantidades de agua dulce a los océanos del mundo, lo cual contribuye inexorablemente a la elevación del nivel medio del mar. Este incremento ahoga a los corales, que necesitan estar a una profundidad específica para que la luz solar penetre adecuadamente y sus algas simbióticas realicen la fotosíntesis. Además, el cambio en las corrientes termohalinas producto de la desalinización en los polos altera las temperaturas del mar Caribe, induciendo letales olas de calor marino que terminan causando el blanqueamiento definitivo de los corales colombianos."
+    },
+    {
+      "id": "BP-SOC9-1-015",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Importancia y localización de geosistemas estratégicos: selvas, páramos y arrecifes coralinos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El ordenamiento territorial en Colombia busca dictar normativas de qué se puede y qué no se puede hacer sobre el suelo según su capacidad de carga y vocación, buscando la preservación de geosistemas estratégicos.",
+      "enunciado": "¿Qué mecanismo legal y de participación ciudadana es el más idóneo y vinculante para que los habitantes de una comunidad rural, junto con autoridades, definan la protección oficial de sus fuentes hídricas e impidan actividades extractivas en ecosistemas sensibles?",
+      "opciones": [
+        "A) La realización de paros cívicos armados sin intermediación gubernamental.",
+        "B) La construcción participativa y aprobación de un Esquema de Ordenamiento Territorial (EOT) o Plan de Ordenamiento Territorial (POT) que declare el suelo como zona de protección ambiental estricta.",
+        "C) La venta de todas las tierras paramunas o selvas a corporaciones extranjeras para que las privaticen y así impidan el acceso humano.",
+        "D) El pago voluntario de peajes privados entre los vecinos para financiar grupos privados de vigilancia rural sin base jurídica constitucional."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. El Plan de Ordenamiento Territorial (POT) y los EOT para municipios más pequeños son los instrumentos técnicos y normativos más poderosos en el marco jurídico colombiano. A través de estos, la administración pública municipal, debidamente concertada con la ciudadanía y las Corporaciones Autónomas Regionales, regula exhaustivamente la utilización y ocupación del suelo. Al tipificar dentro del POT un área (por ejemplo, el nacimiento de un río o un parche de bosque primario) como 'Suelo de Protección Ambiental', se prohíbe de manera vinculante e irrefutable por ley la deforestación, la minería, la construcción de infraestructuras y la expansión de la frontera agrícola sobre esos territorios vitales para la comunidad."
+    }
+  ]
+}

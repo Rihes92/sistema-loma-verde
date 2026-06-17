@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:46:46.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Deslegitimación de discursos violentos en las relaciones interpersonales",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Discursos violentos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Análisis de lenguaje y poder",
+      "enunciado": "Explique cómo el lenguaje autoritario en las relaciones de pareja puede ser una forma sutil de violencia.",
+      "respuesta": "El lenguaje autoritario se convierte en violencia cuando busca anular la subjetividad y la opinión del otro bajo la imposición de una jerarquía de poder. Al utilizar frases que descalifican al otro o que dictan cómo debe comportarse, pensar o sentir, se está ejerciendo una dominación que va erosionando la autoestima y la autonomía de la persona. Esta violencia es sutil porque a menudo se disfraza de 'consejos', 'cuidado' o 'mayor experiencia', pero su objetivo real es el control, lo cual destruye la base de igualdad necesaria para una relación sana.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Comunicación asertiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Habilidades dialógicas",
+      "enunciado": "La comunicación asertiva implica siempre decir lo que se piensa sin importar si se hiere a la otra persona.",
+      "correcta": false,
+      "justificacion": "La comunicación asertiva se basa precisamente en la capacidad de expresar opiniones, necesidades y sentimientos de manera clara y directa, pero siempre con respeto. Si el mensaje hiere intencionalmente, se vuelve agresivo, no asertivo. La asertividad busca la claridad sin la agresión."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Cultura de paz",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Resolución de conflictos",
+      "enunciado": "¿Qué habilidad es fundamental para deslegitimar discursos violentos durante una conversación tensa?",
+      "opciones": ["La capacidad de alzar la voz para ganar la discusión", "La escucha activa, permitiendo comprender la perspectiva ajena antes de responder", "La negativa total a seguir hablando con la otra persona", "El uso de sarcasmo para descalificar al otro"],
+      "correcta": 1,
+      "justificacion": "La escucha activa es la herramienta más potente para deslegitimar la violencia porque desarma la lógica del ataque, permitiendo que la otra persona se sienta escuchada y abriendo la posibilidad de una concertación basada en el respeto en lugar de la imposición."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deslegitimación de la violencia",
+      "competencia": "Pensamiento social",
+      "contexto": "Contexto rural",
+      "enunciado": "Analice por qué es difícil deslegitimar discursos violentos arraigados culturalmente.",
+      "respuesta": "Es difícil porque estos discursos no son vistos como violencia, sino como parte de la 'normalidad' o de la cultura misma. Al haber sido transmitidos por generaciones como 'la forma en que las cosas funcionan' (jerarquías familiares, roles rígidos de género), cuestionarlos se percibe como una amenaza a la identidad, a la familia o a la estabilidad social. La deslegitimación exige un esfuerzo pedagógico de largo aliento para que la comunidad comprenda que el respeto por la dignidad humana debe estar por encima de la tradición.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Relaciones interpersonales",
+      "competencia": "Pensamiento social",
+      "contexto": "Convivencia",
+      "enunciado": "¿Cuál de las siguientes acciones es característica de un discurso que promueve una cultura de paz?",
+      "opciones": ["La imposición de normas sin explicaciones", "La búsqueda de soluciones mediante el diálogo donde todas las partes se sienten escuchadas", "La descalificación de las ideas de los demás basándose en su origen o género", "La negativa a considerar acuerdos bajo el argumento de 'siempre se ha hecho así'"],
+      "correcta": 1,
+      "justificacion": "La cultura de paz se fundamenta en el reconocimiento del otro, la horizontalidad en la comunicación y la construcción conjunta de soluciones, elementos que solo son posibles mediante el diálogo y la concertación."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Violencia",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Relaciones de pareja",
+      "enunciado": "La deslegitimación de la violencia significa que ya no debe existir debate ni diferencia de opinión entre las personas.",
+      "correcta": false,
+      "justificacion": "Al contrario, deslegitimar la violencia permite que el debate sea más libre y auténtico. Las diferencias de opinión son normales; el problema no es que exista conflicto, sino la manera en que se gestiona: si se usa la fuerza o el ataque para imponerse, o si se usa el respeto para dialogar."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Lenguaje y convivencia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Medios y sociedad",
+      "enunciado": "Proponga una forma en que los medios de comunicación locales podrían ayudar a deslegitimar la violencia.",
+      "respuesta": "Los medios locales pueden contribuir difundiendo historias positivas de resolución de conflictos, entrevistando a expertos en mediación, utilizando un lenguaje inclusivo y respetuoso, y evitando la glorificación de figuras o discursos autoritarios. Al presentar ejemplos de convivencia basados en el diálogo, los medios validan una nueva forma de relacionamiento social que es igual de efectiva, o más, que el uso de la fuerza o el lenguaje despectivo.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Patriarcado cultural",
+      "competencia": "Pensamiento social",
+      "contexto": "Estructuras sociales",
+      "enunciado": "¿Cómo perpetúa el patriarcado cultural los discursos violentos en las relaciones?",
+      "opciones": ["Fomentando la igualdad salarial y de derechos", "Justificando la superioridad de unos sobre otros mediante la tradición", "Promoviendo el desarrollo científico para todos", "Fomentando el uso de la razón frente a la fuerza"],
+      "correcta": 1,
+      "justificacion": "El patriarcado se sostiene sobre la idea de que la jerarquía y el dominio son naturales y necesarios, lo cual proporciona un marco ideológico para que la violencia (física, económica o verbal) sea vista como una herramienta legítima para mantener ese orden."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Derechos humanos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Convivencia",
+      "enunciado": "Tratar a los demás con respeto en una relación de pareja es una opción opcional y no una obligación ética.",
+      "correcta": false,
+      "justificacion": "El respeto es una obligación ética fundamental en toda relación, amparada en el derecho a la dignidad humana. Cualquier relación que falte al respeto está operando por fuera de la ética necesaria para una convivencia democrática."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Honestidad intelectual",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Construcción académica",
+      "enunciado": "Argumente por qué citar fuentes honestamente evita la violencia en el debate académico.",
+      "respuesta": "La honestidad intelectual evita la violencia porque obliga a que los argumentos se basen en evidencia y no en el ataque personal o en la invención de hechos. Cuando las partes en un debate se obligan a reconocer el trabajo de otros, a sustentar sus afirmaciones y a evitar el plagio, están validando la autoridad de los demás como pares intelectuales, lo que reduce las tensiones y permite un diálogo construido sobre la verdad y no sobre la imposición falaz.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Escucha activa",
+      "competencia": "Pensamiento social",
+      "contexto": "Mediación",
+      "enunciado": "¿Qué actitud demuestra una persona que practica la escucha activa en un conflicto?",
+      "opciones": ["Interrumpe constantemente para imponer su punto de vista", "Muestra apertura, empatía y busca entender la lógica del otro antes de dar su opinión", "Piensa solo en cómo ganar la discusión sin prestar atención", "Se muestra indiferente y distraída"],
+      "correcta": 1,
+      "justificacion": "La escucha activa es, ante todo, una actitud de apertura. Implica una disposición real de comprender lo que el otro transmite, lo cual es esencial para bajar las defensas en un conflicto y encontrar puntos de encuentro."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deslegitimación",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Cultura de paz",
+      "enunciado": "La deslegitimación de la violencia es un proceso que termina con la aprobación de una sola ley nacional.",
+      "correcta": false,
+      "justificacion": "Una ley puede prohibir la violencia, pero la deslegitimación es un proceso cultural, educativo y social continuo. La ley es solo un marco; la verdadera deslegitimación ocurre cuando las personas cambian sus creencias y prácticas en la vida diaria."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Resolución de conflictos",
+      "competencia": "Pensamiento social",
+      "contexto": "Entorno escolar",
+      "enunciado": "Proponga cómo mediar en una disputa donde ambos participantes utilizan lenguaje despectivo.",
+      "respuesta": "La mediación debe comenzar separando momentáneamente a los participantes para que se calmen. Luego, se debe establecer una regla de respeto absoluto al lenguaje. Se les invita a expresar el problema usando 'yo siento' o 'yo creo' en lugar de ataques ('tú eres...'). El mediador guía la conversación hacia la identificación de la raíz de la disputa y asegura que ambos utilicen la escucha activa para parafrasear lo que el otro dijo. El objetivo es que logren reconocer la humanidad del otro y lleguen a un compromiso de reparación y cambio comunicativo.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Dignidad humana",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Constitución de 1991",
+      "enunciado": "¿Por qué es clave la dignidad humana al abordar las relaciones interpersonales?",
+      "opciones": ["Porque es un concepto estético", "Porque define el valor intrínseco de cada persona, impidiendo que sea usada como medio para los fines de otro", "Porque es una norma religiosa opcional", "Porque evita que las personas se relacionen"],
+      "correcta": 1,
+      "justificacion": "La dignidad humana es el límite ético de cualquier interacción. Si cada persona es un fin en sí misma, tratarla con violencia o control viola su esencia, convirtiendo la relación en un acto de opresión en lugar de uno de convivencia."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Comunicación asertiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Convivencia",
+      "enunciado": "La comunicación asertiva puede ayudar a prevenir la escalada de la violencia en el entorno familiar.",
+      "correcta": true,
+      "justificacion": "La comunicación asertiva es una herramienta de prevención primaria. Al permitir que las tensiones se ventilen de manera clara, respetuosa y oportuna, evita que las frustraciones se acumulen hasta explotar en episodios de violencia, promoviendo una resolución constante y sana de las diferencias."
+    }
+  ]
+}

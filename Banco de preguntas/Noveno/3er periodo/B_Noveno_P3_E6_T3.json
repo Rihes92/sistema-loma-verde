@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:48:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Asimetrías regionales y factores geográficos en la infraestructura económica",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Asimetrías en el IDH",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Análisis estadístico y social",
+      "enunciado": "Explique por qué el Índice de Desarrollo Humano (IDH) es una herramienta más completa que el simple crecimiento económico para medir el bienestar de una región.",
+      "respuesta": "El crecimiento económico (PIB) solo mide el valor monetario de la producción, lo cual no garantiza que la riqueza se distribuya o se transforme en calidad de vida. El IDH, por el contrario, integra dimensiones fundamentales como la esperanza de vida, el acceso a la educación y el nivel de vida digno. Una región puede ser muy productiva económicamente pero tener bajos indicadores educativos o de salud para la mayoría de su población; por tanto, el IDH es una medida más humana y fidedigna del desarrollo real y de la equidad en un territorio.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Factores geográficos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Conectividad y economía",
+      "enunciado": "La falta de infraestructura vial en las zonas rurales tiene un impacto directo en el precio final de los alimentos que llegan a la ciudad.",
+      "correcta": true,
+      "justificacion": "La infraestructura es un factor determinante en los costos de logística. La carencia de vías de calidad obliga a mayores tiempos de transporte, aumenta el riesgo de pérdida de productos perecederos y encarece la operación, lo que termina reflejándose en precios más altos para el consumidor final y menores ganancias para el productor campesino."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Papel del Estado",
+      "competencia": "Pensamiento social",
+      "contexto": "Política pública",
+      "enunciado": "¿Qué significa que el Estado deba actuar como 'regulador' en la inversión social de las periferias?",
+      "opciones": ["Que debe prohibir toda inversión privada en las zonas rurales", "Que debe garantizar que la inversión privada y estatal se enfoque en el bienestar de la población y el cierre de brechas", "Que debe dejar que las empresas decidan por sí solas dónde invertir", "Que debe centralizar todos los recursos en la capital del país"],
+      "correcta": 1,
+      "justificacion": "El rol regulador implica establecer reglas de juego para que el desarrollo económico no sea depredador, sino que se alinee con las necesidades de la población, asegurando que se cierren las brechas mediante políticas que prioricen a los sectores históricamente olvidados."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Brechas de desarrollo",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Contexto rural",
+      "enunciado": "Analice cómo la falta de conectividad digital en Loma Verde puede limitar el desarrollo humano de sus jóvenes.",
+      "respuesta": "La falta de conectividad digital crea una brecha de información y oportunidad. En el mundo contemporáneo, la educación de calidad, el acceso a servicios públicos virtuales, la capacitación técnica y la comercialización de productos dependen de la conectividad. Un joven en Loma Verde sin internet enfrenta una barrera sistémica que lo deja en desventaja competitiva frente a sus pares urbanos, limitando sus horizontes laborales y su capacidad de autoformación, lo que perpetúa la exclusión y el rezago regional.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Asimetrías regionales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Geografía económica",
+      "enunciado": "¿Cuál es una consecuencia principal de que las regiones periféricas tengan menor infraestructura económica?",
+      "opciones": ["Una mayor facilidad para que los jóvenes progresen económicamente", "La migración forzada de poblaciones hacia las ciudades en busca de mejores oportunidades", "La total independencia económica respecto a los centros urbanos", "La disminución de los precios de servicios públicos"],
+      "correcta": 1,
+      "justificacion": "Ante la falta de oportunidades generadas por el rezago en infraestructura, las poblaciones rurales suelen verse obligadas a desplazarse a las ciudades, lo que desarticula la economía campesina y presiona los servicios públicos en las áreas urbanas, profundizando las crisis sociales."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Desarrollo regional",
+      "competencia": "Pensamiento social",
+      "contexto": "Equidad",
+      "enunciado": "Las asimetrías de crecimiento entre regiones son un fenómeno inmodificable determinado únicamente por la naturaleza.",
+      "correcta": false,
+      "justificacion": "Aunque la naturaleza impone condiciones, las asimetrías son predominantemente construcciones políticas y económicas. Un Estado con voluntad política y planes estratégicos puede superar barreras geográficas mediante inversión, tecnología y regulaciones que promuevan la equidad en el desarrollo regional."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Infraestructura",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Derechos ciudadanos",
+      "enunciado": "Argumente por qué la inversión en infraestructura rural es una forma de garantizar derechos fundamentales.",
+      "respuesta": "La infraestructura rural es la plataforma sobre la cual se ejercen los derechos. Sin vías, no hay acceso efectivo a la salud (ambulancias, especialistas), sin escuelas bien dotadas no hay educación de calidad, y sin conectividad no hay derecho a la información ni al trabajo digno. Por tanto, la infraestructura no es un fin en sí mismo, sino un medio indispensable para que el campesino pueda hacer efectivos sus derechos constitucionales de salud, educación y desarrollo económico.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Factores geográficos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Desarrollo territorial",
+      "enunciado": "¿Por qué la topografía puede ser un factor influyente en la infraestructura de una región?",
+      "opciones": ["Porque la topografía define la belleza del paisaje", "Porque los terrenos accidentados encarecen significativamente el costo de construcción y mantenimiento de vías y servicios", "Porque la topografía impide el uso de herramientas tecnológicas", "Porque solo las zonas planas son aptas para vivir"],
+      "correcta": 1,
+      "justificacion": "La orografía colombiana, caracterizada por cordilleras y zonas de difícil acceso, encarece el desarrollo de infraestructura, lo que obliga al Estado a invertir mayores recursos o a buscar alternativas tecnológicas para conectar estas zonas con el resto del país."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Inversión social",
+      "competencia": "Pensamiento social",
+      "contexto": "Equidad territorial",
+      "enunciado": "Los gremios económicos no tienen responsabilidad alguna en el desarrollo social de las regiones donde operan.",
+      "correcta": false,
+      "justificacion": "En el marco de la responsabilidad social y el desarrollo sostenible, los gremios que explotan recursos en un territorio deben contribuir al bienestar de las comunidades locales, pues el desarrollo económico no debe desligarse del impacto social y la equidad regional."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Honestidad intelectual",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Análisis de datos",
+      "enunciado": "Explique por qué es vital citar fuentes estadísticas al argumentar sobre desigualdad regional.",
+      "respuesta": "Citar fuentes estadísticas oficiales (como el DANE) es vital porque aporta rigor científico al debate. La desigualdad regional es un tema sensible que puede prestarse a la manipulación política. Al basar los argumentos en datos verificables, se eleva la calidad del debate público, se reduce el espacio para falsas promesas o visiones sesgadas y se establece una base técnica sólida para exigir cambios reales en las políticas de desarrollo estatal.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "IDH",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Calidad de vida",
+      "enunciado": "¿Cuál de los siguientes es un componente del IDH?",
+      "opciones": ["El valor del dólar en el mercado", "La esperanza de vida al nacer", "La cantidad de vehículos lujosos en la región", "El número de centros comerciales"],
+      "correcta": 1,
+      "justificacion": "La esperanza de vida es uno de los pilares del IDH, ya que refleja el éxito de una región en proveer salud básica y condiciones de vida que permiten una existencia prolongada y saludable para sus habitantes."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Desarrollo humano",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Equidad",
+      "enunciado": "El crecimiento económico por sí solo garantiza que los indicadores de salud y educación mejoren.",
+      "correcta": false,
+      "justificacion": "El crecimiento económico es condición necesaria pero no suficiente. Si el Estado no interviene mediante la reinversión y la regulación para distribuir los beneficios del crecimiento hacia servicios públicos (salud, educación), los indicadores sociales pueden permanecer estancados a pesar de que la economía crezca."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Brechas regionales",
+      "competencia": "Pensamiento social",
+      "contexto": "Ciudadanía participativa",
+      "enunciado": "Proponga una estrategia para que los jóvenes rurales exijan una mejor infraestructura.",
+      "respuesta": "Una estrategia efectiva sería la creación de una mesa joven de veeduría ciudadana. Los jóvenes podrían recopilar datos sobre el estado de las vías y el impacto negativo que esto tiene en su educación y economía, sistematizar esta información mediante fotos y testimonios, y presentarla formalmente a los consejos municipales y a la Personería. Esto transforma la queja en una propuesta técnica y políticamente organizada, difícil de ignorar para las autoridades locales.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Infraestructura",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Economía",
+      "enunciado": "¿Cómo afecta la falta de infraestructura de almacenamiento a los pequeños campesinos?",
+      "opciones": ["Al obligarlos a vender rápidamente sus cosechas a precios bajos por temor a que se dañen", "Al permitirles vender sus productos a precios internacionales más altos", "Al mejorar la calidad de sus productos", "Al aumentar su capacidad de negociación"],
+      "correcta": 0,
+      "justificacion": "La carencia de cuartos fríos o centros de acopio obliga al campesino a vender pronto para evitar pérdidas, lo cual lo pone en posición de debilidad frente a los intermediarios que imponen precios bajos por la urgencia de la venta."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Asimetría regional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Justicia social",
+      "enunciado": "La equidad regional implica tratar a todas las regiones de manera idéntica, ignorando sus necesidades particulares.",
+      "correcta": false,
+      "justificacion": "La equidad no es tratar a todos igual, sino dar más a quien más lo necesita para nivelar las oportunidades. Esto significa que las regiones con mayores brechas de desarrollo requieren mayor inversión y atención estatal que aquellas que ya cuentan con infraestructura sólida."
+    }
+  ]
+}

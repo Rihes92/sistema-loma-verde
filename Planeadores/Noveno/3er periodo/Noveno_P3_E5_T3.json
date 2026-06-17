@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:42:00.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E5-002",
+      "creado": 1781649720000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 5",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "2",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-23",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Evolución histórica de los derechos de las mujeres",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Analiza críticamente la trayectoria histórica de la lucha por los derechos de las mujeres en Colombia, contrastando los avances legislativos con la persistencia de brechas sociales. Propone estrategias argumentadas para promover la equidad de género en el entorno escolar y rural del corregimiento de Loma Verde, basándose en la comprensión de los derechos políticos, académicos y financieros adquiridos.",
+      "competencias": "Pensamiento social, Interpretación y análisis de perspectivas.",
+      "contenidos": "Evolución histórica de los derechos de las mujeres: sufragio, acceso a la educación superior, inserción laboral y autonomía financiera. Formas de violencia de género y mecanismos institucionales de mitigación.",
+      "objetivo": "Examinar el proceso de conquista de derechos de las mujeres en Colombia desde una perspectiva histórica y sociológica, identificando las barreras sistémicas que han impedido la plena igualdad y valorando el impacto de estas luchas en la reconfiguración del Estado Social de Derecho y la vida rural.",
+      "pregunta": "¿Cómo ha transformado la lucha por los derechos políticos, educativos y económicos de las mujeres la estructura de poder en Colombia, y qué retos persisten para las mujeres campesinas en la zona rural de Loma Verde?",
+      "explora": "1. Análisis de una línea de tiempo colaborativa sobre hitos femeninos en Colombia (ej. Ley 28 de 1957, acceso a la universidad). 2. Breve debate sobre la percepción de los roles de género en el corregimiento de Loma Verde. 3. Visualización de fragmentos documentales sobre las sufragistas colombianas.",
+      "glosario": [
+        {"t": "sufragismo", "d": "movimiento social y político que luchó por el derecho al voto femenino y la participación de la mujer en la vida pública nacional."},
+        {"t": "brecha de género", "d": "diferencia significativa en el acceso a oportunidades, recursos y derechos entre hombres y mujeres, reflejada en indicadores económicos y sociales."},
+        {"t": "autonomía financiera", "d": "capacidad de las mujeres para disponer de sus propios ingresos y gestionar su patrimonio sin depender de tutelaje masculino."},
+        {"t": "patriarcado", "d": "sistema de organización social en el que el poder y la autoridad son ejercidos principalmente por hombres, estableciendo jerarquías de género que históricamente han marginado a las mujeres."}
+      ],
+      "bloques": [
+        {
+          "tit": "La conquista del ámbito político y académico",
+          "txt": "Históricamente, la mujer colombiana fue relegada al espacio doméstico por el orden conservador y las estructuras coloniales persistentes. No fue sino hasta la mitad del siglo XX, con la aprobación del voto femenino en 1954 bajo la dictadura de Rojas Pinilla, que se abrió una grieta en la democracia representativa excluyente. Este proceso no fue un regalo del Estado, sino el fruto de décadas de activismo liderado por mujeres como Esmeralda Arboleda y Josefina Valencia. Paralelamente, el acceso a la educación superior y a profesiones tradicionalmente masculinizadas permitió que las mujeres incursionaran en la esfera académica, desafiando la hegemonía del saber. En el contexto de Loma Verde, esta lucha resuena en la necesidad de que las jóvenes campesinas accedan no solo a la formación técnica, sino a la construcción de liderazgos políticos territoriales que permitan superar la visión tradicional de la mujer únicamente como cuidadora del hogar.",
+          "pausa": "¿Es posible hablar de una igualdad real si las barreras económicas y sociales en la ruralidad siguen limitando la educación de la mujer?",
+          "resp": "La igualdad jurídica es un avance, pero el desarrollo humano integral requiere eliminar las brechas estructurales en la educación y la economía rural, donde el acceso a tierras y créditos sigue siendo desigual."
+        }
+      ],
+      "talleres": "Diseño de un 'Álbum biográfico' de mujeres colombianas que han transformado el ámbito académico o político, incluyendo un análisis sobre las dificultades que enfrentaron. Los estudiantes deberán contrastar estas biografías con los desafíos que enfrentan las mujeres de la vereda Loma Verde hoy en día.",
+      "transfer": "Desarrollo de un foro escolar sobre 'Mujer y ruralidad en Córdoba': los estudiantes deben proponer una alternativa normativa o proyecto productivo que fomente la autonomía financiera de las mujeres de su comunidad.",
+      "clave": "Se evalúa la capacidad de relacionar hechos históricos con problemáticas actuales, el uso de terminología técnica y la coherencia en las propuestas de mitigación de la violencia.",
+      "evaluacion": "Rúbrica: 1. Análisis histórico (30%), 2. Capacidad de crítica rural (40%), 3. Calidad de las propuestas de equidad (30%).",
+      "recursos": "Constitución de 1991, archivos de prensa histórica, dispositivos multimedia, guías de trabajo autónomo.",
+      "referencias": "Constitución Política de Colombia [1991]. Archivo General de la Nación [2026]. Historia del sufragismo en Colombia.",
+      "dua": "Presentación de biografías en formato audio, uso de infografías interactivas para la línea de tiempo y tutorías personalizadas para estudiantes con dificultades en el análisis crítico.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La evolución de los derechos femeninos es una lucha inacabada por la dignidad humana. En el ámbito rural, este proceso es determinante para la construcción de una paz que no sea solo ausencia de conflicto, sino presencia de justicia social.",
+      "errores": "Considerar que la igualdad de género es un tema resuelto, subestimar el impacto del machismo en la economía rural o confundir el sufragio con la igualdad total de derechos.",
+      "banco": [],
+      "tarea": "Entrevistar a una mujer mayor de la comunidad sobre cómo cambió su acceso a la educación y a la propiedad comparado con las generaciones anteriores.",
+      "fundamentacion": "La evolución histórica de los derechos de las mujeres en Colombia es una narrativa de resistencia ante un orden social, político y económico que, durante siglos, naturalizó la exclusión femenina. Desde la Colonia hasta la Constitución de 1991, la mujer fue considerada un sujeto subordinado bajo las figuras de patria potestad y marido. El siglo XX marcó un punto de inflexión fundamental: la ruptura de las barreras políticas mediante el sufragio y la entrada masiva a la educación superior en la década de 1970. No obstante, este desarrollo no ha sido uniforme. En las zonas rurales, como Loma Verde, la persistencia de formas de violencia estructural y cultural (económica, doméstica, física) continúa minando la autonomía de las mujeres campesinas. La fundamentación de este eje temático se basa en el reconocimiento de que la igualdad de género es, ante todo, un requisito sine qua non para el fortalecimiento del Estado Social de Derecho. Analizar la trayectoria de los derechos políticos, académicos y financieros es, por tanto, una herramienta para deconstruir los discursos legitimadores de la violencia y promover una justicia social que garantice a todas las personas el ejercicio pleno de su ciudadanía sin restricciones por género o entorno social.",
+      "lineatiempo": "1954: Reconocimiento del derecho al voto femenino. 1970-1990: Inserción masiva de mujeres en la educación superior y el mercado laboral técnico. 1991: Consagración constitucional de la igualdad de derechos. 2000-2026: Fortalecimiento de la agenda legislativa sobre equidad de género y tipificación de la violencia intrafamiliar."
+    }
+  ]
+}

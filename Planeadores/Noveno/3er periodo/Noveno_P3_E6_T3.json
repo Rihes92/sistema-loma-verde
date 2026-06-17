@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:48:00.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E6-003",
+      "creado": 1781651280000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 6",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "3",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-27",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Asimetrías regionales y factores geográficos en la infraestructura económica",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Explica las asimetrías de crecimiento entre las distintas regiones de Colombia interpretando mapas temáticos de vulnerabilidad por disponibilidad de alimentos y niveles de Índice de Desarrollo Humano (IDH). Argumenta cómo la geografía y la falta de inversión estatal en infraestructura física y social condicionan las oportunidades económicas de las comunidades rurales como Loma Verde.",
+      "competencias": "Pensamiento reflexivo y sistémico, Interpretación y análisis de perspectivas.",
+      "contenidos": "Asimetrías en el índice de desarrollo humano (IDH) regional; factores geográficos en la construcción de infraestructura económica; impacto social del crecimiento económico desigual; papel regulador del Estado y los gremios económicos en la inversión social de las periferias.",
+      "objetivo": "Analizar críticamente la relación entre las condiciones geográficas, la infraestructura económica y las disparidades en el Índice de Desarrollo Humano en Colombia, comprendiendo cómo la centralización de la inversión afecta la competitividad y la calidad de vida en el corregimiento de Loma Verde, Montería.",
+      "pregunta": "¿Por qué la geografía y la centralización de la infraestructura económica en Colombia han creado abismos en el Índice de Desarrollo Humano entre las ciudades principales y zonas rurales como Loma Verde?",
+      "explora": "1. Análisis comparativo de mapas temáticos de IDH de Colombia y de Córdoba.\n2. Lluvia de ideas sobre los obstáculos geográficos y logísticos que enfrenta Loma Verde para comercializar productos agrícolas.\n3. Proyección de un video sobre la importancia de la infraestructura vial y tecnológica para el cierre de brechas regionales.",
+      "glosario": [
+        {"t": "índice de desarrollo humano (idh)", "d": "indicador compuesto que evalúa el progreso de una población mediante tres dimensiones básicas: salud, educación y nivel de vida digno, permitiendo comparar el avance entre distintas regiones."},
+        {"t": "asimetría regional", "d": "desigualdad marcada en el crecimiento económico y social entre diversas zonas geográficas de un país, donde unas regiones concentran la riqueza y los servicios mientras otras se encuentran rezagadas."},
+        {"t": "infraestructura económica", "d": "conjunto de obras físicas y servicios (carreteras, redes eléctricas, conectividad, puertos) necesarios para el funcionamiento de la economía y la articulación de mercados locales con los nacionales."},
+        {"t": "periferia", "d": "zonas geográficas, rurales o marginales que se encuentran distantes de los centros de poder político y económico, históricamente caracterizadas por menor inversión estatal y acceso limitado a servicios básicos."}
+      ],
+      "bloques": [
+        {
+          "tit": "Geografía, inversión y desigualdad en el desarrollo",
+          "txt": "El Índice de Desarrollo Humano en Colombia revela una realidad fragmentada: mientras las grandes metrópolis concentran inversiones que elevan los indicadores de salud, educación y esperanza de vida, las zonas periféricas rurales como el corregimiento de Loma Verde enfrentan condiciones de vulnerabilidad crónica. Esta asimetría no es un accidente, sino el resultado de décadas de una planificación nacional que ha privilegiado la infraestructura económica en los nodos urbanos, descuidando la conectividad de las zonas productoras de alimentos. La geografía, que debería ser un activo, se convierte en un lastre cuando el Estado omite su papel regulador y deja la construcción de carreteras o redes eléctricas al arbitrio del mercado, que solo invierte donde hay alta rentabilidad. En Loma Verde, esta falta de inversión en infraestructura física y digital no solo encarece los costos de producción campesina, sino que perpetúa un círculo vicioso de pobreza. Los gremios económicos, a menudo enfocados en la extracción de recursos, han fallado en articular un modelo de inversión social que dinamice la economía local, consolidando la asimetría regional y forzando la migración hacia centros urbanos donde el IDH es más favorable.",
+          "pausa": "¿Es posible cerrar la brecha de desarrollo humano en nuestra comunidad sin una intervención activa del Estado en la regulación de la inversión privada?",
+          "resp": "Resulta poco probable; la historia de Colombia demuestra que el mercado no corrige por sí solo las asimetrías geográficas. Se requiere una política pública que priorice la infraestructura en áreas rurales para garantizar derechos fundamentales."
+        }
+      ],
+      "talleres": "Taller 'Cartografía de vulnerabilidad': los estudiantes deben graficar los puntos críticos en Loma Verde donde la falta de infraestructura (vías, internet, centros de salud) limita directamente el Índice de Desarrollo Humano de las familias locales, utilizando un formato de plano veredal.",
+      "transfer": "Redacción de una carta formal a la Personería Municipal y a la Secretaría de Infraestructura de Montería, fundamentando la solicitud de inversión social basada en los datos de vulnerabilidad analizados, citando las metas constitucionales de equidad territorial.",
+      "clave": "Se evalúa la capacidad de integrar la teoría del IDH con el análisis del contexto rural local. La argumentación debe ser clara, basada en evidencias y ajustada a la lógica del Estado Social de Derecho.",
+      "evaluacion": "Rúbrica: 1. Análisis de mapas e indicadores (30%), 2. Propuestas de incidencia ciudadana (40%), 3. Calidad argumentativa y rigor académico (30%).",
+      "recursos": "Mapas físicos y políticos de Córdoba, datos del DANE sobre pobreza multidimensional, Constitución de 1991, guías de análisis de datos regionales.",
+      "referencias": "DANE (2025). Pobreza multidimensional y desarrollo regional. PNUD (2025). Informe de Desarrollo Humano. Constitución Política de Colombia [1991].",
+      "dua": "Adaptación de datos estadísticos complejos a representaciones gráficas simplificadas, uso de trabajo colaborativo para el análisis de mapas y tutoría dirigida para el fortalecimiento de la escritura formal.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "El desarrollo humano no es una cifra abstracta; es el reflejo de una equidad territorial. Sin infraestructura que articule al campo con la nación, la brecha de desarrollo regional seguirá condenando a las periferias al rezago histórico.",
+      "errores": "Culpar exclusivamente a la geografía por la pobreza, desconocer el impacto de las decisiones políticas en la distribución del presupuesto de inversión y pensar que el IDH se mejora solamente con crecimiento económico sin inversión en capital humano.",
+      "banco": [],
+      "tarea": "Realizar un pequeño estudio familiar sobre cuántas horas a la semana se pierden por deficiencias en la infraestructura vial o tecnológica y cómo esto afecta el ingreso mensual del hogar.",
+      "fundamentacion": "La profundización sobre las asimetrías en el Índice de Desarrollo Humano (IDH) regional y su relación con la infraestructura económica constituye un pilar esencial para entender la brecha campo-ciudad en Colombia. Este fenómeno de desigualdad geográfica no es azaroso; se fundamenta en un modelo de desarrollo que, históricamente, ha centralizado los servicios básicos y las oportunidades de mercado en los nodos urbanos, dejando a las periferias rurales en una posición de subordinación. En zonas como Loma Verde, la carencia de infraestructura no solo limita la productividad agrícola, sino que degrada el bienestar humano al dificultar el acceso a una educación técnica competitiva y a servicios de salud de calidad. El papel regulador del Estado es, bajo la luz del Estado Social de Derecho, una obligación de primer orden para corregir las deficiencias del mercado que desatienden las zonas rurales. Los estudiantes de noveno grado deben comprender que el IDH de una comunidad no depende exclusivamente del esfuerzo individual, sino de un entorno geográfico habilitante construido mediante inversiones públicas estratégicas. La honestidad intelectual en el análisis de estos procesos, basada en fuentes como el DANE y el PNUD, permite a los estudiantes construir argumentos sólidos que rechacen la normalización de la desigualdad y exijan el cumplimiento de los mandatos constitucionales de igualdad y equidad regional.",
+      "lineatiempo": "1991: Constitución establece la equidad territorial como meta estatal. 2000-2015: Periodo de alta centralización de inversiones económicas. 2016-2026: Fortalecimiento del discurso público sobre la necesidad de cierre de brechas entre campo y ciudad mediante reformas de infraestructura rural."
+    }
+  ]
+}

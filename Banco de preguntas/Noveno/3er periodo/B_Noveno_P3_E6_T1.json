@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:45:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Concertación social y resolución pacífica de conflictos",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Resolución pacífica de conflictos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Habilidades dialógicas",
+      "enunciado": "Explique el papel de la escucha activa en la mediación de un conflicto intergrupal.",
+      "respuesta": "La escucha activa es la piedra angular de la mediación porque permite que las partes en conflicto se sientan validadas y comprendidas. Al escuchar sin sesgos, el mediador logra identificar los intereses subyacentes, más allá de las posiciones iniciales, facilitando la desescalada de la tensión. Esta técnica humaniza al 'adversario', permitiendo que los grupos pasen de la confrontación a la búsqueda de soluciones conjuntas basadas en la empatía y la lógica de la concertación.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Brechas de desarrollo",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Índice de Desarrollo Humano (IDH)",
+      "enunciado": "Las asimetrías en el IDH regional no tienen relación alguna con la intensidad de los conflictos sociales en Colombia.",
+      "correcta": false,
+      "justificacion": "Existe una correlación directa entre la falta de desarrollo humano, la pobreza extrema y la aparición de conflictos sociales; la exclusión económica crea un caldo de cultivo propicio para que los discursos violentos encuentren eco en comunidades que sienten que el Estado no garantiza sus derechos básicos."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Concertación social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Mecanismos de paz",
+      "enunciado": "¿Qué busca lograr la concertación social en un proceso de resolución de conflictos?",
+      "opciones": ["La imposición de la visión del grupo más fuerte", "La construcción de acuerdos comunes basados en el diálogo", "La eliminación definitiva de cualquier diferencia de opinión", "La intervención exclusiva de fuerzas armadas"],
+      "correcta": 1,
+      "justificacion": "La concertación social se basa en la negociación y el consenso para resolver disputas, reconociendo la pluralidad de perspectivas y buscando soluciones que satisfagan a las partes sin recurrir a la coacción."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Conflicto intergrupal",
+      "competencia": "Pensamiento social",
+      "contexto": "Entorno local (Loma Verde)",
+      "enunciado": "Analice cómo la falta de inversión social contribuye a la legitimación de discursos violentos en zonas periféricas.",
+      "respuesta": "La falta de inversión social genera un estado de desesperanza y abandono que los grupos violentos explotan para legitimarse. Cuando las personas perciben que el Estado es un ausente en la provisión de salud, educación o agua potable, la autoridad legítima se debilita. En este vacío, los discursos de fuerza que prometen orden o soluciones rápidas parecen atractivos para una población que siente que la vía legal de la concertación no produce cambios reales en sus condiciones materiales de existencia.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Papel del Estado",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Inversión en las periferias",
+      "enunciado": "¿Cuál debe ser el papel principal del Estado y los gremios económicos en el desarrollo de las zonas periféricas?",
+      "opciones": ["Extraer recursos sin reinvertir en la comunidad", "Asegurar la inversión social, regular el mercado y promover el bienestar común", "Limitar el acceso de los campesinos a la tierra", "Desplazar a las comunidades para proyectos industriales"],
+      "correcta": 1,
+      "justificacion": "En un Estado Social de Derecho, la función del Estado es redistribuir la riqueza y regular los actores económicos para que la inversión social garantice derechos humanos y desarrollo equitativo en todo el territorio."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Resolución pacífica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Cultura de paz",
+      "enunciado": "La deslegitimación de discursos violentos es responsabilidad exclusiva de las autoridades gubernamentales.",
+      "correcta": false,
+      "justificacion": "La construcción de una cultura de paz y la deslegitimación de la violencia es un deber ciudadano colectivo. Si bien el Estado debe dar ejemplo, son los individuos y los grupos sociales quienes deben transformar sus propias prácticas dialógicas en la cotidianidad."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Conflicto intergrupal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Resolución de conflictos",
+      "enunciado": "Defina qué es el conflicto intergrupal y por qué es fundamental gestionarlo desde la democracia.",
+      "respuesta": "El conflicto intergrupal es la interacción entre grupos que perciben metas o valores contrapuestos. Gestionarlo desde la democracia es fundamental porque permite institucionalizar la disputa, convirtiendo la confrontación en debate público y la violencia en negociación. En un régimen democrático, las diferencias se tramitan mediante el voto, la movilización pacífica y la concertación, evitando que los antagonismos destruyan la convivencia social.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Desarrollo regional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Asimetrías geográficas",
+      "enunciado": "¿Por qué factores geográficos influyen en la construcción de infraestructura económica regional?",
+      "opciones": ["Porque la geografía es la única responsable del éxito económico", "Porque la distancia a los centros de mercado y la topografía determinan costos y capacidad de integración productiva", "Porque los gobiernos solo invierten donde hay montañas", "Porque la geografía impide cualquier tipo de tecnología"],
+      "correcta": 1,
+      "justificacion": "La geografía impone retos logísticos (conectividad, acceso a puertos, topografía), los cuales, si no son acompañados por inversión estatal, condenan a ciertas regiones a una menor competitividad y menor desarrollo social que los centros urbanos más integrados."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Escucha activa",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Comunicación",
+      "enunciado": "Para ejercer la escucha activa es obligatorio estar de acuerdo con todo lo que la otra parte expresa.",
+      "correcta": false,
+      "justificacion": "La escucha activa consiste en entender y validar la emoción y perspectiva del otro, no necesariamente en compartir su opinión. Se puede comprender la visión ajena para mediar sin necesidad de renunciar a los propios principios o acuerdos previos."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Cultura de paz",
+      "competencia": "Pensamiento social",
+      "contexto": "Transformación de conflictos",
+      "enunciado": "Argumente cómo la honestidad intelectual contribuye a la resolución de conflictos sociales.",
+      "respuesta": "La honestidad intelectual, expresada en la citación rigurosa de fuentes y en el reconocimiento de la verdad, es fundamental porque combate la desinformación y el fanatismo. En un conflicto social, muchas veces las partes se basan en mitos o falsedades. Actuar con honestidad intelectual permite debatir sobre bases de realidad, lo cual es el primer paso para llegar a acuerdos perdurables y evitar la manipulación política de las tensiones comunitarias.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Relaciones de pareja",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Convivencia",
+      "enunciado": "¿Qué caracteriza a un discurso violento en una relación interpersonal?",
+      "opciones": ["El diálogo abierto sobre las diferencias", "La descalificación, el insulto y el intento de imponer control sobre el otro", "La negociación ante problemas financieros", "La expresión abierta de sentimientos de afecto"],
+      "correcta": 1,
+      "justificacion": "La violencia no es solo física; los discursos de poder que buscan humillar o controlar son formas de violencia verbal y psicológica que destruyen la posibilidad de una relación basada en la igualdad."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Inversión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Derechos ciudadanos",
+      "enunciado": "El desarrollo de las periferias debe esperar hasta que las grandes ciudades estén totalmente satisfechas en sus necesidades.",
+      "correcta": false,
+      "justificacion": "El principio de equidad en un Estado Social de Derecho implica que el Estado debe priorizar a las poblaciones con mayores carencias, independientemente de la satisfacción de otros sectores, para cerrar brechas sociales históricas."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Concertación social",
+      "competencia": "Pensamiento social",
+      "contexto": "Práctica democrática",
+      "enunciado": "Proponga una estrategia para concertar intereses entre jóvenes y adultos en una comunidad.",
+      "respuesta": "La estrategia debe ser un espacio de diálogo intergeneracional estructurado, donde se aplique la escucha activa con reglas claras de respeto. Es vital crear foros donde los jóvenes presenten sus propuestas con argumentos basados en datos y los adultos expliquen el contexto histórico de la comunidad, permitiendo que ambas partes reconozcan el valor de la visión del otro y logren un plan de acción conjunto para el bienestar comunitario.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Conflicto intergrupal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Análisis sistémico",
+      "enunciado": "¿Qué es la asimetría de desarrollo en el contexto de un conflicto regional?",
+      "opciones": ["Una situación donde todas las regiones tienen igual cantidad de riqueza", "Una diferencia marcada en el acceso a recursos, oportunidades y derechos entre regiones", "Un fenómeno natural que no afecta a la política", "El aumento constante de la calidad de vida en todas las zonas por igual"],
+      "correcta": 1,
+      "justificacion": "Las asimetrías de desarrollo describen las desigualdades territoriales donde unas regiones concentran capital y oportunidades mientras otras, como la zona rural de Loma Verde, viven con escasez de recursos, siendo esta la base de muchos conflictos sociales."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Resolución pacífica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Justicia",
+      "enunciado": "La resolución pacífica de conflictos es una señal de debilidad de los grupos involucrados.",
+      "correcta": false,
+      "justificacion": "Al contrario, la capacidad de resolver conflictos por la vía pacífica es una muestra de madurez democrática, superioridad ética y una gran inteligencia social, pues requiere mucha más templanza y diálogo que el uso de la violencia."
+    }
+  ]
+}

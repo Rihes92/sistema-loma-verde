@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:49:23.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Papel regulador del Estado y gremios en la inversión social",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Inversión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Economía y territorio",
+      "enunciado": "Explique por qué la inversión social en Loma Verde no debe ser vista como una dádiva del sector privado, sino como un elemento fundamental para el desarrollo territorial.",
+      "respuesta": "La inversión social es fundamental porque la riqueza de un territorio se genera gracias a sus recursos, su fuerza de trabajo y su contexto. Cuando los gremios económicos operan en territorios como Loma Verde, se benefician de estas condiciones. Por tanto, la inversión en salud, educación o vías no es un favor ni una 'dádiva', sino una contraprestación necesaria para equilibrar las condiciones sociales que permiten la sostenibilidad del territorio. Sin inversión social, el desarrollo económico de los gremios es efímero y socialmente injusto.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Papel del Estado",
+      "competencia": "Pensamiento social",
+      "contexto": "Rol constitucional",
+      "enunciado": "El Estado debe retirarse por completo de la economía para que los gremios logren el progreso de todas las regiones.",
+      "correcta": false,
+      "justificacion": "El Estado cumple un rol vital en el marco del Estado Social de Derecho. Retirarse significaría dejar el desarrollo territorial a la voluntad exclusiva del mercado, que tiende a concentrar riqueza y omitir inversiones en zonas que no son altamente rentables en el corto plazo, aumentando la desigualdad en regiones periféricas."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Inversión social",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Desarrollo territorial",
+      "enunciado": "¿Qué es necesario para que la articulación entre Estado, gremios y comunidad sea efectiva?",
+      "opciones": ["Que los gremios operen sin ninguna supervisión", "Que existan marcos de regulación claros, metas sociales vinculantes y veeduría ciudadana", "Que el Estado delegue toda su responsabilidad social al sector privado", "Que la comunidad no participe en las decisiones económicas"],
+      "correcta": 1,
+      "justificacion": "La efectividad depende de la transparencia, la regulación y la participación. Sin un marco legal vinculante, la inversión social es discrecional; sin veeduría ciudadana, los proyectos pierden pertinencia y se alejan de las necesidades reales de Loma Verde."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Papel del Estado",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Análisis de política pública",
+      "enunciado": "Analice las consecuencias de un Estado débil en el ejercicio de su función reguladora frente a proyectos económicos a gran escala.",
+      "respuesta": "Un Estado débil en su función reguladora permite que los proyectos económicos a gran escala se conviertan en fuentes de conflicto social. Sin supervisión efectiva, las empresas pueden omitir los costos ambientales y sociales de sus operaciones. Esto genera tensiones entre la comunidad local y los inversores, reduce la confianza en las instituciones democráticas y, en última instancia, consolida un modelo de desarrollo que perpetúa la pobreza en la periferia, al tiempo que genera beneficios concentrados en actores externos.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Periferia",
+      "competencia": "Pensamiento social",
+      "contexto": "Economía geográfica",
+      "enunciado": "¿Por qué las periferias rurales suelen tener menor inversión social?",
+      "opciones": ["Porque no tienen potencial de desarrollo", "Porque históricamente se ha priorizado el desarrollo de las ciudades principales, dejando a las zonas rurales sin conectividad ni servicios suficientes", "Porque los campesinos no quieren desarrollo", "Porque no hay recursos en el país para invertir"],
+      "correcta": 1,
+      "justificacion": "La falta de inversión en las periferias responde a sesgos en la planificación nacional que han privilegiado históricamente la infraestructura urbana como motor de crecimiento, descuidando el papel del campo en la estructura económica nacional."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Inversión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Equidad",
+      "enunciado": "Toda inversión de un gremio económico en una comunidad es, automáticamente, una forma de inversión social.",
+      "correcta": false,
+      "justificacion": "No necesariamente. Algunos proyectos de gremios económicos son simplemente infraestructura necesaria para su propia operación comercial (ej. vías privadas exclusivas para extraer recursos). La inversión social real es aquella que trasciende el interés comercial directo y mejora la calidad de vida general de la comunidad (ej. escuelas, centros de salud, programas de formación)."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Papel del Estado",
+      "competencia": "Pensamiento social",
+      "contexto": "Derechos ciudadanos",
+      "enunciado": "Argumente por qué la infraestructura vial es una condición necesaria para la inversión social.",
+      "respuesta": "La infraestructura vial es la columna vertebral del desarrollo social. Sin vías, la inversión social no llega. Una ambulancia no puede llegar a una zona aislada, los maestros no pueden desplazarse regularmente a las escuelas rurales, y los campesinos no pueden acceder a mercados locales o nacionales. Por tanto, la infraestructura vial actúa como el habilitador fundamental para que el Estado y los gremios puedan desplegar programas de salud, educación y cultura de forma sostenida en los territorios periféricos.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Crecimiento económico",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Economía del desarrollo",
+      "enunciado": "¿Qué significa crecimiento económico desigual?",
+      "opciones": ["Que todos los habitantes de una nación tienen las mismas oportunidades", "Que la riqueza se genera y concentra solo en ciertas regiones o sectores, mientras otros territorios permanecen estancados", "Que los precios de todos los productos son iguales en todas partes", "Que el país no tiene crecimiento"],
+      "correcta": 1,
+      "justificacion": "Este fenómeno explica cómo Colombia ha crecido económicamente durante décadas mientras persisten brechas estructurales enormes, donde el crecimiento se explica principalmente por el éxito de las ciudades y sectores específicos, sin derramarse significativamente hacia zonas campesinas."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Gremios económicos",
+      "competencia": "Pensamiento social",
+      "contexto": "Responsabilidad social",
+      "enunciado": "La única responsabilidad de un gremio económico es maximizar sus beneficios financieros para sus dueños.",
+      "correcta": false,
+      "justificacion": "En el contexto actual de desarrollo sostenible y Estado Social de Derecho, los gremios tienen una responsabilidad social que trasciende la utilidad financiera. Su impacto en el territorio, el medio ambiente y la cohesión social es tan importante como sus resultados económicos para garantizar su legitimidad y sostenibilidad."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Honestidad intelectual",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Análisis de políticas",
+      "enunciado": "Explique por qué utilizar informes técnicos del DNP es vital para exigir inversión social.",
+      "respuesta": "Utilizar informes técnicos del DNP es vital porque proporciona un lenguaje común y técnico que las autoridades no pueden ignorar fácilmente. Estos informes contienen diagnósticos, proyecciones y metas que son vinculantes o al menos de referencia nacional. Si una comunidad argumenta su solicitud de inversión basándose en los datos técnicos del DNP, está demostrando que su petición no es un capricho, sino una necesidad identificada por la misma planeación del Estado, lo que obliga a una respuesta técnica y política más seria y fundamentada.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Estado Social de Derecho",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Constitución de 1991",
+      "enunciado": "¿Qué implica que Colombia sea un Estado Social de Derecho en relación con la inversión pública?",
+      "opciones": ["Que el Estado puede decidir arbitrariamente en qué gastar el dinero", "Que el Estado tiene el deber ineludible de redistribuir la riqueza para garantizar condiciones de vida dignas a todos", "Que solo el sector privado debe encargarse de la educación", "Que la inversión pública es secundaria frente al interés de unos pocos"],
+      "correcta": 1,
+      "justificacion": "El carácter 'Social' del Estado en nuestra Constitución obliga a que la administración pública sea un instrumento de equidad, utilizando los recursos no solo para el funcionamiento del Estado, sino para garantizar derechos fundamentales en todo el territorio."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Inversión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Calidad de vida",
+      "enunciado": "Una mejor infraestructura en Loma Verde solo beneficia a los empresarios, no al campesino.",
+      "correcta": false,
+      "justificacion": "La infraestructura es un bien público. Mejores vías, redes eléctricas o servicios de salud benefician directamente al campesino en su producción, su salud y su cotidianidad. Los beneficios para los empresarios son secundarios frente a la mejora en la calidad de vida y la soberanía del productor agrícola local."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Concertación social",
+      "competencia": "Pensamiento social",
+      "contexto": "Participación ciudadana",
+      "enunciado": "Proponga cómo la comunidad de Loma Verde puede vigilar la inversión social en su territorio.",
+      "respuesta": "La comunidad debe organizarse en una veeduría ciudadana formalmente reconocida. Esta veeduría debe solicitar acceso a los contratos públicos, comparar los cronogramas de obra con los avances reales en campo, y documentar el impacto de la inversión mediante informes sencillos que puedan ser presentados ante el Concejo Municipal o la Personería. El uso de las redes sociales y reuniones comunitarias también es vital para mantener la visibilidad del proyecto y la presión social necesaria para su cumplimiento.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Crecimiento desigual",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Economía",
+      "enunciado": "¿Qué causa que la inversión económica sea atraída principalmente por las grandes ciudades?",
+      "opciones": ["La geografía rural es intrínsecamente mala", "La concentración histórica de infraestructura, servicios y mercados en las capitales, lo que reduce riesgos para los inversionistas", "Que la gente en la ciudad es más inteligente", "Que no hay tierras fértiles en el campo"],
+      "correcta": 1,
+      "justificacion": "La inversión privada busca lugares donde ya existan condiciones favorables (vías, luz, mano de obra capacitada). Como las ciudades han recibido históricamente casi toda la inversión estatal, se vuelven imanes naturales para el capital privado, mientras que el campo queda en un rezago que es difícil de superar sin políticas públicas activas."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Papel del Estado",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Democracia participativa",
+      "enunciado": "El desarrollo de las periferias debe ser un proceso vertical impuesto desde el gobierno nacional sin escuchar a la comunidad.",
+      "correcta": false,
+      "justificacion": "La Constitución de 1991 promueve una democracia participativa. Cualquier inversión en el territorio que no consulte y valore la perspectiva de la comunidad local está destinada al fracaso o a generar rechazo, pues no responde a las necesidades reales ni cuenta con la legitimidad de sus habitantes."
+    }
+  ]
+}

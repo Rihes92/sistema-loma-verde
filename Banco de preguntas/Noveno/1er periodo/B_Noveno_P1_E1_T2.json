@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T14:50:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Periodo 1",
+    "unidad": "Frontera agrícola, turismo desmedido y minería extractiva",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-CS9-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento social",
+      "contexto": "El ordenamiento ambiental del territorio define la frontera agrícola como el límite que separa los suelos dedicados a la producción agropecuaria de las áreas destinadas a la protección y conservación ecológica.",
+      "enunciado": "Históricamente, en el departamento de Córdoba, la ampliación descontrolada de la frontera agrícola ha estado impulsada principalmente por un modelo de desarrollo basado en:",
+      "opciones": [
+        "A) La creación de grandes reservas ecológicas y parques nacionales de carácter estatal.",
+        "B) La ganaderización extensiva latifundista que sustituye el bosque nativo por praderas de pastoreo.",
+        "C) El fomento de huertas caseras comunitarias de agricultura orgánica para el autoabastecimiento veredal.",
+        "D) La prohibición total de la tenencia privada de la tierra para proteger los derechos indígenas ancestrales."
+      ],
+      "correcta": 1,
+      "justificacion": "La historia agraria del departamento de Córdoba demuestra que el avance de la frontera agrícola se ha caracterizado por la ganaderización extensiva. Este proceso implicó la tala masiva de los bosques secos y húmedos tropicales para introducir pastizales comerciales destinados a la cría de ganado bovino a gran escala, concentrando la propiedad de la tierra y alterando los geosistemas regionales."
+    },
+    {
+      "id": "LV-BANCO-CS9-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las selvas y bosques nativos de las colinas de Loma Verde cumplen una función crucial en la regulación climática local al liberar grandes volúmenes de vapor de agua a la atmósfera mediante la evapotranspiración celular de las plantas.",
+      "enunciado": "Si las haciendas vecinas continúan talando los parches de bosque para ampliar las pasturas ganaderas, ¿cuál es el impacto climático directo que experimentarán las parcelas campesinas de pancoger en el corregimiento?",
+      "opciones": [
+        "A) Un aumento significativo de la humedad del aire que acelerará el crecimiento de la yuca.",
+        "B) La estabilización de las temperaturas invernales eliminando las plagas agrícolas por congelamiento.",
+        "C) La intensificación del microclima seco local, con olas de calor más severas y una evaporación acelerada del agua del suelo.",
+        "D) Un aumento en la frecuencia de nevadas en las zonas bajas debido al despeje del horizonte geográfico."
+      ],
+      "correcta": 2,
+      "justificacion": "La deforestación elimina la masa vegetal responsable de inyectar humedad al aire a través de la evapotranspiración. Al desaparecer los árboles, se pierde este mecanismo de enfriamiento biológico, lo que altera el microclima local de Loma Verde aumentando las temperaturas de superficie, intensificando la aridez del suelo y resecando los cultivos de subsistencia."
+    },
+    {
+      "id": "LV-BANCO-CS9-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento social",
+      "contexto": "La minería a cielo abierto requiere la remoción total del suelo superficial (horizontes orgánicos) y de la roca suprayacente para extraer los minerales del subsuelo.",
+      "enunciado": "Las canteras y excavaciones mineras a cielo abierto generan pasivos ambientales debido a que la remoción completa de la capa vegetal destruye los ciclos biológicos y la materia orgánica del suelo, impidiendo su regeneración y uso agrícola a corto y mediano plazo.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque el suelo fértil es una estructura compleja compuesta por minerales, aire, agua y materia orgánica viva que tarda siglos en formarse. La minería extractiva desestructura mecánicamente esta configuración biológica elemental, dejando expuestas rocas estériles incapaces de sustentar procesos agrícolas de siembra tradicionales de forma inmediata."
+    },
+    {
+      "id": "LV-BANCO-CS9-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde está ubicado en el interior del continente, a varias decenas de kilómetros de la línea costera del departamento de Córdoba.",
+      "enunciado": "La destrucción de los bosques de manglar y la sobreexplotación hídrica provocada por el turismo desmedido en las playas de San Antero no ejercen ningún impacto económico o social en Loma Verde, ya que los ecosistemas marinos y los agrícolas rurales funcionan de forma totalmente aislada.",
+      "correcta": false,
+      "justificacion": "Es falso porque la geografía sistémica demuestra que los ecosistemas están interconectados. El turismo costero insostenible destruye los manglares, alterando los balances de humedad y vientos regionales que viajan hacia el interior del valle del Sinú. Además, degrada los hábitats de reproducción marina, lo que disminuye las poblaciones de peces, aumentando los precios de este alimento esencial en los mercados de Montería de los que se abastece el campesinado de Loma Verde."
+    },
+    {
+      "id": "LV-BANCO-CS9-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante una asamblea en la vereda El Deseo, un técnico agrario afirma que la construcción de pozos profundos privados para grandes terratenientes ganaderos mitiga la sequía en la región, mientras que los pequeños agricultores argumentan que esos pozos secan los aljibes superficiales de las viviendas campesinas.",
+      "enunciado": "Desde un enfoque de justicia ambiental y manejo comunitario de cuencas, ¿cuál es el argumento técnico que respalda la preocupación de los pequeños agricultores de Loma Verde?",
+      "opciones": [
+        "A) Los pozos profundos alteran la gravedad del terreno, haciendo que los cultivos de maíz crezcan en la dirección opuesta al sol.",
+        "B) La extracción masiva y no regulada de agua subterránea por pozos profundos deprime el nivel freático regional, succionando el agua de las capas superiores y secando los pozos artesanales comunitarios.",
+        "C) El agua subterránea profunda es venenosa para el ganado porque contiene altos niveles de oxígeno industrial que congela el estómago animal.",
+        "D) Los pozos profundos atraen tormentas eléctricas que queman los cultivos de plátano debido a la fricción magnética de los tubos."
+      ],
+      "correcta": 1,
+      "justificacion": "El agua subterránea forma un sistema hidráulico continuo. La perforación y el bombeo intensivo e incontrolado por pozos profundos privados extraen agua de los acuíferos conectados, provocando un cono de depresión en las capas hídricas que reduce el nivel freático. Esto deja sin agua a los pozos artesanales (aljibes) más superficiales de los cuales depende la subsistencia familiar campesina."
+    },
+    {
+      "id": "LV-BANCO-CS9-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los campesinos de Loma Verde construyen estanques llamados 'jagüeyes' para recolectar el agua de las escorrentías superficiales durante los meses de lluvias invernales y usarla para calmar la sed de sus animales en la época de verano.",
+      "enunciado": "Cuando se talan los bosques de las colinas altas para introducir pastizales ganaderos, ¿qué proceso físico acelera el secamiento e inutilidad de los jagüeyes campesinos ubicados en las partes bajas?",
+      "opciones": [
+        "A) La radiación solar genera un vacío magnético que absorbe el agua hacia la atmósfera de forma sólida.",
+        "B) La falta de árboles incrementa la escorrentía superficial sin freno, arrastrando lodo y sedimento que colmatan (llenan) el jagüey, reduciendo su capacidad de almacenar agua.",
+        "C) Las hojas secas de los pastizales ganaderos actúan como esponjas químicas que neutralizan las moléculas de hidrógeno del agua.",
+        "D) El agua de lluvia se vuelve ácida al tocar el pasto, evaporándose de forma inmediata antes de llegar a la estructura del estanque."
+      ],
+      "correcta": 1,
+      "justificacion": "Las raíces y la hojarasca de los bosques nativos actúan como un freno natural que estabiliza el suelo frente a las lluvias. Al deforestar para introducir ganado, el suelo desprotegido sufre erosión hídrica superficial; las lluvias arrastran toneladas de sedimentos y lodo ladera abajo directos al jagüey. Este proceso de colmatación reduce la profundidad del estanque, causando que almacene menos agua y se seque con rapidez al inicio del verano."
+    },
+    {
+      "id": "LV-BANCO-CS9-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento social",
+      "contexto": "El término 'pasivo ambiental' se refiere al conjunto de impactos ecológicos negativos y daños no compensados ni restaurados que una actividad económica extractiva deja en un territorio.",
+      "enunciado": "La contaminación por mercurio de las fuentes hídricas serranas debida a la minería ilegal y los socavones abandonados sin restauración técnica constituyen pasivos ambientales que transfieren los costos de la degradación a las comunidades campesinas y a las generaciones futuras.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque las empresas o mineros informales extraen la riqueza económica inmediata y abandonan el territorio dejando el suelo erosionado y el agua envenenada con metales pesados. La pérdida de la productividad agrícola y el costo de enfermedades o purificación del agua deben ser asumidos por las comunidades campesinas locales que habitan la cuenca."
+    },
+    {
+      "id": "LV-BANCO-CS9-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El suelo arcilloso del corregimiento de Loma Verde sufre procesos severos de compactación cuando soporta cargas excesivas de peso de forma continuada, especialmente durante las épocas de transición climática.",
+      "enunciado": "Explique detalladamente de qué manera el fenómeno de compactación del suelo provocado por el pisoteo del ganado en la ganadería extensiva altera el ciclo del agua a nivel local y perjudica las raíces de los cultivos de maíz y plátano de la agricultura familiar.",
+      "respuesta": "La introducción de ganado vacuno pesado bajo esquemas extensivos ejerce una presión mecánica continua sobre el suelo. Este pisoteo destruye la estructura porosa de la tierra arcillosa de Loma Verde, eliminando los macroporos que facilitan la aireación y la infiltración del agua. Al compactarse el suelo, se transforma en una capa impermeable. Cuando llueve en invierno, el agua no puede penetrar hacia las capas profundas para recargar los acuíferos; en su lugar, corre de manera torrencial por la superficie, lavando los nutrientes y causando erosión hídrica. Para los cultivos tradicionales como el maíz y el plátano, esta compactación es catastrófica por dos razones: en invierno, la dureza del suelo impide que las raíces se desarrollen y penetren de forma adecuada para anclar la planta, y la falta de aireación pudre las raíces por estancamiento superficial de agua. En verano, al no haber reservas de agua infiltrada en el subsuelo profundo, el terreno se cuartea y se seca rápidamente, induciendo un estrés hídrico severo que marchita las plantas y reduce drásticamente los rendimientos de las cosechas familiares.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-CS9-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento social",
+      "contexto": "El turismo masivo e insostenible en las regiones insulares y costeras exige la construcción rápida de carreteras, cabañas hoteleras y parqueaderos sobre zonas de playas y humedales tectónicos.",
+      "enunciado": "Desde la perspectiva de los geosistemas estratégicos del Caribe, ¿cuál es el impacto ecológico directo de edificar estas infraestructuras turísticas sobre los cinturones de manglar costero?",
+      "opciones": [
+        "A) La purificación acelerada de las corrientes marinas gracias al cemento utilizado.",
+        "B) La destrucción de las barreras biológicas naturales que protegen la costa contra la erosión marina y sirven de criadero de la fauna marina.",
+        "C) La transformación de los manglares en árboles frutales aptos para la producción agroindustrial de exportación.",
+        "D) El incremento del oxígeno disuelto en el agua debido a la eliminación de las raíces sumergidas."
+      ],
+      "correcta": 1,
+      "justificacion": "Los manglares son ecosistemas estratégicos que actúan como rompeolas naturales absorbiendo la energía del mar y reteniendo sedimentos continentales. Al destruirlos para construir infraestructura turística, la costa queda totalmente expuesta a la erosión severa por el oleaje y se eliminan las guarderías naturales de peces y moluscos, quebrando el equilibrio ecológico del litoral."
+    },
+    {
+      "id": "LV-BANCO-CS9-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un sector de defensores del desarrollo extractivista afirma que la minería artesanal e ilegal de oro genera riqueza inmediata para las comunidades rurales periféricas, resolviendo los problemas de pobreza monetaria.",
+      "enunciado": "Este argumento es válido a largo plazo porque las ganancias económicas de extraer oro compensan de sobra la pérdida permanente de los ríos, la intoxicación por mercurio en los alimentos y la destrucción irreversible del suelo agrícola campesino de las cuencas comunes.",
+      "correcta": false,
+      "justificacion": "Es falso porque la riqueza monetaria generada por la minería ilegal e informal es efímera y se concentra en pocos actores, mientras que los daños ambientales (envenenamiento de fuentes hídricas con mercurio, pérdida de biodiversidad y destrucción de suelos fértiles) son crónicos y permanentes. Estos pasivos ambientales destruyen la capacidad de la tierra para producir alimentos, condenando a las comunidades rurales a la pobreza estructural a largo plazo."
+    },
+    {
+      "id": "LV-BANCO-CS9-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la ecología de cuencas, las aguas superficiales y subterráneas se mueven en redes interconectadas que transportan materia, energía y contaminantes químicos desde las zonas altas montañosas hasta las llanuras bajas.",
+      "enunciado": "Si una empresa minera desvía y contamina una quebrada en las partes altas de una serranía para lavar minerales, ¿cómo afecta este proceso geográfico a los productores agrícolas de las tierras bajas de Loma Verde que usan arroyos conectados?",
+      "opciones": [
+        "A) Incrementa los nutrientes del suelo campesino gracias a los minerales pesados que actúan como abonos orgánicos.",
+        "B) Reduce la cantidad de agua disponible aguas abajo y transporta sedimentos o sustancias tóxicas que contaminan los jagüeyes de uso común.",
+        "C) Obliga a las nubes a llover exclusivamente sobre el área de la mina, dejando al corregimiento libre de tormentas invernales.",
+        "D) Provoca el crecimiento inmediato de especies de peces marinos gigantes en las quebradas de lomerío del corregimiento."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque las perturbaciones hidrogeológicas en las cabeceras de una cuenca se transmiten directamente aguas abajo. El desvío de arroyos reduce el caudal neto que llega a las redes hidráulicas locales de Loma Verde, y la carga de lodos y metales pesados degrada la calidad del agua indispensable para el riego de cultivos y abrevadero de animales."
+    },
+    {
+      "id": "LV-BANCO-CS9-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento social",
+      "contexto": "El desarrollo de modelos agroforestales o silvopastoriles consiste en integrar árboles nativos maderables y frutales dentro de las áreas destinadas al pastoreo ganadero o al cultivo de pancoger.",
+      "enunciado": "La implementación de sistemas silvopastoriles en Loma Verde representa una alternativa de mitigación frente a la ganadería extensiva tradicional porque los árboles protegen el suelo del sol directo, conservan la humedad y fijan nutrientes reduciendo la degradación del geosistema local.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que estos sistemas imitan en parte la estructura de capas del bosque tropical original. Los árboles actúan como reguladores térmicos, sus raíces evitan la erosión provocada por las lluvias y disminuyen el impacto de la compactación por las pezuñas del ganado, permitiendo mantener la productividad ganadera sin destruir el equilibrio hídrico."
+    },
+    {
+      "id": "LV-BANCO-CS9-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un plan de desarrollo municipal propone catalogar al corregimiento de Loma Verde como 'zona de expansión para la ganadería de carne de exportación', destinando el 85% de sus tierras cultivables a pastos artificiales.",
+      "enunciado": "Desde la perspectiva de la soberanía alimentaria y la permanencia digna del campesinado de pancoger en sus veredas, ¿cuál debe ser la postura crítica de la comunidad frente a este plan?",
+      "opciones": [
+        "A) Apoyarlo ciegamente porque la carne de exportación eliminará de inmediato la necesidad de consumir yuca y plátano en las veredas.",
+        "B) Rechazarlo argumentando que la monopolización ganadera del suelo reduce el espacio para cultivar alimentos tradicionales, destruye los microclimas y desplaza la economía familiar campesina.",
+        "C) Proponer que se sustituya el ganado por la extracción intensiva de oro a cielo abierto en los patios de todas las viviendas rurales.",
+        "D) Solicitar que se construyan grandes piscinas turísticas sobre los cultivos de maíz para atraer visitantes internacionales de forma masiva."
+      ],
+      "correcta": 1,
+      "justificacion": "La concentración del suelo en la ganadería extensiva de exportación reduce las tierras disponibles para los cultivos minifundistas de subsistencia (yuca, plátano, maíz), destruyendo la seguridad alimentaria local. Además, expande los factores de degradación biofísica (deforestación, compactación, escasez hídrica), socavando la viabilidad económica de la vida campesina tradicional."
+    },
+    {
+      "id": "LV-BANCO-CS9-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El fenómeno de 'blanqueamiento coralino' ocurre cuando las colonias de pólipos expulsan a sus algas simbióticas (*zooxantelas*) debido a aumentos sutiles en la temperatura oceánica causados por el efecto invernadero global.",
+      "enunciado": "La quema masiva de bosques y la deforestación generada por la ampliación de la frontera ganadera en el interior del departamento de Córdoba liberan dióxido de carbono ($CO_2$) a la atmósfera, contribuyendo directamente al calentamiento global que destruye los arrecifes de coral en el mar Caribe colombiano.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la deforestación de bosques tropicales es una de las principales fuentes de emisión de gases de efecto invernadero a escala mundial. El carbono almacenado en los árboles es liberado al aire en forma de $CO_2$ mediante la quema y descomposición; este gas acumula calor en la atmósfera global, elevando la temperatura de los océanos y desencadenando indirectamente la muerte de los arrecifes costeros."
+    },
+    {
+      "id": "LV-BANCO-CS9-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Frontera agrícola, turismo desmedido y minería extractiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la vereda Las Palmitas del corregimiento de Loma Verde, un grupo de jóvenes de la institución educativa propone crear un 'Plan de Restauración de Bosques de Galería Comunitarios' para reforestar las márgenes de los arroyos secos utilizando árboles nativos como el campano y el caracolí.",
+      "enunciado": "Sustente de manera técnica los beneficios geográficos e hidrológicos que aportará este proyecto escolar para mitigar los impactos negativos que la ampliación de la frontera agrícola de las grandes haciendas vecinas ha causado en el territorio de Loma Verde.",
+      "respuesta": "El proyecto escolar de restauración de bosques de galería aporta beneficios hidrológicos y geográficos fundamentales para contrarrestar la degradación provocada por las haciendas ganaderas vecinas. En primer lugar, la siembra de árboles nativos como el campano y el caracolí en las márgenes de los arroyos restablece la cobertura forestal que funciona como un amortiguador físico. Las copas de los árboles reducen el impacto directo de las gotas de lluvia, evitando el desprendimiento de partículas de tierra fértil, mientras que sus intrincadas redes de raíces estabilizan los suelos arcillosos de las laderas de Loma Verde, frenando la erosión hídrica. En segundo lugar, las raíces de los árboles actúan como canales naturales que rompen las capas de tierra compactadas por el pisoteo de los vacunos, restaurando la permeabilidad y la porosidad del terreno; esto permite que el agua de lluvia invernal vuelva a infiltrarse eficientemente hacia los acuíferos subterráneos locales en lugar de perderse por escorrentías violentas. Al recargarse las reservas de agua profunda, se asegura que los arroyos mantengan un flujo mínimo constante (caudal ecológico) durante los meses más severos de la temporada seca de verano. Finalmente, este corredor boscoso genera un microclima húmedo y fresco que reduce la evaporación directa del agua superficial en los jagüeyes comunitarios colindantes, protegiendo los cultivos tradicionales de pancoger de las veredas vecinas contra el marchitamiento por olas de calor, incrementando la resiliencia socioambiental del campesinado frente al extractivismo regional.",
+      "sugerida": true
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:00:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Hechos políticos de la segunda mitad del siglo XX y su lazo contemporáneo",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "PREG-BP-01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "El Frente Nacional pactó una repartición del poder por 16 años.",
+      "enunciado": "Explique por qué el Frente Nacional, a pesar de detener la violencia bipartidista, contribuyó indirectamente al surgimiento de grupos armados insurgentes.",
+      "respuesta": "La exclusión política fue el factor detonante. Al no existir canales democráticos para que nuevas fuerzas sociales, políticas o ideológicas participaran en la toma de decisiones, muchos ciudadanos y organizaciones optaron por la lucha armada como única alternativa para generar cambios. Esto creó un círculo vicioso de violencia que reemplazó a la antigua rivalidad liberal-conservadora.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La Constitución de 1991 nació de un movimiento cívico-estudiantil llamado 'La Séptima Papeleta'.",
+      "enunciado": "La Constitución de 1991 fue diseñada principalmente para proteger los intereses exclusivos de los partidos Liberal y Conservador.",
+      "correcta": false,
+      "justificacion": "Es falso. La Constitución de 1991 fue una ruptura con el modelo del Frente Nacional. Surgió de una presión popular (Séptima Papeleta) que buscaba renovar las instituciones, garantizar derechos fundamentales, ampliar la democracia y dar cabida al pluralismo político, alejándose del bipartidismo cerrado de décadas anteriores."
+    },
+    {
+      "id": "PREG-BP-03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "El narcotráfico transformó la economía y la política en Colombia.",
+      "enunciado": "¿Cuál de las siguientes acciones fue una consecuencia directa del auge del narcotráfico en las instituciones colombianas durante finales del siglo XX?",
+      "opciones": [
+        "A) El fortalecimiento de la democracia y la eliminación de la corrupción estatal.",
+        "B) La infiltración de dineros ilícitos en campañas políticas y la corrupción de funcionarios públicos.",
+        "C) La reducción de la brecha entre ricos y pobres mediante la distribución equitativa de tierras.",
+        "D) El aumento de la inversión extranjera lícita y el fin del desempleo."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. El dinero del narcotráfico creó mecanismos de control sobre las instituciones, corrompiendo desde pequeños funcionarios hasta estructuras del poder central, además de desestabilizar la seguridad nacional mediante el uso de violencia terrorista contra la población civil y el Estado."
+    },
+    {
+      "id": "PREG-BP-04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La violencia partidista provocó grandes desplazamientos del campo a la ciudad.",
+      "enunciado": "Analice el impacto sociológico del desplazamiento campesino hacia las ciudades (como Montería) durante 'La Violencia'.",
+      "respuesta": "El desplazamiento forzado rompió los lazos comunitarios y productivos rurales. Al llegar a las ciudades, las familias campesinas se vieron obligadas a cambiar su modo de subsistencia agrícola por empleos informales urbanos, enfrentando condiciones de marginalidad y pobreza. Esto no solo afectó a los individuos, sino que alteró la estructura social del campo, dejando a muchas veredas sin su mano de obra productiva y con una memoria histórica fracturada.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-05",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Constitución de 1991 introdujo nuevos mecanismos de participación ciudadana.",
+      "enunciado": "La Acción de Tutela, introducida en la Constitución de 1991, permite a los ciudadanos colombianos exigir la protección inmediata de sus derechos fundamentales ante los jueces.",
+      "correcta": true,
+      "justificacion": "Es verdadero. La tutela fue uno de los logros más significativos de la Constitución de 1991, convirtiéndose en el mecanismo más utilizado por los ciudadanos para defender sus derechos contra acciones u omisiones de entidades públicas o privadas, fortaleciendo el acceso a la justicia."
+    },
+    {
+      "id": "PREG-BP-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "El Frente Nacional estableció una alternancia presidencial.",
+      "enunciado": "¿Qué buscaba principalmente el Frente Nacional con la alternancia presidencial entre liberales y conservadores?",
+      "opciones": [
+        "A) Garantizar la participación de todos los partidos políticos existentes.",
+        "B) Detener la guerra bipartidista que estaba devastando al país.",
+        "C) Fomentar la creación de nuevas guerrillas.",
+        "D) Expropiar las tierras a todos los campesinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. Tras años de violencia, el pacto buscaba una tregua definitiva que permitiera la gobernabilidad del país, mediante el reparto equitativo del poder institucional para evitar que la disputa por el Ejecutivo fuera el detonante de nuevos enfrentamientos armados."
+    },
+    {
+      "id": "PREG-BP-07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El narcotráfico no solo afectó la seguridad, sino también la cultura.",
+      "enunciado": "Argumente cómo la cultura del narcotráfico alteró la escala de valores de las comunidades rurales.",
+      "respuesta": "La cultura del narcotráfico promovió el 'dinero fácil' y el poder basado en la violencia, desafiando la autoridad legítima y desvalorizando el trabajo arduo y la educación. Para muchos jóvenes rurales, el éxito se empezó a asociar con el poder exhibido por los grupos ilegales, lo cual desestabilizó la cohesión comunitaria y los proyectos de vida basados en la legalidad y el desarrollo sostenible.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-08",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "La violencia partidista fue el inicio de los grandes movimientos de población en Colombia.",
+      "enunciado": "La violencia partidista afectó únicamente a las grandes ciudades del país y no tuvo consecuencias en la vida rural o en la producción agrícola.",
+      "correcta": false,
+      "justificacion": "Es falso. La violencia partidista se ensañó principalmente con las zonas rurales. Fue un conflicto agrario donde la disputa por la tierra y el control territorial provocó el desplazamiento forzado de campesinos, la destrucción de cosechas y el abandono de los campos, lo cual tuvo un impacto catastrófico en la producción agrícola nacional."
+    },
+    {
+      "id": "PREG-BP-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El año 1991 marcó un antes y un después en la historia jurídica de Colombia.",
+      "enunciado": "¿Cuál de los siguientes principios fundamenta la Constitución de 1991?",
+      "opciones": [
+        "A) La instauración de una monarquía absoluta.",
+        "B) El reconocimiento del Estado como Social de Derecho y el respeto por el pluralismo.",
+        "C) La centralización absoluta de todo el poder en la Iglesia Católica.",
+        "D) La eliminación de los derechos individuales de los ciudadanos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. Colombia se define en el artículo primero como un Estado Social de Derecho. Esto significa que el Estado tiene la obligación de garantizar el bienestar, la justicia social y el respeto por los derechos humanos de todos los ciudadanos en un marco democrático y pluralista."
+    },
+    {
+      "id": "PREG-BP-10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Hechos políticos de la segunda mitad del siglo XX",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Colombia ha vivido múltiples formas de violencia en las últimas décadas.",
+      "enunciado": "Describa cómo las dinámicas del conflicto armado en el campo colombiano se complicaron con la llegada del narcotráfico.",
+      "respuesta": "Antes del narcotráfico, el conflicto tenía mayor carácter ideológico. Con la llegada de los dineros ilícitos, los grupos armados obtuvieron recursos ilimitados para financiar sus actividades, lo que permitió el crecimiento de ejércitos privados, el reclutamiento forzado, y una carrera por el control territorial que priorizó el lucro económico sobre las motivaciones políticas iniciales, volviendo el conflicto mucho más prolongado, complejo y violento para los civiles.",
+      "sugerida": true
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Primer Periodo",
+    "unidad": "Eje 1: Conflictos socioambientales y seguridad hídrica regional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750053601aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Por qué Colombia es considerada un 'país megadiverso' y qué responsabilidad global implica esa condición?",
+      "respuesta": "Colombia es megadiversa porque alberga el 10% de todas las especies conocidas del planeta (56.000 de plantas, 1.900 de aves, 700 de anfibios) en apenas el 0,7% de la superficie terrestre, siendo el segundo país más biodiverso del mundo. Esta condición implica responsabilidad global porque lo que Colombia decida hacer con su biodiversidad afecta al patrimonio natural del planeta entero: la deforestación del Chocó o la contaminación de sus ríos es una pérdida irreversible para la humanidad. Colombia tiene la obligación moral y jurídica de conservar ese patrimonio, consagrada en la Convención sobre Diversidad Biológica (1992).",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750053601aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explica el concepto de 'fragmentación del hábitat' y por qué es la principal causa de extinción de especies en los Andes colombianos.",
+      "respuesta": "La fragmentación del hábitat es la división de un ecosistema continuo en parches aislados por carreteras, cultivos o urbanización. En los Andes colombianos, más del 70% del bosque original ha sido reemplazado por cultivos y potreros, dejando solo parches pequeños y aislados. Estos parches no pueden sostener poblaciones viables de especies que necesitan grandes territorios, porque se vuelven demasiado pequeñas para reproducirse sin consanguinidad. La fragmentación es más dañina que la tala total en algunos casos porque da una falsa sensación de que 'queda bosque' cuando en realidad los parches son islas ecológicas sin futuro.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750053601aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es un pasivo ambiental y quién debe pagar su restauración según el marco legal colombiano?",
+      "respuesta": "Un pasivo ambiental es el daño o deterioro ambiental acumulado por una actividad económica que no fue restaurado, cuyo costo recae sobre la comunidad o el Estado. Según el principio 'quien contamina paga' (Decreto 2811 de 1974 y Ley 99 de 1993), el responsable del daño debe asumir los costos de restauración. Si la empresa ya no existe, la responsabilidad puede recaer en los nuevos propietarios del activo o en el Estado por no haber exigido garantías financieras de restauración. En la práctica, la mayoría de los pasivos ambientales colombianos los pagan las comunidades afectadas.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750053601aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Cómo se relaciona la biodiversidad de una finca cafetera con su productividad y rentabilidad? ¿Qué servicios ecosistémicos específicos provee esa biodiversidad?",
+      "respuesta": "La biodiversidad provee servicios gratuitos: 1) Polinización por abejas y mariposas que aumenta la producción de grano. 2) Control natural de plagas por aves insectívoras y avispas parásitas que eliminan broca y otros insectos sin insecticidas. 3) Fertilidad del suelo por hongos micorrízicos y lombrices. 4) Regulación microclimática por árboles de sombra. Estudios de Cenicafé muestran que los cafetales bajo sombra biodiversa tienen hasta 20% más rendimiento que los monocultivos expuestos.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750053601aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "En Loma Verde, una familia campesina tiene un fragmento de bosque nativo de 2 hectáreas en la parte alta de su finca que no cultiva. El alcalde propone que lo talen para construir una cancha deportiva. ¿Qué argumentos ecológicos, económicos y legales usaría usted para defender ese bosque?",
+      "respuesta": "Ecológicos: hábitat de polinizadores y controladores de plagas; regula el nacimiento de agua de la finca; puede albergar especies endémicas. Económicos: los servicios ecosistémicos que provee valen más que la cancha; programas de PSA pueden generar ingresos adicionales por conservarlo. Legales: el Decreto 1076 de 2015 prohíbe talar bosques naturales sin autorización de la CAR; si tiene nacimientos de agua, la franja de protección hídrica es obligatoria. La familia puede solicitar a la CAR que lo declare reserva privada de la sociedad civil.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750053601fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Colombia es el segundo país más biodiverso del mundo, albergando el 10% de todas las especies conocidas del planeta en el 0,7% de la superficie terrestre.",
+      "correcta": true,
+      "justificacion": "Verdadero. Colombia es efectivamente el segundo país más biodiverso del mundo (después de Brasil), con más de 56.000 especies de plantas, 1.900 de aves (el 20% del total mundial), 700 de anfibios y 520 de mamíferos. El Chocó biogeográfico es uno de los puntos de mayor biodiversidad del planeta."
+    },
+    {
+      "id": "lv1750053601fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Los cafetales bajo sombra con diversidad de árboles nativos tienen menor rendimiento que los monocultivos de café expuestos al sol, según los estudios de Cenicafé.",
+      "correcta": false,
+      "justificacion": "Falso. Los estudios de Cenicafé documentan que los cafetales bajo sombra biodiversa tienen hasta un 20% más de rendimiento que los monocultivos expuestos, además de menor incidencia de roya y broca y mayor resiliencia ante eventos climáticos. La sombra regula el microclima, conserva la humedad y alberga aves que controlan plagas naturalmente."
+    },
+    {
+      "id": "lv1750053601fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Colombia ha perdido más del 30% de sus especies de anfibios en los últimos 50 años, principalmente por la quitridiomicosis y la destrucción de ecosistemas acuáticos.",
+      "correcta": true,
+      "justificacion": "Verdadero. Los anfibios son el grupo de vertebrados más amenazado del mundo. En Colombia, la combinación de la quitridiomicosis (enfermedad fúngica amplificada por el cambio climático), la contaminación de fuentes de agua, la fragmentación del hábitat y el uso de pesticidas ha llevado a la pérdida de más del 30% de las especies de ranas y salamandras en cinco décadas."
+    },
+    {
+      "id": "lv1750053601fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Cuando una empresa que causó un pasivo ambiental cierra o es vendida, el nuevo propietario no tiene ninguna responsabilidad legal sobre los daños ambientales causados por la empresa anterior.",
+      "correcta": false,
+      "justificacion": "Falso. En derecho ambiental colombiano, el pasivo ambiental puede seguir al activo: quien adquiere una empresa o un predio con un daño ambiental previo puede ser declarado responsable solidario de su restauración, especialmente si conocía el estado ambiental del bien al momento de la compra."
+    },
+    {
+      "id": "lv1750053601fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Los servicios ecosistémicos globales tienen un valor económico estimado entre 125 y 140 billones de dólares anuales, el doble del PIB mundial.",
+      "correcta": true,
+      "justificacion": "Verdadero. La Evaluación de los Ecosistemas del Milenio de la ONU (2005) estima que los servicios ecosistémicos globales tienen un valor económico de entre 125 y 140 billones de dólares anuales, aproximadamente el doble del PIB mundial total. Esto ilustra que la naturaleza es la mayor 'empresa' del planeta y que su pérdida tiene costos económicos reales y cuantificables."
+    },
+    {
+      "id": "lv1750053601sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Colombia es el país con mayor número de especies de aves del mundo, superando a países de mayor superficie.",
+      "enunciado": "¿Cuántas especies de aves alberga Colombia, convirtiéndola en el país con mayor diversidad de aves del mundo?",
+      "opciones": ["Aproximadamente 500 especies.", "Aproximadamente 900 especies.", "Aproximadamente 1.900 especies.", "Aproximadamente 3.500 especies."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia tiene aproximadamente 1.900 especies de aves, el 20% del total mundial, más que toda Europa y Norteamérica juntas. Esta riqueza ornitológica es consecuencia de la diversidad de ecosistemas: bosques tropicales, páramos, llanos, manglares y arrecifes, cada uno con comunidades de aves propias."
+    },
+    {
+      "id": "lv1750053601sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La región andina colombiana ha perdido más del 70% de su cobertura boscosa original.",
+      "enunciado": "¿Cuál es la principal causa de extinción de especies en los ecosistemas andinos colombianos?",
+      "opciones": ["La caza furtiva de especies silvestres para el tráfico ilegal.", "La fragmentación del hábitat por deforestación, cultivos y carreteras.", "La introducción masiva de especies exóticas en ecosistemas nativos.", "El cambio climático que altera la temperatura de los páramos."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La fragmentación del hábitat —resultado de décadas de deforestación, expansión de cultivos y construcción de vías— es la principal causa de extinción en los Andes colombianos. Divide el bosque en parches aislados donde las poblaciones de especies son demasiado pequeñas para sobrevivir a largo plazo."
+    },
+    {
+      "id": "lv1750053601sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento social",
+      "contexto": "Los pasivos ambientales son daños acumulados que quedan sin restaurar cuando una actividad económica termina.",
+      "enunciado": "¿Cuál de los siguientes es un ejemplo de pasivo ambiental en Colombia?",
+      "opciones": ["Un río que tiene agua limpia porque una empresa dejó de operar.", "Un río contaminado con mercurio cuya empresa minera responsable ya no existe.", "Un bosque que creció naturalmente después de que una finca fue abandonada.", "Una mina que sigue operando y pagando regalías al municipio."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Un pasivo ambiental es el daño que queda cuando la actividad termina sin restauración. Un río contaminado con mercurio por una empresa minera que ya no existe es el ejemplo clásico: el daño persiste, nadie lo paga y las comunidades aguas abajo lo sufren indefinidamente."
+    },
+    {
+      "id": "lv1750053601sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los sistemas agroforestales con café combinan producción y conservación de biodiversidad.",
+      "enunciado": "¿Qué porcentaje de aumento en el rendimiento pueden tener los cafetales bajo sombra biodiversa en comparación con los monocultivos expuestos al sol, según Cenicafé?",
+      "opciones": ["Hasta un 5% más.", "Hasta un 10% más.", "Hasta un 20% más.", "Hasta un 50% más."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Cenicafé ha documentado que los cafetales bajo sombra con diversidad de árboles nativos pueden tener hasta un 20% más de rendimiento que los monocultivos expuestos al sol, además de menor incidencia de enfermedades y mayor resiliencia ante el cambio climático."
+    },
+    {
+      "id": "lv1750053601sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los árboles de sombra en los cafetales cumplen múltiples funciones ecológicas y productivas simultáneamente.",
+      "enunciado": "¿Cuál de los siguientes servicios ecosistémicos provee directamente un árbol de sombra nativo en una finca cafetera?",
+      "opciones": ["Aumenta la temperatura del suelo para acelerar la maduración del café.", "Elimina directamente la roya del café con sus secreciones.", "Crea microclima, alberga aves insectívoras y aporta materia orgánica al suelo.", "Atrae lluvias adicionales desde zonas más húmedas de la región."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Los árboles de sombra nativos crean un microclima que reduce el estrés hídrico del café, albergan aves insectívoras que controlan plagas de forma natural y aportan hojarasca que se convierte en materia orgánica del suelo. Estos tres servicios simultáneos reducen la necesidad de insumos externos."
+    },
+    {
+      "id": "lv1750053601sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento social",
+      "contexto": "El marco legal ambiental colombiano tiene principios específicos sobre la responsabilidad por daños ambientales.",
+      "enunciado": "¿Qué principio legal colombiano establece que el causante de un daño ambiental debe asumir los costos de su restauración?",
+      "opciones": ["El principio de subsidiariedad ambiental.", "El principio de precaución.", "El principio 'quien contamina paga'.", "El principio de solidaridad intergeneracional."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El principio 'quien contamina paga', consagrado en el Decreto 2811 de 1974 y la Ley 99 de 1993, establece que el responsable de un daño ambiental debe asumir los costos de su restauración. Este principio es la base jurídica para exigir que empresas mineras, industriales o agropecuarias respondan por los pasivos ambientales que generan."
+    },
+    {
+      "id": "lv1750053601sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los corredores biológicos son una estrategia de conservación que intenta resolver el problema de la fragmentación del hábitat.",
+      "enunciado": "¿Cuál es la función de un corredor biológico en un paisaje fragmentado?",
+      "opciones": ["Delimitar zonas donde está prohibida cualquier actividad humana.", "Conectar parches de ecosistema aislados para permitir el movimiento de especies entre ellos.", "Concentrar las especies amenazadas en un área protegida para facilitar su monitoreo.", "Crear barreras físicas entre ecosistemas naturales y zonas de cultivo."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Un corredor biológico es una franja de territorio que conecta parches de ecosistema aislados, permitiendo que las especies se muevan, se alimenten y se reproduzcan entre ellos. En la zona cafetera, los sistemas agroforestales con árboles nativos pueden funcionar como corredores biológicos a escala de finca."
+    },
+    {
+      "id": "lv1750053601sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los anfibios son el grupo de vertebrados más amenazado del mundo y su presencia o ausencia dice mucho sobre el estado de un ecosistema.",
+      "enunciado": "¿Por qué las ranas son consideradas 'indicadores biológicos' del estado de salud de los ecosistemas acuáticos?",
+      "opciones": ["Porque son depredadores tope que controlan todas las demás poblaciones del ecosistema.", "Porque absorben agua y oxígeno directamente por la piel y son extremadamente sensibles a cualquier contaminante o cambio en el agua.", "Porque producen toxinas que indican la presencia de contaminantes químicos en el ambiente.", "Porque su canto permite medir el nivel de ruido del ecosistema."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Las ranas respiran y absorben agua a través de su piel, lo que las hace extremadamente sensibles a cualquier cambio en la calidad del agua o del aire. Su desaparición de una quebrada es una señal inequívoca de que el ecosistema acuático está deteriorado, funcionando como 'canarios en la mina' del ambiente acuático."
+    },
+    {
+      "id": "lv1750053601sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La región andina colombiana es la que alberga la mayor parte de la población del país y también la que ha sufrido mayor transformación de sus ecosistemas.",
+      "enunciado": "¿Qué porcentaje de su cobertura boscosa original ha perdido la región andina colombiana?",
+      "opciones": ["Más del 30%.", "Más del 50%.", "Más del 70%.", "Más del 90%."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Se estima que la región andina colombiana ha perdido más del 70% de su cobertura boscosa original como resultado de siglos de colonización, agricultura, ganadería y urbanización. Lo que queda son fragmentos aislados en cañadas, filos de montaña y predios de difícil acceso."
+    },
+    {
+      "id": "lv1750053601sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Pérdida de biodiversidad y pasivos ambientales en ecosistemas vulnerables",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El uso de pesticidas en la caficultura tiene efectos secundarios que no siempre son considerados por el productor.",
+      "enunciado": "¿Cuál de los siguientes efectos del uso excesivo de insecticidas en una finca cafetera puede aumentar los costos de producción a largo plazo?",
+      "opciones": ["Los insecticidas aceleran el crecimiento del café reduciendo el tiempo de cosecha.", "Los insecticidas matan tanto las plagas como sus enemigos naturales y los polinizadores, generando más plagas y menos cosecha a largo plazo.", "Los insecticidas mejoran la calidad del grano al eliminar hongos del suelo competidores.", "Los insecticidas reducen la necesidad de fertilizantes al matar las malezas que consumen nutrientes."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Los insecticidas no discriminan: matan tanto las plagas objetivo como sus enemigos naturales (avispas, escarabajos, arañas) y los polinizadores (abejas). Sin enemigos naturales, las plagas se recuperan más rápido y en mayor cantidad. Sin polinizadores, la cosecha de café disminuye. El resultado es un espiral de mayor gasto en pesticidas y menor productividad."
+    }
+  ]
+}

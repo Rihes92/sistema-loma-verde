@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:00:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Periodo 1",
+    "unidad": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-CS9-F3-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento social",
+      "contexto": "La deforestación en Colombia responde a dinámicas socioeconómicas e históricas de ocupación y explotación del espacio geográfico que destruyen los mantos forestales nativos en diversos frentes del territorio nacional.",
+      "enunciado": "De acuerdo con los informes institucionales ambientales del país, ¿cuál de los siguientes factores constituye una causa estructural de la pérdida masiva de bosques y la expansión de la frontera agrícola en la región Caribe?",
+      "opciones": [
+        "A) La implementación generalizada de huertas comunitarias de policultivo indígena para el autoabastecimiento veredal.",
+        "B) La praderización orientada al establecimiento de ganadería extensiva y la apropiación ilegal de tierras ejidales.",
+        "C) El desarrollo de proyectos estatales de reforestación masiva con especies maderables nativas de sombrío.",
+        "D) La prohibición constitucional del uso de maquinaria pesada en las actividades agropecuarias del lomerío."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque la historia agraria del Caribe colombiano y del departamento de Córdoba demuestra que el principal motor estructural de deforestación ha sido la praderización, es decir, derribar y quemar el bosque nativo para introducir pastizales destinados a la ganadería vacuna extensiva. Este proceso concentra la propiedad de la tierra y desestructura los geosistemas boscosos originales."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación and su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los bosques tropicales actúan como reguladores climáticos continentales mediante el fenómeno de la evapotranspiración, bombeando toneladas de vapor de agua hacia la atmósfera exterior.",
+      "enunciado": "Cuando se eliminan de forma masiva los árboles de una región geográfica para abrir paso a potreros limpios, ¿qué alteración física directa se genera de inmediato en el ciclo atmosférico local?",
+      "opciones": [
+        "A) Un incremento drástico en la densidad de las masas de aire que acelera la formación de frentes de nieve.",
+        "B) Una caída severa en la humedad del aire y un aumento de la temperatura superficial que intensifica la aridez del microclima.",
+        "C) La estabilización perpetua de las lluvias invernales eliminando los periodos estacionales de sequía.",
+        "D) Un aumento en la captura biológica de gases de efecto invernadero debido al despeje del horizonte terrestre."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque al suprimirse la masa forestal se corta el flujo de evapotranspiración que inyecta humedad al aire. La radiación solar golpea directamente el suelo desnudo, modificando el albedo y elevando las temperaturas de superficie. Esto reseca la atmósfera baja y genera un microclima local mucho más cálido, seco e impredecible para los ciclos de siembra."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento social",
+      "contexto": "El suelo con cobertura de bosque nativo posee una densa capa de hojarasca y materia orgánica viva en constante descomposición biológica que absorbe las lluvias.",
+      "enunciado": "La presencia de humus y raíces forestales mantiene el suelo poroso y suelto, actuando como una infraestructura natural que maximiza la tasa de infiltración hídrica y recarga los acuíferos subterráneos de los que dependen las veredas de Loma Verde.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la vegetación boscosa provee materia orgánica que airea el suelo y evita su compactación física. Las raíces abren canales naturales en la tierra y la hojarasca frena el golpe de las lluvias, permitiendo que el agua se filtre lentamente hacia las capas freáticas profundas, asegurando reservas subterráneas para sostener los pozos campesinos en épocas secas."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde en Montería depende críticamente de arroyos estacionales, pozos artesanales y jagüeyes para abastecer sus necesidades domésticas y agropecuarias.",
+      "enunciado": "La deforestación masiva ejecutada en las cabeceras montañosas del río Sinú no ejerce ningún impacto sobre el agua de Loma Verde, ya que las redes hidráulicas de las montañas funcionan de manera aislada a los arroyos y lomeríos veredales de las llanuras bajas.",
+      "correcta": false,
+      "justificacion": "Es falso porque la geografía física demuestra la conectividad sistémica de las cuencas hidrográficas. Las alteraciones hidrológicas causadas por la deforestación en las partes altas (pérdida de infiltración, colapso de caudales ecológicos) desestabilizan el nivel freático de toda la subcuenca regional, reduciendo la presión hídrica subterránea y secando los nacimientos locales que alimentan las veredas de Loma Verde."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un gran ganadero de la región sostiene que talar los parches de monte protector que rodean un nacimiento de agua es positivo porque 'limpia el terreno de malezas, permite que llegue el sol a los potreros y genera espacio para producir comida para las vacas'.",
+      "enunciado": "Desde la perspectiva de la seguridad hídrica comunitaria y la ecología política agraria, ¿cuál es la objeción técnica principal que los pequeños agricultores de pancoger deben presentar contra este argumento?",
+      "opciones": [
+        "A) La limpieza del terreno elimina especies de plantas venenosas que aumentan de forma química los precios del ganado de exportación.",
+        "B) La remoción de los árboles protector desprotege el nacimiento del sol directo, acelerando su evaporación y destruyendo la porosidad del suelo que alimenta el caudal de agua veredal.",
+        "C) El sol directo sobre los potreros genera corrientes magnéticas que desvían las nubes de lluvia hacia el casco urbano de Montería.",
+        "D) Los pastos ganaderos exigen tanta sombra que terminarán secando los pozos artesanales debido a la congelación de las raíces."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque los bosques de galería o protectores regulan la temperatura microclimática de los cuerpos de agua superficiales y evitan la evaporación directa. Al talarlos, la radiación solar reseca la fuente de inmediato, y la pérdida de raíces desestructura el suelo, suprimiendo la filtración y extinguiendo el flujo hídrico del cual dependen los campesinos aguas abajo."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El fenómeno de la colmatación o sedimentación acelerada ocurre cuando grandes cantidades de partículas sólidas de lodo y tierra fina son arrastradas por las aguas y se depositan en el fondo de un reservorio hídrico.",
+      "enunciado": "Teniendo en cuenta los procesos de degradación física, ¿cuál es la secuencia geográfica que explica que la deforestación de las colinas altas provoque que los jagüeyes campesinos de Loma Verde se queden sin agua en verano?",
+      "opciones": [
+        "A) Deforestación $\\rightarrow$ aumento de infiltración $\\rightarrow$ congelamiento del fondo del jagüey $\\rightarrow$ evaporación sólida.",
+        "B) Deforestación $\\rightarrow$ supresión de interceptación foliar $\\rightarrow$ erosión hídrica y escorrentía torrencial $\\rightarrow$ arrastre de sedimentos $\\rightarrow$ colmatación del jagüey $\\rightarrow$ pérdida de profundidad y evaporación acelerada.",
+        "C) Deforestación $\\rightarrow$ quema de pastos $\\rightarrow$ absorción química del hidrógeno del agua $\\rightarrow$ nacimiento de nuevos desiertos marinos.",
+        "D) Deforestación $\\rightarrow$ compactación por pezuñas $\\rightarrow$ aumento del nivel freático de los pozos profundos $\\rightarrow$ desvío de los ríos hacia los polos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B describe con rigor científico el efecto dominó geográfico: sin árboles que frenen la lluvia, el agua corre con violencia por la superficie (escorrentía), desprendiendo y arrastrando la tierra suelta de las pendientes. Este lodo llena el fondo de los jagüeyes (colmatación), quitándoles profundidad, lo que hace que almacenen poca agua y se sequen rápidamente bajo el sol de verano."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento social",
+      "contexto": "Las autoridades ambientales nacionales como el IDEAM publican periódicamente informes técnicos y mapas sobre las tasas de deforestación y el estado de vulnerabilidad de las cuencas del país.",
+      "enunciado": "El uso de informes institucionales y datos científicos de entidades oficiales permite a los líderes comunitarios de Loma Verde fundamentar técnicamente sus reclamos ambientales frente a la tala ilegal efectuada por actores externos en sus veredas.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque los datos oficiales del IDEAM o las corporaciones autónomas proveen validez jurídica y científica a las denuncias de las comunidades campesinas. Al demostrar con cifras e informes el deterioro ecológico y la violación de las áreas de reserva forestal protectora, el campesinado puede exigir sanciones y planes de restauración efectivos."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En las veredas del corregimiento de Loma Verde, los suelos arcillosos sufren procesos severos de desecación y cuarteamiento durante las temporadas estacionales secas prolongadas, dificultando las labores agrícolas tradicionales.",
+      "enunciado": "Explique detalladamente de qué manera el colapso del ciclo hídrico provocado por la deforestación de los micro-bosques locales altera las propiedades físicas del suelo arcilloso de Loma Verde y de qué forma esto perjudica directamente la soberanía alimentaria de las familias campesinas.",
+      "respuesta": "La deforestación de los micro-bosques locales suprime la barrera de enfriamiento biológico que regula el microclima de Loma Verde. Sin la evaporación constante y la sombra del dosel arbóreo, la radiación solar directa golpea el suelo arcilloso, evaporando la humedad edáfica residual de forma acelerada y eliminando la materia orgánica superficial. Al perder el agua interna, las partículas de arcilla se contraen mecánicamente, provocando un proceso físico de encostramiento, endurecimiento extremo y cuarteamiento profundo del terreno. Esta alteración física perjudica directamente la soberanía alimentaria de las familias campesinas por dos razones fundamentales: primero, la dureza del suelo impide el enraizamiento y la labranza artesanal, rompiendo los ciclos de siembra de cultivos esenciales de pancoger como la yuca, el plátano y el maíz; segundo, las plantas ya establecidas sufren un estrés hídrico crónico que atrofia su crecimiento y reduce drásticamente los rendimientos de las cosechas. Al no poder producir su propio alimento en la parcela familiar, la comunidad sufre desabastecimiento, desnutrición ganadera y se ve obligada a depender de mercados urbanos costosos, deteriorando la seguridad económica y nutricional del territorio veredal.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento social",
+      "contexto": "El término 'caudal ecológico' representa el volumen mínimo de agua dulce que debe discurrir por un arroyo o río para garantizar la vida acuática, la dinámica de la cuenca y el uso sostenible de las comunidades ribereñas.",
+      "enunciado": "Cuando una gran hacienda ganadera deforesta las márgenes de un arroyo veredal en Loma Verde para canalizar el agua hacia sus potreros privados, ¿qué violación ambiental se genera respecto al caudal ecológico?",
+      "opciones": [
+        "A) Se incrementa el oxígeno del agua permitiendo el nacimiento espontáneo de arrecifes de coral en el interior rural.",
+        "B) Se vulnera el caudal ecológico de la cuenca común, reduciendo la disponibilidad de agua dulce aguas abajo y alterando la supervivencia biológica de las veredas vecinas.",
+        "C) Se purifica el arroyo de forma mecánica debido a las cenizas del bosque talado que actúan como filtros químicos.",
+        "D) Se acelera la velocidad de la rotación de la Tierra en el corregimiento debido al peso del agua acumulada en los canales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque la retención y desvío arbitrario del agua destruye el caudal ecológico mínimo del arroyo. Al eliminarse la vegetación riparia (de ribera) y acaparar el flujo para fines privados ganaderos, se priva a los pequeños agricultores ubicados aguas abajo del acceso al recurso vital, secando los jagüeyes de uso común y quebrando el equilibrio socioambiental."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un discurso económico argumenta que 'la deforestación es el precio inevitable y necesario que deben pagar las comunidades rurales para alcanzar la modernización y la riqueza agroindustrial'.",
+      "enunciado": "Este argumento es falso desde la geografía crítica porque oculta que la destrucción de los bienes comunes naturales destruye la base biofísica que sostiene la vida campesina, concentrando las ganancias económicas en pocas manos y transfiriendo la escasez de agua a la comunidad local.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que el enfoque de geografía crítica devela que los discursos corporativos externalizan los costos ambientales (pasivos ambientales). La deforestación privatiza la riqueza inmediata de la madera y las tierras ganaderas, mientras que socializa los daños a largo plazo (pérdida de agua, erosión, aridez), empobreciendo estructuralmente al campesinado minifundista."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La física del suelo establece que la compactación del terreno ocurre cuando una presión mecánica externa elimina los macroporos e intersticios de aire existentes entre las partículas de tierra.",
+      "enunciado": "En las áreas deforestadas de las colinas de Loma Verde, ¿cuál es el factor antrópico que genera la compactación sistemática del suelo arcilloso, empeorando la crisis del ciclo del agua en invierno?",
+      "opciones": [
+        "A) La radiación cósmica solar que endurece los minerales del suelo de forma electromagnética.",
+        "B) El pisoteo continuo e intensivo del ganado vacuno pesado introducido en los potreros sobreexplotados.",
+        "C) El peso de los frutos de yuca y plátano acumulados sobre la superficie labrada por las familias.",
+        "D) El paso frecuente de las aves migratorias que anidan en las copas de los arbustos bajos de rastrojo."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque el ganado vacuno ejerce una alta presión por centímetro cuadrado a través de sus pezuñas endurecidas. En potreros desprovistos de árboles y sometidos a pastoreo intensivo, este pisoteo continuo destruye mecánicamente la porosidad natural del suelo arcilloso, sellando la superficie e impidiendo de forma total la infiltración del agua de lluvia."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento social",
+      "contexto": "La ley ambiental colombiana obliga a los propietarios de predios rurales a conservar franjas de vegetación forestal protectora de al menos treinta metros alrededor de todos los nacimientos de agua y márgenes de ríos.",
+      "enunciado": "La existencia de esta norma jurídica legal faculta a las Juntas de Acción Comunal de las veredas de Loma Verde para exigir legalmente ante las corporaciones autónomas la detención inmediata de las talas ganaderas en las orillas de los arroyos comunes.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque el ordenamiento legal colombiano tipifica los bosques de galería como áreas de protección e interés ecológico nacional. Las comunidades campesinas organizadas pueden apelar a estas herramientas normativas para interponer acciones de tutela, derechos de petición o denuncias ambientales para detener el extractivismo forestal."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un plan de ordenamiento territorial municipal propone reclasificar las zonas de bosque nativo de Loma Verde como 'suelos de desarrollo ganadero intensivo mecanizado', argumentando que incrementará el producto interno bruto (PIB) del municipio de Montería.",
+      "enunciado": "Frente a este proyecto, ¿cuál debe ser el contraargumento central formulado por una comunidad rural consciente de la conectividad ecológica y el ciclo del agua?",
+      "opciones": [
+        "A) Apoyar la reclasificación porque el aumento del PIB municipal genera de forma automática lluvias de agua dulce destilada en las viviendas rurales.",
+        "B) Rechazar la propuesta demostrando que la destrucción de los últimos bosques nativos destruirá la recarga hídrica, acelerará la colmatación de jagüeyes y arruinará la economía de pan coger campesina.",
+        "C) Exigir que se reemplace el ganado vacuno por la siembra intensiva de pinos extranjeros que no consumen agua del subsuelo.",
+        "D) Solicitar que los bosques se pavimenten con cemento para evitar que la tierra suelta ensucie los cultivos de maíz de las veredas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque prioriza el enfoque relacional y sistémico de la geografía. El crecimiento del PIB monetario municipal no compensa la destrucción irreversible de los servicios ecosistémicos de provisión hídrica. La pérdida del agua superficial y profunda desestructura el tejido productivo campesino, forzando la quiebra del minifundio y el éxodo rural."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los sistemas silvopastoriles integran la siembra de árboles maderables, frutales o leguminosas densas dentro de los potreros dedicados a la ganadería de vacunos.",
+      "enunciado": "La conversión de potreros limpios a sistemas silvopastoriles en Loma Verde ayuda a mitigar los efectos de la deforestación porque las raíces de los árboles aflojan el suelo compactado, mejoran la infiltración de las lluvias y reducen la erosión de lodo hacia los jagüeyes.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque estos sistemas restauran el metabolismo ecológico del geosistema a microescala. Los árboles plantados actúan como reguladores térmicos, protegen el suelo del impacto directo de la lluvia y sus raíces rompen las capas duras creadas por las pezuñas del ganado, devolviendo la permeabilidad a la tierra arcillosa y reteniendo los sedimentos."
+    },
+    {
+      "id": "LV-BANCO-CS9-F3-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Deforestación y su impacto sistémico en el ciclo y deterioro de las fuentes hídricas en Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Junta de Acción Comunal de la vereda El Playón en Loma Verde decide implementar una iniciativa escolar y comunitaria llamada 'Barreras Vivas de Retención de Lodos', que consiste en sembrar hileras densas de plantas de caña flecha y árboles nativos de rápido enraizamiento alrededor del perímetro de los jagüeyes comunales.",
+      "enunciado": "Sustente técnicamente los beneficios mecánicos e hidrológicos que aportará este proyecto comunitario para proteger la vida útil de los jagüeyes frente a los impactos ambientales generados por la ganadería extensiva deforestadora en las colinas vecinas.",
+      "respuesta": "La iniciativa comunitaria de implementar barreras vivas de caña flecha y árboles nativos aporta beneficios mecánicos e hidrológicos fundamentales para salvaguardar la vida útil de los jagüeyes de Loma Verde. Desde el punto de vista mecánico, las raíces densas e intrincadas de las plantas sembradas actúan como un filtro físico o red de contención superficial que disminuye la velocidad de la escorrentía torrencial que desciende desde las colinas deforestadas por las haciendas ganaderas. Al frenar la velocidad del agua, el lodo y los sedimentos arcillosos suspendidos que son arrastrados por erosión hídrica quedan atrapados entre la vegetación de la barrera (proceso de bio-retención), evitando que ingresen al interior del estanque y supriman el fenómeno de colmatación acelerada. Desde la perspectiva hidrológica, la presencia de esta cobertura vegetal estabiliza los taludes del jagüey impidiendo derrumbes de tierra hacia el espejo de agua. Además, el enraizamiento rompe la compactación superficial del terreno periférico, facilitando que parte del agua de escorrentía se infiltre lateralmente, alimentando el flujo freático local que recarga el jagüey de forma limpia. Finalmente, la vegetación circundante genera un microclima de sombrío que reduce la velocidad del viento y la temperatura directa sobre el cuerpo de agua, disminuyendo la evaporación termodinámica estival y asegurando que las familias campesinas cuenten con una reserva hídrica duradera para sus cultivos de pancoger y animales durante los meses de verano intenso.",
+      "sugerida": true
+    }
+  ]
+}

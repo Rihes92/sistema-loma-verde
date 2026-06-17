@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:42:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Evolución histórica de los derechos de las mujeres",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Derechos políticos de las mujeres",
+      "competencia": "Pensamiento social",
+      "contexto": "Historia política de Colombia",
+      "enunciado": "Analice el impacto que tuvo la aprobación del sufragio femenino en 1954 para la democracia colombiana.",
+      "respuesta": "La aprobación del voto femenino fue un hito que transformó la democracia colombiana al romper el monopolio masculino en la toma de decisiones. Este proceso no solo otorgó el derecho al sufragio, sino que significó el inicio de una mayor participación de las mujeres en esferas administrativas y legislativas, obligando al Estado a reconocer a la mujer como un ciudadano con voz propia, lo cual fue un paso fundamental, aunque insuficiente, para lograr la equidad política total en el país.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Derechos académicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Acceso a la educación",
+      "enunciado": "Históricamente, el acceso de la mujer a la educación superior en Colombia ha sido totalmente equitativo desde la época colonial.",
+      "correcta": false,
+      "justificacion": "El acceso de la mujer a la educación superior en Colombia fue restringido durante siglos, limitado a funciones domésticas o formación religiosa. Fue solo a partir de la segunda mitad del siglo XX, tras arduas luchas sociales, que las mujeres pudieron ingresar masivamente a las universidades en condiciones de mayor igualdad."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Violencia económica",
+      "competencia": "Pensamiento social",
+      "contexto": "Autonomía financiera",
+      "enunciado": "¿Qué es la autonomía financiera de las mujeres y por qué es clave en el desarrollo rural?",
+      "opciones": ["La obligación de depender del sueldo masculino", "La capacidad de gestionar sus propios ingresos y patrimonio", "La restricción de trabajar fuera del hogar", "La imposibilidad de abrir cuentas bancarias"],
+      "correcta": 1,
+      "justificacion": "La autonomía financiera es la facultad de gestionar recursos propios, esencial en contextos rurales para que las mujeres campesinas superen estructuras de dependencia y participen activamente en la economía y toma de decisiones comunitarias."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Violencia de género",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Problemáticas sociales",
+      "enunciado": "Explique por qué la violencia doméstica en el entorno rural puede ser más difícil de denunciar.",
+      "respuesta": "La violencia doméstica en entornos rurales suele ser más difícil de denunciar debido a factores como el aislamiento geográfico, la dependencia económica total hacia el agresor, la falta de presencia institucional cercana y el peso de patrones culturales patriarcales que normalizan el abuso, lo que genera estigma social y miedo a represalias en comunidades pequeñas.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Equidad de género",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Constitución de 1991",
+      "enunciado": "¿Qué principio fundamental de la Constitución de 1991 promueve la igualdad de derechos entre hombres y mujeres?",
+      "opciones": ["El principio de libertad de culto", "El principio de igualdad y prohibición de discriminación", "El principio de autoridad presidencial", "El principio de propiedad privada absoluta"],
+      "correcta": 1,
+      "justificacion": "El artículo 13 de la Constitución de 1991 establece que todas las personas nacen libres e iguales ante la ley, prohibiendo cualquier discriminación por razón de sexo, lo cual es la piedra angular para la protección de los derechos de la mujer."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Derechos históricos",
+      "competencia": "Pensamiento social",
+      "contexto": "Sufragismo colombiano",
+      "enunciado": "Las mujeres colombianas obtuvieron el derecho al voto sin necesidad de realizar movimientos organizados de protesta.",
+      "correcta": false,
+      "justificacion": "El derecho al voto femenino fue el resultado de décadas de lucha organizada por mujeres activistas, quienes a través de conferencias, prensa y presión política lograron visibilizar la necesidad de este derecho para la equidad democrática."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Derechos académicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Desarrollo educativo",
+      "enunciado": "¿Qué relación existe entre el acceso a la educación superior y el desarrollo de la autonomía política en las mujeres?",
+      "respuesta": "Existe una relación directa y causal: la educación superior provee herramientas críticas, teóricas y profesionales que permiten a las mujeres cuestionar las estructuras de poder establecidas, desarrollar un pensamiento autónomo y acceder a espacios de influencia pública y política, rompiendo así el ciclo de subordinación y fomentando una participación ciudadana informada y propositiva.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Violencia de género",
+      "competencia": "Pensamiento social",
+      "contexto": "Tipologías de violencia",
+      "enunciado": "¿Cuál es un ejemplo de violencia psicológica contra la mujer?",
+      "opciones": ["Negar el acceso a un empleo bien remunerado", "Insultos, humillaciones y control emocional constante", "Golpes físicos en el cuerpo", "Obligar a realizar trabajos agrícolas pesados sin pausa"],
+      "correcta": 1,
+      "justificacion": "La violencia psicológica busca minar la autoestima y la estabilidad emocional de la mujer mediante actos como el insulto, la humillación, las amenazas y el control, lo cual es tan destructivo como la violencia física."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Derechos financieros",
+      "competencia": "Pensamiento social",
+      "contexto": "Independencia económica",
+      "enunciado": "La independencia económica de la mujer es irrelevante para la mitigación de la violencia de género.",
+      "correcta": false,
+      "justificacion": "La independencia económica es un factor protector fundamental contra la violencia de género, ya que permite a la mujer romper ciclos de abuso al no depender de recursos financieros proporcionados por su agresor para su subsistencia."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Derechos políticos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Participación ciudadana",
+      "enunciado": "Argumente por qué la paridad de género en los cargos de elección popular es importante para una sociedad justa.",
+      "respuesta": "La paridad de género es necesaria porque las mujeres representan la mitad de la población y sus perspectivas, necesidades y soluciones deben estar presentes en el diseño de las políticas públicas. Una sociedad justa requiere que las decisiones que afectan a todos sean tomadas de manera equilibrada, evitando que una visión sesgada por el patriarcado subrepresente los problemas que aquejan a las mujeres, como la brecha salarial, la atención en salud o la protección frente a la violencia.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Evolución histórica",
+      "competencia": "Pensamiento social",
+      "contexto": "Derechos de las mujeres",
+      "enunciado": "¿Qué significó el acceso de las mujeres a las profesiones liberales (Derecho, Medicina) a finales del siglo XX?",
+      "opciones": ["Una disminución en la calidad de la educación", "Una ocupación inútil en la estructura social", "La incursión femenina en espacios de poder, conocimiento y toma de decisiones", "El cierre definitivo de las instituciones educativas"],
+      "correcta": 2,
+      "justificacion": "La incursión femenina en las profesiones liberales permitió que las mujeres ocuparan espacios que históricamente habían estado cerrados, convirtiéndose en agentes de cambio que influenciaron la legislación, la atención en salud y el pensamiento científico nacional."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Violencia de género",
+      "competencia": "Pensamiento social",
+      "contexto": "Mitigación",
+      "enunciado": "Las leyes actuales de protección contra la violencia de género son totalmente suficientes y no requieren cambios sociales.",
+      "correcta": false,
+      "justificacion": "Aunque existen leyes fundamentales, la erradicación de la violencia de género exige un cambio cultural profundo, ya que las normas legales por sí solas no logran transformar los patrones de comportamiento, las creencias arraigadas y los prejuicios que justifican el abuso en diversos sectores sociales."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Derechos educativos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Escolaridad",
+      "enunciado": "Proponga una estrategia para promover la equidad de género en el aula de clase.",
+      "respuesta": "Una estrategia efectiva sería implementar talleres de coeducación que analicen críticamente los estereotipos de género en los libros de texto y medios de comunicación, fomentar debates sobre la historia de las mujeres en las ciencias sociales, y promover la participación equitativa en liderazgos estudiantiles, asegurando que todos los estudiantes, sin distinción de género, tengan el mismo acceso a la palabra y a las responsabilidades en el aula.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Constitución de 1991",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Derechos",
+      "enunciado": "¿Cuál es un derecho social fundamental que históricamente ha sido una lucha clave para las mujeres?",
+      "opciones": ["Derecho a la propiedad privada sin límites", "Derecho al trabajo en igualdad de condiciones", "Derecho a la censura previa", "Derecho a la discriminación positiva"],
+      "correcta": 1,
+      "justificacion": "La lucha por el derecho al trabajo en igualdad de condiciones, incluyendo salarios justos y protección a la maternidad, ha sido un pilar en la agenda feminista para alcanzar la equidad económica real."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Derechos históricos",
+      "competencia": "Pensamiento social",
+      "contexto": "Sociedad civil",
+      "enunciado": "La familia sigue siendo el único espacio donde las mujeres deben desempeñar su labor ciudadana.",
+      "correcta": false,
+      "justificacion": "La Constitución de 1991 reconoce a la mujer como ciudadana plena, con derecho a participar en todas las esferas de la vida pública (política, económica, académica) fuera del ámbito doméstico, superando la visión que restringía su papel a la familia."
+    }
+  ]
+}

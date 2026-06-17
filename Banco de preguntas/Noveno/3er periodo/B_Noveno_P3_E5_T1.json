@@ -1,0 +1,140 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T17:35:42.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Tipologías de derechos y mecanismos de protección constitucional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "PREG-BP-01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Pensamiento social",
+      "contexto": "La Constitución de 1991 clasifica los derechos según su naturaleza y mecanismo de exigibilidad.",
+      "enunciado": "Si una empresa arroja desechos tóxicos en una quebrada que surte de agua a toda la vereda, ¿qué tipo de derecho se está vulnerando y qué mecanismo constitucional sería el más adecuado para protegerlo?",
+      "respuesta": "Se está vulnerando un derecho colectivo (derecho al ambiente sano y al acceso al agua). El mecanismo adecuado es la Acción Popular, pues su finalidad no es proteger el derecho de una sola persona, sino de toda la comunidad afectada, buscando la suspensión de la actividad contaminante y la reparación de los daños causados al ecosistema local.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Pensamiento social",
+      "contexto": "Los mecanismos de control son esenciales en un Estado Social de Derecho.",
+      "enunciado": "La Personería municipal es una autoridad encargada de velar por el cumplimiento de los derechos humanos y la gestión pública en el nivel local.",
+      "correcta": true,
+      "justificacion": "Es verdadera. La Personería es el órgano del Ministerio Público encargado de la guarda y promoción de los derechos humanos, la protección del interés público y la vigilancia de la conducta de los servidores públicos en el municipio, siendo fundamental para el ciudadano rural."
+    },
+    {
+      "id": "PREG-BP-03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La violencia de género tiene múltiples dimensiones según la ley colombiana.",
+      "enunciado": "¿Cuál de las siguientes acciones constituye una forma de violencia económica según la legislación sobre derechos de las mujeres?",
+      "opciones": [
+        "A) La participación equitativa de la mujer en la toma de decisiones laborales.",
+        "B) La limitación o control arbitrario sobre los ingresos o recursos económicos de la mujer por parte de su pareja.",
+        "C) La promoción de programas de emprendimiento femenino en el municipio.",
+        "D) El derecho a la educación superior en igualdad de condiciones."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. El control de los recursos financieros es una forma de violencia que busca subordinar a la mujer, limitando su autonomía y capacidad de decidir sobre su propia vida, lo cual es una violación a sus derechos patrimoniales y de libertad."
+    },
+    {
+      "id": "PREG-BP-04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El Estado Social de Derecho implica la responsabilidad estatal de garantizar el bienestar.",
+      "enunciado": "¿Por qué se afirma que la Acción de Tutela revolucionó el acceso a la justicia en Colombia tras 1991?",
+      "respuesta": "Porque democratizó el acceso a la justicia. Antes de la tutela, los procesos judiciales eran lentos, costosos y requerían formalismos que alejaban al ciudadano común. La tutela es un mecanismo informal, rápido, que no requiere abogado y que obliga a los jueces a pronunciarse en un plazo breve, permitiendo que cualquier persona, sin importar su condición social o ubicación geográfica, pueda frenar una vulneración inmediata a sus derechos fundamentales.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-05",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Pensamiento social",
+      "contexto": "Los derechos colectivos protegen intereses comunes de los ciudadanos.",
+      "enunciado": "La Acción de Tutela puede utilizarse para exigir la construcción de una carretera nacional si el Estado no tiene presupuesto para ello.",
+      "correcta": false,
+      "justificacion": "Es falso. La tutela protege derechos fundamentales de aplicación inmediata. La construcción de infraestructura es una política pública que depende de planeación y presupuesto; si bien puede tener efectos en derechos sociales, su exigibilidad es distinta y no puede ser resuelta mediante tutela sin violar la autonomía de la rama ejecutiva en el manejo presupuestal."
+    },
+    {
+      "id": "PREG-BP-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Pensamiento social",
+      "contexto": "Los derechos fundamentales son el núcleo de la dignidad humana.",
+      "enunciado": "¿Qué significa que los derechos fundamentales sean 'inalienables'?",
+      "opciones": [
+        "A) Que el Estado puede quitarlos si el ciudadano no cumple con sus deberes.",
+        "B) Que son inherentes a la condición humana y no pueden ser vendidos, regalados o cedidos bajo ninguna circunstancia.",
+        "C) Que solo pueden ser ejercidos por personas con un alto nivel educativo.",
+        "D) Que solo aplican si el ciudadano reside en una zona urbana."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. Inalienable significa que no pueden ser separados de la persona. Son inherentes a su existencia y dignidad, por lo tanto, ningún poder ni el propio individuo puede renunciar a ellos o transferirlos a terceros."
+    },
+    {
+      "id": "PREG-BP-07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La violencia de género debe ser mitigada mediante educación y políticas públicas.",
+      "enunciado": "Analice la importancia de la educación en derechos humanos como herramienta para reducir la violencia de género en entornos rurales.",
+      "respuesta": "La educación es fundamental para cuestionar los roles tradicionales que normalizan el control del hombre sobre la mujer. En entornos rurales, donde los estereotipos de género están profundamente arraigados, la educación en derechos ayuda a las mujeres a reconocer que poseen autonomía y que el abuso, ya sea psicológico o económico, es una violación constitucional. Al mismo tiempo, educa a los hombres en la igualdad, previniendo conductas violentas y promoviendo una cultura de respeto basada en la dignidad humana en lugar del dominio.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-08",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Pensamiento social",
+      "contexto": "La participación ciudadana es un pilar de la democracia actual.",
+      "enunciado": "El voto es el único mecanismo de participación ciudadana existente en Colombia según la Constitución de 1991.",
+      "correcta": false,
+      "justificacion": "Es falso. Además del voto, la Constitución contempla otros mecanismos como el plebiscito, el referendo, la consulta popular, el cabildo abierto, la iniciativa legislativa y la revocatoria del mandato, los cuales permiten una participación más diversa en los asuntos públicos."
+    },
+    {
+      "id": "PREG-BP-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Estado Social de Derecho implica un compromiso con el bienestar ciudadano.",
+      "enunciado": "¿Qué implica que Colombia sea un Estado Social de Derecho?",
+      "opciones": [
+        "A) Que el Estado no interviene en ningún aspecto de la vida ciudadana.",
+        "B) Que el Estado debe garantizar condiciones mínimas de bienestar y dignidad para todos, no limitándose a la aplicación de la ley.",
+        "C) Que la ley se aplica de forma diferente dependiendo de la posición social.",
+        "D) Que solo existen derechos para quienes pueden pagar por los servicios públicos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. El Estado Social de Derecho implica una obligación activa del Estado para intervenir en la economía y la sociedad con el objetivo de asegurar niveles mínimos de calidad de vida, justicia social y protección efectiva de los derechos de sus habitantes, superando la visión del Estado como un mero vigilante."
+    },
+    {
+      "id": "PREG-BP-10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El derecho al debido proceso es fundamental para la justicia.",
+      "enunciado": "Explique por qué el debido proceso es un derecho fundamental irrenunciable para los ciudadanos.",
+      "respuesta": "Porque es la garantía contra la arbitrariedad del Estado. El debido proceso asegura que nadie pueda ser juzgado ni sancionado sin seguir las reglas preestablecidas por la ley, garantizando el derecho a la defensa, a ser escuchado y a una sentencia imparcial. Sin el debido proceso, cualquier decisión administrativa o judicial podría ser caprichosa, dejando al ciudadano indefenso ante posibles abusos de poder.",
+      "sugerida": true
+    }
+  ]
+}

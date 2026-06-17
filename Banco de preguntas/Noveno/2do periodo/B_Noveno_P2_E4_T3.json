@@ -1,0 +1,140 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:52:10.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Surgimiento de los sindicatos de base y las reivindicaciones obreras",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "PREG-BP-01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento social",
+      "contexto": "A principios del siglo XX, la ausencia de leyes que protegieran al trabajador en Colombia permitía que los empresarios fijaran condiciones laborales arbitrarias.",
+      "enunciado": "Explique detalladamente qué motivó a los trabajadores de inicios del siglo XX a conformar sindicatos de base y qué papel cumplieron estos en la dignificación del trabajo.",
+      "respuesta": "Los trabajadores fueron motivados por la necesidad de sobrevivir ante condiciones de explotación absoluta: jornadas extenuantes sin límite, falta de seguridad, salarios miserables y tratos arbitrarios. Los sindicatos fueron cruciales porque transformaron la relación laboral de una sumisión impuesta a una negociación colectiva. Al actuar como una unidad organizada, los trabajadores pudieron forzar a los empleadores a reconocer su humanidad y sus derechos, logrando conquistas fundamentales que dieron paso a la legislación laboral que conocemos hoy.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La historia laboral en Colombia muestra una lucha constante entre la organización obrera y el poder económico.",
+      "enunciado": "La creación de sindicatos de base en Colombia fue un proceso apoyado de manera voluntaria y pacífica por todas las empresas extranjeras y el Estado desde el primer momento en que se propusieron.",
+      "correcta": false,
+      "justificacion": "Es falso. La historia demuestra que la organización sindical enfrentó una represión violenta y sistemática por parte tanto del Estado como de las grandes empresas, quienes veían en la organización obrera una amenaza a su capacidad de control y explotación económica. El reconocimiento de los derechos sindicales fue una conquista arrancada tras décadas de lucha y confrontación."
+    },
+    {
+      "id": "PREG-BP-03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Las reivindicaciones obreras buscaban mejorar aspectos vitales para la vida del trabajador.",
+      "enunciado": "¿Cuál de las siguientes opciones representa una reivindicación central de los sindicatos de base a principios del siglo XX?",
+      "opciones": [
+        "A) La privatización total de todos los servicios de salud y educación del país.",
+        "B) La limitación de la jornada laboral y la garantía de condiciones básicas de seguridad.",
+        "C) La eliminación de los salarios para que los trabajadores recibieran únicamente comida.",
+        "D) La prohibición de que los trabajadores se reunieran para dialogar sobre sus problemas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. Las luchas de los sindicatos de base se centraron en conquistas básicas pero revolucionarias para la época, como la jornada de ocho horas (frente a jornadas de 12 o 14) y la exigencia de medidas de seguridad que evitara accidentes laborales mortales, elementos necesarios para una vida digna."
+    },
+    {
+      "id": "PREG-BP-04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento social",
+      "contexto": "La informalidad laboral en sectores rurales actuales presenta desafíos similares a los que dieron origen al sindicalismo en el pasado.",
+      "enunciado": "Relacione la situación de vulnerabilidad laboral en las zonas rurales con la importancia histórica de los sindicatos de base.",
+      "respuesta": "La vulnerabilidad laboral en zonas rurales suele caracterizarse por la falta de protección social, contratos precarios y baja capacidad de negociación, condiciones que se asemejan a las que vivían los trabajadores de inicios del siglo XX. La lección histórica es que, en ausencia de una regulación fuerte, la organización colectiva sigue siendo la herramienta más efectiva para que los trabajadores rurales alcancen garantías, exijan el cumplimiento de derechos mínimos y se protejan contra abusos de poder de los empleadores.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-05",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El movimiento sindical ha sido fundamental para la estructura legal de los derechos laborales en Colombia.",
+      "enunciado": "La existencia de leyes laborales actuales, como las que estipulan las horas extras y descansos, es el resultado directo de décadas de exigencias y movilizaciones sociales protagonizadas por organizaciones obreras.",
+      "correcta": true,
+      "justificacion": "Es verdadero. Los derechos laborales no fueron un regalo otorgado por los gobernantes, sino el resultado de luchas y negociaciones constantes sostenidas por sindicatos y movimientos sociales que forzaron al Estado a codificar estas garantías en leyes de cumplimiento obligatorio para los empleadores."
+    },
+    {
+      "id": "PREG-BP-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El papel de los sindicatos va más allá de lo económico, impactando profundamente la sociedad.",
+      "enunciado": "Más allá de las mejoras salariales, ¿por qué los sindicatos fueron fundamentales para la democracia colombiana del siglo XX?",
+      "opciones": [
+        "A) Porque exigían el cierre de todas las empresas para que el país se detuviera.",
+        "B) Porque educaron a los trabajadores en sus derechos, fortaleciendo su papel como ciudadanos activos y capaces de concertar.",
+        "C) Porque su único objetivo era apoyar ciegamente a los partidos políticos tradicionales.",
+        "D) Porque prohibían la participación de los trabajadores en las elecciones populares."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. Los sindicatos no solo lucharon por mejores salarios, sino que funcionaron como escuelas de democracia donde los trabajadores aprendieron a debatir, negociar, organizarse y conocer sus derechos, lo que los transformó de sujetos pasivos en ciudadanos con voz, capaces de influir en las decisiones nacionales."
+    },
+    {
+      "id": "PREG-BP-07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La masacre de las bananeras (1928) es un hito recordado en la historia obrera del país.",
+      "enunciado": "Analice qué simboliza la Masacre de las Bananeras en la historia de la organización laboral colombiana.",
+      "respuesta": "La Masacre de las Bananeras simboliza el conflicto radical entre el derecho de los trabajadores a una vida digna y los intereses económicos de empresas poderosas respaldadas por la fuerza pública. Simboliza la resistencia obrera frente a condiciones inhumanas, pero también la represión estatal extrema que buscó silenciar las demandas sociales. Es un recuerdo histórico que destaca el alto precio pagado por la organización sindical y cómo esta lucha marcó el inicio de una conciencia nacional sobre la necesidad de regular las relaciones laborales.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-08",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento social",
+      "contexto": "Los sindicatos comenzaron siendo grupos de ayuda mutua antes de convertirse en organizaciones de lucha política.",
+      "enunciado": "Las primeras asociaciones obreras en Colombia tenían como único fin promover revoluciones armadas contra el gobierno nacional.",
+      "correcta": false,
+      "justificacion": "Es falso. Las primeras formas de organización, llamadas mutuales, se enfocaban inicialmente en la ayuda mutua entre trabajadores (aportes para cubrir enfermedades o entierros). Fue la precariedad extrema del sistema laboral lo que gradualmente forzó a estas asociaciones a evolucionar hacia el sindicalismo reivindicativo y la lucha por derechos laborales ante el Estado y los empleadores."
+    },
+    {
+      "id": "PREG-BP-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La relación entre empleador y trabajador ha sido tensionada históricamente.",
+      "enunciado": "¿Qué mecanismo legal y sindical suelen utilizar los trabajadores para presentar sus exigencias de mejora al empleador?",
+      "opciones": [
+        "A) El pliego de peticiones.",
+        "B) El memorando de despido.",
+        "C) La carta de renuncia individual.",
+        "D) El decreto ejecutivo presidencial."
+      ],
+      "correcta": 0,
+      "justificacion": "La opción A es la correcta. El pliego de peticiones es el instrumento técnico y legal donde el sindicato consigna formalmente las exigencias de los trabajadores, iniciando un proceso de negociación colectiva con el empleador que busca llegar a acuerdos vinculantes para mejorar las condiciones laborales."
+    },
+    {
+      "id": "PREG-BP-10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "El surgimiento de los sindicatos de base y las reivindicaciones obreras",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La organización sindical permitió conquistas importantes como la jornada de 8 horas.",
+      "enunciado": "Argumente por qué la limitación de la jornada laboral fue una conquista tan crucial para los trabajadores de inicios del siglo XX.",
+      "respuesta": "La limitación de la jornada fue crucial porque permitió al trabajador recuperar su tiempo personal y familiar, sacándolo de un régimen de explotación casi permanente que deterioraba su salud física y mental. Además, al forzar al empleador a pagar por horas extra tras la jornada básica, se le obligó a valorar el tiempo del trabajador, frenando el uso desmedido de su fuerza laboral y permitiendo un mínimo de equilibrio entre producción y vida.",
+      "sugerida": true
+    }
+  ]
+}

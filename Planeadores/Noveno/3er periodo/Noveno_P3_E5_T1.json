@@ -1,0 +1,95 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T17:35:42.000Z",
+  "planeadores": [
+    {
+      "id": "CS-09-P3-E5-CONST",
+      "creado": 1781642142000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "5",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "Guía Integrada N° 5",
+      "grupos": "9°A, 9°B",
+      "fecha": "2026-06-16",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Tipologías de derechos y mecanismos de protección constitucional",
+      "sesiones": "4",
+      "duracion": "240",
+      "evidencias": "Justifica el uso de los diferentes mecanismos de participación ciudadana contemplados en la Constitución de 1991 basándose en la normativa vigente. Clasifica las diversas tipologías de derechos (fundamentales, sociales, económicos, culturales, colectivos y del ambiente) identificando sus características y formas de exigibilidad. Analiza críticamente la evolución de los derechos de las mujeres y propone alternativas sociales para mitigar la violencia de género, promoviendo una cultura de respeto a las identidades y los derechos en el ámbito rural.",
+      "competencias": "Pensamiento social / Interpretación y análisis de perspectivas",
+      "contenidos": "Tipologías de derechos en la Constitución de 1991: fundamentales, sociales, económicos, culturales, colectivos y del ambiente. Autoridades de control y amparo de los DD. HH.: Procuraduría General, Defensoría del Pueblo y personerías municipales. Evolución histórica de los derechos de las mujeres. Formas de violencia de género y su mitigación.",
+      "objetivo": "Analizar la estructura axiológica y jurídica de la Constitución de 1991 mediante el estudio detallado de la tipología de derechos y sus mecanismos de protección, con el fin de que los estudiantes desarrollen competencias ciudadanas necesarias para el ejercicio del control social y la defensa de la dignidad humana en el contexto específico de las comunidades rurales como Loma Verde.",
+      "pregunta": "¿Cómo la Constitución de 1991 transforma al ciudadano de un espectador pasivo en un agente activo de control social, y de qué manera esta arquitectura de derechos nos ofrece herramientas reales para frenar las injusticias y violencias de género en nuestra realidad veredal?",
+      "explora": "Paso 1: Dinámica 'La caja de los derechos'. Se presentan casos cotidianos (ej. falta de agua potable en la vereda, negación de servicio de salud). Paso 2: Análisis de aplicabilidad. Se discute a qué tipo de derecho corresponde cada situación. Paso 3: Mapeo de instituciones. Los estudiantes identifican qué autoridades tienen competencia en Loma Verde (Personería municipal, defensorías) para proteger estos derechos.",
+      "glosario": [
+        {
+          "t": "derechos fundamentales",
+          "d": "aquellos derechos inherentes a la dignidad humana, inalienables e imprescriptibles, que son de aplicación inmediata y pueden ser protegidos a través de la acción de tutela ante cualquier juez de la república."
+        },
+        {
+          "t": "derechos colectivos y del ambiente",
+          "d": "conocidos como derechos de tercera generación, protegen intereses que pertenecen a toda la comunidad, como el derecho a un ambiente sano, el espacio público y el equilibrio ecológico, requiriendo acciones populares para su defensa."
+        },
+        {
+          "t": "violencia de género",
+          "d": "cualquier acción u omisión que, basada en una relación desigual de poder y en estereotipos de género, cause muerte, daño o sufrimiento físico, sexual, psicológico, económico o patrimonial a las mujeres por el solo hecho de serlo."
+        },
+        {
+          "t": "acción de tutela",
+          "d": "mecanismo constitucional diseñado para la protección inmediata de los derechos fundamentales cuando estos resultan vulnerados o amenazados por la acción u omisión de cualquier autoridad pública o, en ciertos casos, particulares."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "Estructura de la Constitución de 1991: Una Taxonomía de Derechos",
+          "txt": "La Constitución de 1991 no es solo un cuerpo de leyes, es un pacto político que redefine la relación entre el ciudadano y el Estado. La categorización de los derechos es vital para entender su defensa. Primero, los fundamentales, aquellos inseparables de la vida misma (derecho a la vida, igualdad, debido proceso). Segundo, los sociales, económicos y culturales, que exigen una intervención activa del Estado para garantizar condiciones mínimas de bienestar. Tercero, los colectivos y del ambiente, que reflejan una visión moderna sobre la interdependencia entre la comunidad y su entorno natural. En Loma Verde, entender esta taxonomía es crucial: mientras el derecho a la vida es fundamental y protegible mediante tutela, el derecho a un ambiente sano requiere una visión colectiva y movilización social. Esta clasificación permite a los jóvenes campesinos navegar el complejo entramado legal para realizar exigencias efectivas a las autoridades locales.",
+          "pausa": "¿Por qué es peligroso confundir un derecho fundamental con uno económico o social en el momento de presentar una reclamación ante un juez?",
+          "resp": "Porque los mecanismos de defensa varían drásticamente; los fundamentales tienen el respaldo inmediato de la tutela, mientras que los económicos y sociales requieren procesos de política pública o acciones de grupo, donde la exigibilidad es más gradual y compleja."
+        },
+        {
+          "tit": "Autoridades de Control: La arquitectura de la defensa",
+          "txt": "El diseño institucional colombiano previó que los derechos requieren vigilancia constante. La Procuraduría, la Defensoría y las Personerías no son meros cargos burocráticos; son los brazos institucionales del amparo constitucional. En contextos rurales, la Personería municipal es a menudo la primera puerta de entrada a la justicia. El desconocimiento de la función de estas autoridades impide que el campesino pueda canalizar sus denuncias por violaciones a los DD. HH. o abuso de poder. Es necesario que los estudiantes reconozcan que la institucionalidad del Estado no es abstracta, sino que tiene rostros, oficinas y mandatos claros destinados a la protección del ciudadano de a pie.",
+          "pausa": "¿Cuál es el rol de la Personería ante una vulneración de derechos en una vereda alejada como Loma Verde?",
+          "resp": "Es el órgano más cercano para recibir quejas sobre servicios públicos, atención en salud o abusos de autoridad, actuando como mediador y garante de que las autoridades cumplan con sus obligaciones constitucionales."
+        },
+        {
+          "tit": "Evolución de los derechos de la mujer y mitos sobre la violencia",
+          "txt": "La historia de los derechos de las mujeres en Colombia es una lucha por el reconocimiento de la igualdad jurídica y política, que alcanzó hitos significativos en 1954 con el voto femenino y posteriormente con la Constitución de 1991. No obstante, la violencia de género persiste como una pandemia silenciosa. En la ruralidad, factores como el patriarcado tradicional y el aislamiento dificultan la denuncia. La violencia de género no se limita a lo físico; abarca la psicológica, la económica (control de recursos) y la patrimonial. Mitigar esta violencia requiere educación temprana y un cambio en la percepción de los roles de género que persisten en la vida veredal.",
+          "pausa": "¿Cómo influye la dependencia económica en la perpetuación de ciclos de violencia contra las mujeres en Loma Verde?",
+          "resp": "La dependencia económica permite al agresor controlar la movilidad, las decisiones y la dignidad de la mujer, creando una barrera que le impide buscar ayuda, pues el miedo a la desprotección total se impone sobre el deseo de libertad y seguridad."
+        }
+      ],
+      "talleres": "Taller de 'Clínica Constitucional'. Los estudiantes, organizados por grupos, deben identificar un problema real de Loma Verde (ej. mal estado de una escuela, falta de alumbrado público). Deben determinar qué derecho se vulnera, clasificarlo dentro de las tipologías aprendidas y redactar un borrador de derecho de petición dirigido a la autoridad competente (Personería o Alcaldía), fundamentando legalmente su solicitud.",
+      "transfer": "Actividad de 'Mesa de Concertación': Simulación de un debate sobre la mitigación de la violencia de género en el aula. Cada estudiante debe proponer una medida concreta de carácter comunitario, evaluando su viabilidad legal y social, inspirándose en los principios de igualdad de la Constitución de 1991.",
+      "clave": "Se evaluará el uso preciso de la terminología constitucional y la capacidad de identificar el derecho vulnerado y la autoridad competente. La calidad argumentativa en el derecho de petición y la claridad de los mecanismos propuestos para la mitigación de la violencia son fundamentales.",
+      "evaluacion": "Rúbrica: Superior (4.6-5.0): Manejo excelente de conceptos, redacción de documentos técnicos impecable, pensamiento crítico avanzado. Alto (4.0-4.5): Identificación correcta de derechos y autoridades. Básico (3.0-3.9): Conocimiento teórico correcto pero dificultad en la aplicación práctica. Bajo (0.0-2.9): Confusión en los tipos de derechos y roles institucionales.",
+      "recursos": "Constitución Política de Colombia (1991), formato de Derechos de Petición, guías de estudio, tablero.",
+      "referencias": "Corte Constitucional de Colombia. (1991). Constitución Política de Colombia. / Defensoría del Pueblo. (2020). Cartilla de Derechos Humanos. / Silva, R. (2005). Repúblicas imaginadas.",
+      "dua": "Presentación de la Constitución en formato de lectura fácil, uso de gráficos para la clasificación de derechos, debates orales para estudiantes con limitaciones en la escritura.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La Constitución de 1991 representa un cambio de paradigma hacia un Estado Social de Derecho donde los derechos ya no son concesiones, sino garantías exigibles. La comprensión de sus tipologías y la apropiación de sus mecanismos de defensa constituyen la herramienta más poderosa para que los ciudadanos rurales trasciendan la queja y ejerzan el control social sobre las autoridades que, por mandato constitucional, deben proteger su dignidad.",
+      "errores": "Confundir derechos fundamentales con aspiraciones políticas. Creer que los derechos son otorgados por el Estado y no reconocidos por él. Desconocer el rol de las personerías municipales en el control territorial.",
+      "banco": [
+        {
+          "id": "PREG-01",
+          "tipo": "abierta",
+          "grado": "Noveno",
+          "tema": "Tipologías de derechos y mecanismos de protección constitucional",
+          "competencia": "Pensamiento social",
+          "contexto": "La Constitución de 1991 crea una estructura de derechos que busca proteger la dignidad humana bajo distintas tipologías.",
+          "enunciado": "Explique la diferencia fundamental, en términos de exigibilidad y protección, entre un derecho fundamental y un derecho colectivo (ejemplo: ambiente sano).",
+          "respuesta": "La diferencia radica en el mecanismo de defensa. Los derechos fundamentales, como la vida o la libertad, son exigibles de manera inmediata por cualquier persona a través de la Acción de Tutela. Por el contrario, los derechos colectivos, como el ambiente sano, requieren de la Acción Popular, pues su vulneración afecta a una comunidad entera y la respuesta judicial suele orientarse a la protección, reparación o mitigación de daños que afectan el interés público, no el derecho individual de una sola persona en particular.",
+          "sugerida": true
+        }
+      ],
+      "tarea": "Realizar un glosario con los mecanismos de participación ciudadana (voto, plebiscito, referendo, consulta popular, iniciativa legislativa, cabildo abierto, revocatoria del mandato) definiendo cada uno y buscando un ejemplo local donde podrían aplicarse.",
+      "fundamentacion": "## Fundamentación Teórica: El Estado Social de Derecho y la Axiología de los Derechos Constitucionales en Colombia\n\n### Hacia una Nueva Concepción de Ciudadanía\nLa promulgación de la Constitución Política de 1991 marcó el fin de una era de centralismo y exclusión en Colombia. Al definirse como un Estado Social de Derecho, la Carta Magna no solo formalizó un conjunto de normas, sino que estableció una jerarquía de valores (axiología) donde la dignidad humana ocupa el epicentro. A diferencia de constituciones anteriores, que a menudo trataban los derechos como concesiones, la del 91 los reconoce como inherentes, estableciendo una red compleja de protección que busca salvaguardar al individuo y a la colectividad frente al poder arbitrario.\n\n### Tipología de los Derechos y su Fuerza Vinculante\nLa estructura de derechos se divide en categorías que responden a distintas necesidades y grados de protección:\n- **Fundamentales**: Constituyen el núcleo duro de la condición humana. Su protección es inmediata, prevalente y judicialmente reforzada a través de la tutela. Representan la garantía mínima frente a cualquier intromisión indebida del Estado o de particulares.\n- **Sociales, Económicos y Culturales (DESC)**: Reconocen que la libertad es vacía sin condiciones materiales para ejercerla. Aunque su naturaleza es a veces programática, el Estado tiene el deber de avanzar progresivamente hacia su garantía efectiva.\n- **Colectivos y del Ambiente**: Reflejan la conciencia contemporánea sobre la interdependencia ecológica. Su protección requiere una visión comunitaria y mecanismos procesales distintos, como las Acciones Populares.\n\n### El Rol del Control Social y las Autoridades\nLa arquitectura institucional de Colombia prevé un sistema de controles (Procuraduría, Defensoría, Personerías) diseñado para ser la voz de los ciudadanos ante la administración. Sin embargo, en el mundo rural, este sistema encuentra obstáculos históricos. La distancia geográfica y el clientelismo han fragmentado el ejercicio del control social. Es aquí donde la educación constitucional cobra un valor transformador: al convertir a los jóvenes en sujetos conscientes de sus derechos, se rompe la lógica de la dádiva, exigiendo a las autoridades el cumplimiento de sus mandatos constitucionales.\n\n### Género y Equidad: Un Desafío Estructural\nLa lucha por la igualdad de género es quizás el desafío constitucional más vivo. A pesar de los avances jurídicos, la realidad social en las veredas sigue sujeta a estructuras de poder patriarcal. La mitigación de la violencia de género no es solo un asunto de ley, sino de pedagogía constitucional: entender que la violencia en el hogar es un asunto público cuando se vulneran derechos, es el primer paso para una convivencia justa y democrática.",
+      "lineatiempo": "1954: Reconocimiento del derecho al voto para las mujeres. / 1991: Promulgación de la Constitución Política y creación de la Acción de Tutela. / 1994: Ley 134, regulación de los mecanismos de participación ciudadana. / 2008: Ley 1257, medidas de sensibilización, prevención y sanción de formas de violencia contra las mujeres."
+    }
+  ]
+}

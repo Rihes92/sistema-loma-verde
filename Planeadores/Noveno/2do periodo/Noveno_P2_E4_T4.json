@@ -1,0 +1,101 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:00:00.000Z",
+  "planeadores": [
+    {
+      "id": "CS-09-P2-E4-POL20",
+      "creado": 1781625600000,
+      "grado": "Noveno",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "4",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "Guía Integrada N° 4",
+      "grupos": "9°A, 9°B",
+      "fecha": "2026-06-16",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Hechos políticos de la segunda mitad del siglo XX y su lazo contemporáneo: violencia partidista, Frente Nacional, narcotráfico y reformas constitucionales",
+      "sesiones": "4",
+      "duracion": "240",
+      "evidencias": "Analiza críticamente los factores que detonaron la violencia partidista en Colombia y su transformación hacia nuevas formas de conflicto en la segunda mitad del siglo XX. Evalúa los impactos del Frente Nacional como pacto político y sus repercusiones en la exclusión de alternativas políticas. Explica la incidencia del fenómeno del narcotráfico y las reformas constitucionales en la configuración del Estado contemporáneo y su incidencia en las dinámicas sociales del ámbito rural y urbano.",
+      "competencias": "Interpretación y análisis de perspectivas / Pensamiento social",
+      "contenidos": "Violencia partidista (La Violencia). El Frente Nacional: características, alcances y limitaciones. El surgimiento y expansión del narcotráfico. Reformas constitucionales clave del siglo XX (especialmente el proceso hacia 1991). Nexos entre la crisis institucional del siglo XX y los desafíos sociales actuales.",
+      "objetivo": "Examinar de manera profunda y crítica los procesos políticos más determinantes de la segunda mitad del siglo XX colombiano, comprendiendo la transición desde la violencia partidista hacia conflictos complejos mediados por el narcotráfico, y analizando cómo los pactos políticos como el Frente Nacional y las reformas constitucionales de finales de siglo moldearon el Estado que habitamos, con especial énfasis en el impacto de estas transformaciones en la periferia rural de Montería y el corregimiento de Loma Verde.",
+      "pregunta": "¿En qué medida las estructuras políticas y los pactos de exclusión construidos en la segunda mitad del siglo XX en Colombia sentaron las bases de las crisis institucionales y de violencia que, al día de hoy, siguen condicionando el desarrollo social y la paz territorial en comunidades rurales como Loma Verde?",
+      "explora": "Paso 1: Dinámica 'La herencia de las palabras'. El docente inicia presentando conceptos clave: 'La Violencia', 'Pacto', 'Exclusión', 'Narcotráfico'. Paso 2: Análisis de archivos. Se entregan fragmentos de discursos de la época del Frente Nacional y titulares de prensa sobre la apertura de los años 90. Paso 3: Reflexión situada. Los estudiantes, en mesas redondas, discuten: ¿Qué saben sus familias sobre la época de la violencia partidista? ¿Cómo llegaron a sus veredas las transformaciones políticas del siglo pasado? El objetivo es conectar la memoria familiar con el análisis histórico institucional.",
+      "glosario": [
+        {
+          "t": "violencia partidista",
+          "d": "periodo de la historia colombiana (aproximadamente 1946-1964) caracterizado por enfrentamientos armados intermitentes y masivos entre los partidos Liberal y Conservador, que devastaron el campo y provocaron un desplazamiento poblacional sin precedentes."
+        },
+        {
+          "t": "frente nacional",
+          "d": "acuerdo político y electoral entre los partidos Liberal y Conservador (1958-1974) para alternarse el poder presidencial y repartirse los cargos públicos, con el objetivo declarado de frenar la violencia, pero que tuvo como efecto secundario la exclusión de otras fuerzas políticas."
+        },
+        {
+          "t": "narcotráfico",
+          "d": "actividad ilícita de producción, procesamiento y comercialización de sustancias psicoactivas que, a partir de los años setenta, permeó las estructuras económicas, políticas y sociales de Colombia, alterando los conflictos territoriales y exacerbando la violencia."
+        },
+        {
+          "t": "reforma constitucional",
+          "d": "proceso de modificación formal de la carta magna de un país. En Colombia, el hito más relevante del siglo XX fue la Constitución de 1991, que buscó renovar el contrato social, ampliar los derechos ciudadanos y modernizar las instituciones estatales."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La Violencia Partidista: Fractura y Desarraigo en el Campo Colombiano",
+          "txt": "El periodo conocido como 'La Violencia' no fue simplemente un conflicto electoral; fue una fractura civilizatoria que transformó la geografía humana de Colombia. La rivalidad exacerbada entre liberales y conservadores, alimentada desde los púlpitos y las plazas públicas, se tradujo en una guerra fratricida en los campos y veredas. El desplazamiento de campesinos hacia las ciudades en formación (como Montería) fue masivo, configurando los cinturones de miseria y alterando los modos de vida agrarios tradicionales. Este fenómeno dejó huellas profundas en Loma Verde y sus alrededores, donde la memoria de los 'pájaros' y los 'chulavitas' sigue presente en la tradición oral de las familias más antiguas. Esta época destruyó gran parte del tejido social campesino y generó una desconfianza hacia el Estado que perdura hasta nuestros días.",
+          "pausa": "¿Cómo cree que la violencia partidista cambió la relación de confianza entre el campesinado y el gobierno nacional?",
+          "resp": "La violencia partidista rompió la confianza al demostrar que el Estado, lejos de ser un ente protector, podía convertirse en un instrumento de persecución o en un actor indiferente ante el sufrimiento de los sectores rurales, sembrando las raíces del escepticismo político que aún observamos en las veredas."
+        },
+        {
+          "tit": "El Frente Nacional: Pacto de Paz o Mecanismo de Exclusión",
+          "txt": "El Frente Nacional (1958-1974) se presentó como la solución definitiva a la guerra civil partidista mediante la alternancia presidencial y la paridad burocrática. Si bien logró frenar el enfrentamiento directo entre liberales y conservadores, su efecto más profundo fue la institucionalización de una democracia restringida. Al cerrar las puertas a cualquier otra expresión política, este modelo dejó el espacio libre para la aparición de movimientos insurgentes de izquierda que veían en la lucha armada la única forma de oposición política. Esta exclusión política y la persistente debilidad del Estado en los territorios periféricos crearon las condiciones perfectas para que la democracia colombiana se volviera un campo de batalla en lugar de un escenario de deliberación.",
+          "pausa": "¿Es posible alcanzar una paz duradera en un sistema político que excluye las voces de las minorías o de las periferias?",
+          "resp": "La historia del Frente Nacional demuestra que la paz construida solo sobre el pacto de las élites, excluyendo la voz de las periferias y otras fuerzas sociales, es una paz frágil que, a largo plazo, gesta nuevas formas de violencia debido a la falta de canales democráticos reales para canalizar el descontento."
+        },
+        {
+          "tit": "El Narcotráfico: Transformación de la Estructura Económica y Social",
+          "txt": "A partir de la década de los setenta, la economía del narcotráfico irrumpió en Colombia con una fuerza devastadora. No fue solo un negocio ilícito; fue un agente disruptor de toda la arquitectura social. El flujo de dinero proveniente de la cocaína permitió la creación de ejércitos privados, la penetración de las instituciones estatales (desde la policía hasta el congreso) y la alteración de los patrones de tenencia de la tierra. En departamentos como Córdoba, este fenómeno aceleró el despojo de tierras y transformó las dinámicas del conflicto armado. La riqueza rápida, la ostentación y el uso sistemático del terror para controlar territorios alteraron drásticamente la escala de valores en los corregimientos, convirtiendo la ilegalidad en una vía rápida para el ascenso social y el poder político local.",
+          "pausa": "¿Cómo ha afectado la cultura del dinero fácil derivada del narcotráfico a las aspiraciones de los jóvenes en las comunidades rurales?",
+          "resp": "Ha generado una distorsión en la escala de valores donde el éxito se mide por la acumulación rápida de riqueza, lo que desincentiva los proyectos de vida basados en la educación, el trabajo agrícola honesto y el desarrollo comunitario a largo plazo, exacerbando la brecha de oportunidades para quienes deciden mantenerse dentro de la legalidad."
+        },
+        {
+          "tit": "La Constitución de 1991: Una Reforma en Medio de la Crisis",
+          "txt": "La Constitución de 1991 fue una respuesta institucional a una década de magnicidios, narcoterrorismo y desesperanza nacional. Surgida de un movimiento estudiantil (La Séptima Papeleta) y apoyada por una sociedad civil exhausta por la violencia, esta carta magna buscó ampliar la democracia, reconocer la diversidad cultural y crear mecanismos de protección de los derechos fundamentales como la Acción de Tutela. Sin embargo, tres décadas después, el análisis crítico sugiere que, aunque el marco jurídico es avanzado, su aplicación real en territorios como Loma Verde es desigual. Mientras la constitución promete un Estado Social de Derecho, la realidad local sigue marcada por el abandono estatal y la falta de garantías para el ejercicio pleno de los derechos ciudadanos.",
+          "pausa": "¿De qué sirve tener leyes modernas en el papel si no se aplican con igualdad en las veredas?",
+          "resp": "La brecha entre la norma y la realidad refleja que el proceso de reforma constitucional fue una gran victoria legal, pero que para su materialización falta voluntad política real para invertir en infraestructura, educación y seguridad ciudadana en las zonas que históricamente fueron olvidadas por el poder central."
+        }
+      ],
+      "talleres": "Taller: 'Línea de Vida Política de Loma Verde'. Los estudiantes, en grupos de 4, deben construir una línea de tiempo comparativa: en la parte superior, los hitos políticos nacionales del siglo XX (Violencia, Frente Nacional, Narcotráfico, Constitución 91); en la parte inferior, deberán indagar con sus abuelos qué sucedía en su vereda en esas mismas décadas. El taller finaliza con un conversatorio sobre cómo los eventos nacionales se sienten o se vivieron en la ruralidad local.",
+      "transfer": "Ensayo Crítico: 'El Estado frente a la Vereda'. Los estudiantes redactarán un ensayo donde analicen cómo las reformas constitucionales del siglo XX han influido (o no) en la calidad de vida de su comunidad. Deben proponer una reforma local necesaria para que el Estado Social de Derecho sea una realidad en su entorno.",
+      "clave": "Se busca que el estudiante no repita fechas de memoria, sino que analice la causalidad. La clave evaluativa está en la coherencia argumentativa al vincular el hecho histórico nacional con la experiencia local o la observación del territorio.",
+      "evaluacion": "Rúbrica de evaluación: Desempeño Superior (4.6-5.0): Análisis crítico riguroso, uso de fuentes orales y documentales, reflexión profunda sobre la brecha Estado-Territorio. Desempeño Alto (4.0-4.5): Identificación precisa de los hitos y buena capacidad de síntesis. Desempeño Básico (3.0-3.9): Recuento informativo correcto pero con análisis limitado. Desempeño Bajo (0.0-2.9): Falta de estructura y nula conexión entre el tema nacional y la realidad local.",
+      "recursos": "Guía pedagógica, Constitución Política de Colombia, testimonios orales, fragmentos de libros de historia, tablero.",
+      "referencias": "Bushnell, D. (2007). Colombia: una nación a pesar de sí misma. / Centro Nacional de Memoria Histórica (Informes sobre La Violencia). / Constitución Política de Colombia de 1991.",
+      "dua": "Adaptación de textos, uso de audio para entrevistas, participación en debates guiados para estudiantes con diversas habilidades comunicativas.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La segunda mitad del siglo XX en Colombia fue un periodo de crisis y mutaciones radicales. Desde la violencia fratricida partidista, pasando por el pacto excluyente del Frente Nacional, hasta la irrupción desestabilizadora del narcotráfico y la esperanza modernizadora de la Constitución de 1991, el país fue moldeado por tensiones que aún no se resuelven. La historia nacional no puede entenderse al margen de lo que ocurrió en las veredas como Loma Verde, donde las crisis políticas se vivieron como desplazamiento, abandono y desafíos por la supervivencia.",
+      "errores": "Ver la historia política como una serie de eventos aislados sin conexión. Ignorar la agencia de las comunidades rurales en la construcción de su propia historia. Creer que los documentos constitucionales solucionan automáticamente los problemas sociales sin una ejecución de políticas públicas comprometida.",
+      "banco": [
+        {
+          "id": "PREG-01",
+          "tipo": "abierta",
+          "grado": "Noveno",
+          "tema": "Hechos políticos de la segunda mitad del siglo XX y su lazo contemporáneo",
+          "competencia": "Pensamiento social",
+          "contexto": "El Frente Nacional permitió terminar con la guerra entre liberales y conservadores, pero generó nuevas exclusiones.",
+          "enunciado": "Argumente por qué el Frente Nacional, siendo un acuerdo de paz, es visto por muchos analistas como una de las causas que permitieron el surgimiento de nuevos conflictos armados.",
+          "respuesta": "Al repartirse el poder exclusivamente entre dos partidos tradicionales por 16 años, el Frente Nacional cerró los canales de participación para cualquier otra corriente ideológica. Esto hizo que sectores que buscaban transformaciones sociales no encontraran formas de ejercer política dentro de la legalidad, lo que fue interpretado por muchos como la única vía para la lucha armada. En resumen, la paz entre élites produjo exclusión social, y la exclusión social alimentó la guerra insurgente.",
+          "sugerida": true
+        }
+      ],
+      "tarea": "Entrevista a un adulto mayor de la vereda sobre su percepción de los cambios políticos en el país durante el siglo XX. Redactar una nota de campo de una página con los hallazgos.",
+      "fundamentacion": "## Fundamentación Teórica: Colombia en la Segunda Mitad del Siglo XX - Crisis Institucional y Transformaciones Estructurales\n\n### La Herencia de 'La Violencia'\nEl periodo comprendido entre 1946 y 1964, conocido como 'La Violencia', representa el trauma fundacional de la Colombia contemporánea. Este conflicto, que comenzó como una lucha por el control del aparato estatal entre liberales y conservadores, degeneró rápidamente en una guerra campestre y local. La desarticulación del campo colombiano, provocada por el desplazamiento forzado, fue el preludio de un proceso de urbanización acelerado y desordenado que caracterizó el resto del siglo. Las consecuencias fueron devastadoras: millones de personas desarraigadas, la pérdida de la soberanía alimentaria de las comunidades rurales y una profunda desconfianza hacia la autoridad estatal.\n\n### El Frente Nacional: La Paradoja de la Paz Excluyente\nLa instauración del Frente Nacional (1958-1974) fue una solución pragmática para poner fin al baño de sangre, pero su costo institucional fue alto. Al clausurar la competencia democrática real, el sistema político se estancó. La paridad y la alternancia burocrática se convirtieron en un fin en sí mismas, ignorando las crecientes desigualdades sociales y económicas del país. Este periodo es clave para entender por qué la democracia colombiana ha sido percibida históricamente como una 'democracia de élites' y cómo la falta de apertura política legitimó otras formas de oposición, a menudo violentas.\n\n### El Narcotráfico como Factor Disruptivo\nA partir de la década de 1970, el auge del narcotráfico transformó la naturaleza de los conflictos. El dinero ilícito infiltró las campañas políticas, compró voluntades en el sistema judicial y financió ejércitos paramilitares. El narcotráfico convirtió el conflicto colombiano en una guerra multiactor, donde la ideología (que ya estaba presente en los años sesenta) pasó a un segundo plano frente al control de rutas, laboratorios y tierras. Para las comunidades como Loma Verde, esto significó quedar atrapadas en medio del fuego cruzado entre distintos actores ilegales que disputaban el territorio.\n\n### Hacia la Constitución de 1991\nLa Constitución de 1991 fue el intento más ambicioso por modernizar el contrato social colombiano. Al incorporar principios como el pluralismo, la participación ciudadana y la protección judicial de los derechos, buscó integrar a aquellos sectores que habían sido excluidos durante décadas. Sin embargo, su implementación enfrenta el obstáculo de la persistencia de estructuras clientelistas y de la influencia del poder ilegal en el territorio. El reto contemporáneo de Loma Verde y de toda Colombia es traducir la promesa de bienestar y derechos de esa constitución en una realidad cotidiana, superando el clientelismo y la violencia que aún pretenden dictar el destino de las regiones.",
+      "lineatiempo": "1948: Asesinato de Jorge Eliécer Gaitán y estallido del 'Bogotazo'. / 1958: Inicio del Frente Nacional. / 1970-1980: Auge del narcotráfico y crecimiento de las guerrillas. / 1991: Promulgación de la nueva Constitución Política de Colombia."
+    }
+  ]
+}

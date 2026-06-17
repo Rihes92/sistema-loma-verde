@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T21:15:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-HIS-9-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento social",
+      "contexto": "El modelo macroeconómico mercantilista aplicado por el Imperio español en la Nueva Granada se fundaba en la acumulación de metales preciosos mediante un control monopólico estricto y un aparato impositivo fiscalista voraz orientado a drenar los excedentes hacia la metrópoli europea.",
+      "enunciado": "A partir del contexto histórico colonial, ¿cuál de las siguientes opciones describe correctamente el impuesto de la **alcabala** que afectaba los circuitos de comercio local?",
+      "opciones": [
+        "A) Un subsidio directo en efectivo otorgado por la Corona para incentivar que las comunidades indígenas exportaran maíz hacia los puertos andinos.",
+        "B) Un gravamen obligatorio que tasaba de forma repetida la compraventa de cualquier bien mueble, raíz o mercancía dentro del territorio virreinal.",
+        "C) Un impuesto exclusivo que obligaba a los grandes comerciantes a donar la mitad de sus reses vacunas a los cabildos municipales.",
+        "D) Una exención arancelaria de nivel cero que permitía el ingreso libre de manufacturas inglesas sin pagar derechos aduaneros."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la alcabala constituía uno de los tributos más significativos y generalizados del régimen fiscal colonial español. Operaba como un impuesto indirecto sobre el comercio interno que gravaba cada transacción mercantil de bienes, encareciendo el intercambio de artículos, restringiendo la emergencia de mercados campesinos autónomos libres y demostrando el carácter puramente fiscalista y extractivo de la macroeconomía mercantilista virreinal."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Durante las reformas liberales radicales de mitad del siglo XIX, el Estado colombiano ejecutó la desamortización de bienes de manos muertas y la disolución forzada de los resguardos indígenas comunales con el propósito de introducir la tierra en el circuito del libre cambio mercantil.",
+      "enunciado": "Desde una perspectiva geográfica y social crítica, ¿cuál fue el impacto de estas reformas liberales decimonónicas sobre la estructura de la tenencia de la propiedad agraria en el país?",
+      "opciones": [
+        "A) La democratización absoluta de los predios rurales mediante la entrega gratuita de parcelas tecnificadas a la totalidad del campesinado minifundista.",
+        "B) La concentración de las tierras comunales expropiadas y de los baldíos nacionales en manos de grandes comerciantes y terratenientes, consolidando el latifundio ganadero y agroexportador.",
+        "C) La prohibición penal de la propiedad privada sobre la tierra para proteger los derechos ancestrales de las comunidades afrodescendientes.",
+        "D) La transformación mecánica de las sabanas del Caribe en reservas forestales protegidas e intocables por el sector corporativo industrial."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque el enfoque relacional de la geografía agraria devela que las reformas liberales del siglo XIX, bajo el postulado del libre cambio de tierras, eliminaron las formas de propiedad colectiva e institucional ancestrales. Al lanzarse estos inmensos predios al libre mercado sin regulaciones distributivas, las élites burguesas comerciales urbanas —que poseían el capital financiero— acapararon los terrenos expropiados, expandiendo la gran hacienda latifundista ganadera en detrimento del campesinado."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Apertura Económica implementada en Colombia a partir de 1990 eliminó las barreras arancelarias de protección e insertó al agro nacional en el libre mercado regulado por los Tratados de Libre Comercio.",
+      "enunciado": "La eliminación total de los aranceles aduaneros a la importación de alimentos beneficia de forma directa la soberanía alimentaria del corregimiento de Loma Verde, puesto que al ingresar maíz extranjero barato se incrementa la riqueza y la capacidad productiva de las familias campesinas veredales.",
+      "correcta": false,
+      "justificacion": "Es profundo y argumentadamente falso debido a que la liberalización aduanera neoliberal destruye la soberanía alimentaria y estrangula de forma financiera la economía doméstica del campo. El ingreso masivo de maíz y cereales importados altamente subsidiados por potencias globales tumba los precios de venta del grano criollo criandose en Loma Verde. Al recibir ingresos inferiores a los costos invertidos en insumos químicos caros, el minifundio familiar entra en quiebra inducida, forzando la desterritorialización agraria."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento social",
+      "contexto": "Las instituciones de control de mano de obra en la época colonial, tales como la mita y la encomienda, constituyeron dispositivos de subordinación regulados por la Corona española.",
+      "enunciado": "La mita colonial operaba como un sistema de trabajo forzado y rotativo mediante el cual las comunidades indígenas eran obligadas a transferir su fuerza de trabajo hacia los enclaves mineros y agrícolas de las élites españolas a cambio de tributos fiscales.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la mita constituyó una institución clave del mercantilismo extractivo español. Funcionaba como una cuota obligatoria de servicios laborales que los pueblos nativos debían prestar de forma cíclica en las minas de oro y plata o en las haciendas coloniales, garantizando la transferencia masiva de plusvalía y riqueza hacia la metrópoli y desestructurando de forma violenta las economías agrícolas tradicionales precolombinas."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un discurso de economía corporativa afirma: 'La Apertura Económica de 1990 eliminó el atraso agrícola de Colombia al permitir que grandes haciendas ganaderas latifundistas adquieran las tierras minifundistas ineficientes de Loma Verde para desarrollar la ganadería extensiva de carne de exportación, maximizando las divisas del país'.",
+      "enunciado": "Desde la perspectiva de la ecología política agraria y la defensa del territorio campesino de pancoger, ¿cuál es el sesgo analítico y la falacia central en este argumento corporativo?",
+      "options": [
+        "A) Supone de forma equivocada que las reses vacunas se reproducen mediante procesos electromagnéticos flotando por el espacio aéreo sin tocar el horizonte edáfico.",
+        "B) Celebra y naturaliza la quiebra financiera inducida del pequeño productor, ocultando que el monocultivo ganadero latifundista destruye la soberanía alimentaria, despoja al campesinado y genera pasivos ambientales severos como la compactación del suelo arcilloso y el secamiento de jagüeyes veredales.",
+        "C) Olvida que las comunidades campesinas de pequeña escala no consumen alimentos biológicos y que la nutrición urbana contemporánea proviene de la síntesis del oxígeno.",
+        "D) Sostiene de forma errónea que las Juntas de Acción Comunal de Loma Verde son las corporaciones transnacionales dueñas de los principales puertos marítimos andinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye el discurso modernizador y agroextractivo de libre mercado que invisibiliza los costos sociales y biofísicos. El analista presenta la desposesión agraria como un avance de 'eficiencia', omitiendo que la ganadería extensiva introduce la deforestación de micro-bosques, altera el ciclo hídrico y compacta mecánicamente los suelos arcillosos de Loma Verde mediante el pisoteo pesado de las reses, lo que suprime la infiltración de lluvias e imposibilita la agricultura de subsistencia."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las redes de reciprocidad y solidaridad campesina en las veredas de Loma Verde, como la 'mano prestada', permiten al pequeño productor de pancoger enfrentar las labores rudas de preparación del suelo arcilloso y recolección de cosechas de forma colectiva sin asumir costos de empleo asalariado.",
+      "enunciado": "Cuando se presenta una ola sostenida de emigración de la población joven hacia el medio urbano informal provocada por la crisis económica del agro, ¿cuál es el impacto mecánico directo sobre el funcionamiento de estas redes solidarias veredales?",
+      "opciones": [
+        "A) Se industrializan de forma instantánea mediante la transferencia de maquinaria pesada financiada por los mototaxistas urbanos de Montería.",
+        "B) Se debilitan de forma crítica debido al vaciamiento de la fuerza de trabajo vital de la vereda, forzando al campesino anciano a asumir costos de jornales asalariados caros que quiebran su presupuesto familiar.",
+        "C) Provocan que los cultivos tradicionales de yuca dupliquen sus rendimientos biológicos de forma espontánea sin necesidad de labrar la tierra.",
+        "D) Se transforman en corporaciones financieras transnacionales exentas de control aduanero reguladas por las juntas de acción comunal."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las redes de reciprocidad social como la 'mano prestada' exigen una densidad de población mínima de brazos activos dentro de la vereda para operar por vasos comunicantes. Al vaciarse Loma Verde de su juventud por el despojo de mercados que imponen los TLC, las redes colapsan; los hogares agrarios remanentes, habitados por ancianos, se quedan aislados y se ven forzados a mercantilizar el trabajo contratando peones asalariados cuyos costos quiebran la rentabilidad del pancoger."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento social",
+      "contexto": "El monopolio comercial constituía el pilar geoeconómico del mercantilismo mediante el cual la Corona española controlaba estrictamente el flujo de mercancías transatlánticas.",
+      "enunciado": "Bajo el régimen de monopolio comercial colonial, las provincias de la Nueva Granada tenían la libertad jurídica de comerciar de forma abierta sus manufacturas y oro con potencias rivales como Inglaterra, Francia y Holanda sin pagar derechos aduaneros en los puertos.",
+      "correcta": false,
+      "justificacion": "Es falso porque el monopolio comercial colonial prohibía de forma penal cualquier transacción comercial entre las colonias hispanas y naciones extranjeras. La Nueva Granada estaba obligada jurídicamente a comprar y vender mercancías de forma exclusiva con la metrópoli española a través de los puertos autorizados, mecanismo de control que enriquecía a los mercaderes peninsulares y asfixiaba el desarrollo industrial autónomo americano."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El desmonte arancelario radical ejecutó la Apertura Económica de 1990 inundó las plazas de abasto de Montería con alimentos importados extranjeros, provocando la devaluación de los precios de las cosechas locales de maíz criollo y yuca cultivadas en las veredas de Loma Verde.",
+      "enunciado": "Explique detalladamente y con argumentos de geografía crítica de la población de qué manera la pérdida de rentabilidad comercial de las cosechas tradicionales de pancoger altera las propiedades físicas del suelo arcilloso, destruye el ciclo de los jagüeyes y deprime el nivel freático doméstico en las familias de Loma Verde.",
+      "respuesta": "La eliminación total de las barreras arancelarias por el liberalismo económico desata un proceso estructural de desterritorialización que destruye el metabolismo biofísico y social del corregimiento de Loma Verde. Al ingresar alimentos importados altamente subsidiados del extranjero a precios artificialmente bajos en Montería, el pequeño productor de lomerío pierde la capacidad de competir. Esta competencia asimétrica genera la quiebra financiera inducida del minifundio familiar, provocando una emigración forzada de la población joven hacia la economía informal urbana del mototaxismo. Al quedarse las veredas habitadas exclusivamente por campesinos adultos mayores y ancianos, colapsan las redes comunitarias de ayuda mutua sin salario (*mano prestada*), haciendo económicamente inviable la labranza artesanal. Ante el estrangulamiento financiero e individual, las familias remanentes se ven forzadas a tomar la decisión de vender sus parcelas a precios devaluados a grandes terratenientes ganaderos extensivos. Este cambio estructural en la tenencia de la tierra reconfigura de forma profundamente negativa las propiedades físicas del ecosistema local: el modelo ganadero introduce la quema y tala indiscriminada de los últimos parches de bosque seco tropical remanentes para sembrar pastizales comerciales homogéneos, eliminando la regulación climática biótica y la evapotranspiración local, lo cual intensifica la aridez del aire. Mecánicamente, el pisoteo continuo e intensivo del ganado vacuno pesado ejerce una inmensa presión por centímetro cuadrado que compacta los suelos arcillosos lateríticos del lomerío de Loma Verde, destruyendo su estructura porosa natural y sellando los macroporos y canales de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales. En consecuencia, el agua de lluvia se transforma instantáneamente en escorrentías superficiales torrenciales y caóticas que corren con fuerza ladera abajo, erosionando las laderas en cárcavas profundas, lavando la escasa capa orgánica fértil (*humus*) y arrastrando toneladas de sedimentos y lodos en suspensión hacia las depresiones del relieve. Este material arcilloso arrastrado se deposita por decantación física en el fondo de los jagüeyes veredales, provocando una colmatación o sedimentación acelerada que les resta profundidad útil. Al quedar reducidos a depósitos hídricos planos y de escasos centímetros, los jagüeyes comunitarios quedan expuestos a una evaporación termodinámica extrema debido a la radiación solar directa del Caribe y a la acción de vientos secos, vaciándose las reservas de agua dulce meses antes de finalizar la temporada estacional seca de verano y deprimiendo por vasos comunicantes el nivel freático de los pozos artesanales (*aljibes*) domésticos, condenando a las familias campesinas a una crisis crónica de escasez de agua potable y al marchitamiento absoluto de sus cultivos por estrés hídrico severo.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-HIS-9-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento social",
+      "contexto": "El modelo agroexportador republicano consolidado en la segunda mitad del siglo XIX insertó a Colombia en la División Internacional del Trabajo en calidad de proveedora de materias primas secundarias y consumos agrícolas demandados por las naciones industrializadas del norte global.",
+      "enunciado": "Para viabilizar este modelo comercial librecambista decimonónico, las reformas liberales estatales priorizaron la expropiación y mercantilización de tierras mediante:",
+      "opciones": [
+        "A) La creación de un fondo nacional inalienable para entregar títulos de propiedad colectiva a la totalidad de las comunidades campesinas de pancoger.",
+        "B) La desamortización de bienes raíces eclesiásticos y la disolución forzada de los resguardos indígenas comunales para lanzar los predios al libre mercado inmobiliario.",
+        "C) La prohibición constitucional del latifundio ganadero extensivo en todo el territorio del departamento de Córdoba.",
+        "D) La nacionalización de las grandes empresas navieras inglesas para regalar el transporte a los pequeños productores de yuca."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque el modelo agroexportador del siglo XIX requería la incorporación de ingentes extensiones de suelo a la lógica de la propiedad privada individual para cultivar productos de exportación. Al decretarse la desamortización de manos muertas y destruir el régimen comunal de los resguardos, el Estado liberal radical rompió las formas tradicionales de tenencia colectiva de la tierra, facilitando que las élites terratenientes acapararan los baldíos y expandieran el latifundio."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La geografía de género devela que los impactos de las transiciones macroeconómicas y las devaluaciones comerciales del agro transforman los roles de cuidado y producción dentro del hogar campesino de forma asimétrica.",
+      "enunciado": "Cuando la quiebra económica agraria inducida por los Tratados de Libre Comercio expulsa a la juventud nativa desde Loma Verde hacia la economía informal urbana, las mujeres campesinas que permanecen en las veredas sufren una sobrecarga laboral, asumiendo de forma simultánea la labranza ruda de la parcela, el acarreo hídrico de jagüeyes colmatados y el cuidado doméstico del hogar.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la emigración selectiva juvenil desestructura la división sexual tradicional del trabajo en el campo. Las mujeres rurales que se quedan al frente de las unidades agrarias atomizadas en Loma Verde deben absorber labores físicas rudas de mantenimiento de lomeríos y abastecimiento de pozos secos que antes se distribuían colectivamente dentro de la familia, soportando triples jornadas de trabajo sin salario formal."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico agro-económico comparativo demuestra que bajo las salvaguardas arancelarias del antiguo proteccionismo un campesino obtenía márgenes estables de ganancia en su maíz, mientras que bajo la desregulación liberal abierta de los TLC el precio fijado por intermediarios urbanos genera pérdidas netas del 20% sobre el capital invertido en insumos químicos importados caros.",
+      "enunciado": "Utilizando estos indicadores de vulnerabilidad doméstica, determine la opción que explica la propuesta comunitaria local más viable para mitigar la crisis económica y defender el territorio veredal de Loma Verde.",
+      "opciones": [
+        "A) Solicitar créditos usureros locales para comprar motocicletas comerciales y forzar a la totalidad de la población veredal a migrar hacia el mototaxismo informal de Montería.",
+        "B) Fortalecer la asociatividad campesina cooperativa independiente para suprimir la intermediación comercial abusiva, implementar redes transmedia de venta directa y tecnificar el campo mediante sistemas artesanales hídricos por goteo de bajo costo.",
+        "C) Pavimentar con asfalto de alta densidad la totalidad de las hectáreas de suelos arables de Loma Verde para erradicar las arcillas y convertirlas en parqueaderos internacionales.",
+        "D) Exigir que el gobierno nacional declare ilegal de forma penal cualquier forma de cultivo tradicional de pancoger en las sabanas de Córdoba."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque representa la única estrategia viable de adaptación geográfico-económica y resistencia soberana frente al libre mercado neoliberal. Al unirse colectivamente los pequeños productores bajo esquemas cooperativos, adquieren poder de negociación frente a las redes de intermediación abusivas de la urbe, mejorando la rentabilidad neta del pancoger. La introducción de ecotecnologías hídricas artesanales mitiga los efectos de las sequías estacionales severas y asegura la permanencia juvenil en las veredas de Loma Verde."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento social",
+      "contexto": "El impuesto colonial denominado 'quinto real' constituía un dispositivo de exacción fiscal mediante el cual la Corona española se apropiaba obligatoriamente de una fracción de la riqueza extraída.",
+      "enunciado": "El quinto real obligaba a los mineros y encomenderos del virreinato de la Nueva Granada a transferir el 20% de todo el oro y metales preciosos extraídos de la geografía americana de forma directa hacia las arcas del Tesoro de la Corona peninsular.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque el quinto real representaba una de las rentas más lucrativas y estrictas del mercantilismo fiscalista español. Garantizaba que una quinta parte de la riqueza minera removida de la litosfera americana mediante el trabajo coactivo fuera extraída y enviada de forma directa hacia España para financiar los presupuestos militares del imperio, consolidando el carácter extractivo de la macroeconomía colonial."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante un debate académico en la institución educativa de Loma Verde, un estudiante afirma que 'los campesinos de nuestras veredas sufren escasez hídrica y pobreza en verano porque carecen de computadores avanzados para exportar su yuca a los mercados globales', mientras que otro sector argumenta que 'la escasez y la quiebra son causadas por un despojo económico estructural e histórico que desmontó aranceles e introdujo ganadería extensiva compactadora de suelos'.",
+      "enunciado": "Adoptando los principios analíticos de la geografía crítica y la ecología política agraria, ¿cuál es la forma correcta de dirimir la tensión conceptual expuesta?",
+      "opciones": [
+        "A) Validar la primera postura asumiendo que los suelos arcillosos de Loma Verde pierden su agua interna debido a la ausencia de software digital en las parcelas familiares.",
+        "B) Deconstruir la primera postura demostrando su sesgo moralista e individualista que invisibiliza las deudas históricas del Estado, y respaldar la segunda explicando que el libre mercado de la Apertura y la ganganaderización latifundista privatizaron la tierra y compactaron mecánicamente los suelos destruyendo la infraestructura hídrica natural.",
+        "C) Sostener que la yuca nativa es un vegetal mineral que se reproduce de forma electromagnética por lo cual no requiere agua de lluvias orográficas.",
+        "D) Exigir que las Juntas de Acción Comunal pavimenten de forma obligatoria los patios de las escuelas para convertirlas en centrales de mototaxismo transnacional."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que desarmar el discurso de la responsabilidad individual o del rezago tecnológico como causas de la pobreza rural es una tarea central de las ciencias sociales críticas. El estudiante que culpabiliza al campesino ignora las asimetrías territoriales impuestas por el Estado central. El análisis científico demuestra que la crisis hidroclimática y la quiebra agraria en Loma Verde son el resultado material de decisiones macroeconómicas históricas (Apertura Económica, TLC, latifundización ganadera) que socializaron los pasivos de la apertura destruyendo los ecosistemas riparios, compactando el lomerío y arruinando el precio del pancoger."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto de 'economía de subsistencia campesina' define un modelo de organización del espacio geográfico rural donde la producción de la parcela minifundista se orienta preferencialmente al autoabastecimiento nutricional y material del núcleo doméstico, actuando como un amortiguador frente a las crisis de mercado externas.",
+      "enunciado": "La permanencia y fortalecimiento de la agricultura tradicional de pancoger (yuca, plátano, maíz) en Loma Verde constituye un mecanismo de resistencia frente al liberalismo económico global, puesto que provee autonomía alimentaria autónoma y reduce la dependencia absoluta de las familias campesinas frente al dinero en efectivo de los mercados urbanos de consumo.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que en el enfoque de la geografía crítica agraria, la parcela diversificada desmercantiliza parcialmente la supervivencia biológica del campesinado. Al producir de forma autónoma sus propios alimentos de pancoger, el hogar rural edifica una barrera de seguridad que mitiga el impacto de la inflación urbana, los abusos de los intermediarios de Montería y el encarecimiento de la canasta básica familiar impuesto por el modelo liberal abierto."
+    },
+    {
+      "id": "LV-BANCO-HIS-9-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Modelos macroeconómicos coloniales frente a los republicanos e impacto de la apertura económica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, el centro de interés en STEM+ y Transmedia 'SteMedIA' desarrolla la estrategia 'Frecuenc-IA Rural' liderada por el docente Richard Miguel Hernández Sabié, donde los estudiantes de Noveno graban pódcast y documentales utilizando herramientas avanzadas de IA para documentar las consecuencias de la liberalización aduanera y el mototaxismo informal en los hogares campesinos de sus familias.",
+      "enunciado": "Sustente de manera profunda, utilizando argumentos técnicos y conceptuales de la geografía crítica de la población estudiada en clase, de qué manera este proyecto de comunicación transmedia escolar actúa como un dispositivo de resistencia comunitaria para mitigar los impactos de la precarización laboral urbana y defender la permanencia campesina en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' y el centro de interés 'SteMedIA' operan como un dispositivo de resistencia territorial y pedagógica fundamental frente al vaciamiento demográfico y la precarización laboral que impone el modelo de desarrollo agroextractivo liberal en Loma Verde. Desde el enfoque de la geografía crítica de la población, este proyecto de comunicación estratégica deconstruye y subvierte el discurso hegemónico urbano-industrial que cataloga al espacio rural campesino como un paraje de 'atraso e inviabilidad', narrativa corporativa que funciona como un motor ideológico para impulsar la emigración y el desarraigo de la juventud rural. Al empoderar a los estudiantes de Noveno en el uso de tecnologías digitales avanzadas y transmedia para documentar las realidades productivas y geográficas de su corregimiento, se redefine radicalmente la identidad de la juventud campesina: el joven deja de concebir la migración informal urbana (mototaxismo precarizado en Montería) como la única ruta de progreso material posible y empieza a valorar el territorio veredal como un espacio soberano de creación técnica, intelectual y política. Metodológicamente, al registrar los testimonios de los abuelos agricultores y salvaguardar la memoria histórica de las deudas del agro, los jóvenes se apropian de forma directa del patrimonio intangible de manejo ecológico del suelo arcilloso, adaptaciones microclimáticas y técnicas ancestrales de siembra de policultivos de pancoger, restaurando el puente de transmisión de saberes agroecológicos indispensables para la soberanía alimentaria la canasta familiar local y mitigando el colapso de la mano prestada. Asimismo, al visibilizar las historias de vulnerabilidad económica y las capacidades de resiliencia de las familias del lomerío, el proyecto escolar combate el aislamiento, teje lazos de cohesión social y fortalece las redes de ayuda mutua comunitaria (*mano prestada*), transformando el aula rural en un espacio de integración democrática. Finalmente, al difundir pódcast y videos interactivos que denuncian de manera técnica los pasivos institucionales y ambientales del corregimiento (escasez hídrica estructural, colmatación de jagüeyes por la ganaderización extensiva colindante y abusos de intermediarios comerciales en las plazas públicas), 'Frecuenc-IA Rural' dota al campesinado de herramientas de comunicación e incidencia política para exigir justicia ambiental y un ordenamiento territorial con criterios de equidad rural ante las autoridades del municipio de Montería y del departamento de Córdoba, demostrando de forma contundente que la permanencia digna, el arraigo juvenil y la defensa del minifundio agrícola tradicional constituyen la única garantía real para evitar la disolución material e intelectual del campesinado rural.",
+      "sugerida": true
+    }
+  ]
+}

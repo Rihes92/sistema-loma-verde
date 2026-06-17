@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T21:00:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Periodo 1",
+    "unidad": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-CS9-E2-F4-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento social",
+      "contexto": "El concepto demográfico de macrocefalia urbana define la concentración desproporcionada de la población, la infraestructura física y los recursos económicos de una nación o departamento en una sola ciudad principal, ensanchando la brecha de desarrollo con su entorno geográfico circundante.",
+      "enunciado": "Teniendo en cuenta las dinámicas demográficas del departamento de Córdoba contemporáneo, ¿cuál es el factor histórico estructural que explica el crecimiento hipertrófico y macrocefálico de la cabecera urbana del municipio de Montería?",
+      "opciones": [
+        "A) La implantación de políticas agrarias de base cooperativa comunitaria que compraron a precios elevados los minifundios para proteger la biodiversidad de los bosques.",
+        "B) Las olas sostenidas de desplazamiento forzado y éxodo rural provocadas por el conflicto armado interno, el despojo violento de tierras y la quiebra inducida del agro de pequeña escala.",
+        "C) La decisión libre y planificada de las familias campesinas de transformar sus parcelas arables en zonas pavimentadas industriales para suprimir las colinas del corregimiento.",
+        "D) El fomento estatal masivo de huertas orgánicas en los caseríos rurales que redujo a cero la necesidad de comercializar alimentos en los mercados urbanos públicos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía crítica de la población demuestra que la macrocefalia de las capitales caribeñas intermedias como Montería no es el resultado de un proceso de industrialización armónico o de atracción planificada del empleo regular. Constituye el reflejo espacial del desarraigo coactivo: la violencia paramilitar y guerrillera despojó al campesinado de sus medios de producción (la tierra) obligándolo a huir para proteger su vida, flujo demográfico que se unió a la ruina económica del minifundio por las políticas comerciales neoliberales que abarataron el precio de cultivos nativos mediante importaciones."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La segregación socioespacial constituye un proceso de fragmentación en el cual los diferentes estratos socioeconómicos habitan de forma separada el espacio geográfico de la urbe, confinando de manera recurrente a las poblaciones vulnerables y desposeídas a territorios marginales.",
+      "enunciado": "Cuando miles de familias campesinas arriban desposeídas a la periferia urbana de Montería, ¿cuál es la manifestación geográfica y habitacional inmediata de este proceso de segregación socioespacial?",
+      "opciones": [
+        "A) La adquisición de viviendas dignas fortificadas con cobertura total de servicios públicos residenciales en las comunas exclusivas de estratos altos.",
+        "B) El desarrollo y expansión descontrolada de asentamientos informales subnormales (invasiones) caracterizados por el hacinamiento crítico, la precariedad de materiales y la ausencia estructural de agua potable y alcantarillado.",
+        "C) La edificación inmediata de rascacielos residenciales colectivos financiados de forma gratuita por las corporaciones agroindustriales ganaderas.",
+        "D) El retorno automático de los migrantes hacia las veredas altas debido a la entrega de subsidios estatales en efectivo en las plazas céntricas urbanas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que los migrantes rurales desposeídos carecen del capital financiero necesario para insertarse en el mercado formal inmobiliario urbano regulado por el sector corporativo. Ante la debilidad institucional del municipio para proveer soluciones de vivienda social digna, la población expulsada del campo se ve abocada a la ocupación informal de predios marginales en las orillas de la mancha urbana, consolidando cinturones de miseria y tugurización donde el pasivo histórico de saneamiento básico reproduce las condiciones de exclusión de origen."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El subempleo por ingresos define una condición de precarización laboral donde los trabajadores insertos en el circuito informal de la economía devengan remuneraciones monetarias variables e insuficientes que no alcanzan a cubrir el costo real de la canasta básica familiar de consumo.",
+      "enunciado": "La inserción laboral de los jóvenes migrantes de Loma Verde en el mototaxismo informal de Montería les garantiza estabilidad económica definitiva, contratos formales de trabajo y acceso pleno al sistema de seguridad social y riesgos profesionales regulados por la ley.",
+      "correcta": false,
+      "justificacion": "Es falso porque el mototaxismo y las ventas ambulantes constituyen las ocupaciones insignes de la economía informal urbana precarizada. Estas actividades carecen de toda regulación contractual legal, desprotegen por completo al trabajador frente al sistema general de pensiones, salud y riesgos profesionales ante accidentes viales, y entregan ingresos líquidos diarios que se desvanecen en los costos operativos del vehículo (alquiler diario de la moto, combustible) y en la subsistencia costosa de las barriadas populares, perpetuando la exclusión."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La soberanía alimentaria campesina en el corregimiento de Loma Verde radica en la capacidad de las familias para cultivar de manera autónoma en sus parcelas de minifundio alimentos esenciales de pancoger como la yuca, el plátano y el maíz, blindando los presupuestos domésticos frente a los vaivenes de los precios del mercado.",
+      "enunciado": "La emigración sostenida de la población joven hacia el medio urbano beneficia la soberanía alimentaria de Loma Verde, puesto que disminuye la cantidad de personas que consumen los recursos comunes de las veredas y eleva la disponibilidad de excedentes comerciales agrícolas.",
+      "correcta": false,
+      "justificacion": "Es falso debido a que el éxodo juvenil rural genera el impacto contrario: destruye la soberanía alimentaria veredal mediante el quiebre del relevo generacional y el vaciamiento de la fuerza de trabajo vital. Al quedarse los minifundios habitados por ancianos aislados cuyas capacidades físicas menguan, colapsan las redes de ayuda mutua colectiva (*mano prestada*), obligando a contraer drásticamente el número de hectáreas sembradas de yuca y maíz, convirtiendo al corregimiento en un territorio desestructurado dependiente del suministro externo de víveres caros urbanos."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En una asamblea comunal de Loma Verde, un extensionista rural afirma que 'el mototaxismo informal en Montería es una excelente alternativa de capitalización familiar para la juventud campesina, ya que entrega flujos de dinero en efectivo diarios que superan con creces la rentabilidad de la siembra tradicional de cultivos de pancoger'.",
+      "enunciado": "Desde la perspectiva de la geografía crítica de la población y la economía política agraria, ¿cuál es la falacia conceptual y el sesgo analítico dominante en la postura expresada por este extensionista?",
+      "opciones": [
+        "A) Desconoce que el mototaxismo es una actividad industrial de alta tecnología que exporta patentes de transporte a escala internacional.",
+        "B) Adopta una visión superficial basada en la liquidez monetaria menor de corto plazo, ocultando que la inserción informal urbana mercantiliza la subsistencia biológica y consume los ingresos en pagar alquileres de vehículos, arriendos en barriadas y comida cara, anulando la capacidad de ahorro y destruyendo la fuerza laboral rural.",
+        "C) Supone que los cultivos de yuca y maíz en las veredas se reproducen de forma automática mediante el uso de satélites artificiales robóticos que no requieren intervención humana.",
+        "D) Plantea que todas las motocicletas comerciales que operan en el municipio de Montería son propiedad inalienable de las juntas de acción comunal del corregimiento."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye el mito modernizador de la informalidad urbana. El extensionista confunde la circulación menor de dinero en efectivo diario con la acumulación real de capital o el bienestar familiar. El análisis crítico devela que en la urbe el migrante pierde la autonomía alimentaria de su parcela, viéndose forzado a comprar cada bien básico en un mercado costoso; los ingresos del mototaxismo se consumen en la reproducción física inmediata individual dentro de la barriada periférica, lo que explica por qué el envío de remesas económicas hacia Loma Verde es mínimo o inexistente, desestructurando el hogar de origen."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las prácticas colectivas de reciprocidad rural en Loma Verde, como 'el convite' o 'la mano prestada', constituyen instituciones comunitarias fundamentales que permiten a los productores minifundistas abaratar los costos de preparación del suelo arcilloso, siembra y recolección sin recurrir al empleo asalariado.",
+      "enunciado": "Cuando se presenta una ola sostenida de emigración juvenil hacia el medio urbano informal, ¿cuál es la consecuencia mecánica directa sobre el funcionamiento de estas redes de trabajo solidario veredal?",
+      "opciones": [
+        "A) Se industrializan de forma instantánea mediante la llegada de maquinaria pesada financiada por fondos internacionales privados.",
+        "B) Se debilitan de forma crítica e irreversible debido al vaciamiento de la fuerza de trabajo vital de la vereda, forzando al campesino anciano a asumir costos de jornales asalariados elevados que quiebran su presupuesto agrario.",
+        "C) Provocan que los cultivos de plátano multipliquen de manera sólida sus rendimientos biológicos sin necesidad de labrar la tierra fértil.",
+        "D) Se transforman en corporaciones comerciales controladas de forma unánime por los mototaxistas informales de la cabecera municipal."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las redes de reciprocidad social exigen una densidad demográfica mínima de fuerza de trabajo activa dentro de la vereda para operar por vasos comunicantes. Al vaciarse las veredas de su población joven por emigración, las redes tradicionales colapsan; los hogares agrarios remanentes, habitados por ancianos, se quedan aislados y se ven forzados a mercantilizar el trabajo contratando peones asalariados cuyos costos quiebran la rentabilidad del pancoger."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento social",
+      "contexto": "Las teorías demográficas neoclásicas funcionalistas sostienen el postulado del 'mito de las remesas', argumentando que el éxodo rural es una estrategia eficiente de diversificación económica que capitaliza las parcelas agrícolas mediante el envío constante de dinero desde las urbes.",
+      "enunciado": "El análisis crítico de las trayectorias socio-laborales de los jóvenes emigrados de Loma Verde que trabajan en el mototaxismo informal en Montería convalida plenamente el mito de las remesas neoclásico, demostrando la masiva inyección de capitales urbanos en las veredas.",
+      "correcta": false,
+      "justificacion": "Es falso porque el diagnóstico geográfico crítico desmitifica este postulado. Debido a que el mototaxismo y el subempleo urbano precarizado en Montería apenas proveen ingresos para cubrir los altos costos de supervivencia del trabajador en los cinturones de miseria (alquiler de moto, habitación, comida de mercado), la capacidad de ahorro neta es nula, por lo cual el envío de remesas económicas hacia Loma Verde es marginal o inexistente, dejando a las parcelas de origen desprovistas de capital y desestructuradas productivamente."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la vereda El Retiro del corregimiento de Loma Verde, el vaciamiento poblacional juvenil provocado por las dinámicas de precarización laboral urbana genera que decenas de unidades productivas minifundistas queden semiabandonadas o bajo el manejo exclusivo de agricultores ancianos cercados económicamente por la falta de recursos y de relevo generacional.",
+      "enunciado": "Explique detalladamente, utilizando los conceptos de geografía crítica y ecología política agraria estudiados en el curso, de qué manera este vacío de mano de obra propicia la compra de tierras por parte de grandes terratenientes ganaderos latifundistas y analice cómo este cambio estructural en la tenencia de la tierra reconfigura de forma profundamente negativa el ciclo del agua, el suelo y la sostenibilidad hídrica de Loma Verde en épocas de sequía.",
+      "respuesta": "El vaciamiento demográfico juvenil provocado por la precarización laboral urbana deprime la capacidad de resistencia del minifundio familiar en la vereda El Retiro, colocando a los agricultores ancianos en un estado de estrangulamiento económico. Al no contar con relevo generacional y enfrentar deudas acumuladas e incrementos en los costos de los jornales por el colapso de la 'mano prestada', los campesinos mayores se ven cercados e imposibilitados para labrar la tierra, viéndose forzados a vender sus parcelas a precios devaluados a grandes terratenientes ganaderos latifundistas. Desde la perspectiva de la geografía crítica y la ecología política agraria, este proceso de desposesión indirecta reconfigura de forma profundamente negativa el espacio geográfico y el ecosistema de Loma Verde a través de una cascada de alteraciones biofísicas destructivas: primero, se erradica la soberanía alimentaria local al transformarse los mosaicos agrícolas biodiversos productores de yuca, maíz y plátano en extensos tapetes homogéneos de pastizales comerciales exóticos destinados de forma exclusiva al pastoreo ganadero extensivo de vacunos para la exportación de carne; segundo, el modelo ganadero latifundista introduce la quema y la tala indiscriminada de los últimos parches de bosque seco tropical remanentes para ampliar los potreros, eliminando la regulación microclimática biótica del corregimiento e intensificando la aridez del aire; tercero, el pisoteo continuo e intensivo del ganado vacuno pesado ejerce una inmensa presión mecánica por centímetro cuadrado que compacta mecánicamente los suelos arcillosos lateríticos del lomerío, destruyendo su porosidad natural y sellando los macroporos de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales de los que dependen las veredas. En consecuencia, el agua de lluvia se transforma instantáneamente en escorrentías superficiales torrenciales y caóticas que corren con violencia ladera abajo, erosionando las vertientes en cárcavas profundas, lavando la escasa capa orgánica fértil (humus) y arrastrando toneladas de sedimentos y lodos en suspensión hacia las depresiones del relieve. Este material arcilloso arrastrado se deposita por decantación física en el fondo de los jagüeyes veredales, provocando una colmatación o sedimentación acelerada que les resta profundidad útil. Al quedar reducidos a depósitos hídricos planos y de escasos centímetros, los jagüeyes comunitarios quedan expuestos a una evaporación termodinámica extrema debido a la radiación solar directa del Caribe y a la acción de vientos secos, vaciándose las reservas de agua dulce meses antes de finalizar la temporada estacional seca de verano y deprimiendo por vasos comunicantes el nivel freático de los pozos artesanales (*aljibes*) domésticos, condenando a las familias campesinas a una crisis crónica de escasez de agua potable y al marchitamiento absoluto de sus cultivos por estrés hídrico severo.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento social",
+      "contexto": "El análisis crítico de los censos demográficos nacionales emitidos por el DANE permite cartografiar de forma cuantitativa el vaciamiento poblacional de las periferias rurales y la macrocefalia hipertrófica de las capitales municipales intermedias colombianas en las últimas cinco décadas.",
+      "enunciado": "Si un investigador de geografía humana evalúa las series estadísticas oficiales de crecimiento poblacional de la cabecera urbana del municipio de Montería, ¿cuál de los siguientes fenómenos empíricos detectará de forma directa respecto al comportamiento de las comunas periféricas populares?",
+      "opciones": [
+        "A) Un descenso drástico en el número absoluto de habitantes urbanos provocado por un éxodo masivo voluntario de profesionales adinerados hacia el campo de Loma Verde.",
+        "B) Un crecimiento demográfico horizontal hiperacelerado e hipertrófico de las barriadas periféricas subnormales, alimentado históricamente por oleadas continuas de población campesina desplazada y migrante por necesidad económica.",
+        "C) La desaparición absoluta de los circuitos de la informalidad laboral gracias a la absorción inmediata de todos los migrantes en puestos directivos formales de la alta gerencia estatal.",
+        "D) La transformación radical de las comunas populares en distritos financieros internacionales exentos de regulación controlados por los ganaderos latifundistas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las estadísticas demográficas reflejan en el espacio urbano las cicatrices del desarraigo rural. Los datos censales del DANE demuestran de forma irrefutable que los picos de expansión horizontal de la mancha urbana informal de Montería coinciden históricamente con las temporadas de recrudecimiento de la violencia armada y quiebra de la agricultura tradicional en los corregimientos, visibilizando espacialmente cómo las comunas marginadas periféricas actúan como los receptores precarizados de la población desposeída del interior del departamento."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La geografía de género devela que las consecuencias de la desarticulación demográfica y la precarización laboral urbana transforman los roles tradicionales de producción y cuidado dentro de la unidad doméstica campesina de forma profundamente asimétrica.",
+      "enunciado": "Cuando la emigración selectiva juvenil y masculina vacía a las veredas de Loma Verde de su fuerza de trabajo vital, se genera una intensa sobrecarga laboral en las mujeres campesinas que permanecen en el territorio, quienes deben asumir simultáneamente la labranza ruda de la parcela, el acarreo de agua de los jagüeyes degradados y las jornadas de cuidado doméstico.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que el análisis crítico con enfoque de género demuestra que el éxodo selectivo desestructura la división sexual tradicional del trabajo agrario. Las mujeres rurales que se quedan al frente de los minifundios atomizados de Loma Verde deben absorber tareas físicas exigentes (limpieza de rastrojos, siembra, mantenimiento artesanal de canales) que antes se distribuían colectivamente dentro del núcleo familiar, soportando dobles o triples jornadas laborales sin percibir remuneración salarial y bajo condiciones de abandono institucional."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico demográfico simulado en la vereda Las Palmitas demuestra que en los últimos diez años un total de 30 personas fijaron su residencia definitiva en el lugar procedentes de zonas de conflicto (inmigrantes), mientras que 75 jóvenes nativos salieron hacia centros urbanos informales (emigrantes).",
+      "enunciado": "Utilizando el cálculo matemático del saldo migratorio ($SM = I - E$), determine el resultado neto de la balanza de población de la vereda y su consecuencia socio-espacial más probable en el agro.",
+      "options": [
+        "A) $SM = +105$; la vereda experimenta una sobrepoblación masiva que exige edificar rascacielos residenciales de forma inmediata.",
+        "B) $SM = -45$; la vereda registra un saldo migratorio negativo que expresa un proceso crónico de vaciamiento poblacional, envejecimiento de la fuerza laboral y contracción de la agricultura tradicional de pancoger.",
+        "C) $SM = 0$; la vereda se encuentra en un estado de inmovilidad geográfica absoluta donde la economía campesina está congelada.",
+        "D) $SM = -105$; las parcelas agrícolas se hundieron físicamente en la litosfera debido al peso de los ganaderos latifundistas de Montería."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la aplicación matemática elemental de la ecuación demográfica arroja un resultado negativo ($SM = 30 \\text{ Inmigrantes} - 75 \\text{ Emigrantes} = -45$). Este déficit cuantitativo expresa con precisión científica un proceso estructural de despoblación y vaciamiento de capital humano vital, lo que acelera el envejecimiento de los productores remanentes en la vereda Las Palmitas y restringe las capacidades físicas colectivas para sostener la producción autónoma de alimentos de pancoger."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento social",
+      "contexto": "La Ley de Víctimas y Restitución de Tierras (Ley 1448 de 2011) en Colombia constituye una herramienta jurídica creada por el Estado para procesar legalmente los pasivos históricos de despojo violento de predios sufridos por las comunidades campesinas.",
+      "enunciado": "Los fallos jurídicos de restitución de tierras buscan contrarrestar de forma directa las consecuencias demográficas del desplazamiento forzado contemporáneo, ordenando la devolución formal de las propiedades despojadas a las familias víctimas para propiciar su retorno seguro y productivo al espacio rural de origen.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la restitución de tierras actúa como un instrumento de justicia espacial y reparadora. Su objetivo legal y político es revertir el ordenamiento territorial latifundista impuesto mediante el uso de la violencia armada por grupos ilegales, restituyendo los derechos de tenencia del suelo a los pequeños campesinos expulsados y dotándolos de un marco normativo y presupuestal para retornar a sus veredas de origen (como Loma Verde) a reactivar la producción soberana."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un analista de economía ortodoxa afirma en una publicación: 'La migración masiva de campesinos hacia las ciudades representa un paso eficiente hacia el desarrollo moderno, puesto que transfiere mano de obra barata desde un agro atrasado de baja rentabilidad hacia los sectores comerciales urbanos de servicios, permitiendo además liberar la tierra rural ociosa para que grandes corporaciones desarrollen ganadería extensiva de exportación de alta eficiencia'.",
+      "enunciado": "Desde la perspectiva de los derechos del campesinado rural y adoptando el enfoque relacional de la geografía crítica de la población, ¿cuál es el sesgo ideológico y la falacia central de este argumento?",
+      "opciones": [
+        "A) Supone de manera equivocada que las capitales colombianas carecen de dinero circulante y que la totalidad de la economía informal urbana opera mediante el trueque de raíces de yuca sólida.",
+        "B) Naturaliza y justifica la violencia estructural del desarraigo y la quiebra inducida del agro, ocultando que la concentración latifundista ganadera destruye la soberanía alimentaria, arrasar los bosques nativos y precariza al campesino en los cinturones de miseria urbana bajo condiciones de subempleo.",
+        "C) Olvida de forma ingeniosa que la ganadería de exportación requiere que las vacas vuelen por el espacio aéreo para evitar pisar los suelos arcillosos de Loma Verde.",
+        "D) Sostiene que las Juntas de Acción Comunal veredales son corporaciones transnacionales dueñas de los principales centros comerciales andinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que deconstruye de forma directa el discurso colonial y modernizador del extractivismo agrario que invisibiliza los pasivos socioambientales. Presenta la desposesión del campesino como un avance técnico de 'eficiencia', ocultando que el monocultivo ganadero extensivo privatiza los beneficios económicos en pocas manos, socializa los daños a largo plazo (deforestation, compactación, escasez de agua) y desplaza al productor autónomo hacia la informalidad urbana, precarizando la vida de millones de personas."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto demográfico de 'migración de retorno' describe la trayectoria espacial de aquellos individuos que, tras haber emigrado hacia centros urbanos u mineros, deciden regresar de forma definitiva a establecerse en su territorio veredal de origen.",
+      "enunciado": "La crisis económica de desempleo urbano y los altos costos de vida en los suburbios marginales de las metrópolis pueden actuar en el año 2026 como factores de atracción para impulsar procesos de migración de retorno de jóvenes hacia las parcelas agrícolas de Loma Verde.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la geografía de la población reconoce que los flujos migratorios cambian de sentido ante las crisis del entorno receptor. Si los circuitos de la economía informal urbana colapsan y las condiciones de vida en la ciudad se vuelven insostenibles, la parcela familiar de pancoger en Loma Verde —al garantizar autonomía territorial y capacidad de autoabastecimiento alimentario— re adquiere un valor estratégico de refugio material, motivando el retorno de la población emigrada."
+    },
+    {
+      "id": "LV-BANCO-CS9-E2-F4-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Consecuencias del éxodo rural en el crecimiento de las ciudades y la economía del hogar",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, el centro de interés en STEM+ y Transmedia 'SteMedIA' desarrolla la estrategia 'Frecuenc-IA Rural' liderada por el docente Richard Miguel Hernández Sabié, donde los estudiantes de Noveno graban pódcast y documentales utilizando herramientas avanzadas de IA para documentar las consecuencias de la informalidad urbana y la escasez de agua en las parcelas de pancoger de sus familias.",
+      "enunciado": "Sustente de manera profunda, utilizando argumentos técnicos y conceptuales de la geografía crítica de la población estudiada en clase, de qué manera este proyecto de comunicación transmedia escolar actúa como un dispositivo de resistencia comunitaria para mitigar los impactos de la precarización laboral urbana y defender la permanencia campesina en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' y el centro de interés 'SteMedIA' operan como un dispositivo de resistencia territorial y pedagógica fundamental frente al vaciamiento demográfico y la precarización laboral que impone el modelo de desarrollo agroextractivo en Loma Verde. Desde el enfoque de la geografía crítica de la población, este proyecto subvierte el discurso hegemónico urbano que cataloga al espacio rural campesino como un paraje de 'atraso e inviabilidad', narrativa corporativa que funciona como un motor ideológico que impulsa la emigración y el desarraigo de la juventud rural. Al empoderar a los estudiantes de Noveno en el uso de tecnologías digitales avanzadas y transmedia para documentar las realidades de su corregimiento, se redefine la identidad de la juventud campesina: el joven deja de concebir la migración informal urbana (mototaxismo precarizado) como la única ruta de progreso posible y empieza a valorar el territorio veredal como un espacio de creación técnica, intelectual y política. Metodológicamente, al registrar los testimonios de los abuelos agricultores, los jóvenes se apropian de forma directa del patrimonio intangible de manejo ecológico del suelo arcilloso, adaptaciones microclimáticas y técnicas de siembra de pancoger, restaurando el puente de transmisión de saberes agroecológicos indispensables para la soberanía alimentaria local y mitigando el colapso de la mano prestada. Asimismo, al visibilizar las historias y saberes técnicos alternativos de las familias campesinas inmigrantes, el proyecto escolar combate la exclusión y teje lazos de cohesión social, transformando el aula rural en un espacio de integración democrática. Finalmente, al difundir pódcast y videos interactivos que denuncian técnicamente los pasivos institucionales del corregimiento (escasez hídrica, desprotección de jagüeyes, abusos de intermediarios comerciales en Montería), 'Frecuenc-IA Rural' dota al campesinado de herramientas de comunicación estratégica para exigir justicia ambiental y un ordenamiento territorial con criterios de equidad rural ante las autoridades del departamento de Córdoba, demostrando de forma contundente que la permanencia digna, el arraigo juvenil y la defensa del minifundio agrícola constituyen la única garantía real para evitar la disolución material e intelectual de la comunidad rural.",
+      "sugerida": true
+    }
+  ]
+}

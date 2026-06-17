@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Primer Periodo",
+    "unidad": "Eje 1: Conflictos socioambientales y seguridad hídrica regional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750050001aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Cuáles son las diferencias fundamentales entre la minería legal, la informal y la ilegal en Colombia? ¿Por qué esa distinción es importante para evaluar sus impactos?",
+      "respuesta": "La minería legal tiene título minero y licencia ambiental; está regulada, paga regalías y tiene un responsable identificable. La minería informal carece de título pero no tiene vínculos criminales; generalmente son pequeños mineros con prácticas tradicionales que el Estado intenta formalizar. La minería ilegal opera sin título ni licencia y está vinculada a grupos armados; usa maquinaria pesada y mercurio sin control. La distinción importa porque determina el nivel de daño ambiental, el marco legal aplicable, la posibilidad de exigir responsabilidad y las soluciones posibles.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750050001aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explica el proceso de bioacumulación del mercurio en ecosistemas acuáticos colombianos y describe sus consecuencias para la salud humana de las comunidades ribereñas.",
+      "respuesta": "El mercurio vertido al río es absorbido por microorganismos acuáticos; los peces pequeños que los comen acumulan más mercurio que sus presas; los peces grandes acumulan aún más (bioacumulación). Las comunidades que comen pescado de esos ríos reciben dosis altas sin saberlo. El mercurio causa daño neurológico irreversible, especialmente en niños y fetos. En comunidades del Chocó, los niveles de mercurio en sangre son 5 a 10 veces superiores al límite de la OMS.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750050001aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es la 'maldición de los recursos' y cómo se manifiesta en municipios mineros colombianos como El Bagre o el Chocó?",
+      "respuesta": "La maldición de los recursos es la paradoja por la cual territorios ricos en recursos naturales tienden a tener menor desarrollo, mayor desigualdad y más conflicto. En Colombia, el Chocó produce el 20% del oro nacional pero tiene los índices de pobreza más altos. En El Bagre, la minería ha contaminado el 100% de las fuentes de agua superficiales. Las causas: regalías insuficientes y capturadas por corrupción, destrucción de economías agrícolas y pesqueras alternativas, y captura de ingresos por grupos armados.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750050001aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Describe el impacto social y político de la minería ilegal en Colombia. ¿Cómo se relaciona con el desplazamiento forzado y el conflicto armado?",
+      "respuesta": "La minería ilegal es el principal motor del desplazamiento forzado en regiones como el Chocó, el Bajo Cauca y el sur de Córdoba: grupos armados expulsan comunidades para operar sin obstáculos. Entre 2016 y 2022, más del 60% de los eventos de desplazamiento forzado masivo ocurrieron en municipios con presencia de minería ilegal. Políticamente, financia grupos como las FARC disidentes, el ELN y el Clan del Golfo. Colombia fue el país con más líderes ambientales asesinados del mundo entre 2016 y 2022, con más de 300 casos.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750050001aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Si una empresa minera legal llega a explotar oro en la cuenca que abastece el acueducto de Loma Verde, ¿qué herramientas legales tiene la comunidad para defender su acceso al agua? Menciona al menos tres mecanismos concretos.",
+      "respuesta": "1) Acción popular ante el juez administrativo para defender el derecho colectivo al ambiente sano y al agua (Ley 472 de 1998). 2) Derecho de petición ante la ANLA y la CAR solicitando el expediente completo de la licencia ambiental y los planes de manejo del agua. 3) Acción de tutela si la contaminación afecta el mínimo vital de las familias (el agua es derecho fundamental según la Corte Constitucional). 4) Solicitar a la CAR que incluya a la Junta de Acueducto en el comité de seguimiento ambiental del proyecto.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750050001fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Colombia es el segundo productor de oro de América Latina y el primer productor mundial de esmeraldas.",
+      "correcta": true,
+      "justificacion": "Verdadero. Colombia produce entre 35 y 40 toneladas de oro anuales, siendo el segundo productor de América Latina. En esmeraldas, Colombia produce aproximadamente el 60% de la oferta mundial, con los principales yacimientos en Boyacá. Esta riqueza mineral contrasta con los altos índices de pobreza en los territorios donde se extrae."
+    },
+    {
+      "id": "lv1750050001fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El mercurio usado en la minería de oro tiene un límite seguro de exposición definido por la OMS: las personas pueden consumirlo en pequeñas cantidades sin consecuencias para la salud.",
+      "correcta": false,
+      "justificacion": "Falso. La OMS no establece un límite seguro de exposición al mercurio metílico: cualquier cantidad es potencialmente dañina, especialmente para el sistema nervioso en desarrollo de los fetos y los niños. El mercurio causa daño neurológico irreversible y no existe tratamiento efectivo para el envenenamiento crónico."
+    },
+    {
+      "id": "lv1750050001fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Entre 2016 y 2022, Colombia fue el país con más líderes sociales y defensores ambientales asesinados del mundo, con más de 300 casos, la mayoría en zonas de conflicto por recursos naturales.",
+      "correcta": true,
+      "justificacion": "Verdadero. Según los informes anuales de Indepaz y Global Witness, Colombia concentra el mayor número de líderes ambientales y sociales asesinados del mundo en ese periodo. La mayoría ocurrieron en municipios con presencia de minería ilegal, cultivos ilícitos o disputas por tierras."
+    },
+    {
+      "id": "lv1750050001fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Las regalías mineras en Colombia se distribuyen exclusivamente entre el municipio donde está ubicada la mina, sin que otros entes territoriales reciban parte de esos recursos.",
+      "correcta": false,
+      "justificacion": "Falso. El Sistema General de Regalías (SGR), creado por el Acto Legislativo 05 de 2011, distribuye las regalías entre el municipio productor, el departamento y un Fondo de Ahorro y Estabilización nacional. Esta distribución busca que todos los territorios del país se beneficien, no solo los municipios mineros."
+    },
+    {
+      "id": "lv1750050001fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La consulta previa es un derecho que protege tanto a comunidades indígenas como a campesinas cuando proyectos mineros van a afectar su territorio.",
+      "correcta": false,
+      "justificacion": "Falso. La consulta previa, consagrada en el Convenio 169 de la OIT, protege específicamente a comunidades indígenas y afrocolombianas. Las comunidades campesinas no tienen este derecho específico, aunque pueden usar acciones populares, tutelas y derechos de petición ante las autoridades ambientales para defender sus fuentes de agua."
+    },
+    {
+      "id": "lv1750050001sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La distinción entre tipos de minería es fundamental para entender sus impactos y las respuestas del Estado.",
+      "enunciado": "¿Cuál de las siguientes características diferencia a la minería ilegal de la informal en Colombia?",
+      "opciones": ["La minería ilegal usa mercurio y la informal no usa ningún químico.", "La minería ilegal está vinculada a grupos armados ilegales; la informal carece de título pero no tiene vínculos criminales.", "La minería ilegal solo opera en ríos; la informal solo opera en minas subterráneas.", "La minería ilegal paga menos regalías que la informal."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La diferencia clave entre la minería ilegal y la informal no es solo la ausencia de título (ambas carecen de él) sino el vínculo con organizaciones criminales. La minería ilegal financia grupos armados, usa maquinaria pesada y opera con violencia; la informal generalmente son familias y comunidades con prácticas tradicionales sin vínculos criminales."
+    },
+    {
+      "id": "lv1750050001sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La minería ilegal es una de las principales causas de deforestación en Colombia, además del narcotráfico y la ganadería.",
+      "enunciado": "¿Cuántas hectáreas de bosque destruyó la minería ilegal en Colombia entre 2001 y 2022, según el IDEAM y el IGAC?",
+      "opciones": ["Más de 10.000 hectáreas.", "Más de 30.000 hectáreas.", "Más de 80.000 hectáreas.", "Más de 200.000 hectáreas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El IDEAM y el IGAC documentaron que entre 2001 y 2022 la minería ilegal destruyó más de 80.000 hectáreas de bosque en Colombia, principalmente en el Chocó biogeográfico y la Amazonia. Esta destrucción es consecuencia del uso de retroexcavadoras que remueven el bosque de ribera para acceder al lecho de los ríos."
+    },
+    {
+      "id": "lv1750050001sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La minería ilegal es una economía criminal de gran escala que compite en ingresos con el narcotráfico en algunas regiones.",
+      "enunciado": "¿Cuánto dinero mueve anualmente la minería ilegal de oro en Colombia según las estimaciones disponibles?",
+      "opciones": ["Entre 100 y 300 millones de dólares.", "Entre 500 y 800 millones de dólares.", "Entre 1.500 y 2.000 millones de dólares.", "Más de 5.000 millones de dólares."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Las estimaciones de la Contraloría General y el Ministerio de Defensa calculan que la minería ilegal de oro mueve entre 1.500 y 2.000 millones de dólares anuales en Colombia, superando al narcotráfico en algunas regiones como el Chocó y el Bajo Cauca antioqueño."
+    },
+    {
+      "id": "lv1750050001sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "Las comunidades rurales tienen herramientas jurídicas para defender sus territorios aunque no sean comunidades étnicas.",
+      "enunciado": "¿Cuál de los siguientes derechos puede usar una comunidad campesina (no indígena ni afrocolombiana) para defender judicialmente su acceso al agua frente a un proyecto minero?",
+      "opciones": ["Consulta previa.", "Derecho de veto sobre proyectos mineros.", "Acción popular para defender el derecho colectivo al ambiente sano y al agua.", "Recurso de apelación ante la ANM."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La acción popular (Ley 472 de 1998) permite a cualquier ciudadano defender derechos colectivos como el ambiente sano y el acceso al agua, sin necesidad de demostrar afectación individual directa. Es la herramienta más accesible para comunidades campesinas que enfrentan proyectos que amenazan sus fuentes hídricas."
+    },
+    {
+      "id": "lv1750050001sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "El control ambiental sobre la minería legal en Colombia está distribuido entre varias instituciones.",
+      "enunciado": "¿Qué entidad del Estado colombiano otorga las licencias ambientales para proyectos de minería de gran escala?",
+      "opciones": ["La Agencia Nacional de Minería (ANM).", "La Autoridad Nacional de Licencias Ambientales (ANLA).", "El IDEAM.", "El Ministerio de Hacienda."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La ANLA (Autoridad Nacional de Licencias Ambientales) es la entidad del Estado colombiano encargada de otorgar, revisar y revocar las licencias ambientales para proyectos de gran escala, incluyendo la minería. La ANM otorga los títulos mineros (derecho a explotar) pero no la licencia ambiental (permiso para hacerlo con controles ambientales)."
+    },
+    {
+      "id": "lv1750050001sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La 'maldición de los recursos' describe la paradoja de los territorios ricos en minerales que se empobrecen.",
+      "enunciado": "¿Por qué la economía minera destruye frecuentemente las economías agrícolas y pesqueras de los territorios donde llega?",
+      "opciones": ["Porque la minería contamina el suelo con minerales que lo hacen más fértil para la agricultura.", "Porque la minería paga salarios que atraen a los campesinos a dejar sus tierras, y cuando la mina se agota no saben volver a cultivar.", "Porque la minería financia directamente a los grupos guerrilleros que destruyen los cultivos.", "Porque las regalías mineras se usan obligatoriamente para importar alimentos del exterior."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La minería ofrece salarios más altos que la agricultura, atrayendo a los trabajadores rurales a dejar sus tierras y perder sus conocimientos agrícolas. Cuando la mina se agota o cierra, la comunidad queda sin tierra productiva, sin conocimiento agrícola generacional y sin alternativas económicas. Esta trampa es el núcleo de la maldición de los recursos."
+    },
+    {
+      "id": "lv1750050001sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "La minería ilegal y el desplazamiento forzado tienen una relación documentada en Colombia.",
+      "enunciado": "¿Qué porcentaje de los eventos de desplazamiento forzado masivo en Colombia entre 2016 y 2022 ocurrió en municipios con presencia de minería ilegal?",
+      "opciones": ["Más del 20%.", "Más del 40%.", "Más del 60%.", "Más del 80%."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Según la Unidad para las Víctimas, más del 60% de los eventos de desplazamiento forzado masivo entre 2016 y 2022 ocurrieron en municipios con presencia de minería ilegal. Los grupos armados que controlan las zonas mineras usan el desplazamiento como herramienta para apropiarse de territorios y eliminar la resistencia comunitaria."
+    },
+    {
+      "id": "lv1750050001sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Colombia es líder mundial en producción de algunas piedras preciosas.",
+      "enunciado": "¿Qué porcentaje de la producción mundial de esmeraldas proviene de Colombia?",
+      "opciones": ["El 20%.", "El 40%.", "El 60%.", "El 80%."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia produce aproximadamente el 60% de las esmeraldas del mundo, con los principales yacimientos en los municipios de Muzo, Coscuez y La Pita en el departamento de Boyacá. A pesar de esta riqueza, las comunidades de las zonas esmeralderas históricamente han enfrentado conflictos violentos y pobreza."
+    },
+    {
+      "id": "lv1750050001sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento social",
+      "contexto": "El derecho internacional y la Constitución de 1991 reconocen protecciones especiales para comunidades étnicas.",
+      "enunciado": "¿Cuál es la principal herramienta que protege a comunidades indígenas y afrocolombianas cuando proyectos mineros quieren entrar a su territorio?",
+      "opciones": ["El derecho de propiedad sobre el subsuelo.", "La consulta previa, consagrada en el Convenio 169 de la OIT.", "El derecho de veto ante la Agencia Nacional de Minería.", "La acción de tutela por discriminación étnica."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La consulta previa es el derecho fundamental de las comunidades indígenas y afrocolombianas a ser consultadas —de buena fe y con el objetivo de llegar a un acuerdo— antes de que el Estado o una empresa tome decisiones que afecten su territorio y modo de vida. Está consagrado en el Convenio 169 de la OIT (ratificado por Colombia en 1991) y en la Constitución."
+    },
+    {
+      "id": "lv1750050001sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Impacto multidimensional de la minería legal e ilegal",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El uso de mercurio en minería es una de las principales causas de contaminación hídrica en Colombia.",
+      "enunciado": "¿Cuántas toneladas de mercurio usó Colombia en minería en 2018, según datos disponibles?",
+      "opciones": ["Aproximadamente 10 toneladas.", "Aproximadamente 50 toneladas.", "Aproximadamente 130 toneladas.", "Aproximadamente 500 toneladas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia usó aproximadamente 130 toneladas de mercurio en minería en 2018, de las cuales el 70% correspondió a minería ilegal. A pesar de que la Ley 1658 de 2013 ordenó eliminar el mercurio para 2023, el incumplimiento ha sido masivo, especialmente en la minería ilegal que opera fuera de cualquier control."
+    }
+  ]
+}

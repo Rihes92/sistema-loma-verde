@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:00:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Periodo 1",
+    "unidad": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-CS9-F4-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento social",
+      "contexto": "Los manglares son biomas costeros que se localizan en las zonas intermareales del Caribe colombiano, caracterizados por vegetación halófita adaptada a altos niveles de salinidad y suelos con bajo contenido de oxígeno.",
+      "enunciado": "Desde una perspectiva geográfico-funcional, ¿cuál es el papel principal que cumplen las raíces zancudas de los manglares para proteger los geosistemas marinos profundos?",
+      "opciones": [
+        "A) Absorben el agua salada del océano para transformarla en agua dulce subterránea apta para el riego ganadero.",
+        "B) Actúan como filtros o trampas mecánicas que retienen los sedimentos y lodos arrastrados por los ríos desde el interior continentales.",
+        "C) Calientan las corrientes marinas poco profundas para evitar la formación de tormentas de nieve en las playas costeras.",
+        "D) Extraen el carbonato de calcio del subsuelo marino para pavimentar de forma natural las líneas de costa de los hoteles."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque la intrincada estructura de las raíces del mangle frena la velocidad de las corrientes fluviales cargadas de sedimentos (limos y arcillas) que descienden desde cuencas deforestadas del interior. Al retener estos materiales en la orilla, impiden que enturbien el agua marina profunda, salvaguardando de la degradación a los arrecifes de coral y praderas de pastos marinos."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las ciénagas de la llanura aluvial cordobesa funcionan como vasos reguladores o amortiguadores hidrológicos naturales conectados de forma directa con la dinámica del cauce del río Sinú.",
+      "enunciado": "Cuando las haciendas ganaderas agroindustriales desecan y rellenan de forma sistemática estas ciénagas para ampliar sus pasturas vacunas, ¿cuál es la consecuencia biofísica inmediata en las tierras bajas de la cuenca durante la época invernal de altas lluvias?",
+      "opciones": [
+        "A) La estabilización perpetua de los caudales de los ríos eliminando los riesgos de crecientes súbitas.",
+        "B) El incremento de inundaciones torrenciales y destructivas debido a la pérdida de la infraestructura natural de almacenamiento de agua dulce.",
+        "C) La congelación inmediata de los suelos arcillosos que detiene los procesos erosivos en los lomeríos.",
+        "D) Un aumento en la fertilidad orgánica del agua del río debido al cemento utilizado para sellar los humedales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque al suprimirse el espacio de amortiguación de las ciénagas (que actúan como esponjas receptoras), los picos de caudal de los ríos durante el invierno no encuentran áreas naturales de desborde y depósito. Esto obliga al agua a correr con fuerza descontrolada por el canal principal, desatando inundaciones severas en los valles poblados aguas abajo."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento social",
+      "contexto": "Los estuarios son cuerpos de agua semicerrados localizados en las desembocaduras de los ríos, donde interactúan las masas de agua dulce de origen continental con las corrientes saladas del mar.",
+      "enunciado": "La mezcla de aguas en los estuarios genera una alta productividad biológica y de nutrientes debido a la circulación constante de materia orgánica, convirtiendo a estos entornos en las principales guarderías de reproducción de especies pesqueras comerciales.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque las dinámicas estuarinas concentran sedimentos ricos en nutrientes transportados por los ríos y oxígeno disuelto marino, creando un microambiente óptimo que provee refugio y alimento abundante para las fases de larva y reproducción juvenil de peces, crustáceos y moluscos comestibles del Caribe."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde está integrado en el metabolismo geográfico y regional del departamento de Córdoba, compartiendo dinámicas microclimáticas con el valle del Sinú.",
+      "enunciado": "La destrucción masiva de los humedales y ciénagas en el valle del Sinú beneficia el microclima de Loma Verde, ya que elimina por completo la humedad del aire permitiendo que los suelos arcillosos del corregimiento permanezcan secos y duros todo el año.",
+      "correcta": false,
+      "justificacion": "Es falso porque la eliminación de las ciénagas debilita el amortiguador térmico regional. La pérdida de los espejos de agua reduce la evapotranspiración macro, provocando que los vientos que viajan hacia Loma Verde sean más cálidos y secos. Esto intensifica la aridez estacional y el endurecimiento de los suelos arcillosos, arruinando los cultivos campesinos de pancoger por estrés hídrico crónico."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En una mesa de ordenamiento territorial, un inversionista acuícola propone arrasar veinte hectáreas de manglar para instalar piscinas de cultivo industrial de camarón para exportación, alegando que generará divisas económicas internacionales de gran valor.",
+      "enunciado": "Desde un enfoque de geografía crítica y justicia ambiental rural, ¿cuál debe ser la postura del campesinado local frente a este proyecto agroindustrial?",
+      "opciones": [
+        "A) Apoyarlo ciegamente porque las divisas de exportación se repartirán equitativamente en forma de salarios fijos a todos los habitantes rurales.",
+        "B) Rechazar el proyecto argumentando que la destrucción del manglar elimina la protección de la costa contra la erosión, envenena el gradiente estuarino y destruye el sustento de la pesca artesanal de la región.",
+        "C) Proponer que se sustituya el mangle por cultivos intensivos de pino canadiense para purificar el agua del mar.",
+        "D) Exigir que las piscinas de camarón se construyan sobre las viviendas de la comunidad para maximizar el uso del espacio rural."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque devela que el modelo extractivo privatiza los beneficios económicos inmediatos y socializa los pasivos ambientales. La remoción del manglar rompe la estabilidad biofísica de la costa, desprotege el litoral ante tormentas y destruye los hábitats de reproducción de los peces que alimentan el comercio artesanal y la dieta campesina."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los suelos de las sabanas y colinas bajas del Caribe cordobés poseen una alta concentración de arcillas expansivas y minerales lateríticos de hierro y aluminio que reaccionan de manera drástica a los ciclos estacionales húmedos y secos.",
+      "enunciado": "Durante la temporada seca de verano prolongada, ¿cuál es la alteración física que experimentan estos suelos en las parcelas agrícolas del corregimiento de Loma Verde?",
+      "opciones": [
+        "A) Se transforman en arenas movedizas súper porosas que absorben el aire atmosférico de forma sólida.",
+        "B) Se contraen mecánicamente, endureciéndose hasta formar costras pétreas impenetrables que se agrietan profundamente y rompen las raíces agrícolas.",
+        "C) Aumentan sus niveles de materia orgánica viva gracias al calor extremo que quema las bacterias nocivas.",
+        "D) Comienzan a fluir de forma líquida hacia las cumbres de las serranías andinas debido al magnetismo solar."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque las arcillas que componen el suelo de Loma Verde pierden su agua interna por evaporación extrema ante la radiación directa y la falta de humedad ambiental. Este proceso de contracción física compacta el suelo dándole una consistencia similar a la roca, lo que cuartea la tierra, fractura los sistemas de raíces de yuca y plátano, y bloquea las labores de labranza campesina."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento social",
+      "contexto": "Las quemas provocadas de forma reiterada sobre las praderas de sabana constituyen una práctica ganadera tradicional utilizada para inducir el brote de hojas verdes y tiernas para el pastoreo vacuno.",
+      "enunciado": "Esta práctica de quema constante en las sabanas degrada el geosistema edáfico a largo plazo porque calcina la escasa capa de humus vegetal superficial, destruye la microfauna benéfica del suelo y acelera los procesos de desertificación e impermeabilización de la tierra.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que el fuego destruye la materia orgánica que actúa como pegamento natural de las partículas del suelo. Al eliminarse esta capa fértil, la tierra queda desprovista de cohesión biológica, perdiendo nutrientes esenciales y volviéndose propensa a la erosión hídrica en invierno y al endurecimiento pétreo en las temporadas secas."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde enfrenta crisis recurrentes de escasez de agua dulce debido a que carece de redes de infraestructura de acueductos convencionales de cobertura total, obligando a las veredas a captar agua superficial en jagüeyes y agua freática en aljibes artesanales.",
+      "enunciado": "Explique de forma detallada y con argumentos de conectividad geográfica cómo la desecación forzada de los complejos de ciénagas en las tierras bajas del valle del Sinú deprime el nivel freático en las zonas de lomerío e impacta negativamente la vida diaria de las familias campesinas de Loma Verde.",
+      "respuesta": "La desecación forzada de los complejos de ciénagas en el valle del Sinú destruye el balance hidráulico regional, operando bajo un mecanismo de interconexión por vasos comunicantes y alteración microclimática. En condiciones naturales, las ciénagas retienen inmensos volúmenes de agua dulce durante los inviernos y actúan como fuentes de recarga horizontal para los acuíferos subterráneos de toda la subcuenca; esta presión hídrica mantiene estables los niveles freáticos superficiales en las zonas de colinas y lomeríos adyacentes de Loma Verde. Al ser drenadas las ciénagas para expandir haciendas ganaderas, se elimina esta infraestructura natural de recarga, lo que genera que los acuíferos subterráneos se vacíen de forma acelerada por gravedad hacia las depresiones secas del valle. Como consecuencia directa, el nivel freático en Loma Verde se deprime de forma crítica, provocando el secamiento absoluto de los pozos artesanales de excavación vertical (aljibes) de los hogares campesinos mucho antes de finalizar la estación seca de verano. En la vida diaria de las familias campesinas, este impacto es catastrófico porque se quedan sin acceso directo a agua limpia para el consumo humano doméstico, la preparación de alimentos y el aseo básico, obligándolas a racionar el recurso, consumir agua turbia de jagüeyes colmatados que genera problemas de salud, o destinar sus escasos ingresos económicos a la compra de carrotanques externos, desestructurando la economía y la estabilidad de la vida veredal.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento social",
+      "contexto": "El 'pulso de inundación' es el principio ecológico fundamental que rige el funcionamiento de los humedales del Caribe colombiano, determinando periodos cíclicos de expansión del agua en invierno y contracción en verano.",
+      "enunciado": "Cuando una empresa agroindustrial construye jarillones y barreras de cemento permanentes para impedir que el río inunde las ciénagas asociadas, ¿qué alteración ecosistémica se provoca respecto a este principio?",
+      "opciones": [
+        "A) Se purifica el agua dulce del río de forma molecular gracias al cemento de los diques artificiales.",
+        "B) Se rompe la conectividad hidrológica del humedal, impidiendo el intercambio de nutrientes y el paso de los peces continentales para alimentarse y desovar.",
+        "C) Se acelera la formación de glaciares andinos de agua dulce sobre la superficie de los pastizales ganaderos.",
+        "D) Se incrementa la velocidad del viento en toda la región Caribe debido a la rectificación de los canales del río Sinú."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque los jarillones aíslan mecánicamente la ciénaga del cauce del río. Al truncarse el pulso de inundación, los peces nativos (como el bocachico) no pueden entrar al humedal a alimentarse durante el invierno, y los nutrientes orgánicos de la llanura aluvial no se reciclan, provocando la muerte biológica del ecosistema cenagoso."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un discurso corporativo turístico afirma que 'la urbanización total de las playas de manglar con cemento y cabañas de madera de lujo es la mejor estrategia de conservación ambiental porque erradica los mosquitos y limpia el paisaje litoral'.",
+      "enunciado": "Este argumento es falso desde la ecología política y la geografía crítica porque encubre la destrucción irreversible del ecosistema de manglar, el desplazamiento de las comunidades nativas y la eliminación de las defensas naturales de la costa contra el cambio climático global.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que calificar la destrucción del mangle como 'limpieza del paisaje' es un mecanismo discursivo para legitimar la apropiación económica del litoral con fines comerciales suntuarios, ignorando los pasivos ambientales masivos como la erosión costera irreversible, la eutrofización del agua por residuos hoteleros y la pérdida del sustento de los pescadores artesanales tradicionales."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los plaguicidas, herbicidas e insecticidas de base química utilizados de forma intensiva en las macro-plantaciones agrícolas del valle medio del Sinú son arrastrados por las aguas de lluvia y los arroyos de escorrentía.",
+      "enunciado": "Siguiendo la red de drenaje fluvial, ¿en cuál de los siguientes ecosistemas vulnerables de tierras bajas se concentrarán de forma final estos pasivos químicos por decantación biológica?",
+      "opciones": [
+        "A) En los páramos altoandinos localizados por encima de los 3,500 metros sobre el nivel del mar.",
+        "B) En las ciénagas colectoras y en los estuarios costeros donde el río descarga sus aguas mezclándose con el mar.",
+        "C) En las cumbres rocosas de la serranía de Abibe que no poseen drenajes superficiales conectados.",
+        "D) En las nubes densas de la atmósfera alta que no interactúan con el ciclo del agua dulce continental."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque las ciénagas y los estuarios funcionan como los sumideros terminales de las cuencas hidrográficas. Los contaminantes químicos vertidos en las tierras altas y medias corren aguas abajo por la red fluvial, acumulándose en los sedimentos de los humedales y en el gradiente estuarino costero, envenenando las redes tróficas y a las especies acuáticas comerciales."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento social",
+      "contexto": "Las comunidades campesinas que habitan los playones y orillas de las ciénagas defienden la declaración de los humedales como bienes comunes inalienables de uso colectivo bajo amparo de las leyes de protección ambiental colombianas.",
+      "enunciado": "Esta postura comunitaria busca impedir el cerramiento e invasión ilegal de los humedales por terratenientes ganaderos privados, asegurando el acceso democrático del agua dulce para el riego de pancoger campesino y la pesca artesanal de subsistencia.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la defensa de los playones comunales de las ciénagas constituye un eje de lucha por la justicia ambiental y la soberanía agraria. Al mantener el humedal bajo control colectivo y protegido de la desecación privada, se garantiza la preservación de los servicios ecosistémicos indispensables para sostener la vida material de los pequeños productores rurales del departamento."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un diagnóstico institucional sobre los ecosistemas de sabana en Córdoba revela que la compactación del suelo debida a la sobreexplotación agropecuaria está reduciendo la resiliencia productiva de las pequeñas parcelas veredales de Loma Verde.",
+      "enunciado": "Para solucionar de forma sostenible este problema de degradación física de la tierra sin abandonar la actividad económica ganadera familiar, ¿cuál de las siguientes estrategias técnicas debe proponer la comunidad?",
+      "opciones": [
+        "A) Pavimentar la totalidad de los potreros de pastoreo con asfalto industrial para evitar que las pezuñas del ganado toquen la tierra fértil.",
+        "B) Implementar sistemas silvopastoriles integrando árboles nativos leguminosos y de sombrío que descompacten el suelo con sus raíces y retengan la humedad edáfica.",
+        "C) Abandonar por completo la siembra de plátano y yuca para transformarse en una cantera minera de extracción de carbón a cielo abierto.",
+        "D) Provocar incendios forestales semanales sobre los potreros ganaderos para calcinar el suelo y ablandar su estructura arcillosa."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que los sistemas silvopastoriles imitan en parte la estructura de capas del bosque seco original de sabana. Las raíces de los árboles nativos penetran las capas arcillosas densas lateríticas de Loma Verde, abriendo canales que mejoran la infiltración del agua y la aireación del suelo, al tiempo que el sombrío protege la superficie ganadera del sol de verano, frenando la evaporación."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto de 'capacidad de carga ecológica' define el límite máximo de presión, uso o presencia humana que un geosistema estratégico puede soportar de manera continuada antes de sufrir una degradación irreversible de sus funciones biológicas primarias.",
+      "enunciado": "El turismo masivo descontrolado en las áreas litorales del Caribe cordobés supera de forma continua la capacidad de carga de los estuarios y manglares, provocando pasivos ambientales como el colapso hídrico de los acueductos comunitarios y la acumulación masiva de residuos plásticos no gestionados en el ecosistema costero.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la saturación de visitantes sobre infraestructuras hoteleras frágiles no planificadas devora las fuentes de agua dulce dulceacuícolas destinadas a los pobladores locales y desborda los sistemas locales de recolección de basura, forzando la contaminación directa de la interfaz continente-mar con plásticos y aguas negras que destruyen el equilibrio del ecosistema bentónico."
+    },
+    {
+      "id": "LV-BANCO-CS9-F4-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Diagnóstico de ecosistemas vulnerables: manglares, ciénagas, sabanas y estuarios",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los jóvenes de la Institución Educativa de Loma Verde diseñan un proyecto de educación ambiental comunitaria llamado 'El Corredor Biológico de Playones', que tiene como finalidad reforestar los arroyos secos veredales y las orillas de los estanques de agua dulce utilizando especies nativas como el matarratón, el campano y el guácimo.",
+      "enunciado": "Sustente con argumentos técnicos y geográficos cómo este proyecto local de reforestación en las sabanas de lomerío de Loma Verde contribuye de forma indirecta a restaurar la resiliencia climática y a mitigar los impactos negativos provocados por el modelo ganadero extensivo que deseca las ciénagas regionales.",
+      "respuesta": "El proyecto escolar y comunitario 'El Corredor Biológico de Playones' aporta beneficios técnicos y geográficos cruciales que restauran la resiliencia climática local frente a la degradación de los ecosistemas regionales. Al reforestar los arroyos veredales y las orillas de los estanques en Loma Verde con especies nativas (matarratón, campano, guácimo), se restituye una cobertura vegetal densa que funciona como un amortiguador microclimático. El dosel de estos árboles genera sombrío directo sobre la superficie del suelo arcilloso laterítico del corregimiento y sobre los jagüeyes, bloqueando la radiación solar extrema y reduciendo de manera drástica las tasas de evaporación termodinámica estival; esto asegura que el agua dulce se conserve por meses adicionales durante el verano intenso del Caribe. Desde el punto de vista edáfico e hidrológico, las raíces de los árboles plantados penetran las costras duras e impermeables creadas por el pisoteo del ganado extensivo, restaurando la macro-porosidad de la tierra. Al llegar las lluvias de invierno, esta porosidad facilita la infiltración del agua hacia los horizontes profundos de la corteza, recargando localmente los acuíferos subterráneos de la vereda por infiltración vertical. Esta recarga local compensa el cono de depresión hídrica y el vaciado freático regional causado por la desecación ganadera de las ciénagas en el valle bajo. Finalmente, la evapotranspiración de este corredor boscoso inyecta humedad directa a la atmósfera veredal, mitigando el calor sofocante transportado por los vientos secos de las sabanas degradadas, lo que protege los cultivos de pancoger de las familias campesinas contra el marchitamiento por estrés hídrico y salvaguarda la soberanía alimentaria del territorio veredal.",
+      "sugerida": true
+    }
+  ]
+}

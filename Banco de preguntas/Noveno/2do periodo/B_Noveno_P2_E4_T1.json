@@ -1,0 +1,225 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:45:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-MOD-9-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "Durante la primera mitad del siglo XX, la expansión de la infraestructura de transporte en Colombia (ferrocarriles y navegación fluvial a vapor) estuvo determinada por la necesidad de integrar las zonas productoras de materias primas con los mercados capitalistas globales mundiales.",
+      "enunciado": "Desde un enfoque geográfico crítico, ¿cuál de las siguientes opciones describe el principal desequilibrio espacial o asimetría territorial que caracterizó el trazado y construcción de estas redes de comunicación férreas nacionales?",
+      "opciones": [
+        "A) La distribución democrática y equitativa de las líneas del ferrocarril interconectando la totalidad de los caseríos y veredas rurales apartadas del país de forma simétrica.",
+        "B) El diseño lineal de las redes ferroviarias orientado de forma exclusiva a unir los enclaves agroexportadores y las grandes haciendas con los puertos marítimos de salida, aislando y marginando los territorios interiores dedicados a la agricultura campesina tradicional de pancoger.",
+        "C) La prohibición constitucional del uso de papel moneda obligando a las tripulaciones de los barcos de vapor a comerciar mediante el trueque sólido de raíces de yuca.",
+        "D) La pavimentación inmediata con asfalto de alta densidad de todas las vías capilares y patios domésticos de las unidades agrícolas del corregimiento de Loma Verde."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía económica e histórica devela que el proceso de modernización vial en Colombia se estructuró bajo la lógica de la acumulación de capital transnacional. El Estado y los inversionistas privados no planificaron la red ferroviaria para integrar los mercados de consumo interno ni para favorecer la soberanía alimentaria del campesinado subalterno. Por el contrario, los rieles se tendieron siguiendo rutas agroextractivas lineales que succionaban el café, el banano y los metales hacia los barcos internacionales, centralizando la riqueza en las élites comerciales y heredando una desatención vial histórica en las regiones agrícolas de lomerío desprovistas de cultivos de exportación corporativos."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "A partir de la década de 1930, Colombia aceleró su transición macroeconómica hacia el modelo de Industrialización por Sustitución de Importaciones (ISI) e inauguró la era de las carreteras troncales de asfalto, impulsando el crecimiento demográfico de los centros urbanos industriales.",
+      "enunciado": "Teniendo en cuenta los pasivos estructurales institucionales, ¿cuál fue el mecanismo que transformó esta modernización vial y fabril de las metrópolis en un factor de expulsión y quiebra indirecta para el campesinado de minifundio?",
+      "opciones": [
+        "A) El otorgamiento masivo de subsidios presupuestales en efectivo que les permitió a los jóvenes campesinos comprar tractores automatizados para sus parcelas.",
+        "B) La centralización de las inversiones públicas en carreteras troncales nacionales que unían los grandes centros urbanos y puertos, abandonando la red capilar de vías terciarias locales; esto expuso al campo a la inundación de manufacturas metropolitanas baratas mientras encareció de forma estructural los fletes logísticos del pequeño productor veredal desprovisto de infraestructura.",
+        "C) La prohibición de carácter penal decretada por los ministerios que impedía el uso de camiones de carga terrestres para transportar plátano y maíz hacia las plazas públicas.",
+        "D) El establecimiento de laboratorios avanzados de ingeniería de software satelital dentro de las escuelas rurales periféricas de Loma Verde."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye el mito modernizador homogéneo desde una perspectiva de escalas espaciales. La revolución del asfalto priorizó la interconexión intermunicipal mayor para unificar el mercado de consumo de las fábricas urbanas andinas. Al liquidar el ferrocarril e introducir el camión por carretera, el Estado externalizó las cargas logísticas capilares, dejando las vías terciarias de penetración agrícola en un abandono físico crónico. Este desequilibrio permitió que los bienes industriales urbanos destruyeran las manufacturas artesanales agrarias, mientras que el lomerío quedó aislado, teniendo que asumir costos de transporte prohibitivos que destruyeron la rentabilidad de cultivos como la yuca criolla."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto de 'vía terciaria' define la infraestructura capilar local que interconecta las veredas y las pequeñas unidades de producción agrícola minifundistas con los centros urbanos regionales de comercialización.",
+      "enunciado": "La desatención institucional e histórica de las vías terciarias por parte del Estado beneficia la soberanía alimentaria de Loma Verde, puesto que el aislamiento físico que produce el lodo en invierno impide el ingreso de plagas biológicas internacionales y obliga a las familias campesinas a acumular riquezas financieras autónomas en sus hogares.",
+      "correcta": false,
+      "justificacion": "Es profundo y argumentadamente falso porque la precariedad física estructural de las vías terciarias destruye la soberanía alimentaria y estrangula financieramente la economía del hogar campesino. Durante el invierno del Caribe, el colapso por lodo de los caminos vecinales de Loma Verde actúa como un multiplicador de la inflación por costos, obligando a los transportadores tradicionales a elevar las tarifas de los fletes logísticos. Este sobrecosto encarece la urea petroquímica y los víveres de tienda procesados, al tiempo que permite a los intermediarios usureros de Montería devaluar el precio de compra de la yuca y el plátano campesinos, forzando la quiebra del minifundio."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "La urbanización acelerada y la macrocefalia urbana hipertrófica caracterizaron las dinámicas demográficas de las capitales departamentales colombianas durante la primera mitad del siglo XX.",
+      "enunciado": "El crecimiento poblacional horizontal acelerado de las barriadas informales periféricas de Montería durante el siglo XX estuvo alimentado históricamente por corrientes demográficas de campesinos desposeídos que huían de la miseria del agro inducida por el abandono institucional y de las olas de violencia política partidista en el campo.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la geografía de la población y el análisis sociopolítico devela que el crecimiento hipertrófico de las urbes caribeñas intermedias no fue el producto de una transición armónica industrializada. Constituyó el reflejo material del desarraigo rural: al no proveer el Estado de condiciones de seguridad territorial, distritos de riego ni precios mínimos estables en el campo, y recrudecerse la violencia agraria por disputas latifundistas de tierras, millones de familias e indígenas fueron expulsados de sus veredas de origen, migrando desposeídos a autoconstruir asentamientos informales en los márgenes de la mancha metropolitana urbana."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un discurso de economía corporativa agroindustrial afirma: 'El rezago de las vías terciarias y el aislamiento estacional del corregimiento de Loma Verde son consecuencias naturales e inevitables de su geografía física de lomerío arcilloso, paraje ocioso que debe ser evacuado por los campesinos tradicionales para que grandes empresas instalen ganadería latifundista extensiva de exportación que no requiere carreteras transitables'.",
+      "enunciado": "Desde la perspectiva de la ecología política agraria de la exclusión y la geografía crítica de la población, ¿cuál es la falacia conceptual y el sesgo de clase dominante en este argumento corporativo?",
+      "opciones": [
+        "A) Supone erróneamente que las vacas destinadas a la exportación de carne vacuna poseen la capacidad biológica de volar magnéticamente por la atmósfera sin rozar los horizontes edáficos.",
+        "B) Naturaliza y encubre las deudas históricas y los pasivos de inversión vial del Estado central, legitimando la violencia económica de la desposesión agraria y ocultando que el monocultivo ganadero extensivo destruye la soberanía alimentaria y compacta mecánicamente los suelos arcillosos mediante el pisoteo pesado de las reses, lo que suprime la infiltración hídrica de lluvias invernales y desata escorrentías destructivas que secan de forma estacional los jagüeyes y aljibes domésticos de Loma Verde.",
+        "C) Olvida que las comunidades campesinas de subsistencia minifundista no consumen alimentos de base biológica y que la totalidad de la nutrición humana de las metrópolis contemporáneas proviene de la fotosíntesis pura.",
+        "D) Sostiene de forma errónea que las Juntas de Acción Comunal de las veredas son consorcios transnacionales dueños de las principales redes ferroviarias andinas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye con rigor científico el discurso determinista ambiental del capital que invisibiliza los pasivos institucionales y biofísicos. El analista intenta culpar a las arcillas naturales del relieve por el aislamiento, encubriendo que la falta de asfalto en Loma Verde es una decisión política histórica de centralización presupuestal. Presenta la destrucción de las parcelas de pancoger como una 'depuración eficiente', omitiendo que la ganadería extensiva latifundista que propone compacta mecánicamente el lomerío, impermeabiliza el suelo destruyendo los macroporos edáficos, elimina la recarga de acuíferos subterráneos superficiales y genera colmatación de sedimentos en los jagüeyes comunes, condenando al campesinado permanente al colapso termo-hídrico absoluto y a la desterritorialización."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las prácticas tradicionales de reciprocidad y solidaridad social campesina en las veredas de Loma Verde, tales como 'la mano prestada' o 'el convite', permiten al pequeño productor de pancoger abaratar los costos de preparación del suelo arcilloso, siembra y recolección de forma colectiva sin recurrir al empleo asalariado.",
+      "enunciado": "Rastree la secuencia causal de transmisión multiescalar que vincula las asimetrías de infraestructura de la modernización centralizada con el debilitamiento de estas redes solidarias de trabajo veredal y la pérdida de la soberanía alimentaria autónoma en la economía del hogar.",
+      "opciones": [
+        "A) Modernización centralizada $\\rightarrow$ aumento arancelario municipal $\\rightarrow$ congelamiento del fondo del mar $\\rightarrow$ siembra automatizada satelital.",
+        "B) Centralización presupuestal de infraestructura vial $\\rightarrow$ rezago estructural de vías terciarias en Loma Verde $\\rightarrow$ colapso de caminos por lodo en invierno $\\rightarrow$ inflación por costos de fletes logísticos de camiones $\\rightarrow$ caída drástica de la rentabilidad neta del pancoger familiar $\\rightarrow$ emigración forzada de la población joven hacia el mototaxismo informal urbano en Montería $\\rightarrow$ vaciamiento demográfico veredal $\\rightarrow$ colapso de la mano prestada solidaria por falta de brazos vecinos $\\rightarrow$ contracción de hectáreas sembradas de yuca y maíz $\\rightarrow$ dependencia absoluta de víveres externos costosos comprados en tienda.",
+        "C) Modernización centralizada $\\rightarrow$ absorción química de los gases de efecto invernadero $\\rightarrow$ solidificación de la urea sintética petroquímica $\\rightarrow$ nacimiento espontáneo de arrecifes de coral en el interior rural.",
+        "D) Centralización presupuestal $\\rightarrow$ compactación mecánica por pezuñas $\\rightarrow$ incremento del nivel freático de los pozos profundos privados $\\rightarrow$ desvío de los ríos fluviales hacia las cumbres andinas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque describe de manera relacional el efecto dominó macro-micro que desestructura el metabolismo rural. La centralización vial del siglo XX heredó el aislamiento físico que hoy cuartea los ingresos del agro tradicional en Loma Verde; al encarecerse los fletes logísticos de los camiones por el lodo, los costos de insumos químicos (urea) suben y los intermediarios urbanos devalúan el valor de compra de la yuca criolla. Este estrangulamiento financiero destruye la economía del hogar, forzando la fragmentación demográfica mediante el éxodo de los jóvenes hacia el subempleo precarizado. Al vaciarse las veredas de capital humano vital, colapsa la mano prestada vecinal sin salario, obligando a los campesinos ancianos a reducir las hectáreas sembradas, perdiendo la soberanía alimentaria y transformando al corregimiento en un espacio dependiente del suministro externo de víveres costosos."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "El modelo macroeconómico de la Industrialización por Sustitución de Importaciones (ISI) implementado en Colombia priorizó la canalización de recursos financieros fiscales para la creación de infraestructura manufacturera pesada autónoma de bienes de capital en las regiones periféricas de los departamentos costeros.",
+      "enunciado": "A pesar de sus aranceles de protección agrícola, el modelo proteccionista ISI consolidó una profunda asimetría territorial debido a que concentró la inversión industrial y de vías troncales de asfalto en el triángulo urbano metropolitano de Bogotá, Medellín y Cali, manteniendo a las llanuras y lomeríos rurales del Caribe marginados del desarrollo infraestructural básico.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la geografía crítica devela las contradicciones espaciales del desarrollo cepalino en Colombia. Los dividendos del despegue fabril manufacturero y de la sustitución industrial beneficiaron de forma concentrada a las capitales andinas urbanas, mientras que el espacio geográfico rural de Córdoba y del valle del Sinú continuó subordinado a un rol colonial de proveedor primario de carne vacuna y alimentos agrícolas precarizados, perpetuando el pasivo de aislamiento físico en sus corregimientos del interior."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde en Montería padece crisis recurrentes de escasez de agua dulce y desabastecimiento hídrico estacional debido a que carece de redes de acueductos convencionales de cobertura total, obligando a las veredas a captar agua superficial en jagüeyes artesanales y agua freática en pozos verticales (*aljibes*).",
+      "enunciado": "Explique de manera profunda, detallada y relacional cómo el pasivo vial histórico y el aislamiento estacional heredados de la modernización centralizada del siglo XX terminan alterando de forma profundamente negativa las propiedades físicas del suelo arcilloso laterítico, destruyendo el ciclo de los jagüeyes y deprimiendo el nivel freático doméstico en las veredas del corregimiento de Loma Verde, Montería.",
+      "respuesta": "El pasivo vial histórico y el aislamiento estacional heredados del proceso de modernización centralizada y asimétrica del siglo XX operan como vectores de desposesión agraria indirecta que desestructuran el metabolismo biofísico y social del corregimiento de Loma Verde a través de una cascada de alteraciones eco-geográficas de escala multiescalar. Al priorizar el Estado central las inversiones viales de asfalto exclusivamente en autopistas troncales interurbanas que unían los grandes centros de consumo andinos y ganaderos urbanos (Montería), se desatendió crónicamente la red capilar de vías terciarias veredales de penetración agrícola campesina. Durante la temporada invernal alta del Caribe, esta precariedad física estructural transforma los caminos vecinales de lomerío en lodazales impenetrables que aíslan de forma física a los caseríos, canal logístico de transmisión que dispara de forma instantánea la inflación por costos. Los camiones transportadores tradicionales incrementan de forma exponencial el valor de los fletes logísticos internos para amortizar el deterioro mecánico severo de los vehículos y el gasto excesivo de combustibles en el fango, provocando que el bulto de urea sintética petroquímica importada cara y los víveres procesados de tienda lleguen al consumidor campesino a precios inflacionarios exorbitantes que erosionan el poder adquisitivo real del hogar. Al intersectarse este sobrecosto imprevisto con el desplome de los precios de venta de sus cosechas tradicionales de pancoger (yuca, plátano, maíz blanco criollo) impuesto en el mercado público de Montería por intermediarios usureros que castigan el producto debido a las dificultades físicas de acceso vial, la economía del hogar campesino de minifundio entra en un estrangulamiento financiero crónico y deficitario. Este cerco de inviabilidad expulsa a las cohortes de edad joven del corregimiento hacia la economía informal urbana, insertándose de forma precarizada en el subempleo por ingresos del mototaxismo informal. Este vaciamiento demográfico juvenil anula el relevo generacional de las veredas y destruye las redes tradicionales de solidaridad campesina sin salario (*mano prestada* y *convite*), dejando las parcelas minifundistas habitadas exclusivamente por campesinos adultos mayores y ancianos cuyas capacidades físicas decrecen con el tiempo. El estrangulamiento financiero y el aislamiento forzan a los productores ancianos a tomar la decisión irreversible de vender sus parcelas de cinco o diez hectáreas a precios devaluados a grandes terratenientes dedicados a la ganadería extensiva de exportación de carne vacuna. Este cambio estructural en la tenencia de la propiedad agraria reconfigura de forma profundamente negativa las propiedades físicas del ecosistema local: el modelo ganadero latifundista introduce la quema y la tala indiscriminada de los últimos parches de bosque seco tropical de galería para sembrar pastizales comerciales homogéneos exóticos, eliminando la regulación climática biótica y la evapotranspiración local, lo cual intensifica la aridez del aire. Mecánicamente, el pisoteo continuo e intensivo del ganado vacuno pesado ejerce una inmensa presión por centímetro cuadrado que compacta los suelos arcillosos lateríticos del lomerío de Loma Verde, destruyendo su estructura porosa natural y sellando los macroporos y canales de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales. En consecuencia, el agua de lluvia se transforma instantáneamente en escorrentías superficiales torrenciales y caóticas que corren con fuerza ladera abajo, erosionando las laderas en cárcavas profundas, lavando la escasa capa orgánica fértil (*humus*) y arrastrando toneladas de sedimentos y lodos en suspensión hacia las depresiones del relieve. Este material arcilloso arrastrado se deposita por decantación física en el fondo de los jagüeyes veredales, provocando una colmatación o sedimentación acelerada que les resta profundidad útil. Al quedar reducidos a depósitos hídricos planos y de escasos centímetros, los jagüeyes comunitarios quedan expuestos a una evaporación termodinámica extrema debido a la radiación solar directa del Caribe y a la acción de vientos secos, vaciándose las reservas de agua dulce meses antes de finalizar la temporada estacional seca de verano y deprimiendo por vasos comunicantes el nivel freático de los pozos artesanales (*aljibes*) domésticos, condenando a las familias campesinas a una crisis crónica de escasez de agua potable y al marchitamiento absoluto de sus cultivos por estrés hídrico severo, forzando la desterritorialización final de la comunidad campesina.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-MOD-9-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "El análisis crítico de los censos demográficos e históricos nacionales emitidos por el DANE devela que el crecimiento demográfico acelerado de las periferias urbanas de Montería durante la segunda mitad del siglo XX estuvo íntimamente ligado al vaciamiento demográfico de las zonas rurales periféricas subordinadas.",
+      "enunciado": "Si un investigador de geografía humana evalúa la evolución espacial e inmobiliaria de la cabecera urbana del municipio de Montería, ¿cuál es el fenómeno de segregación socioespacial que detectará de forma empírica en las comunas populares periféricas receptoras?",
+      "opciones": [
+        "A) La erradicación absoluta de los circuitos del empleo informal gracias a la absorción total e inmediata de los migrantes campesinos en puestos directivos del sector financiero formal corporativo.",
+        "B) La consolidación y expansión descontrolada de asentamientos informales subnormales (tugurios e invasiones) localizados en terrenos marginales proactivos a riesgos, caracterizados por el hacinamiento crítico, la precarización habitacional de los materiales y la ausencia estructural de redes formales de alcantarillado y agua potable dulce.",
+        "C) Un éxodo masivo planificado de empresarios urbanos adinerados hacia las colinas arcillosas de Loma Verde para incorporarse como peones en las labores de la recolección manual de la yuca criolla.",
+        "D) La transformación radical de las barriadas populares periféricas en distritos tecnológicos automatizados exentos de cargas impositivas administrados de forma unánime por las juntas de acción comunal."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía urbana de la exclusión devela que las ciudades intermedias desindustrializadas de la región Caribe carecen de la infraestructura productiva y legal necesaria para asimilar de forma formal, regulada y digna las oleadas demográficas de campesinos desposeídos expulsados por la crisis estructural del agro y la asimetría vial de la modernización. Al no contar con cualificación formal adaptada a los requerimientos burocráticos metropolitanos y verse despojados de sus medios de producción originarios (la tierra), los migrantes sufren una severa exclusión territorial, viéndose forzados a autoconstruir refugios precarios en los márgenes de la mancha metropolitana, donde el pasivo histórico de servicios públicos domiciliarios reproduce y profundiza las condiciones de pobreza material de origen."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La perspectiva de género en la geografía de la población devela que los impactos del rezago vial estructural de la modernización asimétrica y el encarecimiento inflacionario por costos de fletes terrestres transforman las jornadas domésticas rurales de forma profundamente desigual.",
+      "enunciado": "Cuando la inflación por costos de fletes y el aislamiento invernal provocan la quiebra financiera del agro expulsando a la población juvenil y masculina desde Loma Verde hacia la informalidad del mototaxismo en Montería, las mujeres campesinas que permanecen en las veredas experimentan una sobrecarga laboral severa, debiendo asumir simultáneamente la labranza ruda de la parcela, el acarreo hídrico manual de los jagüeyes degradados y las jornadas de reproducción del cuidado doméstico del hogar.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque el análisis crítico con enfoque de género demuestra que las crisis logísticas y demográficas de la periferia rural desestructuran la división sexual tradicional del trabajo agrícola. Las mujeres rurales que se quedan al frente de los minifundios atomizados de Loma Verde deben absorber tareas físicas pesadas (limpieza manual de rastrojos, siembra de semillas criollas, mantenimiento artesanal de canales de escorrentía superficial) que antes se distribuían colectivamente dentro de la familia nuclear, soportando dobles o triples jornadas de trabajo sin recibir remuneración salarial formal ni apoyo técnico del Estado central."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico agro-económico simulado en el corregimiento de Loma Verde en el año 2026 demuestra que las devaluaciones impositivas del predial rural municipal y la inflación por costos de fletes logísticos invernales generan un déficit crónico del 30% en los presupuestos de las familias campesinas que comercializan sus cultivos tradicionales de forma individual en Montería.",
+      "enunciado": "Utilizando estos indicadores de vulnerabilidad doméstica heredados del rezago de la modernización, determine la opción que explica la propuesta comunitaria de base tecnológica y organizativa más viable para recuperar la viabilidad económica del agro y defender la permanencia campesina en las veredas.",
+      "opciones": [
+        "A) Financiar mediante deudas usureras la adquisición de motocicletas comerciales para forzar a la totalidad de la población de las veredas a migrar hacia el mototaxismo informal de Montería de forma definitiva.",
+        "B) Fortalecer la asociatividad campesina cooperativa independiente para suprimir la intermediación comercial abusiva, implementar canales digitales transmedia de venta directa y tecnificar el minifundio mediante sistemas artesanales de riego por goteo de bajo costo con captación pluvial techada, combinados con comités veredales de bacheo mecánico de vías con estacas vivas.",
+        "C) Pavimentar con cemento y asfalto de alta densidad la totalidad de las hectáreas de suelos agrícolas arables de Loma Verde para erradicar las arcillas lateríticas y convertirlas en parqueaderos de exportación industrial.",
+        "D) Solicitar formalmente al gobierno municipal que declare ilegal de forma penal cualquier forma de cultivo tradicional de pancoger minifundista en el lomerío cordobés."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque representa la única estrategia de resistencia territorial y geografía de la resiliencia viable frente al libre mercado neoliberal, el pasivo de infraestructura vial de la modernización asimétrica y la regresividad fiscal. Al agruparse colectivamente los pequeños productores bajo esquemas cooperativos y de comités locales, adquieren poder de negociación frente a las redes de intermediación abusivas de la urbe y mitigan el impacto de los fletes caros del lodo estabilizando autónomamente sus caminos de penetración. La introducción de ecotecnologías hídricas artesanales de bajo costo mitiga los efectos de las sequías estacionales severas y asegura la permanencia juvenil en las veredas de Loma Verde, rompiendo el circuito de expulsión rural y recuperando la autonomía de la economía del hogar."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "La física y la química del suelo establecen que el horizonte orgánico superficial de la tierra (humus) requiere una estructura porosa equilibrada con macro-canales permeables para permitir la aireación biológica y la filtración eficiente de los flujos de agua.",
+      "enunciado": "La deforestación de micro-bosques y la compactación mecánica de los suelos arcillosas lateríticos provocada por el pisoteo intensivo del ganado vacuno pesado reduce de forma drástica la porosidad natural de la tierra, facilitando que el agua de lluvia invernal corra por escorrentía superficial arrastrando toneladas de lodo que colmatan y quitan profundidad útil a los jagüeyes de Loma Verde.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que los análisis físicos de la ciencia del suelo demuestran que las pezuñas endurecidas del ganado bovino extensivo ejercen una alta presión por centímetro cuadrado que sella los macroporos terrestres. Al impermeabilizarse la superficie edáfica en laderas desprovistas de cobertura forestal protectora, se suprime de forma absoluta la infiltración hídrica vertical y el agua corre de golpe erosionando el terreno en cárcavas, transportando sedimentos por decantación física hacia el fondo de los jagüeyes de uso común, acortando su vida útil y forzando la evaporación rápida estival."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante un debate académico en la institución educativa de Loma Verde, un estudiante afirma que 'los campesinos de nuestras veredas sufren escasez hídrica y pobreza en verano porque carecen de computadores avanzados para exportar su yuca a los mercados globales', mientras que otro sector argumenta que 'la escasez y la quiebra son causadas por un despojo económico estructural e histórico que centralizó la infraestructura de la modernización, encareció los fletes logísticos por parálisis vial y expandió la ganadería extensiva compactadora de suelos'.",
+      "enunciado": "Adoptando los principios analíticos de la geografía crítica y la ecología política agraria, ¿cuál es la forma correcta de dirimir la tensión conceptual expuesta?",
+      "opciones": [
+        "A) Validar la primera postura asumiendo que los suelos arcillosos de Loma Verde pierden su agua interna debido a la ausencia de software digital en las parcelas familiares.",
+        "B) Deconstruir la primera postura demostrando su sesgo moralista e individualista que invisibiliza las deudas históricas del Estado, y respaldar la segunda explicando que el libre mercado de la Apertura, el pasivo de infraestructura vial de la modernización centralizada del siglo XX y la ganaderización latifundista privatizaron la tierra y compactaron mecánicamente los suelos destruyendo la infraestructura hídrica natural.",
+        "C) Sostener que la yuca nativa es un vegetal mineral que se reproduce de forma electromagnética por lo cual no requiere agua de lluvias orográficas.",
+        "D) Exigir que las Juntas de Acción Comunal pavimenten de forma obligatoria los patios de las escuelas para convertirlas en centros de mototaxismo transnacional."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que desarmar el discurso de la responsabilidad individual o del rezago tecnológico como causas de la pobreza rural es una tarea central de las ciencias sociales críticas. El estudiante que culpabiliza al campesino ignora las asimetrías territoriales impuestas por el Estado central. El análisis científico demuestra que la crisis hidroclimática y la quiebra agraria en Loma Verde son el resultado material de decisiones macroeconómicas históricas de la modernización (Apertura Económica, centralización de redes viales nacionales, desatención de vías terciarias veredales, latifundización ganadera) que socializaron los pasivos de la apertura destruyendo los ecosistemas riparios, compactando el lomerío y arruinando el precio del pancoger criollo."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El postulado demográfico funcionalista del 'mito de las remesas' sostiene que la emigración rural-urbana de la juventud campesina hacia las metrópolis constituye una estrategia eficiente de diversificación económica familiar que inyecta ingentes capitales financieros urbanos en las veredas de origen.",
+      "enunciado": "La inserción laboral informal de los jóvenes emigrados de Loma Verde en el mototaxismo de Montería genera flujos de excedentes monetarios netos tan elevados que revalidan plenamente el mito de las remesas, financiando la pavimentación y bacheo técnico de las vías terciarias de sus veredas nativas.",
+      "correcta": false,
+      "justificacion": "Es profundo e individualmente falso porque la inserción en la economía informal de mercado urbano opera como una trampa de precarización laboral que anula la capacidad de ahorro neta del migrante rural. Los ingresos variables diarios devengados en el mototaxismo en Montería son absorbidos por los altos costos de la reproducción física del trabajador dentro de la urbe de consumo (pago de arriendos caros en barrios subnormales periféricos, compra de pimpinas de agua dulce y alimentos caros de tienda). Al carecer de excedentes de capital, el flujo de remesas hacia Loma Verde es marginal o inexistente, desmitificando la tesis funcionalista y dejando al hogar rural desprovisto de capital para estabilizar sus caminos o mejorar sus parcelas de pancoger."
+    },
+    {
+      "id": "LV-BANCO-MOD-9-15",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "El proceso de modernización: expansión de vías de comunicación, urbanización y desarrollo industrial en la primera mitad del siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La física del suelo establece que la compactación del terreno ocurre cuando una presión mecánica externa continuada elimina los macroporos e intersticios de aire existentes entre las partículas de arcilla fértil de la corteza.",
+      "enunciado": "En las áreas deforestadas de los lomeríos de Loma Verde, ¿cuál es el factor de degradación antrópico histórico que genera la compactación física sistemática del suelo arcilloso, destruyendo la seguridad hídrica veredal en invierno?",
+      "opciones": [
+        "A) La radiación cósmica solar solar que endurece los minerales del suelo de forma electromagnética.",
+        "B) El pisoteo continuo e intensivo del ganado vacuno pesado introducido en los potreros de las grandes haciendas extensivas ganaderas que reemplazaron los mosaicos agrícolas de pancoger campesinos.",
+        "C) El peso de los frutos de yuca y plátano acumulados sobre la superficie labrada por las familias campesinas.",
+        "D) El paso frecuente de las aves migratorias costeras que anidan en las copas de los arbustos bajos de rastrojo."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque el ganado vacuno ejerce una inmensa presión mecánica por centímetro cuadrado a través de sus pezuñas endurecidas. En potreros desprovistos de árboles y sometidos a pastoreo extensivo intensivo latifundista, este pisoteo continuo destruye mecánicamente la estructura porosa natural del suelo arcilloso laterítico de Loma Verde, sellando la superficie de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales, transformándose en escorrentías superficiales torrenciales destructivas que erosionan las laderas en cárcavas profundas, lavan los nutrientes orgánicos superficiales y arrastran sedimentos que colmatan los jagüeyes."
+    }
+  ]
+}

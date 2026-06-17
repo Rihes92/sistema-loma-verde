@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:46:46.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E6-002",
+      "creado": 1781651206000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 6",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "2",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-26",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Deslegitimación de discursos violentos en las relaciones interpersonales",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Diseña propuestas alternativas de mediación para superar diferencias en conflictos de orden comunitario o de pareja, basándose en el análisis de casos del Derecho Internacional Humanitario (DIH). Rechaza toda justificación de la violencia como método de trámite de disputas; de forma transversal, cita de manera íntegra y rigurosa sus fuentes para asegurar la lógica y la honestidad intelectual en sus escritos académicos.",
+      "competencias": "Pensamiento reflexivo y sistémico, Interpretación y análisis de perspectivas.",
+      "contenidos": "Deslegitimación de discursos violentos en las relaciones de pareja e interpersonales; análisis de patrones comunicativos autoritarios; herramientas de comunicación asertiva y cultura de paz.",
+      "objetivo": "Analizar críticamente la influencia de los discursos violentos y autoritarios en la construcción de relaciones interpersonales y de pareja, identificando su origen sociocultural y promoviendo alternativas dialógicas basadas en la empatía, el respeto y la deslegitimación de la fuerza como método de resolución de conflictos, especialmente en el contexto de la comunidad rural de Loma Verde.",
+      "pregunta": "¿Cómo influyen los patrones culturales y los discursos de poder heredados en la normalización de la violencia dentro de las relaciones de pareja en nuestra comunidad rural y qué papel juega el lenguaje en esta deslegitimación?",
+      "explora": "1. Identificación y análisis de frases o 'dichos' comunes en el corregimiento de Loma Verde que naturalizan el autoritarismo o la superioridad de género en las relaciones. 2. Lluvia de ideas sobre las características de una relación basada en el respeto frente a una basada en el control. 3. Proyección de un estudio de caso sobre cómo el lenguaje violento erosiona la confianza en las relaciones interpersonales.",
+      "glosario": [
+        {"t": "discurso violento", "d": "conjunto de expresiones verbales, actitudes y formas de comunicación que buscan dominar, humillar, descalificar o ejercer poder sobre la otra persona, anulando su autonomía."},
+        {"t": "deslegitimación", "d": "proceso consciente de retirar la validez o aceptación social a prácticas o discursos que, aunque normalizados, vulneran derechos humanos fundamentales."},
+        {"t": "comunicación asertiva", "d": "habilidad social que permite expresar sentimientos, opiniones y necesidades de forma clara, directa y respetuosa, sin caer en la agresividad o la pasividad."},
+        {"t": "patriarcado cultural", "d": "conjunto de normas, valores y tradiciones que, en sociedades como la nuestra, perpetúan una jerarquía desigual donde lo masculino es valorado sobre lo femenino, influyendo en las relaciones de pareja."}
+      ],
+      "bloques": [
+        {
+          "tit": "Lenguaje y poder en las relaciones",
+          "txt": "Los discursos violentos en las relaciones de pareja no aparecen de forma aislada; son el reflejo de una estructura social más amplia que, durante siglos, ha legitimado la dominación masculina y la sumisión femenina. En Loma Verde, como en muchas zonas rurales de Colombia, el lenguaje cotidiano está impregnado de expresiones que normalizan el control, la descalificación y la posesión sobre la pareja. Estos discursos actúan como una arquitectura de poder: cuando un miembro de la pareja deslegitima la opinión del otro bajo la excusa de 'saber más' o 'tener más autoridad', se está sembrando el germen de una violencia que puede escalar rápidamente a la coerción física o económica. Analizar estos patrones implica entender que la violencia en la pareja es un problema de salud pública y de Derechos Humanos, no un asunto privado. La deslegitimación de estos discursos exige una pedagogía de la palabra: aprender a reconocer que la agresividad verbal no es una forma de pasión, sino un síntoma de una relación asimétrica que requiere transformación urgente mediante la concertación y el respeto mutuo.",
+          "pausa": "¿Es posible transformar los discursos violentos en una comunidad donde estas prácticas han sido vistas tradicionalmente como formas de 'cuidado' o 'jerarquía'?",
+          "resp": "Sí, es posible a través de un proceso educativo sostenido que visibilice las consecuencias de estos discursos y promueva alternativas de convivencia que no dependan de la dominación para mantener la cohesión."
+        }
+      ],
+      "talleres": "Taller de 'Deconstrucción de frases': los estudiantes deben listar frases comunes en su entorno que perpetúan el autoritarismo en las relaciones y, mediante un ejercicio de mediación grupal, transformarlas en enunciados que promuevan la comunicación asertiva, utilizando técnicas de escucha activa para discutir los cambios propuestos.",
+      "transfer": "Desarrollo de un decálogo de 'Relaciones Interpersonales Saludables' para el centro de interés SteMedIA, el cual debe ser presentado ante el Consejo Estudiantil, incluyendo un análisis sobre cómo el lenguaje define la calidad de la convivencia escolar.",
+      "clave": "Se valora la capacidad del estudiante para identificar discursos violentos, proponer alternativas comunicativas y relacionar el fenómeno con los procesos culturales locales sin juzgar la integridad de los miembros de su comunidad.",
+      "evaluacion": "Rúbrica: 1. Identificación de discursos (30%), 2. Propuestas de transformación (40%), 3. Reflexión sobre el contexto rural (30%).",
+      "recursos": "Guías sobre comunicación asertiva, Constitución Política de 1991, bibliografía sobre resolución de conflictos, material de aula para dinámicas de mediación.",
+      "referencias": "Constitución Política de Colombia [1991]. PNUD [2025]. Informe de Desarrollo Humano. Manuales de mediación y convivencia escolar.",
+      "dua": "Dinámicas grupales de debate oral, creación de carteles visuales con frases de comunicación asertiva, y uso de herramientas de grabación de audio para practicar la escucha activa y la reformulación de discursos.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La paz comienza en la palabra. Deslegitimar la violencia en nuestras relaciones interpersonales es el primer paso indispensable para transitar hacia una sociedad justa donde el respeto por el otro sea la norma suprema.",
+      "errores": "Confundir la firmeza con la agresividad, asumir que el silencio en una relación es signo de paz, o creer que los discursos violentos solo ocurren en las familias 'problemáticas' y no en todas las esferas sociales.",
+      "banco": [],
+      "tarea": "Escribir una breve reflexión (máximo una página) sobre cómo cambiaría la convivencia en Loma Verde si todos los jóvenes adoptaran un lenguaje basado en el respeto y la escucha activa en sus interacciones.",
+      "fundamentacion": "La deslegitimación de los discursos violentos en las relaciones de pareja e interpersonales es un eje fundamental para la construcción de una cultura de paz. A menudo, la violencia interpersonal es precedida y sostenida por un lenguaje cargado de descalificaciones, autoritarismos y asimetrías de poder. Fundamentado en la necesidad de transformar estas dinámicas, este eje se aborda desde una perspectiva crítica que reconoce el papel del patriarcado cultural y la historia de las relaciones de poder en Colombia. En entornos rurales como Loma Verde, donde persisten patrones tradicionales de interacción, el análisis de estos discursos permite identificar cómo el lenguaje actúa como un mecanismo de legitimación de la violencia. La propuesta pedagógica se basa en la adopción de herramientas de resolución de conflictos, como la escucha activa y la concertación, que permiten reconocer la perspectiva del otro como un igual. La honestidad intelectual en el abordaje de este tema es crítica: implica que los estudiantes citen adecuadamente investigaciones sobre psicología social y derechos humanos para validar sus reflexiones, evitando el plagio y la desinformación. El objetivo es que los jóvenes no solo comprendan la teoría de la resolución de conflictos, sino que incorporen en su vida cotidiana una ética del diálogo que rechace la violencia en todas sus formas como medio de trámite de disputas, entendiendo que la equidad en el lenguaje es un prerrequisito para la equidad en la convivencia ciudadana.",
+      "lineatiempo": "1991: Constitución Política que promueve la dignidad y el respeto en las relaciones. 2008: Ley 1257 de prevención y sanción de violencia contra la mujer. 2020-2026: Auge de las políticas públicas y programas educativos para la deslegitimación de los discursos violentos en Colombia."
+    }
+  ]
+}

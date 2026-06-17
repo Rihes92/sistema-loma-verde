@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T20:15:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Periodo 1",
+    "unidad": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-DEM-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento social",
+      "contexto": "En la geografía de la población, los movimientos espaciales humanos son analizados desde dos perspectivas conceptuales rigurosas e inversas según el punto de la trayectoria geográfica que se tome como referencia.",
+      "enunciado": "Para diferenciar operativamente ambos conceptos, se establece científicamente que la **emigración** se enfoca en el territorio de ______________ y mide la ______________ de población, mientras que la **inminigración** analiza el territorio de ______________ y evalúa la ______________ de nuevos habitantes.",
+      "opciones": [
+        "A) destino - llegada / origen - pérdida neta",
+        "B) origen - pérdida neta / destino - llegada",
+        "C) tránsito - circulación / retorno - congelación",
+        "D) asilo - asimilación / expulsión - dispersión estacional"
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque la definición metodológica de la demografía crítica sitúa a la emigración como el vector de salida desde el lugar de origen, lo que se traduce matemáticamente en una reducción de la población local. Al contrario, la inmigración es el vector de entrada visto desde la perspectiva de la zona de destino o recepción, representando un aumento demográfico directo para dicho espacio."
+    },
+    {
+      "id": "LV-BANCO-DEM-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El saldo migratorio es un indicador cuantitativo elemental utilizado por los demógrafos para establecer el balance neto de la población en un área determinada mediante la fórmula fundamental $SM = I - E$.",
+      "enunciado": "Si un censo municipal en el corregimiento de Loma Verde devela que durante tres años consecutivos el saldo migratorio permanente arroja un resultado significativamente negativo, ¿cuál es la interpretación geográfica correcta de este fenómeno físico-social?",
+      "opciones": [
+        "A) El corregimiento está actuando como un potente polo de atracción demográfica que absorbe profesionales urbanos.",
+        "B) La cantidad de personas que inmigran a establecerse es menor que el volumen de habitantes que emigran, indicando un vaciamiento poblacional.",
+        "C) La tasa de natalidad biológica superó los niveles de mortalidad de los adultos mayores de las veredas.",
+        "D) El territorio rural se encuentra en un estado de equilibrio estático perfecto donde nadie entra ni sale de las parcelas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque un saldo migratorio negativo ($< 0$) expresa matemáticamente que la variable de emigración ($E$) es cuantitativamente superior a la de inmigración ($I$). En el contexto de Loma Verde, esto visibiliza un proceso estructural de vaciamiento de capital humano, donde el territorio expulsa más habitantes de los que logra atraer y retener en su espacio productivo."
+    },
+    {
+      "id": "LV-BANCO-DEM-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La emigración selectiva es aquella que no afecta de forma homogénea a todos los grupos de población de un ecosistema social, sino que se concentra en rangos específicos de edad, género o nivel de cualificación laboral.",
+      "enunciado": "La emigración masiva de la población joven desde las veredas de Loma Verde beneficia el mercado de trabajo de la agricultura familiar de pancoger, ya que elimina la competencia laboral y permite que los ancianos cultiven el maíz sin interferencias de las nuevas generaciones.",
+      "correcta": false,
+      "justificacion": "Es falso porque la emigración juvenil rural genera un impacto profundamente negativo conocido como la crisis del relevo generacional. Al marcharse los jóvenes en edad productiva, el campo pierde su mano de obra más vital y dinámica. Las labores rudas de la agricultura tradicional quedan confinadas a campesinos adultos mayores, lo que contrae la capacidad de siembra, frena la transmisión de conocimientos tradicionales y arruina la productividad del pancoger a largo plazo."
+    },
+    {
+      "id": "LV-BANCO-DEM-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El concepto de 'población flotante' se aplica a aquellos grupos humanos que se desplazan y habitan un territorio de forma transitoria durante periodos estacionales específicos, motivados por dinámicas laborales u productivas concretas.",
+      "enunciado": "Los jornaleros agrícolas que llegan temporalmente a Loma Verde desde otras subregiones de Córdoba durante los meses de cosecha de plátano se consideran inmigrantes permanentes porque fijan su residencia legal y compran parcelas de tierra en las veredas.",
+      "correcta": false,
+      "justificacion": "Es falso porque los jornaleros estacionales constituyen un ejemplo clásico de población flotante o migración transitoria. Su permanencia en las veredas está supeditada estrictamente a la duración física del ciclo de la cosecha (dos o tres meses). Una vez culminado el periodo de recolección y devengados sus jornales, abandonan el territorio receptor regresando a sus lugares de origen sin fijar residencia permanente."
+    },
+    {
+      "id": "LV-BANCO-DEM-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de electromigración e inmigración locales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un líder comunal de Loma Verde afirma en una asamblea: 'Las familias desplazadas que llegan a vivir a nuestra vereda huyendo de la violencia andina son inmigrantes que enriquecen nuestra cultura, pero el Estado nos tiene abandonados y no amplía los pozos de agua para poder recibirlos dignamente'.",
+      "enunciado": "Desde la perspectiva del análisis geográfico crítico y la justicia ambiental rural, ¿cuál es el eje central del argumento expuesto por este líder veredal?",
+      "opciones": [
+        "A) Expresa un rechazo xenofóbico absoluto hacia las poblaciones inmigrantes exigiéndoles que regresen de inmediato a sus zonas de guerra.",
+        "B) Visibiliza que la inmigración humanitaria vulnerable es positiva, pero devela que el pasivo histórico de inversión pública en infraestructura hídrica genera tensiones por el acceso a recursos escasos comunes.",
+        "C) Demuestra que el agua subterránea de los aljibes es propiedad corporativa privada de las grandes empresas ganaderas de exportación de Montería.",
+        "D) Propone que se cobre un impuesto en efectivo a todos los jornaleros estacionales para financiar la pavimentación de los cultivos de plátano."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque el argumento del líder comunitario adopta un enfoque relacional complejo. Reconoce el valor sociocultural y la condición de víctimas de los inmigrantes por desplazamiento forzado, pero deconstruye de manera directa la falla estructural del Estado: la asimetría territorial en inversión pública. Al no existir acueductos rurales eficientes, la llegada de nuevos habitantes presiona los pozos artesanales existentes, visibilizando que los conflictos ambientales locales son causados por la desatención institucional y no por la presencia del inmigrante."
+    },
+    {
+      "id": "LV-BANCO-DEM-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las prácticas de ayuda mutua comunitaria como la 'mano prestada' o el 'convite' han sido las instituciones sociales históricas mediante las cuales el campesinado minifundista de Loma Verde ha abaratado sus costos de producción agrícola de pancoger ante la falta de créditos de fomento.",
+      "enunciado": "Cuando se presenta una ola sostenida de emigración juvenil hacia el medio urbano, ¿cuál es el impacto mecánico directo sobre el funcionamiento de estas redes de trabajo solidario veredal?",
+      "opciones": [
+        "A) Se industrializan de forma automática mediante la llegada de maquinaria pesada financiada por las remesas urbanas.",
+        "B) Se debilitan de forma crítica debido a la escasez de brazos disponibles en el vecindario, obligando al campesino anciano a asumir costos de jornales asalariados que arruinan su frágil presupuesto.",
+        "C) Provocan que los cultivos de yuca multipliquen sus rendimientos biológicos de forma espontánea sin necesidad de labrar la tierra.",
+        "D) Se transforman en cooperativas financieras transnacionales controladas por los mototaxistas informales de la cabecera municipal."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las redes de reciprocidad campesina como la 'mano prestada' exigen una densidad demográfica mínima de fuerza de trabajo vital para operar por vasos comunicantes. Al vaciarse las veredas de su población joven por emigración forzada, los hogares agrarios remanentes quedan aislados y se ven forzados a mercantilizar el trabajo, contratando peones asalariados cuyos costos quiebran la rentabilidad del pancoger."
+    },
+    {
+      "id": "LV-BANCO-DEM-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento social",
+      "contexto": "El Conflicto Armado Interno y las dinámicas de violencia generalizada en Colombia han operado históricamente como vectores geográficos de alteración demográfica forzada en el espacio rural.",
+      "enunciado": "Una misma familia campesina desposeída por la violencia puede ser clasificada científicamente como emigrante en su municipio de origen montañoso del cual huyó y, simultáneamente, como inmigrante en el corregimiento de Loma Verde que la recibe y asienta.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la categorización demográfica depende estrictamente de la posición espacial del observador dentro de la trayectoria del flujo humano. Visto desde el territorio expulsor serrano, la familia representa una salida (emigración); analizado desde el corregimiento receptor de Loma Verde, esa misma unidad familiar constituye una entrada residencial (inmigración), demostrando el carácter interconectado del fenómeno migratorio."
+    },
+    {
+      "id": "LV-BANCO-DEM-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El corregimiento de Loma Verde experimenta de forma simultánea dos flujos demográficos de signo inverso: una emigración definitiva de su población joven nativa hacia Montería y una inmigración temporal de población flotante de jornaleros agrícolas para levantar las cosechas de plátano en las veredas.",
+      "enunciado": "A partir del enfoque de la geografía crítica de la población, analice de qué manera esta aparente contradicción demográfica (perder habitantes permanentes y recibir habitantes temporales) desestructura las bases de la economía familiar campesina y altera la sostenibilidad hídrica de Loma Verde en épocas de sequía.",
+      "respuesta": "Esta aparente contradicción demográfica devela las profundas distorsiones estructurales que padece el espacio rural de Loma Verde debido al modelo de desarrollo agroextractivo regional. Por un lado, la emigración definitiva de la juventud nativa genera un vaciamiento estructural que rompe el relevo generacional y destruye las redes tradicionales de solidaridad campesina sin salario (*mano prestada*). Las veredas pierden de forma permanente su capital humano más calificado y vital, provocando el envejecimiento crónico de los productores y el abandono paulatino de las parcelas de pancoger. Por otro lado, la inmigración estacional de población flotante de jornaleros llega para suplir momentáneamente esa escasez de mano de obra nativa durante los picos de cosecha de plátano. No obstante, esta sustitución laboral desestructura la economía familiar agraria porque mercantiliza el trabajo de la tierra: el campesino minifundista debe pagar jornales en efectivo con recursos que no posee debido a los bajos precios de venta de sus productos, cayendo en dinámicas de endeudamiento usurero local. En términos de sostenibilidad ambiental e hídrica, este flujo flotante de trabajadores introduce una presión crítica sobre los bienes comunes escasos del corregimiento. Al carecer Loma Verde de infraestructura de acueductos, el consumo de agua dulce de esta población flotante sumado al de las familias residentes vacía de forma acelerada las reservas agotadas de los pozos artesanales (*aljibes*) y jagüeyes comunes durante los meses áridos de verano. Como el subsuelo arcilloso no logró recargar sus acuíferos debido a la deforestación y compactación ganadera regional, la pinza demográfica acelera el colapso termo-hídrico de las veredas, dejando a la comunidad campesina permanente sin recurso hídrico para el consumo humano doméstico y condenando a los cultivos tradicionales al marchitamiento por estrés hídrico crónico.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-DEM-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento social",
+      "contexto": "Las políticas económicas macro de apertura comercial aplicadas en Colombia desde finales del siglo XX permitieron la libre importación de maíz y cereales extranjeros altamente subsidiados por potencias internacionales.",
+      "enunciado": "Desde la perspectiva de la geografía de la población rural, ¿cómo operó esta medida comercial como un factor de expulsión y motor de emigración local en Loma Verde?",
+      "opciones": [
+        "A) Incrementó sustancialmente la riqueza monetaria del pequeño productor de yuca permitiéndole comprar pasajes de avión turísticos.",
+        "B) Castigó severamente los precios de venta del maíz criollo local, haciendo inviable recuperar la inversión en insumos y forzando a los campesinos a emigrar ante la quiebra inducida del minifundio.",
+        "C) Convirtió al corregimiento de Loma Verde en el principal centro industrial de exportación de maquinaria pesada de la región Caribe.",
+        "D) Provocó un aumento masivo de la inmigración de científicos extranjeros interesados en comprar los suelos arcillosos lateríticos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque devela el mecanismo económico indirecto de la expulsión agraria. Al inundarse los mercados con granos importados a precios inferiores a los costos de producción tradicionales de Córdoba, la agricultura familiar de pancoger de Loma Verde perdió rentabilidad comercial. La quiebra económica despojó a los hogares de ingresos básicos, convirtiendo la parcela en un espacio de vulnerabilidad extrema y obligando a los hijos de los agricultores a emigrar hacia las capitales urbanas como estrategia desesperada de supervivencia."
+    },
+    {
+      "id": "LV-BANCO-DEM-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El análisis de género en la geografía demográfica devela que los flujos migratorios transforman los roles tradicionales de producción, cuidado y administración del espacio familiar campesino de forma diferenciada.",
+      "enunciado": "Cuando la emigración selectiva juvenil y masculina vacía las veredas de Loma Verde de mano de obra masculina, se genera una sobrecarga laboral en las mujeres campesinas que permanecen en el territorio, quienes deben asumir de forma simultánea la labranza de la parcela de pancoger, la gestión de los jagüeyes y las tareas del cuidado doméstico.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la emigración selectiva desestructura la división sexual del trabajo agrario tradicional. Las mujeres rurales que se quedan al frente de las unidades productivas minifundistas asumen roles rudos de deshierbe, manejo técnico de cultivos y acarreo de agua que antes se distribuían colectivamente, soportando dobles o triples jornadas laborales sin remuneración formal y bajo condiciones de abandono institucional."
+    },
+    {
+      "id": "LV-BANCO-DEM-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico demográfico en la vereda Las Palmitas demuestra que en los últimos diez años un total de 45 personas fijaron su residencia definitiva en el lugar procedentes de zonas de conflicto (inmigrantes), mientras que 85 jóvenes nativos salieron hacia centros urbanos (emigrantes).",
+      "enunciado": "Utilizando el cálculo matemático del saldo migratorio ($SM = I - E$), determine el resultado neto de la balanza de población de la vereda y su consecuencia socio-espacial más probable.",
+      "opciones": [
+        "A) $SM = +130$; la vereda experimenta una sobrepoblación masiva que exige edificar rascacielos residenciales.",
+        "B) $SM = -40$; la vereda registra un saldo migratorio negativo que expresa un proceso crónico de vaciamiento poblacional y envejecimiento agrario.",
+        "C) $SM = 0$; la vereda se encuentra en un estado de inmovilidad geográfica absoluta donde la economía campesina está congelada.",
+        "D) $SM = -130$; las parcelas agrícolas se hundieron físicamente en la litosfera debido al peso de los inmigrantes temporales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque al aplicar la fórmula demográfica elemental tenemos $SM = 45 \\text{ Inmigrantes} - 85 \\text{ Emigrantes} = -40$. Este valor negativo devela con precisión científica que la vereda Las Palmitas está perdiendo capital humano permanente de forma sostenida, lo que acelera el envejecimiento de su población rural y debilita la fuerza de trabajo disponible para cultivar alimentos tradicionales."
+    },
+    {
+      "id": "LV-BANCO-DEM-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento social",
+      "contexto": "Las estadísticas oficiales de población emitidas por el DANE reflejan de forma cuantitativa el crecimiento demográfico hiperacelerado de las periferias urbanas de Montería durante las últimas tres décadas.",
+      "enunciado": "El crecimiento de los barrios subnormales e invasiones en la periferia de Montería está desconectado de los procesos de emigración rural de corregimientos como Loma Verde, respondiendo exclusivamente al crecimiento biológico natural de la población urbana adinerada.",
+      "correcta": false,
+      "justificacion": "Es falso porque los análisis socioespaciales e institucionales demuestran la interconexión sistémica entre el vaciamiento rural y la macrocefalia urbana. El crecimiento hiperacelerado de las comunas periféricas marginadas de Montería es el reflejo directo del éxodo y la emigración forzada de los campesinos desposeídos del interior del departamento. Las barriadas populares absorben de forma precarizada los flujos de población expulsados por la crisis del campo y el conflicto armado."
+    },
+    {
+      "id": "LV-BANCO-DEM-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En un foro académico sobre ordenamiento territorial, un economista corporativo afirma: 'La emigración de campesinos minifundistas hacia las ciudades es un proceso eficiente y moderno porque provee mano de obra barata para los sectores de servicios urbanos y permite liberar las tierras rurales atrasadas para que grandes empresas instalen ganadería tecnificada de exportación'.",
+      "enunciado": "Desde la perspectiva de los derechos del campesinado y el enfoque relacional de la geografía crítica, ¿cuál es el sesgo ideológico y la falacia central de este argumento?",
+      "opciones": [
+        "A) Supone erróneamente que las ciudades colombianas carecen de dinero circulante y que toda la economía urbana opera mediante el trueque de yuca sólida.",
+        "B) Naturaliza y justifica la violencia estructural del desarraigo y la quiebra inducida del agro, ocultando que la concentración latifundista ganadera destruye la soberanía alimentaria, arrasa los bosques nativos y precariza al campesino en los cinturones de miseria urbana.",
+        "C) Olvida de forma ingeniosa que la ganadería de exportación requiere que las vacas vuelen por el espacio aéreo para evitar pisar los suelos arcillosos de Loma Verde.",
+        "D) Sostiene que las Juntas de Acción Comunal veredales son corporaciones transnacionales dueñas de los principales centros comerciales andinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que deconstruye de forma directa el discurso modernizador y colonial del extractivismo agrario. El argumento del economista corporativo invisibiliza los pasivos socioambientales y las deudas ecológicas del latifundio. Presenta la desposesión del campesino como un avance técnico de 'eficiencia', ocultando que el monocultivo ganadero expulsa de forma violenta o económica a las comunidades, destruye los ecosistemas boscosos protectores hídricos y transforma a un productor autónomo de alimentos de pancoger en un sujeto urbano precarizado dependiente del subempleo o mototaxismo."
+    },
+    {
+      "id": "LV-BANCO-DEM-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto demográfico de 'migración de retorno' describe la trayectoria espacial inversa de aquellos individuos que, tras haber emigrado hacia centros urbanos u mineros, deciden regresar de forma definitiva a establecerse en su territorio veredal de origen.",
+      "enunciado": "La crisis económica de desempleo urbano y los altos costos de vida en los suburbios de las metrópolis pueden actuar en el año 2026 como factores de atracción para impulsar procesos de migración de retorno de jóvenes hacia las parcelas agrícolas de Loma Verde.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la geografía de la población reconoce que los flujos migratorios cambian de sentido ante las crisis del entorno receptor. Si los circuitos de la economía informal urbana colapsan y las condiciones de vida en la ciudad se vuelven insostenibles, la parcela familiar de pancoger en Loma Verde —al garantizar autonomía territorial y capacidad de autoabastecimiento alimentario— re adquiere un valor estratégico de refugio material, motivando el retorno de la población emigrada."
+    },
+    {
+      "id": "LV-BANCO-DEM-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Diferenciación conceptual y práctica entre procesos de emigración e inmigración locales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, el centro de interés en STEM+ y Transmedia 'SteMedIA' desarrolla la estrategia 'Frecuenc-IA Rural' para que los estudiantes de Noveno graben piezas comunicativas digitales de geografía viva utilizando herramientas avanzadas de IA para optimizar la edición de audios. Los jóvenes entrevistan a familias de jornaleros inmigrantes y documentan las rutas de los jóvenes nativos que emigraron a trabajar en mototaxismo en Montería.",
+      "enunciado": "Sustente de manera profunda, utilizando argumentos técnicos y conceptuales de la geografía crítica de la población estudiada en clase, de qué manera este proyecto de comunicación transmedia escolar actúa como un dispositivo de resistencia comunitaria para mitigar los impactos negativos del saldo migratorio negativo en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' liderado por el docente Richard Miguel Hernández Sabié opera como un potente dispositivo de resistencia territorial y pedagógica frente al vaciamiento demográfico estructural de Loma Verde. Desde el enfoque de la geografía crítica de la población, este proyecto subvierte el discurso hegemónico urbano que cataloga al espacio rural campesino como un paraje de 'atraso, pobreza e inviabilidad', narrativa corporativa que actúa como un motor ideológico que impulsa la emigración y el desarraigo de la juventud rural. Al empoderar a los estudiantes de Noveno en el uso de tecnologías digitales avanzadas y transmedia para documentar las realidades de su corregimiento, se redefine la identidad de la juventud campesina: el joven deja de concebir la migración informal urbana (mototaxismo precarizado) como la única ruta de progreso posible y empieza a valorar el territorio veredal como un espacio de creación técnica, intelectual y política. Metodológicamente, al entrevistar a las familias de campesinos ancianos y recopilar los saberes tradicionales de cultivo de pancoger, el proyecto mitiga de forma directa la crisis del relevo generacional provocada por el saldo migratorio negativo, reconstruyendo el puente de transmisión de saberes agroecológicos indispensables para la soberanía alimentaria local. Asimismo, al visibilizar las historias y saberes técnicos alternativos de las familias campesinas inmigrantes por desplazamiento forzado, el proyecto escolar combate la exclusión y teje lazos de cohesión social y ayuda mutua comunitaria (*mano prestada*), transformando el aula rural en un espacio de integración democrática. Finalmente, al difundir pódcast y videos interactivos que denuncian técnicamente los pasivos institucionales del corregimiento (escasez hídrica, desprotección de jagüeyes, abusos de intermediarios comerciales en Montería), 'Frecuenc-IA Rural' dota al campesinado de herramientas de comunicación estratégica para exigir justicia ambiental y un ordenamiento territorial con criterios de equidad rural ante las autoridades del departamento de Córdoba, demostrando de forma contundente que la permanencia digna, el arraigo juvenil y la defensa del minifundio agrícola constituyen la única garantía real para evitar la extinción material e intelectual de la comunidad rural.",
+      "sugerida": true
+    }
+  ]
+}

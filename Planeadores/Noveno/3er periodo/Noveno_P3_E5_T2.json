@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:41:11.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E5-001",
+      "creado": 1781649271000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 5",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "1",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-22",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Autoridades de control y amparo de los DD. HH.",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Justifica el uso de los diferentes mecanismos de participación (voto, plebiscito, referendo, consulta popular) basándose en la norma constitucional. Propone alternativas normativas y sociales para mitigar la violencia de género y asegurar el respeto a las identidades en el aula.",
+      "competencias": "Pensamiento social, Interpretación y análisis de perspectivas.",
+      "contenidos": "Tipologías de derechos en la Constitución de 1991: fundamentales, sociales, económicos, culturales, colectivos y del ambiente. Autoridades de control y amparo de los DD. HH.: Procuraduría General, Defensoría del Pueblo y personerías municipales. Evolución histórica de los derechos de las mujeres. Formas de violencia de género.",
+      "objetivo": "Comprender la arquitectura institucional colombiana destinada a la protección de los derechos humanos, analizando el papel de los entes de control en el fortalecimiento del Estado Social de Derecho y su impacto directo en la realidad rural de Montería.",
+      "pregunta": "¿Cómo garantizan los entes de control, como la Procuraduría y la Defensoría, la protección de los derechos de las comunidades campesinas en un contexto de vulnerabilidad como el corregimiento de Loma Verde?",
+      "explora": "1. Presentación de un caso de estudio local sobre una problemática de tierras o acceso a servicios públicos en Loma Verde.\n2. Lluvia de ideas sobre quién debe intervenir cuando un derecho es vulnerado.\n3. Proyección de un breve video explicativo sobre las funciones de la Defensoría del Pueblo.",
+      "glosario": [
+        {"t": "procuraduría general de la nación", "d": "órgano de control superior encargado de vigilar el cumplimiento de la constitución, las leyes, las decisiones judiciales y los actos administrativos, con facultad disciplinaria sobre servidores públicos."},
+        {"t": "defensoría del pueblo", "d": "institución garante de los derechos humanos y fundamentales, encargada de orientar a los ciudadanos en el ejercicio de sus derechos y prestar asistencia jurídica a través de los defensores públicos."},
+        {"t": "personería municipal", "d": "entidad del ministerio público encargada de la defensa de los derechos humanos, la protección del interés público y la vigilancia de la conducta oficial en el nivel territorial local."},
+        {"t": "estado social de derecho", "d": "modelo de organización política que prioriza el respeto a la dignidad humana, la justicia social y la garantía de derechos fundamentales por encima de los intereses particulares."}
+      ],
+      "bloques": [
+        {
+          "tit": "La arquitectura del control en Colombia",
+          "txt": "El sistema de pesos y contrapesos en Colombia se sustenta en el Ministerio Público. La Procuraduría General de la Nación actúa como el ente supremo de vigilancia administrativa, asegurando que los funcionarios públicos cumplan con sus deberes bajo los principios de moralidad, eficiencia y transparencia. En el contexto rural de Montería, esto es crucial para evitar que recursos destinados a la infraestructura agrícola o educativa en Loma Verde sean desviados por la corrupción. Por su parte, la Defensoría del Pueblo es la cara más cercana al ciudadano en la defensa de los Derechos Humanos. Creada a partir de la Constitución de 1991, ha sido fundamental en el acompañamiento a las comunidades víctimas del desplazamiento forzado en el Caribe colombiano, brindando asesoría jurídica y visibilizando las crisis humanitarias en zonas de difícil acceso.",
+          "pausa": "¿Es suficiente la intervención de los entes de control para detener la vulneración de derechos en las zonas rurales apartadas?",
+          "resp": "Si bien los entes de control proporcionan un marco de protección, su eficacia depende de la articulación con la participación ciudadana activa y la capacidad del Estado para garantizar presencia territorial, algo que a menudo es insuficiente en zonas periféricas como Loma Verde."
+        }
+      ],
+      "talleres": "Realización de un 'Simulacro de Acción de Tutela'. Los estudiantes, divididos en grupos, identificarán una vulneración real o hipotética en el corregimiento (ej. falla en el servicio de salud o carencia de agua potable) y redactarán los argumentos jurídicos necesarios, indicando qué ente de control sería el receptor de la queja.",
+      "transfer": "Análisis de un caso real: investigar el papel de la Personería de Montería ante una problemática actual de los campesinos de Loma Verde, redactando un breve informe crítico sobre si la intervención fue oportuna o limitada.",
+      "clave": "Las respuestas deben demostrar claridad en la función de cada ente (Procuraduría: disciplinaria/administrativa; Defensoría: defensa de DD. HH./tutela; Personería: control local). Se valora la coherencia entre el problema identificado y el ente seleccionado.",
+      "evaluacion": "Rúbrica: 1. Comprensión de funciones (30%), 2. Capacidad de argumentación en la tutela (40%), 3. Aplicación al contexto rural (30%). Escala: superior, alto, básico, bajo.",
+      "recursos": "Constitución Política de 1991, computadores con acceso a la página de la Defensoría, guías de estudio, material audiovisual de apoyo.",
+      "referencias": "Constitución Política de Colombia [1991]. Defensoría del Pueblo de Colombia [2026]. Manual de Derechos Humanos para instituciones educativas.",
+      "dua": "Uso de audio-textos para estudiantes con dificultades de lectura, mapas conceptuales para facilitar la memorización de las funciones de cada ente, y trabajo colaborativo para fomentar el aprendizaje entre pares.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La tríada Procuraduría-Defensoría-Personería constituye un pilar innegociable de nuestra democracia. Su importancia radica en la capacidad de frenar abusos de poder y dar voz a las comunidades rurales más desfavorecidas.",
+      "errores": "Confundir las funciones de la Defensoría del Pueblo (protección de derechos) con las de la Procuraduría (disciplinaria), o ignorar la existencia de la Personería en el nivel municipal.",
+      "banco": [],
+      "tarea": "Entrevistar a un líder comunitario o familiar sobre si alguna vez han tenido que recurrir a la Personería Municipal y qué resultado obtuvieron.",
+      "fundamentacion": "La Constitución Política de Colombia de 1991 representa un hito en la historia de la nación al transitar de una democracia representativa restringida hacia un Estado Social de Derecho. Este nuevo ordenamiento jurídico no solo reconoció un catálogo robusto de derechos fundamentales, sino que creó las herramientas institucionales para su defensa. En el eje de estas garantías se encuentra el Ministerio Público, compuesto por la Procuraduría General de la Nación, la Defensoría del Pueblo y las personerías municipales. La estructura constitucional se diseñó bajo la premisa de que el poder debe ser vigilado y que los derechos, para ser efectivos, requieren de defensores independientes. En el ámbito rural, especialmente en corregimientos como Loma Verde en Montería, el papel de estas instituciones es vital. Las causas estructurales de la vulneración de derechos suelen estar ligadas a la precariedad de servicios básicos y la debilidad del Estado en zonas rurales. Por tanto, el fortalecimiento de la Personería local y la presencia de la Defensoría son los mecanismos de contención ante los desequilibrios de poder y la desprotección del campesinado. A largo plazo, una ciudadanía que conoce y exige sus derechos a través de estas vías es fundamental para la construcción de una paz duradera y una verdadera equidad social.",
+      "lineatiempo": "1991: Promulgación de la Constitución Política y creación del modelo de Estado Social de Derecho. 1992: Consolidación de la Defensoría del Pueblo como ente autónomo. 2000-2026: Fortalecimiento progresivo del acceso a la tutela y el rol de las personerías en la atención a víctimas del conflicto."
+    }
+  ]
+}

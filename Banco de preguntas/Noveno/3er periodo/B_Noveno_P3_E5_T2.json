@@ -1,0 +1,182 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T16:41:11.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Tercer periodo",
+    "unidad": "Autoridades de control y amparo de los DD. HH.",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "P01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Autoridades de control",
+      "competencia": "Pensamiento social",
+      "contexto": "Instituciones estatales",
+      "enunciado": "Explique la diferencia fundamental en las funciones de la Procuraduría General de la Nación y la Defensoría del Pueblo dentro del Estado Social de Derecho.",
+      "respuesta": "La Procuraduría General de la Nación tiene una función principalmente disciplinaria, vigilando el actuar de los servidores públicos y asegurando que cumplan la ley y la constitución, con potestad para sancionar. Por otro lado, la Defensoría del Pueblo tiene una función protectora y pedagógica, enfocada en la promoción, defensa y divulgación de los derechos humanos de los ciudadanos, especialmente aquellos en condiciones de vulnerabilidad, actuando como un puente entre el ciudadano y la justicia estatal sin tener funciones disciplinarias sobre otros funcionarios.",
+      "sugerida": true
+    },
+    {
+      "id": "P02",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Personerías municipales",
+      "competencia": "Pensamiento social",
+      "contexto": "Derechos locales",
+      "enunciado": "La Personería Municipal es una entidad que no tiene injerencia en los asuntos de los derechos humanos en las zonas rurales.",
+      "correcta": false,
+      "justificacion": "La Personería Municipal es, precisamente, la entidad del Ministerio Público más cercana al territorio. Su función principal en los municipios y corregimientos es la defensa de los derechos humanos y la vigilancia del interés público local, por lo cual es esencial para las comunidades rurales como Loma Verde."
+    },
+    {
+      "id": "P03",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Derechos fundamentales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Constitución de 1991",
+      "enunciado": "Ante una violación flagrante de un derecho fundamental por parte de una autoridad, ¿cuál es el mecanismo constitucional de protección más efectivo que puede interponer un ciudadano?",
+      "opciones": ["La acción popular", "La acción de tutela", "La consulta popular", "El referendo"],
+      "correcta": 1,
+      "justificacion": "La acción de tutela es el mecanismo constitucional diseñado específicamente para la protección inmediata de derechos fundamentales cuando estos son vulnerados o amenazados por la acción u omisión de cualquier autoridad pública, siendo la vía más ágil y efectiva."
+    },
+    {
+      "id": "P04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Violencia de género",
+      "competencia": "Pensamiento social",
+      "contexto": "Igualdad y derechos",
+      "enunciado": "Analice por qué la violencia de género se considera una barrera para el desarrollo equitativo en comunidades rurales.",
+      "respuesta": "La violencia de género limita la autonomía física, económica y política de las mujeres, impidiéndoles participar activamente en la toma de decisiones comunitarias y en el desarrollo de sus proyectos de vida. En comunidades rurales, donde a menudo persisten patrones culturales patriarcales, la violencia de género perpetúa una estructura de desigualdad que desaprovecha el potencial humano, reduce la cohesión social y viola derechos fundamentales, impidiendo un desarrollo sostenible y justo para todos los integrantes de la sociedad.",
+      "sugerida": true
+    },
+    {
+      "id": "P05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Entes de control",
+      "competencia": "Pensamiento social",
+      "contexto": "Ministerio Público",
+      "enunciado": "El Ministerio Público en Colombia está integrado por:",
+      "opciones": ["La Fiscalía, la Procuraduría y la Personería", "La Procuraduría, la Defensoría del Pueblo y la Personería", "La Defensoría del Pueblo, la Contraloría y la Procuraduría", "La Presidencia, la Procuraduría y la Personería"],
+      "correcta": 1,
+      "justificacion": "El Ministerio Público, según la Constitución Política de 1991, está conformado exclusivamente por la Procuraduría General de la Nación, la Defensoría del Pueblo y las personerías municipales, quienes trabajan en conjunto para la defensa de los derechos humanos y el control de la gestión pública."
+    },
+    {
+      "id": "P06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Derechos de las mujeres",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Evolución histórica",
+      "enunciado": "Los derechos de las mujeres han evolucionado de manera independiente a las luchas sociales y políticas del país.",
+      "correcta": false,
+      "justificacion": "La evolución de los derechos de las mujeres ha estado intrínsecamente ligada a las luchas por la igualdad en el sufragio, el acceso a la educación y la participación económica, siendo producto de transformaciones sociales y políticas profundas que han exigido la reconfiguración del orden jurídico colombiano."
+    },
+    {
+      "id": "P07",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Participación ciudadana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Mecanismos de participación",
+      "enunciado": "Elija un mecanismo de participación ciudadana y justifique su utilidad para una comunidad rural.",
+      "respuesta": "La consulta popular es sumamente útil para comunidades rurales porque permite a los habitantes manifestarse directamente sobre decisiones que afectan su territorio, como proyectos extractivos o de gran infraestructura. Este mecanismo otorga poder vinculante a la voz de la comunidad, garantizando que el desarrollo económico no se imponga sin el consentimiento de quienes habitan y cuidan el territorio, cumpliendo así con el principio democrático participativo.",
+      "sugerida": true
+    },
+    {
+      "id": "P08",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Violencia de género",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Tipologías de violencia",
+      "enunciado": "¿Cuál de las siguientes acciones constituye un ejemplo de violencia económica contra la mujer?",
+      "opciones": ["Impedir el acceso a la educación superior", "Controlar o restringir el uso de los recursos financieros familiares", "Limitar la participación en eventos comunitarios", "Ejercer presión psicológica verbal"],
+      "correcta": 1,
+      "justificacion": "La violencia económica implica el control, limitación o privación de recursos económicos y financieros para someter a la mujer, afectando su independencia y capacidad de subsistencia, lo cual constituye una forma directa de vulneración de sus derechos."
+    },
+    {
+      "id": "P09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Estado social de derecho",
+      "competencia": "Pensamiento social",
+      "contexto": "Constitucionalismo",
+      "enunciado": "En un Estado Social de Derecho, los derechos fundamentales pueden ser limitados arbitrariamente por el gobierno según sus intereses.",
+      "correcta": false,
+      "justificacion": "El Estado Social de Derecho implica que el poder está limitado por la Constitución y que la garantía de los derechos fundamentales es el fin principal del Estado. Por tanto, ninguna autoridad puede limitar estos derechos arbitrariamente; cualquier restricción debe cumplir estrictos criterios legales y constitucionales."
+    },
+    {
+      "id": "P10",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Procuraduría General",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Control administrativo",
+      "enunciado": "Argumente por qué la labor de la Procuraduría es fundamental para evitar la corrupción en el nivel municipal.",
+      "respuesta": "La labor de la Procuraduría es fundamental porque actúa como una barrera preventiva y sancionatoria contra el mal uso de los recursos públicos. Al vigilar que los procesos de contratación, la ejecución presupuestal y el comportamiento de los funcionarios locales se ajusten a la legalidad, esta entidad reduce los incentivos para actos corruptos, garantizando que los fondos destinados a mejorar la calidad de vida en municipios y corregimientos efectivamente lleguen a su destino y no se pierdan en intereses particulares.",
+      "sugerida": true
+    },
+    {
+      "id": "P11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Defensoría del Pueblo",
+      "competencia": "Pensamiento social",
+      "contexto": "Garantía de derechos",
+      "enunciado": "El principal objetivo de la Defensoría del Pueblo en Colombia es:",
+      "opciones": ["Sancionar disciplinariamente a funcionarios corruptos", "Promover, divulgar y defender los derechos humanos", "Controlar el recaudo de los impuestos nacionales", "Organizar las elecciones regionales"],
+      "correcta": 1,
+      "justificacion": "La misión central de la Defensoría del Pueblo, establecida en el marco del Ministerio Público, es la defensa, promoción, protección y divulgación de los derechos humanos, actuando como un baluarte frente a las posibles vulneraciones por parte del Estado o particulares."
+    },
+    {
+      "id": "P12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Personerías municipales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Control territorial",
+      "enunciado": "El personero municipal es nombrado por el presidente de la república.",
+      "correcta": false,
+      "justificacion": "El personero municipal es elegido por el Concejo Municipal mediante un concurso público de méritos, lo cual garantiza una mayor independencia de la administración municipal frente a presiones del poder ejecutivo central o local."
+    },
+    {
+      "id": "P13",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Participación ciudadana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Democracia participativa",
+      "enunciado": "Explique la relación entre la participación ciudadana y el fortalecimiento de la democracia.",
+      "respuesta": "La participación ciudadana es el oxígeno de la democracia; sin ella, esta se convierte en una estructura vacía o meramente representativa. Cuando los ciudadanos se involucran en los asuntos públicos a través de mecanismos legales, no solo ejercen un control directo sobre la gestión estatal, sino que legitiman las decisiones políticas, fomentan una cultura de responsabilidad y empoderamiento social, y aseguran que el Estado cumpla con su deber de promover el bienestar colectivo.",
+      "sugerida": true
+    },
+    {
+      "id": "P14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Violencia de género",
+      "competencia": "Pensamiento social",
+      "contexto": "Derechos humanos",
+      "enunciado": "¿Qué busca lograr la mitigación de la violencia de género en una sociedad justa?",
+      "opciones": ["Exclusivamente la igualdad salarial", "La erradicación de prácticas discriminatorias y la garantía de una vida libre de violencia", "La creación de leyes que favorezcan solo a un género", "La división estricta de roles sociales"],
+      "correcta": 1,
+      "justificacion": "Una sociedad justa busca la erradicación total de cualquier forma de violencia, física o simbólica, que se base en el género, promoviendo la igualdad de oportunidades, la dignidad humana y el respeto absoluto a la integridad de cada persona."
+    },
+    {
+      "id": "P15",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Constitución de 1991",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Derechos colectivos",
+      "enunciado": "La Constitución de 1991 protege únicamente los derechos individuales, ignorando los derechos colectivos o del medio ambiente.",
+      "correcta": false,
+      "justificacion": "La Constitución de 1991 es pionera en reconocer una amplia gama de derechos, incluidos los derechos colectivos y del ambiente (como el derecho a un ambiente sano), estableciendo mecanismos como las acciones populares para su defensa frente a daños causados a la comunidad."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:43:50.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E5-003",
+      "creado": 1781650430000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 5",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "3",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-24",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Formas de violencia de género y estrategias de mitigación en la sociedad justa",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Propone alternativas normativas y sociales para mitigar la violencia de género y asegurar el respeto a las identidades en el aula, asumiendo una posición crítica frente a situaciones de discriminación o abuso por irrespeto a rasgos individuales. Asimismo, identifica y clasifica las distintas tipologías de violencia de género en el contexto cotidiano y rural, argumentando su impacto en la desarticulación del tejido social.",
+      "competencias": "Pensamiento social; Interpretación y análisis de perspectivas.",
+      "contenidos": "Formas de violencia de género: psicológica, sexual, económica, doméstica, laboral y física; mecanismos de mitigación, rutas de atención institucional y construcción de una cultura de paz.",
+      "objetivo": "Analizar de manera profunda y crítica las tipologías de violencia de género que permean la estructura social, evaluando sus causas estructurales y proponiendo alternativas de mitigación desde la norma constitucional y el ejercicio ciudadano, con énfasis en la realidad del corregimiento de Loma Verde.",
+      "pregunta": "¿De qué manera la normalización de diversas formas de violencia de género en entornos rurales limita la autonomía y la participación ciudadana de las mujeres campesinas en Loma Verde?",
+      "explora": "1. Análisis de casos hipotéticos pero basados en realidades rurales sobre las distintas formas de violencia de género.\n2. Lluvia de ideas inicial sobre la percepción de los estudiantes frente a la violencia cotidiana.\n3. Proyección de un cortometraje o testimonio audiovisual que ilustre la violencia psicológica y económica como formas silenciadas de abuso.",
+      "glosario": [
+        {"t": "violencia de género", "d": "acto basado en la pertenencia al sexo femenino que tenga o pueda tener como resultado un daño o sufrimiento físico, sexual o psicológico para la mujer, así como las amenazas de tales actos, la coacción o la privación arbitraria de la libertad."},
+        {"t": "violencia económica", "d": "acciones que implican el control o la restricción del uso de los recursos financieros familiares, impidiendo a la mujer la gestión de su propio patrimonio o ingresos, limitando así su autonomía."},
+        {"t": "violencia psicológica", "d": "conjunto de conductas como insultos, humillaciones, descalificaciones, control emocional, celotipia y amenazas que buscan minar la autoestima y estabilidad emocional de la persona."},
+        {"t": "mitigación", "d": "acciones institucionales y sociales orientadas a reducir la frecuencia, severidad y efectos negativos de la violencia de género, mediante educación, leyes y rutas de protección."}
+      ],
+      "bloques": [
+        {
+          "tit": "Tipologías de violencia: una arquitectura de la opresión",
+          "txt": "La violencia de género no es un fenómeno homogéneo; se despliega a través de múltiples canales que refuerzan la jerarquía patriarcal. La violencia física es la expresión más evidente, pero la violencia psicológica y económica actúan como estructuras invisibles que preparan el terreno para el abuso. En Loma Verde, la violencia económica es particularmente insidiosa, donde el acceso restringido a la propiedad de la tierra y al crédito bancario por parte de las mujeres campesinas se justifica mediante argumentos culturales de 'apoyo familiar', ocultando una realidad de dependencia estructural. La violencia laboral, por otro lado, se manifiesta en la brecha salarial y la sobrecarga de trabajo doméstico no remunerado, elementos que, sumados a las presiones domésticas, limitan la capacidad de la mujer para formarse políticamente y exigir sus derechos en los espacios públicos municipales de Montería.",
+          "pausa": "¿Es posible erradicar la violencia de género sin modificar las estructuras económicas de tenencia de tierra en nuestro corregimiento?",
+          "resp": "La erradicación requiere una intervención integral: la norma debe acompañarse de una transformación en la base económica que garantice la autonomía financiera, clave para la emancipación de la mujer rural."
+        }
+      ],
+      "talleres": "Diseño de una 'Cartilla comunitaria de rutas de atención'. Los estudiantes, organizados por grupos, crearán una guía visual y textual que explique dónde acudir en Montería ante una situación de violencia física, psicológica o económica. Deben incluir contactos de la Personería Municipal, la Fiscalía y las comisarías de familia.",
+      "transfer": "Análisis de impacto local: investigar si existen organizaciones de mujeres en Loma Verde o Montería que trabajen en la mitigación de la violencia y redactar una propuesta de fortalecimiento de estas redes desde el colegio.",
+      "clave": "Las respuestas deben demostrar claridad en la distinción de las tipologías de violencia y una correcta identificación de las rutas institucionales de protección según la Constitución de 1991.",
+      "evaluacion": "Rúbrica: 1. Identificación de tipologías (30%), 2. Propuestas de mitigación (40%), 3. Análisis crítico del contexto rural (30%).",
+      "recursos": "Constitución Política de 1991, leyes de protección contra la violencia intrafamiliar, cartillas institucionales, dispositivos multimedia.",
+      "referencias": "Congreso de la República de Colombia. Ley 1257 de 2008. Constitución Política de 1991. Defensoría del Pueblo [2026].",
+      "dua": "Uso de infografías claras para las rutas de atención, lectura dirigida de textos normativos, y foros presenciales donde la oralidad permita a los estudiantes expresar sus posturas sin necesidad de una alta carga escrita.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La violencia de género es un síntoma de un orden social que aún no ha alcanzado la equidad. Mitigarla exige el compromiso activo de la ciudadanía joven en la identificación, denuncia y construcción de relaciones interpersonales basadas en el respeto.",
+      "errores": "Normalizar el control emocional como afecto (violencia psicológica), subestimar la violencia económica en la ruralidad o desconocer que la violencia sexual es un delito que debe ser denunciado inmediatamente ante la justicia.",
+      "banco": [],
+      "tarea": "Realizar un diario de campo de una semana donde identifiquen prácticas cotidianas (en medios de comunicación o comunidad) que refuerzan estereotipos de género y proponer un cambio positivo para cada una.",
+      "fundamentacion": "La violencia de género representa una de las barreras más persistentes y profundas para la realización de una sociedad justa y democrática. Fundamentada en la histórica desigualdad entre hombres y mujeres, esta violencia no puede entenderse simplemente como agresiones aisladas, sino como un sistema de dominación que se despliega en diversos ámbitos: desde lo psicológico y económico hasta lo físico y sexual. La Constitución de 1991, al consagrar el principio de igualdad y dignidad humana, obliga al Estado y a la sociedad a implementar rutas de mitigación efectivas, tales como la Ley 1257 de 2008, que tipifica y establece medidas de protección. En el contexto de Loma Verde, la violencia de género se entrelaza con factores como la pobreza, el aislamiento geográfico y la persistencia de valores patriarcales que, al limitar el acceso de las mujeres campesinas a la tierra y al poder político, perpetúan su exclusión. Por tanto, el análisis académico de este tema debe partir del reconocimiento de que estas violencias son estructurales y afectan la soberanía, la salud mental y el desarrollo económico de la comunidad en su conjunto. La superación de estas dinámicas exige una educación que desarrolle competencias para la concertación, la denuncia informada y la construcción de identidades que rechacen el uso de la fuerza como forma de resolución de conflictos, fomentando una cultura de paz donde la equidad sea la base de las relaciones interpersonales.",
+      "lineatiempo": "1991: Consagración constitucional de la igualdad de género. 2008: Expedición de la Ley 1257 (normas de sensibilización, prevención y sanción de la violencia contra la mujer). 2015: Ley 1761 (tipificación del feminicidio como delito autónomo). 2026: Fortalecimiento de las rutas de atención integral para mujeres en entornos rurales."
+    }
+  ]
+}

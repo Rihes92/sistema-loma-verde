@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:49:23.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E6-004",
+      "creado": 1781651363000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 6",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "4",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-28",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Papel regulador del Estado y gremios en la inversión social",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Explica las asimetrías de crecimiento entre las distintas regiones de Colombia interpretando mapas temáticos de vulnerabilidad por disponibilidad de alimentos. Argumenta con rigor técnico y fundamento normativo cómo el papel regulador del Estado y la articulación con los gremios económicos son determinantes para mitigar las brechas de desarrollo en territorios periféricos como el corregimiento de Loma Verde, Montería.",
+      "competencias": "Pensamiento reflexivo y sistémico, Interpretación y análisis de perspectivas.",
+      "contenidos": "El papel regulador del Estado en la inversión social; alianzas público-privadas y responsabilidad social de los gremios económicos; impacto de la inversión en zonas de periferia y construcción de equidad territorial.",
+      "objetivo": "Analizar la función del Estado como garante de derechos y su interacción con los gremios económicos para impulsar la inversión social en territorios periféricos, evaluando cómo una regulación eficiente puede transformar las condiciones de vida y reducir la vulnerabilidad en comunidades rurales como Loma Verde.",
+      "pregunta": "¿En qué medida la falta de una regulación estatal eficaz en la articulación con los gremios económicos ha impedido que la riqueza generada en las periferias se traduzca en inversión social real para el campesinado de Loma Verde?",
+      "explora": "1. Análisis de los roles del Estado y el sector privado en la economía colombiana mediante un diagrama de Venn.\n2. Lluvia de ideas sobre la percepción local de las inversiones de grandes gremios en la región de Córdoba.\n3. Estudio preliminar sobre qué se entiende por 'Inversión Social' y por qué es responsabilidad compartida.",
+      "glosario": [
+        {"t": "inversión social", "d": "recursos financieros y estratégicos destinados por el estado o actores privados a la mejora de servicios básicos, salud, educación e infraestructura en comunidades vulnerables con el fin de elevar su nivel de desarrollo humano."},
+        {"t": "papel regulador del estado", "d": "facultad y deber constitucional que posee el estado para establecer normas, vigilar y controlar las actividades económicas, asegurando que el desarrollo privado no vulnere el interés general ni los derechos fundamentales de las comunidades."},
+        {"t": "periferia", "d": "territorios geográficamente alejados de los centros de toma de decisiones políticas y económicas, que históricamente han sufrido carencias en la cobertura de infraestructura y atención estatal."},
+        {"t": "gremios económicos", "d": "organizaciones que agrupan a empresas y empresarios de un mismo sector con el objetivo de defender sus intereses y que, en teoría, deben participar en el desarrollo territorial mediante prácticas responsables."}
+      ],
+      "bloques": [
+        {
+          "tit": "La dinámica entre Estado, gremios e inversión",
+          "txt": "En Colombia, la inversión en las periferias ha sido históricamente insuficiente debido a un modelo que prioriza la rentabilidad extractiva sobre la sostenibilidad social. El Estado, como ente regulador, tiene la responsabilidad indelegable de supervisar que los gremios económicos, al operar en territorios como Loma Verde, no solo extraigan valor, sino que contribuyan activamente al cierre de brechas de desarrollo. La inversión social no puede depender de la voluntad filantrópica de las empresas; debe ser una consecuencia de una política pública robusta que exija contraprestaciones sociales, como la construcción de vías terciarias, el acceso a internet o el fortalecimiento de la infraestructura educativa local. Cuando el Estado falla en su rol regulador, se produce una desconexión total entre el crecimiento económico de la región y el Índice de Desarrollo Humano de sus habitantes. En Loma Verde, esta brecha es evidente: mientras grandes proyectos agroindustriales o mineros pueden prosperar en las cercanías, la comunidad local enfrenta escasez de agua potable y deficiente conectividad vial. La articulación con los gremios debe migrar hacia un enfoque de alianzas estratégicas donde la regulación estatal garantice que cada peso invertido en la periferia se traduzca en una mejora medible en los indicadores de calidad de vida del campesinado.",
+          "pausa": "¿Es posible confiar en la autorregulación de los gremios económicos para alcanzar la equidad social en el campo?",
+          "resp": "La experiencia histórica sugiere que la autorregulación es insuficiente. Es indispensable un marco regulatorio estatal fuerte y transparente que establezca metas de inversión social claras y vinculantes para quienes explotan los recursos del territorio."
+        }
+      ],
+      "talleres": "Mesa de análisis crítico: los estudiantes analizarán un caso reciente de inversión empresarial en Córdoba y determinarán, basándose en la Constitución Política de 1991, si esta inversión cumplió con el deber de contribuir al desarrollo social de la zona, redactando una síntesis con recomendaciones de política pública.",
+      "transfer": "Simulación de una 'Audiencia Pública de Rendición de Cuentas' donde los estudiantes, en roles de Estado, gremios y campesinos, discutan un plan de inversión para Loma Verde, centrando el debate en el cumplimiento de los indicadores de desarrollo humano.",
+      "clave": "Se valora la capacidad de fundamentar los argumentos en la Constitución y en principios de economía social, evitando opiniones sesgadas y privilegiando el uso de datos oficiales y lógica normativa.",
+      "evaluacion": "Rúbrica: 1. Comprensión del rol del Estado (30%), 2. Propuestas de articulación gremio-comunidad (40%), 3. Calidad de la argumentación basada en evidencias (30%).",
+      "recursos": "Constitución de 1991, informes de desarrollo regional del DNP, material audiovisual sobre inversión social, guía de análisis de documentos oficiales.",
+      "referencias": "Constitución Política de Colombia [1991]. Departamento Nacional de Planeación (DNP) [2026]. Informes sobre inversión en zonas rurales.",
+      "dua": "Presentación de la información en formatos visuales (mapas de actores), ejercicios de simulación que permiten diferentes formas de participación oral, y materiales de lectura con apoyo de glosarios especializados.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "El Estado no puede renunciar a su soberanía sobre el desarrollo territorial. La articulación con los gremios económicos debe ser un ejercicio de corresponsabilidad donde la prioridad siempre sea la dignidad y el desarrollo del campesinado.",
+      "errores": "Confundir la inversión pública con la privada, pensar que la inversión social es un favor de las empresas y no un derecho comunitario, o desconocer los marcos legales que obligan a la protección del interés público.",
+      "banco": [],
+      "tarea": "Investigar qué proyectos de inversión estatal o privada están programados para el municipio de Montería en 2026 y evaluar si consideran las necesidades específicas de la zona rural.",
+      "fundamentacion": "La inversión social en las periferias de Colombia es un desafío que requiere una comprensión clara de las relaciones de poder entre el Estado, los gremios económicos y las comunidades rurales. El modelo de desarrollo colombiano ha sido cuestionado por su tendencia a la centralización y a la priorización de beneficios económicos a gran escala, a menudo en detrimento del bienestar humano en las zonas periféricas. En este contexto, el Estado no es solo un gestor, sino el máximo regulador encargado de salvaguardar el interés general por encima del interés privado. Un análisis profundo de este eje implica entender que la brecha de desarrollo entre los centros urbanos y las zonas rurales como Loma Verde es el resultado de un diseño institucional que debe ser corregido mediante una mayor presencia estatal y una regulación rigurosa sobre los actores económicos. La fundamentación de esta unidad académica se basa en el reconocimiento de que la inversión social es una herramienta para la justicia territorial. Para que esta sea efectiva, debe haber una articulación que involucre a los gremios económicos bajo parámetros de responsabilidad social empresarial no opcional, sino exigida. Este enfoque pedagógico fomenta el pensamiento crítico al desafiar a los estudiantes a proponer soluciones que combinen la eficiencia económica con la equidad social, siempre respetando la rigurosidad en la investigación y el análisis de la normativa vigente.",
+      "lineatiempo": "1991: Constitución establece el Estado Social de Derecho y el control sobre la actividad económica. 2000-2010: Auge de la inversión extranjera directa con controles sociales mínimos. 2026: Fortalecimiento de las veedurías ciudadanas y exigencia social por una inversión territorial más justa."
+    }
+  ]
+}

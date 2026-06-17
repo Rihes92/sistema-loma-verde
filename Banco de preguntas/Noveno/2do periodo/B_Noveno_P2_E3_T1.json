@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:30:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-CS9-P2-E3-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento social",
+      "contexto": "A lo largo del siglo XX, Colombia aplicó un modelo macroeconómico de corte proteccionista alineado con las tesis de la CEPAL, orientado a contrarrestar el deterioro estructural de los términos de intercambio mediante el blindaje del mercado interno.",
+      "enunciado": "Desde una perspectiva macroeconómica e institucional, ¿cuál de las siguientes opciones describe el principal instrumento utilizado por el modelo proteccionista para salvaguardar la producción agrícola nacional frente a las mercancías extranjeras?",
+      "opciones": [
+        "A) La supresión absoluta de los controles de aduana en los puertos para propiciar el ingreso libre de alimentos importados sin recargos tributarios.",
+        "B) El establecimiento de aranceles elevados a los bienes importados combinados con subsidios y la fijación de precios mínimos de sustentación a través de agencias estatales como el IDEMA.",
+        "C) La prohibición constitucional del uso de papel moneda obligando a las comunidades rurales a comercializar mediante el trueque sólido de yuca nativa.",
+        "D) La privatización generalizada de las infraestructuras viales y de transporte para transferir el control presupuestal a corporaciones transnacionales de carne."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la arquitectura institucional del modelo proteccionista (ISI) se fundaba en la intervención del Estado en los flujos de mercancías. La imposición de aranceles encarecía artificialmente los productos extranjeros en las aduanas, permitiendo que el artículo nacional mantuviera competitividad. Paralelamente, agencias como el IDEMA fijaban precios mínimos de sustentación que blindaban los ingresos de la economía familiar campesina contra la especulación del mercado internacional."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la década de 1990, Colombia ejecutó un viraje radical en su orientación económica hacia la doctrina del liberalismo económico, implementando el proceso denominado Apertura Económica bajo la premisa de integrar el país en los circuitos de la globalización de mercados.",
+      "enunciado": "Teniendo en cuenta los desequilibrios institucionales históricos del país, ¿cuál fue el principal error de planificación que convirtió a la Apertura Económica en un factor de quiebra inducida para el campesinado minifundista?",
+      "opciones": [
+        "A) Haber subsidiado de forma desmesurada las semillas criollas y herramientas de labranza artesanal, generando una sobreproducción que devaluó los precios.",
+        "B) Desmontar los aranceles y liquidar las agencias de protección agraria sin haber construido previamente la infraestructura basal indispensable (vías terciarias utilizables, distritos de riego tecnificados, créditos blandos de fomento) para competir frente a las importaciones agrícolas extranjeras subsidiadas.",
+        "C) Prohibir mediante decretos ministeriales que los camiones de carga transportaran yuca y plátano desde las veredas hacia el mercado público de Montería.",
+        "D) Centralizar los laboratorios de software avanzados de inteligencia artificial dentro de los patios de las unidades domésticas agrarias de Loma Verde."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque devela la asimetría territorial y estructural del proceso de apertura liberal. El Estado colombiano eliminó la protección aduanera de choque sometiendo al sector agropecuario a una competencia desleal contra transnacionales extranjeras cuyos gobiernos norteamericanos y europeos subsidiaban masivamente. Al carecer el campo cordobés de infraestructuras mínimas como distritos de riego o vías terciarias, los campesinos sufrieron un estrangulamiento microeconómico al no poder competir en productividad ni costos."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La soberanía alimentaria y la autonomía de la economía del hogar campesino en el corregimiento de Loma Verde dependen críticamente de la regularidad de los microclimas locales y de la rentabilidad comercial justa de sus policultivos de pancoger.",
+      "enunciado": "La eliminación absoluta de los aranceles aduaneros bajo el amparo del liberalismo económico beneficia la soberanía alimentaria del corregimiento de Loma Verde, ya que al inundarse el mercado de Montería con maíz extranjero barato se incrementa de forma directa la capacidad de ahorro y la capitalización de las parcelas de las veredas.",
+      "correcta": false,
+      "justificacion": "Es profundo y argumentadamente falso porque la liberalización aduanera arruina de forma sistémica la soberanía alimentaria veredal. El ingreso masivo de maíz extranjero importado a precios inferiores a los costos de producción locales provoca el desplome de los precios del grano criollo. Al no recuperar el capital invertido en insumos químicos caros, la economía del hogar campesino entra en quiebra, forzando la pérdida de la autonomía agrícola y obligando a los jóvenes a emigrar."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento social",
+      "contexto": "El modelo de Industrialización por Sustitución de Importaciones (ISI) pretendía romper la dependencia colonial periférica transformando las materias primas internas en bienes manufacturados dentro de la trama nacional.",
+      "enunciado": "A pesar de sus salvaguardas agrícolas, el modelo proteccionista ISI en Colombia consolidó una marcada asimetría territorial debido a que centralizó los presupuestos de inversión industrial en las grandes metrópolis andinas, manteniendo a las periferias rurales del Caribe rezagadas en infraestructura social básica.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la geografía crítica devela las contradicciones espaciales del proteccionismo cepalino en Colombia. Los beneficios fiscales del desarrollo manufacturero se concentraron en el triángulo urbano de Bogotá, Medellín y Cali, mientras que el espacio geográfico rural de los departamentos costeros como Córdoba continuó subordinado a estructuras latifundistas ganaderas y desprovisto de servicios públicos elementales, limitando la competitividad real del campo antes de la apertura."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En un panel sobre historia agraria cordobesa, un economista ortodoxo afirma que 'el desmonte arancelario y la firma de Tratados de Libre Comercio son medidas eficientes que modernizan la sociedad puesto que liberan las tierras rurales ociosas e ineficientes de Loma Verde para que grandes corporaciones desarrollen ganadería ganadera latifundista extensiva de exportación de alta rentabilidad monetaria'.",
+      "enunciado": "Desde la perspectiva de los derechos del campesinado rural y adoptando el enfoque relacional de la geografía crítica de la población, ¿cuál es la falacia conceptual y el sesgo analítico dominante en el argumento de este analista?",
+      "opciones": [
+        "A) Supone de forma equivocada que el municipio de Montería carece de circulante monetario y que la totalidad de las transacciones operan mediante trueque sólido.",
+        "B) Celebra y naturaliza la quiebra inducida del agro tradicional, ocultando que la monopolización ganadera latifundista destruye la soberanía alimentaria, despoja al campesino de su territorio de origen y genera pasivos ambientales severos como la compactación del suelo arcilloso y el secamiento de jagüeyes veredales.",
+        "C) Olvida de forma ingeniosa que la ganadería de exportación exige que las reses vacunas vuelen por la atmósfera para evitar rozar los horizontes edáficos.",
+        "D) Defiende que las Juntas de Acción Comunal del corregimiento de Loma Verde son consorcios transnacionales dueños de los principales puertos marítimos andinos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye el discurso modernizador del extractivismo agrario que invisibiliza los daños ambientales y sociales. Presenta la desposesión de las parcelas de pancoger como un paso de 'eficiencia', omitiendo que el monocultivo ganadero extensivo privatiza los dividendos en pocas manos y transfiere los costos ecológicos (deforestación de micro-bosques protectores, impermeabilización del suelo arcilloso por pisoteo de reses, colmatación de arroyos y desecación estacional de aljibes domésticos) a la comunidad local subordinada."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El vaciamiento demográfico provocado por la emigración sostenida de la población joven desde las veredas del corregimiento de Loma Verde altera las pautas de producción agrícola familiar tradicional debido al colapso de las redes no mercantiles de trabajo cooperativo vecinal conocidas como la 'mano prestada'.",
+      "enunciado": "Teniendo en cuenta los flujos demográficos estudiados, ¿cuál es la conexión causal directa entre las políticas macroeconómicas de liberalización de mercados aduaneros y el debilitamiento de estas redes de ayuda mutua campesina en el lomerío?",
+      "opciones": [
+        "A) La caída de aranceles incrementa el valor de la yuca permitiendo que los jóvenes compren maquinaria pesada satelital de forma unánime.",
+        "B) La inundación de alimentos importados baratos quiebra la rentabilidad del grano criollo, forzando la emigración forzada juvenil hacia el mototaxismo informal urbano de Montería; este vaciamiento de brazos aptos rompe la mano prestada e impone costos asalariados que arruinan al minifundio familiar.",
+        "C) La desregulación aduanera congela las moléculas de hidrógeno del agua de los jagüeyes impidiendo mecánicamente el enraizamiento del plátano.",
+        "D) Los Tratados de Libre Comercio obligan a las Juntas de Acción Comunal a transformarse en corporaciones financieras transnacionales controladas por peones asalariados."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B describe con rigor científico el efecto dominó macro-micro. La apertura comercial despoja de mercados al campesino tradicional, haciendo inviable el sustento agrario; esto expulsa a las cohortes de edad joven del corregimiento hacia el subempleo urbano. Al vaciarse las veredas de Loma Verde de su fuerza laboral vital, los campesinos ancianos remanentes se quedan sin vecinos con quienes intercambiar jornadas de labranza solidaria sin salario, encareciendo la producción por el pago obligatorio de jornales monetarios."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento social",
+      "contexto": "El concepto de 'precio mínimo de sustentación' constituyó un dispositivo macroeconómico de regulación mediante el cual el Estado fijaba un valor base obligatorio para adquirir las cosechas del sector agrario nacional.",
+      "enunciado": "Bajo la vigencia de las políticas liberales contemporáneas y los Tratados de Libre Comercio, los precios mínimos de sustentación agrícola fueron ampliados por el Estado para garantizar que las transnacionales compren el plátano de Loma Verde a valores fijos superiores a los del mercado global.",
+      "correcta": false,
+      "justificacion": "Es falso porque la doctrina del liberalismo económico prohíbe de forma expresa la intervención del Estado en la fijación de precios, ordenando la liquidación de agencias reguladoras como el IDEMA. Bajo el mercado abierto, los precios de venta de cultivos de pancoger como el maíz y la yuca en Loma Verde quedan sujetos exclusivamente a la volatilidad de la oferta y la demanda internacionales, desprotegiendo al campesino frente a las crisis de precios."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En las veredas del corregimiento de Loma Verde, Montería, los pequeños productores campesinos cultivan de forma tradicional maíz criollo blanco utilizando abonos orgánicos rudimentarios y dependiendo enteramente del ciclo estacional de lluvias para humedecer sus tierras arcillosas porosas.",
+      "enunciado": "Explique detalladamente y con argumentos de geografía crítica de la población y economía política de cuencas de qué manera la eliminación total de las barreras arancelarias nacionales desatada por el liberalismo económico termina alterando de forma negativa las propiedades físicas del suelo, el ciclo de los jagüeyes y la estabilidad hídrica doméstica de las familias agrarias en las veredas de Loma Verde.",
+      "respuesta": "La eliminación total de las barreras arancelarias desatada por el liberalismo económico opera como un vector de desterritorialización que destruye el metabolismo biofísico y social del corregimiento de Loma Verde mediante una reacción en cadena multiescalar. Al suprimirse los aranceles aduaneros, toneladas de granos importados y subsidiados del extranjero saturan las plazas de abasto de Montería a precios de miseria con los que el campesino tradicional de lomerío no puede competir. Esta competencia asimétrica genera la quiebra financiera inducida del minifundio familiar, provocando un vaciamiento demográfico de la población joven que emigra forzadamente hacia la economía informal urbana del mototaxismo. Al quedarse las veredas habitadas exclusivamente por campesinos adultos mayores y ancianos, colapsan las redes comunitarias de ayuda mutua sin salario (*mano prestada*), haciendo económicamente inviable la labranza artesanal de cultivos esenciales de pancoger como la yuca, el plátano y el maíz. Ante el estrangulamiento financiero e individual, las familias remanentes se ven forzadas a tomar la decisión irreversible de vender sus parcelas a precios devaluados a grandes terratenientes dedicados a la ganadería extensiva de exportación. Este cambio estructural en la tenencia de la tierra reconfigura de forma profundamente negativa las propiedades biofísicas del ecosistema local: el modelo ganadero introduce la quema y tala indiscriminada de los últimos parches de bosque seco tropical remanentes para sembrar pastizales comerciales homogéneos, eliminando la regulación climática biótica y la evapotranspiración local, lo cual intensifica la aridez del aire. Mecánicamente, el pisoteo continuo e intensivo del ganado vacuno pesado ejerce una inmensa presión por centímetro cuadrado que compacta los suelos arcillosos lateríticos, destruyendo su estructura porosa natural y sellando los macroporos y canales de la tierra. Al impermeabilizarse el terreno arcilloso, se suprime por completo el proceso de infiltración hídrica vertical durante las lluvias de invierno; el agua es incapaz de penetrar hacia las capas profundas de la corteza para recargar los acuíferos subterráneos superficiales. En consecuencia, el agua de lluvia se transforma instantáneamente en escorrentías superficiales torrenciales y caóticas que corren con fuerza ladera abajo, erosionando las laderas en cárcavas profundas, lavando la escasa capa orgánica fértil (*humus*) y arrastrando toneladas de sedimentos y lodos en suspensión hacia las depresiones del relieve. Este material arcilloso arrastrado se deposita por decantación física en el fondo de los jagüeyes veredales, provocando una colmatación o sedimentación acelerada que les resta profundidad útil. Al quedar reducidos a depósitos hídricos planos y de escasos centímetros, los jagüeyes comunitarios quedan expuestos a una evaporación termodinámica extrema debido a la radiación solar directa del Caribe y a la acción de vientos secos, vaciándose las reservas de agua dulce meses antes de finalizar la temporada estacional seca de verano y deprimiendo por vasos comunicantes el nivel freático de los pozos artesanales (*aljibes*) domésticos, condenando a las familias campesinas a una crisis crónica de escasez de agua potable y al marchitamiento absoluto de sus cultivos por estrés hídrico severo.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento social",
+      "contexto": "El análisis crítico de los Tratados de Libre Comercio (TLC) en la geografía económica contemporánea devela que los flujos transnacionales de alimentos modifican la soberanía agrícola de los países de la periferia global.",
+      "enunciado": "Si un estudiante de Noveno evalúa el impacto de la firma de los Tratados de Libre Comercio sobre el agro del departamento de Córdoba, ¿cuál es el fenómeno empírico directo que constatará respecto a la balanza comercial alimentaria de la región?",
+      "opciones": [
+        "A) La erradicación absoluta de las importaciones de granos extranjeros debido al incremento masivo de aranceles protectores municipales.",
+        "B) El desplazamiento de los productores locales de maíz criollo por la inundación de granos extranjeros importados exentos de gravámenes aduaneros, transformando a la región de despensa autónoma en un territorio dependiente.",
+        "C) La transformación de las lomas de Loma Verde en glaciares de agua dulce líquida de escala continental aptos para la exportación.",
+        "D) El incremento inmediato de los presupuestos estatales destinados a regalar tierras fértiles a todos los peones agrícolas asalariados del lomerío."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que los Tratados de Libre Comercio son los instrumentos jurídicos y materiales de la doctrina del liberalismo económico. Al consolidar aranceles de nivel cero para la importación agroindustrial, despojan al pequeño productor cordobés de la exclusividad de sus mercados locales, forzando la quiebra del pancoger ante la inviabilidad de competir contra economías mundiales tecnificadas y subsidiadas."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La geografía de género devela que los impactos de la transición macroeconómica del proteccionismo hacia el liberalismo de mercado transforman los roles y cargas de trabajo dentro de la unidad doméstica campesina de forma profundamente asimétrica.",
+      "enunciado": "Cuando la quiebra económica agraria inducida por la Apertura Comercial expulsa a la población juvenil y masculina desde Loma Verde hacia la informalidad urbana, las mujeres campesinas que permanecen en las veredas experimentan una sobrecarga laboral severa, debiendo asumir de forma simultánea la labranza de la parcela de pancoger, el acarreo de agua de jagüeyes colmatados y las tareas domésticas.",
+      "correcta": true,
+      "justificacion": "Es verdadero porque la migración forzada por razones económicas desestructura la división sexual tradicional del trabajo en las veredas. Las mujeres rurales que se quedan al frente de los minifundios atomizados de Loma Verde deben absorber labores físicas rudas de mantenimiento agrario y acarreo hídrico que antes se distribuían colectivamente dentro de la unidad doméstica, soportando triples jornadas de trabajo sin salario formal."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Un diagnóstico agro-económico simulado en la vereda Las Palmitas de Loma Verde demuestra que bajo las salvaguardas arancelarias del antiguo proteccionismo, un campesino obtenía un margen de rentabilidad neto positivo del 25% en su maíz, mientras que bajo la desregulación liberal actual el precio fijado por los intermediarios urbanos genera pérdidas netas del 15% sobre el capital invertido en insumos importados.",
+      "enunciado": "Utilizando estos indicadores comparativos de rentabilidad, determine la opción que explica correctamente la respuesta de resistencia comunitaria e institucional que debe formular el campesinado frente al modelo liberal abierto.",
+      "opciones": [
+        "A) Financiar mediante deudas la compra de motocicletas comerciales para que la totalidad de los habitantes abandonen el agro y se inserten en el mototaxismo de Montería de forma unánime.",
+        "B) Fortalecer la asociatividad campesina cooperativa independiente para suprimir la intermediación comercial abusiva, implementar canales transmedia de venta directa y tecnificar el minifundio mediante sistemas artesanales de riego por goteo de bajo costo.",
+        "C) Pavimentar con asfalto industrial la totalidad de las hectáreas arables de Loma Verde para erradicar las arcillas y convertirlas en parqueaderos de exportación.",
+        "D) Solicitar formalmente al Estado central que prohíba de forma penal todas las formas de cultivo tradicional de maíz criollo en el departamento de Córdoba."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque representa la única estrategia viable de adaptación geográfico-económica y soberanía frente al libre mercado. Al agruparse colectivamente los pequeños productores bajo esquemas cooperativos, adquieren poder de negociación frente a las redes de intermediación abusivas de la urbe, mejorando la rentabilidad neta del pancoger. La introducción de ecotecnologías hídricas artesanales mitiga los efectos de las sequías estacionales severas y asegura la permanencia juvenil en las veredas."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento social",
+      "contexto": "El modelo de Industrialización por Sustitución de Importaciones (ISI) implementado en Colombia aplicó subsidios y exenciones fiscales para financiar la creación de fábricas de herramientas e insumos químicos nacionales.",
+      "enunciado": "La desregulación aduanera y los Tratados de Libre Comercio del liberalismo económico contemporáneo mantuvieron estos subsidios estatales a las fábricas nacionales de abonos, garantizando que los insumos químicos lleguen hoy a los campesinos de Loma Verde a precios devaluados inferiores a los del mercado mundial.",
+      "correcta": false,
+      "justificacion": "Es falso porque la doctrina del liberalismo económico exige el desmonte de subsidios estatales a la producción interna y la libre competencia de precios. Como consecuencia directa, el mercado de insumos químicos y fertilizantes en Colombia quedó completamente privatizado y en manos de monopolios transnacionales extranjeros, provocando el encarecimiento crónico de las herramientas de labranza que arruina el presupuesto doméstico del campesino en Loma Verde."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante un debate en el aula del grado Noveno de la Institución Educativa de Loma Verde, un estudiante afirma que 'los campesinos de nuestras veredas sufren la pobreza porque son perezosos y anticuados que no quieren usar internet para exportar su yuca a Europa', mientras que otro sector argumenta que 'los campesinos son víctimas de un despojo económico forzado por políticas de mercado abierto que los arrojaron a competir sin infraestructura frente a potencias extranjeras subsidiadas'.",
+      "enunciado": "Adoptando los principios analíticos de la geografía crítica y la ecología política agraria, ¿cuál es la forma correcta de dirimir la tensión conceptual expuesta?",
+      "opciones": [
+        "A) Validar la primera postura asumiendo que los suelos arcillosos de Loma Verde carecen de fertilidad debido a la falta de computadores portátiles en las parcelas.",
+        "B) Deconstruir la primera postura demostrando su sesgo moralista que invisibiliza las fallas estructurales del Estado, y respaldar la segunda postura explicando que la Apertura Comercial operó como una exclusión espacial al derribar aranceles sin dotar previamente al campo de vías, riego ni créditos condonables de fomento.",
+        "C) Sostener que la yuca tradicional es un vegetal que se reproduce de forma electromagnética por lo cual no requiere fuerza de trabajo humana ni agua dulce.",
+        "D) Exigir que las Juntas de Acción Comunal veredales pavimenten de forma obligatoria los patios de las escuelas para convertirlas en centros de mototaxismo industrial."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que desarmar el discurso de la responsabilidad individual es una tarea central de las ciencias sociales críticas. El estudiante que tilda de perezoso al productor ignora las asimetrías territoriales impuestas por el Estado central. El análisis científico demuestra que la quiebra agraria en Loma Verde es el resultado material de decisiones macroeconómicas (liberalismo de mercado, TLC) que socializaron los pasivos de la apertura arruinando el precio del pancoger familiar campesino."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El concepto de 'economía de subsistencia campesina' define un modelo de organización del espacio agrario donde la producción de la parcela minifundista se orienta preferencialmente al autoabastecimiento nutricional y material del núcleo doméstico, actuando como un amortiguador frente a las crisis externas.",
+      "enunciado": "La permanencia y fortalecimiento de la agricultura tradicional de pancoger (yuca, plátano, maíz) en Loma Verde constituye un mecanismo de resistencia frente al liberalismo económico global, puesto que provee autonomía alimentaria autónoma y reduce la dependencia absoluta de las familias campesinas frente al dinero en efectivo de los mercados urbanos.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que en el enfoque de la geografía crítica agraria, la parcela diversificada desmercantiliza parcialmente la supervivencia biológica del campesinado. Al producir de forma autónoma sus propios alimentos de pancoger, el hogar rural edifica una barrera de seguridad que mitiga el impacto de la inflación urbana, los abusos de los intermediarios de Montería y el encarecimiento de la canasta básica familiar impuesto por el modelo liberal abierto."
+    },
+    {
+      "id": "LV-BANCO-CS9-P2-E3-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Políticas que orientaron la economía colombiana (proteccionismo frente a liberalismo económico)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, el centro de interés en STEM+ y Transmedia 'SteMedIA' desarrolla la estrategia 'Frecuenc-IA Rural' liderada por el docente Richard Miguel Hernández Sabié, donde los estudiantes de Noveno graban pódcast y documentales utilizando herramientas avanzadas de IA para documentar las consecuencias de la liberalización aduanera y el mototaxismo informal en los hogares campesinos de sus familias.",
+      "enunciado": "Sustente de manera profunda, utilizando argumentos técnicos y conceptuales de la geografía crítica de la población estudiada en clase, de qué manera este proyecto de comunicación transmedia escolar actúa como un dispositivo de resistencia comunitaria para mitigar los impactos negativos del liberalismo económico y defender la permanencia campesina en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' y el centro de interés 'SteMedIA' operan como un dispositivo de resistencia territorial y pedagógica fundamental frente al vaciamiento demográfico y la precarización laboral que impone el modelo de desarrollo agroextractivo liberal en Loma Verde. Desde el enfoque de la geografía crítica de la población, este proyecto de comunicación estratégica deconstruye y subvierte el discurso hegemónico urbano-industrial que cataloga al espacio rural campesino como un paraje de 'atraso e inviabilidad', narrativa corporativa que funciona como un motor ideológico para impulsar la emigración y el desarraigo de la juventud rural. Al empoderar a los estudiantes de Noveno en el uso de tecnologías digitales avanzadas y transmedia para documentar las realidades productivas y geográficas de su corregimiento, se redefine radicalmente la identidad de la juventud campesina: el joven deja de concebir la migración informal urbana (mototaxismo precarizado en Montería) como la única ruta de progreso material posible y empieza a valorar el territorio veredal como un espacio soberano de creación técnica, intelectual y política. Metodológicamente, al registrar los testimonios de los abuelos agricultores y salvaguardar la memoria histórica de agencias estatales de fomento como el IDEMA, los jóvenes se apropian de forma directa del patrimonio intangible de manejo ecológico del suelo arcilloso, adaptaciones microclimáticas y técnicas ancestrales de siembra de policultivos de pancoger, restaurando el puente de transmisión de saberes agroecológicos indispensables para la soberanía alimentaria local y mitigando la crisis de relevo generacional provocada por el saldo migratorio negativo. Asimismo, al visibilizar las historias de vulnerabilidad económica y las capacidades de resiliencia de las familias del lomerío, el proyecto escolar combate el aislamiento, teje lazos de cohesión social y fortalece las redes de ayuda mutua comunitaria (*mano prestada*), transformando el aula rural en un espacio de integración democrática. Finalmente, al difundir pódcast y videos interactivos que denuncian de manera técnica los pasivos institucionales y ambientales del corregimiento (escasez hídrica estructural, colmatación de jagüeyes por la ganaderización extensiva colindante y abusos de intermediarios comerciales en las plazas públicas), 'Frecuenc-IA Rural' dota al campesinado de herramientas de comunicación e incidencia política para exigir justicia ambiental y un ordenamiento territorial con criterios de equidad rural ante las autoridades del municipio de Montería y del departamento de Córdoba, demostrando de forma contundente que la permanencia digna, el arraigo juvenil y la defensa del minifundio agrícola tradicional constituyen la única garantía real para evitar la disolución material e intelectual del campesinado rural.",
+      "sugerida": true
+    }
+  ]
+}

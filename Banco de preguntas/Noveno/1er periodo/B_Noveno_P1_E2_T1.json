@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:10:00.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Periodo 1",
+    "unidad": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "LV-BANCO-MIG-01",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los estudios demográficos críticos en Colombia demuestran que los movimientos migratorios del campo a la ciudad durante la segunda mitad del siglo XX no obedecieron únicamente a decisiones individuales libres, sino a dinámicas coercitivas y desequilibrios institucionales del modelo de desarrollo nacional.",
+      "enunciado": "A partir del contexto histórico contemporáneo del país, ¿cuál de las siguientes opciones constituye la principal causa estructural del desplazamiento forzado masivo de comunidades campesinas hacia los centros urbanos?",
+      "opciones": [
+        "A) El deseo unánime de las familias rurales de abandonar sus propiedades para incorporarse al sector de la industria tecnológica metropolitana.",
+        "B) La persistencia del Conflicto Armado Interno ligado al despojo fraudulento y violento de tierras para consolidar macroproyectos agroextractivos o latifundios.",
+        "C) La implementación de reformas agrarias integrales por parte del Estado que compraron las parcelas a precios elevados para proteger los bosques.",
+        "D) El cambio climático global que congeló de forma permanente los suelos agrícolas de las llanuras costeras impidiendo la siembra de pancoger."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que la geografía crítica y la historia social del conflicto en Colombia evidencian que el desplazamiento de más de ocho millones de personas fue un proceso forzado. Los actores armados ilegales (guerrillas y paramilitares), en connivencia con sectores económicos transgresores, utilizaron la violencia sistemática como estrategia para desposeer al campesinado de sus parcelas, concentrando la propiedad de la tierra y obligando a las comunidades a huir hacia las periferias urbanas para salvar sus vidas."
+    },
+    {
+      "id": "LV-BANCO-MIG-02",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento social",
+      "contexto": "El concepto de 'asimetría territorial' define el desequilibrio estructural en la asignación de recursos presupuestales, infraestructura vial, servicios públicos esenciales y opciones de educación y salud entre el centro urbano dominante y las periferias rurales marginadas de un país.",
+      "enunciado": "¿De qué manera la asimetría territorial impuesta por el Estado colombiano actúa como un motor de expulsión económica indirecta para los jóvenes del corregimiento de Loma Verde, Montería?",
+      "opciones": [
+        "A) Al concentrar las universidades, los servicios de salud especializados y el apoyo financiero productivo en las capitales urbanas, dejando al campo sin alternativas de desarrollo digno para las nuevas generaciones.",
+        "B) Al subsidiar de forma excesiva los insumos agrícolas y las herramientas mecánicas de los pequeños minifundios veredales, provocando una sobreproducción que arruinó los precios.",
+        "C) Al prohibir legalmente la salida de camiones cargados con yuca y plátano desde las veredas hacia el mercado público de la cabecera municipal.",
+        "D) Al construir autopistas pavimentadas de alta velocidad de seis carriles dentro de los patios de todas las viviendas campesinas del corregimiento."
+      ],
+      "correcta": 0,
+      "justificacion": "La opción A es la correcta porque la asimetría territorial genera una exclusión espacial estructural. Al centralizar las oportunidades de educación técnica y superior, el crédito rural dinámico y la infraestructura en los núcleos urbanos de Montería u otras capitales, el Estado condena a comunidades rurales como Loma Verde a la precariedad. Los jóvenes se ven obligados a migrar no por gusto, sino porque el territorio rural carece de la infraestructura mínima indispensable para construir un proyecto de vida profesional y económicamente estable."
+    },
+    {
+      "id": "LV-BANCO-MIG-03",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El relevo generacional en la agricultura familiar campesina garantiza que los conocimientos tradicionales de manejo ecológico del suelo, los calendarios de siembra y la administración de los minifundios se transmitan a las nuevas generaciones.",
+      "enunciado": "La emigración masiva de la juventud desde las veredas de Loma Verde hacia los centros urbanos soluciona de forma definitiva los problemas agrarios del corregimiento, ya que reduce la cantidad de personas que consumen agua de los jagüeyes y permite que los ancianos trabajen la tierra con mayor comodidad.",
+      "correcta": false,
+      "justificacion": "Es falso porque la pérdida de la población joven desencadena una crisis estructural de relevo generacional. Al vaciarse las veredas de su mano de obra más vital, las labores pesadas de la agricultura de pancoger quedan relegadas a adultos mayores y ancianos cuyas fuerzas físicas decrecen. Esto interrumpe la transmisión de saberes tradicionales, reduce los rendimientos de las cosechas y debilita la productividad alimentaria, forzando finalmente al abandono o venta de las tierras a grandes ganaderos extensivos."
+    },
+    {
+      "id": "LV-BANCO-MIG-04",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La inserción residencial y laboral de los migrantes campesinos desposeídos en ciudades receptoras como Montería se caracteriza por dinámicas de segregación socioespacial.",
+      "enunciado": "La mayoría de las familias campesinas que migran forzadamente a las capitales logran una inserción laboral inmediata en la industria tecnológica formal, adquiriendo viviendas dignas con cobertura total de servicios públicos residenciales en los estratos socioeconómicos más altos de la urbe.",
+      "correcta": false,
+      "justificacion": "Es falso porque la realidad sociodemográfica demuestra que los migrantes rurales desposeídos sufren una profunda exclusión urbana. Al no contar con cualificación formal adaptada a los mercados corporativos urbanos, se asientan en barriadas periféricas informales y subnormales (invasiones), en condiciones de hacinamiento y sin servicios básicos (agua potable, alcantarillado). Su inserción laboral se da casi exclusivamente en los circuitos de la economía informal precarizada, el subempleo o el mototaxismo."
+    },
+    {
+      "id": "LV-BANCO-MIG-05",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En un debate sobre las dinámicas demográficas de Loma Verde, un funcionario municipal afirma que 'el mototaxismo informal en Montería es una excelente alternativa de progreso para los jóvenes del campo porque les genera ingresos diarios en efectivo que la agricultura tradicional de yuca o maíz no puede garantizar'.",
+      "enunciado": "Desde la perspectiva de la soberanía alimentaria campesina y la geografía crítica, ¿cuál es el error analítico central en la postura de este funcionario?",
+      "opciones": [
+        "A) Desconoce que el mototaxismo es una actividad industrial de alta tecnología que exporta servicios financieros a nivel internacional.",
+        "B) Ignora que la inserción informal precarizada en la urbe no genera estabilidad laboral, destruye el tejido productivo rural, rompe el relevo generacional y somete al joven a la inseguridad alimentaria de los cinturones de miseria urbana.",
+        "C) Pasa por alto que el maíz y la yuca son cultivos que se siembran de forma automática utilizando satélites artificiales que no requieren mano de obra humana.",
+        "D) Supone falsamente que todas las motocicletas utilizadas en Montería son propiedad colectiva de las Juntas de Acción Comunal de Loma Verde."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque deconstruye el mito del progreso urbano informal. El funcionario adopta una visión de corto plazo basada en el dinero circulante menor, ignorando los pasivos estructurales. El mototaxismo somete al joven a la vulnerabilidad laboral, la falta de seguridad social y los riesgos viales urbanos. Simultáneamente, despoja al corregimiento de Loma Verde de la fuerza laboral necesaria para producir alimentos de pancoger de forma autónoma, transformando a un productor de alimentos soberano en un consumidor urbano dependiente y precarizado."
+    },
+    {
+      "id": "LV-BANCO-MIG-06",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las redes tradicionales de solidaridad campesina en las veredas de Loma Verde incluyen prácticas comunitarias ancestrales conocidas como 'el convite' o 'la mano prestada', mediante las cuales los vecinos se unen sin cobrar salario para limpiar la maleza, preparar la tierra arcillosa o recolectar de forma colectiva las cosechas de pancoger de cada familia.",
+      "enunciado": "Cuando se presenta un flujo sostenido de emigración de hombres y mujeres jóvenes hacia las ciudades, ¿qué alteración social e institucional sufre esta forma de organización del trabajo rural?",
+      "opciones": [
+        "A) Se fortalece de forma mecánica porque los ancianos que se quedan tienen más tiempo libre para inventar nuevas herramientas mecánicas.",
+        "B) Desaparece o se debilita críticamente debido a la escasez de mano de obra disponible en la vereda, forzando al productor a asumir costos de jornales asalariados que quiebran su presupuesto familiar.",
+        "C) Se transforma en un sindicato corporativo internacional financiado por las remesas de los mototaxistas urbanos de Montería.",
+        "D) Provoca que las plantas de plátano se reproduzcan por sí solas de forma sólida sin necesidad de intervención humana."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las prácticas comunitarias de ayuda mutua como la 'mano prestada' dependen de la densidad y disponibilidad de la fuerza de trabajo vecinal en la vereda. Al emigrar la población joven, el tejido de solidaridad comunitaria se desestructura mecánicamente; las familias que permanecen fragmentadas se quedan solas y se ven obligadas a contratar trabajadores asalariados (jornales) cuyos precios elevados arruinan la frágil economía del minifundio."
+    },
+    {
+      "id": "LV-BANCO-MIG-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento social",
+      "contexto": "Las políticas económicas macro de apertura de mercados implementadas en Colombia a partir de la década de 1990 permitieron el ingreso masivo de alimentos importados (maíz, cereales, hortalizas) altamente subsidiados en sus países de origen.",
+      "enunciado": "Este proceso de apertura comercial actuó como una causa estructural económica de migración rural porque castigó severamente los precios de venta del pequeño productor campesino nacional, haciendo que cultivar pancoger dejara de ser rentable para el sustento familiar.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la geografía económica demuestra que al inundarse los mercados nacionales con maíz o alimentos importados más baratos que los costos de producción locales, el campesinado de minifundio perdió su capacidad de competencia comercial. La imposibilidad de recuperar la inversión en insumos destruyó los ingresos de los hogares rurales, empujando a las familias y a sus hijos a migrar hacia las capitales como estrategia extrema de supervivencia económica."
+    },
+    {
+      "id": "LV-BANCO-MIG-08",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la vereda Las Palmitas del corregimiento de Loma Verde, el vaciamiento demográfico provocado por el éxodo juvenil rural ha generado que muchas parcelas familiares de cinco o diez hectáreas dedicadas históricamente a la yuca y al plátano queden semiabandonadas o sean manejadas únicamente por ancianos.",
+      "enunciado": "Explique de forma detallada y con argumentos de geografía crítica y ecología política agraria cuál es el destino final más probable de estas tierras minifundistas semiabandonadas y de qué manera este proceso reconfigura de forma negativa el espacio rural y ambiental del corregimiento.",
+      "respuesta": "El destino final más probable de estas parcelas minifundistas semiabandonadas en Loma Verde es su absorción y compra a precios devaluados por parte de grandes terratenientes o corporaciones agroindustriales dedicadas a la ganadería extensiva o al monocultivo. Desde la perspectiva de la geografía crítica y la ecología política, este proceso constituye una forma indirecta de desposesión y desterritorialización campesina. Al verse desprovistos de relevo generacional y enfrentar la quiebra de los mercados tradicionales, los agricultores ancianos se ven cercados económicamente y forzados a vender sus parcelas históricas. Este cambio en la estructura de la tenencia de la tierra reconfigura de forma profundamente negativa el espacio rural y ambiental del corregimiento por dos razones sistémicas: primero, destruye la soberanía y seguridad alimentaria regional, transformando tierras agrarias biodiversas que producían alimentos esenciales de pancoger (yuca, plátano, maíz) en extensos tapetes homogéneos de pastizales comerciales destinados únicamente al pastoreo de ganado vacuno para la exportación de carne; segundo, genera un pasivo ambiental crónico, debido a que el modelo ganadero introduce la quema y tala de los últimos parches de bosque seco tropical remanescentes para ampliar los potreros, eliminando la regulación climática biótica local, compactando los suelos arcillosos mediante el pisoteo pesado de las reses e impermeabilizando la superficie terrestre, lo cual acelera la escorrentía destructiva invernal, seca las fuentes hídricas subterráneas y extingue de forma definitiva la cultura y el modo de vida campesino tradicional veredal.",
+      "sugerida": true
+    },
+    {
+      "id": "LV-BANCO-MIG-09",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento social",
+      "contexto": "La recopilación de datos estadísticos sobre movimientos demográficos y el análisis crítico de censos oficiales del DANE permiten cartografiar con precisión las dinámicas de crecimiento de las cabeceras urbanas y el vaciamiento rural de los municipios colombianos.",
+      "enunciado": "Si un estudiante de Noveno analiza las estadísticas de población de Montería de los últimos cincuenta años, ¿cuál de los siguientes fenómenos cuantitativos observará de forma directa respecto a las periferias urbanas de la ciudad?",
+      "opciones": [
+        "A) Un descenso drástico en el número total de habitantes urbanos provocado por un retorno masivo voluntario de profesionales hacia el campo de Loma Verde.",
+        "B) Un crecimiento demográfico horizontal hiperacelerado de las barriadas periféricas subnormales, alimentado continuamente por olas de familias campesinas migrantes y desplazadas.",
+        "C) La desaparición absoluta de la informalidad laboral gracias a la absorción inmediata de todos los migrantes en puestos públicos estatales de alta gerencia.",
+        "D) La transformación de las comunas periféricas en zonas residenciales exclusivas habitadas por inversionistas extranjeros dedicados a la agricultura orgánica."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta debido a que las dinámicas de migración forzada y éxodo rural rural-urbano se reflejan estadísticamente en la macrocefalia urbana y la expansión descontrolada de las periferias populares de las capitales intermedias del Caribe como Montería. Los datos censales demuestran que el crecimiento demográfico de los barrios subnormales coincide históricamente con los picos de violencia armada y crisis agraria de los corregimientos, visibilizando espacialmente el fenómeno del desarraigo rural."
+    },
+    {
+      "id": "LV-BANCO-MIG-10",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El concepto de 'remesas' hace referencia a los flujos monetarios y recursos económicos que los migrantes envían de forma regular desde sus nuevos destinos laborales urbanos o internacionales hacia sus hogares de origen en el territorio rural.",
+      "enunciado": "La inserción laboral precarizada de los jóvenes emigrados de Loma Verde en el mototaxismo informal de Montería les genera excedentes económicos tan altos que envían remesas semanales masivas que industrializan las parcelas de sus padres ancianos en las veredas.",
+      "correcta": false,
+      "justificacion": "Es falso debido a que la inserción informal urbana apenas permite la reproducción material básica e individual del migrante en la ciudad. El mototaxismo y el subempleo en Montería operan bajo condiciones de baja remuneración, inestabilidad crónica y altos costos de subsistencia urbana (pago de alquiler, alimentación costosa, transporte). Por lo tanto, el flujo de remesas hacia Loma Verde es marginal o inexistente, desmitificando la tesis de que la migración informal urbana es un motor de capitalización económica para los hogares campesinos de origen."
+    },
+    {
+      "id": "LV-BANCO-MIG-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El ordenamiento territorial y el desarrollo humano integrado establecen que el bienestar rural depende de la retención de la fuerza laboral joven mediante el acceso equitativo a la tierra, créditos blandos de fomento y educación superior contextualizada.",
+      "enunciado": "Ante la crisis de migración juvenil que sufre el corregimiento de Loma Verde en el año 2026, ¿cuál de las siguientes propuestas institucionales de base comunitaria aborda de forma directa las causas estructurales económicas del éxodo?",
+      "opciones": [
+        "A) Financiar la compra masiva de motocicletas comerciales para que todos los jóvenes abandonen la vereda y trabajen en Montería de forma organizada.",
+        "B) Fortalecer la asociatividad campesina cooperativa de base juvenil para eliminar la intermediación abusiva, crear canales digitales de venta directa y tecnificar la agricultura de pancoger mediante sistemas artesanales de riego de bajo costo.",
+        "C) Pavimentar la totalidad de los suelos agrícolas arables de las veredas con asfalto industrial para convertir al corregimiento en una pista de carreras turística.",
+        "D) Solicitar al gobierno nacional que declare ilegales todas las formas de cultivo de yuca y maíz en el departamento para forzar la importación de alimentos."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta porque ataca las raíces estructurales del abandono económico rural y la asimetría territorial. Al unirse cooperativamente los jóvenes agricultores, adquieren poder de negociación frente a las redes de intermediarios abusivos que castigan los precios en Montería, mejorando la rentabilidad neta de la parcela de pancoger. La introducción de ecotecnologías hídricas mitiga el estrés de las sequías estacionales y dignifica el trabajo agrario, transformando el espacio rural veredal en un territorio productivo viable, atractivo y sostenible para asegurar la permanencia de las nuevas generaciones."
+    },
+    {
+      "id": "LV-BANCO-MIG-12",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento social",
+      "contexto": "La Ley de Víctimas y Restitución de Tierras (Ley 1448 de 2011) en Colombia constituye una herramienta jurídica creada por el Estado para procesar los pasivos históricos de despojo violento de predios sufridos por las comunidades campesinas en el marco del Conflicto Armado.",
+      "enunciado": "Los procesos jurídicos de restitución de tierras buscan desarmar las consecuencias territoriales del desplazamiento forzado contemporáneo, devolviendo formalmente la propiedad de los predios despojados a las familias víctimas para propiciar el retorno seguro y productivo al espacio rural.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la restitución de tierras actúa como un mecanismo de justicia distributiva y espacial. Su finalidad es revertir el ordenamiento territorial latifundista impuesto mediante la violencia armada, restituyendo los derechos de propiedad legal de los minifundios a los campesinos expulsados, dotándolos de un marco normativo para retornar a sus veredas de origen y reactivar la economía soberana de pancoger."
+    },
+    {
+      "id": "LV-BANCO-MIG-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Un analista de geografía económica afirma: 'Las ciudades colombianas crecieron de forma acelerada e industrializada gracias a que la migración rural vació el campo de campesinos atrasados, transfiriendo mano de obra barata y abundante hacia los sectores comerciales urbanos de servicios'.",
+      "enunciado": "Desde un enfoque de geografía crítica y derechos del campesinado rural, ¿cuál es el sesgo ideológico y el error analítico dominante en la tesis de este analista?",
+      "opciones": [
+        "A) Celebra el vaciamiento demográfico rural ocultando que este proceso fue provocado por el despojo forzado violento y la exclusión institucional, lo que destruyó la soberanía alimentaria nacional y precarizó la vida de millones de personas en los suburbios marginales urbanos.",
+        "B) Supone de manera equivocada que las ciudades colombianas carecen de vehículos de motor y que todos los migrantes viajan a caballo dentro de las comunas urbanas.",
+        "C) Olvida que los campesinos atrasados no consumen alimentos de base biológica y que toda la nutrición de la población urbana contemporánea proviene del aire.",
+        "D) Defiende la idea errónea de que las Juntas de Acción Comunal de las veredas son las dueñas corporativas de las principales industrias manufactureras andinas."
+      ],
+      "correcta": 0,
+      "justificacion": "La opción A es la correcta porque devela el enfoque eurocéntrico y modernizador que invisibiliza la violencia estructural. El analista naturaliza el dolor y la exclusión del éxodo rural, presentándolo como un paso positivo para el crecimiento del PIB urbano. El análisis crítico demuestra que este crecimiento se financió sobre la base de la desposesión agraria campesina y la pauperización del trabajador rural en las urbes, transfiriendo la riqueza del campo a sectores comerciales financieros concentrados y heredando la crisis de seguridad alimentaria que hoy golpea las canastas familiares rurales y urbanas."
+    },
+    {
+      "id": "LV-BANCO-MIG-14",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La geografía de género devela que los movimientos migratorios no afectan de forma homogénea a todos los integrantes del núcleo familiar, modificando los roles de producción y cuidado dentro del espacio geográfico rural.",
+      "enunciado": "Cuando los hombres jóvenes y los padres de familia emigran de forma predominante desde Loma Verde hacia las zonas mineras o urbanas, se genera una sobrecarga laboral en las mujeres campesinas que permanecen en las veredas, quienes deben asumir simultáneamente la administración de la parcela agrícola, el cuidado del ganado de subsistencia y las labores domésticas del hogar.",
+      "correcta": true,
+      "justificacion": "Es verdadero debido a que la migración selectiva masculina o juvenil altera radicalmente la división sexual tradicional del trabajo en el campo. Las mujeres rurales que se quedan al frente de las unidades productivas minifundistas de Loma Verde absorben las tareas agrícolas rudas (deshierbe, siembra, control hídrico de jagüeyes) que antes se distribuían colectivamente, asumiendo una doble o triple jornada laboral sin recibir remuneración salarial formal ni apoyo técnico del Estado."
+    },
+    {
+      "id": "LV-BANCO-MIG-15",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Causas estructurales de los movimientos migratorios en la Colombia contemporánea",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la Institución Educativa de Loma Verde, un grupo de estudiantes liderado por el docente Richard Miguel Hernández Sabié diseña un proyecto de comunicación y transmedia comunitaria a través del centro de interés 'SteMedIA' y el programa 'Frecuenc-IA Rural'. Los jóvenes graban pódcast y videos cortos de narrativa transmedia documentando los testimonios de vida de los abuelos agricultores y denunciando la escasez de agua en las veredas.",
+      "enunciado": "Sustente de forma analítica y con argumentos técnicos y geográficos cómo este proyecto escolar transmedia contribuye de manera directa a combatir la crisis del relevo generacional provocada por el éxodo migratorio de la juventud en el corregimiento de Loma Verde.",
+      "respuesta": "El proyecto transmedia 'Frecuenc-IA Rural' y el centro de interés 'SteMedIA' aportan beneficios de gran valor para combatir la crisis de relevo generacional y contrarrestar las dinámicas migratorias de expulsión cultural en Loma Verde. Desde la perspectiva socio-geográfica y de la educación crítica, el uso de tecnologías de audio y video digital por parte de los jóvenes veredales resignifica el espacio rural, transformándolo de un paraje tradicionalmente narrado por los medios masivos urbanos como un lugar de 'atraso y pobreza' en un territorio vivo generador de identidad, saberes biogeográficos y resistencia comunitaria. Al registrar los testimonios de los abuelos agricultores, los jóvenes se apropian de forma directa del patrimonio intangible de manejo ecológico del suelo arcilloso, adaptaciones microclimáticas y técnicas de siembra de pancoger, restaurando el puente cognitivo generacional interrumplido por la emigración. Asimismo, al visibilizar técnicamente las problemáticas del corregimiento (escasez hídrica, colmatación de jagüeyes, abusos de intermediación comercial), la juventud deja de ser un espectador pasivo subordinado y se convierte en un actor político con capacidad de denuncia que exige justicia ambiental y territorial ante las corporaciones autónomas y el municipio de Montería. Este empoderamiento digital e intelectual asocia el uso de herramientas tecnológicas avanzadas con la permanencia en el territorio agrario, demostrando a las nuevas generaciones que defender la parcela minifundista familiar y potenciar la soberanía alimentaria de Loma Verde es una alternativa de vida profesional digna, colectiva y viable que frena el desarraigo forzado y la disolución material del campesinado tradicional.",
+      "sugerida": true
+    }
+  ]
+}

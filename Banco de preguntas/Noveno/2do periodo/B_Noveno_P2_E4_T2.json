@@ -1,0 +1,213 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T15:49:24.000Z",
+  "origen": {
+    "grado": "Noveno",
+    "periodo": "Segundo periodo",
+    "unidad": "Transformaciones socioculturales y cambios en los hábitos de vida en la primera mitad del siglo XX",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "PREG-BP-01",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La introducción de tecnologías de comunicación masiva, como el cine y la radio, generó profundas transformaciones en los hábitos de consumo y en la vida cotidiana de los colombianos en la primera mitad del siglo XX. Mientras el cine requería de infraestructuras específicas urbanas, la radio logró insertarse en la vida rural dispersa de manera expedita.",
+      "enunciado": "Explique detalladamente de qué manera la radio impactó en los hábitos de las familias campesinas analfabetas de la época y argumente por qué este fenómeno constituyó un mecanismo de democratización de la información en el territorio rural.",
+      "respuesta": "La radio impactó transformando sustancialmente las rutinas del campesinado al instaurar nuevos horarios de descanso y sociabilidad vinculados a los programas radiales, rompiendo con el aislamiento informativo al que estaban sometidos por la falta de infraestructura de transporte. Constituyó un mecanismo de democratización fundamental porque eliminó la barrera exclusiva del alfabetismo; los campesinos no necesitaban saber leer ni escribir para comprender los mensajes emitidos, recibir pautas educativas (como las de Radio Sutatenza), enterarse de acontecimientos políticos de orden nacional e internacional e integrarse culturalmente al resto del país, democratizando un acceso al conocimiento que antes estaba monopolizado por las élites letradas urbanas.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-02",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Análisis de perspectivas",
+      "contexto": "El desarrollo de la aviación comercial en Colombia con empresas como SCADTA a partir de 1919 resolvió las barreras geográficas impuestas por el relieve andino de forma rápida, conectando las principales ciudades y puertos comerciales del país.",
+      "enunciado": "Analice críticamente las diferencias de impacto de la aviación comercial entre las élites político-económicas del país y los pequeños productores de comunidades rurales agrícolas aisladas como Loma Verde durante la primera mitad del siglo XX.",
+      "respuesta": "El impacto fue profundamente asimétrico y desigual. Para las élites político-económicas, la aviación representó un avance modernizador de gran magnitud que agilizó los negocios, centralizó el poder administrativo y político en Bogotá, facilitó los viajes corporativos y la correspondencia comercial rápida. En contraste, para los pequeños productores de zonas rurales como Loma Verde, la aviación comercial fue un fenómeno abstracto y ajeno, dado que carecían de los ingresos económicos para costear pasajes de avión y sus comunidades no contaban con pistas de aterrizaje. Mientras el cielo unía las redes de poder de las élites, las comunidades rurales permanecían físicamente aisladas por la falta de inversión estatal en vías terrestres, acentuando la brecha de desarrollo entre el campo y la ciudad.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-03",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "Los automóviles y camiones transformaron los espacios urbanos y rurales colombianos, forzando la transición desde caminos coloniales de herradura hacia carreteras pavimentadas aptas para la circulación automotriz.",
+      "enunciado": "A partir de lo estudiado sobre la revolución de los transportes, explique de qué manera la tenencia o control de los camiones de carga motorizados en las sabanas de Córdoba transformó la economía agrícola del siglo XX y analice cómo esa relación histórica de poder se mantiene vigente entre los intermediarios de transporte y los agricultores de Loma Verde actualmente.",
+      "respuesta": "El camión de carga transformó la economía agraria al permitir un traslado significativamente más rápido de mayores volúmenes de alimentos hacia los centros de consumo urbano, reemplazando los lentos arreos de mulas. Sin embargo, el control de estos vehículos quedó concentrado en manos de intermediarios adinerados y terratenientes. Esta relación asimétrica persiste en Loma Verde en el 2026: debido al pésimo estado de las vías terciarias y a la falta de vehículos propios de carga pesada por parte de los pequeños parceleros, los campesinos dependen por completo de los camiones de los intermediarios, quienes entran a la vereda y fijan de manera arbitraria y baja los precios de compra de productos como el plátano o la yuca, quedándose con la mayor parte de la ganancia y perpetuando la exclusión económica del productor primario.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-04",
+      "tipo": "abierta",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El cine silente y sonoro introdujo en las principales ciudades colombianas imágenes de la vida cosmopolita de las metrópolis norteamericanas y europeas, difundiendo masivamente modas, modales, e ideales de progreso industrial.",
+      "enunciado": "Deduzca qué efectos culturales de alienación o cambio de identidad pudieron experimentar los jóvenes de las zonas rurales que migraban a las ciudades atraídos por los imaginarios de la modernidad proyectados en el cine del siglo XX.",
+      "respuesta": "Los jóvenes rurales que migraban experimentaban un fuerte proceso de alienación cultural, ya que las películas proyectaban la vida urbana e industrializada como el único sinónimo de éxito, civilización y felicidad, mientras que las labores del campo eran invisibilizadas o asociadas al retraso material y social. Esto impulsaba el abandono voluntario de prácticas tradicionales agrícolas, de saberes locales y de la indumentaria campesina para intentar imitar los patrones de consumo, vestimenta y comportamiento de los personajes del cine extranjero, generando rupturas intergeneracionales y crisis de identidad cultural dentro de las comunidades de origen campesino.",
+      "sugerida": true
+    },
+    {
+      "id": "PREG-BP-05",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "La introducción del automóvil en el siglo XX reconfiguró la fisonomía de las ciudades colombianas y obligó al Estado a priorizar inversiones en infraestructura vial terrestre.",
+      "enunciado": "La adopción del automóvil y del camión motorizado en Colombia eliminó de manera equitativa e inmediata las dificultades de aislamiento y transporte de mercancías de todas las comunidades rurales dispersas del departamento de Córdoba en los años treinta.",
+      "correcta": false,
+      "justificacion": "La afirmación es falsa debido a que los beneficios del automóvil y del camión no se distribuyeron de manera equitativa ni inmediata. La tecnología automotriz dependía estrictamente de la construcción de carreteras, obras que el Estado centralizó en las rutas principales que conectaban las grandes urbes y los centros agroexportadores. Las áreas rurales dispersas de Córdoba, como el sector que comprende a Loma Verde, quedaron excluidas de estos proyectos de pavimentación, manteniendo sus trochas de herradura tradicionales e impidiendo el paso continuo de vehículos automotores."
+    },
+    {
+      "id": "PREG-BP-06",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Análisis de perspectivas",
+      "contexto": "El cine comercial de Hollywood dominó las pantallas de los teatros colombianos en las décadas de 1930 y 1940, influyendo significativamente en los hábitos recreativos públicos.",
+      "enunciado": "Las élites conservadoras y la Iglesia Católica en Colombia apoyaron unánimemente y sin restricciones la llegada del cine comercial porque consideraban que este medio audiovisual fortalecía los valores morales tradicionales y de vida del campesinado.",
+      "correcta": false,
+      "justificacion": "Es falsa. La Iglesia Católica y los sectores políticos más tradicionales manifestaron fuertes recelos e implementaron juntas de censura moral frente al cine comercial. Consideraban que las películas extranjeras introducían costumbres liberales destructivas para la moral tradicional, tales como la emancipación femenina, los divorcios, el desapego a la religión y el consumismo desmedido, elementos que colisionaban con el control social imperante sobre los sectores populares y campesinos."
+    },
+    {
+      "id": "PREG-BP-07",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La radio en Colombia sirvió no solo como una plataforma de entretenimiento, sino también como una herramienta central de información política gubernamental y partidista durante los periodos de la República Liberal y la hegemonía conservadora.",
+      "enunciado": "La radio en el siglo XX consolidó una opinión pública de masas en Colombia debido a que permitió a ciudadanos de distintas clases sociales y regiones recibir las mismas noticias políticas de forma simultánea, superando el aislamiento informativo regional.",
+      "correcta": true,
+      "justificacion": "Es verdadera porque antes de la radio, las noticias viajaban lentamente a través de la prensa escrita o correspondencia fluvial, fragmentando la opinión del país por regiones. La transmisión radial en directo unificó temporalmente la recepción de la información, permitiendo que un campesino en las zonas rurales de Montería escuchara los mismos discursos presidenciales o debates políticos que un obrero en Bogotá en el mismo instante, forjando una conciencia política nacional masiva."
+    },
+    {
+      "id": "PREG-BP-08",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "La aviación comercial acortó significativamente los tiempos de transporte de pasajeros adinerados y del correo nacional entre las diferentes regiones de Colombia.",
+      "enunciado": "A pesar de la alta eficiencia de la aviación comercial para conectar los centros de poder colombianos, las comunidades campesinas agrícolas continuaron dependiendo de botes, mulas y trenes locales para movilizar sus productos hacia los mercados locales debido a los elevados costos del flete aéreo.",
+      "correcta": true,
+      "justificacion": "Es verdadera. La aviación comercial resolvió problemas logísticos para pasajeros de élite, documentos bancarios y cargas de alto valor o bajo peso, pero por razones de costos y escalas económicas, era totalmente inviable para transportar toneladas de productos agrícolas de bajo valor por unidad de peso (como maíz, yuca o plátano), obligando al campesinado a seguir dependiendo de los limitados sistemas de transporte terrestre tradicionales."
+    },
+    {
+      "id": "PREG-BP-09",
+      "tipo": "vf",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las innovaciones tecnológicas de la primera mitad del siglo XX transformaron la noción del tiempo de ocio de los ciudadanos, desplazando antiguas formas de sociabilidad comunitaria.",
+      "enunciado": "La radio y el cine ayudaron a crear el 'tiempo libre' o de 'ocio moderno' en Colombia, logrando que las personas pagaran por entretenimiento o sincronizaran sus rutinas de descanso nocturno con base en programaciones de industrias culturales masivas.",
+      "correcta": true,
+      "justificacion": "La afirmación es verdadera. Antes de la masificación de estos medios, las actividades lúdicas tradicionales estaban ligadas a las festividades religiosas, reuniones familiares orales o juegos locales. Con el cine y la radio, el entretenimiento se industrializó y mercantilizó; las personas comenzaron a destinar parte de su salario a ir a salas de cine y reorganizaron el tiempo familiar en las noches para congregarse en torno al aparato de radio, adaptando sus hábitos privados a programaciones estandarizadas."
+    },
+    {
+      "id": "PREG-BP-10",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "Durante el periodo de 1920-1950, Colombia experimentó el ingreso de innovaciones tecnológicas en transporte y telecomunicaciones en un marco de profundas desigualdades entre el sector urbano y el sector rural.",
+      "enunciado": "Este proceso de incorporación de tecnologías en Colombia es caracterizado por los historiadores económicos como una 'modernización asimétrica' porque:",
+      "opciones": [
+        "A) Ocurrió de manera idéntica y equilibrada tanto en las metrópolis como en las veredas más alejadas del país.",
+        "B) Se concentró en el desarrollo de infraestructuras y accesos para los centros urbanos y élites económicas, postergando el bienestar y la conectividad del sector rural.",
+        "C) Fue promovida única y exclusivamente por las comunidades indígenas y campesinas para independizarse económicamente de las grandes capitales.",
+        "D) Prohibió terminantemente que los habitantes de los corregimientos y veredas tuvieran contacto con radios o automóviles."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la respuesta correcta. El concepto de 'modernización asimétrica' describe un desarrollo desigual del progreso técnico. En Colombia, el Estado y los capitales privados priorizaron inversiones viales, eléctricas y de telecomunicaciones en las capitales urbanas para integrarlas al mercado global, mientras que el campo, habitado mayoritariamente por campesinos desfavorecidos, sufrió un persistente rezago e incomunicación vial que obstaculizó su crecimiento e igualdad social."
+    },
+    {
+      "id": "PREG-BP-11",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Análisis de perspectivas",
+      "contexto": "En la década de 1940, la radio se convirtió en un elemento central de la vida veredal en el Caribe colombiano, operando muchas veces un único aparato transistores para toda una comunidad o vereda.",
+      "enunciado": "Frente al aislamiento físico de un corregimiento rural como Loma Verde en esa época, la llegada del receptor de radio transformó la cotidianidad de los campesinos porque les permitió principalmente:",
+      "opciones": [
+        "A) Aprender idiomas extranjeros para abandonar inmediatamente la producción de yuca y plátano.",
+        "B) Conectarse simbólicamente en tiempo real con la actualidad política nacional y acceder a contenidos culturales y educativos sin necesidad de viajar o saber leer.",
+        "C) Construir carreteras pavimentadas mediante el uso de ondas radiales de alta frecuencia.",
+        "D) Reemplazar por completo el uso de camiones de carga para la comercialización de sus cosechas agrícolas."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. La radio funcionó como un puente inmaterial que superó el aislamiento geográfico. Al sintonizar emisoras nacionales, los campesinos de Loma Verde podían participar del acontecer del país y disfrutar del ocio colectivo, rompiendo con el analfabetismo gracias al formato oral, lo que generó un cambio cultural rotundo en la configuración de la opinión pública rural."
+    },
+    {
+      "id": "PREG-BP-12",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La introducción del camión con motor de combustión interna representó el desplazamiento paulatino del sistema de transporte basado en carretas y mulas en los departamentos de la Costa Caribe.",
+      "enunciado": "Si relacionamos la introducción histórica del camión en el siglo XX con la situación contemporánea del corregimiento de Loma Verde en el año 2026, ¿cuál de las siguientes conclusiones sistémicas es correcta respecto al impacto de la tecnología en el transporte agrícola?",
+      "opciones": [
+        "A) La adquisición de camiones modernos de última tecnología soluciona automáticamente el problema del transporte agrícola, sin importar el estado físico de las vías de comunicación.",
+        "B) La tecnología vehicular requiere obligatoriamente de una infraestructura pública vial complementaria (vías terciarias utilizables) para poder dinamizar de forma justa y efectiva la economía del pequeño productor campesino.",
+        "C) Las mulas y caballos siguen siendo técnicamente más veloces y eficientes que cualquier camión motorizado para transportar mercancías a largas distancias urbanas.",
+        "D) El transporte motorizado eliminó por completo los intermediarios económicos, haciendo que el campesino venda directamente en los supermercados mundiales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. Una perspectiva sistémica reconoce que el camión (tecnología) y las carreteras (infraestructura) componen una red interdependiente. Si el Estado no garantiza vías terciarias transitables en Loma Verde, la existencia de camiones modernos no soluciona el problema, ya que los vehículos no pueden circular en invierno, demostrando que la tecnología por sí sola no genera desarrollo si no está acompañada de inversión social e institucional estructural."
+    },
+    {
+      "id": "PREG-BP-13",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento social",
+      "contexto": "El auge del cine en Colombia en las décadas de 1920 y 1930 coincidió con un auge de la industrialización y un crecimiento acelerado de la población en los perímetros urbanos.",
+      "enunciado": "Desde el punto de vista socio-cultural, el cine actuó como una 'fábrica de identidades urbanas' debido a que:",
+      "opciones": [
+        "A) Enseñaba de forma práctica a los espectadores las técnicas artesanales de la minería y la agricultura de subsistencia.",
+        "B) Difundía pautas estéticas, comportamientos modernos, modelos de consumo de bienes industriales y visiones del mundo basadas en las grandes metrópolis.",
+        "C) Proyectaba exclusivamente documentales acerca de las tradiciones de los pueblos indígenas del Sinú.",
+        "D) Era un medio de comunicación secreto al que solo podían acceder los miembros de los partidos políticos tradicionales."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. El cine introdujo a la población en la lógica cultural del capitalismo industrializado moderno. Al mostrar imágenes de grandes metrópolis con rascacielos, automóviles, modas sofisticadas y dinámicas de consumo masivo, instaló en los espectadores el deseo de asimilarse a ese estilo de vida urbano, transformando los imaginarios sociales de lo que se consideraba 'civilizado' o 'deseable'."
+    },
+    {
+      "id": "PREG-BP-14",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Análisis de perspectivas",
+      "contexto": "A mediados del siglo XX, la aviación comercial en Colombia logró reducir los viajes interregionales de semanas a horas, posicionando al país como líder en transporte aéreo regional.",
+      "enunciado": "Al evaluar este fenómeno desde una perspectiva de equidad territorial, se puede afirmar que la aviación comercial en Colombia consolidó una 'conectividad excluyente' porque:",
+      "opciones": [
+        "A) Los aviones se utilizaban únicamente para trasladar alimentos agrícolas desde las veredas hacia el exterior.",
+        "B) Unió eficientemente los intereses geográficos de las élites corporativas y políticas del centro del país, mientras las comunidades veredales continuaron incomunicadas por tierra por falta de vías del Estado.",
+        "C) Permitió que todos los campesinos colombianos tuvieran acceso gratuito a vuelos comerciales diarios desde sus fincas.",
+        "D) Reemplazó por completo los sistemas de transporte marítimo y ferroviario sin generar ningún costo económico para el erario público."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la correcta. El concepto de 'conectividad excluyente' ilustra el hecho de que la aviación resolvió los problemas de movilidad del estamento dirigente y de los dueños del gran capital, pero no alivió las necesidades de articulación física e intercambio comercial de los pequeños campesinos del país, evidenciando una modernización clasista que desatendió las prioridades de la Colombia rural."
+    },
+    {
+      "id": "PREG-BP-15",
+      "tipo": "multiple",
+      "grado": "Noveno",
+      "tema": "Transformaciones socioculturales por la introducción de tecnologías en el siglo XX",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las radionovelas y los programas musicales transmitidos en la primera mitad del siglo XX convocaban masivamente a comunidades enteras alrededor de un único aparato receptor de radio en los pueblos y veredas.",
+      "enunciado": "Este hábito social de congregación comunitaria en torno a la radio generó una transformación cultural orientada a:",
+      "opciones": [
+        "A) Fragmentar por completo las relaciones familiares al obligar el aislamiento de los miembros de la casa.",
+        "B) Crear una cultura de masas y una comunidad imaginada nacional donde el campesinado compartía gustos, informaciones e imaginarios comunes con los habitantes urbanos.",
+        "C) Extinguir la música folclórica local al prohibir judicialmente el uso de instrumentos tradicionales en el campo.",
+        "D) Convertir a todas las veredas agrarias en centros de producción manufacturera pesada de carácter automotriz."
+      ],
+      "correcta": 1,
+      "justificacion": "La opción B es la respuesta correcta. Al escuchar simultáneamente los mismos programas radiales, noticias, contenidos de entretenimiento y melodías populares, las poblaciones de distintas regiones del territorio nacional (incluidas las rurales dispersas) empezaron a consumir e interiorizar una matriz cultural homogénea. Esto integró a los campesinos en las lógicas de la cultura de masas nacional, construyendo un sentido de pertenencia e identidad compartida con los entornos urbanos."
+    }
+  ]
+}

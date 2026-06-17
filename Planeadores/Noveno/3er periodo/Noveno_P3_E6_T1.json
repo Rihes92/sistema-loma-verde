@@ -1,0 +1,59 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T16:45:00.000Z",
+  "planeadores": [
+    {
+      "id": "LV-CS-N9-P3-E6-001",
+      "creado": 1781651100000,
+      "grado": "Noveno",
+      "periodo": "Tercer periodo",
+      "ejeIdx": "Eje 6",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "1",
+      "grupos": "9A, 9B",
+      "fecha": "2026-06-25",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "unidad": "Concertación social y resolución pacífica de conflictos",
+      "sesiones": "3",
+      "duracion": "180",
+      "evidencias": "Diseña propuestas alternativas de mediación para superar diferencias en conflictos de orden comunitario o de pareja, basándose en el análisis de casos del Derecho Internacional Humanitario (DIH). Explica las asimetrías de crecimiento entre las distintas regiones de Colombia interpretando mapas temáticos de vulnerabilidad por disponibilidad de alimentos. Rechaza toda justificación de la violencia como método de trámite de disputas; cita de manera íntegra y rigurosa sus fuentes para asegurar la lógica y la honestidad intelectual en sus escritos académicos.",
+      "competencias": "Pensamiento reflexivo y sistémico, Interpretación y análisis de perspectivas.",
+      "contenidos": "El conflicto intergrupal y sus alternativas de resolución pacífica (escucha activa, concertación y comprensión de perspectivas ajenas); deslegitimación de discursos violentos en las relaciones de pareja e interpersonales; asimetrías en el índice de Desarrollo Humano (IDH) regional; factores geográficos en la construcción de infraestructura económica; papel regulador del Estado y los gremios económicos en la inversión social de las periferias.",
+      "objetivo": "Comprender la naturaleza de los conflictos intergrupales y las asimetrías regionales en Colombia, desarrollando competencias dialógicas y de análisis crítico que permitan proponer alternativas de resolución pacífica y una postura ética frente a la inversión social y el desarrollo humano, aterrizando estos conceptos a la realidad del corregimiento de Loma Verde.",
+      "pregunta": "¿De qué manera el desarrollo desigual de las regiones colombianas alimenta conflictos intergrupales y cómo el ejercicio de la escucha activa puede mediar en la resolución de estos problemas a nivel local?",
+      "explora": "1. Mapeo participativo de las brechas de desarrollo en el corregimiento de Loma Verde comparado con Montería.\n2. Lluvia de ideas sobre situaciones comunes de conflicto en el entorno escolar.\n3. Proyección de un video sobre la importancia de la escucha activa en la negociación de conflictos.",
+      "glosario": [
+        {"t": "conflicto intergrupal", "d": "situación de tensión o antagonismo entre grupos con intereses, valores o metas percibidas como incompatibles dentro de una misma sociedad."},
+        {"t": "escucha activa", "d": "habilidad comunicativa que implica entender, interpretar y valorar el mensaje del otro sin juicios previos, facilitando la empatía y la resolución de malentendidos."},
+        {"t": "concertación", "d": "proceso de diálogo y negociación entre actores sociales o políticos para alcanzar acuerdos comunes que satisfagan necesidades colectivas evitando la confrontación."},
+        {"t": "índice de desarrollo humano (idh)", "d": "indicador estadístico que mide el nivel de desarrollo de un país o región considerando la esperanza de vida, la educación y el ingreso per cápita."}
+      ],
+      "bloques": [
+        {
+          "tit": "Conflictos y brechas en la periferia",
+          "txt": "El conflicto intergrupal en Colombia no emerge en el vacío; es, con frecuencia, una respuesta a las asimetrías estructurales en el desarrollo. En el caso de la periferia, como el corregimiento de Loma Verde, la falta de inversión social y la precariedad en la infraestructura económica crean tensiones sobre el acceso a recursos escasos. Esta realidad se ve exacerbada por el abandono del Estado y la escasa regulación de los gremios económicos que operan en la región. Cuando las comunidades perciben que su índice de desarrollo humano (IDH) es inferior al de las zonas urbanas centrales, la frustración puede traducirse en deslegitimación de las autoridades y, en ocasiones, en la aceptación de discursos violentos. La resolución de estos conflictos requiere trascender la respuesta punitiva y fortalecer mecanismos de concertación basados en la comprensión de perspectivas ajenas. La escucha activa se convierte entonces en una herramienta política: no es solo un gesto de cortesía, sino la base para reconstruir el tejido social deshecho por décadas de inequidad y violencia.",
+          "pausa": "¿Es posible resolver un conflicto derivado de la pobreza estructural mediante solo el diálogo y la escucha activa?",
+          "resp": "El diálogo es indispensable para la legitimidad del proceso, pero debe estar acompañado de políticas públicas de inversión social que ataquen las causas económicas de la desigualdad; la escucha sin acción es insuficiente."
+        }
+      ],
+      "talleres": "Simulacro de mesa de negociación: los estudiantes se dividirán en grupos representando a campesinos, empresarios locales y autoridades públicas para discutir el acceso al agua potable en Loma Verde, aplicando protocolos de escucha activa y concertación.",
+      "transfer": "Redacción de un ensayo crítico sobre las asimetrías entre Loma Verde y el centro de Montería, proponiendo una estrategia basada en la mediación para solicitar mejores servicios públicos a las autoridades locales, citando fuentes oficiales.",
+      "clave": "Las respuestas deben articular conceptos de IDH y asimetría económica con las herramientas de mediación (escucha activa, negociación), demostrando una comprensión holística del problema.",
+      "evaluacion": "Rúbrica: 1. Aplicación de herramientas dialógicas (30%), 2. Análisis crítico de datos regionales (40%), 3. Honestidad intelectual y citación (30%). Escala: superior, alto, básico, bajo.",
+      "recursos": "Mapas temáticos de IDH en Colombia, normativa constitucional sobre participación, guías de mediación escolar, textos académicos sobre desarrollo regional.",
+      "referencias": "PNUD (2025). Informe de Desarrollo Humano Colombia. Constitución Política de 1991. Manual de resolución de conflictos de la Defensoría.",
+      "dua": "Presentación de la información de manera multimodal (mapas, videos, textos cortos), permitiendo diversas formas de expresión (oral, escrita, gráfica) para los estudiantes durante el simulacro y la redacción del ensayo.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "La paz no es la ausencia de conflicto, sino la capacidad de gestionarlo pacíficamente a través de una democracia participativa que cierre las brechas de desarrollo regional, garantizando una vida digna para todos.",
+      "errores": "Confundir la concertación con el sometimiento, ignorar las causas económicas de los conflictos sociales o pensar que la violencia es una forma legítima de acelerar el desarrollo.",
+      "banco": [],
+      "tarea": "Entrevistar a un líder de la vereda sobre los mayores conflictos de convivencia en Loma Verde y qué estrategias de resolución se han intentado históricamente.",
+      "fundamentacion": "La comprensión del conflicto intergrupal y su resolución pacífica es una competencia esencial para la consolidación de una cultura de paz en Colombia. Este fenómeno no puede abstraerse de las asimetrías en el índice de Desarrollo Humano (IDH) que caracterizan a las regiones periféricas frente a los centros de poder. En lugares como el corregimiento de Loma Verde, la carencia de infraestructura económica y la limitada inversión social por parte del Estado y los gremios privados generan una percepción de injusticia distributiva que, si no se canaliza mediante mecanismos de concertación, tiende a transformarse en tensiones intergrupales. Históricamente, la violencia en Colombia ha sido alimentada por la exclusión y la falta de canales efectivos para que los grupos marginalizados expresen sus demandas. El enfoque pedagógico aquí propuesto busca que el estudiante identifique que la escucha activa y la comprensión de perspectivas ajenas no son solo habilidades interpersonales, sino requisitos para el ejercicio político en un Estado Social de Derecho. Argumentar la necesidad de la inversión social en las periferias exige que los ciudadanos entiendan el papel regulador del Estado y ejerzan control sobre las dinámicas económicas que perpetúan la brecha regional. La honestidad intelectual en el tratamiento de estos temas, reflejada en la citación rigurosa de las fuentes, es fundamental para evitar la desinformación y construir una argumentación sólida capaz de incidir en la transformación social del entorno rural.",
+      "lineatiempo": "1991: Constitución Política, marco de la concertación y la participación. 2016: Acuerdo de Paz, énfasis en el cierre de brechas campo-ciudad. 2020-2026: Crisis de desarrollo regional y fortalecimiento de las mesas locales de diálogo social en Córdoba."
+    }
+  ]
+}

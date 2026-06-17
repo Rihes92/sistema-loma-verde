@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Primer Periodo",
+    "unidad": "Eje 2: Modelos económicos globales y soberanía alimentaria",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750064401aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Cuándo y cómo surgió el concepto de 'desarrollo sostenible' y cuáles son sus tres dimensiones fundamentales?",
+      "respuesta": "El desarrollo sostenible fue formalizado en 1987 por el Informe Brundtland de la ONU, que lo definió como 'el desarrollo que satisface las necesidades del presente sin comprometer la capacidad de las generaciones futuras de satisfacer las suyas'. Sus tres dimensiones son: económica (bienestar material), social (equidad, justicia, acceso a servicios) y ambiental (preservación de los ecosistemas). El reto es equilibrar simultáneamente las tres sin sacrificar una por las otras.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750064401aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Describe el patrón común en los casos del DDT, el CFC y el plástico como ejemplos de consecuencias no deseadas del progreso tecnológico.",
+      "respuesta": "El patrón es: 1) Una innovación resuelve un problema real e inmediato (control de plagas, refrigeración, embalaje). 2) Se adopta masivamente antes de comprenderse sus efectos a largo plazo. 3) Décadas después, sus consecuencias negativas se hacen evidentes (bioamplificación del DDT, destrucción del ozono por CFC, contaminación marina por plástico). 4) Cuando se reconoce el daño, ya hay millones de usuarios dependientes e intereses que resisten la prohibición. 5) La regulación llega tarde.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750064401aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Qué son los límites planetarios y cuántos ha superado ya la humanidad para 2023?",
+      "respuesta": "Los límites planetarios son nueve umbrales de sistemas terrestres que no deben superarse para mantener las condiciones del Holoceno que hicieron posible la civilización. Fueron formulados en 2009 por Johan Rockström y el Instituto de Resiliencia de Estocolmo. Los nueve son: cambio climático, pérdida de biodiversidad, ciclo del nitrógeno, ciclo del fósforo, uso del agua dulce, cambio en el uso de la tierra, acidificación oceánica, adelgazamiento del ozono y carga de aerosoles. Para 2023, la humanidad ha superado seis de los nueve.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750064401aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es la agroecología y cómo se diferencia de la agricultura convencional? ¿En qué medida las prácticas cafeteras tradicionales de Loma Verde son agroecológicas?",
+      "respuesta": "La agroecología aplica principios ecológicos a la producción de alimentos, combinando ciencia y saberes campesinos para producir sin depender de insumos externos y manteniendo la salud del suelo, el agua y la biodiversidad. Se diferencia de la agricultura convencional en que no maximiza el rendimiento a cualquier costo sino que optimiza el funcionamiento del ecosistema. Las prácticas cafeteras tradicionales de Loma Verde son agroecológicas en la medida en que cultivan café bajo sombra de árboles nativos, guardan semillas criollas adaptadas al microclima local, usan la pulpa de café como abono y mantienen franjas de bosque en las cañadas.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750064401aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Explica el dilema de desarrollo que enfrenta Colombia como país megadiverso y exportador de petróleo y carbón. ¿Qué tipo de desarrollo sería compatible con conservar su capital natural en el largo plazo?",
+      "respuesta": "El dilema: Colombia tiene un capital natural excepcional pero basa el 50% de sus exportaciones en petróleo y carbón (modelo extractivista), recursos no renovables cuya explotación degrada ese capital. Un desarrollo compatible requeriría: diversificar hacia sectores que usen la biodiversidad sin destruirla (bioeconomía, ecoturismo, cafés especiales); implementar pagos por servicios ambientales que compensen a las comunidades que conservan ecosistemas; y sustituir progresivamente los ingresos del petróleo con energías renovables (sol, viento y agua en abundancia en Colombia).",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750064401fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El concepto de 'desarrollo sostenible' fue formalizado por el Informe Brundtland de la ONU en 1987.",
+      "correcta": true,
+      "justificacion": "Verdadero. El Informe 'Nuestro Futuro Común' (1987), elaborado por la Comisión Brundtland, formalizó el desarrollo sostenible como aquel que satisface las necesidades del presente sin comprometer las de las generaciones futuras. Fue el punto de partida de la agenda ambiental global contemporánea."
+    },
+    {
+      "id": "lv1750064401fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Para 2023, la humanidad ha superado los nueve límites planetarios identificados por el Instituto de Resiliencia de Estocolmo.",
+      "correcta": false,
+      "justificacion": "Falso. Para 2023, la humanidad ha superado seis de los nueve límites planetarios, no los nueve. Los límites no superados incluyen la acidificación oceánica (cerca del umbral) y el adelgazamiento del ozono (en recuperación gracias al Protocolo de Montreal). Aunque seis es alarmante, el hecho de que no se hayan superado todos indica que todavía hay margen de acción."
+    },
+    {
+      "id": "lv1750064401fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El Buen Vivir o Sumak Kawsay es una filosofía de vida de los pueblos originarios andinos incorporada a las constituciones de Ecuador (2008) y Bolivia (2009).",
+      "correcta": true,
+      "justificacion": "Verdadero. El Sumak Kawsay (quechua: 'vivir bien') propone armonía entre los seres humanos y la naturaleza, reciprocidad y vida comunitaria. Ecuador lo incorporó en su Constitución de 2008 y Bolivia en la de 2009, siendo los primeros países del mundo en incluir una filosofía indígena como principio constitucional."
+    },
+    {
+      "id": "lv1750064401fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El DDT fue prohibido en la mayoría de países inmediatamente después de su invención porque sus efectos negativos sobre la fauna silvestre fueron evidentes desde el principio.",
+      "correcta": false,
+      "justificacion": "Falso. El DDT fue ampliamente usado desde los años 40 y sus consecuencias ecológicas solo se hicieron evidentes públicamente con la publicación de 'Primavera Silenciosa' de Rachel Carson en 1962. La prohibición llegó entre 1972 y los años 80 en la mayoría de países, décadas después de su invención y uso masivo."
+    },
+    {
+      "id": "lv1750064401fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La economía circular propone reemplazar el modelo lineal 'extraer-producir-desechar' por ciclos donde los materiales se reutilizan indefinidamente, reduciendo la generación de residuos.",
+      "correcta": true,
+      "justificacion": "Verdadero. La economía circular diseña productos y procesos para que los materiales se reutilicen, reparen o reciclen indefinidamente. En una finca cafetera, la pulpa del café convertida en compost y las aguas mieles tratadas para riego son ejemplos de economía circular a escala local que cierran los ciclos de nutrientes."
+    },
+    {
+      "id": "lv1750064401sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La idea de 'desarrollo' como objetivo universal de las sociedades modernas tiene un origen histórico específico en el siglo XX.",
+      "enunciado": "¿En qué año el presidente Harry Truman dividió el mundo en países 'desarrollados' y 'subdesarrollados', estableciendo el modelo industrial como meta universal?",
+      "opciones": ["1944.", "1949.", "1962.", "1987."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. En su discurso inaugural de 1949, el presidente Truman usó por primera vez el término 'subdesarrollo' para describir a los países no industrializados, estableciendo implícitamente que el camino al bienestar era imitar el modelo industrial estadounidense. Esta división conceptual moldearía las políticas de desarrollo global durante décadas."
+    },
+    {
+      "id": "lv1750064401sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los límites planetarios definen el espacio seguro de operación para la humanidad en el sistema Tierra.",
+      "enunciado": "¿Cuántos de los nueve límites planetarios ha superado la humanidad para 2023?",
+      "opciones": ["Dos límites.", "Cuatro límites.", "Seis límites.", "Nueve límites."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Para 2023, la humanidad ha superado seis de los nueve límites planetarios: cambio climático, pérdida de biodiversidad (el más preocupante), ciclo del nitrógeno, ciclo del fósforo, cambio en el uso de la tierra y carga de contaminantes. Esto significa que estamos fuera del 'espacio operativo seguro para la humanidad'."
+    },
+    {
+      "id": "lv1750064401sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El DDT es el ejemplo clásico de consecuencia no deseada de una innovación tecnológica que parecía beneficiosa.",
+      "enunciado": "¿Cuál fue la consecuencia ambiental más grave del uso masivo del DDT en la agricultura desde los años 40?",
+      "opciones": ["Contaminó los océanos con microplásticos que afectan la vida marina.", "Destruyó la capa de ozono estratosférica, aumentando la radiación ultravioleta.", "Se bioacumuló en la cadena alimentaria, adelgazando cáscaras de huevos de aves rapaces y llevándolas casi a la extinción.", "Aumentó la temperatura global al ser un gas de efecto invernadero potente."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El DDT se bioamplificó a lo largo de la cadena alimentaria: los insectos tenían pequeñas concentraciones, los peces que los comían concentraban más, y las aves rapaces que comían los peces acumulaban concentraciones tan altas que adelgazaban las cáscaras de sus huevos, impidiendo la reproducción. Esto llevó a varias especies al borde de la extinción."
+    },
+    {
+      "id": "lv1750064401sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento social",
+      "contexto": "La destrucción de la capa de ozono fue uno de los primeros problemas ambientales globales que tuvo una respuesta internacional efectiva.",
+      "enunciado": "¿Qué protocolo internacional logró frenar la destrucción de la capa de ozono al prohibir el uso de clorofluorocarbonos (CFC)?",
+      "opciones": ["El Protocolo de Kioto (1997).", "El Protocolo de Montreal (1987).", "El Acuerdo de París (2015).", "La Convención de Basilea (1989)."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El Protocolo de Montreal (1987) es el tratado ambiental con mayor éxito en la historia: al prohibir los CFC, permitió que la capa de ozono comenzara a recuperarse. Es el único tratado ambiental ratificado por todos los países del mundo. La capa de ozono se espera que se recupere completamente hacia 2060-2070."
+    },
+    {
+      "id": "lv1750064401sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La contaminación plástica de los océanos es una de las consecuencias no deseadas más graves de la masificación del plástico desde los años 50.",
+      "enunciado": "¿Cuántas toneladas de plástico entran al océano anualmente?",
+      "opciones": ["Aproximadamente 1 millón de toneladas.", "Aproximadamente 8 millones de toneladas.", "Aproximadamente 50 millones de toneladas.", "Aproximadamente 200 millones de toneladas."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Aproximadamente 8 millones de toneladas de plástico entran al océano cada año, equivalente a volcar un camión de basura al mar cada minuto. El 'parche de basura del Pacífico', formado por plásticos acumulados, es hoy más grande que México. Los microplásticos se han encontrado en el fondo del océano más profundo y en la sangre humana."
+    },
+    {
+      "id": "lv1750064401sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El PIB es el indicador dominante para medir el 'desarrollo' de los países, pero tiene limitaciones fundamentales.",
+      "enunciado": "¿Cuál es la principal crítica al PIB como indicador de desarrollo de un país?",
+      "opciones": ["Es difícil de calcular porque requiere datos de todas las empresas del país.", "No mide la distribución de la riqueza, la salud de los ecosistemas ni la felicidad de las personas; la destrucción ambiental puede aumentar el PIB.", "Solo mide la producción industrial y excluye el sector agrícola y de servicios.", "Es un indicador que solo puede usarse en países con economías de mercado."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La principal crítica al PIB es que no refleja la calidad de vida ni la salud ambiental. Talar un bosque, limpiar un derrame de petróleo o construir una cárcel aumentan el PIB aunque sean eventos negativos. No mide la distribución (un país puede tener PIB alto con millones en pobreza), la felicidad ni la sostenibilidad de largo plazo."
+    },
+    {
+      "id": "lv1750064401sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La huella ecológica mide la demanda de la humanidad sobre los sistemas naturales del planeta.",
+      "enunciado": "¿Cuántos planetas Tierra equivalentes necesita actualmente la humanidad para sostener su nivel de consumo de recursos?",
+      "opciones": ["0,8 planetas (todavía estamos dentro de la capacidad del planeta).", "1,2 planetas.", "1,7 planetas.", "3 planetas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La humanidad actualmente usa el equivalente a 1,7 planetas Tierra al año, lo que significa que consumimos recursos más rápido de lo que el planeta puede regenerarlos. Si todos los habitantes del mundo vivieran como un estadounidense promedio, necesitaríamos 5 planetas."
+    },
+    {
+      "id": "lv1750064401sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento social",
+      "contexto": "La economía circular busca cerrar los ciclos de materiales en los procesos productivos, eliminando la generación de residuos.",
+      "enunciado": "¿Cuál de los siguientes es un ejemplo de economía circular en una finca cafetera de Loma Verde?",
+      "opciones": ["Vender el café verde a un exportador para que lo procese en el exterior.", "Convertir la pulpa de café en lombricompost para usarlo como abono orgánico en el mismo cafetal.", "Comprar fertilizantes químicos importados para aumentar el rendimiento del café.", "Talar el bosque de galería para ampliar el área cultivada de café."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Convertir la pulpa de café (residuo del beneficiadero) en lombricompost que se aplica al mismo cafetal es economía circular: cierra el ciclo de nutrientes, elimina un residuo contaminante (la pulpa tiene alta DBO), reduce la necesidad de fertilizantes comprados y mejora la salud del suelo. Es una práctica ancestral campesina que hoy la ciencia reconoce como óptima."
+    },
+    {
+      "id": "lv1750064401sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El decrecimiento es una corriente económica y política que cuestiona el crecimiento como objetivo central del desarrollo.",
+      "enunciado": "¿Qué propone el 'decrecimiento' como alternativa al modelo de desarrollo dominante?",
+      "opciones": ["Que todos los países reduzcan su población para disminuir el impacto ambiental.", "Que los países ricos reduzcan voluntariamente su producción y consumo para dar espacio ecológico al desarrollo de los países pobres.", "Que los países pobres dejen de desarrollarse para conservar sus ecosistemas naturales.", "Que la economía global se base exclusivamente en la agricultura orgánica."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El decrecimiento propone que los países ricos, que ya tienen satisfechas sus necesidades básicas y tienen una huella ecológica muy superior a la capacidad del planeta, reduzcan voluntariamente su producción y consumo. Esto liberaría espacio ecológico para que los países pobres puedan desarrollar sus economías hasta satisfacer las necesidades básicas de sus poblaciones."
+    },
+    {
+      "id": "lv1750064401sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El dilema entre el desarrollo industrial-tecnológico y la supervivencia humana",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El debate sobre los límites del crecimiento económico tiene un punto de partida histórico preciso en el siglo XX.",
+      "enunciado": "¿En qué año fue publicado el informe 'Los Límites del Crecimiento' del Club de Roma, que modeló que el crecimiento económico infinito en un planeta finito llevaría al colapso?",
+      "opciones": ["1962.", "1972.", "1987.", "1992."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. 'Los Límites del Crecimiento' fue publicado en 1972, el mismo año de la Conferencia de Estocolmo. El informe usó modelos computacionales para simular el desarrollo global bajo diferentes escenarios, concluyendo que el crecimiento económico y poblacional indefinido llevaría al colapso del sistema global antes del año 2100 si no se cambiaban las tendencias."
+    }
+  ]
+}
