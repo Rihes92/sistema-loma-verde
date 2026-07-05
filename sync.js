@@ -126,19 +126,24 @@ const LV_SYNC = (() => {
 
       // Fusionar: remoto gana si es más reciente
       if (cfg.tabla === 'horario') {
-        // Estructura especial {dia:{hora:{...}}}. IMPORTANTE: fusionar
+        // Estructura especial { materia: { dia:{hora:{...}} } }. Cada
+        // materia tiene su propio sub-horario totalmente independiente
+        // (ctx_materia en la fila de Supabase), para que borrar/agregar
+        // clases en una materia nunca afecte a otra. IMPORTANTE: fusionar
         // celda por celda, nunca reemplazar todo el objeto — si una
         // celda que acabas de agregar aún no terminó de subirse a
         // Supabase, un reemplazo total la borraría de la vista.
         const local = lsGet(lvKey) || {};
         remotos.forEach(r => {
           if (r.dia == null || r.hora == null) return;
+          const mk = r.ctx_materia || '_global';
+          if (!local[mk]) local[mk] = {};
           if (r._eliminado) {
-            if (local[r.dia]) delete local[r.dia][r.hora];
+            if (local[mk][r.dia]) delete local[mk][r.dia][r.hora];
             return;
           }
-          if (!local[r.dia]) local[r.dia] = {};
-          local[r.dia][r.hora] = {
+          if (!local[mk][r.dia]) local[mk][r.dia] = {};
+          local[mk][r.dia][r.hora] = {
             asig: r.materia || '',
             grado: (r.curso || '').split('°-')[0],
             grupo: (r.curso || '').split('°-')[1] || '',
