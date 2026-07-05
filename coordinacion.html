@@ -199,8 +199,62 @@ const AREAS = [
 
 const GRADOS=['Prejardín','Jardín','Transición','1°','2°','3°','4°','5°','6°','7°','8°','9°','10°','11°'];
 
+// ---------- semilla: docentes tomados del Word "Directores de Grupo" ----------
+// Nota: ese archivo solo dice quién dirige cada grupo (grado+grupo+sede+jornada),
+// NO qué materias dicta. Por eso se importa el nombre/sede/jornada y se guarda
+// el grado que dirige como referencia (campo "dirige"), pero las asignaciones
+// de materia hay que agregarlas manualmente en la pestaña "Asignaciones".
+const SEED_DOCENTES = [
+ {nombre:"Danarlys Elena Martínez Medrano",sede:"JUANA JULIA 1",jornada:"Única",dirige:"Prejardin-2, 0-1, 1-101"},
+ {nombre:"Ana Elvira Mendoza Cordero",sede:"PRINCIPAL",jornada:"Única",dirige:"Jardin-1, 0-1, 1-101"},
+ {nombre:"Maria Bolivia Espitia Payeres",sede:"CRISTO ES MI LUZ",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301"},
+ {nombre:"Iván David Vega Juris",sede:"EL OYETO",jornada:"Única",dirige:"0-1, 1-101, 2-201"},
+ {nombre:"DANIEL SAENZ",sede:"FRONTERAS DE CORDOBA",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Edilberto Manuel Calderín Gomez",sede:"LA OCTAVIA",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Mario Emiro Ayala Mora",sede:"LA POPA",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"ELIAS ENRIQUE HERNANDEZ HERNANDEZ",sede:"MI PORVENIR ES CRISTO JESUS",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 4-401, 5-501"},
+ {nombre:"Andrés Felipe Pérez Bustamante",sede:"SAN DIEGO",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Lina Luz Lopez Vargas",sede:"SAN FRANCISCO",jornada:"Única",dirige:"0-1, 1-101, 2-201"},
+ {nombre:"Sandra Marcela Peralta Pacheco",sede:"SAN MIGUEL",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Jhon Sebastian Salazar Romero",sede:"VERDINAL",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Katerine Sáez Almanza",sede:"EL RINCON",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Diana Marcela Montero Jiménez",sede:"JUANA JULIA 2",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 5-501"},
+ {nombre:"Carlos Elias Villalobos Uribe",sede:"LA GLORIA",jornada:"Mañana",dirige:"0-1, 1-101, 2-201, 3-301, 4-401, 5-501"},
+ {nombre:"Aris Camila Negrete Durango",sede:"PRINCIPAL",jornada:"Única",dirige:"2-201, 3-301"},
+ {nombre:"Luis Alberto Herrera Villaba",sede:"JUANA JULIA 1",jornada:"Única",dirige:"2-201, 3-301"},
+ {nombre:"Naby Luz Suarez Velásquez",sede:"CARLOS OSPINA",jornada:"Tarde",dirige:"3-301, 4-401, 5-501"},
+ {nombre:"Claudia Torrente Herrera",sede:"SAN FRANCISCO",jornada:"Única",dirige:"3-301, 4-401, 5-501"},
+ {nombre:"Arleineth Diaz Pacheco",sede:"PRINCIPAL",jornada:"Única",dirige:"4-401, 5-501"},
+ {nombre:"Daniela Ramos Argumedo",sede:"JUANA JULIA 1",jornada:"Única",dirige:"4-401, 5-501"},
+ {nombre:"Julio Samir Salgado Baquero",sede:"JUANA JULIA 2",jornada:"Mañana",dirige:"4-401"},
+ {nombre:"Israel De Jesus Hernandez Alvarez",sede:"PRINCIPAL",jornada:"Única",dirige:"6-601"},
+ {nombre:"Rafael Elias Anichiarico Cavadia",sede:"PRINCIPAL",jornada:"Única",dirige:"6-602"},
+ {nombre:"Olga Raquel Altamiranda Palmera",sede:"JUANA JULIA 1",jornada:"Única",dirige:"6-603"},
+ {nombre:"María Camila López Delgado",sede:"PRINCIPAL",jornada:"Única",dirige:"7-701"},
+ {nombre:"Leydy Rosa Baena Diaz",sede:"JUANA JULIA 1",jornada:"Única",dirige:"7-702"},
+ {nombre:"Yinesa Paola Lozano Diaz",sede:"PRINCIPAL",jornada:"Única",dirige:"8-801"},
+ {nombre:"Sandy Esther Alvarez Luna",sede:"JUANA JULIA 1",jornada:"Única",dirige:"8-802"},
+ {nombre:"Cirly Esther Coneo Carvajal",sede:"PRINCIPAL",jornada:"Única",dirige:"9-901"},
+ {nombre:"José Troncoso Pino",sede:"PRINCIPAL",jornada:"Única",dirige:"9-902"},
+ {nombre:"Shirley Yohana Pombo Olascoaga",sede:"JUANA JULIA 1",jornada:"Única",dirige:"9-903"},
+ {nombre:"Regina Paola Berrio Flórez",sede:"PRINCIPAL",jornada:"Única",dirige:"10-1001"},
+ {nombre:"Jorge Eliecer Hernández Florez",sede:"PRINCIPAL",jornada:"Única",dirige:"10-1002"},
+ {nombre:"Gary Daniel Lara Gonzalez",sede:"JUANA JULIA 1",jornada:"Única",dirige:"10-1003"},
+ {nombre:"Francy Julieth Vargas Pestana",sede:"PRINCIPAL",jornada:"Única",dirige:"11-1101"},
+ {nombre:"Berta Norena Sarmiento Bohórquez",sede:"JUANA JULIA 1",jornada:"Única",dirige:"11-1102"},
+];
+function lvSeedDocentes(arr){
+  if(arr.some(d=>d.nombre==='Danarlys Elena Martínez Medrano')) return arr;
+  const nuevos = SEED_DOCENTES.map(d=>({
+    id: uid(), nombre:d.nombre, sede:d.sede, jornada:d.jornada, email:'', dirige:d.dirige, creado:Date.now()
+  }));
+  const combinado = arr.concat(nuevos);
+  lsWrite('docentes', combinado);
+  return combinado;
+}
+
 // ---------- estado ----------
-let docentes = lsRead('docentes');
+let docentes = lvSeedDocentes(lsRead('docentes'));
 let asignaciones = lsRead('asignaciones');
 let docenteEditId = null;
 
@@ -234,7 +288,7 @@ document.getElementById('btn-docente-save').addEventListener('click', ()=>{
   };
   if (docenteEditId) {
     const i = docentes.findIndex(d=>d.id===docenteEditId);
-    if (i>=0) docentes[i] = {...docentes[i], ...registro};
+    if (i>=0) docentes[i] = {...docentes[i], ...registro, dirige: docentes[i].dirige};
   } else {
     docentes.push(registro);
   }
@@ -283,13 +337,14 @@ function renderDocentes(){
   const out = document.getElementById('docentes-out');
   if(!lista.length){ out.innerHTML = '<div class="empty">Aún no hay docentes registrados.</div>'; return; }
   out.innerHTML = `<div class="tableScroll"><table><thead><tr>
-    <th>Nombre</th><th>Sede</th><th>Jornada</th><th class="c">Asignaciones</th><th class="c">Acciones</th>
+    <th>Nombre</th><th>Sede</th><th>Jornada</th><th>Dirige (grado-grupo)</th><th class="c">Asignaciones</th><th class="c">Acciones</th>
   </tr></thead><tbody>${lista.map(d=>{
     const n = asignaciones.filter(a=>a.docenteId===d.id).length;
     return `<tr>
       <td><strong>${esc(d.nombre)}</strong>${d.email?`<div style="color:var(--muted);font-size:.75rem">${esc(d.email)}</div>`:''}</td>
       <td>${esc(d.sede||'—')}</td>
       <td>${esc(d.jornada||'—')}</td>
+      <td style="color:var(--muted);font-size:.78rem">${esc(d.dirige||'—')}</td>
       <td class="c"><span class="badge">${n}</span></td>
       <td class="c">
         <button class="btn sm sec" onclick="editarDocente('${d.id}')">✏️ Editar</button>
