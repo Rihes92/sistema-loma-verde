@@ -259,15 +259,18 @@ const LV_SYNC = (() => {
 
   // ── Inicialización ───────────────────────────────────────────
   async function init() {
-    // Al cargar: bajar datos remotos primero
-    await descargarTodo();
-
-    // Subir pendientes si hay internet
+    // IMPORTANTE: subir primero lo que quedó pendiente de una sesión
+    // anterior (por ejemplo, si cerraste la app antes de que terminara
+    // de subir). Si se descarga antes de subir, un cambio propio que
+    // aún no llegó a Supabase puede quedar tapado al fusionar.
     const p = pendientesGet();
     if (p.length) {
       mostrarBadge(true);
-      if (online()) subirPendientes();
+      if (online()) await subirPendientes();
     }
+
+    // Ahora sí, bajar datos remotos (ya con lo propio a salvo)
+    await descargarTodo();
 
     // Escuchar cambios de conectividad
     window.addEventListener('online', () => {

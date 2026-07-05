@@ -136,7 +136,7 @@
     </div>
   </div>
   <div style="margin-top:12px">
-    <button onclick="this.textContent='⏳ Sincronizando...';LV_SYNC.descargarTodo().then(()=>{this.textContent='✅ Sincronizado';setTimeout(()=>this.textContent='🔄 Sincronizar ahora',3000)})" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">🔄 Sincronizar ahora</button>
+    <button onclick="this.textContent='⏳ Sincronizando...';(async()=>{await LV_SYNC.subirPendientes();await LV_SYNC.descargarTodo();this.textContent='✅ Sincronizado';setTimeout(()=>location.reload(),600)})()" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">🔄 Sincronizar ahora</button>
   </div>
 </div>
 
