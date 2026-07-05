@@ -189,10 +189,16 @@ const ASIG_CLS  ={soc:'asig-soc',  dem:'asig-dem',  fil:'asig-fil',  lib:'asig-l
 const LS_KEY='lv_horario';
 function lsR(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'{}')}catch(_){return{}}}
 function lsW(d){
+  // Solo guarda localmente. NO reencola todas las celdas en Supabase
+  // en cada guardado — eso generaba ráfagas de subidas innecesarias
+  // y aumentaba el riesgo de que se cruzaran con la sincronización
+  // automática. Cada celda se marca para subir individualmente
+  // desde guardarCelda()/eliminarCelda() en el momento en que cambia.
   try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(_){}
-  if(typeof LV_SYNC!=='undefined'){
-    Object.keys(d).forEach(function(di){Object.keys(d[di]).forEach(function(bi){var r=d[di][bi];if(r){LV_SYNC.marcarCambio('lv_horario',Object.assign({},{id:di+'_'+bi,dia:di,hora:bi,materia:r.asig||'',curso:(r.grado||'')+'°-'+(r.grupo||''),aula:r.nota||''}));}});});
-  }
+}
+function marcarCeldaSync(di,bi,r){
+  if(typeof LV_SYNC==='undefined')return;
+  LV_SYNC.marcarCambio('lv_horario',{id:di+'_'+bi,dia:di,hora:bi,materia:r.asig||'',curso:(r.grado||'')+'°-'+(r.grupo||''),aula:r.nota||''});
 }
 let DATA=lsR();
 
@@ -289,13 +295,16 @@ function cerrarModal(){document.getElementById('modal-ed').classList.add('hide')
 function guardarCelda(){
   if(_di===null)return;
   if(!DATA[_di])DATA[_di]={};
-  DATA[_di][_bi]={
+  const r={
     asig:document.getElementById('ed-asig').value,
     grado:document.getElementById('ed-grado').value,
     grupo:document.getElementById('ed-grupo').value,
     nota:document.getElementById('ed-nota').value.trim(),
   };
-  lsW(DATA);cerrarModal();renderGrilla();
+  DATA[_di][_bi]=r;
+  lsW(DATA);
+  marcarCeldaSync(_di,_bi,r);
+  cerrarModal();renderGrilla();
 }
 function eliminarCelda(di,bi){
   if(DATA[di]&&DATA[di][bi]&&typeof LV_SYNC!=='undefined'){
