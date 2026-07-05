@@ -33,6 +33,7 @@ const LV_SYNC = (() => {
     'lv11_resultados':   { tabla: 'lv11_resultados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv11_simulacros_ext':{ tabla: 'lv11_simulacros_ext', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_banco':          { tabla: 'lv_banco',          id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_malla':          { tabla: 'lv_malla',          id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Utilidades ───────────────────────────────────────────────
