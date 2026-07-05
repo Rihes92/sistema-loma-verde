@@ -670,6 +670,34 @@ function eliminarEst(id){
   toast('Estudiante eliminado.');
 }
 
+// ── CITACIÓN AUTOMÁTICA POR INASISTENCIA (≥25%) ────────────────
+//  El botón "📩 Citar" en Estadísticas (visible cuando % asistencia < 75,
+//  es decir, ≥25% de inasistencia) arma un borrador con el motivo y lo
+//  envía a Comunicados, que ya sabe recibirlo vía ?draft=1 (ver init()
+//  en 06-comunicados.html). El docente revisa y ajusta antes de enviar.
+function generarCitacionAuto(encoded){
+  try{
+    const d = JSON.parse(decodeURIComponent(encoded)); // {cId,nombre,pct,fallas,total}
+    const cur = cursos.find(c=>c.id===d.cId);
+    const manana = new Date(); manana.setDate(manana.getDate()+1);
+    const inasistencia = 100 - d.pct;
+    const draft = {
+      tipo: 'citacion',
+      cursoNombre: cur ? cur.nombre : '',
+      estudianteNombre: d.nombre,
+      motivo: `Inasistencia reiterada: ${d.fallas} falla(s) de ${d.total} día(s) registrados (${inasistencia}% de inasistencia).`,
+      fecha_cit: manana.toISOString().split('T')[0],
+      hora_cit: '07:30'
+    };
+    localStorage.setItem('lv_com_draft', JSON.stringify(draft));
+    const area    = (typeof LV_CTX!=='undefined' && LV_CTX.area)    || '';
+    const materia = (typeof LV_CTX!=='undefined' && LV_CTX.materia) || '';
+    location.href = `06-comunicados.html?draft=1&area=${encodeURIComponent(area)}&materia=${encodeURIComponent(materia)}`;
+  }catch(err){
+    toast('No se pudo generar la citación automática.');
+  }
+}
+
 // ── UTILIDADES ────────────────────────────────────────────────
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function toast(msg){

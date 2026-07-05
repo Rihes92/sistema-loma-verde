@@ -394,6 +394,53 @@ function desempeno(def){
   return {k:'Bajo',cls:'b-baj'};
 }
 
+// ── Alerta automática de bajo rendimiento (≥50% de notas reprobadas) ──
+//  Cuenta cuántas de las notas YA registradas en el periodo (cognitivas
+//  con valor, acumulativo, auto, co, hetero) están por debajo de la nota
+//  mínima aprobatoria. Si la mitad o más lo están, se ofrece el botón
+//  "🚨 Alertar" para generar un borrador de plan de mejoramiento.
+function contarNotasBajas(cal){
+  const passing=CFG.scale.passing;
+  const vals=[];
+  (cal.cognitivas||[]).forEach(n=>{ if(typeof n==='number' && n>0) vals.push(n); });
+  ['acumulativo','auto','co','hetero'].forEach(k=>{ if(typeof cal[k]==='number' && cal[k]>0) vals.push(cal[k]); });
+  if(!vals.length) return {bajas:0,total:0,ratio:0};
+  const bajas=vals.filter(n=>n<passing).length;
+  return {bajas,total:vals.length,ratio:bajas/vals.length};
+}
+
+// Materias cortas usadas por LV_CTX → nombre de área tal como lo espera
+// la plantilla "Plan de mejoramiento" de Comunicados.
+const _MATERIA_A_AREA={'Sociales':'Ciencias Sociales'};
+
+async function generarAlertaAuto(cursoId, estId){
+  try{
+    const cur=cursos.find(c=>c.id===cursoId);
+    const est=estudiantes.find(e=>e.id===estId);
+    if(!cur||!est) return toast('No se encontró el curso o el estudiante.');
+    const periodo=$('#p-periodo').value;
+    const cal=await getCal(cursoId,periodo,estId);
+    const nb=contarNotasBajas(cal);
+    const materiaLV=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'';
+    const materiaArea=_MATERIA_A_AREA[materiaLV]||materiaLV||'Ciencias Sociales';
+    const entrega=new Date(); entrega.setDate(entrega.getDate()+8);
+    const draft={
+      tipo:'mejoramiento',
+      cursoNombre:cur.nombre,
+      estudianteNombre:est.nombre,
+      materia:materiaArea,
+      actividades:`El estudiante presenta ${nb.bajas} de ${nb.total} notas evaluadas por debajo de la nota mínima aprobatoria (${CFG.scale.passing.toFixed(1)}) en el periodo ${periodo}. Se recomienda reforzar los temas vistos y presentar actividades de recuperación.`,
+      fecha_entrega:entrega.toISOString().split('T')[0]
+    };
+    localStorage.setItem('lv_com_draft',JSON.stringify(draft));
+    const area=(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'';
+    const materia=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'';
+    location.href=`06-comunicados.html?draft=1&area=${encodeURIComponent(area)}&materia=${encodeURIComponent(materia)}`;
+  }catch(err){
+    toast('No se pudo generar la alerta.');
+  }
+}
+
 // ---------- util ----------
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const $=s=>document.querySelector(s);
@@ -496,12 +543,14 @@ async function renderPlanilla(){
   for(const est of lista){
     const cal=await getCal(cursoId,periodo,est.id);
     const cog=calcCognitivo(cal.cognitivas), def=calcDefinitiva(cal), d=desempeno(def);
+    const nb=contarNotasBajas(cal);
     const cogInputs=cal.cognitivas.slice(0,slots).map((n,i)=>
       `<td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${n??''}" data-est="${est.id}" data-f="cog" data-i="${i}"></td>`).join('');
     rows+=`<tr>
       <td>
         <strong>${esc(est.nombre)}</strong>
         ${(()=>{const p=pctFallas(cursoId,est.id);return p>25?`<span title="⚠️ ${p}% inasistencias — riesgo de pérdida" style="margin-left:6px;background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5;border-radius:999px;font-size:.68rem;font-weight:700;padding:2px 7px;cursor:default">⚠️ ${p}% fallas</span>`:'';})()}
+        ${nb.total>0 && nb.ratio>=0.5?`<button class="btn sm" style="margin-left:6px;background:#dc2626;color:#fff;padding:2px 7px;font-size:.68rem" title="${nb.bajas} de ${nb.total} notas evaluadas están por debajo de ${CFG.scale.passing.toFixed(1)}" onclick="generarAlertaAuto('${cursoId}','${est.id}')">🚨 Alertar</button>`:''}
       </td>
       ${cogInputs}
       <td class="c"><strong>${cog?cog.toFixed(1):'—'}</strong></td>

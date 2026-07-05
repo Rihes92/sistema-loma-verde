@@ -446,16 +446,21 @@ function init(){
             }
           }
         }
-        // Llenar campos dinámicos del draft
-        if(d.motivo) estado.campos.motivo=d.motivo;
-        if(d.fecha_cit) estado.campos.fecha_cit=d.fecha_cit;
-        if(d.hora_cit) estado.campos.hora_cit=d.hora_cit;
+        // Llenar campos dinámicos del draft: cualquier campo que la
+        // plantilla activa espere (ver PLANTILLAS[tipo].campos) y que
+        // venga presente en el borrador se copia automáticamente. Así
+        // sirve tanto para citación (motivo/fecha_cit/hora_cit) como
+        // para otras plantillas (ej. mejoramiento: materia/actividades/
+        // fecha_entrega) sin tener que listar cada caso a mano.
+        const _campos=(PLANTILLAS[d.tipo]||{}).campos||[];
+        _campos.forEach(c=>{ if(d[c.key]!=null) estado.campos[c.key]=d[c.key]; });
         // Llenar campo acudiente si existe
         if(d.acudiente) document.getElementById('inp-acudiente').value=d.acudiente;
         renderCamposDinamicos();
         actualizar();
         // Toast de bienvenida
-        setTimeout(()=>toast('📩 Citación pre-llenada desde Asistencia. Revisa y ajusta los datos.'),600);
+        const _nombrePlantilla=(PLANTILLAS[d.tipo]||{}).nombre||'Comunicado';
+        setTimeout(()=>toast(`📩 ${_nombrePlantilla} pre-llenado(a) automáticamente. Revisa y ajusta los datos.`),600);
       }
     }
   }catch(_){}
