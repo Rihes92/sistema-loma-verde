@@ -170,6 +170,40 @@ const LV_SYNC = (() => {
     }
   }
 
+  // ── Snapshot para detectar si algo cambió tras una descarga ─
+  function snapshotLocal() {
+    return Object.keys(MAPA).map(k => localStorage.getItem(k) || '').join('||');
+  }
+
+  // ── Auto-actualización entre dispositivos ───────────────────
+  //  Cada POLL_MS revisa Supabase. Si algo cambió respecto a lo
+  //  que ya se ve en pantalla, recarga la página automáticamente
+  //  (es seguro: los cambios propios ya se subieron antes de esto).
+  const POLL_MS = 15000;
+  let autoRefreshTimer = null;
+
+  async function chequearYActualizar() {
+    if (!online() || document.hidden) return;
+    const antes = snapshotLocal();
+    await descargarTodo();
+    const despues = snapshotLocal();
+    if (antes !== despues) {
+      console.log('[LV Sync] 🔄 Datos nuevos de otro dispositivo — actualizando vista...');
+      location.reload();
+    }
+  }
+
+  function iniciarAutoActualizacion() {
+    if (autoRefreshTimer) clearInterval(autoRefreshTimer);
+    autoRefreshTimer = setInterval(chequearYActualizar, POLL_MS);
+
+    // Al volver a la pestaña/app (ej. cambias de iPad a Mac) revisa al instante
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) chequearYActualizar();
+    });
+    window.addEventListener('focus', () => chequearYActualizar());
+  }
+
   // ── Inicialización ───────────────────────────────────────────
   async function init() {
     // Al cargar: bajar datos remotos primero
@@ -186,14 +220,18 @@ const LV_SYNC = (() => {
     window.addEventListener('online', () => {
       console.log('[LV Sync] 🌐 Conexión restaurada — sincronizando...');
       subirPendientes();
+      chequearYActualizar();
     });
     window.addEventListener('offline', () => {
       console.log('[LV Sync] 📵 Sin conexión — modo offline');
     });
+
+    // Activar revisión periódica + al volver a la pestaña
+    iniciarAutoActualizacion();
   }
 
   // ── API pública ──────────────────────────────────────────────
-  return { init, marcarCambio, subirPendientes, descargarTodo, mostrarBadge, online };
+  return { init, marcarCambio, subirPendientes, descargarTodo, mostrarBadge, online, chequearYActualizar };
 
 })();
 
