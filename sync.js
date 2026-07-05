@@ -76,6 +76,20 @@ const LV_SYNC = (() => {
     return await r.json();
   }
 
+  // ── Borrar de verdad un registro en Supabase (no solo marcarlo) ─
+  //  Importante para tablas como 'horario' donde el id se reutiliza
+  //  (mismo día+bloque). Si solo se marca _eliminado, esa marca vieja
+  //  puede borrar una celda nueva que reutilice el mismo id.
+  async function eliminarRegistro(tabla, id) {
+    try {
+      const r = await fetch(`${URL}/rest/v1/${tabla}?id=eq.${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+        headers: HDR
+      });
+      return r.ok;
+    } catch (_) { return false; }
+  }
+
   // ── Registrar cambio local para sincronizar después ─────────
   function marcarCambio(lvKey, registro) {
     const cfg = MAPA[lvKey];
@@ -287,7 +301,7 @@ const LV_SYNC = (() => {
   }
 
   // ── API pública ──────────────────────────────────────────────
-  return { init, marcarCambio, subirPendientes, descargarTodo, mostrarBadge, online, chequearYActualizar };
+  return { init, marcarCambio, subirPendientes, descargarTodo, mostrarBadge, online, chequearYActualizar, eliminarRegistro };
 
 })();
 

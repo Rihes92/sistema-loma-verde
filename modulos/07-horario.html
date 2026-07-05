@@ -309,8 +309,10 @@ function guardarCelda(){
 function eliminarCelda(di,bi){
   if(DATA[di]&&DATA[di][bi]&&typeof LV_SYNC!=='undefined'){
     const _id=di+'_'+bi;
-    const _r=DATA[di][bi];
-    LV_SYNC.marcarCambio('lv_horario',{id:_id,dia:di,hora:bi,materia:_r.asig||'',curso:(_r.grado||'')+'°-'+(_r.grupo||''),aula:_r.nota||'',_eliminado:true});
+    // Borrado real en Supabase (no solo marcar _eliminado): así, si
+    // reutilizas la misma celda para otra clase después, no queda una
+    // marca vieja que la vuelva a borrar al sincronizar.
+    LV_SYNC.eliminarRegistro('horario',_id);
   }
   if(DATA[di])delete DATA[di][bi];
   lsW(DATA);renderGrilla();
