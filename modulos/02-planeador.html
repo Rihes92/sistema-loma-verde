@@ -612,6 +612,9 @@ function updateSizeMeter(){
 const TXT=['docente','numero','grupos','fecha','area','asignatura','unidad','sesiones','duracion','evidencias','competencias','contenidos','objetivo','pregunta','fundamentacion','lineatiempo','explora','talleres','transfer','clave','evaluacion','sintesis','errores','tarea','recursos','referencias','dua','observaciones','obsjefe','firmajefe'];
 function collect(){
   const o={id:editId||uid(),creado:Date.now()};
+  // Etiqueta el planeador con la materia activa, para que quede aislado
+  // de los planeadores de otras materias (igual que los cursos).
+  o.materia=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales';
   o.grado=$('#f-grado').value;o.periodo=$('#f-periodo').value;o.ejeIdx=$('#f-eje').value;
   TXT.forEach(f=>o[f]=$('#f-'+f).value.trim());
   o.glosario=readGlos();o.bloques=readBloques();o.banco=readBanco();o.anexos=anexos;
@@ -644,7 +647,9 @@ $('#btn-save').addEventListener('click',()=>{
   toast(ok?'Planeador guardado':'Guardado solo en memoria');
 });
 $('#btn-clear').addEventListener('click',()=>{
-  editId=null;TXT.forEach(f=>$('#f-'+f).value='');$('#f-area').value='Ciencias Sociales';$('#f-asignatura').value='Ciencias Sociales';
+  editId=null;TXT.forEach(f=>$('#f-'+f).value='');
+  $('#f-area').value=(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'Ciencias Sociales';
+  $('#f-asignatura').value=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Ciencias Sociales';
   $('#f-grado').value='';$('#f-eje').innerHTML='<option value="">—</option>';$('#ref-display').innerHTML='';
   $('#glosario-box').innerHTML='';$('#bloques-box').innerHTML='';$('#banco-box').innerHTML='';anexos=[];renderAnexos();
   $('#f-icfes-comp').value='';$('#card-icfes').style.display='none';$('#edit-flag').textContent='';toast('Formulario limpio');
@@ -655,6 +660,7 @@ $('#l-grado').addEventListener('change',renderLista);
 $('#l-periodo').addEventListener('change',renderLista);
 function renderLista(){
   const out=$('#lista-out');let all=lsRead('planeadores');
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
   const fg=$('#l-grado').value,fp=$('#l-periodo').value;
   if(fg)all=all.filter(p=>p.grado===fg);if(fp)all=all.filter(p=>p.periodo===fp);
   all.sort((a,b)=>(b.actualizado||b.creado)-(a.actualizado||a.creado));$('#doc-out').innerHTML='';

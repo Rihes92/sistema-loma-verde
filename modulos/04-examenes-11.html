@@ -424,6 +424,7 @@ function readItems(){
 // ---------- Guardar ----------
 function collect(){
   return {id:editId||uid(),creado:Date.now(),
+    materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',
     grado:$('#e-grado').value,compIdx:$('#e-comp').value,afirIdx:$('#e-afir').value,
     asignatura:$('#e-asignatura').value||'Ciencias Sociales',
     titulo:$('#e-titulo').value.trim(),docente:$('#e-docente').value.trim(),
@@ -451,7 +452,9 @@ $('#btn-clear').addEventListener('click',()=>{
 // ---------- Lista ----------
 $('#l-grado').addEventListener('change',renderLista);
 function renderLista(){
-  let all=lsRead('examenes');const fg=$('#l-grado').value;
+  let all=lsRead('examenes');
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
+  const fg=$('#l-grado').value;
   if(fg)all=all.filter(x=>x.grado===fg);
   all.sort((a,b)=>(b.actualizado||b.creado)-(a.actualizado||a.creado));
   $('#lista-out').innerHTML=all.length?all.map(x=>{
@@ -534,7 +537,8 @@ function renderBanco(){
     $('#bq-grado').addEventListener('change',renderBanco);$('#bq-q').addEventListener('input',renderBanco);_bqFilled=true;
   }
   const fg=$('#bq-grado').value,q=($('#bq-q').value||'').toLowerCase();
-  const all=lsRead('banco');
+  let all=lsRead('banco');
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
   const list=all.filter(x=>(!fg||x.grado===fg)&&(!q||((x.periodo||'')+' '+(x.tema||'')+' '+(x.competencia||'')+' '+(x.enunciado||'')+' '+(x.contexto||'')).toLowerCase().includes(q)));
   $('#bq-count').textContent=`${list.length} de ${all.length} pregunta(s)`;
   $('#bq-list').innerHTML=list.length?list.map(bqCard).join(''):'<div class="card empty">No hay preguntas con ese filtro. Importa un .json de preguntas.</div>';
@@ -574,19 +578,23 @@ $('#bq-del-sel').addEventListener('click',()=>{
   toast(`${ids.length} preguntas eliminadas`);
 });
 $('#bq-del-all').addEventListener('click',()=>{
-  const all=lsRead('banco');
-  if(!all.length)return toast('El banco ya está vacío');
-  if(!confirm(`¿ELIMINAR TODAS LAS ${all.length} PREGUNTAS DEL BANCO DE FORMA PERMANENTE?`))return;
-  if(typeof LV_SYNC!=='undefined'){all.forEach(y=>LV_SYNC.marcarCambio('lv_banco',Object.assign({},y,{_eliminado:true})));}
-  lsWrite('banco',[]);
+  const todo=lsRead('banco');
+  // Solo borra las preguntas de la materia activa, nunca el banco completo.
+  const propias=(typeof LV_CTX!=='undefined') ? LV_CTX.filtrar(todo) : todo;
+  if(!propias.length)return toast('El banco de esta materia ya está vacío');
+  if(!confirm(`¿ELIMINAR LAS ${propias.length} PREGUNTAS DEL BANCO DE ESTA MATERIA DE FORMA PERMANENTE?`))return;
+  const idsPropias=new Set(propias.map(y=>y.id));
+  if(typeof LV_SYNC!=='undefined'){propias.forEach(y=>LV_SYNC.marcarCambio('lv_banco',Object.assign({},y,{_eliminado:true})));}
+  lsWrite('banco',todo.filter(y=>!idsPropias.has(y.id)));
   renderBanco();
-  toast(`Todas las preguntas han sido eliminadas`);
+  toast(`Preguntas de esta materia eliminadas`);
 });
 $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
   try{const d=JSON.parse(await f.text());if(d.app!=='loma_verde_banco_preguntas')throw 0;
     const all=lsRead('banco');const ids=new Set(all.map(x=>x.id));let n=0;
     const periodoGlobal = (d.origen && d.origen.periodo) || '';
-    (d.preguntas||[]).forEach(p=>{if(!p.id)p.id=uid();if(!p.periodo && periodoGlobal)p.periodo=periodoGlobal;if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
+    const materiaActiva=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales';
+    (d.preguntas||[]).forEach(p=>{if(!p.id)p.id=uid();if(!p.periodo && periodoGlobal)p.periodo=periodoGlobal;if(!p.materia)p.materia=materiaActiva;if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
     if(JSON.stringify(all).length>4600000){toast('⚠️ El banco supera el límite de almacenamiento.');return;}
     lsWrite('banco',all);renderBanco();toast(n+' pregunta(s) importadas');
   }catch(_){toast('Archivo no válido');}e.target.value='';});
@@ -595,7 +603,8 @@ $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if
 $('#add-from-bank').addEventListener('click',openBankPicker);
 $('#mb-close').addEventListener('click',()=>$('#modal-banco').classList.add('hide'));
 function openBankPicker(){
-  const g=$('#e-grado').value;const all=lsRead('banco');
+  const g=$('#e-grado').value;let all=lsRead('banco');
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
   let list=all.slice();if(g&&all.some(x=>x.grado===g))list=all.filter(x=>x.grado===g);
   $('#mb-info').textContent=list.length?`Marca las preguntas a agregar al examen${g?' (filtradas para '+g+')':''}.`:'El banco está vacío. Importa preguntas en la pestaña “Banco de preguntas”.';
   $('#mb-list').innerHTML=list.map(x=>{const cor=x.tipo==='multiple'&&Number.isInteger(x.correcta)?'ABCD'[x.correcta]:(x.tipo==='vf'?(x.correcta?'V':'F'):'—');
