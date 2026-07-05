@@ -250,17 +250,6 @@ const AREAS = [
   { nombre:'Educación Física',             icono:'⚽', color:'#9a3412', bg:'#ffedd5', materias:['Educación Física'] },
 ];
 
-const MODULOS_HUB = [
-  { icon:'📊', label:'Calificaciones', href:'modulos/01-calificaciones.html' },
-  { icon:'🗂️', label:'Planeador',      href:'modulos/02-planeador.html' },
-  { icon:'📝', label:'Exámenes',       href:'modulos/03-examenes.html' },
-  { icon:'🎯', label:'Simulacros 11°', href:'modulos/04-examenes-11.html' },
-  { icon:'✅', label:'Asistencia',     href:'modulos/05-asistencia.html' },
-  { icon:'✉️', label:'Comunicados',    href:'modulos/06-comunicados.html' },
-  { icon:'🗓️', label:'Horario',        href:'modulos/07-horario.html' },
-  { icon:'📅', label:'Eventos',        href:'modulos/08-eventos.html' },
-];
-
 (function(){
   const wrap = document.getElementById('areas-grid');
   wrap.innerHTML = AREAS.map((area, ai) => `
@@ -272,13 +261,8 @@ const MODULOS_HUB = [
         <div class="area-caret">▾</div>
       </div>
       <div class="area-body">
-        ${area.materias.map((m,mi)=>`<div class="materia-chip" style="background:${area.bg};color:${area.color}" onclick="toggleMateria(${ai},${mi},event)">${m}</div>`).join('')}
+        ${area.materias.map((m,mi)=>`<div class="materia-chip" style="background:${area.bg};color:${area.color}" onclick="irAMateria('${encodeURIComponent(area.nombre)}','${encodeURIComponent(m)}',event)">${m}</div>`).join('')}
       </div>
-      ${area.materias.map((m,mi)=>`
-        <div class="materia-hub" id="hub-${ai}-${mi}">
-          <div class="materia-hub-title">${area.nombre} · ${m}</div>
-          ${MODULOS_HUB.map(mod=>`<a href="${mod.href}?area=${encodeURIComponent(area.nombre)}&materia=${encodeURIComponent(m)}">${mod.icon} ${mod.label}</a>`).join('')}
-        </div>`).join('')}
     </div>
   `).join('');
 })();
@@ -286,13 +270,9 @@ const MODULOS_HUB = [
 function toggleArea(ai){
   document.getElementById('area-'+ai).classList.toggle('open');
 }
-function toggleMateria(ai, mi, e){
+function irAMateria(area, materia, e){
   e.stopPropagation();
-  // Cierra otros hubs abiertos en la misma área para no saturar
-  document.querySelectorAll(`#area-${ai} .materia-hub`).forEach(h=>{
-    if(h.id!==`hub-${ai}-${mi}`) h.classList.remove('show');
-  });
-  document.getElementById(`hub-${ai}-${mi}`).classList.toggle('show');
+  location.href = `materia-hub.html?area=${area}&materia=${materia}`;
 }
 
 // ── FECHA ─────────────────────────────────────────────────────
