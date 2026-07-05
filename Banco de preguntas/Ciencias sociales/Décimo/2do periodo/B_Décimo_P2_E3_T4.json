@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Segundo Periodo",
+    "unidad": "Eje 3: Historia del conflicto armado e incidencia sociocultural",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750078801aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Por qué el proceso de paz con el M-19 fue exitoso mientras el intento con la Unión Patriótica (1984-1993) fracasó? ¿Qué lección dejaron para el Acuerdo de 2016?",
+      "respuesta": "El M-19 fue exitoso porque sus integrantes participaron en la Asamblea Constituyente de 1991 y contribuyeron a la Constitución. La UP fracasó porque más de 3.000 de sus miembros fueron asesinados por paramilitares y sectores del Estado (genocidio político según la Corte IDH). La lección para el Acuerdo de 2016: se crearon mecanismos específicos de seguridad para excombatientes (zonas de transición, escoltas) y la JEP para garantizar que nadie que cooperara con la justicia fuera perseguido ilegalmente.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750078801aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Describe los seis puntos del Acuerdo de Paz de 2016 y explica cómo el Punto 1 aborda la causa más profunda del conflicto colombiano.",
+      "respuesta": "Los seis puntos son: 1) Reforma Rural Integral (redistribución de tierra, servicios para el campo), 2) Participación Política (excombatientes en democracia), 3) Fin del Conflicto (cese al fuego, dejación de armas), 4) Solución al Problema de Drogas Ilícitas (sustitución de coca), 5) Víctimas (JEP, Comisión de la Verdad, Unidad de Búsqueda), 6) Implementación y Verificación. El Punto 1 ataca la causa estructural más profunda: la concentración de la tierra y el abandono del campo que generaron la guerrilla. Sin cambio en la distribución de la tierra, los jóvenes campesinos sin opciones seguirán siendo vulnerables al reclutamiento.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750078801aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Qué es la justicia transicional y cómo equilibra los objetivos de justicia y paz? ¿Qué hace la JEP que un tribunal penal ordinario no hace?",
+      "respuesta": "La justicia transicional equilibra justicia y paz ofreciendo penas alternativas a quienes reconocen responsabilidad, dicen la verdad y reparan a las víctimas. La JEP juzga los crímenes más graves del conflicto de todos los actores con un sistema diferente al tribunal ordinario: acepta reconocimiento de responsabilidad para una pena reducida y restaurativa; la pena puede ser trabajo en zonas afectadas o restricción de libertad, no cárcel convencional; el objetivo principal es la verdad y la reparación, no el castigo punitivo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750078801aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Explica los cuatro principios de la negociación de Harvard y aplícalos a un conflicto comunitario concreto de una vereda cafetera.",
+      "respuesta": "Los cuatro principios son: 1) Separar las personas del problema: el conflicto es entre intereses, no entre personas enemigas. 2) Enfocarse en intereses, no en posiciones: el interés es 'quiero agua para mi cultivo', no 'quiero toda el agua'. 3) Generar opciones de mutuo beneficio: buscar soluciones donde todos ganan algo. 4) Usar criterios objetivos: la ley, la costumbre o estudios técnicos. Aplicación al conflicto del agua de la vereda: posiciones incompatibles vs. intereses compatibles (ambas familias necesitan agua); solución creativa: acuerdo de turnos + reforestación del nacimiento; criterio objetivo: Decreto 1076/2015 y prioridad del consumo humano.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750078801aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Por qué el Acuerdo de Paz de 2016 fue una negociación y no una rendición? ¿Qué cedió el gobierno y qué cedieron las FARC?",
+      "respuesta": "Fue una negociación porque ambas partes cedieron cosas significativas. El gobierno cedió: reconocer causas políticas legítimas del conflicto, crear la JEP (jurisdicción especial no convencional), comprometerse a la Reforma Rural, y otorgar participación política a excombatientes. Las FARC cedieron: deponer las armas, reconocer sus crímenes ante la JEP, abandonar la vía armada como herramienta política, y aceptar que sus líderes respondan jurídicamente. Ninguna de las dos partes obtuvo todo lo que quería: eso es la definición de una negociación.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750078801fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El M-19 fue la primera guerrilla colombiana en desarmarse y participar exitosamente en la vida política democrática, contribuyendo a la Constitución de 1991.",
+      "correcta": true,
+      "justificacion": "Verdadero. El M-19 depuso las armas en 1990 y se convirtió en la Alianza Democrática M-19. Sus integrantes participaron activamente en la Asamblea Nacional Constituyente de 1991, que produjo la Constitución Política vigente. Es el ejemplo más exitoso de transición de guerrilla a partido político en la historia colombiana."
+    },
+    {
+      "id": "lv1750078801fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El Acuerdo de Paz de 2016 otorgó amnistía total a todos los integrantes de las FARC, incluidos los responsables de masacres y desapariciones forzadas.",
+      "correcta": false,
+      "justificacion": "Falso. El Acuerdo otorgó amnistías solo para delitos políticos (rebelión, sedición), pero NO para crímenes de lesa humanidad como masacres, desaparición forzada, violencia sexual y reclutamiento de menores. Estos deben ser juzgados por la JEP, que puede imponer penas alternativas a la cárcel a cambio de verdad, reconocimiento de responsabilidad y reparación."
+    },
+    {
+      "id": "lv1750078801fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Comisión de la Verdad tiene función judicial: puede juzgar y condenar a los responsables de crímenes del conflicto.",
+      "correcta": false,
+      "justificacion": "Falso. La Comisión de la Verdad tiene función de esclarecimiento histórico, no judicial. No puede juzgar ni condenar a nadie: su mandato es escuchar testimonios para establecer qué ocurrió. La función judicial corresponde a la JEP. La Comisión colombiana funcionó entre 2018 y 2022 y publicó 'Hay futuro si hay verdad'."
+    },
+    {
+      "id": "lv1750078801fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Los principios de negociación de Harvard solo son aplicables a grandes negociaciones políticas, no a conflictos comunitarios.",
+      "correcta": false,
+      "justificacion": "Falso. Los principios de Fisher y Ury son universales y aplicables en cualquier escala: desde una negociación internacional hasta una disputa comunitaria por el agua. Los propios autores los ilustran con ejemplos cotidianos y los proponen como herramienta para cualquier situación de conflicto de intereses."
+    },
+    {
+      "id": "lv1750078801fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Cuba y Noruega actuaron como países garantes del proceso de paz entre el gobierno colombiano y las FARC en La Habana.",
+      "correcta": true,
+      "justificacion": "Verdadero. Cuba y Noruega fueron los países garantes del proceso de paz de La Habana (2012-2016), garantizando la neutralidad del espacio y respaldando internacionalmente los compromisos adquiridos. Venezuela y Chile actuaron como acompañantes. La presencia de garantes internacionales fue una condición para que las FARC confiaran en el proceso."
+    },
+    {
+      "id": "lv1750078801sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "Colombia tiene una historia de múltiples procesos de paz con diferentes resultados.",
+      "enunciado": "¿Cuál fue el proceso de paz colombiano que produjo la Constitución Política de 1991?",
+      "opciones": ["Las negociaciones del Caguán entre el gobierno Pastrana y las FARC.", "La desmovilización del M-19 y su participación en la Asamblea Constituyente.", "El proceso de paz del gobierno Betancur con la creación de la Unión Patriótica.", "La Política de Seguridad Democrática del gobierno Uribe."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El M-19 depuso las armas en 1990 y participó en la Asamblea Nacional Constituyente de 1991, que produjo la Constitución Política vigente. Este proceso es el único en la historia colombiana donde una guerrilla logró una transición política exitosa que transformó el marco institucional del país."
+    },
+    {
+      "id": "lv1750078801sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "El exterminio de la Unión Patriótica fue uno de los eventos más oscuros de la historia política colombiana.",
+      "enunciado": "¿Cuántos miembros de la Unión Patriótica (UP) fueron asesinados entre 1984 y 1993?",
+      "opciones": ["Más de 300 personas.", "Más de 1.000 personas.", "Más de 3.000 personas.", "Más de 10.000 personas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Más de 3.000 miembros de la Unión Patriótica, incluyendo dos candidatos presidenciales, fueron asesinados por paramilitares y sectores del Estado entre 1984 y 1993. La Corte Interamericana de Derechos Humanos calificó este exterminio como genocidio político, lo que convirtió a Colombia en el primer Estado condenado por esta causa ante esa instancia."
+    },
+    {
+      "id": "lv1750078801sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "El Acuerdo de Paz de 2016 es el documento de resolución de conflicto más extenso y comprehensivo de la historia colombiana.",
+      "enunciado": "¿Cuántos puntos tiene el Acuerdo de Paz de 2016?",
+      "opciones": ["Tres puntos.", "Cuatro puntos.", "Seis puntos.", "Ocho puntos."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El Acuerdo Final tiene seis puntos: Reforma Rural Integral, Participación Política, Fin del Conflicto, Solución al Problema de Drogas Ilícitas, Víctimas (JEP, Comisión de la Verdad, Unidad de Búsqueda) e Implementación y Verificación. Cada punto aborda una dimensión diferente de las causas y consecuencias del conflicto."
+    },
+    {
+      "id": "lv1750078801sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "El Acuerdo de Paz buscó resolver las causas estructurales del conflicto, no solo el cese de hostilidades.",
+      "enunciado": "¿Cuál de los seis puntos del Acuerdo aborda la redistribución de tierras y el cierre de brechas entre campo y ciudad?",
+      "opciones": ["Punto 2: Participación Política.", "Punto 3: Fin del Conflicto.", "Punto 1: Reforma Rural Integral.", "Punto 5: Víctimas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La Reforma Rural Integral es el primer punto del Acuerdo y promete redistribuir tres millones de hectáreas a campesinos sin tierra, formalizar siete millones de hectáreas de pequeñas propiedades y cerrar las brechas de acceso a servicios entre el campo y la ciudad. Es considerado el punto más importante porque ataca la causa estructural agraria del conflicto."
+    },
+    {
+      "id": "lv1750078801sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "El sistema integral de justicia transicional tiene componentes con funciones específicas y distintas.",
+      "enunciado": "¿Qué tribunal fue creado por el Acuerdo de Paz de 2016 para juzgar los crímenes más graves del conflicto?",
+      "opciones": ["La Corte Penal Internacional (CPI).", "La Fiscalía General de la Nación.", "La Jurisdicción Especial para la Paz (JEP).", "El Consejo de Estado."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La JEP fue creada específicamente por el Acuerdo de Paz para juzgar los crímenes más graves cometidos por todos los actores del conflicto (guerrilleros, militares, paramilitares, agentes del Estado y civiles). Ofrece penas alternativas a la cárcel convencional a quienes reconozcan responsabilidad, digan la verdad y reparen a las víctimas."
+    },
+    {
+      "id": "lv1750078801sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Los principios de negociación de Harvard ayudan a superar los bloqueos más comunes en los procesos de diálogo.",
+      "enunciado": "¿En qué principio de negociación se basa la recomendación de preguntarle al otro '¿por qué pides eso?' en lugar de solo escuchar lo que pide?",
+      "opciones": ["Separar las personas del problema.", "Enfocarse en intereses, no en posiciones.", "Generar opciones de mutuo beneficio.", "Usar criterios objetivos."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Preguntar '¿por qué pides eso?' ayuda a descubrir el interés real detrás de la posición declarada. La posición es lo que alguien dice que quiere ('quiero toda el agua'); el interés es por qué lo quiere ('porque mi cosecha se seca sin riego en verano'). Trabajar sobre los intereses abre soluciones que las posiciones rígidas imposibilitan."
+    },
+    {
+      "id": "lv1750078801sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "El Acuerdo de Paz fue el resultado de más de cuatro años de negociaciones en La Habana, Cuba.",
+      "enunciado": "¿En qué año se firmó definitivamente el Acuerdo de Paz entre el gobierno colombiano y las FARC?",
+      "opciones": ["2012.", "2014.", "2016.", "2018."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El Acuerdo Final fue firmado el 24 de noviembre de 2016 en Bogotá, tras más de cuatro años de negociaciones en La Habana. Un primer acuerdo fue rechazado en el plebiscito del 2 de octubre de 2016, pero después de ajustes fue refrendado por el Congreso el 24 de noviembre del mismo año."
+    },
+    {
+      "id": "lv1750078801sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "La presencia de garantes internacionales fue fundamental para que las partes confiaran en el proceso de paz.",
+      "enunciado": "¿Qué países actuaron como garantes del proceso de paz entre el gobierno colombiano y las FARC?",
+      "opciones": ["Estados Unidos y Francia.", "Cuba y Noruega.", "México y Argentina.", "Brasil y Ecuador."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Cuba y Noruega actuaron como garantes del proceso de paz de La Habana, garantizando la neutralidad del espacio de negociación y respaldando internacionalmente los compromisos. Venezuela y Chile fueron acompañantes con un rol menor. La elección de Cuba fue estratégica porque tenía credibilidad ante las FARC."
+    },
+    {
+      "id": "lv1750078801sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La teoría de la negociación de Harvard identifica cuatro principios aplicables a cualquier tipo de conflicto.",
+      "enunciado": "Según el libro 'Sí, de acuerdo' de Fisher y Ury, ¿cuál es el primer principio de la negociación?",
+      "opciones": ["Generar opciones de mutuo beneficio antes de negociar.", "Determinar quién tiene más poder para llegar al mejor acuerdo.", "Separar a las personas del problema para no personalizar el conflicto.", "Establecer una posición inicial muy alta para tener margen de ceder."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El primer principio de Fisher y Ury es separar a las personas del problema: tratar el conflicto como un problema compartido que las partes deben resolver juntas, en lugar de una batalla entre personas enemigas. Esto permite mantener una relación de trabajo incluso cuando los intereses están en tensión."
+    },
+    {
+      "id": "lv1750078801sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · El diálogo y la negociación política como recursos mediadores",
+      "competencia": "Pensamiento social",
+      "contexto": "El sistema integral de justicia transicional tiene componentes con funciones específicas y distintas.",
+      "enunciado": "¿Cuál de las siguientes NO es una función de la Comisión de la Verdad?",
+      "opciones": ["Escuchar los testimonios de víctimas, victimarios y testigos del conflicto.", "Juzgar y condenar a los responsables de crímenes del conflicto.", "Publicar un informe histórico sobre lo ocurrido durante el conflicto.", "Promover el reconocimiento de la verdad en la sociedad colombiana."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta: juzgar y condenar NO es función de la Comisión de la Verdad. Esta tiene mandato de esclarecimiento histórico —escuchar, documentar, publicar— no judicial. La función de juzgar corresponde a la JEP. La distinción es fundamental: la Comisión busca la verdad para la memoria y la reconciliación; la JEP busca la verdad para la justicia y la reparación."
+    }
+  ]
+}

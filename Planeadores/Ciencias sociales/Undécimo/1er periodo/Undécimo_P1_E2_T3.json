@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T18:55:42Z",
+  "planeadores": [
+    {
+      "id": "p11p1-dilemacontemporaneo-007",
+      "creado": 1781902542,
+      "grado": "Undécimo",
+      "periodo": "Primer periodo",
+      "ejeIdx": 2,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "7",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "El dilema contemporáneo entre la expansión industrial y el amparo de la supervivencia humana",
+      "unidad": "Eje 2: Explotación de la tierra arable y riesgos de la biotecnología",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Analiza críticamente informes científicos sobre la degradación de suelos, explaining su impacto directo en el desabastecimiento de alimentos o el encarecimiento de la canasta familiar.* Diseña cartografías de vulnerabilidad ecológica o planes de contingencia escolar para el manejo consciente de cuencas hídricas locales.\nSer:* Respalda con argumentos lógicos la urgencia de establecer límites éticos a la explotación indiscriminada de materias primas.",
+      "competencias": "* Pensamiento reflexivo y sistémico.\n\n* Interpretación y análisis de perspectivas.",
+      "contenidos": "* La alteración de los ecosistemas productivos y la pérdida de la soberanía alimentaria.\n* Factores de riesgo sobre el suelo agrícola: la desertización y la inserción de cultivos transgénicos.\n* El dilema contemporáneo entre la expansión industrial y el amparo de la supervivencia humana.",
+      "objetivo": "Evaluar de forma crítica las tensiones estructurales del dilema contemporáneo entre la expansión industrial y el amparo de la supervivencia humana mediante el análisis sistémico de los impactos del extractivismo sobre la tierra arable, con la finalidad de que los estudiantes propongan alternativas normativas y planes de contingencia locales orientados a salvaguardar los bienes comunes en su comunidad rural.",
+      "pregunta": "¿Hasta qué punto el modelo macroeconómico de crecimiento industrial ilimitado es compatible con el amparo de los derechos bioculturales y la soberanía alimentaria familiar del campesinado nativo?",
+      "explora": "Conversatorio inicial guiado: el docente introduce la sesión planteando una situación hipotética donde una empresa transnacional minera o agroindustrial adquiere los títulos de explotación sobre las tierras altas de Loma Verde, prometiendo empleos pero requiriendo desviar el arroyo veredal. Invita a los estudiantes a debatir los pros y contras. Como actividad corta, la clase recibe tarjetas con conceptos contrapuestos (externalización de costos, acumulación por desposesión, derechos bioculturales, rentabilidad del capital) y pasan al tablero a organizarlas en un esquema de balanza que ilustre el conflicto entre la expansión fabril y la subsistencia.",
+      "glosario": [
+        {
+          "t": "capitalismo extractivista",
+          "d": "modelo de acumulación macroeconómica fundado en la remoción intensiva y masiva de grandes volúmenes de materias primas naturales sin procesar, orientadas predominantemente a los mercados comerciales de exportación global."
+        },
+        {
+          "t": "derechos bioculturales",
+          "d": "categoría jurídica que reconoce el nexo inalienable existente entre los colectivos humanos étnicos o campesinos tradicionales y sus ecosistemas productivos, amparando sus saberes vernáculos de gestión ecológica."
+        },
+        {
+          "t": "bienes comunes globales",
+          "d": "recursos biofísicos indispensables para el sostenimiento de la biosfera (como el agua limpia, la atmósfera y el suelo fértil) que quedan fuera de los regímenes de propiedad privada y exigen una gobernanza colectiva."
+        },
+        {
+          "t": "externalización de costos",
+          "d": "práctica corporativa consistente en transferir los pasivos ambientales y los daños ecológicos derivados de una actividad industrial pesada hacia la sociedad civil y las periferias geográficas rurales sin asumir compensaciones."
+        },
+        {
+          "t": "acumulación por desposesión",
+          "d": "teoría económica que describe cómo el capital expande sus fronteras expropiando los patrimonios comunales, las tierras arables tradicionales y los recursos hídricos públicos para integrarlos a circuitos privados de lucro."
+        },
+        {
+          "t": "justicia distributiva",
+          "d": "principio ético-político que persigue el reparto equitativo de las cargas ambientales, los costos ecológicos y los beneficios económicos entre los diferentes actores de una sociedad, amparando a los sectores vulnerables."
+        },
+        {
+          "t": "metabolismo social",
+          "d": "flujo continuo de energía y materiales que las formaciones socioeconómicas extraen de la naturaleza, transforman para el consumo y excretan en forma de desechos hacia los sumideros de la biósfera."
+        },
+        {
+          "t": "límites biofísicos",
+          "d": "umbrales críticos e innegociables de los sistemas ecológicos que, al ser transgredidos por la presión industrial antrópica, desencadenan puntos de no retorno y desestructuraciones ambientales irreversibles."
+        },
+        {
+          "t": "ecorregión estratégica",
+          "d": "unidad geográfica delimitada que alberga ecosistemas y cuencas hídricas indispensables para la seguridad hídrica, la soberanía alimentaria y la estabilidad climática de las poblaciones humanas circundantes."
+        },
+        {
+          "t": "racionalidad ambiental",
+          "d": "paradigma de pensamiento que deconstruye la lógica del mercado mercantil corporativo de corto plazo para fundar la organización comunitaria en la sustentabilidad ecológica y los derechos colectivos a la vida."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La lógica de la expansión industrial: la colonización de las periferias agrarias",
+          "txt": "El despliegue de la industrialización contemporánea exige un flujo ininterrumpido de energía y materiales que presiona las fronteras agropecuarias mundiales. Bajo la racionalidad del mercado mercantil globalizado, la tierra arable y las cuencas hídricas locales dejan de ser interpretadas como soportes vitales de la soberanía alimentaria para transformarse en activos geográficos de explotación extractivista pesada. Esta expansión industrial coloniza los entornos rurales mediante la implantación de infraestructura a gran escala, compitiendo de manera asimétrica por los recursos de los que depende el campesinado nativo tradicional para sus policultivos de pancoger.",
+          "pausa": "Teniendo en cuenta las directrices ortotípicas innegociables de este diseño, ¿cómo opera el uso de las mayúsculas iniciales tras el signo de dos puntos?",
+          "resp": "Después de : se debe escribir rigurosamente con letra minúscula, exceptuando de forma exclusiva los casos donde prosiga un nombre propio o se inicie formalmente el desarrollo de una cita textual directa."
+        },
+        {
+          "tit": "El amparo de la supervivencia humana: los límites éticos al crecimiento del capital",
+          "txt": "Frente al imperativo del Producto Interno Bruto que promueve el crecimiento económico ilimitado, ecoregiones enteras sufren pasivos ambientales insostenibles. El amparo de la supervivencia humana exige la construcción de una ética de los límites biofísicos, reconociendo que los sumideros y recursos del planeta no son infinitos. Cuando los complejos industriales externalizan sus costos contaminando arroyos y compactando horizontes de la corteza edáfica, conculcan los derechos colectivos a la salud y a la alimentación. Es allí donde la soberanía agraria y los derechos bioculturales se erigen como trincheras normativas indispensables para imponer frenos institucionales al lucro privado transnacional.",
+          "pausa": "¿Por qué la noción de bienes comunes globales colisiona directamente con el derecho de propiedad privada corporativa?",
+          "resp": "Porque los bienes comunes postulan que recursos como el suelo arable y el agua potable pertenecen de forma colectiva a la humanidad entera y no pueden ser cercados ni degradados para el beneficio financiero particular."
+        },
+        {
+          "tit": "Tensiones socioterritoriales: el conflicto por el uso del suelo usable",
+          "txt": "Las fricciones entre los planes de expansión fabril y las agendas autónomas de conservación campesina configuran agudos conflictos socioterritoriales en las periferias. Las agencias del Estado centralizado suelen priorizar el otorgamiento de licencias extractivistas bajo discursos de progreso nacional macroeconómico. Sin embargo, estas directrices verticales chocan de forma violenta con la realidad material del pequeño minifundio tradicional, el cual sufre desestructuración agraria debido a la pérdida del agua y el resecamiento edáfica provocado por las obras industriales vecinas, forzando debates urgentes sobre el control local del territorio agrario.",
+          "pausa": "¿Cómo puede la sociedad civil rural contrarrestar la asimetría política frente a los megaproyectos industriales?",
+          "resp": "Mediante la formulación de alternativas normativas locales, el uso de cartografías de vulnerabilidad ecológica y el ejercicio democrático de la movilización comunitaria fundamentada en el amparo constitucional."
+        }
+      ],
+      "talleres": "Instrucciones metodológicas detalladas para el taller de estructuración interactivo: los estudiantes se organizarán en mesas analíticas de concertación socioterritorial compuestas por cuatro integrantes, asumiendo roles simulados de delegados gubernamentales, defensores de los derechos bioculturales campesinos, apoderados de gremios industriales y veedores de agencias ambientales de la ONU. Cada mesa analizará un informe abreviado sobre un megaproyecto agroindustrial o minero en el norte de Colombia. En un pliego de papel periódico, deberán construir una matriz analítica multidimensional que responda a las siguientes variables obligatorias:\n1. Nombre y descripción del factor de expansión industrial evaluado.\n2. Demandas materiales que el proyecto impone sobre el suelo agrícola y el agua de las cuencas hídricas locales.\n3. Pasivos ambientales esperados y externalización de costos identificada en el entorno rural periférico.\n4. Impactos directos detectados sobre la soberanía alimentaria familiar tradicional de pancoger.\n5. Formulación argumentada de una alternativa normativa local o límite ético institucional indispensable para mitigar el riesgo.\nCada equipo designará un portavoz para sustentar su pliego en una asamblea general de aula.",
+      "transfer": "Actividades estructuradas de transferencia de saberes de aula aplicados a la geografía crítica:\n1. Estudio de caso macroeconómico y sociojurídico: se expone a los estudiantes una síntesis analítica del conflicto ecológico y distributivo en torno al desvío del arroyo Bruno en la Guajira por la explotación de carbón a gran escala, evaluando el choque entre las sentencias judiciales de amparo ético y las licencias comerciales otorgadas a multinacionales transnacionales. Los estudiantes resolverán un cuestionario crítico escrito analizando los riesgos que depara supeditar la supervivencia hídrica indígena y campesina al Producto Interno Bruto nacional.\n2. Reflexión analítica del entorno local regional: los estudiantes realizarán un diagnóstico descriptivo cualitativo autónomo en el corregimiento de Loma Verde en Montería mediante entrevistas con líderes comunitarios o parceleros tradicionales de su propio hogar, indagando si los discursos institucionales de desarrollo industrial agropecuario promovidos por los macro-proyectos regionales respetan los linderos tradicionales o si han generado desecación en las microcuencas hídricas veredales del sector. Redactarán un ensayo argumentativo escrito de dos páginas ligando los hallazgos locales con las deudas históricas del desarrollo agrario regional.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia y contextualización analítica:\n1. En el examen del estudio de caso del arroyo Bruno, la respuesta modelo debe estructurar argumentativamente que el desvío de una cuenca hídrica natural para priorizar la minería de exportación constituye una transgresión de los límites biofísicos de la ecorregión y un acto de acumulación por desposesión. Demuestra que el marco normativo estatal suele exhibir un sesgo macroeconómico que devalúa los derechos bioculturales de las minorías étnicas y campesinas, supeditando el amparo de la vida biológica a la rentabilidad del capital corporativo de las potencias industriales mundiales.\n2. En el ensayo aplicado a Loma Verde, la respuesta esperada del estudiante debe evidenciar de forma lógica que la expansión de infraestructuras comerciales o haciendas extensivas de ganadería degradante de suelos en las inmediaciones del corregimiento altera el metabolismo social local. Al compactarse la tierra arable y deforestarse las márgenes de los arroyos veredales dispersos por presiones de mercado mercantil, se destruye la base biofísica que sostiene el sistema de pancoger tradicional de las familias campesinas nativas. El consecuente desabastecimiento de maíz y yuca echa por tierra la soberanía alimentaria del territorio usable, obligando a los hogares a depender de alimentos encarecidos en las centrales urbanas de Montería, confirmando la urgencia ética de fijar límites institucionales a la explotación de materias primas.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño pedagógico institucional:\n* Superior: analiza y evalúa de manera sistémica y con un lenguaje técnico excelente las contradicciones del dilema contemporáneo entre expansión industrial y supervivencia humana, interpretando informes de pasivos ambientales con alto rigor crítico y formulando alternativas normativas locales perfectamente viables para Loma Verde, citando pulcritud de fuentes para evitar el plagio.\n* Alto: explica de forma correcta el concepto de externalización de costos, diferencia los impactos biofísicos de la industria pesada sobre la tierra arable y completa las matrices analíticas aportando juicios lógicos sustentados.\n* Básico: describe las problemáticas generales del conflicto agrario (contaminación, disputas por tierras) de forma enunciativa, pero presenta dificultades conceptuales al trazar nexos causales de orden macroeconómico o al estructurar planes de contingencia comunitarios.\n* Bajo: presenta confusión grave al definir los límites biofísicos, confunde la rentabilidad económica con los derechos bioculturales o carece de capacidad argumentativa para reflexionar críticamente sobre su entorno rural periférico.\nInstrumentos seleccionados: rúbrica cualitativa para evaluación de matrices de concertación socioterritorial, lista de cotejo para debates de control político escolar y portafolio escrito de ensayos argumentativos de contexto rural.",
+      "recursos": "Copias impresas de fragmentos de la Constitución Política de Colombia (derechos colectivos), datos sintéticos de informes de la CVS sobre pasivos ambientales en el Sinú, mapas mudos de la subregión cordobesa, guías estructuradas de talleres, pliegos de papel periódico y marcadores.",
+      "referencias": "Información oficial extraída del archivo \"Actual - Malla curricular - Ciencias sociales_15.xlsx\":\n* Estándares Básicos de Competencias (EBC): Explico y evalúo el impacto del desarrollo industrial y tecnológico sobre el medio ambiente y el ser humano.\n* Derechos Básicos de Aprendizaje (DBA): DBA 1 (Parcial): Propuestas colectivas de conservación frente a los pasivos ambientales del modelo agroindustrial masivo.\nFuentes bibliográficas adicionales de rigor académico científico:\n* Harvey, D. (2004). El nuevo imperialismo: acumulación por desposesión y la expropiación de los bienes comunes globales. Madrid: Akal.\n* Martinez Alier, J. (2011). El ecologismo de los pobres: conflictos ecológicos y lenguajes de valoración en la gobernanza ambiental. Barcelona: Icaria Editorial.\n* Leff, E. (2004). Racionalidad ambiental: la deconstrucción del capitalismo extractivista y la reconstrucción del territorio agrario. México: Siglo XXI.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje (DUA) adaptadas al aula:\n* Frente a barreras de lectoescritura o dificultades de comprensión abstracta: provisión de esquemas gráficos interactivos en colores que modelen el circuito de la externalización de costos y diagramas institucionales de flujo que aclaren los pasos de una consulta previa comunitaria mediante flechas explícitas. Uso de muestras de suelo locales.\n* Para estudiantes con ritmos de aprendizaje avanzados o alta motivación: asignación de una monografía analítica escrita breve sobre la efectividad jurídica de la teoría de la naturaleza como sujeto de derechos inalienables en la jurisprudencia de la Corte Interinstitucional de Derechos Humanos.\n* Diseño de trabajo cooperativo estructurado y equitativo: conformación de los grupos adjudicando roles de responsabilidad formal obligatorios (relator técnico normativo, cartógrafo de pasivos ecológicos, analista de economía familiar campesina veredal, portavoz de asamblea) para garantizar una participación corresponsable y democrática según potencialidades.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El dilema contemporáneo contrapone la lógica del crecimiento industrial macroeconómico ilimitado con los límites biofísicos de la biósfera.",
+        "El capitalismo extractivista coloniza las periferias rurales convirtiendo la tierra arable usable en una mercancía de exportación transnacional.",
+        "La externalización de costos corporativos transfiere de forma asimétrica los pasivos ambientales de la gran industria hacia el campesinado campesino.",
+        "La desestructuración de los ecosistemas productivos tradicionales por megaproyectos privados aniquila de forma directa la soberanía alimentaria veredal.",
+        "Las alternativas normativas locales y las cartografías de vulnerabilidad ecológica operan como herramientas de resistencia ciudadana autónoma."
+      ],
+      "errores": [
+        "Creer que la expansión industrial pesada genera un desarrollo económico simétrico que beneficia por igual a las corporaciones y al campesinado nativo: se debe corregir demostrando que el modelo extractivista introduce procesos de acumulación por desposesión que empobrecen al agro tradicional al arruinar el capital natural local.",
+        "Suponer que los pasivos ambientales de una multinacional son absorbidos y pagados financieramente por la misma empresa a través de impuestos ordinarios: es imperativo aclarar que las corporaciones externalizan sus costos, trasladando la degradación de los suelos y la contaminación hídrica hacia las familias de la vereda.",
+        "Pensar que las normas nacionales de ordenamiento territorial rurales son suficientes para frenar de forma inmediata el despojo hídrico de la agroindustria: se debe precisar que el SINA centralizado suele exhibir debilidades institucionales ante las presiones de los lobbies macroeconómicos transnacionales.",
+        "Considerar que el amparo de la supervivencia humana exige la paralización absoluta de todas las actividades técnicas humanas del campo: se debe matizar explicando que lo que se persigue es transitar desde la racionalidad del mercado mercantil ilimitado hacia una racionalidad ambiental agroecológica respetuosa de las capacidades de carga."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo opera la categoría teórica de acumulación por desposesión formulada por David Harvey dentro de los conflictos socioterritoriales agrarios contemporáneos?",
+          "a": "Operación privatizando de manera forzosa recursos que antes eran comunales o públicos, tales como las tierras arables tradicionales o las fuentes de agua de las microcuencas locales, transformándolos en activos productivos privados exclusivos controlados por el gran capital industrial transnacional.",
+          "verdadero": null,
+          "justificacion": "Esta dinámica desplaza materialmente los policultivos campesinos de subsistencia para expandir la frontera de explotación extractivista pesada en beneficio corporativo.",
+          "enunciado": "Evaluación de las transformaciones espaciales y socioeconómicas del espacio agrario bajo el amparo de la gobernanza global del capital.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué se entiende por externalización de costos ambientales en la dinámica de las corporaciones multinacionales transnacionales pesadas?",
+          "a": "Es la transferencia de los pasivos ecológicos, la degradación de suelos, el resecamiento hídrico y la contaminación química generados en la cadena productiva industrial hacia las poblaciones civiles periféricas y los ecosistemas, omitiendo incorporarlos en sus contabilidades de costos.",
+          "verdadero": null,
+          "justificacion": "La externalización maximiza la rentabilidad financiera corporativa privada a expensas de deprimir la calidad de vida y la soberanía alimentaria campesina del entorno.",
+          "enunciado": "Análisis macroeconómico de los fallos de mercado y las deudas ecológicas globales contraídas con el sur global.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la función política e institucional que cumplen los derechos bioculturales dentro de las demandas de las comunidades agrarias nativas?",
+          "a": "Cumplen la función de actuar como un blindaje jurídico convencional que reconoce el nexo orgánico entre la supervivencia de una cultura tradicional del campo y la protección de sus ecosistemas, facultando la defensa autónoma de sus semillas nativas tradicionales y aguas comunitarias.",
+          "verdadero": null,
+          "justificacion": "Esta categoría de amparo constitucional limita la intervención desregulada del extractivismo industrial en los territorios de las minorías étnicas y campesinas.",
+          "enunciado": "Estudio del bloque de constitucionalidad y el control de convencionalidad ambiental en el Estado social de derecho.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo influye la transgresión de los límites biofísicos planetarios en el recrudecimiento del desabastecimiento alimentario local regional?",
+          "a": "Influye al desatar puntos de no retorno en los ciclos hidrológicos y climáticos continentales, provocando variaciones extremas en la tropósfera (sequías prolongadas, olas térmicas) que aniquilan la fertilidad de la tierra arable tradicional, deprimiendo el volumen físico de las siembras de pancoger.",
+          "verdadero": null,
+          "justificacion": "El colapso de las funciones metabólicas de los horizontes de la corteza edáfica rompe la resiliencia agraria de los minifundios, induciendo inflación en los precios de la canasta familiar.",
+          "enunciado": "Diagnóstico edafológico y sistémico del impacto del forzamiento radiativo positivo global sobre la agricultura campesina tradicional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué variables lógicas deben incorporarse de forma obligatoria al formular alternativas normativas comunales autónomas frente a la minería masiva?",
+          "a": "Deben incorporar la delimitación georreferenciada de las zonas exclusivas de reserva campesina, el amparo de la vegetación nativa de ribera en las microcuencas, la prohibición de agroquímicos sistémicos y la activación de comités comunitarios autónomos de vigilancia vecinal.",
+          "verdadero": null,
+          "justificacion": "Estas propuestas normativas locales dotan de herramientas de contra-poder territorial a las juntas vecinales ante la ineficacia práctica del aparato estatal centralizado.",
+          "enunciado": "Estructuración de planes de contingencia escolar y comunitaria para la gobernanza ambiental de los recursos del Sinú.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El modelo macroeconómico de crecimiento industrial ilimitado medido por el Producto Interno Bruto respeta plenamente las capacidades de carga y los ciclos ecológicos de la biósfera.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El imperativo macroeconómico del crecimiento ilimitado asume la errónea premisa analítica de que la naturaleza opera como un sumidero infinito de desechos y un almacén inagotable de materias primas, ignorando de forma sistemática los límites biofísicos termodinámicos del planeta.",
+          "enunciado": "Crítica epistemológica de los enfoques convencionales de desarrollo económico frente a las deudas del cambio climático transnacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Sistema Nacional Ambiental (SINA) en Colombia carece de cualquier nexo institucional con las alcaldías y corporaciones autónomas para regular el uso del suelo rural.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El SINA integra de manera formal a las Corporaciones Autónomas Regionales ($CAR$) y a las secretarías de planeación municipal municipales como los entes obligados por la Ley 99 de 1993 a diseñar e implementar los POT y vigilar las licencias de afectación natural.",
+          "enunciado": "Evaluación orgánica del andamiaje institucional ambiental y de gestión del riesgo del Estado colombiano.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La externalización de costos corporativos transfiere de manera asimétrica los pasivos ecológicos de la gran industria hacia las comunidades tradicionales que habitan las periferias rurales.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Al omitir las empresas privadas asumir los costos financieros de la remediación de la contaminación hídrica y compactación edáfica que provocan, imponen sobre el campesinado familiar veredal la carga material de la ruina de sus cultivos tradicionales de pancoger.",
+          "enunciado": "Examen de los conflictos distributivos ecológicos y asimetrías del capital multinacional transnacional en el agro.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El principio de precaución ambiental determina que la falta de certeza científica absoluta justifica aplazar las medidas institucionales de mitigación frente a un riesgo ecológico grave.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El principio de precaución determina exactamente lo contrario: que ante la inminencia de un pasivo ambiental grave o irreversible sobre un ecosistema productivo, la falta de pruebas científicas irrefutables no debe usarse como pretexto estatal para postergar la defensa colectiva del territorio.",
+          "enunciado": "Dogmática jurídica convencional derivada de la Declaración de Río de Janeiro de la ONU de 1992.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las cartografías de vulnerabilidad ecológica operan como instrumentos visuales y científicos de contra-poder territorial que facultan a la sociedad civil para mapear las amenazas sobre sus bienes comunes.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Estas herramientas geográficas críticas permiten espacializar los impactos del extractivismo y de la ganadería extensiva sobre las microcuencas de agua comunitarias, aportando lógica argumentativa sólida a los planes de contingencia veredales.",
+          "enunciado": "Territorialización del conocimiento sociogeográfico reflexivo en las instituciones de educación del departamento de Córdoba.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Desarrollar una indagación analítica cualitativa manuscrita en el cuaderno de Ciencias Sociales sin usar dispositivos electrónicos: el estudiante conversará con sus padres o acudientes agricultores sobre cuáles son las principales actividades industriales o ganaderas que en las últimas décadas han cercado o modificado los arroyos locales y los linderos tradicionales del corregimiento. Redactará un informe descriptivo cualitativo de dos páginas evaluando el impacto material de dichas presiones sobre el tamaño de las parcelas de pancoger y formulará una propuesta manuscrita detallada de tres pasos lógicos para organizar un comité escolar juvenil autónomo de reforestación de riberas hídricas.",
+      "fundamentacion": "# EL DILEMA CONTEMPORÁNEO ENTRE LA EXPANSION INDUSTRIAL Y EL AMPARO DE LA SUPERVIVENCIA HUMANA\n\n## Genealogía del capitalismo extractivista y la crisis civilizatoria\nLa deconstrucción epistemológica y política de las tensiones estructurales que configuran el dilema contemporáneo entre la expansión industrial y el amparo de la supervivencia humana exige que las ciencias sociales trasciendan las lecturas utilitaristas neoclásicas del desarrollo, las cuales interpretan las crisis ecológicas como meras fallas técnicas de mercado transitorias, susceptibles de ser internalizadas mediante gravámenes fiscales o mecanismos de compensación verde instrumentales. Desde una perspectiva analítica sistémica, cimentada en la economía ecológica, la ecología política transnacional y la geografía crítica del territorio, nos encontramos ante una crisis civilizatoria de carácter macroecológico. Esta encrucijada es el resultado directo de la incompatibilidad termodinámica insalvable existente entre el modelo macroeconómico de acumulación del capitalismo extractivista —que exige un crecimiento lineal e ilimitado del Producto Interno Bruto ($PIB$) basado en el consumo exponencial de matrices de energía fósil y materias primas— y los límites biofísicos finitos y cíclicos que gobiernan la autorregulación de la biosfera planetaria.\n\nEste conflicto metabólico estructuró una división internacional del trabajo asimétrica desde los albores de la primera revolución manufacturera pesada, asignando a los países de la periferia geográfica del sur global la función subalterna de sumideros de desechos y enclaves de extracción masiva de capital natural de bajo costo para subsidiar el metabolismo social urbano de las potencias industriales mundiales transnacionales. En este horizonte, la tierra arable, los complejos forestales de biodiversidad nativa local y las cuencas hídricas continentales fueron sometidos a procesos violentos de despojo legalizado y colonización corporativa, rompiendo los lazos coevolutivos tradicionales que unían a las formaciones sociales campesinas con sus entornos geográficos utilizables. La naturaleza fue despojada de su valor ontológico sagrado para ser reducida a una reserva abstracta de mercancías canjeables (commodities), desmantelando los ecosistemas productivos diversificados de minifundio para implantar franjas homogéneas de uso extractivo privado de gran escala.\n\n## La acumulación por desposesión y la externalización de costos corporativos\nLa operacionalización del capital industrial contemporáneo en los espacios agrarios de las periferias rurales se viabiliza a través de dos dispositivos analítico-técnicos de inmensa trascendencia socioeconómica, teorizados por David Harvey y Joan Martínez Alier: la acumulación por desposesión y la externalización de costos ecológicos:\n\n### La acumulación por desposesión\nEste concepto describe cómo el capital transnacional, ante las crisis de sobreacumulación interna en sus cascos centrales urbanos, expande de forma agresiva sus fronteras geográficas fagocitando los patrimonios comunales, los saberes tradicionales biotecnológicos y los bienes comunes locales que se encontraban por fuera de las dinámicas de la propiedad privada restrictiva. En el espacio rural periférico, la acumulación por desposesión no se manifiesta exclusivamente mediante el desalojo físico o militar del campesinado nativo tradicional; opera mediante el cerramiento legal del territorio arable, la privatización corporativa del agua de las microcuencas de abastecimiento veredal para uso de refrigeración fabril u agroindustrial masiva, y la imposición de paquetes tecnológicos patentados que prohíben la libre reproducción de variedades de semillas criollas, destruyendo de forma sistemática la autonomía familiar de las minorías agrarias.\n\n### La externalización de costos ambientales\nPor otra parte, la externalización constituye la estrategia corporativa medular para inflar de manera artificial los márgenes de ganancia privada de los lobbies corporativos. Consiste en transferir de forma deliberada y asimétrica los pasivos ambientales, el desgaste de los agregados de la corteza terrestre, la contaminación química por agroquímicos sistémicos y los riesgos de desestructuración hídrica derivados de la explotación minera o agroindustrial pesada hacia la sociedad civil desprovista de capital de defensa, omitiendo incorporar el costo financiero de la remediación ecológica en sus balances contables ordinarios. De este modo, mientras las corporaciones multinacionales transnacionales giran sus dividendos macroeconómicos hacia las metrópolis centrales globales, las comunidades campesinas periféricas absorben de forma directa las externalidades destructivas físicas concretas (resecamiento edáfica por estrés hídrico, desertización, proliferación de plagas exóticas y pérdida de soberanía alimentaria), devaluando su capital de subsistencia familiar familiar y precarizando su existencia material bajo la omisión práctica de las agencias de control del Estado centralizado.\n\n## La resistencia dogmática de los derechos bioculturales y bienes comunes\nFrente al avance desregulado del extractivismo del capital fósil, los movimientos populares agrarios y las corrientes del constitucionalismo ecológico contemporáneo han edificado un robusto contra-poder conceptual e institucional fundado en las categorías dogmáticas de los bienes comunes globales y los derechos bioculturales de las minorías del campo. Los bienes comunes globales (aire limpio, capa de ozono, estabilidad del sistema hídrico continental y pureza biológica de la tierra arable) postulan una ontología jurídica alternativa que rechaza de forma radical el principio del cerramiento y la mercantilización de la biósfera; determinan que existen patrimonios de la naturaleza indispensables para la preservación de la vida humana y no humana que deben ser sustraídos de las lógicas de la rentabilidad del capital privado corporativo, exigiendo marcos de gobernanza ambiental democrática, comunitaria y multinivel supeditados a la justicia distributiva ecológica.\n\nPor su parte, los derechos bioculturales, positivados por la jurisprudencia avanzada de las altas cortes en el Estado social de derecho, representan una revolución dogmática de inmensa envergadura. Esta doctrina reconoce de forma explícita que la biodiversidad, la salud de las microcuencas hídricas locales y la fertilidad edáfica de la corteza terrestre son indisociables de la supervivencia sociocultural y material de los pueblos indígenas, afrodescendientes y comunidades campesinas tradicionales que han habitado y gestionado de manera sustentable dichos espacios geográficos de forma intergeneracional. Los derechos bioculturales amparan legalmente los saberes vernáculos, las prácticas agroecológicas de tracción biológica y policultivo de pancoger, y los sistemas autónomos de selección selectiva de semillas criollas, elevándolos a la categoría de derechos colectivos prevalentes que vinculan y constriñen la agenda legislativa ordinaria de las naciones. Bajo este enfoque de la racionalidad ambiental, cualquier intervención o megaproyecto industrial que pretenda alterar el metabolismo social de una ecorregión estratégica debe someterse obligatoriamente al veto democrático de las comunidades mediante consultas previas, libres e informadas fundamentadas en el principio de precaución ambiental de la ONU.\n\n## Fracturas socioterritoriales y pérdida de soberanía alimentaria en Loma Verde\nPara la comunidad educativa que habita, resiste e integra la Institución Educativa San José de Loma Verde, situada en el corregimiento de Loma Verde, en el municipio de Montería, departamento de Córdoba, el análisis crítico sistémico del dilema contemporáneo entre la expansión industrial y el amparo de la supervivencia humana no constituye de ninguna manera una abstracción teórica o un debate académico exótico ajeno a su cotidianidad veredal. Bajo el liderazgo pedagógico y el compromiso ético-profesional del docente Richard Miguel Hernández Sabié, la geografía crítica del territorio agrario y el pensamiento reflexivo y sistémico se transforman en herramientas de lectura indispensables para que los estudiantes de Undécimo grado deconstruyan de forma lógica las profundas deudas históricas del desarrollo agrario regional nacional que modelan de forma directa la tranquilidad familiar de sus propios hogares en la ruralidad cordobesa dispersa.\n\nEl departamento de Córdoba ha configurado históricamente un espacio geográfico signado por agudas asimetrías socioterritoriales en el acceso, uso y tenencia de la tierra arable utilizable, caracterizado por la hegemonía del gran latifundio destinado a los modelos extractivistas de ganadería extensiva degradante de suelos y monocultivos comerciales masivos de grandes gremios corporativos privados, estructuras dominantes que han arrinconado secularmente a las minorías campesinas nativas hacia los minifundios periféricos y zonas de ladera vulnerables del corregimiento. Al conectar las categorías macroeconómicas con su propio territorio utilizable, los estudiantes evidencian de manera empírica la fractura del metabolismo social de su vereda por la externalización de costos de las grandes haciendas o megaproyectos vecinos. El sobrepastoreo en las cabeceras de las colinas altas de Loma Verde elimina la cobertura vegetal boscosa de ribera y compacta mecánicamente los horizontes de la corteza edáfica, destruyendo los agregados orgánicos y anulando la capacidad de retención hídrica de las microcuencas hídricas locales.\n\nEsta alteración biofísica desata sequías extremas tempranas por estrés hídrico que evaporan de manera atípica los jagüeyes comunales —únicas estructuras de reserva hídrica superficial utilizables por las familias y los animales de cría en épocas de verano extremo— e interrumpe el ciclo tradicional de las huertas diversificadas de pancoger, reduciendo severamente el volumen físico de las cosechas de subsistencia de yuca, maíz y plátano. Ante este desabastecimiento provocado por los pasivos ambientales del entorno agroindustrial desregulado, la comunidad sufre una pérdida definitiva de su soberanía alimentaria, viéndose abocada a depender del mercado mercantil centralizado de Montería para adquirir alimentos básicos procesados a precios inflados por intermediarios corporativos comerciales, dinamitando la economía doméstica campesina.\n\nLa escuela rural de Loma Verde, potenciada como un nodo de innovación socioeducativa permanente y un nicho de resistencia cultural, dinamiza las facultades intelectuales de las nuevas generaciones de campesinos mediante sus centros de interés STEM+ y el diseño colaborativo de complejas narrativas transmedias de memoria histórica agraria. Al cimentar su lógica argumentativa escrita citando con total pulcritud sus fuentes de información para evitar el plagio y honrar la lógica académica neoclásica, los estudiantes de Undécimo grado se empoderan de forma autónoma como actores de ciudadanía activa. Son plenamente capaces de diseñar minuciosas cartografías de vulnerabilidad ecológica de sus arroyos veredales y formular alternativas normativas de conservación colectiva y planes de contingencia (como los bancos escolares autónomos de germoplasma nativo), exigiendo al aparato estatal el amparo inmediato de los derechos campesinos y la reparación histórica de los pasivos ambientales que lesionan el territorio ancestral del valle del Sinú.\n\n## Cronología textual de hitos de los conflictos ecológicos y distributivos globales\n* 1712: invención de la máquina de vapor atmosférica por Thomas Newcomen, hito tecnológico germinal que inauguró la era industrial fósil y el capitalismo de carbono.\n* 1865: publicación de la tesis de Stanley Jevons 'La cuestión del carbón', primera advertencia económica sobre los límites físicos del consumo energético industrial.\n* 1948: proclamación de la Declaración Universal de los Derechos Humanos por la ONU, sentando las bases del amparo normativo de la supervivencia humana frente al Estado.\n* 1968: publicación del ensayo crítico 'La tragedia de los comunes' por Garrett Hardin, desatando agudos debates sobre la gobernanza y cerramiento de los recursos colectivos.\n* 1972: publicación del informe 'Los límites del crecimiento' por el Club de Roma, alertando formalmente sobre la inviabilidad termodinámica del crecimiento industrial infinito.\n* 1991: consagración de la Constitución Política de Colombia, elevando los derechos colectivos ambientales a rango de principios rectores del Estado social de derecho.\n* 1992: adopción de la Declaración de Río sobre el Medio Ambiente y el Desarrollo en la Cumbre de la Tierra de la ONU, positivando el principio de precaución ambiental.\n* 2009: publicación de la investigación de Johan Rockström sobre los nueve 'Límites biofísicos planetarios' que determinan la estabilidad holocénica de la biósfera.\n* 2015: suscripción unánime del Acuerdo de París en la COP21, forzando directrices de mitigación de emisiones de carbono sobre las industrias nacionales mundiales transnacionales.\n* 2016: promulgación de la histórica Sentencia T-622 de la Corte Constitucional de Colombia, reconociendo al río Atrato como sujeto de derechos inalienables y bioculturales.\n* 2018: ratificación del Acuerdo de Escazú por el bloque de naciones de América Latina, elevando a rango internacional el amparo de los defensores de derechos ambientales rurales."
+    }
+  ]
+}

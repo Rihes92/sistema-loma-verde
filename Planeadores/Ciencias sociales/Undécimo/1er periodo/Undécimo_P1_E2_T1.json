@@ -1,0 +1,219 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T18:46:12Z",
+  "planeadores": [
+    {
+      "id": "p11p1-alteracionecosistemas-005",
+      "creado": 1781898372,
+      "grado": "Undécimo",
+      "periodo": "Primer periodo",
+      "ejeIdx": 2,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "5",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "La alteración de los ecosistemas productivos y la pérdida de la soberanía alimentaria",
+      "unidad": "Eje 2: Explotación de la tierra arable y riesgos de la biotecnología",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Analiza críticamente informes científicos sobre la degradación de suelos, explicando su impacto directo en el desabastecimiento de alimentos o el encarecimiento de la canasta familiar.* Diseña cartografías de vulnerabilidad ecológica o planes de contingencia escolar para el manejo consciente de cuencas hídricas locales.\nSer:* Respalda con argumentos lógicos la urgencia de establecer límites éticos a la explotación indiscriminada de materias primas.",
+      "competencias": "* Pensamiento reflexivo y sistémico.\n\n* Interpretación y análisis de perspectivas.",
+      "contenidos": "* La alteración de los ecosistemas productivos y la pérdida de la soberanía alimentaria.\n* Factores de riesgo sobre el suelo agrícola: la desertización y la inserción de cultivos transgénicos.\n* El dilema contemporáneo entre la expansión industrial y el amparo de la supervivencia humana.",
+      "objetivo": "Explicar las causas y efectos de la alteración de los ecosistemas productivos y la pérdida de la soberanía alimentaria mediante la interpretación de informes sobre degradación de suelos, promoviendo el diseño de cartografías de vulnerabilidad ecológica que fundamenten la urgencia ética de proteger la pequeña producción agrícola y los recursos hídricos frente a la expansión industrial transnacional.",
+      "pregunta": "¿Cómo altera la introducción de modelos agroindustriales y la degradación biofísica de la tierra arable los saberes tradicionales y la autonomía alimentaria de las familias campesinas en Loma Verde?",
+      "explora": "Conversatorio inicial guiado: el docente presenta a los estudiantes dos tipos de suelo en bandejas físicas: uno rico en materia orgánica proveniente de una huerta tradicional de pancoger y otro compactado y erosionado por el sobrepastoreo o uso intensivo de agroquímicos. Interroga a la clase sobre cuál de los dos suelos garantiza la alimentación autónoma de la comunidad a largo plazo. Como actividad corta, los estudiantes reciben tarjetas con términos clave (seguridad alimentaria, soberanía alimentaria, degradación biofísica, revolución verde) y pasan al tablero a organizarlas en un mapa conceptual que diferencie los modelos de subsistencia autónoma frente a los esquemas corporativos de mercado mercantil.",
+      "glosario": [
+        {
+          "t": "soberanía alimentaria",
+          "d": "derecho inalienable de los pueblos y comunidades campesinas a definir de manera autónoma sus propias políticas y estrategias sustentables de producción, distribución y consumo de alimentos, garantizando el amparo de la biodiversidad local."
+        },
+        {
+          "t": "seguridad alimentaria",
+          "d": "disponibilidad física y acceso económico garantizado de todas las personas a alimentos suficientes, inocuos y nutritivos, independientemente de si estos son producidos localmente o importados en los mercados globales."
+        },
+        {
+          "t": "ecosistema productivo",
+          "d": "complejo dinámico de comunidades vegetales, animales y microorganismos interactuando de forma orgánica con su entorno abiótico, modificado de manera consciente por el ser humano para la obtención de alimentos o materias primas."
+        },
+        {
+          "t": "degradación del suelo",
+          "d": "proceso biofísico de pérdida de la calidad, estructura, nutrientes y funciones ecológicas de la tierra arable, inducido por la erosión, compactación, salinización o contaminación química de origen antrópico."
+        },
+        {
+          "t": "canasta familiar",
+          "d": "conjunto priorizado de bienes y servicios esenciales que un hogar promedio requiere para satisfacer sus necesidades básicas de subsistencia en un periodo determinado, cuyos precios sufren fluctuaciones por el desabastecimiento."
+        },
+        {
+          "t": "vulnerabilidad ecológica",
+          "d": "grado de fragilidad de un ecosistema o comunidad campesina para absorber y recuperarse ante perturbaciones ambientales externas como sequías extremas o la imposición de monocultivos comerciales."
+        },
+        {
+          "t": "pancoger",
+          "d": "sistema agrario tradicional de pequeña escala caracterizado por el policultivo de especies alimenticias básicas de subsistencia directa (yuca, maíz, plátano, arroz) destinadas al autoconsumo familiar y mercados locales."
+        },
+        {
+          "t": "expansión industrial",
+          "d": "crecimiento sostenido y ocupación territorial masiva por parte de los sectores fabriles, mineros o agroindustriales pesados, que compite de forma agresiva por el uso de la tierra arable y las cuencas hídricas comunitarias."
+        },
+        {
+          "t": "frontera agrícola",
+          "d": "límite geográfico variable que separa las áreas del territorio destinadas a las actividades agropecuarias de aquellas zonas reservadas para la conservación ecológica, bosques nativos o áreas de protección especial."
+        },
+        {
+          "t": "agroquímicos sistémicos",
+          "d": "sustancias de síntesis química industrial (pesticidas, herbicidas, fertilizantes nitrogenados) empleadas en la agricultura masiva que alteran la microbiología natural del suelo y contaminan las fuentes superficiales de agua."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La fractura de la soberanía: autonomía campesina frente al mercado global",
+          "txt": "La soberanía alimentaria representa un paradigma ético y político que sitúa a las comunidades agrarias nativas en el centro del sistema alimentario. A diferencia del concepto técnico de seguridad alimentaria —promovido por agencias transnacionales y enfocado exclusivamente en el acceso mercantil a las calorías sin importar su origen geográfico—, la soberanía defiende el derecho a producir en el propio territorio usable con semillas tradicionales y métodos ecológicos autónomos. Cuando el modelo macroeconómico de la agroindustria masiva introduce monocultivos comerciales e insumos tecnológicos patentados, destruye la autonomía de las familias del campo, supeditando la canasta familiar a los precios especulativos de las corporaciones y desmantelando los saberes tradicionales de conservación comunitaria.",
+          "pausa": "De acuerdo con las reglas ortotipográficas establecidas para este currículo, ¿cómo debe operarse el uso de la mayúscula inicial después del signo de dos puntos?",
+          "resp": "Después de : se escribe de forma obligatoria con letra minúscula, exceptuando únicamente los casos donde prosiga un nombre propio o comience el desarrollo formal de una cita textual directa."
+        },
+        {
+          "tit": "La alteración biofísica de los suelos: la degradación de la tierra arable",
+          "txt": "Los ecosistemas productivos tradicionales operan bajo ciclos biogeoquímicos equilibrados que preservan la fertilidad natural de la capa arable. Sin embargo, la imposición de dinámicas intensivas como la ganadería extensiva degradante de suelos o el uso crónico de agroquímicos sistémicos desencadena procesos acelerados de degradación biofísica. La compactación provocada por las pezuñas del ganado destruye la porosidad de la tierra, impidiendo la infiltración del agua y la respiración de las raíces. Este daño estructural se complementa con la salinización y la pérdida de la microbiota nativa local, transformando terrenos fértiles de pancoger en áreas vulnerables a la desertización, lo que deprime drásticamente los rendimientos agrícolas y desata el desabastecimiento de alimentos locales.",
+          "pausa": "¿Cuál es la consecuencia socioeconómica directa de la pérdida de fertilidad de la tierra arable para una población urbana dependiente?",
+          "resp": "Provoca una drástica reducción en la oferta de alimentos básicos locales, lo que genera desabastecimiento en los mercados zonales e induce de forma inmediata el encarecimiento crónico de los productos de la canasta familiar."
+        },
+        {
+          "tit": "El dilema contemporáneo: expansión industrial frente a supervivencia humana",
+          "txt": "La presión del modelo de desarrollo industrial contemporáneo genera una tensión geopolítica insoluble sobre el uso del territorio agrario. La expansión de megaproyectos viales, mineros u agroindustriales a gran escala compite de manera agresiva por los mismos recursos vitales que sostienen la vida humana: el suelo fértil y el agua de las cuencas hídricas locales. Esta competencia asimétrica desaloja material y jurídicamente los policultivos de subsistencia para implantar extensas franjas de uso extractivista privado. Establecer límites éticos e institucionales a esta explotación indiscriminada de materias primas constituye una urgencia de supervivencia, forzando a que las normas de ordenamiento territorial deban amparar de forma preferente las microcuencas y los ecosistemas que salvaguardan la alimentación autónoma de las periferias rurales.",
+          "pausa": "¿De qué manera el diseño de cartografías de vulnerabilidad ecológica opera como una herramienta de protección del territorio?",
+          "resp": "Permite identificar de manera espacial y científica cuáles son las microcuencas hídricas y suelos arables que sufren mayor amenaza por la industria, aportando datos lógicos para sustentar alternativas normativas y planes de contingencia comunitaria."
+        }
+      ],
+      "talleres": "Instrucciones metodológicas para el taller de estructuración interactivo: los estudiantes se organizarán en equipos analíticos territoriales de cuatro integrantes. Cada grupo recibirá un extracto impreso de informes científicos regionales de la corporación autónoma regional CVS sobre el estado de la degradación de suelos y microcuencas hídricas en el departamento de Córdoba. Utilizando un pliego de papel periódico, deberán construir una matriz de cartografía de vulnerabilidad agroecológica que responda rigurosamente a las siguientes variables obligatorias:\n1. Identificación del factor antrópico de alteración (ganadería extensiva, monocultivo comercial o uso de agroquímicos).\n2. Tipo de degradación biofísica que produce en el suelo agrícola (compactación, pérdida de nutrientes o desertización).\n3. Impacto directo medible sobre el sistema tradicional de pancoger y la soberanía alimentaria veredal.\n4. Consecuencias económicas proyectadas sobre los precios de la canasta familiar de la comunidad.\n5. Formulación de una alternativa normativa local o plan de contingencia escolar para la protección del suelo. \nCada equipo designará un portavoz para sustentar la matriz ante la plenaria escolar.",
+      "transfer": "Actividades estructuradas de transferencia de saberes de aula aplicados a la ruralidad:\n1. Estudio de caso macroeconómico y ecológico: se presenta a los estudiantes un informe sintético abreviado sobre la pérdida de soberanía alimentaria en Haití o México tras la firma de tratados de libre comercio que forzaron la inundación de sus mercados con maíz subsidiado extranjero, arruinando a los pequeños parceleros nativos y desestructurando sus ecosistemas productivos tradicionales. Los estudiantes resolverán un cuestionario analítico escrito evaluando críticamente la diferencia entre el derecho a alimentarse (seguridad) y el derecho a producir autónomamente (soberanía).\n2. Reflexión analítica del entorno local regional: los estudiantes realizarán un diagnóstico descriptivo cualitativo en el corregimiento de Loma Verde en Montería, dialogando con sus familiares agricultores o líderes de la Junta de Acción Comunal sobre cómo la expansión de las haciendas de ganadería extensiva o el desabastecimiento de agua en las microcuencas locales ha reducido el tamaño y la producción de las tradicionales parcelas familiares de yuca, plátano y maíz. Redactarán un ensayo argumentativo escrito de dos páginas ligando de forma lógica la alteración ecológica local con las deudas históricas del desarrollo agrario regional.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia y contextualización:\n1. En el examen del estudio de caso internacional, la respuesta modelo debe estructurar críticamente que la seguridad alimentaria de mercado mercantil es frágil porque supedita la supervivencia de una población a las fluctuaciones de precios internacionales y al monopolio de corporaciones extranjeras. Por el contrario, la soberanía alimentaria blinda la supervivencia de la sociedad civil al arraigar la producción de calorías en la autonomía del campesinado local, protegiendo las redes agrarias domésticas frente a los choques macroeconómicos globales.\n2. En el ensayo analítico sobre el corregimiento de Loma Verde, la respuesta esperada del estudiante debe establecer una conexión causal directa: el sobrepastoreo ganadero en las cabeceras de los arroyos locales compacta la tierra arable, destruyendo la capacidad de retención hídrica del ecosistema productivo. Esto provoca sequías extremas tempranas que secan los jagüeyes comunales e impiden el desarrollo de los cultivos tradicionales de pancoger de las familias parceleras, forzándolas a comprar yuca o maíz traídos de Montería a precios encarecidos, evidenciando de forma tangible cómo la alteración biofísica del entorno rural destruye la soberanía alimentaria campesina.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño pedagógico institucional:\n* Superior: analiza y evalúa de manera sistémica y con un lenguaje técnico excelente la alteración de los ecosistemas productivos y la pérdida de la soberanía alimentaria, interpretando informes de degradación biofísica con alto rigor analítico y formulando alternativas normativas de contingencia hídrica perfectamente aplicadas al entorno de Loma Verde, citando correctamente fuentes formales para evitar el plagio.\n* Alto: explica de forma adecuada la diferencia conceptual entre seguridad y soberanía alimentaria, identifica los impactos de la degradación del suelo arable y completa las matrices comparativas aportando juicios válidos.\n* Básico: identifica las problemáticas generales del campo (sequía, uso de químicos) de forma descriptiva, pero presenta dificultades conceptuales al trazar los nexos causales de orden macroeconómico o al estructurar cartografías de vulnerabilidad ecológica.\n* Bajo: presenta confusión grave al diferenciar la seguridad de la soberanía alimentaria, confunde los procesos biofísicos del suelo o carece de capacidad interpretativa para reflexionar críticamente sobre su entorno local rural.\nInstrumentos de evaluación adoptados: rúbrica cualitativa para evaluación de matrices cartográficas, lista de cotejo para exposiciones orales en asamblea de aula y portafolio escrito de ensayos argumentativos contextualizados.",
+      "recursos": "Textos constitucionales ambientales colombianos, copias analíticas de fragmentos de informes de la CVS sobre suelos, mapas mudos de la hidrografía del municipio de Montería, guías de talleres impresas, pliegos de papel periódico y marcadores de colores.",
+      "referencias": "Información oficial extraída del archivo \"Actual - Malla curricular - Ciencias sociales.xlsx\":\n* Estándares Básicos de Competencias (EBC): Explico y evalúo el impacto del desarrollo industrial y tecnológico sobre el medio ambiente y el ser humano.\n* Derechos Básicos de Aprendizaje (DBA): DBA 1 (Parcial): Propuestas colectivas de conservación frente a los pasivos ambientales del modelo agroindustrial masivo.\nFuentes bibliográficas adicionales de rigor académico científico:\n* Altieri, M. A. (2009). Agroecología: bases científicas para una agricultura sustentable y defensa de la soberanía alimentaria. Barcelona: Icaria Editorial.\n* Shiva, V. (2016). Manifiesto para una nueva agricultura global: Monocultivos de la mente y desestructuración agraria. Madrid: Popular.\n* Fajardo, D. (2014). Las guerras de la agricultura colombiana: Fronteras, minifundio y soberanía alimentaria. Bogotá: ILSA.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje (DUA) adaptadas al aula:\n* Frente a barreras de lectoescritura o dificultades de comprensión de conceptos abstractos biofísicos: provisión de bloques de imágenes e infografías esquemáticas de colores que ilustren los perfiles transversales del suelo fértil frente al suelo compactado por ganadería mediante flechas e indicadores explícitos. Uso de muestras físicas de tierra del corregimiento.\n* Para estudiantes con ritmos de aprendizaje avanzados o alta motivación: asignación de una investigación breve analítica escrita sobre los impactos jurídicos y ecológicos que depara la Ley de Semillas en Colombia frente a los derechos de propiedad intelectual de variedades nativas de los campesinos.\n* Diseño de trabajo cooperativo estructurado y flexible: conformación de los grupos de la matriz agroecológica adjudicando de forma explícita roles formales de responsabilidad individualizada (geógrafo-cartógrafo local, edafólogo técnico de suelos, analista de precios de canasta familiar, portavoz legislativo comunitario) para asegurar una participación equitativa y democrática.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La soberanía alimentaria defiende el derecho inalienable de las comunidades campesinas a definir de manera autónoma sus propios sistemas de producción agraria.",
+        "La seguridad alimentaria de mercado mercantil prioriza el acceso calórico comercial globalizado, volviendo vulnerables a las poblaciones ante choques macroeconómicos.",
+        "Modelos agroindustriales masivos como la ganadería extensiva provocan la degradación biofísica de la tierra arable mediante la compactación y pérdida de nutrientes.",
+        "La alteración de los ecosistemas productivos tradicionales de pancoger induce procesos de desabastecimiento que encarecen la canasta familiar urbana y rural.",
+        "El diseño de alternativas normativas locales y cartografías de vulnerabilidad ecológica resulta medular para imponer límites éticos a la expansión industrial."
+      ],
+      "errores": [
+        "Confundir la seguridad alimentaria con la soberanía alimentaria: se debe corregir explicando que la seguridad se enfoca en que existan alimentos disponibles en el mercado sin importar de dónde vengan, mientras que la soberanía exige la autonomía del campesinado local para producir su comida de forma independiente y ecológicamente sostenible.",
+        "Creer que la ganadería extensiva tradicional solo daña los pastizales sin alterar la estructura profunda del suelo agrícola arable: es imperativo precisar que el peso de los animales compacta de forma biofísica la tierra, destruyendo su porosidad, impidiendo la infiltración del agua y acelerando la desertización y pérdida de la microbiota.",
+        "Suponer que la canasta familiar solo aumenta de precio por decisiones aisladas de los comerciantes de Montería: es necesario evidenciar que el encarecimiento crónico hunde sus raíces en fallos de mercado estructurales derivados de la degradación ecológica y desestructuración agraria de los corregimientos que abastecen la región.",
+        "Pensar que las tecnologías científicas de la revolución verde agroindustrial benefician de forma universal a los pequeños parceleros tradicionales de pancoger: se debe reiterar que el modelo supeditada al campesino a la compra permanente de insumos químicos y semillas patentadas caras, destruyendo sus saberes tradicionales y su arraigo territorial."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué diferencia sustantiva de orden ético y político encierra la defensa de la soberanía alimentaria frente al enfoque técnico de la seguridad alimentaria?",
+          "a": "La soberanía alimentaria reivindica el derecho autónomo de los campesinos a controlar su territorio usable, sus aguas comunitarias y sus semillas nativas tradicionales, rechazando la dependencia corporativa; mientras que la seguridad alimentaria se limita a garantizar el acceso calórico comercial a través de los mercados globales, importando alimentos si es necesario.",
+          "verdadero": null,
+          "justificacion": "La soberanía introduce una dimensión de autodeterminación democrática y justicia distributiva agraria que el concepto formal de seguridad omite de forma sistemática.",
+          "enunciado": "Evaluación de las agendas de los movimientos sociales campesinos globales (Vía Campesina) frente a las directrices de los organismos multilaterales tradicionales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera el proceso físico de compactación inducido por la ganadería extensiva altera las funciones termodinámicas e hídricas de la tierra arable?",
+          "a": "El pisoteo continuo destruye la estructura porosa de los agregados del suelo agrícola, reduciendo los macroporos que facilitan la aireación y la infiltración de la pluviosidad, lo que genera escorrentía superficial erosiva, impide que las raíces absorban nutrientes y acelera la desertización biofísica.",
+          "verdadero": null,
+          "justificacion": "La compactación degrada de forma directa las propiedades mecánicas y biológicas indispensables para sostener los ciclos de los ecosistemas productivos.",
+          "enunciado": "Análisis edafológico de pasivos ambientales en las subregiones de llanura inundable degradadas por sobrepastoreo masivo.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo se articula el nexo causal entre la desestructuración agraria veredal y el encarecimiento crónico de la canasta familiar en los centros urbanos locales?",
+          "a": "Al degradarse los suelos arables y agotarse el agua en las microcuencas rurales, cae drásticamente el volumen físico de las cosechas tradicionales de pancoger, lo que desata desabastecimiento en los mercados locales y, por ley de oferta y demanda mercantil, eleva de forma drástica los precios minoristas esenciales.",
+          "verdadero": null,
+          "justificacion": "La inflación de alimentos en los cascos urbanos es el reflejo final de la quiebra biofísica y social que sufren los ecosistemas productivos de la periferia campesina.",
+          "enunciado": "Estudio de las variables de volatilidad de precios en las centrales de abasto regionales durante temporadas de anomalía climática extrema.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es el imperativo ético que justifica la formulación de propuestas colectivas de conservación frente a los pasivos ambientales del modelo agroindustrial masivo?",
+          "a": "Justifica que la supervivencia humana de las comunidades locales y la estabilidad ecológica de la biósfera deben primar sobre el lucro económico corporativo privado de corto plazo, exigiendo establecer límites normativos a la explotación indiscriminada de materias primas.",
+          "verdadero": null,
+          "justificacion": "Los pasivos ambientales representan deudas ecológicas que las corporaciones externalizan sobre el campesinado, vulnerando sus derechos colectivos a un medio ambiente sano.",
+          "enunciado": "Análisis de la jerarquía axiológica de la carta ecológica de 1991 frente a las licencias extractivistas y comerciales transnacionales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué variables técnicas y comunitarias deben incorporarse de forma obligatoria al diseñar un plan de contingencia escolar para el manejo consciente de cuencas hídricas locales?",
+          "a": "Debe incorporar la delimitación geográfica de la microcuenca arroyo veredal, la identificación cualitativa de los focos de contaminación antrópica (vertimientos, deforestación), la protección autónoma de la vegetación nativa de ribera y la organización de comités de vigilancia escolar.",
+          "verdadero": null,
+          "justificacion": "Los planes de contingencia escolar aterrizan la gobernanza ambiental a la práctica pedagógica diaria, empoderando a la juventud rural en la defensa de los bienes comunes.",
+          "enunciado": "Territorialización de los lineamientos de la Ley de Gestión del Riesgo en los proyectos ambientales escolares (PRAE) periféricos.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La introducción de cultivos transgénicos patentados y monocultivos comerciales expande la soberanía alimentaria campesina al independizar al agricultor tradicional del uso de semillas nativas locales.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La inserción de transgénicos patentados erosiona la soberanía alimentaria al prohibir legalmente el libre intercambio y almacenamiento de semillas nativas tradicionales, supeditando al campesino de pancoger al monopolio tecnológico y corporativo de las multinacionales transnacionales.",
+          "enunciado": "Evaluación del impacto de la biotecnología comercial restrictiva sobre los derechos de propiedad colectiva de las minorías agrarias.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La pérdida de la microbiota nativa local del suelo constituye un indicador biológico de degradación biofísica provocado por el uso crónico de agroquímicos sistémicos industriales.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Los pesticidas y fertilizantes nitrogenados sintéticos rompen los equilibrios ecológicos de la capa arable, aniquilando los microorganismos e invertebrados encargados de la fijación de nutrientes, mineralización de la materia orgánica y estructuración mecánica del suelo.",
+          "enunciado": "Análisis termodinámico y químico del desgaste de la biosfera edáfica bajo el paradigma de la revolución verde agroindustrial.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las familias campesinas que practican el sistema tradicional de pancoger en parcelas diversificadas de minifundio son los principales causantes de las macro-emisiones globales de gases de efecto invernadero.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El policultivo tradicional de pancoger opera bajo una bajísima huella de carbono, empleando tracción biológica, rotación de suelos arables y nulo uso de matrices combustibles fósiles, contrastando radicalmente con el modelo agroindustrial mecanizado masivo de altas emisiones.",
+          "enunciado": "Cómputo comparativo de balances de carbono entre sistemas agroecológicos de subsistencia y complejos agrarios industriales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El diseño de cartografías de vulnerabilidad ecológica faculta a las comunidades del campo para identificar espacialmente las zonas hídricas y suelos arables bajo mayor amenaza industrial transnacional.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Estas cartografías operan como instrumentos visuales y científicos de contra-poder territorial, mapeando las amenazas biofísicas sobre los bienes comunes locales para sustentar de manera lógica alternativas normativas y planes de contingencia comunitarios.",
+          "enunciado": "Territorialización del conocimiento geográfico crítico en las instituciones escolares de la periferia rural cordobesa.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La seguridad alimentaria exige de forma obligatoria que todos los cereales y hortalizas que consume un país sean cosechados de forma autónoma por labriegos nativos dentro de sus propias fronteras.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El concepto de seguridad alimentaria se centra exclusivamente en el abastecimiento calórico y el acceso económico mercantil; por tanto, se cumple plenamente mediante la importación masiva de alimentos extranjeros más baratos, ignorando si se quiebra la economía del campesinado nativo.",
+          "enunciado": "Crítica epistemológica de las categorías de planificación de mercado frente a las directrices de derechos colectivos agrarios.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Desarrollar un ejercicio analítico-práctico manuscrito en el cuaderno sin emplear redes virtuales: el estudiante dialogará con los miembros de su hogar o vecinos labriegos acerca de las diferencias en el sabor, duración y costo de las semillas de maíz tradicionales criollas de la vereda frente a las variedades de maíz comerciales que venden las prenderías industriales de Montería. El estudiante redactará un informe cualitativo de dos páginas describiendo los testimonios de los campesinos locales y bosquejará un plan de contingencia escolar detallado (de tres pasos lógicos) para organizar un banco de semillas nativas autónomo dentro de la Institución Educativa San José de Loma Verde.",
+      "fundamentacion": "# LA ALTERACIÓN DE LOS ECOSISTEMAS PRODUCTIVOS Y LA PÉRDIDA DE LA SOBERANÍA ALIMENTARIA\n\n## Marco histórico de la revolución verde y la transmutación del metabolismo agrario\nLa deconstrucción crítica de los procesos de degradación ecológica y la consiguiente pérdida de autonomía política familiar que afrontan las sociedades agrarias contemporáneas exige un abordaje analítico de carácter sistémico que sitúe el foco conceptual en la mutación histórica del metabolismo rural operada durante la segunda mitad del siglo XX. El orden agrario tradicional, estructurado de forma secular bajo principios de policultivo diversificado, rotación orgánica de las tierras arables y tracción de fuerza biológica, basaba su eficiencia en el respeto adaptativo por las capacidades de carga de los ecosistemas productivos locales. Esta racionalidad metabólica permitía que las comunidades del campo ejercieran un control autónomo directo sobre sus matrices de supervivencia material, resguardando la biodiversidad nativa a través del almacenamiento intergeneracional de semillas criollas y blindando la estabilidad de la canasta familiar local frente a perturbaciones de mercados exteriores.\n\nEste tejido metabólico cerrado sufrió una profunda ruptura estructural con la implantación globalizada del paradigma de la Revolución Verde a partir de las décadas de 1950 y 1960. Impulsado por corporaciones transnacionales y validado por directrices técnicas de las agencias de integración financiera internacional, este modelo agroindustrial masivo impuso de forma coercitiva la homogeneización del espacio rural mediante la implantación del monocultivo a gran escala, la introducción masiva de variedades de semillas híbridas y modificadas de alta respuesta, y la subordinación absoluta del ciclo productivo al consumo intensivo de agroquímicos sistémicos derivados de la industria petroquímica fósil (fertilizantes sintéticos nitrogenados, herbicidas organofosforados y pesticidas concentrados). La agricultura transitó de una lógica de coevolución ecológica con la biósfera hacia un modelo extractivista industrializado, transformando el suelo fértil en un mero soporte físico inerte supeditado a inyecciones continuas de capital químico y devaluando los saberes tradicionales del campesinado nativo, catalogados por el discurso corporativo hegemónico como rezagos premodernos ineficientes.\n\n## Desglose conceptual: seguridad alimentaria frente a soberanía alimentaria\nLa traducción institucional de este choque de paradigmas agrarios se encierra bajo la aguda contradicción epistémica y política existente entre las categorías conceptuales de seguridad alimentaria y soberanía alimentaria, nociones antitéticas que modelan de manera diferenciada las agendas legislativas de los Estados y los derechos colectivos de las minorías del campo:\n\n### La dimensión de la seguridad alimentaria\nLa seguridad alimentaria constituye un enfoque puramente técnico, comercial y cuantitativo, acuñado formalmente por la FAO en las cumbres multilaterales de finales del siglo XX. Se define bajo la premisa de garantizar la disponibilidad física continua y el acceso macroeconómico garantizado de todas las personas a alimentos inocuos y nutritivos para cubrir sus requerimientos calóricos mínimos diarios. El fallo analítico medular de esta categoría reside en su absoluta ceguera sociopolítica y geográfica: omite de forma deliberada escrutar quién produce los alimentos, bajo qué relaciones laborales de dominación se cultivan, en qué coordenadas cartográficas se cosechan y qué pasivos ambientales imponen sobre los ecosistemas. Bajo la lógica de la seguridad alimentaria de mercado mercantil, un Estado cumple plenamente sus metas asistenciales destruyendo la producción interna de sus labriegos nativos e importando masivamente granos y cereales subsidiados de monopolios transnacionales extranjeros, supeditando la canasta familiar a las olas de volatilidad especulativa del libre cambio mundial.\n\n### La dimensión de la soberanía alimentaria\nFrente a esta visión mercantilista desprovista de ética territorial, los movimientos sociales agrarios mundiales (como la Vía Campesina) estructuraron la bandera dogmática de la soberanía alimentaria en 1886. Este concepto se erige como un derecho colectivo fundamental e inalienable de los pueblos, comunidades campesinas, indígenas y afrodescendientes a definir de manera plenamente autónoma sus propias políticas agropecuarias, comerciales y de alimentación, defendiendo la primacía de la pequeña producción familiar diversificada de pancoger sobre el latifundio corporativo. Exige el amparo reforzado del control autónomo de las semillas nativas frente a los derechos de propiedad intelectual restrictivos de las multinacionales de la biotecnología, garantiza el derecho de las poblaciones a consumir alimentos culturalmente adecuados producidos mediante prácticas agroecológicas locales sanas y postula que el suelo arable, el agua de las cuencas hídricas locales y la biodiversidad son bienes comunes sagrados que deben ser sustraídos de las dinámicas de la acumulación por desposesión y la externalización de costos industriales pesados.\n\n## Los factores de riesgo biofísicos: edafología de la degradación de la capa arable\nLa agresión del modelo agroindustrial masivo y de los complejos ganaderos sobre los ecosistemas productivos tradicionales desencadena procesos de degradación biofísica crónicos que alteran de forma irreversible las propiedades edáficas de la tierra arable, deprimiendo los rendimientos agrícolas y desatando el desabastecimiento alimentario local en las periferias. La termodinámica de un suelo fértil estable se asienta sobre la interacción simbiótica de su fracción mineral abiótica con el capital biológico de la biosfera edáfica (hongos micorrizicos, bacterias fijadoras de nitrógeno, invertebrados), entramado encargado de mineralizar la materia orgánica, estructurar los macroporos que facilitan la oxigenación y mantener la retención hídrica de la tropósfera continental. La compactación inducida por el sobrepastoreo extensivo o la mecanización pesada continua tritura de forma mecánica estos agregados edáficos, eliminando la porosidad natural del suelo.\n\nAl desaparecer los espacios porosos de la tierra, la pluviosidad superficial es incapaz de infiltrarse hacia los horizontes profundos del subsuelo, desatando escorrentías erosivas que lavan las capas ricas en humus y nutrientes esenciales, exponiendo los horizontes estériles basales y acelerando los procesos de desertización biofísica. Esta degradación mecánica se profundiza por la quiebra biológica provocada por la inyección sistemática de agroquímicos sistémicos de alta concentración; los pesticidas y herbicidas aniquilan de forma indiscriminada la microbiota nativa local del suelo, interrumpiendo los ciclos de fijación de nitrógeno y asimilación de fósforo. El ecosistema productivo pierde su resiliencia natural y capacidad homeostática, convirtiéndose en un terreno estéril dependiente de dosis crecientes de fertilizantes sintéticos caros, lo que reduce la viabilidad material de las siembras de pancoger tradicionales y cataliza crisis crónicas de vulnerabilidad agroecológica agraria que encarecen de forma inmediata el precio final de los productos básicos de la canasta familiar.\n\n## Interconexión regional con la ruralidad cordobesa y Loma Verde\nPara la comunidad educativa que habita, resiste e integra la Institución Educativa San José de Loma Verde, situada en el corregimiento de Loma Verde, en el municipio de Montería, departamento de Córdoba, el análisis crítico sistémico de la alteración de los ecosistemas productivos y la consiguiente pérdida de la soberanía alimentaria reviste un profundo e inalienable valor pedagógico, ético y ciudadano. A primera vista, las discusiones de la alta teoría agraria sobre los pasivos ambientales de la Revolución Verde, las asimetrías de mercado mercantil descritas por la literatura internacional o los análisis químicos de la compactación edáfica molecular podrían ser interpretados por los estudiantes de Undécimo grado como conceptos lejanos, abstractos y completamente ajenos a la cotidianidad de su entorno de la ruralidad cordobesa dispersa. No obstante, la mediación didáctica del docenteRichard Miguel Hernández Sabié devela los hilos invisibles que amarran las dinámicas globales de la agroindustria transnacional con las realidades materiales de supervivencia de su propia vereda.\n\nEl departamento de Córdoba y, de forma quirúrgica, las llanuras y colinas que configuran los corregimientos periféricos de Montería, han constituido escenarios históricos de profundas fracturas socioterritoriales, caracterizados por el despojo violento de las tierras arables, el arrinconamiento del minifundio campesino y la expansión desregulada del modelo ganadero extensivo. Al examinar los factores de riesgo biofísicos de degradación en la vereda, los estudiantes descubren de forma empírica que el sobrepastoreo ganadero en las cabeceras de los arroyos locales compacta de forma irreversible el suelo agrícola de las microcuencas, destruyendo las zonas de reserva forestal nativa de ribera y alterando de manera crónica los regímenes hidrológicos regionales.\n\nEsta externalidad destructiva local provoca sequías extremas tempranas que secan los jagüeyes comunales —únicas fuentes de agua superficial utilizables en épocas de verano— e interrumpe el ciclo de las huertas familiares tradicionales de pancoger, mermando el volumen de las cosechas de subsistencia de yuca, maíz y plátano que garantizan la soberanía alimentaria de las familias parceleras. Ante el desabastecimiento, la comunidad sufre una pérdida total de su autonomía, viéndose forzada a comprar víveres procesados traídos del casco urbano de Montería a precios inflados por la cadena especulativa del libre mercado, dinamitando su economía interna doméstica.\n\nLa escuela rural, potenciada como un nodo de innovación, fomento del pensamiento reflexivo y diseño de narrativas transmedias a través de sus centros de interés STEM+, se erige en el nicho idóneo para que las nuevas generaciones rurales deconstruyan críticamente estas asimetrías del capital. Al cimentar su lógica argumentativa escrita citando con total pulcritud sus fuentes de información para evitar el plagio y honrar la lógica académica, los jóvenes se empoderan como actores de ciudadanía activa autónoma, capaces de diseñar cartografías de vulnerabilidad ecológica de sus arroyos veredales y formular alternativas normativas de conservación colectiva y planes de contingencia (como los bancos de semillas criollas autónomos), exigiendo al Estado el amparo de la vida del campo y la reparación de las deudas históricas del desarrollo agrario regional nacional.\n\n## Cronología textual de hitos de la geopolítica agraria y la soberanía alimentaria\n* 1943: establecimiento del programa de investigación agrícola de la Fundación Rockefeller en México, considerado el laboratorio germinal técnico de la Revolución Verde.\n* 1960: difusión y expansión masiva de las variedades de trigo y arroz de alto rendimiento y agroquímicos sistémicos en las economías agrarias de Asia y América Latina.\n* 1974: celebración de la primera Cumbre Mundial de la Alimentación de la ONU en Roma, institucionalizando de forma oficial la categoría técnica de seguridad alimentaria.\n* 1992: adopción de la Convención sobre la Diversidad Biológica en la Cumbre de la Tierra de Río, fijando lineamientos para proteger los recursos genéticos soberanos.\n* 1993: entrada en vigor material del Tratado de Libre Comercio de América del Norte (TLCAN), provocando el colapso demográfico y la desestructuración agraria del campesinado mexicano de maíz por importaciones masivas.\n* 1994: ratificación del Convenio sobre los Aspectos de los Derechos de Propiedad Intelectual relacionados con el Comercio (ADPIC) de la OMC, internacionalizando las patentes corporativas corporativas sobre semillas.\n* 1996: formulación e introducción oficial de la bandera dogmática de la soberanía alimentaria por la coalición transnacional Vía Campesina en la Cumbre de Roma.\n* 2001: adopción del Tratado Internacional sobre los Recursos Fitogenéticos para la Alimentación y la Agricultura de la FAO, reconociendo formalmente los Derechos de los Agricultores sobre sus semillas nativas tradicionales.\n* 2008: eclosión de la crisis alimentaria mundial por la especulación macroeconómica financiera en los mercados de commodities, provocando el encarecimiento crónico de la canasta familiar global.\n* 2015: proclamación unánime de los Objetivos de Desarrollo Sostenible (ODS) de la ONU, fijando en el ODS 2 la meta de erradicar el hambre mediante la promoción de la pequeña producción sustentable agraria.\n* 2018: aprobación de la Declaración de las Naciones Unidas sobre los Derechos de los Campesinos y de Otras Personas que Trabajan en las Zonas Rurales, elevando la soberanía alimentaria a rango de amparo internacional convencional."
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T13:25:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_dec10_p3_e5_01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La adopción de tratados internacionales de protección ambiental exige reformas legislativas internas en Colombia: explique detalladamente de qué manera este proceso puede generar tensiones políticas y jurídicas entre los compromisos asumidos ante la comunidad internacional y las prioridades de los sectores extractivos o productivos locales.",
+      "respuesta": "La adopción de tratados ambientales internacionales genera tensiones debido a que las directrices globales imponen regulaciones severas para salvaguardar ecosistemas, lo cual choca directamente con modelos de desarrollo locales basados en la explotación minero-energética o la agroindustria intensiva. Políticamente, el legislativo se enfrenta a dilemas de gobernanza al intentar armonizar la legislación nacional, dividiéndose entre el cumplimiento de la agenda climática global y la presión de gremios económicos que argumentan una pérdida de soberanía productiva, competitividad sectorial o empleo regional a corto plazo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e5_02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Considerando que la soberanía nacional es un principio estructural del derecho internacional: evalúe críticamente bajo qué condiciones éticas y jurídicas se justifica que los organismos multilaterales ejerzan un escrutinio directo sobre las decisiones internas de un Estado en nombre de la protección de los Derechos Humanos.",
+      "respuesta": "El escrutinio o la intervención internacional se justifican jurídicamente bajo el principio de la Responsabilidad de Proteger y la universalidad de los Derechos Humanos, siempre y cuando un Estado incurra de manera sistemática en violaciones graves (como crímenes de lesa humanidad o genocidio) o demuestre incapacidad u omisión absoluta para garantizar la seguridad de su población. Éticamente, se argumenta que la soberanía no constituye un poder absoluto de impunidad, sino un compromiso condicionado a la protección de la dignidad humana, lo que legitima la acción de los tribunales y organismos multilaterales.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e5_03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA)",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "A partir de los principios fundacionales de la Organización de los Estados Americanos (OEA): analice de qué manera este organismo interviene ante la alteración del orden democrático de un país miembro y cuáles son los límites diplomáticos institucionales que restringen sus acciones.",
+      "respuesta": "La OEA interviene fundamentada en la Carta Democrática Interamericana, la cual faculta al Consejo Permanente a realizar gestiones diplomáticas para promover la normalización de la institucionalidad cuando se constata una alteración grave del orden constitucional. No obstante, sus acciones encuentran límites institucionales estrictos en el principio de no intervención y el respeto a la autodeterminación de los pueblos, por lo cual sus mecanismos máximos de presión se restringen a la suspensión de la participación del Estado afectado en el sistema interamericano, requiriendo el voto favorable de las dos terceras partes de los miembros.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e5_04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Las directrices educativas sugeridas por organismos multilaterales como la UNESCO o la OCDE impactan el diseño del modelo educativo en el país: argumente qué ventajas conceptuales y qué dificultades de pertinencia territorial enfrenta Colombia al alinear sus currículos nacionales con estos parámetros de estandarización internacional.",
+      "respuesta": "Entre las ventajas conceptuales se destacan la modernización de los enfoques pedagógicos por competencias, la transferencia de asistencia técnica y la posibilidad de medir el sistema local bajo estándares internacionales de calidad que facilitan la inserción en la economía del conocimiento. En contraste, las dificultades de pertinencia radican en la tendencia a la homogeneización cultural, la cual suele invisibilizar las realidades pluriétnicas, los saberes ancestrales y las profundas brechas socioeconómicas del sector rural disperso colombiano, exigiendo enfoques flexibles incompatibles con métricas globales uniformes.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e5_05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explique el papel de la Corte Constitucional colombiana frente al control de los tratados internacionales y sus leyes aprobatorias: determine cómo esta función judicial opera como una salvaguarda de la soberanía jurídica de la nación.",
+      "respuesta": "La Corte Constitucional ejerce un control previo, automático e integral de constitucionalidad sobre los tratados internacionales y las leyes que el Congreso expide para aprobarlos. Esta función es una salvaguarda de la soberanía jurídica nacional porque garantiza de manera imperativa que ninguna disposición de un pacto o convenio internacional vulnere la supremacía de la Constitución Política de 1991, los derechos fundamentales o los principios esenciales del Estado social de derecho, impidiendo la subordinación ciega ante imposiciones de agentes jurídicos externos.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e5_06",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA)",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Las resoluciones generales emitidas por la Asamblea General de las Naciones Unidas poseen un carácter vinculante inmediato para el ordenamiento jurídico interno de Colombia: esto significa que obligan al legislativo a derogar cualquier norma nacional preexistente que se les oponga.",
+      "correcta": false,
+      "justificacion": "las resoluciones adoptadas por la Asamblea General de las Naciones Unidas carecen de naturaleza coercitiva y operan fundamentalmente como recomendaciones de carácter político y moral para los Estados miembros; las únicas decisiones multilaterales de cumplimiento obligatorio en el marco de la ONU son aquellas emanadas del Consejo de Seguridad en el ejercicio de sus atribuciones para preservar la paz global."
+    },
+    {
+      "id": "lv_dec10_p3_e5_07",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El bloque de constitucionalidad faculta la integración de tratados internacionales de Derechos Humanos ratificados por el Estado en el ordenamiento interno: esto les otorga un estatus equivalente al de las normas constitucionales para la evaluación judicial.",
+      "correcta": true,
+      "justificacion": "el artículo 93 de la Constitución Política de Colombia consagra de forma expresa que los tratados y convenios internacionales sobre Derechos Humanos ratificados por el Congreso, que prohíben su limitación durante los estados de excepción, prevalecen en el orden interno y se integran formalmente al bloque de constitucionalidad, sirviendo como referentes obligatorios para la interpretación jurídica de los derechos fundamentales."
+    },
+    {
+      "id": "lv_dec10_p3_e5_08",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Organización para la Cooperación y el Desarrollo Económicos ejerce facultades penales internacionales punitivas sobre el Estado colombiano: esto le permite arrestar o juzgar a funcionarios públicos locales si las metas fiscales del país son incumplidas.",
+      "correcta": false,
+      "justificacion": "la OCDE constituye un foro de consultoría y diseño de políticas públicas globales que provee recomendaciones técnicas y estándares de buenas prácticas económicas y de gobernanza, careciendo en absoluto de carácter judicial, tribunales propios o competencias de orden punitivo para sancionar penalmente a ciudadanos o servidores del Estado colombiano."
+    },
+    {
+      "id": "lv_dec10_p3_e5_09",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La Corte Penal Internacional desplaza de manera automática la competencia del sistema judicial nacional ordinario colombiano ante la comisión de cualquier delito común de alto impacto dentro de las fronteras territoriales.",
+      "correcta": false,
+      "justificacion": "la Corte Penal Internacional se rige bajo el principio estricto de complementariedad, lo que significa que solo puede activar su jurisdicción preferente si el sistema judicial del Estado colombiano no demuestra una disposición genuina o carece de la capacidad material para investigar y juzgar de manera interna los crímenes de trascendencia global específicos (genocidio, crímenes de guerra, agresión y de lesa humanidad)."
+    },
+    {
+      "id": "lv_dec10_p3_e5_10",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Los Objetivos de Desarrollo Sostenible promovidos por la ONU influyen de forma estructural en la planificación territorial en Colombia: esto incentiva la adopción de metas globales de sostenibilidad en las agendas de gobierno local.",
+      "correcta": true,
+      "justificacion": "los ODS actúan como un marco metodológico, técnico y político que el Departamento Nacional de Planeación y los entes territoriales (alcaldías y gobernaciones) adoptan normativamente para estructurar las metas, presupuestos e indicadores de impacto socioambiental dentro de sus respectivos Planes de Desarrollo Territorial, buscando la convergencia entre las políticas del municipio y la sostenibilidad global."
+    },
+    {
+      "id": "lv_dec10_p3_e5_11",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA)",
+      "competencia": "Pensamiento social",
+      "contexto": "Tras la devastación humanitaria e institucional de la Segunda Guerra Mundial, el concierto de las naciones diseñó un andamiaje institucional multilateral de carácter transnacional encaminado a proscribir la fuerza militar como mecanismo ordinario de resolución de disputas.",
+      "enunciado": "¿Cuál es el órgano específico de la Organización de las Naciones Unidas investido de facultades coercitivas y jurídicamente vinculantes para decretar sanciones económicas u ordenar intervenciones militares destinadas a neutralizar amenazas contra la paz global?",
+      "opciones": [
+        "La Asamblea General de las Naciones Unidas",
+        "El Consejo de Seguridad",
+        "La Corte Internacional de Justicia",
+        "El Consejo Económico y Social"
+      ],
+      "correcta": 1,
+      "justificacion": "el Consejo de Seguridad es el único órgano del sistema de las Naciones Unidas cuyas resoluciones revisten un carácter jurídico obligatorio para todos los Estados miembros, conforme al Capítulo VII de la Carta de San Francisco, estando legitimado para autorizar el uso legítimo de la fuerza colectiva."
+    },
+    {
+      "id": "lv_dec10_p3_e5_12",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Cuando el Estado colombiano suscribe de manera soberana un Tratado de Libre Comercio, la dinámica ordinaria del Congreso de la República experimenta una mutación de prioridades legislativas debiendo tramitar regulaciones relativas a la propiedad intelectual, regímenes arancelarios y salvaguardas para la inversión extranjera.",
+      "enunciado": "Esta interconexión entre los compromisos comerciales externos y la producción de leyes locales evidencia que la globalización económica:",
+      "opciones": [
+        "Anula la capacidad fiscal autónoma de los municipios y suprime la descentralización",
+        "Condiciona la agenda legislativa interna mediante un proceso de armonización normativa internacional",
+        "Elimina por completo la vigencia del principio de la separación y equilibrio de los poderes públicos",
+        "Subordina la rama judicial a los dictámenes exclusivos del poder ejecutivo nacional"
+      ],
+      "correcta": 1,
+      "justificacion": "la ratificación de tratados comerciales vincula al legislativo nacional, el cual se ve obligado a sintonizar y ajustar la arquitectura jurídica ordinaria interna a los estándares y compromisos preestablecidos en el escenario multilateral para garantizar la validez jurídica del acuerdo."
+    },
+    {
+      "id": "lv_dec10_p3_e5_13",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH.",
+      "competencia": "Pensamiento social",
+      "contexto": "La ratificación de instrumentos internacionales de amparo a los Derechos Humanos genera un escenario de corresponsabilidad donde las autoridades nacionales aceptan el escrutinio técnico de comisiones encargadas de velar por el cumplimiento de las garantías mínimas de los ciudadanos.",
+      "enunciado": "Cuando la Comisión Interamericana de Derechos Humanos emite medidas cautelares urgentes dirigidas a proteger la vida de líderes comunitarios en Colombia, la legitimidad y exigibilidad de dicha acción se fundamenta jurídicamente en:",
+      "opciones": [
+        "El ejercicio del monopolio militar de los ejércitos transnacionales sobre el territorio colombiano",
+        "Los compromisos convencionales adquiridos voluntariamente por Colombia al ratificar el Pacto de San José",
+        "La imposición unilateral de leyes dictadas de manera impositiva por el parlamento europeo",
+        "La suspensión temporal del ordenamiento legal ordinario vigente en la Constitución de 1991"
+      ],
+      "correcta": 1,
+      "justificacion": "la competencia y obligatoriedad de los pronunciamientos de la CIDH no configuran una afrenta ilegítima a la soberanía, sino que derivan de la decisión autónoma del Estado colombiano de adherirse a la Convención Americana sobre Derechos Humanos, aceptando los mecanismos de supervisión supranacional."
+    },
+    {
+      "id": "lv_dec10_p3_e5_14",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Instrumentos multilaterales globales como el Acuerdo de París configuran directrices para que los Estados firmantes elaboren estrategias nacionales enfocadas en mitigar las causas humanas del calentamiento de la atmósfera y la degradación climática.",
+      "enunciado": "Con el propósito de cumplir de manera efectiva con los topes de descarbonización derivados de estos convenios, el diseño de la política pública interna en Colombia ha debido incorporar mecanismos normativos tales como:",
+      "opciones": [
+        "La flexibilización de licencias de explotación minera en ecosistemas de páramo",
+        "La estructuración de impuestos verdes al carbono y planes nacionales de transición energética alternativa",
+        "La prohibición absoluta de los sistemas de transporte colectivo motorizado en ciudades intermedias",
+        "La transferencia de la gestión de cuencas hidrográficas a corporaciones industriales multinacionales"
+      ],
+      "correcta": 1,
+      "justificacion": "la sintonía con las directrices ambientales de orden internacional impulsa la creación de incentivos y gravámenes internos que alteran el modelo económico, forzando a los gobiernos a diseñar políticas de diversificación energética y desincentivo al uso de hidrocarburos."
+    },
+    {
+      "id": "lv_dec10_p3_e5_15",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA)",
+      "competencia": "Pensamiento social",
+      "contexto": "La Carta fundacional de la Organización de los Estados Americanos consagra el imperativo ético de defender y consolidar la estabilidad de los regímenes republicanos y de la democracia representativa, operando bajo el marco geográfico del hemisferio occidental.",
+      "enunciado": "¿Qué tratado político específico, adoptado de manera extraordinaria en Lima en el año 2001, dota al sistema interamericano de herramientas procedimentales claras ante situaciones que configuren rupturas del hilo institucional constitucional en un Estado miembro?",
+      "opciones": [
+        "La Carta Democrática Interamericana",
+        "El Tratado Interamericano de Asistencia Recíproca",
+        "La Declaración de los Derechos y Deberes del Hombre de Bogotá",
+        "El Pacto de Derechos Económicos, Sociales y Culturales de San José"
+      ],
+      "correcta": 0,
+      "justificacion": "la Carta Democrática Interamericana constituye el instrumento político-jurídico de máxima especialización en la región para evaluar, prevenir e instituir mecanismos de sanción y aislamiento diplomático frente a desvíos dictatoriales de las naciones de las Américas."
+    },
+    {
+      "id": "lv_dec10_p3_e5_16",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las agencias de crédito multilateral y los fondos globales de estabilización monetaria suelen condicionar el otorgamiento de líneas de financiamiento de emergencia para balanzas fiscales a la implementación de reformas estructurales en el sistema de captación pública de las naciones.",
+      "enunciado": "Si el Fondo Monetario Internacional aconseja al Estado colombiano controlar rigurosamente su brecha fiscal para mantener su perfil crediticio atractivo, el comportamiento histórico y previsible de la agenda del gobierno y del Congreso consistirá en debatir:",
+      "opciones": [
+        "El subsidio total del precio de los combustibles fósiles para el sector agropecuario masivo",
+        "La formulación de reformas tributarias regresivas o estructurales orientadas a elevar el recaudo estatal",
+        "La estatización absoluta de los activos industriales y el monopolio de las telecomunicaciones",
+        "La eliminación definitiva del impuesto al valor agregado en todas las transacciones financieras internacionales"
+      ],
+      "correcta": 1,
+      "justificacion": "para amoldarse a los indicadores de disciplina fiscal exigidos por los prestamistas multilaterales externos, las ramas del poder en Colombia tienden a canalizar las recomendaciones mediante propuestas legislativas orientadas a incrementar los ingresos impositivos ordinarios."
+    },
+    {
+      "id": "lv_dec10_p3_e5_17",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "competencia": "Pensamiento social",
+      "contexto": "Las agencias e instancias que integran el Sistema de Naciones Unidas en Colombia cooperan permanentemente con los diversos ministerios mediante proyectos de desarrollo, enfoques diferenciales de género, mitigación de la pobreza extrema y asistencia técnica humanitaria.",
+      "enunciado": "Este esquema de articulación interinstitucional demuestra que la presencia operativa de los organismos de integración transnacional en el territorio nacional se despliega en calidad de:",
+      "opciones": [
+        "Sustitutos plenipotenciarios permanentes de las alcaldías y gobernaciones locales de las áreas de conflicto",
+        "Aliados estratégicos de cooperación que actúan como asesores técnicos sin capacidad supletoria del Estado",
+        "Entidades judiciales con potestades autónomas para destituir e inhabilitar a funcionarios de elección popular",
+        "Organizaciones de carácter privado mercantil destinadas a la privatización de los servicios de saneamiento básico"
+      ],
+      "correcta": 1,
+      "justificacion": "los organismos transnacionales de cooperación no detentan facultades de gobierno directo ni suplantan a las autoridades colombianas electas; su rol se circunscribe al apoyo técnico, logístico y metodológico para optimizar la eficacia de los planes fijados de forma autónoma por la nación."
+    },
+    {
+      "id": "lv_dec10_p3_e5_18",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Examen Periódico Universal es un mecanismo institucionalizado del Consejo de Derechos Humanos de las Naciones Unidas ideado para revisar de manera detallada el comportamiento y las garantías fundamentales en cada uno de los Estados parte de la organización.",
+      "enunciado": "Cuando la delegación oficial de Colombia comparece y se somete al escrutinio periódico del EPU, la utilidad práctica más significativa de este procedimiento para el diseño normativo interno del país radica en:",
+      "opciones": [
+        "Identificar vacíos legales y debilidades institucionales para orientar el ajuste de las políticas públicas y las leyes nacionales",
+        "Adquirir un salvoconducto de amnistía automática ante procesos adelantados por tribunales internacionales penales",
+        "Acceder de manera directa a la condonación incondicional de los saldos insolutos de la deuda pública soberana",
+        "Conseguir autorizaciones excepcionales multilaterales para omitir la aplicación del derecho internacional humanitario"
+      ],
+      "correcta": 0,
+      "justificacion": "el valor de las recomendaciones derivadas del Examen Periódico Universal consiste en ofrecer un diagnóstico externo técnico que sirve de insumo reflexivo al Estado, permitiéndole corregir vacíos normativos e institucionales en su política nacional de derechos humanos."
+    },
+    {
+      "id": "lv_dec10_p3_e5_19",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "competencia": "Pensamiento social",
+      "contexto": "La Declaración de Incheon y el marco operativo de la agenda de Educación 2030 liderada por la UNESCO vinculan éticamente a los signatarios a reconfigurar sus sistemas escolares públicos promoviendo la inclusión universal, el cierre de brechas de género y la calidad educativa.",
+      "enunciado": "Con la finalidad de reflejar la adopción de estas directrices transnacionales de inclusión dentro del contexto escolar colombiano, el Ministerio de Educación Nacional ha debido estructurar leyes y decretos internos orientados a:",
+      "opciones": [
+        "Fomentar la privatización progresiva de las instituciones educativas del sector rural disperso",
+        "Garantizar la gratuidad escolar, la flexibilización curricular y los programas de permanencia enfocados en minorías étnicas",
+        "Eliminar la enseñanza obligatoria de la geografía, la historia nacional y las competencias ciudadanas",
+        "Impedir el acceso a becas universitarias públicas a estudiantes residentes en zonas rurales de difícil acceso"
+      ],
+      "correcta": 1,
+      "justificacion": "las pautas globales en materia educativa dictadas por la UNESCO presionan e inducen el desarrollo de un marco normativo interno de protección social, materializado en programas Estatales de gratuidad y adaptaciones de currículos flexibles para poblaciones vulnerables."
+    },
+    {
+      "id": "lv_dec10_p3_e5_20",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La ratificación y el posterior proceso de incorporación del Estatuto de Roma dentro del bloque de constitucionalidad de Colombia condujo a la necesidad de actualizar el estatuto punitivo interno, adicionando tipos penales específicos que anteriormente carecían de un marco de persecución idóneo en la justicia tradicional.",
+      "enunciado": "Este ajuste del código penal interno colombiano demuestra que la inserción de las directrices jurídicas internacionales en el país opera bajo una lógica según la cual:",
+      "opciones": [
+        "Los tribunales internacionales usurpan el ejercicio de la rama judicial colombiana de manera definitiva",
+        "El derecho internacional penal sirve como catalizador normativo que redefine y robustece los marcos represivos internos",
+        "Las leyes penales nacionales pierden vigencia obligatoria dentro de los departamentos fronterizos de la nación",
+        "Las potencias globales adquieren la prerrogativa exclusiva de legislar en materia civil sobre los ciudadanos de Colombia"
+      ],
+      "correcta": 1,
+      "justificacion": "la asimilación de la normatividad supranacional del Estatuto de Roma actúa como un incentivo modernizador de la agenda penal propia del Estado, expandiendo el marco interno de tipos penales e instrumentos para evitar la impunidad de crímenes de lesa humanidad."
+    }
+  ]
+}

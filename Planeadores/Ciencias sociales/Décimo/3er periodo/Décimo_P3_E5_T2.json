@@ -1,0 +1,220 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T17:22:45Z",
+  "planeadores": [
+    {
+      "id": "p10p3-directrices-002",
+      "creado": 1781889765,
+      "grado": "Décimo",
+      "periodo": "Tercer periodo",
+      "ejeIdx": 5,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "6",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental",
+      "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Reconoce el impacto institucional de las directrices de los organismos multilaterales analizando las ventajas y desventajas de la pertenencia de Colombia a estos .* Argumenta el rol de los tribunales e instituciones internacionales en el amparo de los Derechos Humanos frente a crisis de soberanía.Ser:* Participa en foros o mesas redondas académicas simulando la toma de decisiones diplomáticas ante tensiones entre Estados.",
+      "competencias": "* Pensamiento social.\n\n* Pensamiento reflexivo y sistémico.",
+      "contenidos": "* El papel de los organismos de integración transnacional (ONU, OEA).\n* Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental .\n* Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.\n* Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "objetivo": "Evaluar los procesos de diseño y ejecución de las directrices multilaterales sectoriales emanadas de los bloques transnacionales mediante el desglose sistémico de convenios internacionales, analizando críticamente su grado de incorporación en la agenda legislativa de Colombia y estimando sus repercusiones concretas sobre la sostenibilidad, la economía y la educación pública dentro del entorno rural comunitario.",
+      "pregunta": "¿Cómo impacta una directriz económica o ambiental diseñada en asambleas globales de la ONU la soberanía alimentaria y los métodos productivos de las familias campesinas de Loma Verde?",
+      "explora": "Conversatorio inicial planteando un dilema: si un pacto global prohíbe el uso de ciertas sustancias químicas para proteger las fuentes hídricas del planeta, pero los productores locales rurales alegan pérdidas inmediatas en sus cosechas debido a plagas, ¿cuál decisión debe primar y quién vigila ese acuerdo? Como actividad corta, los estudiantes reciben tarjetas con cuatro íconos que representan los sectores fundamentales (un billete, una balanza de la justicia, un birrete de graduación y una hoja verde) y deben pasar al tablero para escribir al lado el nombre de un organismo o programa transnacional que consideren responsable de liderar esa agenda en el país.",
+      "glosario": [
+        {
+          "t": "directriz sectorial",
+          "d": "lineamiento normativo, técnico o metodológico diseñado por agencias transnacionales para unificar las políticas de desarrollo de los Estados en un campo específico como la economía o la educación."
+        },
+        {
+          "t": "agenda legislativa",
+          "d": "conjunto priorizado de proyectos de ley, reformas y debates políticos que el Congreso de la República programa para su trámite, los cuales reflejan compromisos constitucionales o pactos multilaterales."
+        },
+        {
+          "t": "bloque de constitucionalidad",
+          "d": "unidad jurídica compuesta por normas y principios que, sin aparecer formalmente en el texto de la Constitución, se integran a ella por mandato expreso del artículo 93, como los tratados de derechos humanos."
+        },
+        {
+          "t": "desarrollo sostenible",
+          "d": "paradigma de planificación global que busca articular de manera equilibrada el crecimiento económico, la inclusión social y la conservación ambiental, salvaguardando las necesidades de las generaciones venideras."
+        },
+        {
+          "t": "política macroeconómica",
+          "d": "conjunto de directrices gubernamentales destinadas a regular las variables globales de un país, como la inflación y la balanza comercial, usualmente influenciadas por las recomendaciones de bancas multilaterales."
+        },
+        {
+          "t": "estandarización educativa",
+          "d": "proceso promovido por agencias mundiales para unificar los criterios de evaluación, competencias mínimas y estructuras curriculares entre diversos países, facilitando la medición del capital humano."
+        },
+        {
+          "t": "soberanía jurídica",
+          "d": "facultad exclusiva e independiente que posee un Estado para dictar su propio ordenamiento legal y administrar justicia dentro de sus fronteras geográficas sin admitir la injerencia coercitiva de potencias externas."
+        },
+        {
+          "t": "cooperación técnica",
+          "d": "mecanismo de transferencia de conocimientos, metodologías, tecnologías y recursos financieros no reembolsables entre organismos multilaterales y Estados para fortalecer las instituciones locales."
+        },
+        {
+          "t": "ajuste estructural",
+          "d": "programa de reformas económicas restrictivas sugerido por entidades financieras internacionales a los Estados deudores como condición previa para acceder a créditos, priorizando la reducción del gasto público."
+        },
+        {
+          "t": "instrumento vinculante",
+          "d": "tratado o acuerdo internacional formalizado que, tras cumplir con los requisitos institucionales de ratificación por parte de un Estado, adquiere fuerza de ley y genera obligaciones exigibles ante la comunidad internacional."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La matriz de las directrices globales: economía y justicia tras las fronteras",
+          "txt": "Las directrices multilaterales no surgen de forma espontánea; constituyen el resultado de complejos procesos de concertación diplomática dentro de las agencias especializadas de la ONU y la OEA. En el ámbito económico, los lineamientos del Banco Mundial y del Fondo Monetario Internacional (FMI) suelen condicionar los créditos externos a la adopción de medidas de austeridad fiscal y apertura de mercados. En la dimensión jurídica, la unificación del derecho internacional penal y de los convenios contra la corrupción civil modela la forma en que los Estados sancionan los delitos transnacionales. Estas dinámicas revelan que el diseño de normas globales responde a un intento por homogeneizar los marcos regulatorios nacionales, facilitando el flujo mercantil global e imponiendo estándares de gobernanza que muchas veces colisionan con las prioridades de los países en vías de desarrollo.",
+          "pausa": "¿Por qué las recomendaciones de las bancas multilaterales pueden ser percibidas como una vulneración a la soberanía de una nación?",
+          "resp": "Porque condicionan el desembolso de recursos financieros esenciales a la modificación de las políticas fiscales del Estado, restringiendo la autonomía de los gobiernos para diseñar de forma independiente su gasto público social."
+        },
+        {
+          "tit": "Estandarización y conservación: las agendas de la educación y el medio ambiente",
+          "txt": "Los sectores educativo y ambiental representan los campos de mayor irradiación normativa en las últimas décadas. La UNESCO formula directrices orientadas a la inclusión, el desarrollo técnico y la medición por competencias, lo que impulsa a las naciones de América Latina a rediseñar sus planes escolares bajo métricas globales estandarizadas. Simultáneamente, el programa de las Naciones Unidas para el Medio Ambiente (PNUMA) y los tratados de las Cumbres de la Tierra diseñan mandatos imperativos para reducir las emisiones de gases de efecto invernadero y salvaguardar la biodiversidad. Estas directrices ambientales obligan a los Estados a implementar leyes de protección ecológica estrictas que, al trasladarse a los territorios rurales, transforman directamente la relación de las comunidades campesinas con el uso de la tierra usable y la explotación de recursos básicos.",
+          "pausa": "¿Cuál es el principal desafío que afronta una escuela rural al aplicar lineamientos educativos diseñados por organismos globales?",
+          "resp": "El reto consiste en la brecha material y tecnológica existente, dado que los parámetros transnacionales presuponen infraestructuras avanzadas y una conectividad que difiere radicalmente de las realidades institucionales de la periferia rural."
+        },
+        {
+          "tit": "La agenda legislativa en Colombia: la internalización del derecho internacional",
+          "txt": "La incidencia de las políticas internacionales en la agenda legislativa de Colombia se viabiliza mediante el control constitucional y legislativo ordinario. Para que una directriz de carácter multilateral adquiera fuerza coercitiva interna, debe surtir un trámite que incluye la aprobación de una ley aprobatoria en el Congreso de la República y la posterior revisión de exequibilidad por parte de la Corte Constitucional. Una vez ratificado el instrumento, este se incorpora al ordenamiento jurídico nacional, influyendo de manera directa en las decisiones presupuestales y sectoriales de los ministerios. Un ejemplo patente es la adopción de los Objetivos de Desarrollo Sostenible (ODS), los cuales reorientaron las metas de planificación urbana y rural de los planes nacionales de desarrollo, evidenciando que la agenda del legislativo colombiano está estrechamente supeditada a los compromisos adquiridos en los foros de integración transnacional.",
+          "pausa": "Si el Congreso aprueba una ley fundamentada en un tratado internacional que desfavorece la pequeña producción agrícola local, ¿qué principios constitucionales se ponen en tensión?",
+          "resp": "Se genera una tensión directa entre el principio internacional de cumplimiento de buena fe de los tratados (pacta sunt servanda) y los deberes constitucionales de promoción del bienestar y protección de los trabajadores agrarios de la nación."
+        }
+      ],
+      "talleres": "Instrucciones detalladas para el taller de estructuración interactivo: los estudiantes se conformarán en grupos de trabajo de cuatro integrantes para simular comisiones técnicas sectoriales del Congreso de la República. Cada equipo recibirá un documento sintético con una directriz multilateral específica emanada de una agencia transnacional (por ejemplo, la directriz sobre reducción de plásticos de un solo uso del PNUMA, las metas de alfabetización digital de la UNESCO, o las reformas de flexibilización laboral sugeridas por la OCDE). Utilizando un pliego de cartulina, deberán elaborar una matriz de impacto legislativo que analice de forma exhaustiva los siguientes componentes estructurales:\n1. Identificación de la directriz global y la agencia que la formula.\n2. Sector nacional afectado directamente (Económico, Jurídico, Educativo o Ambiental).\n3. Modificaciones o proyectos de ley que el Congreso colombiano debería tramitar para adaptarla.\n4. Dos ventajas institucionales de su aplicación para el desarrollo del país.\n5. Dos desventajas o barreras materiales que retrasarían su ejecución real en zonas rurales apartadas.\nLas matrices se expondrán en plenaria mediante una simulación de debate legislativo.",
+      "transfer": "Actividades de transferencia teórico-práctica para el desarrollo del pensamiento crítico:\n1. Estudio de caso guiado: se presenta a los estudiantes el caso real de la adopción del Acuerdo de Escazú en Colombia (directriz multilateral ambiental regional para el acceso a la información y protección de líderes ecológicos). Los estudiantes deberán analizar las posturas opuestas surgidas en los debates del Congreso entre los gremios económicos, que alegaban parálisis en los proyectos de infraestructura minera y vial, y las organizaciones civiles campesinas que demandaban amparo judicial ante la degradación de sus microcuencas. Responderán un taller analítico escrito evaluando el peso de los tratados frente a la autonomía industrial doméstica.\n2. Reflexión del entorno local: los estudiantes realizarán un inventario descriptivo dentro de su entorno escolar o comunitario identificando un elemento material o un programa institucional que sea el reflejo directo de una directriz internacional (por ejemplo, la aplicación de la prueba censal de evaluación estandarizada, la delimitación de una zona de reserva forestal cercana, o los subsidios de proyectos productivos cofinanciados por el Banco Mundial), redactando un ensayo reflexivo de dos páginas sobre su efectividad real en el corregimiento.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia:\n1. En el estudio de caso sobre el Acuerdo de Escazú, la respuesta modelo debe estructurar argumentativamente que el tratado internacional se inserta en el ordenamiento bajo la lógica del desarrollo sostenible, la cual obliga a armonizar el crecimiento industrial con las garantías democráticas ambientales. Los gremios argumentaban una supuesta pérdida de soberanía económica por la posible judicialización de las licencias ambientales, mientras que las comunidades rurales defendían el pacto como una herramienta de supervivencia frente a los pasivos ambientales. El análisis debe concluir que el derecho internacional ambiental amplía las bases de la democracia participativa local, sin anular por completo la viabilidad del desarrollo extractivo regulado.\n2. En el inventario del entorno local, si el estudiante selecciona las evaluaciones estandarizadas en la Institución Educativa San José de Loma Verde, la respuesta analítica debe evidenciar que dicha prueba responde a las directrices de calidad de la OCDE y la UNESCO. La ventaja es que inserta al plantel en sistemas de medición comparativos; la desventaja crítica es que el instrumento omite el sesgo de la ruralidad, evaluando competencias urbanas y tecnológicas avanzadas en un contexto donde los estudiantes afrontan brechas crónicas de infraestructura física y conectividad digital.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño institucional:\n* Superior: evalúa de manera sistémica y con un lenguaje técnico impecable el proceso de formación de las directrices multilaterales, argumentando con rigor lógico su impacto, ventajas y desventajas en el ordenamiento legal interno de Colombia y proponiendo lecturas analíticas críticas aplicadas al entorno rural de Loma Verde.\n* Alto: explica de forma correcta el origen de las directrices de los organismos transnacionales, describe cómo influyen en la agenda legislativa del país y completa las actividades de caso relacionando los sectores sociales con la normatividad internacional.\n* Básico: identifica las funciones generales de agencias como la ONU o la OEA, pero presenta dificultades conceptuales al trazar el camino que sigue una directriz transnacional hasta convertirse en ley nacional o al analizar sus efectos rurales.\n* Bajo: presenta confusión grave al diferenciar los sectores de las directrices, asocia erróneamente los roles de las agencias internacionales o carece de capacidad argumentativa para evaluar el impacto local de las normas.\nInstrumentos de evaluación adoptados: rúbrica cualitativa para matrices legislativas, escala de apreciación de debates escolares y portafolio escrito de análisis de casos contemporáneos.",
+      "recursos": "Textos impresos de las declaraciones sectoriales de la ONU (UNESCO, PNUMA, Banco Mundial), copias del articulado constitucional de Colombia (artículos 9, 93, 150 y 224), guías impresas para el taller de simulación legislativa, fichas temáticas de colores, papel periódico y marcadores.",
+      "referencias": "Información oficial extraída del archivo \"Actual - Malla curricular - Ciencias sociales.xlsx\":\n* Estándares Básicos de Competencias (EBC): Identifico las organizaciones internacionales que surgieron a lo largo del siglo XX y evalúo el impacto de su gestión.\n* EBC: Relaciono algunos de estos procesos políticos internacionales con los procesos colombianos.\n* Derechos Básicos de Aprendizaje (DBA): DBA 4: El papel de los organismos internacionales como formas de alianza entre los Estados y sus intereses.\nFuentes bibliográficas complementarias de rigor científico:\n* Lleras de la Fuente, F. (2018). El impacto de las directrices de la OCDE y la UNESCO en las reformas de la educación en América Latina. Bogotá: Editorial Universidad de los Andes.\n* Amaya Navas, O. (2020). El derecho internacional ambiental y su recepción en la agenda legislativa colombiana. Bogotá: Universidad Externado de Colombia.\n* Stiglitz, J. E. (2002). El malestar en la globalización. Madrid: Taurus.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje (DUA) adaptadas al aula:\n* Frente a dificultades de comprensión conceptual o barreras de lectoescritura: provisión de mapas conceptuales y diagramas vectoriales de flujo que ilustren con flechas y códigos de colores el recorrido de un tratado internacional desde Ginebra o Washington hasta su aprobación en Bogotá. Uso de glosarios ampliados con analogías sencillas de la vida rural.\n* Para estudiantes con ritmos de aprendizaje avanzados o alta motivación: asignación de una lectura analítica complementaria sobre las tensiones de soberanía jurídica suscitadas por los fallos del tribunal arbitral del Banco Mundial (CIADI) frente a las demandas de multinacionales contra el Estado colombiano por la protección de zonas de páramo.\n* Diseño de trabajo cooperativo y flexible: estructuración de los grupos del taller asignando roles bien definidos y rotativos (director de debate, secretario técnico de actas, analista de datos rurales, portavoz legislativo) para asegurar que la participación sea equitativa y adaptada a los diversos estilos y potencialidades de aprendizaje.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "Las directrices multilaterales constituyen lineamientos técnicos y normativos formulados por agencias transnacionales para guiar el desarrollo de los Estados miembros.",
+        "Las bancas mundiales diseñan políticas macroeconómicas de ajuste que condicionan el acceso a financiamiento externo, impactando la inversión social interna.",
+        "Los estándares de la UNESCO e incentivos del PNUMA unifican las políticas globales de educación y medio ambiente, impulsando reformas curriculares y ecológicas.",
+        "Colombia internaliza estos mandatos globales mediante leyes aprobatorias en el Congreso, las cuales reconfiguran permanentemente la agenda legislativa nacional.",
+        "La aplicación de estas normas transnacionales genera tensiones en los territorios rurales debido a las asimetrías materiales frente a los estándares urbanos globales."
+      ],
+      "errores": [
+        "Creer que las directrices de la UNESCO o de la OCDE se convierten en leyes de obligatorio cumplimiento de forma automática en el país: se debe aclarar que estas directrices requieren un proceso autónomo de deliberación, votación y ratificación por parte del Congreso de la República para adquirir carácter coactivo.",
+        "Suponer que el Banco Mundial regala dinero sin exigir condiciones políticas o fiscales a cambio: es necesario explicar que los créditos multilaterales están sujetos a memorandos de entendimiento que obligan a realizar reformas de ajuste estructural en las finanzas del Estado deudor.",
+        "Considerar que las directrices ambientales globales solo benefician a las grandes corporaciones y destruyen la pequeña agricultura: es preciso matizar que, aunque generan tensiones operativas, muchos tratados internacionales ambientales proveen herramientas jurídicas para defender los ecosistemas rurales frente a la minería.",
+        "Pensar que las pruebas educativas estandarizadas son diseñadas por el Ministerio de Educación de forma totalmente aislada: se debe reiterar que estos instrumentos siguen matrices conceptuales y metas de calidad fijadas por bloques transnacionales para medir de forma global el rendimiento académico."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué fases formales e institucionales debe surtir un tratado internacional en Colombia para que sus directrices adquieran fuerza de ley vinculante?",
+          "a": "Debe ser suscrito por el Ejecutivo, aprobado por el Congreso de la República mediante una ley aprobatoria de tratado, superar la revisión previa y automática de constitucionalidad efectuada por la Corte Constitucional y, finalmente, ser ratificado y canjeado por el presidente de la república.",
+          "verdadero": null,
+          "justificacion": "Este procedimiento garantiza que las directrices internacionales se armonicen con la supremacía de la Carta Política y cuenten con legitimidad democrática interna.",
+          "enunciado": "Revisión de los pesos y contrapesos constitucionales frente a la inserción de normas externas en el derecho nacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera las directrices macroeconómicas del Fondo Monetario Internacional (FMI) logran incidir en las decisiones de gasto social de un Estado soberano?",
+          "a": "Inciden al condicionar la aprobación de préstamos de estabilización o líneas de crédito al cumplimiento de metas de austeridad fiscal, lo que compele a los gobiernos a recortar el presupuesto en sectores como subsidios, pensiones o burocracia pública.",
+          "verdadero": null,
+          "justificacion": "El FMI utiliza la condicionalidad financiera como un mecanismo coercitivo indirecto para moldear las estructuras económicas de los países signatarios.",
+          "enunciado": "Análisis de las reformas de ajuste estructural aplicadas en las economías en desarrollo durante las crisis de balanza de pagos.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es el propósito central que persigue la UNESCO al promover la formulación de directrices de estandarización educativa a nivel global?",
+          "a": "Establecer marcos comunes de calidad, inclusión y competencias que permitan comparar el rendimiento del capital humano entre naciones, facilitando la movilidad académica, el desarrollo técnico homologado y la canalización de fondos de ayuda.",
+          "verdadero": null,
+          "justificacion": "La estandarización busca dotar a la comunidad internacional de métricas unificadas para auditar la eficiencia de los sistemas educativos nacionales.",
+          "enunciado": "Implementación de las metas de educación global fijadas en la Agenda 2030 del sistema de Naciones Unidas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué tensión jurídica surge en un territorio rural cuando una directriz ambiental de conservación global choca con los derechos de posesión históricos de comunidades campesinas tradicionales?",
+          "a": "Se genera una tensión entre el interés general ecológico transnacional que busca blindar áreas protegidas (parques nacionales) y el derecho al trabajo, el arraigo y la seguridad alimentaria de los campesinos locales, quienes sufren restricciones para sus prácticas agropecuarias cotidianas.",
+          "verdadero": null,
+          "justificacion": "Las directrices de conservación a menudo adoptan visiones que excluyen la dimensión social y habitacional de las comunidades agrarias nativas.",
+          "enunciado": "Delimitación de áreas de reserva forestal y zonas de exclusión productiva en microcuencas rurales colombianas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo se define el control de convencionalidad que los jueces colombianos deben aplicar en relación con las directrices de derechos humanos ratificadas por el país?",
+          "a": "Es la obligación jurídica de confrontar las leyes y actuaciones internas con las disposiciones de la Convención Americana sobre Derechos Humanos y la jurisprudencia de la Corte IDH, garantizando que el orden doméstico no vulnere los compromisos internacionales del Estado.",
+          "verdadero": null,
+          "justificacion": "Este mecanismo opera como una herramienta judicial obligatoria para hacer prevalecer el derecho convencional sobre normas locales de menor rango.",
+          "enunciado": "Evaluación judicial de la congruencia normativa de leyes ordinarias frente al bloque de constitucionalidad.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las recomendaciones técnicas que formula la OCDE en materia fiscal y educativa se incorporan automáticamente como leyes de la república sin requerir debates en el Congreso de Colombia.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las recomendaciones de la OCDE funcionan como guías de buenas prácticas políticas y compromisos de estandarización; por tanto, para adquirir fuerza de ley coactiva interna, deben traducirse en proyectos de ley debatidos y aprobados autónomamente por las comisiones y plenarias del Congreso.",
+          "enunciado": "Ingreso de Colombia a la Organización para la Cooperación y el Desarrollo Económicos y recepción de sus lineamientos internos.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El bloque de constitucionalidad faculta a que ciertos tratados internacionales de derechos humanos posean el mismo rango jerárquico normativo que la propia Constitución Política de 1991.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "El artículo 93 de la Constitución colombiana consagra expresamente que los tratados ratificados por el Congreso que reconocen los derechos humanos y prohíben su limitación en los estados de excepción se integran al bloque, poseyendo la máxima jerarquía legal del país.",
+          "enunciado": "Estudio de las fuentes formales del derecho constitucional colombiano y la prevalencia internacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las directrices económicas diseñadas por el Banco Mundial tienen como único fin la donación altruista y a fondo perdido de capital financiero para erradicar la pobreza en el campo.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El Banco Mundial opera primordialmente mediante la concesión de créditos financieros de banca comercial a mediano y largo plazo que los Estados están obligados a reembolsar con intereses, supeditando dichos desembolsos a reformas institucionales sectoriales de apertura mercantil.",
+          "enunciado": "Mecanismos de financiamiento de infraestructura y reestructuración sectorial mediante la banca multilateral transnacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los Objetivos de Desarrollo Sostenible (ODS) de la ONU son un conjunto de directrices que los municipios y departamentos de Colombia debieron articular en sus planes de desarrollo local.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Como compromisos internacionales asumidos por el Estado central, el Departamento Nacional de Planeación (DNP) emitió directrices vinculantes para que las entidades territoriales alinearan sus presupuestos y metas de planeación con los 17 indicadores globales de sostenibilidad.",
+          "enunciado": "Territorialización de las metas ambientales y de equidad global en las entidades municipales periféricas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La formulación de directrices multilaterales en materia penal faculta a la ONU para emitir y ejecutar órdenes de captura de forma autónoma dentro de Montería mediante sus propios agentes.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La ONU carece de policía o aparato judicial coercitivo directo sobre los territorios de los Estados miembros. Las directrices penales internacionales se ejecutan exclusivamente a través de los cuerpos policiales y de investigación judicial autónomos de la Fiscalía y las fuerzas nacionales de Colombia.",
+          "enunciado": "Límites del principio de soberanía territorial frente a la persecución de delitos internacionales o transnacionales.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Desarrollar un ejercicio de observación crítica en el entorno doméstico: el estudiante dialogará con los adultos de su hogar sobre las exigencias o normativas que aplican las asociaciones productoras, cooperativas o escuelas de la vereda (por ejemplo, el control en el uso de ciertos abonos, la recolección diferenciada de envases de veneno, o los contenidos que se evalúan en los exámenes institucionales). El estudiante redactará en su cuaderno un informe de dos páginas explicando cómo estas reglas de la vereda son el reflejo de directrices más grandes diseñadas a nivel internacional para cuidar el medio ambiente o estandarizar la educación local.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA SOBRE LA FORMULACIÓN DE DIRECTRICES MULTILATERALES\n\n## Marco histórico de la gobernanza global sectorial\nLa configuración de la arquitectura multilateral en la postguerra no se limitó a la instauración de foros diplomáticos orientados a la contención militar o a la resolución de diferendos territoriales comunes. Paralelamente a la estructuración de los consejos políticos, el nuevo orden interestatal comprendió que la estabilidad global requería de una profunda homogeneización técnica, económica, normativa y social. La fragmentación regulatoria que caracterizó al periodo de entreguerras fue identificada como uno de los detonantes de las crisis macroeconómicas sistémicas y del subsiguiente ascenso de los regímenes totalitarios. En consecuencia, la firma de la Carta de las Naciones Unidas en 1945 habilitó la creación de un vasto engranaje de agencias especializadas, comisiones técnicas y programas sectoriales diseñados para formular directrices multilaterales capaces de estandarizar las políticas públicas de las naciones soberanas.\n\nEste proceso de normalización técnica internacional se expandió exponencialmente durante la segunda mitad del siglo XX, impulsado por el paradigma de la globalización y la creciente interdependencia de los mercados. Los foros multilaterales transmutaron de espacios de recomendación política a verdaderos centros de producción normativa sectorial. La formulación de directrices mundiales en materia económica, jurídica, educativa y ambiental se transformó en la estrategia predilecta de los bloques hegemónicos y de las agencias transnacionales para asegurar un marco operativo predecible, fluido y compatible con los flujos de capital global. Los Estados, al insertarse voluntariamente en este entramado institucional, aceptaron redefinir las bases de su soberanía doméstica para dar paso a una era de gobernanza multinivel organizada.\n\n## Desglose conceptual de las directrices sectoriales\n\n### Dimensión económica y financiera\nLa formulación de directrices en el sector económico encuentra sus principales vectores en las instituciones surgidas del acuerdo de Bretton Woods de 1944: el Banco Mundial y el Fondo Monetario Internacional (FMI), complementados hoy por las directrices de la Organización para la Cooperación y el Desarrollo Económicos (OCDE). Estas entidades diseñan lineamientos técnicos orientados a la disciplina fiscal, la estabilidad macroeconómica, la desregulación de mercados y la privatización de activos públicos. La operatividad de estas directrices se viabiliza a través del principio de condicionalidad: los Estados soberanos que solicitan líneas de crédito o asistencia financiera para equilibrar sus balanzas de pagos deben suscribir memorandos de entendimiento que los obligan a reformar sus estructuras impositivas y presupuestales, supeditando el diseño de la economía nacional a los dictámenes técnicos de la banca transnacional.\n\n### Dimensión jurídica y de gobernanza\nEn el plano jurídico, las directrices multilaterales operan mediante convenciones, tratados codificados y resoluciones vinculantes que buscan unificar los estándares de protección ciudadana y combate a la criminalidad transnacional. Lineamientos como la Convención de las Naciones Unidas contra la Corrupción o los estatutos reguladores de los tribunales internacionales de derechos humanos obligan a los Estados signatarios a adecuar sus códigos penales y procedimientos administrativos domésticos. Esta armonización jurídica persigue la edificación de una seguridad jurídica transnacional que proteja las inversiones, estandarice los mecanismos de extradición y consolide el respeto de las libertades civiles universales, erosionando la concepción clásica del monopolio judicial cerrado de las fronteras nacionales.\n\n### Dimensión educativa y de capital humano\nEl sector educativo se encuentra profundamente permeado por las directrices de la Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura (UNESCO) y las métricas de la OCDE. Estas agencias formulan directrices estructuradas bajo el enfoque de competencias y la eficiencia del capital humano, promoviendo la estandarización curricular y los sistemas de evaluación censal a nivel global. El propósito subyacente es unificar los criterios de calidad para que los estudiantes de diversas latitudes posean habilidades laborales comparables y homologables en el mercado de trabajo internacional. De este modo, las políticas educativas de los ministerios nacionales se alinean con las metas macro de alfabetización digital, inclusión formal y competitividad técnica delineadas en los foros de integración transnacional.\n\n### Dimensión ambiental y de sostenibilidad\nFrente a la crisis ecológica global, la formulación de directrices ambientales se ha transformado en un imperativo de supervivencia. Desde la Declaración de Estocolmo de 1972 hasta la adopción de la Agenda 2030 y el Acuerdo de París, el Programa de las Naciones Unidas para el Medio Ambiente (PNUMA) coordina lineamientos imperativos para mitigar el calentamiento atmosférico, delimitar reservas de biodiversidad y regular el uso de pasivos ecológicos industriales. Estas directrices ambientales operan bajo principios internacionales como el de precaución y el de responsabilidades compartidas pero diferenciadas, constriñendo a los aparatos legislativos nacionales a dictar normativas ecológicas restrictivas que condicionan los procesos de explotación de materias primas y planificación territorial agraria.\n\n## Internalización de las políticas internacionales en el ordenamiento colombiano\nLa inserción de las directrices multilaterales en el ecosistema institucional de la República de Colombia se encuentra regulada por precisos dispositivos constitucionales que median la tensión entre la soberanía y la integración. El artículo 150 de la Constitución Política asigna al Congreso la atribución de aprobar o desimprobar los tratados internacionales mediante el trámite de leyes aprobatorias. Posteriormente, de acuerdo con el artículo 241 superior, la Corte Constitucional ejerce un control automático, previo e integral de constitucionalidad sobre dichos instrumentos. Una vez el tratado supera este escrutinio y es ratificado por el Ejecutivo, sus disposiciones se incorporan formally al ordenamiento jurídico nacional.\n\nLa Corte Constitucional ha desarrollado una robusta doctrina en torno al bloque de constitucionalidad (artículo 93), la cual determina que los tratados de derechos humanos ratificados por el Congreso prevalecen en el orden interno y sirven como pauta obligatoria para la interpretación de los derechos fundamentales. En los sectores donde las directrices multilaterales no poseen rango de derechos humanos (como las directrices macroeconómicas de la OCDE o ambientales del PNUMA), la internalización se ejecuta a través de la agenda legislativa ordinaria o la formulación de los documentos CONPES y los Planes Nacionales de Desarrollo (PND). De esta forma, las metas transnacionales adquieren la fuerza coactiva del derecho interno, condicionando la asignación del presupuesto nacional, las reformas laborales y las políticas de ordenamiento ambiental en todos los niveles de la administración pública colombiana.\n\n## Tensiones materiales e impacto en las comunidades rurales periféricas\nCuando las directrices sectoriales globales, diseñadas bajo estándares técnicos urbanos e hiperconectados en las capitales del hemisferio norte, se trasladan a la realidad material de las zonas rurales de Colombia, se manifiestan profundas asimetrías y fricciones socioterritoriales. En el contexto del corregimiento de Loma Verde, en el municipio de Montería, estas tensiones dejan de ser debates doctrinales para transformarse en variables que condicionan la vida agraria comunitaria. La estandarización de las evaluaciones educativas, por ejemplo, impone métricas de calidad homogenizadas que ignoran la brecha digital rural, la falta de infraestructura de conectividad y las dinámicas productivas propias de las escuelas del campo, traduciéndose muchas veces en la exclusión y el rezago estadístico de las instituciones periféricas.\n\nEn la dimensión productiva y ecológica, las directrices ambientales transnacionales exigen la eliminación de ciertas prácticas agrícolas tradicionales y imponen normativas estrictas de conservación hídrica. Si bien estas medidas responden a una urgencia ecológica legítima para detener el cambio climático, su aplicación sin procesos de reconversión productiva subsidiados genera graves crisis de soberanía alimentaria y vulnerabilidad económica para las familias campesinas, quienes sufren restricciones en el uso de la tierra usable mientras las grandes agroindustrias continúan lidiando con asimetrías regulatorias. El dominio crítico de estos procesos faculta a la comunidad educativa para agenciar de manera técnica demandas de justicia ambiental y adaptabilidad curricular, entendiendo que el derecho internacional debe ser disputado y adaptado para que opere como una herramienta de dignificación campesina frente a los desafíos del siglo XXI.",
+      "lineatiempo": "1944: celebración de la Conferencia de Bretton Woods, dando origen al FMI y al Banco Mundial como rectores de las directrices económicas globales.\n1945: firma e institucionalización de la Carta de las Naciones Unidas, fijando el marco fundacional del multilateralismo contemporáneo.\n1972: realización de la Conferencia de Estocolmo sobre el Medio Humano, marcando el inicio de la formulación del derecho internacional ambiental organizado.\n1991: promulgación de la Constitución de Colombia, instaurando el bloque de constitucionalidad para la recepción de tratados transnacionales.\n1993: creación de la Organización Mundial del Comercio (OMC) en Marrakech, unificando las directrices de intercambio comercial internacional.\n2015: adopción unánime de la Agenda 2030 y los 17 Objetivos de Desarrollo Sostenible (ODS) por la Asamblea General de la ONU, consolidando las directrices globales actuales."
+    }
+  ]
+}

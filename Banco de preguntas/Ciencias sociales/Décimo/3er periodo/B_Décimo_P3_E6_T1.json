@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T13:30:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 6: Conflictos bélicos globales del siglo XX y transformaciones fronterizas",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_dec10_p3_e6_01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "A finales del siglo XIX y principios del siglo XX, las potencias europeas consolidaron un entramado de alianzas secretas y una carrera armamentista conocida como la Paz Armada: explique cómo este sistema de relaciones internacionales transformó un conflicto localizado en los Balcanes en una conflagración de escala mundial en 1914.",
+      "respuesta": "El sistema de alianzas dividió a Europa en dos bloques rígidos (la Triple Entente y la Triple Alianza), lo que significaba que cualquier alteración al statu quo activaría un efecto dominó de asistencia militar obligatoria. Cuando se produjo el asesinato del archiduque Francisco Fernando en Sarajevo por nacionalistas serbios, el conflicto localized entre el Imperio austrohúngaro y Serbia activó los pactos de respaldo: Rusia movilizó sus tropas en apoyo a Serbia, lo que obligó a Alemania a declarar la guerra a Rusia y Francia, e involucró posteriormente al Reino Unido tras la invasión de Bélgica, transformando una crisis regional en una guerra global.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El Tratado de Versalles de 1914 impuso severas sanciones económicas, territoriales y militares a Alemania tras su derrota en la Primera Guerra Mundial: analice de qué manera los términos de este acuerdo internacional sirvieron como dinamizador ideológico para el ascenso del nacionalsocialismo y el consecuente estallido de la Segunda Guerra Mundial.",
+      "respuesta": "El Tratado de Versalles impuso la cláusula de culpabilidad de la guerra a Alemania, forzándola a pagar reparaciones financieras exorbitantes, perder territorios clave como Alsacia y Lorena, y desmilitarizar su ejército. Estas condiciones hundieron a la República de Weimar en una profunda crisis económica e hiperinflación, lo que alimentó un sentimiento generalizado de humillación y revanchismo en la población; Adolf Hitler y el partido nazi explotaron este descontento mediante un discurso nacionalista radical que prometía desconocer el tratado, recuperar el espacio vital (Lebensraum) y devolver la grandeza a Alemania, convirtiendo el resentimiento en el principal motor ideológico hacia la Segunda Guerra Mundial.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Durante la Primera Guerra Mundial, la transición hacia la guerra de trincheras estuvo acompañada por el uso industrial de tecnologías como las ametralladoras, el gas venenoso y los tanques de guerra: asuma una postura crítica frente a cómo este desarrollo científico alteró la ética de la guerra y la escala de la mortalidad humana.",
+      "respuesta": "El uso industrial de la ciencia en la Primera Guerra Mundial deshumanizó los combates y rompió con la noción tradicional del enfrentamiento heroico cara a cara. La ametralladora convirtió los asaltos de infantería en masacres masivas automatizadas, mientras que las armas químicas introdujeron un sufrimiento indiscriminado que dependía de las condiciones del viento, transformando los campos de batalla en laboratorios de destrucción masiva; este desarrollo supeditó los valores éticos al pragmatismo militar, multiplicando las bajas a niveles nunca antes vistos en la historia humana y demostrando que el progreso tecnológico sin control ético atenta directamente contra la supervivencia de la humanidad.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La movilización masiva de hombres hacia los frentes de batalla durante las dos guerras mundiales provocó un vacío forzado en la fuerza laboral de las industrias nacionales: argumente qué impacto social estructural tuvo esta dinámica demográfica sobre la emancipación y los derechos de las mujeres en las sociedades occidentales.",
+      "respuesta": "Al marchar los hombres a los frentes de combate, los Estados dependieron por completo de las mujeres para sostener la producción en las fábricas de municiones, el transporte público, la agricultura y los servicios sanitarios. Esta incorporación masiva al mercado laboral demostró la capacidad de las mujeres para desempeñar roles históricamente reservados a los hombres y rompió con la tradicional reclusión al ámbito doméstico; al finalizar los conflictos, esta transformación demográfica y social fortaleció los argumentos de los movimientos sufragistas, resultando en el reconocimiento progresivo del derecho al voto femenino y en una transformación de la estructura social de género en el siglo XX.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las conferencias de Yalta y Potsdam en 1945 reunieron a los líderes del Bloque de Aliados para definir el destino del mundo posguerra: explique cómo las decisiones tomadas en estos encuentros reconfiguraron el mapa político de Europa e inauguraron la dinámica geopolítica de la Guerra Fría.",
+      "respuesta": "En Yalta y Potsdam, las potencias aliadas (Estados Unidos, la Unión Soviética y el Reino Unido) acordaron la división de Alemania y de su capital, Berlín, en cuatro zonas de ocupación, además de redefinir las fronteras de Polonia. Esta fragmentación territorial no solo alteró los mapas, sino que consolidó esferas de influencia ideológica contrapuestas: Europa Oriental quedó bajo la órbita soviética mediante regímenes comunistas, mientras que Europa Occidental se alineó con el modelo capitalista estadounidense; esta división territorial y política trazó las líneas de fractura global que dieron origen al orden bipolar de la Guerra Fría.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_06",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El expansionismo territorial de la Alemania nazi durante la década de 1930, justificado en el concepto de espacio vital (Lebensraum), se detuvo de manera pacífica debido a las negociaciones directas de la Sociedad de Naciones en los Acuerdos de Múnich.",
+      "correcta": false,
+      "justificacion": "los Acuerdos de Múnich de 1938, lejos de detener pacíficamente el expansionismo nazi, aplicaron una política de apaciguamiento que permitió a Adolf Hitler anexarse los Sudetes en Checoslovaquia sin resistencia militar; la inoperancia de la Sociedad de Naciones para frenar esta agresión demostró su fracaso institucional, sirviendo como antecedente para la invasión de Polonia en 1939 que detonó formalmente la Segunda Guerra Mundial."
+    },
+    {
+      "id": "lv_dec10_p3_e6_07",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El Proyecto Manhattan fue un esfuerzo científico y militar multilateral liderado por Estados Unidos que culminó con el desarrollo y lanzamiento de las bombas atómicas sobre Hiroshima y Nagasaki en 1945, introduciendo la energía nuclear como factor de disuasión bélica masiva.",
+      "correcta": true,
+      "justificacion": "el desarrollo de la bomba atómica mediante el Proyecto Manhattan representó la cúspide de la aplicación de la física nuclear con fines militares, cuyo despliegue destructivo aceleró la rendición incondicional del Imperio del Japón y reconfiguró las relaciones internacionales al establecer el poder nuclear como el eje definitivo de disuasión estratégica global durante la posguerra."
+    },
+    {
+      "id": "lv_dec10_p3_e6_08",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El imperialismo europeo del siglo XIX en África y Asia constituyó una causa estructural de la Primera Guerra Mundial: esto se debió a que los roces económicos y la competencia por el control de mercados y materias primas agudizaron las rivalidades entre las potencias.",
+      "correcta": true,
+      "justificacion": "el reparto colonial del continente africano y de territorios asiáticos generó fricciones diplomáticas y militares constantes entre potencias como el Imperio alemán, Gran Bretaña y Francia; al verse limitadas las posibilidades de expansión ultramarina, las tensiones e intereses económicos se trasladaron de regreso al territorio europeo, acelerando la formación de bloques antagónicos."
+    },
+    {
+      "id": "lv_dec10_p3_e6_09",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El Pacto de No Agresión Germano-Soviético, firmado en 1939 por los ministros Ribbentrop y Molotov, consistió en una alianza ideológica permanente que impidió de forma definitiva cualquier enfrentamiento militar entre Alemania y la Unión Soviética.",
+      "correcta": false,
+      "justificacion": "el Pacto Molotov-Ribbentrop fue un acuerdo pragmático, estratégico y temporal de no agresión que incluía un protocolo secreto para dividirse esferas de influencia en Europa Oriental; esta alianza estratégica fue rota unilateralmente por Adolf Hitler en junio de 1941 con la puesta en marcha de la Operación Barbarroja, iniciando la invasión alemana a la Unión Soviética."
+    },
+    {
+      "id": "lv_dec10_p3_e6_10",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El Holocausto perpetrado por el régimen nazi durante la Segunda Guerra Mundial constituyó una política estatal sistemática de persecución y exterminio masivo orientada exclusivamente por razones económicas de escasez de recursos.",
+      "correcta": false,
+      "justificacion": "si bien existió una expropiación material de bienes, el Holocausto se sustentó de manera fundamental en una matriz ideológica antisemita, racista y de higiene racial promovida por el Estado nazi, cuyo propósito central era la aniquilación total del pueblo judío y de otros colectivos considerados inferiores (gitanos, personas con discapacidad, disidentes políticos), configurando un crimen de genocidio sin precedentes."
+    },
+    {
+      "id": "lv_dec10_p3_e6_11",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El nacionalismo en la región de los Balcanes a principios del siglo XX convirtió a esta zona en el polvorín de Europa. El Imperio austrohúngaro buscaba expandir su control, mientras que Serbia aspiraba a liderar un Estado paneslavo independiente, respaldado diplomática y militarmente por el Imperio ruso.",
+      "enunciado": "¿Qué acontecimiento histórico específico ocurrido el 28 de junio de 1914 funcionó como el detonante inmediato que provocó la declaración de guerra austrohúngara y el fin de la Paz Armada?",
+      "opciones": [
+        "La firma del Tratado de Brest-Litovsk por parte del gobierno bolchevique",
+        "El asesinato del archiduque Francisco Fernando de Austria en Sarajevo",
+        "La invasión unilateral de los territorios de Alsacia y Lorena por tropas alemanas",
+        "El bombardeo naval de la base británica ubicada en el mar Mediterráneo"
+      ],
+      "correcta": 1,
+      "justificacion": "el asesinato del heredero al trono austrohúngaro por parte de Gavrilo Princip, miembro del grupo nacionalista serbio Mano Negra, proporcionó el pretexto político al Imperio austrohúngaro para emitir un ultimátum a Serbia, desencadenando la red de alianzas que dio inicio a la Primera Guerra Mundial."
+    },
+    {
+      "id": "lv_dec10_p3_e6_12",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El periodo de entreguerras estuvo marcado por el colapso económico global de 1929 y el subsiguiente debilitamiento de las democracias liberales en Europa. Paralelamente, surgieron discursos totalitarios que rechazaban el orden internacional establecido tras la Primera Guerra Mundial.",
+      "enunciado": "Desde una perspectiva sistémica, ¿cuál de los siguientes factores constituye un antecedente político directo del estallido de la Segunda Guerra Mundial?",
+      "opciones": [
+        "La disolución prematura del Imperio británico en los territorios de ultramar",
+        "El ascenso de regímenes fascistas y de políticas de expansión territorial agresiva",
+        "La consolidación de un sistema económico global de libre comercio incondicional",
+        "La intervención militar generalizada de la ONU en las fronteras de Europa Oriental"
+      ],
+      "correcta": 1,
+      "justificacion": "el surgimiento del fascismo en Italia y del nazismo en Alemania generó gobiernos totalitarios basados en el militarismo y el expansionismo territorial; estos regímenes desafiaron de manera abierta el orden internacional frente a la debilidad institucional de la Sociedad de Naciones."
+    },
+    {
+      "id": "lv_dec10_p3_e6_13",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Segunda Guerra Mundial superó las lógicas tácticas del conflicto anterior mediante la implementación de la guerra relámpago (Blitzkrieg), la cual requería una coordinación técnica sin precedentes entre unidades blindadas, comunicaciones de radio avanzadas y apoyo aéreo masivo.",
+      "enunciado": "Este avance en la tecnología y la estrategia militar modificó profundamente el concepto tradicional de la guerra debido a que:",
+      "opciones": [
+        "Estabilizó los frentes de combate en largas líneas fijas de trincheras defensivas",
+        "Eliminó el uso de armamento terrestre supeditando todo a la guerra naval",
+        "Maximizó la velocidad, la movilidad de los ejércitos y el nivel de destrucción del territorio",
+        "Impidió que la aviación militar realizara ataques sobre centros urbanos industriales"
+      ],
+      "correcta": 2,
+      "justificacion": "la Blitzkrieg combinó el uso de tanques (Panzers) y aviones de combate (Luftwaffe) para romper rápidamente las líneas enemigas y rodear sus posiciones, abandonando la inmovilidad de las trincheras y expandiendo la destrucción sobre extensos espacios territoriales en poco tiempo."
+    },
+    {
+      "id": "lv_dec10_p3_e6_14",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Las guerras mundiales del siglo XX implicaron el concepto de guerra total, un escenario en el cual los Estados movilizaron no solo a sus fuerzas militares en el frente, sino a la totalidad de sus recursos económicos, científicos, productivos y de propaganda interna.",
+      "enunciado": "Una consecuencia social directa del modelo de guerra total dentro de las naciones involucradas en los conflictos fue:",
+      "opciones": [
+        "La desvinculación total de la población civil de los efectos directos del desabastecimiento",
+        "El desvanecimiento de la distinción entre combatientes y civiles, convirtiendo a las ciudades en objetivos militares",
+        "El fortalecimiento inmediato de los derechos laborales y de la autonomía sindical independiente",
+        "La descentralización absoluta de las decisiones económicas en favor de los mercados locales"
+      ],
+      "correcta": 1,
+      "justificacion": "al convertirse toda la sociedad en un engranaje productivo para el sostenimiento del ejército, los centros urbanos, las industrias y los civiles pasaron a ser considerados objetivos estratégicos legítimos por los rivales, lo que justificó los bombardeos masivos sobre ciudades."
+    },
+    {
+      "id": "lv_dec10_p3_e6_15",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Al finalizar la Segunda Guerra Mundial, el mapa político global sufrió una transformación radical. Los antiguos imperios coloniales europeos entraron en decadencia, dando paso a una estructura bipolar liderada por dos superpotencias con modelos ideológicos antitéticos.",
+      "enunciado": "¿Cómo se denominó la reconfiguración fronteriza y política que dividió ideológicamente al continente europeo en un bloque occidental capitalista y un bloque oriental comunista?",
+      "opciones": [
+        "El Tratado de Trianón",
+        "La Cortina de Hierro",
+        "El Protectorado del Sarre",
+        "La Línea Maginot"
+      ],
+      "correcta": 1,
+      "justificacion": "la expresión Cortina de Hierro (o Telón de Acero), popularizada por Winston Churchill, describió la división política, militar e ideológica que fragmentó a Europa en dos áreas de influencia irreconciliables, formalizando las fronteras geopolíticas de la Guerra Fría."
+    },
+    {
+      "id": "lv_dec10_p3_e6_16",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En 1931, el Imperio del Japón invadió la región china de Manchuria y, posteriormente, en 1937, inició una invasión generalizada en China. A pesar de las protestas del gobierno chino ante la Sociedad de Naciones, el organismo multilateral no logró articular sanciones efectivas.",
+      "enunciado": "Este hecho en el frente asiático funcionó como un antecedente clave de la Segunda Guerra Mundial porque demostró:",
+      "opciones": [
+        "La solidez del sistema de seguridad colectiva establecido por los tratados de paz de París",
+        "La inoperancia de la Sociedad de Naciones para contener agresiones militares de potencias expansionistas",
+        "El alineamiento inmediato de Estados Unidos con las políticas de expansión territorial del Japón",
+        "La desaparición absoluta de los ejércitos regulares en el continente asiático"
+      ],
+      "correcta": 1,
+      "justificacion": "la Sociedad de Naciones carecía de una fuerza militar propia y de la voluntad política de las grandes potencias para imponer sanciones económicas estrictas, lo que evidenció su debilidad institucional e incentivó a regímenes militaristas a continuar con sus políticas de invasión."
+    },
+    {
+      "id": "lv_dec10_p3_e6_17",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El desarrollo de la aviación militar durante la Segunda Guerra Mundial alteró las dimensiones espaciales del conflicto. Aviones bombarderos como el B-29 Superfortress permitieron atacar industrias y bases enemigas situadas a miles de kilómetros del frente de batalla tradicional.",
+      "enunciado": "Desde un análisis de las transformaciones de la guerra, el uso estratégico de la aviación de largo alcance provocó principalmente:",
+      "opciones": [
+        "La reducción del gasto público destinado a la investigación científica de las naciones",
+        "La vulnerabilidad total de las retaguardias geográficas y la afectación directa de la población civil",
+        "La limitación de las conflagraciones únicamente a espacios marítimos deshabitados",
+        "El fortalecimiento de los tratados internacionales de protección a la propiedad privada urbana"
+      ],
+      "correcta": 1,
+      "justificacion": "al superar las barreras geográficas naturales y las líneas defensivas terrestres, los bombardeos estratégicos de largo alcance trasladaron la violencia bélica al interior de las naciones, destruyendo la infraestructura de las ciudades y cobrando la vida de millones de civiles."
+    },
+    {
+      "id": "lv_dec10_p3_e6_18",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El fin de la Segunda Guerra Mundial reveló el exterminio industrializado en los campos de concentración nazis y provocó el desplazamiento forzado de más de doce millones de personas en Europa debido a la alteración de las fronteras nacionales.",
+      "enunciado": "Con el objetivo de procesar las violaciones sistemáticas a los derechos humanos y juzgar a los altos mandos militares y políticos alemanes, la comunidad aliada institucionalizó:",
+      "opciones": [
+        "La firma del Tratado de paz definitivo de Versalles",
+        "Los Juicios de Núremberg",
+        "La disolución de la Corte Internacional de Justicia de La Haya",
+        "La creación del Comité Internacional de la Cruz Roja"
+      ],
+      "correcta": 1,
+      "justificacion": "los Juicios de Núremberg (1945-1946) sentaron un precedente histórico en el derecho internacional al tipificar y juzgar los crímenes de guerra y los crímenes de lesa humanidad, estableciendo que la obediencia debida a un Estado no exime de la responsabilidad penal individual."
+    },
+    {
+      "id": "lv_dec10_p3_e6_19",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Tras la caída del Tercer Reich, los acuerdos de ocupación conjunta de los aliados se fracturaron rápidamente debido a la desconfianza mutua. En 1949, las zonas de ocupación occidental se unificaron políticamente, lo que provocó una respuesta inmediata del bloque soviético.",
+      "enunciado": "Esta tensión territorial en el corazón de Europa dio origen a la consolidación fronteriza de dos Estados independientes conocidos como:",
+      "opciones": [
+        "La Confederación Helvética y la República de Austria",
+        "La República Federal de Alemania y la República Democrática Alemana",
+        "El Imperio austrohúngaro y la República de Weimar",
+        "El Estado Libre de Prusia y la Unión de Repúblicas Germánicas"
+      ],
+      "correcta": 1,
+      "justificacion": "la división de Alemania en la RFA (bajo influencia capitalista de EE. UU., Francia y Reino Unido) y la RDA (bajo control comunista de la URSS) materializó la fractura fronteriza y geopolítica de Europa, convirtiéndose en el símbolo territorial del orden bipolar."
+    },
+    {
+      "id": "lv_dec10_p3_e6_20",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la madrugada del 1 de septiembre de 1939, las fuerzas armadas alemanas cruzaron la frontera con Polonia utilizando pretextos de provocación mediática. Este avance militar significó el fracaso definitivo de las estrategias diplomáticas de contención empleadas por las potencias occidentales.",
+      "enunciado": "¿Qué mecanismo específico del sistema de alianzas se activó de inmediato como consecuencia directa de la invasión alemana a territorio polaco?",
+      "opciones": [
+        "La declaración formal de guerra de Gran Bretaña y Francia contra el Tercer Reich",
+        "La intervención inmediata de las fuerzas armadas de los Estados Unidos en el mar Báltico",
+        "La firma del pacto tripartito entre Italia, Japón y la Unión Soviética",
+        "La autodisolución del parlamento polaco y la entrega pacífica de la soberanía"
+      ],
+      "correcta": 0,
+      "justificacion": "Gran Bretaña y Francia mantenían un pacto de defensa mutua y garantías territoriales con Polonia; al expirar el ultimátum exigido a Adolf Hitler para retirar sus tropas sin obtener respuesta, ambas potencias declararon la guerra a Alemania, detonando formalmente la Segunda Guerra Mundial."
+    }
+  ]
+}

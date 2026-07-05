@@ -1,0 +1,199 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-20T13:53:08Z",
+  "planeadores": [
+    {
+      "id": "p11p2-eje4-tema-001",
+      "creado": 1782049988,
+      "grado": "Undécimo",
+      "periodo": "Dos periodo",
+      "ejeIdx": 4,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "Guía N° 4",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Mecanismos constitucionales idóneos para proteger las libertades civiles fundamentales",
+      "unidad": "Eje 4: Inclusión social y superación de discursos legitimadores de violencia",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Argumenta cómo los prejuicios históricos perpetúan la marginación de grupos minoritarios en las esferas de representación ciudadana.* Formula propuestas lógicas de mediación y diálogo frente a dilemas reales o simulados de convivencia institucional.Ser:* Rechaza toda justificación de la violencia como herramienta de control; de igual manera, reconoce el valor de la pluralidad cultural.",
+      "competencias": "* Interpretación y análisis de perspectivas.\n\n* Pensamiento social.",
+      "contenidos": "* El respeto por las identidades étnicas, religiosas, de género y de filiación política en una sociedad de derecho.\n* Desmontaje de discursos de odio o narrativas de exclusión que normalizan el uso de la fuerza.\n* Mecanismos constitucionales idóneos para proteger las libertades civiles fundamentales.",
+      "objetivo": "El estudiante argumentará la idoneidad de los mecanismos de amparo constitucional frente a la vulneración de las libertades civiles, analizando discursos institucionales y casos prácticos en el entorno nacional, con la finalidad de promover estrategias lógicas de mediación jurídica y ciudadana que desmonten narrativas excluyentes en su comunidad.",
+      "pregunta": "¿De qué manera el uso pedagógico y oportuno de la acción de tutela en el corregimiento de Loma Verde puede contrarrestar discursos de exclusión histórica y garantizar la inclusión de comunidades tradicionalmente marginadas?",
+      "explora": "Conversatorio: diálogo dirigido a partir de la pregunta: \"Si una autoridad local les prohibiera reunirse pacíficamente para hablar sobre las necesidades de su comunidad, ¿qué herramientas legales conocen para defenderse?\". Actividad corta: el docente presenta un caso hipotético en el tablero sobre discriminación de género o etnia en el acceso a un servicio público; los estudiantes, organizados en parejas, disponen de cinco minutos para proponer una palabra clave que represente la solución legal aplicable y la exponen verbalmente.",
+      "glosario": [
+        {"t": "Acción de tutela", "d": "Mecanismo preferente y sumario establecido en el artículo 86 de la Constitución de 1991, diseñado para la protección inmediata de los derechos fundamentales cuando estos resulten vulnerados o amenazados por la acción u omisión de cualquier autoridad pública o particulares."},
+        {"t": "Libertades civiles", "d": "Garantías ciudadanas básicas que protegen a los individuos de las arbitrariedades estatales o colectivas, asegurando la facultad de obrar sin coacciones injustas en el ámbito de la expresión, asociación, conciencia y locomoción."},
+        {"t": "Discurso de odio", "d": "Toda forma de expresión que difunde, incita, promueve o justifica el rechazo, la hostilidad o la violencia hacia una persona o grupo de personas por motivos de raza, origen étnico, religión, género, orientación sexual u otra condición social."},
+        {"t": "Derechos fundamentales", "d": "Prerrogativas esenciales inherentes a la dignidad humana, que gozan de la máxima protección jurídica dentro del ordenamiento constitucional y cuya aplicación suele ser directa e inmediata frente a situaciones de vulneración."},
+        {"t": "Acción popular", "d": "Herramienta jurídica constitucional orientada a la defensa y protección de los derechos e intereses colectivos, tales como el espacio público, la seguridad, la moralidad administrativa y el equilibrio ecológico."},
+        {"t": "Acción de cumplimiento", "d": "Mecanismo judicial cuyo propósito es garantizar la efectividad de las leyes o de los actos administrativos, permitiendo a cualquier ciudadano exigir que una autoridad reticente cumpla con su deber legal preestablecido."},
+        {"t": "Habeas corpus", "d": "Garantía constitucional fundamental que protege la libertad personal frente a detenciones arbitrarias, exigiendo que la persona privada de la libertad sea puesta a disposición de un juez competente en un término perentorio de 36 horas."},
+        {"t": "Habeas data", "d": "Derecho constitucional que faculta a las personas a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ellas en bancos de datos, archivos de entidades públicas o registros de instituciones privadas."},
+        {"t": "Pluralismo", "d": "Principio fundacional del Estado social de derecho que reconoce, valora y garantiza la coexistencia armónica de diversas ideologías, credos, culturas, géneros e identidades dentro de una misma organización social."},
+        {"t": "Mediación ciudadana", "d": "Procedimiento pacífico y voluntario de resolución de disputas en el cual las partes involucradas, guiadas por un tercero neutral, construyen acuerdos lógicos que previenen el escalamiento de la violencia institucional o comunitaria."}
+      ],
+      "bloques": [
+        {
+          "tit": "Fundamentos constitucionales y las libertades del ciudadano",
+          "txt": "La Constitución Política de 1991 define a Colombia como un Estado social de derecho organizado en forma de república unitaria, descentralizada y participativa, fundamentada en el respeto de la dignidad humana. En este marco, las libertades civiles fundamentales (como la libertad de cultos, expresión, libre desarrollo de la personalidad y asociación) no constituyen meras declaraciones formales, sino límites estrictos al ejercicio del poder público y privado. Cuando estas libertades se ven amenazadas, el diseño institucional colombiano ofrece herramientas de amparo inmediato, situando a la dignidad y los derechos fundamentales por encima de cualquier interés particular o coyuntura política.",
+          "pausa": "¿Por qué consideran que una sociedad requiere de libertades civiles para asegurar que los ciudadanos participen activamente en la vida democrática?",
+          "resp": "Se espera que los estudiantes respondan que sin libertades civiles como la expresión o la asociación, el ciudadano se encuentra desprotegido frente a decisiones autoritarias, lo que anula la posibilidad de manifestar el disenso de forma pacífica y debilita la confianza institucional."
+        },
+        {
+          "tit": "Mecanismos de protección frente a la arbitrariedad",
+          "txt": "El ordenamiento jurídico nacional dispone de diversos instrumentos de protección procesal. La acción de tutela sobresale como el canal idóneo por su agilidad y obligatoriedad, permitiendo dictar órdenes de inmediato cumplimiento para frenar abusos de poder. No obstante, es imperativo diferenciarla de otros recursos: mientras la tutela ampara derechos fundamentales individuales de aplicación inmediata, las acciones populares salvaguardan los derechos de naturaleza colectiva (como el medio ambiente sano) y la acción de cumplimiento compele a las autoridades a acatar leyes vigentes. La comprensión precisa de estas diferencias evita el desgaste judicial y optimiza las demandas comunitarias.",
+          "pausa": "Si una empresa local contamina la fuente de agua de un corregimiento, ¿debería interponerse una acción de tutela o una acción popular? Justifiquen lógicamente.",
+          "resp": "Se espera que los estudiantes argumenten que se debe interponer una acción popular, dado que el agua y el medio ambiente sano constituyen un interés común y colectivo. Sin embargo, si la contaminación afecta de forma directa la salud o la vida de personas específicas, la acción de tutela procedería por conexidad para amparar el derecho fundamental a la vida."
+        },
+        {
+          "tit": "Desmontaje de narrativas excluyentes y discursos legitimadores de violencia",
+          "txt": "Los prejuicios históricos y las estructuras coloniales de exclusión a menudo cristalizan en narrativas discriminatorias que pretenden legitimar el uso de la fuerza o la marginación de minorías étnicas, religiosas, políticas o de género. Estos discursos operan deshumanizando al otro y justificando la supresión de sus libertades. El uso asertivo de los mecanismos constitucionales no solo resuelve disputas legales concretas; su verdadero alcance radica en su capacidad transformadora para resituar discursivamente a los sujetos vulnerados dentro del debate público, forzando a las instituciones a reconocer la pluralidad y la alteridad como pilares innegociables de la paz.",
+          "pausa": "¿Cómo puede una decisión judicial, como un fallo de tutela que ampara a una minoría, cambiar la mentalidad y los prejuicios de una comunidad local?",
+          "resp": "Se espera que los estudiantes expliquen que un fallo judicial sienta un precedente pedagógico y ético. Al obligar a las autoridades y ciudadanos a respetar los derechos de un grupo excluido, el Estado valida discursivamente su dignidad, deslegitimando los prejuicios tradicionales y demostrando que la ley protege a todos por igual."
+        }
+      ],
+      "talleres": "Taller de estructuración y análisis comparativo: los estudiantes trabajarán de manera cooperativa para analizar tres casos ficticios inspirados en tensiones locales (vulneración al libre desarrollo de la personalidad en una institución, contaminación de una microcuenca y omisión de una alcaldía en la pavimentación de una vía escolar). Deberán diligenciar una tabla comparativa en sus cuadernos que contenga las siguientes columnas: 1. Identificación del derecho vulnerado (Fundamental / Colectivo / Deber legal), 2. Mecanismo constitucional idóneo aplicable (Tutela / Acción Popular / Acción de Cumplimiento), 3. Autoridad o entidad ante la que se interpone, y 4. Efecto esperado del fallo. El docente supervisará la coherencia y el rigor analítico de la matriz generada por cada grupo.",
+      "transfer": "Estudio de caso local: se presenta a los estudiantes un caso analítico escrito titulado \"El dilema de la libertad en el ámbito rural\", que narra las dificultades de una asociación comunitaria en un corregimiento del Caribe colombiano para registrar oficialmente su organización y hacer oír sus propuestas frente a los líderes tradicionales, debido a prejuicios políticos. Los estudiantes deberán redactar un breve ensayo argumentativo de tres párrafos en el que analicen el caso a la luz de los mecanismos constitucionales expuestos, planteen una ruta jurídica lógica para amparar las libertades de la asociación y concluyan reflexionando sobre cómo la inclusión social de estas voces fortalece la convivencia pacífica y el desarrollo económico en su propio entorno local.",
+      "clave": "Respuestas modelo para las actividades de transferencia: 1. Identificación jurídica del caso: el caso expone una vulneración flagrante a los derechos fundamentales de asociación, igualdad ante la ley y libertad de expresión, los cuales se encuentran consagrados en el capítulo I del título II de la Constitución de 1991. 2. Ruta jurídica sugerida: la asociación comunitaria debe agotar inicialmente los requerimientos administrativos básicos. En caso de persistir la negativa o dilación injustificada basada en prejuicios, la ruta idónea e inmediata es la interposición de una acción de tutela por violación al derecho fundamental de asociación y debido proceso. 3. Reflexión del entorno local: el amparo de estas libertades permite descentralizar el poder tradicional en las zonas rurales, promoviendo el pluralismo político y garantizando que los proyectos de infraestructura o inversión social respondan a necesidades reales consensuadas de la comunidad y no a la voluntad de hegemonías locales. Esto consolida una cultura de paz basada en el reconocimiento de la alteridad.",
+      "evaluacion": "RÚBRICA CUALITATIVA DE EVALUACIÓN:\n- SUPERIOR: Argumenta de manera exhaustiva, profunda y lógica la idoneidad de los mecanismos constitucionales. Identifica con total precisión la tipología de los derechos vulnerados en casos contextualizados, formula propuestas de mediación viables y demuestra un profundo respeto por la pluralidad social, estructurando textos coherentes y rigurosos.\n- ALTO: Identifica correctamente los mecanismos constitucionales y diferencia la naturaleza de la mayoría de los derechos. Formula propuestas lógicas de diálogo frente a dilemas de convivencia, aunque presenta omisiones menores en la sustentación de la jurisprudencia aplicable.\n- BÁSICO: Describe de forma general los mecanismos de protección (tutela y acciones populares), pero muestra dificultades para categorizar los derechos en casos prácticos y su argumentación carece de la profundidad teórica necesaria para desmontar discursos excluyentes.\n- BAJO: Confunde los mecanismos de amparo constitucional o justifica narrativas basadas en el uso de la fuerza o la exclusión. Muestra un nivel insatisfactorio en la resolución de problemas jurídicos y comunitarios elementales.\n\nINSTRUMENTOS DE EVALUACIÓN: matriz analítica de casos (tabla comparativa), rúbrica cualitativa de producción textual (ensayo argumentativo) y registro de observación participativa durante los debates y puestas en común.",
+      "recursos": "Constitución Política de Colombia (1991), guías impresas con los casos de estudio, cartulinas, marcadores, tablero, extractos de sentencias hito de la Corte Constitucional (previamente seleccionadas por el docente) y cuadernos de apuntes.",
+      "referencias": "Ministerio de Educación Nacional (2006). Estándares Básicos de Competencias en Ciencias Sociales. Bogotá: MEN.\nMinisterio de Educación Nacional (2016). Derechos Básicos de Aprendizaje: Ciencias Sociales (Grado 11). Bogotá: MEN.\nCorte Constitucional de Colombia. Sentencia T-025 de 2004 (Jurisprudencia hito sobre el amparo de los derechos fundamentales de la población desplazada y el estado de cosas inconstitucional). Bogotá.\nGaray, J. & Salcedo-Albarrán, E. (2012). Estructuras de captura institucional y exclusión social en dinámicas de conflicto territorial. Bogotá: Ediciones Académicas.\nQuinche Ramírez, M. (2015). Derecho Constitucional Colombiano de la Carta de 1991 y sus mecanismos de protección. Bogotá: Editorial Temis.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje: 1. Para estudiantes que presentan dificultades en el procesamiento de textos extensos, se dispondrá de un andamiaje gráfico interactivo (esquemas conceptuales simplificados y apoyos visuales sobre las funciones de la tutela). 2. Para estudiantes con un ritmo de aprendizaje avanzado, se les asignará el rol de consultores jurídicos adjuntos dentro de los equipos, proporcionándoles un compendio breve de sentencias de la Corte Constitucional para que enriquezcan la argumentación de sus grupos. 3. Para garantizar el trabajo cooperativo, los roles dentro del taller analítico se distribuirán de forma heterogénea (un redactor, un gestor de tiempo, un moderador de diálogo y un relator), asegurando que todas las capacidades individuales confluyan en la co-construcción lógica del conocimiento.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La Constitución de 1991 establece las libertades civiles fundamentales como límites innegociables al ejercicio del poder estatal y particular.",
+        "La acción de tutela representa el mecanismo preferente y sumario idóneo para la defensa directa de los derechos fundamentales de carácter individual.",
+        "Es prioritario diferenciar conceptualmente la acción de tutela de las acciones populares y de cumplimiento para garantizar la eficacia legal ciudadana.",
+        "Los discursos de odio y exclusión arraigados históricamente operan legitimando la violencia mediante la supresión discursiva y material de la alteridad.",
+        "El uso de las herramientas de amparo constitucional funciona como una estrategia de mediación y diálogo que fortalece el pluralismo en los entornos rurales."
+      ],
+      "errores": [
+        "Pensar que la acción de tutela es aplicable para cualquier tipo de reclamación económica o contractual; la corrección radica en comprender que su procedencia se restringe estrictamente a la protección de derechos fundamentales o por conexidad directa con ellos.",
+        "Creer que una acción de tutela debe ser redactada e interpuesta obligatoriamente por un abogado titulado; la corrección es aclarar que cualquier ciudadano puede interponerla directamente, de forma verbal o escrita, dada su naturaleza informal y desprovista de tecnicismos excesivos.",
+        "Confundir la acción de tutela con la acción popular, creyendo que la primera es el mecanismo principal para defender el medio ambiente comunitario; la corrección enseña que la tutela protege derechos individuales, mientras que los derechos colectivos corresponden a la acción popular.",
+        "Asumir que las sentencias judiciales solo dirimen pleitos entre particulares sin afectar la cultura social; la corrección demuestra que los fallos constitucionales poseen un profundo valor pedagógico que desarticula prejuicios e impulsa procesos de inclusión colectiva."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles son las diferencias sustanciales entre el objeto de protección de una acción de tutela y el de una acción popular dentro del ordenamiento colombiano?",
+          "a": "La acción de tutela protege derechos fundamentales de naturaleza individual y aplicación inmediata (como la vida, la salud o el debido proceso), mientras que la acción popular defiende derechos e intereses colectivos (como la seguridad pública, la moralidad administrativa y el medio ambiente sano) que afectan a una comunidad entera.",
+          "verdadero": null,
+          "justificacion": "La distinción radica en la titularidad del derecho afectado: individual en la tutela (artículo 86 de la Constitución) y colectiva en la acción popular (artículo 88 de la Constitución).",
+          "enunciado": "Análisis comparativo de los mecanismos constitucionales de amparo.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera un discurso de exclusión histórica afecta la representación ciudadana de las comunidades campesinas y minorías étnicas?",
+          "a": "Los discursos de exclusión operan naturalizando la marginalidad y deslegitimando la capacidad política de estos colectivos. Esto provoca que sus demandas de infraestructura, restitución de tierras o autonomía cultural sean invisibilizadas o catalogadas como inviables en los espacios institucionales de toma de decisiones.",
+          "verdadero": null,
+          "justificacion": "Las narrativas de exclusión construyen una alteridad subordinada, impidiendo que los grupos afectados participen en igualdad de condiciones en las esferas públicas.",
+          "enunciado": "Impacto socio-político de las narrativas dominantes.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué requisitos constitucionales deben cumplirse para que una acción de tutela proceda de manera excepcional contra las actuaciones de un particular?",
+          "a": "Procede contra particulares cuando estos están encargados de la prestación de un servicio público, cuando su conducta afecta grave y directamente el interés colectivo, o cuando el solicitante se halla en un estado de subordinación o indefensión respecto de dicho particular.",
+          "verdadero": null,
+          "justificacion": "La jurisprudencia constitucional y el artículo 86 tipifican que el estado de indefensión o subordinación rompe el principio de igualdad horizontal, habilitando el amparo judicial frente al abuso del particular.",
+          "enunciado": "Límites y alcances de la acción de tutela en relaciones horizontales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué se afirma que la Constitución de 1991 transformó el modelo discursivo del Estado colombiano al pasar de una democracia representativa a una participativa y pluralista?",
+          "a": "Porque descentralizó los mecanismos de toma de decisiones e instituyó herramientas directas (como el plebiscito, el referendo, la consulta popular y la tutela) que confieren al ciudadano común un rol activo y vinculante, reconociendo además la diversidad étnica y cultural de la nación como base del Estado.",
+          "verdadero": null,
+          "justificacion": "El paso al pluralismo significó el quiebre de la visión homogénea de la Constitución de 1886, validando jurídicamente múltiples identidades y formas de participación.",
+          "enunciado": "Evolución institucional y dogmática constitucional colombiana.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Explique el principio de inmediatez que rige a la acción de tutela y por qué es fundamental para salvaguardar las libertades civiles.",
+          "a": "El principio de inmediatez exige que la acción de tutela sea interpuesta dentro de un plazo razonable y oportuno a partir del momento en que ocurrió la vulneración o amenaza del derecho fundamental. Es fundamental porque busca proveer un amparo urgente y eficaz, evitando que el mecanismo se use para subsanar la negligencia procesal del afectado.",
+          "verdadero": null,
+          "justificacion": "Si bien la tutela no tiene un término de caducidad explícito en la ley, la Corte Constitucional señala que la falta de inmediatez desvirtúa la urgencia del amparo solicitado.",
+          "enunciado": "Principios procesales de los mecanismos de amparo.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La acción de tutela puede ser suspendida o declarada improcedente por los jueces durante la vigencia de los estados de excepción en el territorio colombiano.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "De conformidad con el artículo 85 de la Ley 137 de 1994 y la jurisprudencia de la Corte Constitucional, los mecanismos de amparo judicial como la acción de tutela y el habeas corpus no pueden ser suspendidos ni limitados bajo ninguna circunstancia, ni siquiera durante los estados de conmoción interior o guerra exterior, pues constituyen las garantías mínimas de protección de los Derechos Humanos indispensables.",
+          "enunciado": "Vigencia de las garantías fundamentales bajo regímenes de excepción.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La acción de cumplimiento tiene como finalidad principal ordenar el resarcimiento económico de los perjuicios causados a un ciudadano por la omisión de un funcionario público.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El propósito exclusivo de la acción de cumplimiento, consagrada en el artículo 87 de la Carta Política, es lograr la efectividad material de una ley o de un acto administrativo materialmente vinculante que la autoridad se niega a acatar. No posee una naturaleza indemnizatoria ni busca tasar perjuicios económicos, funciones que corresponden a la jurisdicción de lo contencioso administrativo.",
+          "enunciado": "Naturaleza procesal de la acción de cumplimiento.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los derechos fundamentales innominados son aquellas garantías esenciales que, a pesar de no figurar explícitamente en el texto constitucional, adquieren dicho estatus por su nexo directo con la dignidad humana.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "La doctrina constitucional colombiana reconoce que el catálogo de derechos fundamentales no es taxativo. Prerrogativas como el derecho al agua potable o a la dignidad humana en ciertas facetas han sido catalogadas como fundamentales por vía jurisprudencial mediante el criterio de conexidad y la cláusula de derechos innominados del artículo 94 constitucional.",
+          "enunciado": "Ampliación del bloque de constitucionalidad y derechos innominados.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Para interponer una acción popular en defensa del espacio público se requiere demostrar que un individuo específico sufrió un daño patrimonial directo y cuantificable.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las acciones populares tienen una naturaleza preventiva y restitutiva de derechos colectivos. Por lo tanto, no exigen la demostración de un daño individualizado ni de un perjuicio económico particular; basta con evidenciar la existencia de una amenaza, vulneración o riesgo latente sobre el interés común de la sociedad.",
+          "enunciado": "Requisitos de procedibilidad de las acciones populares.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El derecho al disenso ideológico y político se encuentra constitucionalmente protegido en Colombia como una manifestación del pluralismo y de la libertad de expresión.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "La Constitución de 1991 ampara explícitamente el pluralismo y la oposición política. El disenso pacífico es un elemento estructurante de la democracia participativa que impide al Estado o a las mayorías imponer visiones uniformes u homogéneas sobre la realidad nacional, prohibiendo la censura.",
+          "enunciado": "Garantías democráticas y derecho a la oposición.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Actividad comunitaria de observación: cada estudiante deberá realizar un recorrido observacional por su vereda o barrio en el corregimiento de Loma Verde. Identificará una situación concreta del entorno que requiera atención de las autoridades (ej. un puente escolar deteriorado, la falta de recolección de residuos o la ausencia de un espacio público seguro). Entrevistará a un líder comunitario o adulto de su hogar preguntándole: \"¿Qué gestiones se han hecho ante la alcaldía y qué respuestas han recibido?\". En su cuaderno, el estudiante elaborará una ficha técnica que describa el problema, determine el tipo de derecho involucrado (fundamental o colectivo) y proponga razonadamente cuál mecanismo constitucional estudiado sería el adecuado para canalizar la petición, justificando su elección sin recurrir al uso de fuentes digitales.",
+      "fundamentacion": "# FUNDAMENTACIÓN DOCTRINAL Y CONSTITUCIONAL SOBRE LAS GARANTÍAS DE LAS LIBERTADES CIVILES Y EL DESMONTAJE DE NARRATIVAS DE EXCLUSIÓN\n\n## El Estado social de derecho como matriz protectora de libertades\n\nEl diseño institucional y dogmático adoptado por Colombia en la Constitución Política de 1991 significó un giro copernicano en la historia jurídica de la nación. La transición desde un Estado de derecho de corte centralista, clerical y confesional (impuesto por la Constitución de 1886) hacia un Estado social de derecho introdujo el principio inalienable de la dignidad humana como eje axial del ordenamiento. Bajo esta premisa, el poder político pierde su carácter absoluto y se condiciona materialmente a la realización efectiva de los derechos fundamentales y las libertades civiles. Las libertades civiles no se conciben simplemente como espacios de no interferencia estatal (libertad negativa en términos de Isaiah Berlin), sino como potencias sustanciales que el Estado debe garantizar de forma activa, promoviendo condiciones de igualdad real para aquellos colectivos que han sufrido procesos sistemáticos de exclusión y violencia.\n\n## Mecanismos procesales de amparo: taxonomía y articulación jurídica\n\nPara que los derechos fundamentales no queden reducidos a fórmulas retóricas, la Carta de 1991 dispuso de un andamiaje procesal preferente. El análisis normativo exige distinguir de manera estricta los siguientes instrumentos:\n\n1. La acción de tutela (Artículo 86): caracterizada por su naturaleza subsidiaria, preferente y sumaria. Su objeto exclusivo es el amparo inmediato de los derechos fundamentales individuales cuando no existan otros medios de defensa judicial idóneos, o cuando se utilice como mecanismo transitorio para evitar un perjuicio irremediable. Su tramitación obliga al juez constitucional a fallar en un término perentorio de diez días.\n2. Las acciones populares y de grupo (Artículo 88): orientadas a la salvaguarda de intereses colectivos, tales como la seguridad, salubridad y moralidad públicas, la libre competencia y el medio ambiente sano. A diferencia de la tutela, no defienden una situación jurídica individualizada, sino el patrimonio común de la sociedad.\n3. La acción de cumplimiento (Artículo 87): instrumento que faculta a cualquier ciudadano para acudir ante la jurisdicción contencioso-administrativa con el fin de exigir la ejecución material de una ley o de un acto administrativo sustancial, combatiendo la reticencia y la desidia burocrática de los funcionarios públicos.\n\n## Desmontaje de discursos de odio y el imperativo de la alteridad\n\nHistóricamente, los procesos de violencia y despojo en los contextos rurales de Colombia han estado antecedidos y legitimados por construcciones discursivas excluyentes. Estas narrativas operan mediante la estigmatización ideológica, de género, étnica o socioeconómica, despojando al sujeto marginado de su condición de interlocutor válido en la esfera pública. En este sentido, teóricos de las Ciencias Sociales argumentan que la violencia física se encuentra estrechamente vinculada con la violencia simbólica y discursiva. El desmontaje de estos discursos de odio constituye un imperativo ético y jurídico dentro de una sociedad pluralista. Las herramientas constitucionales de protección actúan como un vehículo de resistencia pacífica; al activar los mecanismos jurídicos, las comunidades tradicionalmente excluidas irrumpen en la institucionalidad, forzando un diálogo simétrico respaldado por la fuerza vinculante de la ley, lo que subvierte de raíz las lógicas tradicionales de dominación y normalización del uso de la fuerza.\n\n## Conexión socio-espacial: las libertades fundamentales en la ruralidad contemporánea\n\nEn la subregión del valle del Sinú y, específicamente, en las dinámicas rurales de Montería, el ejercicio de las libertades civiles enfrenta retos estructurales relacionados con el aislamiento geográfico y la persistencia de prejuicios de orden feudal y centralista. Las libertades de asociación, expresión y participación comunitaria suelen verse constreñidas por discursos que subordinan los derechos locales a las prioridades de los sectores tradicionales. Comprender el funcionamiento de la acción de tutela y las acciones populares permite a las comunidades campesinas y a las asociaciones escolares de base territorial empoderarse como sujetos de derecho, convirtiendo la normatividad constitucional en una herramienta de mediación lógica. Esto propicia la resolución pacífica de controversias y consolida un modelo de ciudadanía activa indispensable para superar las brechas socioeconómicas y cimentar una cultura de paz duradera desde la periferia geográfica.",
+      "lineatiempo": [
+        "1886: Promulgación de la Constitución Política de Colombia; instauración de un modelo de Estado centralista, confesional y marcadamente restrictivo respecto de las libertades civiles y el pluralismo ideológico.",
+        "1948: Declaración Universal de los Derechos Humanos; consolidación global de las libertades civiles y los derechos fundamentales como límites vinculantes al poder de los Estados soberanos.",
+        "1957: Reconocimiento del derecho al voto de las mujeres en Colombia mediante plebiscito nacional, quebrando un hito histórico de exclusión en la representación política ciudadana.",
+        "1991: Promulgación de la nueva Constitución Política de Colombia; nacimiento del Estado social de derecho, instauración de la acción de tutela, las acciones populares y reconocimiento oficial del pluralismo y la multiculturalidad de la nación.",
+        "1992: Expedición del Decreto 2591 de 1991 y normativas concordantes que reglamentan la acción de tutela, dinamizando el acceso ciudadano directo a la justicia constitucional sin formalidades procesales rígidas.",
+        "1998: Expedición de la Ley 472 de 1998, la cual regula de forma específica las acciones populares y las acciones de grupo en Colombia, dotando de dientes jurídicos a la defensa de los derechos colectivos.",
+        "2004: Sentencia T-025 de la Corte Constitucional; declaración del Estado de Cosas Inconstitucional respecto de la población desplazada por el conflicto armado, convirtiendo la tutela en una herramienta colectiva de transformación social estructural.",
+        "2011: Promulgación de la Ley 1448 (Ley de Víctimas y Restitución de Tierras); articulación de mecanismos transicionales y constitucionales para restituir la dignidad material y las libertades civiles de las comunidades campesinas desplazadas en el territorio nacional."
+      ]
+    }
+  ]
+}

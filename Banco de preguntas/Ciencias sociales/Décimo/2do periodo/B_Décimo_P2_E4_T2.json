@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Segundo Periodo",
+    "unidad": "Eje 4: Multiculturalidad, alteridad y amparo constitucional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750086001aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Qué es el racismo estructural y cómo explica las desigualdades entre el Chocó y departamentos como Antioquia o Cundinamarca?",
+      "respuesta": "El racismo estructural son formas de discriminación racial integradas en las leyes, instituciones y prácticas que producen desigualdades raciales aunque ninguna persona tenga intenciones racistas. Explica el Chocó porque el patrón es sistemático y correlacionado con la etnicidad: el departamento con 80% de población afrocolombiana tiene los peores indicadores de acceso a servicios del país. Si fuera solo mala gestión, sería aleatorio. La correlación consistente entre etnicidad y marginalización indica factores estructurales en la distribución histórica de la inversión pública.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750086001aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Cuáles son las principales formas de discriminación de género que afectan a las mujeres en Colombia, con énfasis en las mujeres rurales cafeteras?",
+      "respuesta": "En Colombia: brecha salarial del 21% (mujeres ganan el 79% del salario masculino), subrepresentación política (30% del Congreso), mayor carga de violencia intrafamiliar. Para las mujeres rurales cafeteras: trabajan en las labores del café pero frecuentemente no figuran como propietarias de la tierra ni como socias de las cooperativas cafeteras, lo que las excluye de las decisiones económicas; tienen menor acceso a asistencia técnica y créditos; y sus conocimientos sobre plantas medicinales y cocina no son reconocidos como trabajo económico.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750086001aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explica el concepto de interseccionalidad y por qué es importante para entender la discriminación en Colombia. Da un ejemplo concreto.",
+      "respuesta": "La interseccionalidad describe cómo múltiples formas de discriminación se combinan y amplifican. Las formas no se suman sino que se multiplican, creando experiencias cualitativamente más severas. Ejemplo: una mujer afrocolombiana rural de bajos recursos enfrenta discriminación por ser mujer (género), por ser afrocolombiana (raza), por ser rural (territorio) y por tener bajos ingresos (clase). Su experiencia de exclusión es cualitativamente más severa que la de una mujer mestiza urbana de clase media, aunque ambas sean discriminadas por género.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750086001aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué establecen la Constitución y la Ley 1482 de 2011 sobre la discriminación? ¿Qué herramientas tienen las víctimas para defenderse?",
+      "respuesta": "La Constitución prohíbe la discriminación por raza, sexo, origen, lengua, religión u opinión política (Art. 13) y ordena al Estado adoptar medidas que favorezcan a los grupos discriminados. La Ley 1482 de 2011 tipifica como delito los actos de discriminación con penas de hasta tres años de prisión. Herramientas: acción de tutela (cuando la discriminación vulnera derechos fundamentales), denuncia penal ante la Fiscalía (Ley 1482), acciones populares para derechos colectivos, y queja ante la Defensoría del Pueblo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750086001aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Por qué tolerar la diferencia no es suficiente para construir una sociedad verdaderamente antidiscriminatoria? ¿Qué implica el reconocimiento como alternativa?",
+      "respuesta": "Tolerar implica que la persona diferente es un problema que se acepta a regañadientes: reproduce la jerarquía donde quien tolera tiene poder sobre quien es tolerado. Reconocer implica aceptar que la diferencia es legítima y que todos tienen igual dignidad: somos diferentes y los dos tenemos igual derecho a ser. Una sociedad antidiscriminatoria no necesita tolerar: necesita reconocer que la diferencia es parte constitutiva de lo humano y que ninguna forma de ser es más normal o más valiosa que otra.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750086001fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El Artículo 13 de la Constitución de 1991 prohíbe la discriminación por raza, sexo, origen nacional o familiar, lengua, religión u opinión política.",
+      "correcta": true,
+      "justificacion": "Verdadero. El Artículo 13 establece que todas las personas nacen libres e iguales ante la ley y recibirán la misma protección de las autoridades. Prohíbe específicamente la discriminación por razones de sexo, raza, origen nacional o familiar, lengua, religión, opinión política o filosófica. Además, ordena al Estado promover condiciones para que la igualdad sea real y efectiva."
+    },
+    {
+      "id": "lv1750086001fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El racismo estructural requiere que haya personas con intenciones racistas para existir y producir desigualdades.",
+      "correcta": false,
+      "justificacion": "Falso. El racismo estructural puede producir desigualdades raciales aunque ninguna persona tenga intenciones racistas. Está integrado en las leyes, las instituciones y las prácticas culturales. Las desigualdades en el acceso a servicios entre el Chocó y Bogotá son resultado del racismo estructural aunque ningún funcionario haya decidido explícitamente no invertir en las regiones afrocolombianas."
+    },
+    {
+      "id": "lv1750086001fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Ley 1482 de 2011 tipifica como delito los actos de discriminación por raza, etnia, sexo, orientación sexual y discapacidad, con penas de hasta tres años de prisión.",
+      "correcta": true,
+      "justificacion": "Verdadero. La Ley 1482 de 2011 (Ley Antidiscriminación) modificó el Código Penal para incluir el delito de discriminación. Establece penas de 12 a 36 meses de prisión para quien arbitrariamente impida, obstruya o restrinja el pleno ejercicio de los derechos de las personas por razón de su raza, etnia, sexo, orientación sexual, discapacidad, ideología o religión."
+    },
+    {
+      "id": "lv1750086001fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La brecha salarial de género en Colombia indica que las mujeres ganan en promedio el mismo salario que los hombres por el mismo trabajo.",
+      "correcta": false,
+      "justificacion": "Falso. Las mujeres colombianas ganan en promedio el 79% de lo que ganan los hombres por el mismo trabajo, una brecha del 21%. Esta diferencia es resultado de múltiples formas de discriminación: segregación ocupacional, penalización de la maternidad y sesgos de los empleadores."
+    },
+    {
+      "id": "lv1750086001fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Colombia fue el cuarto país de América Latina en reconocer el matrimonio igualitario, por decisión de la Corte Constitucional en 2016.",
+      "correcta": true,
+      "justificacion": "Verdadero. La Corte Constitucional de Colombia reconoció el matrimonio igualitario en 2016 mediante la Sentencia SU-214, convirtiéndose en el cuarto país de América Latina en hacerlo. Sin embargo, este reconocimiento legal no ha eliminado la discriminación cotidiana que enfrentan las personas LGBTQ+, especialmente en contextos rurales."
+    },
+    {
+      "id": "lv1750086001sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "La Constitución colombiana tiene un marco específico de protección contra la discriminación.",
+      "enunciado": "¿Qué artículo de la Constitución de 1991 prohíbe la discriminación y ordena al Estado adoptar medidas en favor de grupos discriminados?",
+      "opciones": ["Artículo 7.", "Artículo 13.", "Artículo 68.", "Artículo 79."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El Artículo 13 prohíbe la discriminación por raza, sexo, origen, lengua, religión u opinión política, y ordena al Estado promover condiciones para que la igualdad sea real y efectiva. Es el artículo central de la igualdad formal en la Constitución colombiana."
+    },
+    {
+      "id": "lv1750086001sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La discriminación racial puede operar de formas que van más allá de las intenciones individuales.",
+      "enunciado": "¿Qué describe el concepto de 'racismo estructural'?",
+      "opciones": ["La creencia personal de que una raza es superior a otra.", "Las formas de discriminación racial integradas en instituciones y estructuras que producen desigualdades aunque nadie tenga intenciones racistas.", "La discriminación racial que cometen los grupos étnicos entre sí.", "Las leyes explícitamente racistas que todavía existen en algunas regiones de Colombia."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El racismo estructural describe formas de discriminación racial integradas en las leyes, instituciones, políticas y prácticas culturales que producen desigualdades raciales sistemáticas aunque ninguna persona individual tenga intenciones racistas. Es diferente del racismo individual o interpersonal."
+    },
+    {
+      "id": "lv1750086001sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La brecha salarial de género es uno de los indicadores más usados para medir la discriminación laboral.",
+      "enunciado": "¿Cuál es la brecha salarial de género en Colombia?",
+      "opciones": ["Las mujeres ganan el mismo salario (no hay brecha).", "Las mujeres ganan el 95% del salario masculino.", "Las mujeres ganan el 79% del salario masculino.", "Las mujeres ganan el 50% del salario masculino."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Las mujeres colombianas ganan en promedio el 79% de lo que ganan los hombres por el mismo trabajo, una brecha del 21%. Esta desigualdad es el resultado de múltiples mecanismos de discriminación de género en el mercado laboral colombiano."
+    },
+    {
+      "id": "lv1750086001sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "Colombia avanzó en la protección legal contra la discriminación con una ley específica.",
+      "enunciado": "¿Qué ley colombiana tipificó la discriminación por raza, etnia, sexo, orientación sexual y discapacidad como delito penal?",
+      "opciones": ["Ley 70 de 1993.", "Ley 387 de 1997.", "Ley 1482 de 2011.", "Ley 1448 de 2011."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La Ley 1482 de 2011 (Ley Antidiscriminación) tipificó como delito penal los actos de discriminación por raza, etnia, sexo, orientación sexual, discapacidad, religión o ideología. Estableció penas de 12 a 36 meses de prisión. Es diferente de la Ley 1448 (Ley de Víctimas) y la Ley 70 (derechos afrocolombianos)."
+    },
+    {
+      "id": "lv1750086001sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La discriminación rara vez opera en una sola dimensión; generalmente se combina con otras formas de exclusión.",
+      "enunciado": "¿Qué describe el concepto de 'interseccionalidad' en el estudio de la discriminación?",
+      "opciones": ["La discriminación que ocurre en las intersecciones de tráfico hacia los barrios populares.", "Cómo múltiples formas de discriminación (raza, género, clase) se combinan y amplifican en la experiencia de una persona.", "La discriminación que sufren las personas que viven en zonas fronterizas del país.", "La relación entre la discriminación laboral y la discriminación educativa."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La interseccionalidad, concepto desarrollado por la académica Kimberlé Crenshaw, describe cómo múltiples formas de discriminación se combinan y amplifican en la experiencia de una persona. Una mujer afrocolombiana rural enfrenta discriminación por género, raza, territorio y clase simultáneamente, creando una experiencia de exclusión cualitativamente más severa."
+    },
+    {
+      "id": "lv1750086001sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La discriminación puede producirse sin que los actores tengan intenciones explícitamente discriminatorias.",
+      "enunciado": "¿Cuál de los siguientes es un ejemplo de discriminación estructural (no intencional) en el proceso de selección de personal?",
+      "opciones": ["Una empresa que prohíbe expresamente contratar personas afrocolombianas.", "Una empresa que llama a entrevista a candidatos con nombres 'blancos' con mayor frecuencia que a candidatos con nombres 'negros' con currículums idénticos.", "Un gerente que insulta racialmente a un candidato durante la entrevista.", "Una empresa que solo anuncia sus vacantes en medios de comunicación de élite."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Este ejemplo ilustra la discriminación implícita o inconsciente: sin ninguna política explícita de discriminación, el resultado sistemático es que candidatos de cierto origen racial tienen menor probabilidad de ser llamados a entrevista. Los estudios de 'curriculum vitae idénticos' han documentado consistentemente este fenómeno en múltiples países, incluyendo Colombia."
+    },
+    {
+      "id": "lv1750086001sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "Colombia avanzó en el reconocimiento de derechos de las personas LGBTQ+ en el siglo XXI.",
+      "enunciado": "¿Cuál fue el país número cuatro de América Latina en reconocer el matrimonio igualitario?",
+      "opciones": ["Colombia fue el primer país.", "Colombia fue el segundo país.", "Colombia fue el tercer país.", "Colombia fue el cuarto país."],
+      "correcta": 3,
+      "justificacion": "La opción D es correcta. Colombia fue el cuarto país de América Latina en reconocer el matrimonio igualitario, después de Argentina (2010), Uruguay (2013) y Brasil (2013), mediante la Sentencia SU-214 de 2016 de la Corte Constitucional."
+    },
+    {
+      "id": "lv1750086001sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "El sistema jurídico colombiano ofrece mecanismos para proteger a las víctimas de discriminación.",
+      "enunciado": "¿Qué herramienta jurídica puede usar una persona que fue discriminada racialmente para obtener protección inmediata de sus derechos fundamentales?",
+      "opciones": ["Una demanda ante la Corte Penal Internacional.", "Una acción de tutela por vulneración del derecho a la igualdad.", "Una queja ante la Cámara de Comercio.", "Una petición al Ministerio de Educación."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La acción de tutela es el mecanismo constitucional para proteger derechos fundamentales de manera inmediata (fallo en 10 días). La discriminación viola el derecho a la igualdad del Artículo 13, que es un derecho fundamental protegible mediante tutela. También puede denunciarse penalmente bajo la Ley 1482 de 2011."
+    },
+    {
+      "id": "lv1750086001sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El lenguaje que usamos sobre la diversidad refleja la postura que tenemos ante ella.",
+      "enunciado": "¿Cuál es la principal diferencia entre 'tolerar' y 'reconocer' la diversidad?",
+      "opciones": ["Tolerar es más profundo porque implica mayor esfuerzo personal.", "Reconocer es más fácil porque no requiere ningún cambio de comportamiento.", "Tolerar reproduce una jerarquía de poder; reconocer implica igualdad de dignidad entre personas diferentes.", "Son sinónimos que describen el mismo proceso de aceptación."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Tolerar implica una jerarquía donde quien tolera tiene poder sobre quien es tolerado; la diferencia del otro es un problema que se acepta a regañadientes. Reconocer implica horizontalidad: las personas son diferentes y las dos tienen igual dignidad y derecho a ser. Una sociedad antidiscriminatoria necesita reconocimiento, no tolerancia."
+    },
+    {
+      "id": "lv1750086001sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Origen y consecuencias de las formas de discriminación y exclusión social",
+      "competencia": "Pensamiento social",
+      "contexto": "Existen mecanismos de política pública diseñados para acelerar la inclusión de grupos discriminados.",
+      "enunciado": "¿Qué política pública busca compensar las desigualdades estructurales que afectan a grupos históricamente discriminados, otorgándoles ventajas en el acceso a educación o empleo?",
+      "opciones": ["La amnistía.", "La mediación.", "La acción afirmativa.", "La consulta previa."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La acción afirmativa (affirmative action) es una política que otorga ventajas o cuotas a grupos históricamente discriminados para compensar desigualdades estructurales. En Colombia incluye cupos especiales en universidades para comunidades indígenas y afrocolombianas, y circunscripciones especiales de paz. Su fundamento: la igualdad formal no basta cuando la desigualdad estructural es profunda."
+    }
+  ]
+}

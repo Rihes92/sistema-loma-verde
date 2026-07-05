@@ -1,0 +1,175 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-01T20:08:30Z",
+  "planeadores": [
+    {
+      "id": "noveno-p2-eje3-001",
+      "creado": "2026-07-01T20:08:30Z",
+      "grado": "Noveno",
+      "periodo": "2",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "1",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-01",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Elecciones y participación juvenil: el voto a los 14 años en Colombia",
+      "unidad": "Eje 3: participación juvenil y responsabilidad democrática.",
+      "sesiones": "4",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* el estudiante conoce los mecanismos de participación política diseñados para los jóvenes en Colombia y su importancia democrática.\n* describe el funcionamiento de los Consejos de Juventud y sus competencias en el orden local.\nSaber-hacer:\n* diseña y ejecuta un proyecto de participación juvenil concreto (propuesta al concejo municipal, campaña de interés comunitario) con justificación democrática.\n* participa activamente en el proceso de elección del gobierno escolar asumiendo roles de candidato, veedor o elector responsable.\nSer:\n* se reconoce como sujeto político activo y asume el ejercicio de la ciudadanía como una responsabilidad ética y social.",
+      "competencias": "Pensamiento social.\nEBC — participación y responsabilidad democrática.",
+      "contenidos": "* Elecciones y participación juvenil: el voto a los 14 años en Colombia.\n* Consejos de Juventud: funciones, conformación y participación.\n* Personería estudiantil como primer ejercicio de representación política.\n* Participación de los jóvenes en los movimientos sociales y políticos colombianos.\n* Responsabilidad democrática: diferencia entre ciudadano pasivo y ciudadano activo.\n* El papel de los jóvenes en la construcción de la paz y la democracia.",
+      "objetivo": "Comprender de manera crítica los mecanismos de participación juvenil en Colombia, evaluando el impacto del voto a los 14 años y el rol de los Consejos de Juventud en la consolidación de una ciudadanía activa orientada a la paz regional.",
+      "pregunta": "¿De qué manera el ejercicio temprano del voto y la participación política juvenil logran transformar las realidades sociales y las dinámicas de convivencia en las comunidades rurales y urbanas del departamento de Córdoba?",
+      "explora": "Lluvia de ideas sobre la primera vez que tomaron una decisión importante que afectó a un grupo (familia, amigos, salón de clases). Preguntas orientadoras: ¿qué se siente tener voz y voto en las decisiones colectivas?, ¿por qué en ocasiones los adolescentes sienten que sus opiniones no son valoradas por los adultos?",
+      "glosario": [
+        {"t": "ciudadanía juvenil", "d": "condición que reconoce a los jóvenes como sujetos plenos de derechos y deberes, con capacidad para intervenir en los asuntos públicos de su territorio"},
+        {"t": "Consejos de Juventud", "d": "mecanismos de participación ciudadana que permiten a los adolescentes y jóvenes hacer control social a las políticas públicas territoriales"},
+        {"t": "veeduría ciudadana", "d": "herramienta democrática de representación que permite a los individuos y organizaciones vigilar la gestión y los recursos públicos"},
+        {"t": "personero estudiantil", "d": "estudiante de grado once encargado de promover y defender el ejercicio de los deberes y derechos de sus compañeros en la institución"},
+        {"t": "ciudadano activo", "d": "individuo que trasciende el cumplimiento básico de la ley y se involucra en la formulación de soluciones para su comunidad"},
+        {"t": "ciudadano pasivo", "d": "persona que limita su participación democrática al simple acto de votar, desentendiéndose posteriormente de la esfera política y social"},
+        {"t": "sufragio", "d": "derecho político y mecanismo de participación mediante el cual se elige a los representantes en un sistema democrático"},
+        {"t": "Estado Social de Derecho", "d": "modelo de organización política colombiano que garantiza la dignidad humana, los derechos fundamentales y la prevalencia del interés general"},
+        {"t": "control social", "d": "derecho y deber de los ciudadanos para supervisar la administración pública y exigir transparencia"},
+        {"t": "democracia representativa", "d": "sistema en el cual la soberanía popular se ejerce a través de funcionarios elegidos periódicamente por la ciudadanía"}
+      ],
+      "bloques": [
+        {"tit": "El despertar de la voz juvenil en Colombia", "txt": "Históricamente, la participación política y el poder de decisión estaban reservados exclusivamente para la población adulta. Sin embargo, con el avance de los derechos civiles en el país, se comprendió que los jóvenes no son un proyecto a futuro, sino actores del presente. La posibilidad de votar a los 14 años en escenarios específicos como los Consejos Municipales de Juventud abre una puerta inmensa hacia la equidad. Es el primer escenario real en el que se ejerce el poder de decidir quién representará sus intereses ante las autoridades territoriales, exigiendo informarse, debatir y elegir con conciencia.", "pausa": "¿por qué crees que la normativa establece los 14 años como la edad inicial para este ejercicio de voto y no los 18?", "resp": "porque a los 14 años los adolescentes adquieren mayor madurez y pensamiento crítico, lo que les permite integrarse tempranamente a dinámicas de responsabilidad social antes de ser ciudadanos plenos."},
+        {"tit": "El gobierno escolar como laboratorio democrático", "txt": "Las instituciones educativas funcionan como microsociedades donde se simula la realidad nacional. Cuando un estudiante ejerce su voto para elegir al personero o al contralor escolar, está entrenando para su vida adulta en la sociedad civil. Es el espacio más seguro para interiorizar que las promesas de las campañas políticas deben ser viables y que el elector tiene el derecho y el deber de exigir que se cumplan. El gobierno escolar demuestra que el liderazgo no es espontáneo, sino un proceso que escala gradualmente desde las aulas de clase hasta las asambleas y alcaldías.", "pausa": "¿qué similitudes logras identificar entre las elecciones del colegio y las votaciones para la alcaldía de tu municipio?", "resp": "ambos procesos requieren de candidatos, propuestas estructuradas, campañas de persuasión, un sistema de votación secreto y jurados que garanticen la transparencia del escrutinio."},
+        {"tit": "La frontera entre ser habitante y ser ciudadano", "txt": "Depositar un voto en las urnas es apenas la cuota inicial de la democracia. Un ciudadano pasivo considera que su responsabilidad termina el día de las elecciones, esperando que los gobernantes resuelvan de forma unilateral todos los conflictos. Por el contrario, un ciudadano activo entiende que el sistema requiere supervisión constante: organiza a su comunidad, emplea mecanismos como el derecho de petición, realiza veeduría y propone soluciones. En zonas con dinámicas complejas como Loma Verde, la juventud activa es la principal garante de la construcción de paz y la transformación del territorio.", "pausa": "¿qué acciones cotidianas y concretas puedes realizar hoy para pasar de ser un ciudadano pasivo a uno activo en tu entorno?", "resp": "puedo liderar iniciativas ecológicas, exigir el respeto de los espacios comunes y proponer mesas de diálogo estudiantil para resolver conflictos pacíficamente."}
+      ],
+      "talleres": "1. Análisis de viabilidad política: entregar tres propuestas de campañas juveniles ficticias; los estudiantes identificarán cuál plantea soluciones reales y cuál incurre en populismo demagógico. 2. Simulacro de control social: organizar un debate donde la mitad del salón represente a 'consejeros de juventud' exponiendo su plan de trabajo, y la otra mitad asuma el rol de 'veedores ciudadanos' cuestionando la viabilidad y el presupuesto de dichas propuestas. 3. Cartografía social participativa: dibujar un mapa del entorno local identificando los lugares clave donde los jóvenes pueden ejercer derechos democráticos e incidencia pública.",
+      "transfer": "Diseñar una campaña de expectativa realista para motivar el voto consciente en las próximas elecciones de la Institución Educativa San José de Loma Verde. Se requiere formular un eslogan contundente, elaborar un póster analógico con iconografía local y redactar un microdiscurso de persuasión de un minuto.",
+      "clave": "Se espera que las creaciones empleen un lenguaje argumentativo desprovisto de promesas inviables. El eslogan debe apelar al compromiso colectivo, el póster debe conectar con la ruralidad del entorno y el discurso debe resaltar que el gobierno escolar es un asunto de corresponsabilidad y no solo de exigencia de derechos.",
+      "evaluacion": "Rúbrica de evaluación continua:\n1. saber (30%): identifica con precisión los mecanismos formales de participación juvenil y las edades reglamentarias en una evaluación corta.\n2. hacer (40%): contribuye lógicamente en el debate de veeduría y estructura una campaña escolar coherente con las competencias ciudadanas.\n3. ser (30%): demuestra tolerancia ante opiniones divergentes y manifiesta un genuino interés por las problemáticas de la comunidad educativa.",
+      "recursos": "Papelógrafo, marcadores de colores, copias impresas de fragmentos de la Constitución Política y de la ley 1622 de 2013, fichas de casos de estudio, tablero y marcadores borrables.",
+      "referencias": "EBC:\n* analizo críticamente mi participación en situaciones en las que se vulneran o respetan los derechos e identifico cómo dicha participación contribuye a mejorar o empeorar la situación.\n* participo en la planeación y ejecución de acciones que contribuyen a aliviar la situación de personas en desventaja.\nDBA:\n* DBA 5 (G9): evalúa cómo las sociedades democráticas en un Estado Social de Derecho tienen el deber de proteger y promover los derechos fundamentales.\nBibliografía académica complementaria:\n* Congreso de la República de Colombia. (2013). Ley 1622 de 2013: por medio de la cual se expide el estatuto de ciudadanía juvenil y se dictan otras disposiciones. Diario Oficial No. 48.776.\n* Registraduría Nacional del Estado Civil. (2021). ABC de los Consejos de Juventud: guía para la participación democrática de las nuevas generaciones.",
+      "dua": "Estrategias de inclusión educativa:\n* representación: utilizar esquemas visuales e infografías para detallar la estructura piramidal de los consejos de juventud.\n* expresión: posibilitar que la entrega de la campaña se realice de forma escrita, a través de una grabación de audio o mediante sustentación oral directa.\n* compromiso: anclar las discusiones teóricas a situaciones cotidianas del corregimiento, elevando el nivel de pertinencia emocional y motivación cognitiva.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El ejercicio de la participación ciudadana juvenil es un derecho fundamental amparado normativamente en Colombia.",
+        "El sufragio a los 14 años en escenarios consultivos permite descentralizar la política y empoderar a la adolescencia.",
+        "La personería y el gobierno escolar constituyen el primer ensayo práctico donde se asimila la dinámica de representación.",
+        "Existe una brecha sustancial entre el acto pasivo de sufragar y el ejercicio activo de la veeduría comunitaria.",
+        "La juventud informada es la pieza angular para el relevo generacional ético y la consolidación de la paz territorial."
+      ],
+      "errores": [
+        "Suponer que los jóvenes solo pueden ejercer derechos electorales al cumplir la mayoría de edad: corrección, a partir de los 14 años existe la habilitación legal para participar en los Consejos de Juventud.",
+        "Asumir que el personero estudiantil posee autonomía financiera o sancionatoria: corrección, el rol del personero es velar por el cumplimiento de los derechos humanos y el debido proceso, no administrar recursos ni aplicar castigos.",
+        "Limitar el concepto de democracia al certamen electoral: corrección, la democracia representativa requiere control, vigilancia y participación ininterrumpida posterior a las elecciones.",
+        "Creer que los Consejos de Juventud redactan leyes nacionales: corrección, su competencia se restringe a la asesoría, el control social y el diseño de agendas públicas a nivel local y departamental."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué repercusión democrática tiene permitir que los adolescentes participen electoralmente desde los 14 años?",
+          "a": "facilita la formación temprana del pensamiento crítico y la responsabilidad cívica, preparando a los individuos para el ejercicio maduro del voto nacional al alcanzar la mayoría de edad.",
+          "verdadero": true,
+          "justificacion": "la habilitación de edades tempranas en elecciones específicas tiene un propósito estrictamente pedagógico y de inclusión representativa.",
+          "enunciado": "La normativa colombiana estipula edades diferenciadas según el tipo de certamen electoral.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿En qué radica la diferencia fundamental entre un ciudadano pasivo y uno activo?",
+          "a": "el pasivo restringe su acción ciudadana al voto ocasional, mientras que el activo hace control, organiza a la comunidad y exige el cumplimiento de los planes de desarrollo.",
+          "verdadero": true,
+          "justificacion": "la ciudadanía es un ejercicio permanente que trasciende los mecanismos de elección para instalarse en la incidencia comunitaria.",
+          "enunciado": "Existen diversas maneras en que los habitantes de un territorio asumen su rol frente al Estado.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la misión principal de los Consejos Municipales de Juventud?",
+          "a": "actuar como entidades autónomas que asesoran a las administraciones locales en temas juveniles y realizan veeduría al gasto público dirigido a esta población.",
+          "verdadero": true,
+          "justificacion": "los consejos son el puente oficial entre las demandas de los jóvenes y la formulación de políticas públicas en alcaldías y gobernaciones.",
+          "enunciado": "El estatuto de ciudadanía juvenil estructuró instancias formales de representación.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué el aula de clases se considera el primer ecosistema democrático del individuo?",
+          "a": "porque allí experimentan a pequeña escala el debate de ideas, la elección de representantes y el peso de las consecuencias de una decisión colectiva.",
+          "verdadero": true,
+          "justificacion": "el gobierno escolar está diseñado legalmente para replicar las tensiones y los procesos de la democracia nacional de manera formativa.",
+          "enunciado": "La escuela no solo imparte conocimientos académicos, sino que modela comportamientos sociales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué forma la vinculación juvenil en la política apoya la construcción de la paz en territorios históricamente afectados?",
+          "a": "aporta visiones renovadas, fomenta el diálogo intergeneracional y lidera iniciativas que rechazan las estructuras violentas del pasado.",
+          "verdadero": true,
+          "justificacion": "la paz positiva requiere de nuevos liderazgos que conciban la gestión de conflictos sin recurrir a vías de hecho.",
+          "enunciado": "Colombia atraviesa procesos de transición hacia la paz territorial.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El personero estudiantil cuenta con la facultad legal para modificar unilateralmente las sanciones del manual de convivencia.",
+          "a": "falso, su labor es mediar y promover el respeto a los derechos, no establecer ni derogar normativas disciplinarias.",
+          "verdadero": false,
+          "justificacion": "la modificación del manual es competencia exclusiva del consejo directivo, no de un individuo.",
+          "enunciado": "Las funciones del gobierno escolar están delimitadas por la ley general de educación.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los jóvenes de 14 años pueden postularse y ser elegidos para el congreso de la república.",
+          "a": "falso, a esa edad la participación política está restringida a órganos consultivos como los Consejos de Juventud.",
+          "verdadero": false,
+          "justificacion": "la constitución exige una edad mayor para ocupar escaños legislativos de alcance nacional.",
+          "enunciado": "Los requisitos de edad varían dependiendo del cargo de representación popular.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La veeduría ciudadana es un mecanismo propio del ciudadano activo.",
+          "a": "verdadero, pues requiere tiempo, investigación y voluntad para vigilar la gestión del Estado.",
+          "verdadero": true,
+          "justificacion": "la vigilancia de lo público es la característica central de la participación no electoral activa.",
+          "enunciado": "El control social demanda un nivel superior de compromiso civil.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La ley 1622 de 2013 en Colombia tiene como propósito limitar la libertad de expresión de las juventudes.",
+          "a": "falso, su propósito es expedir el estatuto de ciudadanía juvenil para garantizar y reglamentar su participación política.",
+          "verdadero": false,
+          "justificacion": "esta ley amplió los derechos políticos y creó instancias formales de concertación y representación joven.",
+          "enunciado": "El marco normativo nacional ha evolucionado frente a la perspectiva juvenil.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La Constitución de 1991 estipula que el Estado debe promover la integración activa de los jóvenes en las decisiones públicas.",
+          "a": "verdadero, el texto constitucional rompe con modelos excluyentes y vincula constitucionalmente a la juventud.",
+          "verdadero": true,
+          "justificacion": "el artículo 45 de la carta magna dicta explícitamente el deber de garantizar su participación activa.",
+          "enunciado": "El paso de un modelo de democracia puramente representativo a uno participativo generó cambios en 1991.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Desarrollar una entrevista intergeneracional: preguntar a dos adultos de la comunidad (padres, abuelos o líderes locales) sobre su experiencia democrática. Las interrogantes son: ¿a qué edad sufragó por primera vez?, ¿sintió que su elección generó algún impacto comunitario?, ¿qué recomendación fundamental le haría a un adolescente que votará por primera vez? Registrar los hallazgos en el cuaderno y redactar una síntesis crítica comparando las épocas.",
+      "fundamentacion": "# FUNDAMENTACIÓN TEÓRICA Y PARTICIPACIÓN JUVENIL EN COLOMBIA\n\n## Evolución sociopolítica del voto juvenil\nEl reconocimiento de los jóvenes como sujetos con pleno derecho a la participación política y al ejercicio decisorio es una conquista reciente en la arquitectura institucional colombiana. Durante gran parte de la historia republicana, la capacidad de agencia estatal estuvo supeditada exclusivamente a la mayoría de edad (fijada en 18 años), marginando a los adolescentes del debate público bajo la premisa de la inmadurez cívica. No obstante, la promulgación de la Constitución Política de 1991 inauguró el modelo de Estado Social de Derecho, transitando de una democracia estrictamente representativa a una participativa. Este giro filosófico obligó a las instituciones a diseñar conductos inclusivos, entendiendo que el sentido de pertenencia y el cuidado por lo colectivo deben sembrarse desde las primeras etapas del desarrollo.\n\n## El estatuto de ciudadanía juvenil\nEl punto de quiebre normativo ocurre con la expedición de la ley estatutaria 1622 de 2013, robustecida posteriormente por la ley 1885 de 2018. Estas legislaciones introdujeron una innovación invaluable: el derecho al sufragio y la posibilidad de postulación a partir de los 14 años para instancias consultivas. Esta decisión gubernamental reconoce implícitamente que la conciencia sobre la equidad social, la ecología, la infraestructura y la paz no se activa automáticamente al cumplir 18 años, sino que es un constructo gradual. \n\n## Estructura y propósito de los consejos territoriales\nLos Consejos Municipales de Juventud (CMJ) constituyen la piedra angular de esta estructura. Estas corporaciones no ostentan funciones legislativas clásicas ni controlan presupuestos autónomos; su naturaleza es el control social y el diseño de agendas. Funcionan como el contrapeso formal frente a los alcaldes y concejos de adultos. Los jóvenes elegidos tienen el mandato legal de realizar veeduría, vigilar que el presupuesto garantice rubros para cultura o deporte, y visibilizar las violencias sistemáticas que padece este grupo etario. Todo el entramado electoral (tarjetones, inscripción de listas, jurados) es tutelado por la Registraduría, brindando garantías de transparencia y alfabetización electoral a gran escala.\n\n## La escuela como primer escenario de soberanía\nAntes de insertarse en dinámicas municipales, el individuo debe cursar su entrenamiento básico en la escuela a través del gobierno escolar. Figuras como el personero, el representante estudiantil y el contralor no son adornos protocolarios, sino roles jurídicos que simulan el ejercicio del poder público. Es en este laboratorio donde se forman los primeros escudos éticos contra fenómenos devastadores como la corrupción, el clientelismo y el populismo. Si el estudiante aprende tempranamente a cuestionar los programas de sus pares y a exigir rendición de cuentas en lugar de premiar la demagogia, se pavimenta el camino hacia un electorado nacional sumamente riguroso.\n\n## Tránsito de la pasividad a la acción democrática\nEl núcleo conceptual de las competencias ciudadanas radica en la superación de la pasividad. El ciudadano pasivo asume que la democracia se agota tras la jornada electoral; deposita su voto y retorna al anonimato quejumbroso ante la deficiencia estatal. Por el contrario, el ciudadano activo asume la democracia como un esfuerzo cotidiano: fiscaliza la contratación de su barrio, levanta actas en las juntas de acción comunal y exige protección cuando los derechos humanos son transgredidos. En contextos geográficos marcados por tensiones históricas y rurales, cultivar una ciudadanía juvenil activa trasciende lo académico; se convierte en la única estrategia viable para blindar a la sociedad frente a la repetición del conflicto armado.",
+      "lineatiempo": "1991: promulgación de la Constitución Nacional (apertura a la democracia participativa y reconocimiento en el artículo 45) - 1994: ley 115 general de educación (obligatoriedad del gobierno escolar y personerías) - 1997: ley 375 (primera normatividad integral sobre las juventudes) - 2013: ley 1622 (expedición del estatuto de ciudadanía juvenil y habilitación oficial de los CMJ) - 2018: ley 1885 (modificación estructural que moderniza y convoca masivamente a las elecciones de los Consejos de Juventud)."
+    }
+  ]
+}

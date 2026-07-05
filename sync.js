@@ -34,6 +34,8 @@ const LV_SYNC = (() => {
     'lv11_simulacros_ext':{ tabla: 'lv11_simulacros_ext', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_banco':          { tabla: 'lv_banco',          id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_malla':          { tabla: 'lv_malla',          id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_docentes':       { tabla: 'lv_docentes',       id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_asignaciones':   { tabla: 'lv_asignaciones',   id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Utilidades ───────────────────────────────────────────────

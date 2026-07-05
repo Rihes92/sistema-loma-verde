@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Segundo Periodo",
+    "unidad": "Eje 3: Historia del conflicto armado e incidencia sociocultural",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750075201aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Cómo destruye el conflicto armado el tejido social de una comunidad más allá de las muertes y el desplazamiento físico?",
+      "respuesta": "El conflicto destruye el tejido social instalando el miedo: miedo a ser señalado, a organizarse, a hablar en público. Este miedo genera silencio: las juntas de acción comunal se disuelven, los espacios de encuentro colectivo se vacían, las redes de solidaridad se interrumpen. También destruye la confianza entre vecinos cuando los actores armados usan informantes dentro de la comunidad. El reclutamiento forzado elimina potenciales líderes comunitarios antes de que puedan desarrollarse.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750075201aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué pierde una familia campesina cuando es desplazada forzadamente, más allá de la tierra y la casa?",
+      "respuesta": "Pierde: 1) Su identidad cultural: el conocimiento del territorio local, los ciclos agrícolas, los saberes sobre plantas y animales. 2) Sus redes de solidaridad: las relaciones de vecindad y reciprocidad (mingas, apoyo en cosecha) construidas durante generaciones. 3) Su lugar social: el rol y el reconocimiento en la comunidad. 4) Su sentido de futuro: la tierra que iban a heredar los hijos. 5) Su acceso a justicia: en una ciudad desconocida, sin redes, son más vulnerables a la explotación.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750075201aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Describe las contribuciones de dos artistas o escritores colombianos que documentaron o resistieron el conflicto armado a través de su obra.",
+      "respuesta": "1) Gabriel García Márquez: 'Cien años de soledad' y 'El coronel no tiene quien le escriba' usan el realismo mágico para procesar La Violencia bipartidista y la impunidad estructural. Su literatura convirtió el trauma colectivo en patrimonio cultural universal. 2) Doris Salcedo: escultora cuyas instalaciones materializan la ausencia —sillas vacías, muebles cosidos— para dar cuerpo visible a las víctimas desaparecidas. Sus obras se reconocen mundialmente como testimonio artístico de la violencia colombiana. / O: Jesús Abad Colorado: fotógrafo que documentó 20 años del conflicto mostrando tanto la destrucción como la resistencia.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750075201aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué es la Comunidad de Paz de San José de Apartadó y por qué es un ejemplo de resiliencia comunitaria frente al conflicto?",
+      "respuesta": "La Comunidad de Paz de San José de Apartadó es una iniciativa de comunidades rurales de Urabá (Antioquia) que en 1997 declararon neutralidad ante todos los actores armados, comprometiéndose a no colaborar con ninguno y a resolver sus conflictos internamente por el diálogo. Es un ejemplo de resiliencia porque a pesar de más de 200 asesinatos de sus miembros entre 1997 y 2022, la comunidad no se disolvió ni se alió con ningún actor. Demostró que una comunidad organizada sobre principios claros puede resistir la presión de todos los actores armados.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750075201aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué acciones concretas podría implementar Loma Verde para fortalecer su tejido social sin recursos externos del Estado?",
+      "respuesta": "1) Recuperar la minga o trabajo comunitario colectivo para tareas de beneficio común (mantenimiento del acueducto, la vía, espacios públicos), que crea lazos de solidaridad y confianza. 2) Crear un archivo oral de la memoria de la vereda: grabar testimonios de personas mayores sobre la historia, tradiciones y saberes locales antes de que esa memoria desaparezca. 3) Organizar un espacio mensual intergeneracional donde los mayores compartan conocimientos (plantas medicinales, cocina, café) con los jóvenes, reconstruyendo la transmisión cultural que la modernización ha interrumpido.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750075201fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El desplazamiento forzado solo produce pérdidas materiales pero no afecta la identidad cultural ni el sentido de pertenencia de las familias campesinas.",
+      "correcta": false,
+      "justificacion": "Falso. El desplazamiento produce pérdidas culturales e identitarias igualmente graves: la familia pierde su conocimiento del territorio, sus redes de solidaridad y reciprocidad, su rol social en la comunidad y el proyecto de vida asociado a la tierra. El CNMH documentó que las familias desplazadas reportan niveles de depresión y dificultad para confiar en otros significativamente más altos que la población no desplazada."
+    },
+    {
+      "id": "lv1750075201fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Comunidad de Paz de San José de Apartadó (Antioquia) fue fundada en 1997 y declaró su neutralidad ante todos los actores armados del conflicto colombiano.",
+      "correcta": true,
+      "justificacion": "Verdadero. La Comunidad de Paz de San José de Apartadó fue fundada en 1997 en uno de los municipios más violentos del país. Sus habitantes declararon neutralidad ante guerrillas y paramilitares, comprometiéndose a no colaborar con ningún actor armado. Es considerada uno de los ejemplos más notables de resiliencia comunitaria en Colombia y América Latina."
+    },
+    {
+      "id": "lv1750075201fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La fotógrafa Débora Arango documentó el conflicto armado de los años 90 con imágenes del desplazamiento forzado en el Chocó y el Urabá.",
+      "correcta": false,
+      "justificacion": "Falso. Débora Arango fue una pintora colombiana (1907-2005) conocida por sus pinturas sobre La Violencia bipartidista de los años 40-50, no fotógrafa de los años 90. Quien documentó fotográficamente el conflicto de los años 90-2000s fue Jesús Abad Colorado, con su obra 'El testigo' (2015)."
+    },
+    {
+      "id": "lv1750075201fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El tejido social de una comunidad solo se destruye por el conflicto armado; otras dinámicas como la migración o los cambios económicos no lo afectan.",
+      "correcta": false,
+      "justificacion": "Falso. El tejido social se erosiona por múltiples factores: la migración masiva de jóvenes, el reemplazo de la economía solidaria campesina por lógicas de mercado individualistas, la pérdida de espacios de encuentro colectivo y la desaparición de prácticas de reciprocidad como la minga. En Loma Verde estos factores son igualmente relevantes aunque no haya conflicto armado activo."
+    },
+    {
+      "id": "lv1750075201fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La obra artística y literaria sobre la violencia colombiana cumple funciones sociales y políticas concretas: documenta hechos, procesa el trauma colectivo y ofrece modelos de resistencia.",
+      "correcta": true,
+      "justificacion": "Verdadero. El arte sobre la violencia cumple funciones sociales precisas: documenta lo ocurrido (archivo histórico), da voz y dignidad a las víctimas (reconocimiento), procesa el dolor colectivo que el lenguaje cotidiano no puede expresar (sanación), y crea comunidad entre quienes comparten la experiencia (reconstrucción del tejido). García Márquez, Doris Salcedo y Jesús Abad Colorado son ejemplos de estas funciones."
+    },
+    {
+      "id": "lv1750075201sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "El conflicto armado tiene impactos sobre la vida comunitaria que van más allá de las pérdidas físicas.",
+      "enunciado": "¿Cuál de las siguientes consecuencias del conflicto armado afecta más directamente el tejido social de una comunidad rural?",
+      "opciones": ["La destrucción de infraestructura vial que dificulta el transporte de café.", "La instalación del miedo y la desconfianza que disuelven las redes comunitarias y el liderazgo.", "La contaminación de fuentes de agua por explosiones de actores armados.", "La reducción del precio del café por la inestabilidad económica generada por el conflicto."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El miedo y la desconfianza son las armas más efectivas de los actores armados para controlar el tejido social: paralizan la organización comunitaria, destruyen los liderazgos y generan silencio. Las otras opciones son daños materiales o económicos importantes pero no atacan directamente la estructura relacional de la comunidad."
+    },
+    {
+      "id": "lv1750075201sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Colombia produjo artistas que convirtieron el dolor del conflicto en expresión artística reconocida mundialmente.",
+      "enunciado": "¿Cuál de los siguientes artistas colombianos es conocido por sus esculturas que materializan la ausencia de las víctimas de la desaparición forzada?",
+      "opciones": ["Fernando Botero.", "Débora Arango.", "Doris Salcedo.", "Jesús Abad Colorado."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Doris Salcedo es la escultora colombiana internacionalmente reconocida por instalaciones que materializan la ausencia: sillas vacías, muebles cosidos, abrigos militares rellenos de cemento. Su obra da cuerpo visible a las víctimas desaparecidas del conflicto. Jesús Abad Colorado es fotógrafo; Débora Arango fue pintora; Botero es conocido por sus figuras voluminosas."
+    },
+    {
+      "id": "lv1750075201sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "La Comunidad de Paz de San José de Apartadó es un ejemplo mundial de resistencia comunitaria ante el conflicto armado.",
+      "enunciado": "¿En qué año fue fundada la Comunidad de Paz de San José de Apartadó?",
+      "opciones": ["1985.", "1990.", "1997.", "2003."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La Comunidad de Paz de San José de Apartadó fue fundada en 1997, en uno de los períodos más violentos del conflicto colombiano en Urabá. Su declaración de neutralidad ante todos los actores armados fue un acto político sin precedentes en Colombia."
+    },
+    {
+      "id": "lv1750075201sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La literatura colombiana del siglo XX está profundamente marcada por el conflicto y la violencia.",
+      "enunciado": "¿Qué novela de Gabriel García Márquez es considerada un testimonio literario de la violencia bipartidista colombiana del siglo XX?",
+      "opciones": ["El amor en los tiempos del cólera.", "Cien años de soledad.", "La isla bajo el mar.", "El general en su laberinto."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. 'Cien años de soledad' (1967), ganadora del Nobel de Literatura de 1982, es la obra más reconocida de García Márquez y procesa literariamente La Violencia bipartidista, el imperialismo de la United Fruit Company y la historia de exclusión y repetición que ha marcado a Colombia. Convirtió el trauma colectivo en patrimonio literario universal."
+    },
+    {
+      "id": "lv1750075201sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "Las comunidades colombianas desarrollaron estrategias propias de resistencia y reconstrucción comunitaria.",
+      "enunciado": "¿Cuál de las siguientes prácticas es un ejemplo de resiliencia comunitaria que fortalece el tejido social de una vereda cafetera?",
+      "opciones": ["La migración de los jóvenes a las ciudades para buscar mejores oportunidades.", "La atomización de las familias en unidades individuales que producen y venden de forma independiente.", "La recuperación de la minga y el trabajo colectivo comunitario para tareas de beneficio común.", "La espera de programas del gobierno nacional para financiar proyectos comunitarios."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La minga o trabajo comunitario colectivo es una práctica ancestral de reciprocidad que fortalece el tejido social al crear lazos de solidaridad y confianza. Al trabajar juntos en beneficio común, los miembros de la comunidad se conocen mejor, desarrollan interdependencias y construyen capital social que les sirve en momentos de crisis."
+    },
+    {
+      "id": "lv1750075201sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "El silencio es una de las consecuencias menos visibles pero más persistentes del conflicto armado.",
+      "enunciado": "¿Qué es el 'silencio impuesto' como forma de daño al tejido social?",
+      "opciones": ["La decisión voluntaria de las comunidades de no hablar sobre el pasado para mirar hacia el futuro.", "La imposibilidad de hablar sobre experiencias traumáticas por miedo a represalias, que perpetúa el trauma e impide el duelo colectivo.", "El acuerdo entre el gobierno y las guerrillas de no divulgar los términos del proceso de paz.", "La estrategia de comunicación de las organizaciones humanitarias para proteger la identidad de las víctimas."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El silencio impuesto es la incapacidad de hablar sobre experiencias traumáticas por miedo a represalias o por ausencia de espacios seguros. No es voluntario ni terapéutico: es coercitivo. Perpetúa el trauma porque impide el duelo colectivo y permite que los victimarios mantengan su poder sobre la comunidad a través del miedo."
+    },
+    {
+      "id": "lv1750075201sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Jesús Abad Colorado documentó más de 20 años del conflicto colombiano en las regiones más afectadas.",
+      "enunciado": "¿Qué función cumple la obra de Jesús Abad Colorado en el proceso de memoria histórica?",
+      "opciones": ["Demostrar que los actores armados cometieron crímenes de guerra para justificar su juzgamiento internacional.", "Crear un registro visual que documenta los hechos, da dignidad a las víctimas y muestra la resistencia de las comunidades.", "Producir material turístico sobre las zonas afectadas para atraer inversión extranjera.", "Servir como prueba judicial en los procesos de la Jurisdicción Especial para la Paz."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La obra de Colorado cumple múltiples funciones de memoria histórica: documenta visualmente lo que ocurrió para que no pueda negarse, da rostro y nombre a las víctimas, y muestra la resistencia de las comunidades —no solo su victimización. Esta última dimensión es políticamente importante porque reconoce la agencia y dignidad de las comunidades."
+    },
+    {
+      "id": "lv1750075201sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "La Comunidad de Paz es un ejemplo de resiliencia comunitaria extrema ante la violencia.",
+      "enunciado": "¿Cuántos asesinatos de sus miembros sufrió la Comunidad de Paz de San José de Apartadó entre 1997 y 2022?",
+      "opciones": ["Más de 20 asesinatos.", "Más de 50 asesinatos.", "Más de 100 asesinatos.", "Más de 200 asesinatos."],
+      "correcta": 3,
+      "justificacion": "La opción D es correcta. La Comunidad de Paz de San José de Apartadó sufrió más de 200 asesinatos de sus miembros entre 1997 y 2022, cometidos por paramilitares, guerrillas e incluso por miembros del Ejército colombiano. A pesar de ello, la comunidad mantuvo su organización y sus principios, lo que la convierte en un ejemplo extraordinario de resiliencia colectiva."
+    },
+    {
+      "id": "lv1750075201sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Pensamiento social",
+      "contexto": "El trauma colectivo es diferente del trauma individual y tiene efectos específicos sobre la vida comunitaria.",
+      "enunciado": "¿Cuál de las siguientes expresiones representa mejor el concepto de 'trauma colectivo'?",
+      "opciones": ["Varias personas de la comunidad experimentan individualmente el mismo tipo de pesadilla.", "La comunidad entera desarrolla desconfianza, dificultad para organizarse y tendencia al silencio sobre el pasado.", "El gobierno crea un programa de atención psicológica individual para las víctimas.", "Los líderes comunitarios reciben terapia para procesar sus experiencias personales de violencia."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El trauma colectivo afecta a la comunidad como un todo, no solo a los individuos: genera desconfianza generalizada, dificultad para organizarse colectivamente, silencio sobre el pasado y ruptura de los proyectos de vida comunitarios. Es la herida de la comunidad como comunidad, no la suma de las heridas individuales."
+    },
+    {
+      "id": "lv1750075201sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Impacto de la guerra en el tejido social y las manifestaciones culturales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La obra de Jesús Abad Colorado es uno de los documentos visuales más importantes sobre el conflicto colombiano.",
+      "enunciado": "¿En qué año fue publicada la recopilación fotográfica 'El testigo' de Jesús Abad Colorado?",
+      "opciones": ["2002.", "2010.", "2015.", "2020."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. 'El testigo' fue publicado en 2015 por la editorial Planeta, recopilando más de 20 años de trabajo fotográfico de Jesús Abad Colorado en zonas de conflicto de Colombia. El libro recibió reconocimiento internacional y se convirtió en uno de los archivos visuales más completos del conflicto armado colombiano."
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-01T20:17:34Z",
+  "planeadores": [
+    {
+      "id": "noveno-p2-eje3-003",
+      "creado": "2026-07-01T20:17:34Z",
+      "grado": "Noveno",
+      "periodo": "2",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "3",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-01",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Personería estudiantil como primer ejercicio de representación política",
+      "unidad": "Eje 3: participación juvenil y responsabilidad democrática",
+      "sesiones": "4",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* el estudiante conoce los mecanismos de participación política diseñados para los jóvenes en Colombia y su importancia democrática.\n* describe el funcionamiento de los Consejos de Juventud y sus competencias en el orden local.\nSaber-hacer:\n* diseña y ejecuta un proyecto de participación juvenil concreto (propuesta al concejo municipal, campaña de interés comunitario) con justificación democrática.\n* participa activamente en el proceso de elección del gobierno escolar asumiendo roles de candidato, veedor o elector responsable.\nSer:\n* se reconoce como sujeto político activo y asume el ejercicio de la ciudadanía como una responsabilidad ética y social.",
+      "competencias": "Pensamiento social\nEBC — participación y responsabilidad democrática",
+      "contenidos": "* Elecciones y participación juvenil: el voto a los 14 años en Colombia.\n* Consejos de Juventud: funciones, conformación y participación.\n* Personería estudiantil como primer ejercicio de representación política.\n* Participación de los jóvenes en los movimientos sociales y políticos colombianos.\n* Responsabilidad democrática: diferencia entre ciudadano pasivo y ciudadano activo.\n* El papel de los jóvenes en la construcción de la paz y la democracia.",
+      "objetivo": "comprender la personería estudiantil como el escenario fundamental de entrenamiento democrático, donde el estudiante transita de la teoría constitucional a la práctica de la representación, la veeduría de derechos y la construcción de acuerdos colectivos en el contexto escolar.",
+      "pregunta": "¿de qué manera el ejercicio de la personería estudiantil en la Institución Educativa San José de Loma Verde permite a los estudiantes prepararse para los desafíos de liderazgo, transparencia y representación política en su vida ciudadana adulta?",
+      "explora": "lluvia de ideas sobre el rol del personero: ¿qué hace realmente un personero?, ¿es una figura de autoridad o de servicio?, ¿alguna vez han sentido que sus derechos como estudiantes han sido vulnerados?, ¿cómo podría un representante estudiantil intervenir en dicha situación?",
+      "glosario": [
+        {"t": "personería estudiantil", "d": "instancia del gobierno escolar que promueve el ejercicio de los deberes y derechos de los estudiantes"},
+        {"t": "gobierno escolar", "d": "conjunto de órganos encargados de la participación democrática en la institución educativa"},
+        {"t": "derecho al debido proceso", "d": "garantía constitucional que protege a los estudiantes frente a actuaciones disciplinarias arbitrarias"},
+        {"t": "veeduría estudiantil", "d": "mecanismo de vigilancia sobre el uso de recursos y el cumplimiento de los compromisos adquiridos en las campañas"},
+        {"t": "representatividad", "d": "capacidad de un líder para interpretar, defender y gestionar las necesidades comunes de su base electoral"},
+        {"t": "ciudadanía activa", "d": "ejercicio consciente de vigilancia y participación en la toma de decisiones colectivas"},
+        {"t": "campaña electoral", "d": "proceso de difusión de propuestas donde el candidato busca convencer al electorado mediante argumentos viables"},
+        {"t": "manual de convivencia", "d": "pacto social institucional que regula las relaciones y los procedimientos dentro del entorno educativo"},
+        {"t": "democracia escolar", "d": "práctica de valores como el respeto, la elección libre y la corresponsabilidad en el ámbito pedagógico"},
+        {"t": "liderazgo ético", "d": "ejercicio del poder basado en la transparencia, el cumplimiento de promesas y el respeto por los derechos humanos"}
+      ],
+      "bloques": [
+        {"tit": "El manual de convivencia como carta constitucional", "txt": "así como la Constitución Política de 1991 es la norma de normas del país, el manual de convivencia es la base jurídica de la institución. el personero estudiantil, al ser un estudiante de último grado, tiene la responsabilidad de conocer a fondo esta norma para defender el debido proceso de sus compañeros. no es un cargo honorífico, sino una función delegada por la ley para garantizar que los estudiantes sean escuchados antes de cualquier sanción y que sus derechos fundamentales sean respetados en cada aula.", "pausa": "¿por qué es peligroso para un estudiante tener un representante que desconoce las normas de su propio colegio?", "resp": "porque, al no conocer la norma, el representante queda inhabilitado para detectar injusticias o defender a sus compañeros ante arbitrariedades."},
+        {"tit": "La trampa de las promesas incumplibles", "txt": "en el ejercicio de la personería, es común observar candidatos que ofrecen mejoras imposibles (como cambiar la jornada escolar o reducir materias). esto enseña al electorado sobre los peligros del populismo. el primer paso hacia una cultura democrática madura es aprender a distinguir entre una propuesta viable, que requiere gestión y diálogo, y una promesa demagógica que busca manipular el voto. el estudiante aprende que el verdadero liderazgo no se basa en dar lo que no se tiene, sino en gestionar soluciones colectivas dentro del marco legal vigente.", "pausa": "¿cómo pueden los electores evaluar la viabilidad de una propuesta antes de marcar el tarjetón?", "resp": "cuestionando al candidato sobre los pasos concretos, los recursos necesarios y los tiempos estimados para lograr el objetivo propuesto."},
+        {"tit": "Del colegio a la participación pública", "txt": "la personería es la antesala de la participación en Consejos de Juventud o veedurías ciudadanas. al asumir este rol, el joven entiende que el poder público conlleva una rendición de cuentas permanente. al terminar su periodo, un personero ético debe entregar un informe de gestión, mostrando qué se logró, qué quedó pendiente y por qué. este ciclo de elección, gestión y rendición es exactamente el mismo que vive cualquier concejal o alcalde, pero realizado en un entorno formativo seguro donde el error sirve de aprendizaje.", "pausa": "¿qué diferencia hay entre un personero que solo aparece para las fiestas y uno que se sienta con el rector a proponer cambios?", "resp": "la diferencia radica en la capacidad de incidencia política: el primero es un actor pasivo, mientras que el segundo ejerce un liderazgo propositivo y transformador."}
+      ],
+      "talleres": "1. análisis de casos: los estudiantes reciben tres situaciones de presunta vulneración de derechos (ej. expulsión sin defensa, prohibición de uso de espacios, falta de insumos básicos) y deben redactar un plan de acción para el personero. 2. debate de viabilidad: los candidatos realizan una exposición breve de sus propuestas, y el resto del grupo actúa como 'panel de expertos' cuestionando la viabilidad financiera y normativa de cada idea. 3. construcción de formatos: diseño de un 'formato de rendición de cuentas' mensual que el personero debería utilizar para informar a sus compañeros sobre su labor.",
+      "transfer": "elaborar una propuesta de 'Plan de Vigilancia al Manual de Convivencia' para la Institución Educativa San José de Loma Verde. los estudiantes deben identificar un artículo del manual que sientan que no se aplica correctamente o que necesita actualizarse, proponiendo una ruta de gestión ante el consejo directivo, usando un lenguaje formal y argumentativo.",
+      "clave": "se espera que los estudiantes utilicen argumentos basados en el respeto a los derechos humanos y la normativa vigente, alejándose de los deseos personales y enfocándose en el beneficio común y la viabilidad del proceso administrativo escolar.",
+      "evaluacion": "rúbrica de evaluación integral:\n1. saber (30%): identifica con claridad las funciones legales del personero y su relación con el manual de convivencia.\n2. hacer (40%): demuestra capacidad crítica durante los debates y estructura propuestas de gestión reales y bien argumentadas.\n3. ser (30%): muestra disposición al diálogo, respeto por la opinión ajena y compromiso con la transparencia en las actividades simuladas.",
+      "recursos": "tablero, marcadores, copias del manual de convivencia, constitución política (fragmentos sobre el debido proceso), formatos de ejemplo de derecho de petición y papelógrafo.",
+      "referencias": "EBC:\n* analizo críticamente mi participación en situaciones en las que se vulneran o respetan los derechos e identifico cómo dicha participación contribuye a mejorar o empeorar la situación.\n* participo en la planeación y ejecución de acciones que contribuyen a aliviar la situación de personas en desventaja.\nDBA:\n* DBA 5 (G9): evalúa cómo las sociedades democráticas en un Estado Social de Derecho tienen el deber de proteger y promover los derechos fundamentales.\nbibliografía académica:\n* Congreso de la República de Colombia. (1994). Ley 115 de 1994: Ley General de Educación. Diario Oficial No. 41.214.\n* Ministerio de Educación Nacional. (2000). Decreto 1860 de 1994: reglamentación del Gobierno Escolar.",
+      "dua": "estrategias de inclusión educativa:\n* representación: proyectar esquemas visuales que expliquen cómo se conecta el estudiante con el consejo directivo a través del personero.\n* expresión: permitir que el análisis de casos se realice mediante dramatizaciones (rol-play) para estudiantes que prefieren la expresión oral y corporal.\n* compromiso: anclar las propuestas al entorno rural de Loma Verde, valorando las problemáticas del campo para que el estudiante se sienta protagonista de su propia realidad.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "la personería es la base del gobierno escolar y el entrenamiento para la vida ciudadana adulta.",
+        "el manual de convivencia constituye la fuente primaria de consulta para el ejercicio del cargo.",
+        "el populismo electoral es el principal enemigo del liderazgo juvenil responsable.",
+        "la rendición de cuentas debe ser la marca distintiva de cualquier ejercicio de representación.",
+        "un estudiante que conoce sus derechos y mecanismos de defensa es un ciudadano menos vulnerable."
+      ],
+      "errores": [
+        "creer que el personero es el jefe del rector: corrección, es un representante de los estudiantes que media y gestiona, no tiene mando jerárquico superior.",
+        "pensar que el cargo es un premio a la popularidad: corrección, es un cargo de responsabilidad cívica que exige compromiso y rigor normativo.",
+        "suponer que el personero puede cambiar el manual de convivencia a su antojo: corrección, su función es velar por su cumplimiento, la modificación corresponde al consejo directivo.",
+        "asumir que el personero debe resolver todos los problemas solo: corrección, su labor es gestionar y articular con los órganos del gobierno escolar."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué la personería estudiantil se considera un ejercicio de formación ciudadana?",
+          "a": "porque permite a los jóvenes experimentar en la práctica los procesos de elección, debate, representación y rendición de cuentas en un entorno seguro.",
+          "verdadero": true,
+          "justificacion": "el entorno escolar es un laboratorio donde se interiorizan los valores del sistema democrático antes de la participación nacional.",
+          "enunciado": "el gobierno escolar es una estrategia pedagógica establecida por la ley 115 de 1994.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la relación principal entre el manual de convivencia y la labor del personero?",
+          "a": "el manual es la herramienta jurídica fundamental que el personero debe defender para garantizar el respeto al debido proceso de sus compañeros.",
+          "verdadero": true,
+          "justificacion": "sin el conocimiento del manual, el personero carece de argumentos legales para defender los derechos estudiantiles.",
+          "enunciado": "las normas institucionales regulan las conductas y garantizan la convivencia armónica.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué impacto tiene el populismo en las elecciones estudiantiles?",
+          "a": "distorsiona la democracia, creando falsas expectativas y frustración al no poder cumplir promesas que no tienen base legal o financiera.",
+          "verdadero": true,
+          "justificacion": "el populismo debilita la confianza en las instituciones y aleja a los jóvenes de la participación propositiva y realista.",
+          "enunciado": "la construcción de propuestas requiere de un análisis profundo del contexto institucional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué debe hacer un personero ético al finalizar su periodo de mandato?",
+          "a": "presentar un informe detallado de su gestión, donde rinda cuentas sobre lo realizado, lo pendiente y el uso de los recursos si los hubiera.",
+          "verdadero": true,
+          "justificacion": "la transparencia y la rendición de cuentas son la esencia de la responsabilidad democrática.",
+          "enunciado": "la administración pública exige reportar los resultados a quienes otorgaron el mandato.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo puede el personero intervenir cuando existe un conflicto entre un docente y un estudiante?",
+          "a": "actuando como mediador imparcial, verificando que se respete el debido proceso y promoviendo el diálogo conciliatorio antes de aplicar sanciones.",
+          "verdadero": true,
+          "justificacion": "la función del personero incluye la defensa de los derechos humanos y la búsqueda de salidas pacíficas a los conflictos.",
+          "enunciado": "el papel del personero es preventivo y de garantía de derechos en la cotidianidad escolar.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El personero estudiantil puede aplicar castigos físicos o suspensiones a los compañeros que se portan mal.",
+          "a": "falso, esa potestad no existe; las sanciones son competencia del consejo directivo y deben seguir el manual de convivencia.",
+          "verdadero": false,
+          "justificacion": "ningún estudiante posee facultad sancionatoria sobre otro; el personero es un mediador, no un juez.",
+          "enunciado": "la disciplina escolar está reglamentada y protege la integridad de los menores.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Para ser personero se requiere ser un estudiante con buen desempeño académico y excelente conducta.",
+          "a": "verdadero, el cargo exige un nivel de compromiso y un ejemplo de comportamiento alineado con la formación integral.",
+          "verdadero": true,
+          "justificacion": "el ejemplo personal es necesario para quien busca liderar y representar a una comunidad educativa.",
+          "enunciado": "la mayoría de manuales de convivencia establecen requisitos para los candidatos al gobierno escolar.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La personería es un ejercicio que solo aplica para estudiantes que quieren hacer política nacional en el futuro.",
+          "a": "falso, es un ejercicio de competencias ciudadanas básico para cualquier persona, independientemente de su vocación profesional.",
+          "verdadero": false,
+          "justificacion": "el objetivo es formar ciudadanos responsables para la convivencia, no necesariamente políticos profesionales.",
+          "enunciado": "la formación democrática es un fin transversal de la educación colombiana.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El personero es un vocero que traslada las inquietudes de los estudiantes ante el consejo directivo.",
+          "a": "verdadero, es el puente oficial para que la voz estudiantil llegue a las máximas instancias de decisión.",
+          "verdadero": true,
+          "justificacion": "la representación implica ser el canal por el cual se expresan las necesidades y propuestas del estamento estudiantil.",
+          "enunciado": "el gobierno escolar cuenta con representantes de todos los estamentos de la comunidad.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El personero tiene autonomía absoluta para gestionar cualquier cambio en el horario de clases sin consultar al rector.",
+          "a": "falso, los cambios curriculares y de horarios son decisiones académicas técnicas que no dependen exclusivamente de la representación estudiantil.",
+          "verdadero": false,
+          "justificacion": "el personero puede solicitar o proponer, pero no tiene competencia para modificar elementos académicos.",
+          "enunciado": "la gestión institucional tiene límites claros definidos por las funciones de cada estamento.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "realizar una entrevista corta a un ex-personero de la institución o de un colegio cercano. preguntar: ¿cuál fue el mayor reto que enfrentó durante su gestión?, ¿qué consejo le daría a un estudiante que quiere postularse?, ¿sintió que su voz fue escuchada por las directivas? entregar un resumen escrito con una conclusión propia sobre el impacto real de este cargo.",
+      "fundamentacion": "# PERSONERÍA ESTUDIANTIL: REPRESENTACIÓN Y CIUDADANÍA\n\n## La escuela como laboratorio político\nla personería estudiantil representa la primera experiencia formal de ejercicio democrático para un joven colombiano. lejos de ser una figura decorativa, el personero es una pieza central del gobierno escolar, diseñada por la Ley 115 de 1994, que busca que el estudiante deje de ser un sujeto pasivo en el aula para convertirse en un actor responsable de la construcción de su propia realidad institucional. la importancia de esta figura radica en que, a través de ella, se ponen en marcha los principios de participación, representación y vigilancia de derechos que caracterizan a nuestro Estado Social de Derecho.\n\n## El manual de convivencia como marco normativo\npara ejercer el cargo, el personero debe dominar el manual de convivencia. este documento no es solo una lista de prohibiciones, sino el contrato social que rige la vida diaria escolar. un personero eficaz es aquel que utiliza el manual para prevenir arbitrariedades, asegurar que el debido proceso sea respetado antes de cualquier sanción disciplinaria y defender los derechos de sus compañeros con argumentos jurídicos y no con quejas vacías. esta destreza es la semilla de la cultura legalista y pacífica que el país requiere para superar la justicia por mano propia.\n\n## El riesgo de la demagogia electoral\nuno de los mayores aprendizajes de este proceso es la identificación del populismo electoral. cuando los candidatos ofrecen cosas que escapan a sus competencias o que son económicamente inviables, el electorado cae en una trampa que deslegitima la política. el entrenamiento pedagógico en noveno grado debe centrarse en desmantelar estas promesas, enseñando a los jóvenes a exigir planes de trabajo estructurados, viables y basados en la capacidad de gestión y articulación, no en el carisma superficial o la dádiva.\n\n## El liderazgo ético y el relevo generacional\nfinalmente, la personería es un ejercicio de liderazgo ético. el personero que cumple, que rinde cuentas y que escucha a la base estudiantil, está sembrando un precedente sobre cómo debería comportarse cualquier funcionario público. en contextos de ruralidad, como nuestra institución, el personero tiene además la labor de visibilizar necesidades territoriales, actuando como un puente necesario entre las carencias del campo y las soluciones que debe proveer la administración municipal. formar personeros íntegros es garantizar que el relevo generacional en la política local esté encabezado por jóvenes que entienden la representación como un servicio y no como una oportunidad de beneficio personal.",
+      "lineatiempo": "1991: promulgación de la Constitución Política y establecimiento de la democracia participativa - 1994: Ley 115 de Educación, que institucionaliza el Gobierno Escolar y la figura del personero - 2000: Decreto 1860, que reglamenta la elección democrática y las funciones de los representantes estudiantiles - 2013: expedición del Estatuto de Ciudadanía Juvenil, que conecta la personería con instancias de participación municipal como los Consejos de Juventud."
+    }
+  ]
+}

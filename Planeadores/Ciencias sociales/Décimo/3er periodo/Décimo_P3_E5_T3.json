@@ -1,0 +1,220 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T17:25:10Z",
+  "planeadores": [
+    {
+      "id": "p10p3-incidencia-003",
+      "creado": 1781889910,
+      "grado": "Décimo",
+      "periodo": "Tercer periodo",
+      "ejeIdx": 5,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "7",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia",
+      "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Reconoce el impacto institucional de las directrices de los organismos multilaterales analizando las ventajas y desventajas de la pertenencia de Colombia a estos .\n* Argumenta el rol de los tribunales e instituciones internacionales en el amparo de los Derechos Humanos frente a crisis de soberanía.\nSer:* Participa en foros o mesas redondas académicas simulando la toma de decisiones diplomáticas ante tensiones entre Estados.",
+      "competencias": "* Pensamiento social.\n\n* Pensamiento reflexivo y sistémico.",
+      "contenidos": "* El papel de los organismos de integración transnacional (ONU, OEA).\n* Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental .\n* Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.\n* Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "objetivo": "Analizar la incidencia de las políticas e instrumentos de los organismos internacionales en la configuración de la agenda legislativa e interna de Colombia mediante el examen de leyes aprobatorias y debates parlamentarios, con el fin de evaluar críticamente los alcances del bloque de constitucionalidad, las tensiones de soberanía y la materialización de los Derechos Humanos en los entornos comunitarios y rurales.",
+      "pregunta": "¿Cómo determina un pacto o recomendación adoptada en foros de integración global la asignación de recursos y el tipo de leyes que el Congreso tramita para el desarrollo de las comunidades rurales?",
+      "explora": "Conversatorio preliminar: el docente abre la sesión preguntando si los estudiantes consideran que el Congreso de la República es completamente autónomo al redactar las leyes del país o si recibe presiones externas de agencias globales. Posteriormente, realiza una dinámica corta de correspondencia en el tablero, donde los estudiantes deben trazar una línea que conecte un problema nacional (como el desempleo o la deforestación) con una norma internacional preexistente (como los Convenios de la OIT o el Convenio sobre la Diversidad Biológica).",
+      "glosario": [
+        {
+          "t": "agenda legislativa",
+          "d": "conjunto formal de proyectos de ley, reformas constitucionales y debates de control político que el Congreso de la República de Colombia prioriza para su respectiva discusión y aprobación en periodos ordinarios."
+        },
+        {
+          "t": "bloque de constitucionalidad",
+          "d": "unidad jurídica conformada por normas y principios de rango internacional que, por mandato del artículo 93 constitucional, se integran formalmente a la Carta Política colombiana sirviendo como parámetro de control de las leyes."
+        },
+        {
+          "t": "ley aprobatoria de tratado",
+          "d": "instrumento legislativo ordinario expedido por el Congreso de la República cuyo objeto exclusivo es manifestar el consentimiento del Estado colombiano para obligarse internacionalmente por un acuerdo transnacional."
+        },
+        {
+          "t": "control de constitucionalidad",
+          "d": "examen previo, formal y material que realiza de forma automática la Corte Constitucional sobre los tratados internacionales y sus leyes aprobatorias antes de que el Ejecutivo realice su ratificación final."
+        },
+        {
+          "t": "soberanía relativa",
+          "d": "concepción jurídica contemporánea del poder estatal que reconoce limitaciones voluntarias en el ejercicio absoluto del gobierno doméstico debido a los compromisos de cooperación internacional adquiridos."
+        },
+        {
+          "t": "control de convencionalidad",
+          "d": "mecanismo judicial obligatorio que compele a los operadores de justicia internos a contrastar el derecho doméstico con las disposiciones de los tratados de Derechos Humanos y la jurisprudencia de tribunales como la Corte IDH."
+        },
+        {
+          "t": "internalización normativa",
+          "d": "proceso político e institucional mediante el cual un Estado incorpora directrices, manuales técnicos o convenios emanados de foros multilaterales dentro de su legislación interna y planes de desarrollo."
+        },
+        {
+          "t": "jurisdicción complementaria",
+          "d": "naturaleza jurídica compartida de las cortes de justicia transnacionales que actúan únicamente cuando los tribunales internos del Estado miembro han sido ineficaces o incapaces de juzgar una transgresión de derechos."
+        },
+        {
+          "t": "documento CONPES",
+          "d": "instrumento técnico de planeación económica y social emitido por el Consejo Nacional de Política Económica y Social que traduce las directrices globales en metas concretas de inversión estatal."
+        },
+        {
+          "t": "ratificación internacional",
+          "d": "acto diplomático soberano por medio del cual el presidente de la república confirma ante la comunidad internacional la voluntad del Estado de cumplir de forma vinculante un tratado previamente aprobado."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La subordinación legal voluntaria: el Congreso y los tratados transnacionales",
+          "txt": "La formulación de la agenda legislativa de la República de Colombia no se restringe de forma exclusiva a las iniciativas de los congresistas o a las urgencias inmediatas del Ejecutivo nacional. Con la adopción de la Constitución de 1991, el país cimentó una clara vocación integracionista y multilateral. Las políticas públicas emanadas de agencias transnacionales como la ONU, la OEA o la OCDE ingresan al debate doméstico a través de la presentación de proyectos de leyes aprobatorias de tratados. Este procedimiento institucional exige debates en las comisiones y plenarias del Senado y la Cámara, lo que demuestra que la producción de normas nacionales se encuentra coordinada y supeditada, de manera voluntaria, a los compromisos e instrumentos que el Estado suscribe en los foros de integración global.",
+          "pausa": "Después de dos puntos (:), ¿se debe escribir con mayúscula inicial según las reglas ortotipográficas establecidas para este plan de estudios?",
+          "resp": "No, después de : se escribe con minúscula, salvo que se trate de una cita textual directa que comience formalmente con mayúscula o un nombre propio."
+        },
+        {
+          "tit": "El bloque de constitucionalidad y la mutación del orden interno",
+          "txt": "El principal dispositivo de recepción del derecho internacional en Colombia es el bloque de constitucionalidad, sustentado en el artículo 93 superior. Esta figura doctrinaria determina que los tratados de Derechos Humanos y el Derecho Internacional Humanitario ratificados por el Congreso poseen una jerarquía normativa prevalente en el orden interno. Esto fuerza a que la agenda legislativa ordinaria deba adecuarse de manera estricta a dichos estándares internacionales. Si el Congreso tramita una ley ordinaria que violente una directriz convencional preexistente, la Corte Constitucional la declarará inexequible, demostrando cómo las directrices de los organismos multilaterales limitan y modelan la soberanía jurídica de las autoridades domésticas.",
+          "pausa": "¿Cuál es la función del control de convencionalidad ejercido por los jueces internos?",
+          "resp": "Su función es garantizar que las leyes y actos administrativos internos de Colombia no violen los compromisos plasmados en la Convención Americana sobre Derechos Humanos ni la jurisprudencia interpretativa de la Corte IDH."
+        },
+        {
+          "tit": "Incidencia práctica de las políticas globales en la planeación nacional",
+          "txt": "Más allá de las leyes aprobatorias de tratados de Derechos Humanos, las directrices multilaterales sectoriales operan de forma directa sobre los instrumentos de planificación económica interna de Colombia. Las metas globales como los Objetivos de Desarrollo Sostenible (ODS) de la ONU son internalizadas en las políticas públicas mediante los documentos CONPES y los Planes Nacionales de Desarrollo (PND). Esto altera los criterios de asignación presupuestal para infraestructuras locales, obligando a los alcaldes y gobernadores a diseñar proyectos que demuestren cumplimiento de metas internacionales de equidad de género o sostenibilidad ecológica, evidenciando una conexión estrecha entre las asambleas transnacionales y el desarrollo material de los territorios rurales.",
+          "pausa": "¿Cómo se articulan las directrices de la OCDE en las políticas internas de Colombia?",
+          "resp": "Se articulan mediante exigencias de transparencia fiscal, reformas a los sistemas tributarios y la estandarización de las evaluaciones de calidad educativa para homogeneizar el capital humano del país."
+        }
+      ],
+      "talleres": "Instrucciones metodológicas para el taller de estructuración interactiva: los estudiantes se organizarán en equipos mixtos de cuatro integrantes para realizar un ejercicio analítico de simulación legislativa. Cada equipo asumirá el papel de una comisión constitucional permanente del Congreso de la República y recibirá un expediente impreso que contiene un tratado internacional suscrito por Colombia junto con su respectiva matriz de análisis legislativo. Deberán diligenciar en un pliego de papel una matriz analítica que desglose los siguientes puntos:\n1. Título del tratado y organismo transnacional que lo promueve.\n2. Tipo de derechos o sectores nacionales que regula directamente.\n3. Proyecto de ley nacional que se debe redactar para adaptar la directriz internacional.\n4. Ventajas institucionales para el amparo de los Derechos Humanos del país.\n5. Limitaciones presupuestales o materiales que afronta el entorno rural para cumplir dicha directriz.\nLos pliegos se sustentarán mediante un debate legislativo en plenaria escolar.",
+      "transfer": "Actividades estructuradas de transferencia de saberes de aula:\n1. Estudio de caso contemporáneo: se presenta a los estudiantes un texto analítico que describe los debates parlamentarios en torno a la ratificación de los Convenios de la Organización Internacional del Trabajo (OIT) sobre los derechos de los trabajadores rurales. Los estudiantes deberán resolver de forma argumentada un cuestionario analítico que evalúe si el Estado colombiano incurre en violaciones internacionales cuando sus leyes internas no logran formalizar el empleo agrícola formal en las periferias regionales.\n2. Reflexión crítica del entorno local: los estudiantes realizarán una consulta descriptiva en su corregimiento con líderes de la comunidad sobre la existencia de directrices o recursos destinados a la preservación ambiental de cuencas hídricas que sigan estándares de programas de la ONU o agencias de cooperación transnacional, redactando un escrito analítico de dos páginas sobre la concordancia entre los discursos globales y las realidades del campesinado.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia:\n1. Para el estudio de caso sobre los Convenios de la OIT, la respuesta modelo debe fundamentar que, al estar ratificados estos convenios por el Congreso de la República, ingresan al bloque de constitucionalidad ordinario. Por consiguiente, el Estado tiene la obligación jurídica y legislativa de adecuar sus normas laborales domésticas para garantizar salarios dignos y seguridad social a los jornaleros rurales. La falta de formalización no se debe a un vacío normativo de la agenda legislativa, sino a las asimetrías institucionales históricas del aparato estatal para hacer cumplir las leyes en las zonas rurales periféricas.\n2. En la reflexión sobre el entorno, si se analiza el cuidado de las microcuencas del corregimiento de Loma Verde bajo directrices de conservación ecológica transnacional, la respuesta esperada debe advertir que la ventaja es el blindaje legal que adquiere el recurso hídrico frente a las mineras, mientras que la desventaja es la exclusión de los campesinos nativos de sus zonas tradicionales de pastoreo por restricciones globales estrictas de conservación.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño:\n* Superior: analiza con un lenguaje técnico excelente y rigor metodológico la incidencia de las políticas internacionales en la agenda legislativa de Colombia, demostrando comprensión sistémica del bloque de constitucionalidad y evaluando críticamente las tensiones territoriales rurales.\n* Alto: explica de forma correcta el camino de internalización de los tratados transnacionales, describe el impacto de las directrices multilaterales en las leyes nacionales y completa la matriz comparativa de caso de manera válida.\n* Básico: identifica los organismos internacionales básicos, pero presenta vacíos al argumentar la jerarquía de los tratados sobre las leyes ordinarias o al contextualizar sus efectos en la ruralidad.\n* Bajo: confunde los mecanismos de adopción de tratados, no comprende la función del bloque de constitucionalidad o carece de capacidad argumentativa para relacionar las directrices globales con el marco doméstico.\nInstrumentos de evaluación: rúbrica cualitativa para matrices legislativas, lista de cotejo para exposiciones orales y portafolio escrito de estudios de caso.",
+      "recursos": "Texto articulado de la Constitución Política de Colombia, copias analíticas de sentencias de la Corte Constitucional sobre el bloque de constitucionalidad, guías de casos didácticos impresas, pliegos de papel, fichas temáticas de colores y marcadores.",
+      "referencias": "Información oficial extraída del archivo \"Actual - Malla curricular - Ciencias sociales.xlsx\":\n* Estándares Básicos de Competencias (EBC): Identifico las organizaciones internacionales que surgieron a lo largo del siglo XX y evalúo el impacto de su gestión.\n* EBC: Relaciono algunos de estos procesos políticos internacionales con los procesos colombianos.\n* Derechos Básicos de Aprendizaje (DBA): DBA 4: El papel de los organismos internacionales como formas de alianza entre los Estados y sus intereses.\nBibliografía complementaria de rigor académico:\n* Monroy Cabra, M. G. (2021). Tratados internacionales y el bloque de constitucionalidad en Colombia. Bogotá: Temis.\n* Quinche Ramírez, M. F. (2022). Derecho constitucional colombiano: de la Constitución a la práctica de la convencionalidad. Bogotá: Editorial Universidad del Rosario.\n* Corte Constitucional de Colombia, Sentencia C-225 de 1995 (M.P. Alejandro Martínez Caballero) sobre la doctrina e integración del bloque de constitucionalidad.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje:\n* Para estudiantes con dificultades de comprensión o barreras de lectoescritura: suministro de flujogramas cromáticos que esquematicen visualmente las etapas de creación de una ley aprobatoria de tratado. Uso de analogías simplificadas del entorno escolar.\n* Para estudiantes con ritmo de aprendizaje avanzado: asignación de una lectura complementaria sobre las tensiones soberanas surgidas ante las demandas presentadas por inversores extranjeros contra leyes ambientales colombianas ante tribunales arbitrales transnacionales (CIADI).\n* Trabajo cooperativo estructurado: conformación de los equipos del taller de simulación adjudicando roles de responsabilidad definidos (presidente de la comisión, secretario de actas, analista de impacto rural y vocero legislativo) para propiciar una participación equitativa.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La agenda legislativa de Colombia incorpora sistemáticamente las políticas diseñadas por los organismos multilaterales mediante el trámite de leyes aprobatorias de tratados.",
+        "El bloque de constitucionalidad confiere jerarquía prevalente a los tratados internacionales de Derechos Humanos ratificados por el Congreso de la República.",
+        "La Corte Constitucional ejerce un control preventivo automático sobre los acuerdos transnacionales para asegurar su perfecta armonía con la Carta Magna.",
+        "Las directrices macroeconómicas y ambientales globales condicionan las metas de los Planes Nacionales de Desarrollo e influyen en los presupuestos locales.",
+        "La asimilación de políticas globales genera tensiones socioterritoriales cuando los estándares técnicos transnacionales omiten las realidades materiales del campo."
+      ],
+      "errores": [
+        "Pensar que una directriz de la ONU o de la OEA se convierte automáticamente en ley en Colombia sin que el Congreso debata: se debe aclarar que todo tratado requiere obligatoriamente surtir las etapas de aprobación legislativa interna y revisión judicial previa.",
+        "Suponer que el bloque de constitucionalidad permite que cualquier recomendación de un organismo transnacional reemplace la Constitución de la República: es preciso aclarar que solo se integran con rango constitucional los tratados ratificados de derechos humanos y DIH.",
+        "Creer que los tribunales internacionales de derechos humanos anulan o reemplazan la función ordinaria de los jueces de la república de forma inmediata: se debe insistir en que el derecho internacional opera bajo el principio de jurisdicción complementaria y subsidiaria.",
+        "Considerar que las leyes fundamentadas en políticas internacionales solo afectan las áreas urbanas y los mercados comerciales de las grandes capitales: es indispensable evidenciar cómo las directrices sobre medio ambiente y agricultura moldean el uso productivo de la tierra agraria."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles son las etapas de carácter interno que debe surtir un tratado internacional en Colombia para incorporarse plenamente al ordenamiento jurídico?",
+          "a": "Debe ser suscrito por el presidente de la república, debatido y aprobado en el Congreso mediante una ley aprobatoria de tratado, superar el examen automático de constitucionalidad de la Corte Constitucional y, finalmente, ser ratificado por el jefe de Estado.",
+          "verdadero": null,
+          "justificacion": "Este engranaje institucional garantiza el respeto por la separación de poderes y la supremacía de la norma constitucional interna.",
+          "enunciado": "Revisión de los mecanismos formales de internalización de directrices transnacionales de acuerdo con la Constitución de 1991.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué implicación jurídica produce la inclusión de un tratado internacional de Derechos Humanos dentro del bloque de constitucionalidad colombino?",
+          "a": "Produce que las disposiciones del tratado adquieran el máximo rango normativo, asimilándose al texto constitucional y sirviendo como parámetro obligatorio para evaluar la validez de todas las leyes ordinarias dictadas por el Congreso.",
+          "verdadero": null,
+          "justificacion": "El artículo 93 superior subordina la legislación interna a las garantías de derechos humanos consolidadas en el derecho convencional.",
+          "enunciado": "Evaluación de la jerarquía normativa y control de las fuentes de derecho público en el Estado social de derecho.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo inciden las directrices internacionales formuladas en los Objetivos de Desarrollo Sostenible (ODS) sobre los presupuestos de las entidades territoriales municipales?",
+          "a": "Inciden porque el Departamento Nacional de Planeación obliga a que los Planes de Desarrollo Municipales articulen sus metas financieras con los indicadores de los ODS para viabilizar el desembolso de transferencias nacionales.",
+          "verdadero": null,
+          "justificacion": "Las directrices multilaterales moldean indirectamente el gasto público social local supeditando la inversión a estándares de sostenibilidad transnacional.",
+          "enunciado": "Territorialización de políticas de equidad y sostenibilidad global en corregimientos periféricos de Montería.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué ocurre si la Corte Constitucional declara inexequible una ley aprobatoria de un tratado internacional antes de su ratificación final?",
+          "a": "El presidente de la república queda jurídicamente impedido para ratificar el tratado ante la comunidad internacional, lo que frena definitivamente el proceso de incorporación de dicho instrumento al orden interno del país.",
+          "verdadero": null,
+          "justificacion": "El control previo de la Corte Constitucional actúa como un contrapeso de supremacía jurídica que salvaguarda la integridad de la Carta Política.",
+          "enunciado": "Análisis del equilibrio de poderes públicos frente a la suscripción de convenios de integración económica transnacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Bajo qué premisa procesal ejerce su competencia la Corte Interamericana de Derechos Humanos frente a demandas interpuestas contra el Estado de Colombia?",
+          "a": "Ejerce su competencia bajo la premisa de subsidiariedad y complementariedad, interviniendo únicamente cuando se demuestra que las instituciones de la justicia ordinaria interna fallaron en investigar, sancionar o reparar la transgresión.",
+          "verdadero": null,
+          "justificacion": "El sistema interamericano respeta la soberanía inicial de los Estados, actuando como una garantía reforzada de última instancia para los ciudadanos.",
+          "enunciado": "Litigio de minorías étnicas y comunidades agrarias ante los comisiones del sistema interamericano de la OEA.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las leyes aprobatorias de tratados internacionales se debaten exclusivamente en el Senado de la República, omitiendo los debates en la Cámara de Representantes.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las leyes aprobatorias de tratados siguen el mismo trámite general de una ley ordinaria, requiriendo de forma obligatoria cuatro debates reglamentarios distribuidos entre las comisiones segundas y las plenarias de ambas cámaras del Congreso.",
+          "enunciado": "Trámite y procedimiento legislativo ordinario para la adopción de convenios internacionales bilaterales o multilaterales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los convenios adoptados formalmente por la Organización Internacional del Trabajo (OIT) y ratificados por Colombia forman parte del bloque de constitucionalidad.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "La Corte Constitucional ha reconocido mediante reiterada jurisprudencia que los convenios de la OIT sobre derechos laborales fundamentales se integran al bloque de constitucionalidad, sirviendo de guía para interpretar los derechos de los trabajadores del país.",
+          "enunciado": "Estudio de las garantías laborales reforzadas de los trabajadores agrícolas bajo el amparo de instrumentos del derecho internacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Congreso de la República puede reformar de manera unilateral el texto de un tratado internacional durante los debates de la ley aprobatoria en las comisiones.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El legislativo carece de facultades para alterar o reescribir de forma unilateral las cláusulas redactadas en un pacto internacional; su competencia constitucional se restringe exclusivamente a aprobar o desaprobar la totalidad del instrumento presentado por el Ejecutivo.",
+          "enunciado": "Límites de las facultades del poder legislativo frente a la negociación diplomática internacional dirigida por el presidente.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El control de convencionalidad obliga a todos los jueces del territorio colombiano a aplicar prioritariamente los tratados internacionales de Derechos Humanos sobre normas locales contrarias.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Como parte del bloque de constitucionalidad y de los compromisos con el Pacto de San José, los operadores judiciales colombianos deben inaplicar o declarar la ilegalidad de normas de menor rango que resulten abiertamente regresivas frente al derecho convencional.",
+          "enunciado": "Aplicación preferente de los estándares transnacionales de protección civil en los fallos de los tribunales de la república.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las metas técnicas fijadas por la OCDE en materia de educación adquieren rango de derechos fundamentales e integran de ipso facto el bloque de constitucionalidad reforzado.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las directrices e indicadores de la OCDE operan como lineamientos de política pública económica y de estandarización técnica; no constituyen tratados de Derechos Humanos ni de Derecho Internacional Humanitario, por lo cual carecen de rango constitucional dentro del bloque.",
+          "enunciado": "Diferenciación conceptual de los instrumentos de cooperación técnica frente a las convenciones de protección humanitaria.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Desarrollar un ejercicio de observación comunitaria: el estudiante conversará con sus acudientes o vecinos adultos acerca de cómo los programas de asistencia alimentaria o los proyectos de tecnificación agrícola ejecutados en la vereda exigen cumplir con ciertas normas ambientales internacionales (como la prohibición de quemas o el descarte técnico de envases químicos). El estudiante registrará en su cuaderno una descripción manuscrita sobre el tipo de controles observados y presentará una hipótesis escrita de una página analizando si estas exigencias externas representan un beneficio o un sobrecosto para los pequeños productores tradicionales.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA SOBRE LA INCIDENCIA DE LAS POLÍTICAS INTERNACIONALES\n\n## Marco histórico de la integración internacional colombiana\nLa inserción de la República de Colombia en el entramado institucional del multilateralismo global y regional no obedece a un fenómeno coyuntural, sino a una deliberada evolución de su doctrina de política exterior y ordenamiento jurídico. Durante el siglo XIX y gran parte del siglo XX, el país defendió una concepción rígida del principio de soberanía nacional, inspirada en las matrices teóricas de Jean Bodino y los postulados de la Paz de Westfalia de 1648, los cuales consagraban el monopolio absoluto del Estado para dictar leyes dentro de sus fronteras geográficas sin admitir escrutinios ni injerencias de potencias externas. Bajo este paradigma, los tratados internacionales eran concebidos como meros pactos diplomáticos contractuales que requerían una estricta separación entre el derecho internacional público y el ordenamiento doméstico ordinario.\n\nEste modelo hermético sufrió una profunda mutación estructural con la promulgación de la Constitución Política de 1991. Enmarcada en el fin de la Guerra Fría y el ascenso de los procesos globales de integración de mercados, la nueva Carta Política redefinió los fundamentos de las relaciones exteriores del Estado colombiano en sus artículos 9 y 226, instaurando los principios de internacionalización, equidad, reciprocidad y el reconocimiento del derecho internacional como pilares de la convivencia nacional. A partir de este hito axiológico, el país transitó de una soberanía absoluta hacia una soberanía relativa o de cooperación, asumiendo de manera voluntaria que la pertenencia a organismos transnacionales como la ONU, la OEA, la OMC y, recientemente, la OCDE, conllevaba la subordinación armónica de ciertos aspectos de su producción legislativa interna a los estándares y convenios concertados en los foros de gobernanza global.\n\n## El bloque de constitucionalidad: dogmática jurídica y control de convencionalidad\nLa traducción jurídica de este giro internacionalista se materializó en la jurisprudencia de la Corte Constitucional mediante la estructuración de la doctrina del bloque de constitucionalidad. Este dispositivo conceptual, fundamentado en el artículo 93 superior, determina que los tratados y convenios internacionales ratificados por el Congreso de la República que reconocen los derechos humanos y prohíben su limitación en los estados de excepción poseen rango constitucional, integrándose formalmente al núcleo dogmático de la Carta Política colombiana. De esta forma, el bloque de constitucionalidad difumina la frontera estricta entre el orden internacional y el interno, operando bajo dos dimensiones: el bloque en sentido estricto (normas de rango constitucional que sirven de parámetro de control directo de las leyes) y el bloque en sentido amplio (instrumentos internacionales que sirven como criterios obligatorios para interpretar los derechos fundamentales nacionales).\n\nEsta configuración normativa obliga a todos los operadores jurídicos y legislativos de la nación a aplicar de forma sistemática el control de convencionalidad. Este control representa un examen obligatorio que confronta las leyes de la república, las agendas legislativas y los actos administrativos domésticos con las disposiciones de la Convención Americana sobre Derechos Humanos (Pacto de San José) y las sentencias de la Corte Interamericana de Derechos Humanos (Corte IDH). La trascendencia de este mecanismo radica en que el Congreso de la República queda materialmente desprovisto de autonomía absoluta para legislar en contravía de los estándares multilaterales de protección ciudadana. Si el poder legislativo aprueba una ley ordinaria que restrinja regresivamente las libertades fundamentales o los derechos colectivos amparados por tratados internacionales, dicha norma adolecerá de inconstitucionalidad por violación indirecta de la Carta Política, siendo retirada del ordenamiento por la Corte Constitucional.\n\n## El procedimiento legislativo interno: de la diplomacia global a la ley de la república\nPara que una política o directriz sectorial emanada de un organismo de integración transnacional logre incidir fácticamente en la agenda legislativa interna de Colombia, debe surtir un riguroso trámite institucional de pesos y contrapesos que involucra a las tres ramas del poder público. El proceso se inicia en la esfera del Ejecutivo, donde el presidente de la república, en ejercicio de su facultad exclusiva de dirigir las relaciones internacionales (artículo 189 de la Constitución), suscribe el tratado, convenio o acuerdo multilateral en las sedes diplomáticas transnacionales. No obstante, en virtud del principio de separación de poderes, el instrumento internacional no adquiere fuerza vinculante interna por la sola firma presidencial; requiere la intervención del órgano legislativo nacional.\n\nEl Gobierno nacional somete el texto del acuerdo ante el Congreso de la República a través de la presentación de un proyecto de ley aprobatoria de tratado internacional. Este proyecto debe agotar obligatoriamente un trámite legislativo idéntico al de una ley ordinaria: dos debates en la Comisión Segunda de cada cámara (competente en asuntos internacionales) y dos debates en las respectivas plenarias del Senado y la Cámara de Representantes. Durante esta fase, el Congreso tiene la potestad exclusiva de aprobar o desaprobar la totalidad del instrumento jurídico, sin posibilidad de alterar unilateralmente su articulado, aunque puede formular reservas permitidas por el derecho internacional de los tratados.\n\nUna vez aprobado por el legislativo, el proyecto de ley no pasa de inmediato a sanción presidencial. Por mandato del artículo 241 constitucional, el texto es remitido a la Corte Constitucional, la cual ejerce un control preventivo, automático e integral de constitucionalidad. Este tribunal examina tanto la regularidad formal del procedimiento surtido en las cámaras como la compatibilidad material del tratado con los principios de la Carta Política. Si la Corte declara que el instrumento es exequible, el expediente es devuelto al presidente de la república, quien finalmente realiza el acto soberano de ratificación internacional y el correspondiente canje de notas diplomáticas, insertando formalmente la directriz transnacional en el cuerpo de leyes obligatorias de la nación.\n\n## Impacto sistémico en las políticas públicas sectoriales de Colombia\nLa internalización de las políticas internacionales no se reduce a la ratificación de las grandes convenciones de Derechos Humanos; ejerce una influencia determinante en la planeación y el diseño presupuestal de los ministerios nacionales en sus sectores clave. En el ámbito económico y de gobernanza, el ingreso de Colombia a la OCDE forzó al Congreso a tramitar reformas estructurales impositivas, leyes de transparencia corporativa y normativas de simplificación administrativa alineadas con los manuales técnicos de eficiencia institucional que exige este bloque de países desarrollados. En la dimensión de la planificación general, las directrices de la ONU plasmadas en la Agenda 2030 y los Objetivos de Desarrollo Sostenible (ODS) actúan como el marco de referencia obligatorio para que el Departamento Nacional de Planeación (DNP) diseñe los Planes Nacionales de Desarrollo (PND) y configure las metas de inversión del gasto público del Estado.\n\nEn los sectores educativo y ambiental, la incidencia multilateral redefine de forma permanente las prioridades del legislativo colombiano. Las directrices de la UNESCO y las métricas de evaluación de la OCDE impulsan reformas normativas orientadas a la estandarización por competencias y la evaluación censal del rendimiento académico, condicionando la asignación de recursos a las escuelas públicas del país. Simultáneamente, las directrices ambientales transnacionales como el Acuerdo de París o el Convenio sobre la Diversidad Biológica obligan a la formulación de leyes de transición energética, prohibición de plásticos de un solo uso y delimitación estricta de áreas de reserva ecológica, evidenciando que la agenda del Congreso de la República se encuentra profundamente condicionada por los compromisos adquiridos en el escenario multilateral.\n\n## Fricciones socioterritoriales y la realidad de las comunidades rurales periféricas\nCuando estas directrices sectoriales de origen transnacional, formuladas bajo criterios técnicos homogéneos en los centros de poder global del hemisferio norte, se proyectan sobre las realidades materiales de las periferias rurales de Colombia, se manifiestan profundas asimetrías y fricciones socioterritoriales. En el contexto de la Institución Educativa San José de Loma Verde, ubicada en el corregimiento de Loma Verde en el municipio de Montería, estas tensiones jurídicas y políticas se traducen en dinámicas que impactan de forma directa la vida comunitaria y la economía agraria de las familias campesinas.\n\nLa estandarización educativa promovida por las directrices de la OCDE, por ejemplo, impone métricas de calidad que evalúan competencias tecnológicas avanzadas y alfabetización digital homogénea, omitiendo de forma sistemática la brecha digital rural, el estado de vulnerabilidad de las infraestructuras escolares periféricas y el desabastecimiento de conectividad que sufren las escuelas del campo. Esta asimetría regulatoria genera exclusión estadística y invisibiliza las potencialidades y saberes de las escuelas rurales ante el sistema centralizado de asignación de recursos.\n\nDe igual manera, en la dimensión ambiental y agraria, las leyes de conservación de cuencas y protección ecológica dictadas por el Congreso en cumplimiento de pactos internacionales imponen restricciones rigurosas sobre el uso de la tierra usable y prohíben prácticas agropecuarias tradicionales del campesinado para frenar la degradación ambiental global. Si bien el fin ecológico es legítimo frente a la crisis climática actual, la adopción de estos mandatos globales sin el diseño paralelo de políticas públicas domésticas de reconversión productiva subsidiada sitúa a los pequeños productores en un escenario de profunda vulnerabilidad económica y crisis de soberanía alimentaria, mientras los grandes capitales agroindustriales locales lidiando con asimetrías de control. El análisis crítico de estos procesos institucionales faculta a la comunidad educativa para agenciar demandas de justicia distributiva, comprendiendo que el derecho internacional y la agenda legislativa interna deben ser disputados desde los territorios rurales para garantizar que operen como herramientas de dignificación y equidad campesina en el siglo XXI.",
+      "lineatiempo": "1945: firma y aprobación de la Carta de la ONU en San Francisco, estableciendo las bases del derecho internacional contemporáneo.\n1948: suscripción de la Carta constitutiva de la Organización de los Estados Americanos (OEA) en Bogotá, insertando a Colombia en el sistema regional.\n1969: firma de la Convención Americana sobre Derechos Humanos, instrumento base para el control de convencionalidad interamericano.\n1991: promulgación de la Constitución Política de Colombia, la cual constitucionaliza el bloque de constitucionalidad en su artículo 93.\n1995: emisión de la Sentencia C-225 de 1995 por la Corte Constitucional, fijando el alcance dogmático del bloque de constitucionalidad en el orden interno.\n2018: formalización del ingreso de la República de Colombia a la OCDE, condicionando la agenda legislativa a sus manuales de política económica."
+    }
+  ]
+}

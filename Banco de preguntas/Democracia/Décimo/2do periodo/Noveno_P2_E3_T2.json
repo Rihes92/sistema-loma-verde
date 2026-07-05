@@ -1,0 +1,120 @@
+{
+  "app": "loma_verde_banco",
+  "id": "banco-p10p2-dih-bienes-001",
+  "grado": "Décimo",
+  "periodo": "Segundo Periodo",
+  "ejeIdx": "26",
+  "area": "Competencias Ciudadanas",
+  "asignatura": "Democracia y Paz",
+  "tema": "Bienes protegidos por el DIH: hospitales, escuelas, lugares de culto y emblemas humanitarios",
+  "docente": "Richard Miguel Hernández Sabié",
+  "creado": 1782958997567,
+  "resumen": {
+    "total": 10,
+    "abiertas": 5,
+    "fv": 5,
+    "sm": 0
+  },
+  "banco": [
+    {
+      "tipo": "abierta",
+      "q": "Explica qué son los bienes protegidos por el DIH y por qué su protección está directamente relacionada con el principio de distinción.",
+      "a": "Los bienes protegidos son instalaciones, lugares y recursos que el DIH prohíbe atacar o destruir porque son esenciales para la vida, la salud, la educación o la cultura de la población civil. Su protección se deriva directamente del principio de distinción: así como los civiles no pueden ser atacados directamente, los bienes de los que dependen tampoco pueden serlo. Si un hospital puede ser destruido o una cosecha quemada, el efecto práctico sobre los civiles es el mismo que un ataque directo (muerte, enfermedad, desplazamiento), lo que haría inútil la protección de las personas sin la protección de sus bienes esenciales.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "Describe el origen histórico de los tres emblemas humanitarios (Cruz Roja, Media Luna Roja, Cristal Rojo) y explica por qué tienen exactamente el mismo valor legal.",
+      "a": "La Cruz Roja fue adoptada en el primer Convenio de Ginebra de 1864 como símbolo del personal sanitario en zonas de conflicto, tomando como referencia el reverso de la bandera suiza en homenaje a Henry Dunant. Durante la guerra ruso-turca de 1877, el Imperio Otomano adoptó la Media Luna Roja como emblema equivalente, aduciendo que la cruz tenía connotaciones religiosas incompatibles con una sociedad musulmana. En 2005, el Protocolo Adicional III creó el Cristal Rojo —un rombo rojo sobre fondo blanco— sin ninguna connotación religiosa, cultural ni geográfica. Los tres tienen exactamente el mismo valor legal porque los tres Convenios y sus Protocolos los reconocen como señales de protección humanitaria, y atacar a quien porta cualquiera de ellos constituye igualmente un crimen de guerra.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "¿Bajo qué condiciones puede un hospital o una escuela perder temporalmente su protección según el DIH? ¿La pérdida de protección es automática? Justifica con argumentos.",
+      "a": "Un hospital o escuela pierde temporalmente su protección solo cuando: 1) está siendo utilizado activamente con fines militares (como puesto de mando, almacén de armas o base de operaciones); 2) se ha advertido formalmente a quienes lo ocupan que deben cesar ese uso, dándoles un plazo razonable; y 3) esa advertencia ha sido ignorada. La pérdida no es automática: requiere las tres condiciones simultáneamente. Tampoco es definitiva: una vez cese el uso militar, el bien recupera su inmunidad.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "¿Por qué destruir los cultivos o el acueducto de una comunidad campesina como Loma Verde constituye un crimen de guerra bajo el DIH, aunque no se haya atacado directamente a ninguna persona?",
+      "a": "Porque el artículo 54 del Protocolo Adicional I prohíbe atacar, destruir, sustraer o inutilizar los bienes indispensables para la supervivencia de la población civil: cultivos, ganado, instalaciones de agua potable. Estos bienes son protegidos precisamente porque su destrucción tiene el mismo efecto práctico que un ataque directo a las personas: sin comida ni agua, la comunidad muere de hambre o se ve forzada a desplazarse. En Loma Verde, donde el café, la panela y el agua de acueducto veredal son la base de la subsistencia familiar, su destrucción equivale a condenar a toda la comunidad al desplazamiento forzado, que es también un crimen de guerra.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "En el conflicto colombiano, ¿qué consecuencias tuvo el uso de escuelas rurales como bases militares por parte de grupos armados? Menciona efectos educativos, sociales y humanitarios.",
+      "a": "Educativas: el abandono escolar masivo en las zonas afectadas, la interrupción del año escolar y el atraso académico de miles de niños. Sociales: la ruptura del tejido comunitario, ya que la escuela es en muchas veredas el único espacio de encuentro colectivo; la pérdida de confianza en las instituciones; y el miedo que inhibió la participación comunitaria durante años. Humanitarias: la exposición de niños y maestros al conflicto, el reclutamiento facilitado por la presencia militar en el espacio escolar, y el desplazamiento de familias enteras para proteger a sus hijos. La UNICEF documentó más de 1.000 escuelas afectadas en Colombia entre 2010 y 2020.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "Según el DIH, una iglesia o capilla que no está siendo utilizada por ningún actor armado pierde su protección si se encuentra en el área de operaciones militares de un grupo en conflicto.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. La protección de los lugares de culto no depende de su ubicación geográfica sino de su uso. Una iglesia o capilla que no está siendo utilizada con fines militares mantiene su protección plena aunque esté en medio de una zona de operaciones. La pérdida de protección requiere que el bien sea utilizado activamente para cometer actos dañinos al adversario, que se haya advertido al ocupante y que la advertencia haya sido ignorada.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "El uso fraudulento de una ambulancia con el emblema de la Cruz Roja para transportar armas constituye una violación del DIH que puede ser juzgada como crimen de guerra.",
+      "a": "",
+      "verdadero": true,
+      "justificacion": "Verdadero. El uso indebido de los emblemas humanitarios está expresamente prohibido por los Convenios de Ginebra y sus Protocolos Adicionales. Usar el emblema de la Cruz Roja para engañar al adversario (perfidia) o para trasladar armas y combatientes constituye una violación grave del DIH que puede ser juzgada como crimen de guerra. Además, esta práctica genera desconfianza sobre el personal humanitario legítimo, poniendo en riesgo la vida de médicos y voluntarios que operan correctamente bajo el emblema.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "La Cruz Roja, la Media Luna Roja y el Cristal Rojo son símbolos de organizaciones distintas con diferente nivel de protección legal bajo el DIH.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. Los tres emblemas son reconocidos por los Convenios de Ginebra y sus Protocolos como señales de protección humanitaria con exactamente el mismo valor legal. La Cruz Roja y la Media Luna Roja fueron adoptadas en distintos momentos históricos por razones culturales, y el Cristal Rojo fue creado en 2005 por el Protocolo Adicional III. Atacar a quien porta cualquiera de los tres emblemas constituye igualmente un crimen de guerra.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "El principio de proporcionalidad del DIH prohíbe absolutamente causar cualquier daño a bienes civiles durante un ataque a un objetivo militar legítimo.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. El principio de proporcionalidad no prohíbe todo daño colateral a bienes civiles, sino que prohíbe los daños que sean excesivos respecto a la ventaja militar concreta y directa esperada. El DIH reconoce que en los conflictos puede haber daños colaterales inevitables, pero exige que estos sean mínimos y proporcionales al objetivo militar. Debe complementarse con el principio de precaución, que obliga a planificar los ataques para reducir al máximo el daño a civiles y sus bienes.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "La Declaración de Escuelas Seguras firmada por Colombia en 2015 prohíbe que los actores armados (tanto estatales como no estatales) usen establecimientos educativos con fines militares.",
+      "a": "",
+      "verdadero": true,
+      "justificacion": "Verdadero. Colombia firmó la Declaración de Escuelas Seguras en 2015, comprometiéndose a proteger las instalaciones educativas del uso militar durante conflictos armados. Esta declaración obliga al Estado colombiano a adoptar medidas concretas para evitar que tanto las Fuerzas Militares como los grupos armados no estatales ocupen o dañen escuelas. Su violación puede ser invocada ante la JEP, la Defensoría del Pueblo y organismos internacionales como UNICEF.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    }
+  ]
+}

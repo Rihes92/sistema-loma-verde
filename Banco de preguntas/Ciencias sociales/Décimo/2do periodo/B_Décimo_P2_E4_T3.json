@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Segundo Periodo",
+    "unidad": "Eje 4: Multiculturalidad, alteridad y amparo constitucional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750089601aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué es la acción de tutela, cuáles son sus características principales y por qué es especialmente importante para las personas de zonas rurales como Loma Verde?",
+      "respuesta": "La acción de tutela (Art. 86 Constitución) protege derechos fundamentales de manera inmediata. Características: cualquier persona puede interponerla sin abogado ni costo; ante cualquier juez; el juez falla en 10 días; si hay fallo favorable, el demandado tiene 48 horas para cumplir. Es especialmente importante para zonas rurales porque elimina las barreras económica (sin costo), técnica (sin abogado) y temporal (10 días) que hacen inaccesible la justicia ordinaria para familias campesinas. En 2022 se interpusieron más de 1,3 millones de tutelas en Colombia.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750089601aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Cuál es la diferencia entre la acción de tutela y la acción popular? ¿En qué situaciones concretas del contexto rural cafetero se usaría cada una?",
+      "respuesta": "La tutela protege derechos fundamentales individuales y falla en 10 días; requiere afectación personal. La acción popular protege derechos colectivos (ambiente sano, espacio público) y puede tarpar meses; no requiere daño personal. Situaciones rurales: tutela → la empresa de acueducto corta el agua a una familia (derecho individual). Acción popular → una empresa vierte residuos al río que usa toda la vereda (derecho colectivo al ambiente sano).",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750089601aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Para qué sirve la acción de cumplimiento y en qué situación concreta del contexto rural sería el mecanismo apropiado?",
+      "respuesta": "La acción de cumplimiento (Art. 87 Constitución, Ley 393/1997) obliga a una autoridad pública a cumplir con una ley o acto administrativo que está incumpliendo. Situación rural apropiada: si el alcalde lleva dos años sin elaborar el Plan de Gestión del Riesgo que la ley exige, o si la secretaría de educación no nombra los docentes que corresponden aunque el presupuesto está asignado, cualquier ciudadano puede interponer acción de cumplimiento para obligar a la autoridad a cumplir su obligación legal.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750089601aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Redacta los elementos básicos de una acción de tutela para el siguiente caso: una familia de Loma Verde lleva cuatro semanas sin agua porque la empresa de acueducto no ha reparado la tubería rota.",
+      "respuesta": "Dirigida a: Juez Civil Municipal del lugar de residencia. Interponente: [nombre del jefe de hogar], CC [número], residente en vereda Loma Verde. Accionado: Empresa de Acueducto Municipal de [nombre]. Derecho vulnerado: derecho fundamental al agua (por conexidad con la vida y la salud, Art. 11 y 49 Constitución). Hechos: 1) Hace cuatro semanas se rompió la tubería. 2) La empresa fue notificada y no ha reparado. 3) La familia usa agua de la quebrada sin tratamiento. 4) Hay riesgo de enfermedades. Solicitud: ordenar a la empresa restablecer el servicio en máximo 48 horas.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750089601aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué es el derecho de petición y cómo puede usarlo una junta de acueducto veredal para obtener información sobre los permisos ambientales de una empresa que opera en su cuenca?",
+      "respuesta": "El derecho de petición (Art. 23 Constitución) es el derecho a presentar solicitudes a las autoridades y recibir respuesta en 15 días hábiles (interés general) o 10 días (interés particular). La junta de acueducto puede dirigir una petición a la CAR solicitando: copia de los permisos y concesiones ambientales otorgados a la empresa en su cuenca, los resultados de los últimos monitoreos de calidad del agua, y el estado del proceso de seguimiento y control. Si la CAR no responde en el plazo legal, puede interponerse tutela por violación del derecho de petición.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750089601fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La acción de tutela puede ser interpuesta por cualquier persona sin necesidad de contratar un abogado ni pagar costos judiciales.",
+      "correcta": true,
+      "justificacion": "Verdadero. El Artículo 86 de la Constitución y el Decreto 2591 de 1991 establecen que la tutela puede interponerse sin apoderado judicial, en cualquier formato (incluso verbal), sin costo y ante cualquier juez. La Corte Constitucional ha ordenado que los jueces interpreten las tutelas de la forma más favorable al tutelante, incluso cuando están mal redactadas."
+    },
+    {
+      "id": "lv1750089601fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Las acciones populares solo pueden ser interpuestas por grupos organizados o por abogados, no por ciudadanos individuales.",
+      "correcta": false,
+      "justificacion": "Falso. Según el Artículo 88 de la Constitución y la Ley 472 de 1998, cualquier persona natural o jurídica, incluyendo ciudadanos individuales, puede interponer una acción popular para defender derechos colectivos. No se necesita abogado, no se requiere representar a un grupo organizado y no es necesario haber sufrido un daño personal directo."
+    },
+    {
+      "id": "lv1750089601fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El juez que recibe una acción de tutela debe fallar en un plazo máximo de 10 días.",
+      "correcta": true,
+      "justificacion": "Verdadero. El Artículo 86 de la Constitución establece que el fallo de tutela debe proferirse en 10 días. Este plazo extremadamente corto es una de las características más importantes: permite proteger derechos antes de que el daño sea irreversible. Si el juez no falla en ese plazo, incurre en causal de mala conducta."
+    },
+    {
+      "id": "lv1750089601fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La acción de cumplimiento puede usarse para obligar a una empresa privada a cumplir con un contrato comercial que está incumpliendo.",
+      "correcta": false,
+      "justificacion": "Falso. La acción de cumplimiento (Art. 87, Ley 393/1997) solo procede contra autoridades públicas para exigir el cumplimiento de leyes o actos administrativos. No procede contra particulares ni para exigir el cumplimiento de contratos privados. Para incumplimientos de contratos privados existen otros mecanismos: arbitraje, conciliación o demanda civil ordinaria."
+    },
+    {
+      "id": "lv1750089601fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Corte Constitucional ha reconocido el acceso al agua como derecho fundamental por conexidad con el derecho a la vida y a la salud, lo que hace procedente la tutela para defender ese derecho.",
+      "correcta": true,
+      "justificacion": "Verdadero. Aunque el agua no aparece explícitamente como derecho fundamental en la Constitución, la Corte ha reconocido en múltiples fallos que el acceso al agua para consumo humano es fundamental por 'conexidad' con la vida y la salud. Esto hace procedente la tutela cuando el Estado o una empresa amenaza el acceso al agua de una persona o comunidad."
+    },
+    {
+      "id": "lv1750089601sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "La Constitución de 1991 creó múltiples mecanismos de protección de derechos, cada uno en un artículo específico.",
+      "enunciado": "¿Cuál es el artículo de la Constitución de 1991 que consagra la acción de tutela?",
+      "opciones": ["Artículo 13.", "Artículo 23.", "Artículo 86.", "Artículo 88."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La acción de tutela está consagrada en el Artículo 86 de la Constitución Política de 1991. El Artículo 13 consagra la igualdad ante la ley; el Artículo 23 el derecho de petición; y el Artículo 88 las acciones populares."
+    },
+    {
+      "id": "lv1750089601sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "La rapidez de la tutela es una de sus características más importantes para la protección de derechos fundamentales.",
+      "enunciado": "¿Cuántos días tiene el juez para fallar una acción de tutela?",
+      "opciones": ["5 días.", "10 días.", "30 días.", "90 días."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El Artículo 86 de la Constitución establece que el fallo de tutela debe proferirse en el término de 10 días. Este plazo brevísimo, sin precedentes en el derecho colombiano anterior a 1991, es lo que hace de la tutela un mecanismo efectivo de protección de derechos en situaciones urgentes."
+    },
+    {
+      "id": "lv1750089601sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "Los derechos colectivos y los derechos individuales tienen mecanismos de protección diferentes.",
+      "enunciado": "¿Qué mecanismo es el más apropiado para defender el derecho colectivo al ambiente sano cuando una empresa contamina el río que abastece a toda una vereda?",
+      "opciones": ["Acción de tutela.", "Acción popular.", "Acción de cumplimiento.", "Habeas corpus."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La acción popular (Art. 88 Constitución, Ley 472/1998) es el mecanismo diseñado para proteger derechos colectivos como el ambiente sano. Cuando la contaminación afecta a toda la comunidad (no solo a una persona individual), la acción popular es más apropiada que la tutela, porque protege el derecho de todos sin necesidad de que cada afectado interponga la suya propia."
+    },
+    {
+      "id": "lv1750089601sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "Las estadísticas de tutelas muestran cuáles son los derechos más vulnerados en Colombia.",
+      "enunciado": "¿Cuántas acciones de tutela se interpusieron en Colombia en 2022?",
+      "opciones": ["Aproximadamente 100.000 tutelas.", "Aproximadamente 500.000 tutelas.", "Más de 1,3 millones de tutelas.", "Más de 5 millones de tutelas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. En 2022 se interpusieron más de 1,3 millones de tutelas en Colombia, un promedio de más de 3.500 por día. Este volumen, que ha crecido sostenidamente desde las 10.732 tutelas del primer año (1992), refleja tanto la confianza de los ciudadanos en el mecanismo como la persistente vulneración de derechos en el país."
+    },
+    {
+      "id": "lv1750089601sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "El sistema de garantías constitucionales tiene mecanismos específicos para proteger diferentes tipos de derechos.",
+      "enunciado": "¿Qué mecanismo protege la libertad personal cuando alguien es detenido ilegalmente o sin orden de captura?",
+      "opciones": ["Acción de tutela.", "Derecho de petición.", "Habeas corpus.", "Acción de cumplimiento."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El habeas corpus es el mecanismo para proteger la libertad personal ante detenciones ilegales o arbitrarias. Su nombre en latín significa 'tengas el cuerpo': exige que la persona detenida sea presentada ante un juez para que determine si la detención es legal. Es el mecanismo de libertad más antiguo del derecho occidental."
+    },
+    {
+      "id": "lv1750089601sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "El derecho de petición establece plazos específicos que las autoridades públicas deben cumplir.",
+      "enunciado": "¿Cuántos días hábiles tiene una entidad pública para responder a un derecho de petición de interés general?",
+      "opciones": ["5 días hábiles.", "10 días hábiles.", "15 días hábiles.", "30 días hábiles."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Según el Artículo 23 de la Constitución y el Código de Procedimiento Administrativo (CPACA), las entidades públicas tienen 15 días hábiles para responder a peticiones de interés general, y 10 días hábiles para peticiones de interés particular. Si no responden en ese plazo, el ciudadano puede interponer una tutela por violación del derecho de petición."
+    },
+    {
+      "id": "lv1750089601sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "Las estadísticas de tutelas muestran cuáles son los derechos más vulnerados en Colombia.",
+      "enunciado": "¿Cuál de los siguientes derechos es el más frecuentemente protegido mediante tutelas en Colombia?",
+      "opciones": ["El derecho a la educación.", "El derecho al trabajo.", "El derecho a la salud.", "El derecho al agua."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El derecho a la salud es el más tutelado en Colombia, representando aproximadamente el 35% de todas las tutelas. Esto refleja las deficiencias del sistema de salud (EPS que niegan medicamentos, procedimientos o citas) y la conciencia de los ciudadanos de que la salud es un derecho exigible mediante tutela, especialmente desde la Sentencia T-760 de 2008."
+    },
+    {
+      "id": "lv1750089601sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "Cada mecanismo constitucional tiene un objeto específico y es importante elegir el correcto.",
+      "enunciado": "¿Qué mecanismo usaría si el alcalde lleva dos años sin elaborar el Plan de Gestión del Riesgo que la ley exige?",
+      "opciones": ["Acción de tutela.", "Acción popular.", "Acción de cumplimiento.", "Habeas data."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La acción de cumplimiento es el mecanismo para obligar a una autoridad pública a cumplir con una obligación legal que está incumpliendo. Si la ley exige al municipio elaborar el Plan de Gestión del Riesgo y el alcalde no lo ha hecho, la acción de cumplimiento ante el juez administrativo es el mecanismo específico para esa situación."
+    },
+    {
+      "id": "lv1750089601sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "Las acciones populares tienen su propio fundamento constitucional, diferente al de la tutela.",
+      "enunciado": "¿Cuál es el artículo de la Constitución de 1991 que consagra las acciones populares para la protección de derechos colectivos?",
+      "opciones": ["Artículo 86.", "Artículo 87.", "Artículo 88.", "Artículo 23."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Las acciones populares están consagradas en el Artículo 88 de la Constitución. El Artículo 86 consagra la tutela, el Artículo 87 la acción de cumplimiento y el Artículo 23 el derecho de petición. La Ley 472 de 1998 desarrolla el Artículo 88 y regula el procedimiento de las acciones populares."
+    },
+    {
+      "id": "lv1750089601sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · Mecanismos constitucionales de amparo: tutela, acciones populares y de cumplimiento",
+      "competencia": "Pensamiento social",
+      "contexto": "La Constitución de 1991 protege también la privacidad informacional de los ciudadanos.",
+      "enunciado": "¿Qué mecanismo le permite a una persona conocer y rectificar la información sobre ella misma en bases de datos de entidades financieras o del Estado?",
+      "opciones": ["Habeas corpus.", "Habeas data.", "Derecho de petición.", "Acción de tutela."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El habeas data (Art. 15 Constitución) permite a las personas conocer, actualizar y rectificar las informaciones que sobre ellas existan en bases de datos o archivos de entidades públicas o privadas. Es especialmente relevante para controlar los datos en centrales de riesgo financiero (Datacrédito, TransUnion) y en bases de datos del Estado."
+    }
+  ]
+}

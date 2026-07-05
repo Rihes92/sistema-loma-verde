@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T13:45:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 6: Conflictos bélicos globales del siglo XX y transformaciones fronterizas",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_dec10_p3_e6_geo_01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las conferencias de paz aliadas de Yalta y Potsdam en 1945 redefinieron de manera drástica el equilibrio de poder en Europa: explique cómo la fragmentación territorial de Alemania y de su capital, Berlín, reflejó los intereses contrapuestos de las superpotencias y analice las consecuencias de esta mutación fronteriza en el inicio de la Guerra Fría.",
+      "respuesta": "La fragmentación territorial de Alemania y Berlín en cuatro zonas de ocupación (coadministradas por los Estados Unidos, el Reino Unido, Francia y la Unión Soviética) materializó las tensiones ideológicas y estratégicas insalvables entre las potencias occidentales capitalistas y el bloque soviético comunista. En lugar de consolidar un orden de paz unificado, esta división fronteriza artificial transformó el corazón de Europa en la primera línea de fractura geopolítica global; al no lograr un consenso sobre el modelo económico y político para el territorio ocupado, la mutación de los límites internos dio paso inmediato a la consolidación de dos Estados independientes en 1949 (la RFA y la RDA), institucionalizando de forma sistémica la estructura bipolar, el espionaje y la parálisis diplomática que caracterizaron el inicio del periodo de la Guerra Cold.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La anexión de los Sudetes en Checoslovaquia y el posterior expansionismo territorial de la Alemania nazi hacia Europa Oriental durante la década de 1930 se justificaron bajo el concepto geopolítico de espacio vital (Lebensraum): analice críticamente los argumentos ideológicos que sustentaban esta doctrina frente al principio internacional de soberanía de los Estados.",
+      "respuesta": "La doctrina del Lebensraum, promovida por el régimen nacionalsocialista, se fundamentaba en una perspectiva pseudocientífica que asimilaba al Estado con un organismo vivo que necesitaba expandir su territorio geográfico de manera obligatoria para garantizar la subsistencia, el crecimiento agrícola e industrial y el dominio de la raza aria. Esta postura ideológica chocaba radicalmente con el principio de soberanía nacional e integridad territorial del derecho internacional, debido a que supeditaba la validez jurídica de las fronteras de los Estados vecinos a las supuestas necesidades biológicas de una potencia agresora; al aplicar esta lógica, la Alemania nazi deslegitimó el orden colectivo europeo instaurado por la Sociedad de Naciones, utilizando la asimilación forzada y la invasión militar como herramientas válidas para rediseñar unilateralmente el mapa político continental.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "A principios del siglo XX, la región de los Balcanes fue catalogada históricamente como el 'polvorín de Europa': explique detalladamente cómo el auge de los nacionalismos étnicos en la zona y las ambiciones territoriales de los imperios ruso y austrohúngaro desestabilizaron el statu quo regional.",
+      "respuesta": "La inestabilidad estructural de los Balcanes respondió a la confluencia de dos factores sistémicos: las aspiraciones de movimientos nacionalistas locales que buscaban liberarse del dominio imperial y constituir Estados independientes (como el proyecto paneslavo de la Gran Serbia), y las ambiciones estratégicas de grandes imperios vecinos. El Imperio austrohúngaro pretendía consolidar su control fronterizo hacia el sur (lo que se evidenció con la anexión de Bosnia-Herzegovina en 1908), mientras que el Imperio ruso se proclamaba protector de los pueblos eslavos para garantizar su propia influencia geopolítica y asegurar una salida libre hacia el mar Mediterráneo; esta red de intereses contrapuestos convirtió la zona en un escenario altamente volátil donde cualquier chispa política, como el magnicidio de Sarajevo, activaría los pactos de asistencia militar masiva europeos.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El fin de la Segunda Guerra Mundial estuvo acompañado de desplazamientos forzados masivos que alteraron la composición demográfica de Europa Central, incluyendo la expulsión de millones de civiles de etnia alemana de Polonia y Checoslovaquia: argumente qué implicaciones socioculturales y territoriales tuvieron estos movimientos de población en la construcción de las nuevas identidades nacionales de posguerra.",
+      "respuesta": "Los desplazamientos forzados masivos buscaron resolver de forma drástica el problema de las minorías étnicas transfronterizas que habían servido de pretexto para las invasiones totalitarias previas, forzando la homogeneización demográfica de los nuevos Estados delimitados bajo la órbita soviética. Socioculturalmente, este proceso implicó un trauma colectivo arraigado en el desarraigo, la pérdida de patrimonios familiares y la erradicación forzada de legados culturales centenarios en regiones históricas como Silesia o los Sudetes; territorialmente, los gobiernos de posguerra debieron repoblar estas zonas vacías con ciudadanos de sus propias etnias nacionales, reconstruyendo identidades colectivas sobre la base de la ruptura con el pasado inmediato y la subordinación a las nuevas fronteras de la geopolítica bipolar.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Al terminar la Segunda Guerra Mundial, el despliegue militar sobre el terreno fijó los límites de las futuras esferas de influencia global: analice cómo la presencia del Ejército Rojo en Europa Oriental y de las tropas angloamericanas en Europa Occidental trazó de forma fáctica lo que Winston Churchill denominó la 'Cortina de Hierro'.",
+      "respuesta": "La Cortina de Hierro no nació como un acuerdo diplomático formal, sino como el reflejo geográfico y material de las posiciones finales que ocuparon los ejércitos aliados al colapsar el Tercer Reich. En los territorios liberados y ocupados por la Unión Soviética en el este (como Polonia, Hungría y Rumania), el Ejército Rojo aseguró la instauración de regímenes comunistas alineados rígidamente con Moscú, aislando estas fronteras del contacto con el exterior; por su parte, las tropas estadounidenses y británicas consolidaron sistemas democráticos liberales y capitalistas en el oeste de Europa. De este modo, las líneas de demarcación militar de 1945 se transformaron en fronteras políticas e ideológicas herméticas, dividiendo al continente de forma sistémica durante las décadas siguientes.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_06",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La formación del Bloque del Eje durante la Segunda Guerra Mundial se consolidó a través del Pacto Tripartito firmado en 1940: este acuerdo internacional unió formalmente los intereses expansionistas y militaristas de Alemania, Italia y el Imperio del Japón en una alianza estratégica global.",
+      "correcta": true,
+      "justificacion": "el Pacto Tripartito de Berlín estableció formalmente la cooperación militar, política y económica entre las tres potencias totalitarias del Eje; el acuerdo buscaba reconocer el liderazgo de Alemania e Italia en el establecimiento de un nuevo orden en Europa, y el del Japón en el espacio geográfico de la Gran Asia Oriental, coordinando sus esfuerzos de agresión y expansión territorial frente al bloque de los Aliados."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_07",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El Pacto de No Agresión Germano-Soviético de 1939 (Molotov-Ribbentrop) constituyó una alianza ideológica incondicional y duradera: esto garantizó que las fronteras entre la Alemania nazi y la Unión Soviética permanecieran inalteradas durante todo el transcurso de la Segunda Guerra Mundial.",
+      "correcta": false,
+      "justificacion": "el pacto Molotov-Ribbentrop fue un acuerdo pragmático, estratégico y temporal que contenía cláusulas secretas para repartirse territorialmente a Polonia y definir zonas de influencia en Europa Oriental; esta alianza de conveniencia se rompió de forma definitiva en junio de 1941 cuando Adolf Hitler ordenó la Operación Barbarroja e invadió militarmente el territorio soviético, demostrando que las fronteras acordadas eran meramente circunstanciales."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_08",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El sistema de alianzas secretas configurado en la Paz Armada anterior a 1914 fue diseñado con un enfoque flexible: esto permitió que los Estados europeos mantuvieran la neutralidad obligatoria y evitó que un conflicto focalizado se expandiera a escala continental.",
+      "correcta": false,
+      "justificacion": "el sistema de alianzas de la Paz Armada (Triple Entente y Triple Alianza) era de carácter rígido y de asistencia recíproca automática en caso de agresión; en lugar de contener la violencia, funcionó como un mecanismo de arrastre sistémico donde el ataque focalizado del Imperio austrohúngaro a Serbia obligó la movilización de Rusia, Alemania, Francia y Gran Bretaña, transformando una crisis local balcánica en la Primera Guerra Mundial."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_09",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La línea Oder-Neisse, adoptada formalmente al finalizar la Segunda Guerra Mundial, desplazó la frontera territorial de Polonia hacia el oeste: esto significó la pérdida de vastas regiones agrícolas históricas para Alemania en beneficio del nuevo mapa político polaco y soviético.",
+      "correcta": true,
+      "justificacion": "la adopción de la línea Oder-Neisse como la nueva frontera germano-polaca en la Conferencia de Potsdam compensó territorialmente a Polonia por las regiones orientales que le habían sido anexadas por la Unión Soviética; este rediseño fronterizo restó a Alemania el control histórico sobre territorios como Silesia, Pomerania y Prusia Oriental, forzando una mutación geográfica radical en el mapa de Europa posguerra."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_10",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La Sociedad de Naciones, instituida tras la Primera Guerra Mundial, logró contener con éxito el expansionismo militar del Imperio del Japón en Manchuria y de la Italia fascista en Abisinia gracias al despliegue inmediato de sus propios ejércitos multinacionales pacificados.",
+      "correcta": false,
+      "justificacion": "la Sociedad de Naciones carecía por completo de una fuerza militar institucional propia o de la voluntad política de las grandes potencias occidentales para imponer sanciones económicas estrictas y oportunas; su inoperancia institucional para frenar las invasiones de Japón (1931) e Italia (1935) evidenció el colapso del sistema de seguridad colectiva, incentivando las posteriores agresiones territoriales que desencadenaron la Segunda Guerra Mundial."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_11",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la antesala de la Segunda Guerra Mundial, la debilidad política de las democracias europeas se hizo evidente en la Conferencia de Múnich de 1938, donde Francia y Gran Bretaña permitieron que Alemania se anexara los Sudetes con la falsa promesa de salvaguardar el resto del territorio checoslovaco.",
+      "enunciado": "¿Qué concepto de la diplomacia internacional define la estrategia adoptada por estas potencias que, al tolerar agresiones territoriales menores para evitar una guerra generalizada, terminó debilitando el orden fronterizo europeo?",
+      "opciones": [
+        "Doctrina de la disuasión nuclear mutua",
+        "Política de apaciguamiento",
+        "Estrategia de la contención ideológica",
+        "Principio de autodeterminación nacional"
+      ],
+      "correcta": 1,
+      "justificacion": "la política de apaciguamiento consistió en ceder ante las demandas territoriales de Adolf Hitler bajo la premisa de que esto calmaría sus ambiciones expansionistas; sin embargo, esta pasividad internacional convenció al régimen nazi de la inacción de las potencias de Occidente, desestabilizando por completo el mapa político y acelerando la invasión de Polonia en 1939."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_12",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El 1 de septiembre de 1939, las fuerzas alemanas cruzaron las fronteras de Polonia utilizando tácticas combinadas de aviación y divisiones acorazadas avanzadas. Pocos días después, las tropas de la Unión Soviética invadieron el territorio polaco desde el oriente, forzando la rápida disolución del Estado polaco.",
+      "enunciado": "Este colapso fronterizo coordinado y simultáneo sobre Polonia fue la consecuencia geográfica directa de la ejecución de:",
+      "opciones": [
+        "Las resoluciones bilaterales dictadas por el comité técnico de la Sociedad de Naciones",
+        "Las cláusulas y protocolos secretos del Pacto de No Agresión Germano-Soviético",
+        "Los acuerdos comerciales suscritos por el Bloque del Eje dentro del Pacto Antikomintern",
+        "Las directrices sobre el reparto colonial fijadas históricamente en la Conferencia de Berlín"
+      ],
+      "correcta": 1,
+      "justificacion": "el protocolo adicional secreto del Pacto Molotov-Ribbentrop definía de forma explícita el reparto de las esferas de influencia en Europa Oriental entre el Tercer Reich y la URSS en caso de transformaciones territoriales; esto facilitó la agresión coordinada sobre Polonia y la mutación drástica de sus fronteras sin el riesgo de un enfrentamiento inmediato entre Berlín y Moscú."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_13",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Tratado de Versalles, firmado al concluir la Primera Guerra Mundial, rediseñó las fronteras del mapa de Europa Central mediante el desmantelamiento de los imperios alemán y austrohúngaro, buscando aislar geográficamente el poderío de las potencias derrotadas.",
+      "enunciado": "¿Qué franja territorial de soberanía polaca fue instituida por este tratado, aislando geográficamente a Prusia Oriental del resto de Alemania y convirtiéndose en un foco permanente de disputas geopolíticas?",
+      "opciones": [
+        "El Protectorado de la Cuenca del Sarre",
+        "El Corredor de Danzig",
+        "La Zona Desmilitarizada de Renania",
+        "La línea fronteriza de los Sudetes"
+      ],
+      "correcta": 1,
+      "justificacion": "el Corredor de Danzig fue creado por el Tratado de Versalles para otorgar a la recién restituida Polonia una salida soberana al mar Báltico; sin embargo, al fragmentar el territorio alemán en dos porciones separadas, generó un profundo sentimiento de humillación y revanchismo en la población alemana, sirviendo como el argumento geopolítico definitivo utilizado por Adolf Hitler para justificar la invasión de 1939."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_14",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante la Segunda Guerra Mundial, el Bloque de los Aliados integró una coalición heterogénea conformada de forma principal por los Estados Unidos, el Reino Unido y la Unión Soviética (la 'Gran Alianza'), coordinando esfuerzos bélicos para neutralizar el expansionismo totalitario del Eje.",
+      "enunciado": "A pesar de la cooperación militar, la principal fuente de desconfianza geopolítica que reconfiguró las fronteras de posguerra radicaba en:",
+      "opciones": [
+        "La negativa británica a transferir sus recursos coloniales del continente africano al control americano",
+        "La incompatibilidad sistémica entre los modelos socioeconómicos y políticos del capitalismo liberal y el socialismo soviético",
+        "El desacuerdo absoluto sobre los montos financieros destinados a la reconstrucción del canal de Suez",
+        "La disputa territorial por la soberanía de los archipiélagos ubicados en el mar del Norte"
+      ],
+      "correcta": 1,
+      "justificacion": "los Aliados estaban unidos exclusivamente por la necesidad pragmática de derrotar a un enemigo común (la Alemania nazi); una vez alcanzado este objetivo, las contradicciones insalvables entre el modelo democrático-capitalista de Occidente y el modelo totalitario-comunista de la URSS afloraron, traduciéndose en una lucha competitiva por consolidar esferas de influencia excluyentes en Europa."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_15",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En febrero de 1945, los líderes Winston Churchill, Franklin D. Roosevelt y Iósif Stalin se reunieron en la península de Crimea con el propósito de estructurar las bases de la reorganización política europea ante el inminente desplome militar del Tercer Reich.",
+      "enunciado": "¿Qué nombre recibió este histórico encuentro diplomático multilateral del Bloque de Aliados donde se trazaron las directrices iniciales para la ocupación conjunta de Alemania y la división de esferas de influencia?",
+      "opciones": [
+        "La Conferencia de San Remo",
+        "La Conferencia de Yalta",
+        "La Cumbre de Versalles",
+        "La Conferencia de Ginebra"
+      ],
+      "correcta": 1,
+      "justificacion": "la Conferencia de Yalta sentó las bases para el mapa geopolítico de la posguerra, definiendo aspectos neurálgicos como la partición provisional de Alemania, la redefinición de las fronteras de Polonia y el compromiso de permitir elecciones libres en los territorios liberados, siendo el escenario donde se evidenció la naciente división bipolar del mundo."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_16",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Al concluir las hostilidades en el frente de Asia-Pacífico en 1945, el Imperio del Japón perdió el control absoluto sobre todos los territorios ultramarinos continentales e insulares que había ocupado de forma violenta durante sus campañas de expansión militar.",
+      "enunciado": "Como resultado de la derrota del Eje en este teatro geográfico, la península de Corea experimentó una mutación fronteriza estructural que consistió en:",
+      "opciones": [
+        "Su anexión incondicional como una provincia autónoma dependiente del gobierno de China",
+        "La división provisional de su territorio en dos zonas de ocupación delimitadas por el paralelo 38",
+        "La disolución de sus fronteras tradicionales para integrarse a una federación comercial insular",
+        "Su transformación en un protectorado colonial exclusivo bajo la tutela del parlamento británico"
+      ],
+      "correcta": 1,
+      "justificacion": "para coordinar la desmovilización de las tropas japonesas en la península coreana, las superpotencias aliadas fijaron de manera fáctica el paralelo 38 como límite: la Unión Soviética ocupó la zona norte y los Estados Unidos la zona sur; esta división provisional se rigidizó debido a las tensiones ideológicas, dando origen a dos Estados antagónicos y detonando la guerra de Corea en 1950."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_17",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Segunda Guerra Mundial superó las lógicas defensivas estáticas de la conflagración anterior a través del despliegue de la estrategia militar de la guerra relámpago (Blitzkrieg), sustentada en la acción combinada y veloz de aviación táctica y columnas blindadas mecanizadas.",
+      "enunciado": "Desde una perspectiva de análisis territorial, la implementación tecnológica de la Blitzkrieg transformó la noción tradicional de frontera debido a que:",
+      "opciones": [
+        "Estabilizó los frentes de combate durante años en líneas fijas e inamovibles de trincheras",
+        "Inutilizó el uso de las redes de ferrocarriles confinando los suministros a las costas marinas",
+        "Permitió perforar rápidamente los sistemas defensivos perimetrales y colapsar Estados enteros en pocas semanas",
+        "Restringió las operaciones bélicas exclusivamente a espacios desérticos fronterizos deshabitados"
+      ],
+      "correcta": 2,
+      "justificacion": "la Blitzkrieg alemana combinó la velocidad de los tanques Panzers y el bombardeo en picada de los aviones Stukas para romper los puntos débiles de las defensas fronterizas, evitando el desgaste de las fortificaciones estáticas y permitiendo la ocupación relámpago de naciones como Polonia o Francia, acelerando la reconfiguración del mapa político continental."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_18",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En la Conferencia de Potsdam de julio de 1945, los representantes del Bloque de Aliados definieron los términos de la rendición del Eje y concretaron la desnazificación, desmilitarización y descentralización económica del territorio alemán devastado por la guerra.",
+      "enunciado": "La mutación fronteriza interna más representativa acordada en este foro para evitar el resurgimiento de un Estado alemán hegemónico en Europa fue:",
+      "opciones": [
+        "La anexión total del territorio germano al modelo federal de los cantones de la Confederación Helvética",
+        "La división formal de Alemania y Berlín en cuatro zonas de ocupación militar administradas por las potencias aliadas",
+        "La disolución del parlamento alemán y el traslado de la capital política a la ciudad de Varsovia",
+        "La entrega incondicional de los puertos del mar del Norte al control arancelario de la corona británica"
+      ],
+      "correcta": 1,
+      "justificacion": "en Potsdam se ratificó y pormenorizó el esquema de división territorial provisional vislumbrado en Yalta; al fragmentar el espacio geográfico alemán y la capital berlinesa en sectores bajo mandos militares de EE. UU., Gran Bretaña, Francia y la URSS, los Aliados buscaron neutralizar el poder geopolítico prusiano, trazando los límites de la futura bipolaridad."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_19",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Al finalizar la Segunda Guerra Mundial, los antiguos imperios coloniales europeos (como Gran Bretaña y Francia) se encontraban en una situación de ruina financiera y devastación material interna, a pesar de haber integrado el Bloque de Aliados vencedor.",
+      "enunciado": "Este debilitamiento de las metrópolis europeas, sumado al cuestionamiento ético de su superioridad civilizatoria tras los horrores del conflicto, actuó como el catalizador geopolítico mundial para:",
+      "opciones": [
+        "La expansión incondicional de los protectorados monárquicos agrarios en América Latina",
+        "La emergencia de los movimientos de descolonización y la independencia de nuevos Estados en África y Asia",
+        "La centralización de los flujos migratorios globales exclusivamente hacia las zonas rurales de Siberia",
+        "La abolición definitiva del principio de soberanía nacional dentro de la organización de la ONU"
+      ],
+      "correcta": 1,
+      "justificacion": "las potencias coloniales europeas perdieron la capacidad militar y económica necesaria para sostener por la fuerza sus vastos imperios ultramarinos; las poblaciones colonizadas, que habían aportado soldados y recursos al esfuerzo de guerra, aprovecharon este vacío de poder y el marco de la autodeterminación de los pueblos para impulsar sus procesos de emancipación, reconfigurando por completo el mapa político global."
+    },
+    {
+      "id": "lv_dec10_p3_e6_geo_20",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje)",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En marzo de 1946, el ex primer ministro británico Winston Churchill pronunció un célebre discurso en Fulton, Estados Unidos, donde declaró: 'Desde Stettin, en el Báltico, hasta Trieste, en el Adriático, una cortina de hierro ha descendido a través del continente'.",
+      "enunciado": "Desde una lectura de la geografía política, esta célebre metáfora describía de forma precisa:",
+      "opciones": [
+        "La construcción de murallas fortificadas de hormigón destinadas a detener la migración agrícola",
+        "La división ideológica, militar y fronteriza hermética entre la Europa Occidental capitalista y la Europa Oriental comunista",
+        "El trazado de una red ferroviaria transcontinental para unificar las aduanas mercantiles americanas",
+        "La delimitación territorial de los países neutrales que rechazaban los tratados de paz multilaterales"
+      ],
+      "correcta": 1,
+      "justificacion": "la expresión 'Cortina de Hierro' (o Telón de Acero) retrató conceptualmente la consolidación fáctica de las esferas de influencia aliadas en la posguerra; esta línea divisoria intangible separó de manera hermética a las naciones de Europa Oriental bajo control soviético del bloque occidental, anticipando el establecimiento del orden bipolar y la reconfiguración territorial de la Guerra Fría."
+    }
+  ]
+}

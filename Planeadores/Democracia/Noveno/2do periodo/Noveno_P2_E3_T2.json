@@ -1,0 +1,175 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-01T20:12:52Z",
+  "planeadores": [
+    {
+      "id": "noveno-p2-eje3-002",
+      "creado": "2026-07-01T20:12:52Z",
+      "grado": "Noveno",
+      "periodo": "2",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "2",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-01",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Consejos de Juventud: funciones, conformación y participación",
+      "unidad": "Eje 3: participación juvenil y responsabilidad democrática.",
+      "sesiones": "4",
+      "duracion": "55 min",
+      "evidencias": "saber:\n* el estudiante conoce los mecanismos de participación política diseñados para los jóvenes en Colombia y su importancia democrática.\n* describe el funcionamiento de los Consejos de Juventud y sus competencias en el orden local.\nsaber-hacer:\n* diseña y ejecuta un proyecto de participación juvenil concreto (propuesta al concejo municipal, campaña de interés comunitario) con justificación democrática.\n* participa activamente en el proceso de elección del gobierno escolar asumiendo roles de candidato, veedor o elector responsable.\nser:\n* se reconoce como sujeto político activo y asume el ejercicio de la ciudadanía como una responsabilidad ética y social.",
+      "competencias": "pensamiento social.\nEBC — participación y responsabilidad democrática.",
+      "contenidos": "* elecciones y participación juvenil: el voto a los 14 años en Colombia.\n* Consejos de Juventud: funciones, conformación y participación.\n* personería estudiantil como primer ejercicio de representación política.\n* participación de los jóvenes en los movimientos sociales y políticos colombianos.\n* responsabilidad democrática: diferencia entre ciudadano pasivo y ciudadano activo.\n* el papel de los jóvenes en la construcción de la paz y la democracia.",
+      "objetivo": "comprender la estructura, conformación y funciones de los Consejos de Juventud como instancias autónomas de participación, evaluando su capacidad para incidir en la formulación de políticas públicas territoriales y el desarrollo rural del municipio de Montería.",
+      "pregunta": "¿de qué manera la conformación activa de los Consejos de Juventud permite a las juventudes de zonas rurales transformar sus realidades socioespaciales e incidir en las decisiones gubernamentales del municipio?",
+      "explora": "lluvia de ideas inicial: se les pedirá a los estudiantes que imaginen que tienen el poder de decidir sobre el presupuesto de la alcaldía por un día. las preguntas orientadoras serán: ¿qué problema específico de nuestra institución o corregimiento solucionarían primero?, ¿creen que los gobernantes actuales conocen realmente las necesidades de los jóvenes del campo?, ¿por qué es importante tener representantes de nuestra misma edad ante el alcalde?",
+      "glosario": [
+        {"t": "consejo de juventud", "d": "mecanismo autónomo de participación ciudadana encargado de asesorar a los gobiernos locales en temas y políticas que afectan a las juventudes"},
+        {"t": "política pública", "d": "conjunto de acciones y decisiones adoptadas por el Estado para resolver problemas de interés general de manera estructurada"},
+        {"t": "consejero juvenil", "d": "joven elegido democráticamente o postulado por organizaciones para representar las necesidades y propuestas de su generación"},
+        {"t": "control social", "d": "herramienta cívica que faculta a la ciudadanía para vigilar, fiscalizar y evaluar la gestión de las entidades estatales"},
+        {"t": "agenda juvenil", "d": "plan de acción concertado que consolida las prioridades, problemáticas y posibles soluciones de la juventud en un territorio determinado"},
+        {"t": "veeduría ciudadana", "d": "mecanismo legal de participación mediante el cual las personas ejercen supervisión sobre la administración pública y sus proyectos de inversión"},
+        {"t": "territorio rural", "d": "espacio geográfico caracterizado por dinámicas agrarias, baja densidad poblacional y que demanda una planificación estatal diferenciada"},
+        {"t": "participación incidente", "d": "nivel de intervención ciudadana en el cual las propuestas de la sociedad civil logran modificar o crear decisiones gubernamentales reales"},
+        {"t": "asamblea juvenil", "d": "espacio de encuentro, deliberación y debate donde los jóvenes construyen consensos sobre asuntos de interés colectivo"},
+        {"t": "estado social de derecho", "d": "forma de organización republicana que prioriza la dignidad humana, la equidad y la garantía de los derechos fundamentales"}
+      ],
+      "bloques": [
+        {"tit": "El nacimiento de una voz oficial para la juventud", "txt": "Durante décadas, las decisiones que afectaban a los jóvenes eran tomadas exclusivamente por adultos que, en muchas ocasiones, desconocían las realidades de las nuevas generaciones. la creación de los Consejos de Juventud transformó esta dinámica, otorgando un espacio legal y oficial para que personas entre los 14 y 28 años puedan opinar, proponer y fiscalizar. no se trata de un simple grupo de debate, sino de una instancia reconocida por la ley que actúa como puente directo entre las necesidades de los barrios o veredas y las administraciones municipales o departamentales.", "pausa": "¿por qué consideran que un adulto podría tener dificultades para diseñar proyectos que beneficien a los jóvenes de hoy?", "resp": "porque las dinámicas tecnológicas, educativas y sociales cambian rápidamente, y las prioridades de un adulto no siempre coinciden con los desafíos actuales de la juventud."},
+        {"tit": "Conformación y acceso democrático", "txt": "Los consejos no se eligen a dedo. su conformación es un proceso altamente democrático que incluye tres sectores poblacionales: jóvenes pertenecientes a partidos políticos, jóvenes de organizaciones formalmente constituidas (como colectivos culturales o ambientales) y jóvenes de listas independientes o comunitarias. esta diversidad garantiza que todas las visiones del territorio estén representadas. en zonas con configuraciones espaciales complejas, como los corregimientos rurales, asegurar escaños para listas independientes es vital para que las exigencias sobre infraestructura educativa o acceso a agua no queden silenciadas.", "pausa": "¿qué ventajas tiene que existan representantes de listas independientes y no solo de partidos políticos tradicionales?", "resp": "permite que líderes comunitarios que trabajan genuinamente por sus comunidades puedan participar sin estar atados a intereses políticos o burocráticos preestablecidos."},
+        {"tit": "Funciones reales: más allá de la protesta", "txt": "El rol de un consejero juvenil trasciende la queja social; su labor requiere rigor investigativo y propositivo. entre sus funciones sustantivas destacan: actuar como mecanismo de control social frente a los planes de desarrollo territorial, promover agendas de paz, y ejercer veeduría sobre los recursos destinados a programas de juventud. por ejemplo, si en la región se requiere fortalecer competencias STEM+ (ciencia, tecnología, ingeniería y matemáticas), el consejo puede formular propuestas ante la alcaldía para destinar recursos específicos a la dotación de laboratorios en las instituciones agrícolas.", "pausa": "¿qué pasaría si un Consejo de Juventud se limitara únicamente a criticar al alcalde sin presentar soluciones documentadas?", "resp": "perdería su capacidad de incidencia, ya que la administración pública requiere de proyectos técnicos y propuestas viables para poder ejecutar el presupuesto."}
+      ],
+      "talleres": "1. cartografía social de las juventudes: divididos en grupos, los estudiantes dibujarán un mapa de su entorno rural e identificarán tres problemas graves que afecten a su generación (ejemplo: falta de transporte escolar, ausencia de espacios deportivos). 2. simulación de asamblea: cada grupo asumirá el rol de un sector diferente (partido político, organización ambiental y lista independiente) y deberá llegar a un consenso para redactar una política pública que mitigue uno de los problemas identificados. 3. control social práctico: analizarán el plan de desarrollo municipal (resumen proporcionado por el docente) para verificar si incluye rubros específicos destinados a la juventud rural, redactando posteriormente un informe de hallazgos.",
+      "transfer": "Diseñar un formato de 'Iniciativa Juvenil' dirigido al Consejo Municipal de Juventud de la ciudad. el documento debe contener: título del proyecto, justificación de la necesidad en el corregimiento, impacto esperado y presupuesto estimado. la propuesta debe estar enfocada en mejorar la convivencia escolar o implementar un modelo de innovación tecnológica ambiental en la institución.",
+      "clave": "se evaluará que la propuesta reconozca las competencias reales del consejo juvenil (sabiendo que ellos asesoran, no ejecutan directamente el dinero) y que el problema planteado esté anclado al contexto espacial y rural de los estudiantes, utilizando un lenguaje técnico y asertivo.",
+      "evaluacion": "rúbrica formativa y sumativa:\n1. saber (30%): identifica con precisión los tres sectores de conformación de los consejos y nombra al menos tres funciones legales a través de una prueba escrita corta.\n2. hacer (40%): participa constructivamente en la simulación de asamblea, argumentando desde su rol y aportando soluciones viables en la cartografía social.\n3. ser (30%): demuestra empatía, respeto por el turno de palabra durante los debates y valora la importancia del territorio y la ruralidad en la construcción de propuestas.",
+      "recursos": "pliegos de papel bond, marcadores de colores, notas adhesivas, extractos impresos de la ley 1622 de 2013, tablero, resúmenes adaptados del plan de desarrollo municipal, y mapas físicos del territorio local.",
+      "referencias": "EBC:\n* analizo críticamente mi participación en situaciones en las que se vulneran o respetan los derechos e identifico cómo dicha participación contribuye a mejorar o empeorar la situación.\n* participo en la planeación y ejecución de acciones que contribuyen a aliviar la situación de personas en desventaja.\nDBA:\n* DBA 5 (G9): evalúa cómo las sociedades democráticas en un Estado Social de Derecho tienen el deber de proteger y promover los derechos fundamentales.\nbibliografía académica complementaria:\n* Congreso de la República de Colombia. (2013). Ley 1622 de 2013: por medio de la cual se expide el estatuto de ciudadanía juvenil. Diario Oficial No. 48.776.\n* Registraduría Nacional del Estado Civil. (2021). ABC de los Consejos de Juventud: guía operativa y conceptual para la participación democrática. Bogotá, Colombia.",
+      "dua": "estrategias de inclusión educativa:\n* representación: utilizar esquemas visuales piramidales e infografías con iconografía clara para explicar la conformación sectorial de los consejos.\n* expresión: posibilitar que la presentación de la iniciativa juvenil en la fase de transferencia se realice de manera oral, apoyada en recursos gráficos, si la expresión escrita supone una barrera.\n* compromiso: vincular permanentemente las teorías con los proyectos de aula que ya conocen (como ferias de ciencia o iniciativas ambientales), garantizando la significancia del aprendizaje para su contexto cotidiano.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "los Consejos de Juventud son organismos colegiados, autónomos y de representación oficial ante los entes territoriales.",
+        "se conforman a través de una elección plural que incluye listas independientes, procesos organizativos y partidos políticos.",
+        "su función primordial no es administrar dinero, sino orientar las políticas públicas y ejercer veeduría sobre el Estado.",
+        "la edad de postulación abarca desde los 14 hasta los 28 años, promoviendo el relevo generacional temprano.",
+        "la participación de jóvenes rurales es indispensable para lograr una reconfiguración espacial equitativa y descentralizada."
+      ],
+      "errores": [
+        "asumir que los consejeros juveniles manejan el dinero de la alcaldía: corrección, su labor es consultiva y de control social; ellos sugieren, vigilan y denuncian, pero el ordenador del gasto sigue siendo el alcalde.",
+        "creer que solo pueden postularse jóvenes afiliados a partidos políticos: corrección, la ley garantiza espacios específicos para organizaciones sociales y listas de ciudadanos independientes.",
+        "pensar que el consejo juvenil tiene autoridad para sancionar a funcionarios públicos: corrección, ellos remiten sus hallazgos de veeduría a los entes de control (contraloría, procuraduría), quienes imponen las sanciones.",
+        "suponer que las decisiones de los jóvenes aplican únicamente al área urbana: corrección, la jurisdicción de un consejo municipal abarca la totalidad del territorio, incluyendo corregimientos y veredas."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la función principal de un Consejo de Juventud frente al gobierno municipal?",
+          "a": "actuar como órgano asesor y consultivo para la formulación de políticas públicas y ejercer control social sobre los planes de desarrollo enfocados en la juventud.",
+          "verdadero": true,
+          "justificacion": "la ley los faculta como interlocutores válidos entre la institucionalidad y la sociedad civil joven, garantizando que sus demandas sean escuchadas formalmente.",
+          "enunciado": "las alcaldías tienen la obligación legal de consultar a ciertas instancias antes de ejecutar proyectos específicos.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo se garantiza la pluralidad en la conformación de los Consejos Municipales de Juventud?",
+          "a": "a través de un sistema de cuotas que divide las curules entre partidos políticos, procesos organizativos formales y listas de jóvenes independientes.",
+          "verdadero": true,
+          "justificacion": "este mecanismo evita el monopolio de la representación y asegura que distintas ideologías y formas de organización comunitaria tengan voz.",
+          "enunciado": "la democracia moderna exige que todos los sectores sociales tengan oportunidades equitativas de participación.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué significa ejercer veeduría ciudadana y control social en el contexto juvenil?",
+          "a": "consiste en vigilar, revisar y exigir rendición de cuentas sobre cómo el Estado invierte los recursos públicos destinados a los programas para jóvenes.",
+          "verdadero": true,
+          "justificacion": "el control social es una herramienta para prevenir la corrupción y asegurar la eficiencia estatal en la garantía de los derechos.",
+          "enunciado": "una de las responsabilidades más importantes del ciudadano activo es evitar el despilfarro del erario público.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué es crucial la participación de listas independientes y comunitarias provenientes de zonas rurales en estos consejos?",
+          "a": "porque aportan perspectivas sobre la configuración espacial y las necesidades agrarias que los jóvenes urbanos o de partidos tradicionales suelen invisibilizar.",
+          "verdadero": true,
+          "justificacion": "el desarrollo rural requiere voceros que vivan cotidianamente las barreras geográficas e institucionales del campo.",
+          "enunciado": "el departamento cuenta con una vasta extensión territorial donde las realidades varían drásticamente del centro a la periferia.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera contribuyen los Consejos de Juventud a la formación de una ciudadanía activa orientada a la paz?",
+          "a": "enseñan a resolver conflictos mediante el debate pacífico, la construcción de consensos y la utilización de canales institucionales en lugar de la violencia.",
+          "verdadero": true,
+          "justificacion": "el ejercicio democrático temprano fomenta la tolerancia y previene la radicalización en contextos históricamente afectados por el conflicto.",
+          "enunciado": "la convivencia pacífica requiere de entrenamiento práctico en habilidades cívicas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "los miembros del Consejo Municipal de Juventud reciben un salario mensual de la alcaldía por sus servicios.",
+          "a": "falso, la labor del consejero es ad honorem (no remunerada), fundamentada en el servicio cívico y el liderazgo comunitario.",
+          "verdadero": false,
+          "justificacion": "el estatuto de ciudadanía juvenil establece que este rol es voluntario y no constituye un empleo público remunerado.",
+          "enunciado": "el servicio público puede ejercerse desde distintas figuras de vinculación.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "los Consejos de Juventud tienen la autoridad para destituir a un alcalde si este no cumple con la agenda juvenil.",
+          "a": "falso, sus funciones son consultivas y de control; las destituciones corresponden a organismos como la procuraduría general de la nación.",
+          "verdadero": false,
+          "justificacion": "no poseen facultades disciplinarias ni sancionatorias, sino potestades de fiscalización y denuncia.",
+          "enunciado": "en el diseño institucional del Estado Social de Derecho hay separación de funciones y competencias.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "para postularse como candidato independiente al consejo, los jóvenes deben recolectar firmas de respaldo ciudadano.",
+          "a": "verdadero, el sistema exige firmas para avalar que el candidato independiente cuenta con el respaldo legítimo de su comunidad.",
+          "verdadero": true,
+          "justificacion": "la recolección de apoyos evita candidaturas fantasma y asegura un piso mínimo de representación social.",
+          "enunciado": "las candidaturas fuera de los partidos tradicionales requieren demostrar apoyo popular.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "los consejos solo se encargan de organizar eventos deportivos y culturales para el entretenimiento local.",
+          "a": "falso, aunque pueden sugerir estas actividades, su núcleo es incidir en políticas públicas de salud, empleo, educación y ordenamiento territorial.",
+          "verdadero": false,
+          "justificacion": "reducir su función al entretenimiento invisibiliza su profundo peso político y su capacidad de planificación estructural.",
+          "enunciado": "existe un imaginario social que minimiza las capacidades de decisión de las juventudes.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "las asambleas juveniles son espacios convocados por los consejos para recoger las ideas directas de la comunidad.",
+          "a": "verdadero, sirven como mecanismo de retroalimentación donde el consejero escucha a las bases sociales que lo eligieron.",
+          "verdadero": true,
+          "justificacion": "las asambleas garantizan que el consejo no se aísle de la población y mantenga una comunicación bidireccional.",
+          "enunciado": "la representación política democrática exige mantener el diálogo constante con los electores.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "realizar un ejercicio de 'reportería comunitaria': entrevistar a dos jóvenes (familiares o vecinos) mayores de 18 años que habiten en el corregimiento. formularles tres preguntas: ¿conoce qué es y para qué sirve el Consejo Municipal de Juventud?, ¿alguna vez ha sido consultado sobre las políticas que afectan su territorio?, ¿cuál es la mayor urgencia que debería atender un consejero juvenil en esta zona? redactar un informe reflexivo de una página concluyendo sobre el nivel de desinformación o apropiación ciudadana evidenciado.",
+      "fundamentacion": "# CONSEJOS DE JUVENTUD: FUNCIONES, CONFORMACIÓN Y PARTICIPACIÓN\n\n## Arquitectura institucional de la representación juvenil\nEl Estado Social de Derecho exige que las instituciones adapten sus mecanismos para garantizar que todas las voces ciudadanas intervengan en el diseño de su propio futuro. Históricamente, las políticas públicas dirigidas a la juventud se diseñaban desde una visión adultocéntrica, asumiendo que los mayores poseían el conocimiento absoluto sobre lo que resultaba conveniente para las nuevas generaciones. Con la entrada en vigor del Estatuto de Ciudadanía Juvenil (Ley 1622 de 2013), esta verticalidad fue transformada. Se instituyeron los Consejos de Juventud como instancias colegiadas, autónomas y de carácter oficial, cuya esencia es fungir como interlocutores legítimos ante las administraciones municipales, departamentales y la presidencia de la república.\n\n## Estructura de conformación plural y democrática\nEl diseño electoral de los consejos es uno de los más avanzados en términos de inclusión democrática. Entendiendo que la juventud no es una masa homogénea, la ley determinó que las curules no pueden ser monopolizadas por el establecimiento político tradicional. Por tanto, la conformación se divide metodológicamente en tres grandes bloques sectoriales:\n* los partidos políticos: jóvenes que deciden afiliarse a estructuras ideológicas tradicionales y que aprenden la dinámica electoral clásica.\n* las organizaciones y procesos formales: representantes de grupos constituidos legalmente, como corporaciones ambientales, cabildos indígenas, mesas de víctimas o agrupaciones artísticas.\n* las listas de jóvenes independientes: ciudadanos que no militan en partidos políticos y que acceden a la contienda recolectando firmas en sus territorios, garantizando que el liderazgo genuinamente comunitario de los barrios populares y las zonas rurales logre incidir en la agenda estatal.\n\n## Funciones sustantivas y alcance del control social\nExiste un error conceptual recurrente al suponer que el consejero juvenil tiene poder de ordenación del gasto. La función de estas corporaciones no es administrativa, sino consultiva y de control. Sus competencias fundamentales radican en:\n* la formulación de agendas: construir y entregar a los alcaldes documentos técnicos que prioricen las necesidades del territorio.\n* el control social y la veeduría: fiscalizar cómo se invierten los recursos públicos destinados a este segmento poblacional, analizando la eficiencia y la transparencia en la contratación estatal.\n* la incidencia en la planificación: asegurar que los Planes de Desarrollo Municipal y los Planes de Ordenamiento Territorial (POT) incluyan enfoques diferenciales para las juventudes.\nSi bien no firman cheques ni ejecutan obras de infraestructura, su peso radica en la persuasión política y la movilización legal. Tienen el poder de convocar audiencias, citar a secretarios de despacho para rendir informes y elevar denuncias documentadas ante los organismos de control pertinentes.\n\n## Reconfiguración espacial y juventud en la ruralidad\nAl analizar estos mecanismos desde la perspectiva de la geografía humana y la planificación del territorio, los Consejos de Juventud adquieren una dimensión salvadora para las zonas rurales y los corregimientos alejados del casco urbano. En regiones marcadas por inequidades en la distribución de la tierra y falta de accesibilidad, la voz del joven campesino es vital para la supervivencia del tejido agrario. Cuando un consejero independiente de un entorno rural llega al concejo municipal, lleva consigo un mapa mental distinto: advierte sobre la deforestación, aboga por proyectos de soberanía alimentaria, y exige conectividad tecnológica para frenar la migración masiva de talentos hacia las ciudades. Esta participación incidente es la única garantía de un relevo generacional sostenible y pacífico frente a las desigualdades históricas del país.",
+      "lineatiempo": "2013: aprobación de la Ley 1622 que establece el Estatuto de Ciudadanía Juvenil y cimenta las bases de los consejos - 2018: reforma mediante la Ley 1885 para modernizar el proceso de elección y ampliar la cobertura institucional - 2021: realización de las elecciones unificadas y masivas de los Consejos Municipales de Juventud (CMJ) a nivel nacional bajo la dirección de la Registraduría, marcando un hito en la movilización de votantes adolescentes - 2022: instalación formal de los consejos municipales y del Consejo Nacional de Juventud, abriendo la puerta a la incidencia directa en el plan nacional de desarrollo."
+    }
+  ]
+}

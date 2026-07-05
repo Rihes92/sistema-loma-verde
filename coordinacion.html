@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Coordinación — Loma Verde</title>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+  nav.tabs{display:flex;gap:4px;background:var(--surface);padding:6px;overflow-x:auto;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+  nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button.active{background:var(--primary);color:#fff}
+  main{max-width:1100px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 14px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:160px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text)}
+  input:focus,select:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  button.btn.ok{background:var(--ok)}
+  button.btn.bad{background:var(--bad);color:#fff}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;font-weight:700;color:var(--primary)}
+  td.c,th.c{text-align:center}
+  .tableScroll{overflow-x:auto}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .hide{display:none!important}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700;background:#dbeafe;color:#1e3a8a}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+  #gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:50}
+  #gate .box{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:28px;max-width:340px;width:90%;text-align:center}
+</style>
+</head>
+<body>
+<script src="sync.js"></script>
+
+<div id="gate">
+  <div class="box">
+    <h2 style="color:var(--primary);margin-bottom:10px">🔒 Coordinación</h2>
+    <p class="desc">Esta sección es solo para coordinación. Ingresa la contraseña para continuar.</p>
+    <input type="password" id="gate-pass" placeholder="Contraseña" style="margin-bottom:10px">
+    <button class="btn" id="gate-btn" style="width:100%">Entrar</button>
+    <p class="desc" id="gate-error" style="color:var(--bad);margin-top:10px"></p>
+    <a href="index.html" style="display:block;margin-top:14px;color:var(--muted);font-size:.8rem">← Volver al portal</a>
+  </div>
+</div>
+
+<div id="app" class="hide">
+<header class="appbar">
+  <h1>Coordinación</h1>
+  <span class="pill">I.E. San José de Loma Verde</span>
+  <a href="index.html" class="portal-btn">← Portal</a>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="docentes">👩‍🏫 Docentes</button>
+  <button data-tab="asignaciones">📋 Asignaciones</button>
+</nav>
+
+<main>
+  <!-- ───────── DOCENTES ───────── -->
+  <section id="tab-docentes">
+    <div class="card">
+      <h2>Nuevo docente</h2>
+      <div class="row">
+        <label class="fld">Nombre completo<input id="d-nombre" placeholder="Ej: Ana Elvira Mendoza Cordero"></label>
+        <label class="fld">Sede<select id="d-sede"></select></label>
+        <label class="fld">Jornada<select id="d-jornada"><option>Única</option><option>Mañana</option><option>Tarde</option></select></label>
+        <label class="fld">Correo (opcional, para el login)<input id="d-email" type="email" placeholder="docente@correo.com"></label>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <button class="btn ok" id="btn-docente-save">💾 Guardar docente</button>
+        <button class="btn sec hide" id="btn-docente-cancel">Cancelar edición</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Docentes registrados</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="fld">Buscar<input id="d-buscar" placeholder="Nombre o sede…"></label>
+        <label class="fld">Sede<select id="d-filtro-sede"><option value="">Todas</option></select></label>
+      </div>
+      <div id="docentes-out"></div>
+    </div>
+  </section>
+
+  <!-- ───────── ASIGNACIONES ───────── -->
+  <section id="tab-asignaciones" class="hide">
+    <div class="card">
+      <h2>Asignar materia y curso a un docente</h2>
+      <p class="desc">Esto define qué le corresponde a cada docente: útil para los cruces de horario y, más adelante, para que cada quien vea solo lo suyo al ingresar.</p>
+      <div class="row">
+        <label class="fld">Docente<select id="a-docente"></select></label>
+        <label class="fld">Área<select id="a-area"></select></label>
+        <label class="fld">Materia<select id="a-materia"></select></label>
+      </div>
+      <div class="row">
+        <label class="fld">Grado<select id="a-grado"></select></label>
+        <label class="fld">Grupo<input id="a-grupo" placeholder="Ej: 1"></label>
+      </div>
+      <div style="margin-top:12px">
+        <button class="btn ok" id="btn-asig-save">+ Agregar asignación</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Asignaciones registradas</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="fld">Filtrar por docente<select id="a-filtro-docente"><option value="">Todos</option></select></label>
+        <label class="fld">Filtrar por materia<select id="a-filtro-materia"><option value="">Todas</option></select></label>
+      </div>
+      <div id="asignaciones-out"></div>
+    </div>
+  </section>
+</main>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  Coordinación — gestión de docentes y sus asignaciones
+//  (materia + grado/grupo que dicta cada uno).
+//
+//  IMPORTANTE sobre el candado de acceso: esto es una contraseña
+//  simple (compartida entre coordinadores), NO un login real por
+//  persona. Es un paso intermedio mientras se construye el sistema
+//  de login por docente (auth.js) con roles reales. Cambia la
+//  contraseña aquí abajo cuando quieras.
+// ═══════════════════════════════════════════════════════════════
+const COORD_PASSWORD = 'coordinacion2026';
+
+(function gate(){
+  if (sessionStorage.getItem('lv_coord_ok') === 'si') {
+    document.getElementById('gate').classList.add('hide');
+    document.getElementById('app').classList.remove('hide');
+    return;
+  }
+  document.getElementById('gate-btn').addEventListener('click', intentar);
+  document.getElementById('gate-pass').addEventListener('keydown', e=>{ if(e.key==='Enter') intentar(); });
+  function intentar(){
+    const val = document.getElementById('gate-pass').value;
+    if (val === COORD_PASSWORD) {
+      sessionStorage.setItem('lv_coord_ok', 'si');
+      document.getElementById('gate').classList.add('hide');
+      document.getElementById('app').classList.remove('hide');
+    } else {
+      document.getElementById('gate-error').textContent = 'Contraseña incorrecta.';
+    }
+  }
+})();
+
+// ---------- almacenamiento local (mismo patrón que el resto de la app) ----------
+const LS='lv_';
+function lsRead(s){ try{ return JSON.parse(localStorage.getItem(LS+s))||[]; }catch(_){ return []; } }
+function lsWrite(s,arr){
+  try{ localStorage.setItem(LS+s, JSON.stringify(arr)); }catch(_){}
+  if (typeof LV_SYNC!=='undefined' && Array.isArray(arr)) {
+    arr.forEach(r=>{ if(r && r.id) LV_SYNC.marcarCambio('lv_'+s, r); });
+  }
+}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+// ---------- catálogos ----------
+const SEDES=['PRINCIPAL','JUANA JULIA 1','JUANA JULIA 2','CRISTO ES MI LUZ','EL OYETO',
+  'FRONTERAS DE CORDOBA','LA OCTAVIA','LA POPA','MI PORVENIR ES CRISTO JESUS','SAN DIEGO',
+  'SAN FRANCISCO','SAN MIGUEL','VERDINAL','EL RINCON','LA GLORIA','CARLOS OSPINA'];
+
+const AREAS = [
+  { nombre:'Ciencias Sociales',            materias:['Sociales','Competencias Ciudadanas','Filosofía'] },
+  { nombre:'Ciencias Naturales',           materias:['Biología','Naturales','Química','Física'] },
+  { nombre:'Humanidades',                  materias:['Lengua Castellana','Inglés'] },
+  { nombre:'Matemáticas',                  materias:['Matemáticas','Geometría','Estadística'] },
+  { nombre:'Tecnología e Informática',     materias:['Tecnología e Informática'] },
+  { nombre:'Artística y Emprendimiento',   materias:['Artística y Emprendimiento'] },
+  { nombre:'Religión',                     materias:['Religión'] },
+  { nombre:'Ética',                        materias:['Ética'] },
+  { nombre:'Educación Física',             materias:['Educación Física'] },
+];
+
+const GRADOS=['Prejardín','Jardín','Transición','1°','2°','3°','4°','5°','6°','7°','8°','9°','10°','11°'];
+
+// ---------- estado ----------
+let docentes = lsRead('docentes');
+let asignaciones = lsRead('asignaciones');
+let docenteEditId = null;
+
+// ---------- tabs ----------
+document.getElementById('tabs').addEventListener('click', e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const t=b.dataset.tab;
+  document.getElementById('tab-docentes').classList.toggle('hide', t!=='docentes');
+  document.getElementById('tab-asignaciones').classList.toggle('hide', t!=='asignaciones');
+  if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); }
+});
+
+// ---------- Docentes ----------
+function fillSedeSelects(){
+  const opts = SEDES.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('');
+  document.getElementById('d-sede').innerHTML = opts;
+  document.getElementById('d-filtro-sede').innerHTML = '<option value="">Todas</option>'+opts;
+}
+document.getElementById('btn-docente-save').addEventListener('click', ()=>{
+  const nombre = document.getElementById('d-nombre').value.trim();
+  if(!nombre){ toast('Escribe el nombre del docente.'); return; }
+  const registro = {
+    id: docenteEditId || uid(),
+    nombre,
+    sede: document.getElementById('d-sede').value,
+    jornada: document.getElementById('d-jornada').value,
+    email: document.getElementById('d-email').value.trim(),
+    creado: Date.now()
+  };
+  if (docenteEditId) {
+    const i = docentes.findIndex(d=>d.id===docenteEditId);
+    if (i>=0) docentes[i] = {...docentes[i], ...registro};
+  } else {
+    docentes.push(registro);
+  }
+  lsWrite('docentes', docentes);
+  docenteEditId = null;
+  document.getElementById('btn-docente-cancel').classList.add('hide');
+  ['d-nombre','d-email'].forEach(id=>document.getElementById(id).value='');
+  renderDocentes(); fillDocenteSelects();
+  toast('Docente guardado');
+});
+document.getElementById('btn-docente-cancel').addEventListener('click', ()=>{
+  docenteEditId = null;
+  document.getElementById('btn-docente-cancel').classList.add('hide');
+  ['d-nombre','d-email'].forEach(id=>document.getElementById(id).value='');
+});
+window.editarDocente = id=>{
+  const d = docentes.find(x=>x.id===id); if(!d) return;
+  docenteEditId = id;
+  document.getElementById('d-nombre').value = d.nombre||'';
+  document.getElementById('d-sede').value = d.sede||'';
+  document.getElementById('d-jornada').value = d.jornada||'Única';
+  document.getElementById('d-email').value = d.email||'';
+  document.getElementById('btn-docente-cancel').classList.remove('hide');
+  window.scrollTo(0,0);
+};
+window.eliminarDocente = id=>{
+  if(!confirm('¿Eliminar este docente? También se eliminarán sus asignaciones registradas.')) return;
+  if (typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_docentes', {id, _eliminado:true});
+  docentes = docentes.filter(d=>d.id!==id);
+  lsWrite('docentes', docentes);
+  const asigDeEste = asignaciones.filter(a=>a.docenteId===id);
+  asigDeEste.forEach(a=>{ if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_asignaciones', {id:a.id, _eliminado:true}); });
+  asignaciones = asignaciones.filter(a=>a.docenteId!==id);
+  lsWrite('asignaciones', asignaciones);
+  renderDocentes(); fillDocenteSelects(); renderAsignaciones();
+  toast('Docente eliminado');
+};
+document.getElementById('d-buscar').addEventListener('input', renderDocentes);
+document.getElementById('d-filtro-sede').addEventListener('change', renderDocentes);
+function renderDocentes(){
+  const q = (document.getElementById('d-buscar').value||'').toLowerCase();
+  const sede = document.getElementById('d-filtro-sede').value;
+  let lista = docentes.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  if(q) lista = lista.filter(d=>(d.nombre||'').toLowerCase().includes(q)||(d.sede||'').toLowerCase().includes(q));
+  if(sede) lista = lista.filter(d=>d.sede===sede);
+  const out = document.getElementById('docentes-out');
+  if(!lista.length){ out.innerHTML = '<div class="empty">Aún no hay docentes registrados.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Nombre</th><th>Sede</th><th>Jornada</th><th class="c">Asignaciones</th><th class="c">Acciones</th>
+  </tr></thead><tbody>${lista.map(d=>{
+    const n = asignaciones.filter(a=>a.docenteId===d.id).length;
+    return `<tr>
+      <td><strong>${esc(d.nombre)}</strong>${d.email?`<div style="color:var(--muted);font-size:.75rem">${esc(d.email)}</div>`:''}</td>
+      <td>${esc(d.sede||'—')}</td>
+      <td>${esc(d.jornada||'—')}</td>
+      <td class="c"><span class="badge">${n}</span></td>
+      <td class="c">
+        <button class="btn sm sec" onclick="editarDocente('${d.id}')">✏️ Editar</button>
+        <button class="btn sm bad" onclick="eliminarDocente('${d.id}')">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+
+// ---------- Asignaciones ----------
+function fillDocenteSelects(){
+  const opts = docentes.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''))
+    .map(d=>`<option value="${d.id}">${esc(d.nombre)}${d.sede?' — '+esc(d.sede):''}</option>`).join('');
+  document.getElementById('a-docente').innerHTML = opts || '<option value="">(sin docentes registrados)</option>';
+  document.getElementById('a-filtro-docente').innerHTML = '<option value="">Todos</option>'+opts;
+}
+function fillAreaSelect(){
+  document.getElementById('a-area').innerHTML = AREAS.map(a=>`<option value="${esc(a.nombre)}">${esc(a.nombre)}</option>`).join('');
+  fillMateriaSelect();
+}
+function fillMateriaSelect(){
+  const area = AREAS.find(a=>a.nombre===document.getElementById('a-area').value) || AREAS[0];
+  document.getElementById('a-materia').innerHTML = area.materias.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+}
+function fillMateriaFiltro(){
+  const todas = AREAS.flatMap(a=>a.materias);
+  document.getElementById('a-filtro-materia').innerHTML = '<option value="">Todas</option>'+todas.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+}
+function fillGradoSelect(){
+  document.getElementById('a-grado').innerHTML = GRADOS.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join('');
+}
+document.getElementById('a-area').addEventListener('change', fillMateriaSelect);
+document.getElementById('btn-asig-save').addEventListener('click', ()=>{
+  const docenteId = document.getElementById('a-docente').value;
+  if(!docenteId){ toast('Registra o elige un docente primero.'); return; }
+  const grupo = document.getElementById('a-grupo').value.trim();
+  const registro = {
+    id: uid(), docenteId,
+    area: document.getElementById('a-area').value,
+    materia: document.getElementById('a-materia').value,
+    grado: document.getElementById('a-grado').value,
+    grupo,
+    creado: Date.now()
+  };
+  asignaciones.push(registro);
+  lsWrite('asignaciones', asignaciones);
+  document.getElementById('a-grupo').value='';
+  renderDocentes(); renderAsignaciones();
+  toast('Asignación agregada');
+});
+window.eliminarAsignacion = id=>{
+  if(!confirm('¿Eliminar esta asignación?')) return;
+  if (typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_asignaciones', {id, _eliminado:true});
+  asignaciones = asignaciones.filter(a=>a.id!==id);
+  lsWrite('asignaciones', asignaciones);
+  renderDocentes(); renderAsignaciones();
+  toast('Asignación eliminada');
+};
+document.getElementById('a-filtro-docente').addEventListener('change', renderAsignaciones);
+document.getElementById('a-filtro-materia').addEventListener('change', renderAsignaciones);
+function renderAsignaciones(){
+  const fd = document.getElementById('a-filtro-docente').value;
+  const fm = document.getElementById('a-filtro-materia').value;
+  let lista = asignaciones.slice();
+  if(fd) lista = lista.filter(a=>a.docenteId===fd);
+  if(fm) lista = lista.filter(a=>a.materia===fm);
+  lista.sort((a,b)=>(a.grado||'').localeCompare(b.grado||''));
+  const out = document.getElementById('asignaciones-out');
+  if(!lista.length){ out.innerHTML = '<div class="empty">Sin asignaciones con este filtro.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Docente</th><th>Área</th><th>Materia</th><th>Grado</th><th>Grupo</th><th class="c">Acciones</th>
+  </tr></thead><tbody>${lista.map(a=>{
+    const d = docentes.find(x=>x.id===a.docenteId);
+    return `<tr>
+      <td>${esc(d?d.nombre:'(docente eliminado)')}</td>
+      <td>${esc(a.area)}</td>
+      <td>${esc(a.materia)}</td>
+      <td>${esc(a.grado)}</td>
+      <td>${esc(a.grupo||'—')}</td>
+      <td class="c"><button class="btn sm bad" onclick="eliminarAsignacion('${a.id}')">🗑️</button></td>
+    </tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+
+// ---------- arranque ----------
+fillSedeSelects(); fillDocenteSelects(); fillAreaSelect(); fillGradoSelect(); fillMateriaFiltro();
+renderDocentes(); renderAsignaciones();
+</script>
+</body>
+</html>
