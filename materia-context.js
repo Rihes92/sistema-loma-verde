@@ -45,13 +45,25 @@ const LV_CTX = (() => {
     if (!materia) return; // sin contexto: no se muestra nada (modo clásico)
     const header = document.querySelector('header.appbar');
     if (!header) return;
+    const portalBtn = header.querySelector('a.portal-btn');
+
+    // Botón "Atrás": vuelve a la página de módulos de esta materia
+    // (materia-hub.html), sin pasar por el portal general. Así se puede
+    // ir y venir entre módulos de la misma materia sin perder el contexto.
+    const atras = document.createElement('a');
+    atras.href = `../materia-hub.html?area=${encodeURIComponent(area || '')}&materia=${encodeURIComponent(materia)}`;
+    atras.className = 'portal-btn';
+    atras.title = 'Volver a los módulos de esta materia';
+    atras.style.cssText = 'margin-left:0;order:-1';
+    atras.innerHTML = '← Atrás';
+    header.insertBefore(atras, header.firstChild);
+
     const pill = document.createElement('span');
     pill.className = 'pill';
     pill.style.cssText = 'background:rgba(255,255,255,.22);cursor:pointer;display:flex;align-items:center;gap:5px';
     pill.title = 'Cambiar de materia';
     pill.innerHTML = `📍 ${materia}`;
     pill.onclick = limpiar;
-    const portalBtn = header.querySelector('a.portal-btn');
     if (portalBtn) header.insertBefore(pill, portalBtn);
     else header.appendChild(pill);
   }
