@@ -16,43 +16,60 @@
 //     botón para volver al portal y cambiarla.
 // ═══════════════════════════════════════════════════════════════
 
-// ── Migración de cursos sin materia: los creados antes de que existiera
-//    el campo 'materia' quedaban sin etiqueta, y por diseño (ver filtrar()
-//    abajo) un registro sin materia se muestra en TODAS las materias para
-//    no perder datos viejos. Eso causaba que borrar un curso "viejo" desde
-//    cualquier materia lo borrara de todas — porque en realidad era el
-//    mismo registro compartido. Aquí se etiquetan con 'Sociales' (la
-//    materia original de la app), para que queden aislados como cualquier
-//    otro curso.
+// ── Migración de datos sin materia: cualquier registro (curso, planeador,
+//    examen, pregunta del banco...) creado antes de que existiera el campo
+//    'materia' queda sin etiqueta, y por diseño (ver filtrar() abajo) un
+//    registro sin materia se muestra en TODAS las materias para no perder
+//    datos viejos. Eso causa que borrar algo "viejo" desde cualquier
+//    materia lo borre de todas — porque en realidad es el mismo registro
+//    compartido. Aquí se etiquetan con 'Sociales' (la materia original de
+//    la app), para que queden aislados como cualquier registro nuevo.
+//
+//    Cubre TODAS las claves de localStorage que ahora usan materia, no
+//    solo cursos — el mismo problema se repite en cada una si se dejan sin
+//    migrar (planeadores, exámenes 6°-10°, simulacros 11°, banco de
+//    preguntas de ambos).
 //
 //    IMPORTANTE: esto NO corre solo una vez con un flag — corre cada vez
 //    que sync.js termina de bajar datos frescos de Supabase (ver sync.js,
-//    que llama a window.lvMigrarCursosSinMateria() después de cada
-//    descargarTodo()). Es seguro repetirlo: solo toca cursos que aún no
-//    tengan materia, así que si ya están etiquetados no hace nada. La
+//    que llama a window.lvMigrarMateria() después de cada descargarTodo()).
+//    Es seguro repetirlo: solo toca registros que aún no tengan materia. La
 //    versión anterior marcaba "ya se hizo" apenas cargaba la página, ANTES
 //    de que la descarga asíncrona de Supabase hubiera llegado — por eso
 //    nunca llegó a etiquetar nada realmente en algunos dispositivos.
-window.lvMigrarCursosSinMateria = function () {
+const LV_MIGRAR_CLAVES = [
+  { lsKey: 'lv_cursos',      syncKey: 'lv_cursos',      area: true  },
+  { lsKey: 'lv_planeadores', syncKey: 'lv_planeadores', area: false },
+  { lsKey: 'lv_examenes',    syncKey: 'lv_examenes',     area: false },
+  { lsKey: 'lv11_examenes',  syncKey: 'lv11_examenes',   area: false },
+  { lsKey: 'lv_banco',       syncKey: 'lv_banco',        area: false },
+  { lsKey: 'lv11_banco',     syncKey: null,              area: false },
+];
+
+window.lvMigrarMateria = function () {
   try {
-    const cursos = JSON.parse(localStorage.getItem('lv_cursos') || 'null');
-    if (!Array.isArray(cursos) || !cursos.length) return;
-    const migrados = [];
-    cursos.forEach(c => {
-      let cambiado = false;
-      if (!c.materia) { c.materia = 'Sociales'; cambiado = true; }
-      if (!c.area) { c.area = 'Ciencias Sociales'; cambiado = true; }
-      if (cambiado) migrados.push(c);
+    LV_MIGRAR_CLAVES.forEach(({ lsKey, syncKey, area }) => {
+      const arr = JSON.parse(localStorage.getItem(lsKey) || 'null');
+      if (!Array.isArray(arr) || !arr.length) return;
+      const migrados = [];
+      arr.forEach(c => {
+        let cambiado = false;
+        if (!c.materia) { c.materia = 'Sociales'; cambiado = true; }
+        if (area && !c.area) { c.area = 'Ciencias Sociales'; cambiado = true; }
+        if (cambiado) migrados.push(c);
+      });
+      if (!migrados.length) return;
+      localStorage.setItem(lsKey, JSON.stringify(arr));
+      // Reenviar a Supabase lo migrado, para que la etiqueta quede también
+      // en la nube y no se pierda al sincronizar con otro dispositivo.
+      if (syncKey && typeof LV_SYNC !== 'undefined') {
+        migrados.forEach(c => LV_SYNC.marcarCambio(syncKey, c));
+      }
     });
-    if (!migrados.length) return;
-    localStorage.setItem('lv_cursos', JSON.stringify(cursos));
-    // Reenviar a Supabase los cursos migrados, para que la etiqueta quede
-    // también en la nube y no se pierda al sincronizar con otro dispositivo.
-    if (typeof LV_SYNC !== 'undefined') {
-      migrados.forEach(c => LV_SYNC.marcarCambio('lv_cursos', c));
-    }
   } catch (_) {}
 };
+// Alias por compatibilidad con el nombre anterior.
+window.lvMigrarCursosSinMateria = window.lvMigrarMateria;
 
 const LV_CTX = (() => {
   const params = new URLSearchParams(location.search);
