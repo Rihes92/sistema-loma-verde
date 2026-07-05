@@ -16,50 +16,43 @@
 //     botón para volver al portal y cambiarla.
 // ═══════════════════════════════════════════════════════════════
 
-// ── Migración única: cursos creados antes de que existiera el campo
-//    'materia' quedaban sin etiqueta, y por diseño (ver filtrar() abajo)
-//    los registros sin materia se mostraban en TODAS las materias para
-//    no perder datos viejos. Eso causaba que borrar un curso "viejo"
-//    desde cualquier materia lo borrara de todas — porque en realidad
-//    era el mismo registro compartido. Aquí se etiquetan una sola vez
-//    con 'Sociales' (la materia original de la app), para que queden
-//    aislados como cualquier otro curso.
-(function migrarCursosSinMateria() {
+// ── Migración de cursos sin materia: los creados antes de que existiera
+//    el campo 'materia' quedaban sin etiqueta, y por diseño (ver filtrar()
+//    abajo) un registro sin materia se muestra en TODAS las materias para
+//    no perder datos viejos. Eso causaba que borrar un curso "viejo" desde
+//    cualquier materia lo borrara de todas — porque en realidad era el
+//    mismo registro compartido. Aquí se etiquetan con 'Sociales' (la
+//    materia original de la app), para que queden aislados como cualquier
+//    otro curso.
+//
+//    IMPORTANTE: esto NO corre solo una vez con un flag — corre cada vez
+//    que sync.js termina de bajar datos frescos de Supabase (ver sync.js,
+//    que llama a window.lvMigrarCursosSinMateria() después de cada
+//    descargarTodo()). Es seguro repetirlo: solo toca cursos que aún no
+//    tengan materia, así que si ya están etiquetados no hace nada. La
+//    versión anterior marcaba "ya se hizo" apenas cargaba la página, ANTES
+//    de que la descarga asíncrona de Supabase hubiera llegado — por eso
+//    nunca llegó a etiquetar nada realmente en algunos dispositivos.
+window.lvMigrarCursosSinMateria = function () {
   try {
-    if (localStorage.getItem('lv_migracion_materia_v1') === 'ok') return;
     const cursos = JSON.parse(localStorage.getItem('lv_cursos') || 'null');
+    if (!Array.isArray(cursos) || !cursos.length) return;
     const migrados = [];
-    if (Array.isArray(cursos) && cursos.length) {
-      cursos.forEach(c => {
-        let cambiado = false;
-        if (!c.materia) { c.materia = 'Sociales'; cambiado = true; }
-        if (!c.area) { c.area = 'Ciencias Sociales'; cambiado = true; }
-        if (cambiado) migrados.push(c);
-      });
-      if (migrados.length) localStorage.setItem('lv_cursos', JSON.stringify(cursos));
-    }
-    localStorage.setItem('lv_migracion_materia_v1', 'ok');
-
-    // Reenviar a Supabase los cursos migrados, para que la etiqueta
-    // 'materia' quede también en la nube y no se pierda al sincronizar
-    // con otro dispositivo. sync.js carga justo después de este script,
-    // así que se espera a que LV_SYNC exista.
-    if (migrados.length) {
-      const reintentar = () => {
-        if (typeof LV_SYNC !== 'undefined') {
-          migrados.forEach(c => LV_SYNC.marcarCambio('lv_cursos', c));
-        } else {
-          setTimeout(reintentar, 300);
-        }
-      };
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', reintentar);
-      } else {
-        reintentar();
-      }
+    cursos.forEach(c => {
+      let cambiado = false;
+      if (!c.materia) { c.materia = 'Sociales'; cambiado = true; }
+      if (!c.area) { c.area = 'Ciencias Sociales'; cambiado = true; }
+      if (cambiado) migrados.push(c);
+    });
+    if (!migrados.length) return;
+    localStorage.setItem('lv_cursos', JSON.stringify(cursos));
+    // Reenviar a Supabase los cursos migrados, para que la etiqueta quede
+    // también en la nube y no se pierda al sincronizar con otro dispositivo.
+    if (typeof LV_SYNC !== 'undefined') {
+      migrados.forEach(c => LV_SYNC.marcarCambio('lv_cursos', c));
     }
   } catch (_) {}
-})();
+};
 
 const LV_CTX = (() => {
   const params = new URLSearchParams(location.search);

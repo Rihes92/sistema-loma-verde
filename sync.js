@@ -175,6 +175,14 @@ const LV_SYNC = (() => {
       }
     }
     console.log('[LV Sync] ✅ Descarga completa');
+
+    // Con los cursos ya frescos en localStorage, etiquetar los que
+    // todavía no tengan materia (ver materia-context.js). Se hace aquí,
+    // justo después de la descarga real, para evitar la condición de
+    // carrera donde la migración corría antes de que llegaran los datos.
+    if (typeof window.lvMigrarCursosSinMateria === 'function') {
+      window.lvMigrarCursosSinMateria();
+    }
   }
 
   // ── Badge visual de estado ───────────────────────────────────
