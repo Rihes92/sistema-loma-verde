@@ -436,17 +436,18 @@ $('#tabs').addEventListener('click',e=>{
 $('#btn-add-curso').addEventListener('click',async()=>{
   const nombre=$('#c-nombre').value.trim();
   if(!nombre)return toast('Escribe el nombre del curso');
-  const curso={id:uid(),nombre,grado:$('#c-grado').value,grupo:$('#c-grupo').value.trim(),area:'Ciencias Sociales',creado:Date.now()};
+  const curso={id:uid(),nombre,grado:$('#c-grado').value,grupo:$('#c-grupo').value.trim(),area:(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'Ciencias Sociales',materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',creado:Date.now()};
   await dbPut('cursos',curso); cursos.push(curso);
   $('#c-nombre').value='';$('#c-grupo').value='';
   toast('Curso creado'); renderCursos(); fillCursoSelects();
 });
 function renderCursos(){
   const el=$('#cursos-list');
-  if(!cursos.length){el.innerHTML='<div class="empty">Aún no hay cursos. Crea el primero arriba.</div>';return;}
+  const cursosVista=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;
+  if(!cursosVista.length){el.innerHTML='<div class="empty">Aún no hay cursos. Crea el primero arriba.</div>';return;}
   el.innerHTML=`<div class="tableScroll"><table><thead><tr>
     <th>Curso</th><th>Grado</th><th class="c">Estudiantes</th><th class="c no-print">Acciones</th></tr></thead><tbody>
-    ${cursos.map(c=>{const n=estudiantes.filter(e=>e.cursoId===c.id).length;return `<tr>
+    ${cursosVista.map(c=>{const n=estudiantes.filter(e=>e.cursoId===c.id).length;return `<tr>
       <td><strong>${esc(c.nombre)}</strong></td><td>${esc(c.grado)} ${esc(c.grupo||'')}</td>
       <td class="c">${n}</td>
       <td class="c no-print">
@@ -469,7 +470,8 @@ window.goPlanilla=id=>{
 };
 
 function fillCursoSelects(){
-  const opts=cursos.map(c=>`<option value="${c.id}">${esc(c.nombre)} (${esc(c.grado)}${c.grupo?' '+esc(c.grupo):''})</option>`).join('');
+  const cursosVista=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;
+  const opts=cursosVista.map(c=>`<option value="${c.id}">${esc(c.nombre)} (${esc(c.grado)}${c.grupo?' '+esc(c.grupo):''})</option>`).join('');
   ['#p-curso','#r-curso','#pr-curso'].forEach(sel=>{const cur=$(sel).value;$(sel).innerHTML=opts;if(cur)$(sel).value=cur;});
 }
 
@@ -858,6 +860,7 @@ const stamp=()=>new Date().toISOString().slice(0,10);
 // Captura global para que ningún error quede silencioso
 window.addEventListener('unhandledrejection',e=>{console.error(e.reason);toast('Error: '+((e.reason&&e.reason.message)||e.reason));});
 </script>
+<script src="../materia-context.js"></script>
 <script src="../sync.js"></script>
 </body>
 </html>
