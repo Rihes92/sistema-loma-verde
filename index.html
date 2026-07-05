@@ -81,6 +81,26 @@
   .no-results.show{display:block}
   @media(max-width:480px){.grid{grid-template-columns:1fr}}
 
+  /* ── ÁREAS ── */
+  .areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .area-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .area-head{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;user-select:none}
+  .area-head:hover{background:#f8fafc}
+  .area-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:var(--a-bg,#eff6ff);flex-shrink:0}
+  .area-name{font-weight:700;font-size:.95rem;flex:1}
+  .area-count{font-size:.72rem;color:var(--muted);font-weight:600;white-space:nowrap}
+  .area-caret{color:#94a3b8;transition:transform .15s;margin-left:4px}
+  .area-card.open .area-caret{transform:rotate(180deg)}
+  .area-body{display:none;padding:0 18px 16px;flex-wrap:wrap;gap:8px}
+  .area-card.open .area-body{display:flex}
+  .materia-chip{background:var(--a-bg,#eff6ff);color:var(--a-color,#1e40af);border:1px solid transparent;padding:7px 13px;border-radius:999px;font-size:.8rem;font-weight:600;cursor:pointer;transition:filter .12s}
+  .materia-chip:hover{filter:brightness(.94)}
+  .materia-hub{display:none;padding:6px 18px 16px;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--border);margin-top:4px}
+  .materia-hub.show{display:flex}
+  .materia-hub a{font-size:.76rem;font-weight:600;color:var(--text);text-decoration:none;background:#f1f5f9;padding:6px 11px;border-radius:8px;display:inline-flex;align-items:center;gap:5px}
+  .materia-hub a:hover{background:#e2e8f0}
+  .materia-hub-title{width:100%;font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:2px 0 2px}
+
   /* ── Dashboard ─────────────────────────────────────── */
   .dash-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:box-shadow .15s,transform .1s;box-shadow:var(--shadow)}
   .dash-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.12);transform:translateY(-1px)}
@@ -148,7 +168,10 @@
 </div>
 
 <main>
-  <div class="sec-label">Módulos</div>
+  <div class="sec-label">Áreas académicas</div>
+  <div class="areas-grid" id="areas-grid"></div>
+
+  <div class="sec-label" style="margin-top:32px">Módulos</div>
   <div class="grid" id="grid">
 
     <a href="modulos/01-calificaciones.html" class="mod-card c-cal" data-kw="calificaciones notas planilla reportes boletín estudiantes cursos">
@@ -310,6 +333,67 @@
 </footer>
 
 <script>
+// ── ÁREAS ACADÉMICAS ──────────────────────────────────────────
+// Cada docente ve estas áreas; al elegir una materia se abren los
+// mismos módulos de siempre, pasando ?area=&materia= en la URL.
+// (El filtrado real de datos por materia dentro de cada módulo es
+// el siguiente paso — por ahora esto organiza la navegación.)
+const AREAS = [
+  { nombre:'Ciencias Sociales',            icono:'🌎', color:'#1e3a8a', bg:'#dbeafe', materias:['Sociales','Competencias Ciudadanas'] },
+  { nombre:'Ciencias Naturales',           icono:'🔬', color:'#065f46', bg:'#d1fae5', materias:['Biología','Naturales','Química','Física'] },
+  { nombre:'Humanidades',                  icono:'📖', color:'#7c3aed', bg:'#ede9fe', materias:['Lengua Castellana','Inglés'] },
+  { nombre:'Matemáticas',                  icono:'📐', color:'#b45309', bg:'#fef3c7', materias:['Matemáticas','Geometría','Estadística'] },
+  { nombre:'Tecnología e Informática',     icono:'💻', color:'#0e7490', bg:'#cffafe', materias:['Tecnología e Informática'] },
+  { nombre:'Artística y Emprendimiento',   icono:'🎨', color:'#be185d', bg:'#fce7f3', materias:['Artística y Emprendimiento'] },
+  { nombre:'Religión',                     icono:'🕊️', color:'#4338ca', bg:'#e0e7ff', materias:['Religión'] },
+  { nombre:'Ética',                        icono:'🤝', color:'#166534', bg:'#dcfce7', materias:['Ética'] },
+  { nombre:'Educación Física',             icono:'⚽', color:'#9a3412', bg:'#ffedd5', materias:['Educación Física'] },
+];
+
+const MODULOS_HUB = [
+  { icon:'📊', label:'Calificaciones', href:'modulos/01-calificaciones.html' },
+  { icon:'🗂️', label:'Planeador',      href:'modulos/02-planeador.html' },
+  { icon:'📝', label:'Exámenes',       href:'modulos/03-examenes.html' },
+  { icon:'✅', label:'Asistencia',     href:'modulos/05-asistencia.html' },
+  { icon:'✉️', label:'Comunicados',    href:'modulos/06-comunicados.html' },
+  { icon:'🗓️', label:'Horario',        href:'modulos/07-horario.html' },
+  { icon:'📅', label:'Eventos',        href:'modulos/08-eventos.html' },
+];
+
+(function(){
+  const wrap = document.getElementById('areas-grid');
+  wrap.innerHTML = AREAS.map((area, ai) => `
+    <div class="area-card" id="area-${ai}">
+      <div class="area-head" onclick="toggleArea(${ai})">
+        <div class="area-icon" style="background:${area.bg}">${area.icono}</div>
+        <div class="area-name">${area.nombre}</div>
+        <div class="area-count">${area.materias.length} ${area.materias.length===1?'materia':'materias'}</div>
+        <div class="area-caret">▾</div>
+      </div>
+      <div class="area-body">
+        ${area.materias.map((m,mi)=>`<div class="materia-chip" style="background:${area.bg};color:${area.color}" onclick="toggleMateria(${ai},${mi},event)">${m}</div>`).join('')}
+      </div>
+      ${area.materias.map((m,mi)=>`
+        <div class="materia-hub" id="hub-${ai}-${mi}">
+          <div class="materia-hub-title">${area.nombre} · ${m}</div>
+          ${MODULOS_HUB.map(mod=>`<a href="${mod.href}?area=${encodeURIComponent(area.nombre)}&materia=${encodeURIComponent(m)}">${mod.icon} ${mod.label}</a>`).join('')}
+        </div>`).join('')}
+    </div>
+  `).join('');
+})();
+
+function toggleArea(ai){
+  document.getElementById('area-'+ai).classList.toggle('open');
+}
+function toggleMateria(ai, mi, e){
+  e.stopPropagation();
+  // Cierra otros hubs abiertos en la misma área para no saturar
+  document.querySelectorAll(`#area-${ai} .materia-hub`).forEach(h=>{
+    if(h.id!==`hub-${ai}-${mi}`) h.classList.remove('show');
+  });
+  document.getElementById(`hub-${ai}-${mi}`).classList.toggle('show');
+}
+
 // ── FECHA ─────────────────────────────────────────────────────
 (function(){
   const d=new Date();
