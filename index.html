@@ -76,30 +76,31 @@
   footer{text-align:center;padding:20px;color:var(--muted);font-size:.76rem;border-top:1px solid var(--border)}
 
   /* ── MISC ── */
-  .mod-card.hidden{display:none}
+  .mod-card.hidden,.area-card.hidden{display:none}
   .no-results{text-align:center;padding:36px;color:var(--muted);font-size:.9rem;display:none}
   .no-results.show{display:block}
   @media(max-width:480px){.grid{grid-template-columns:1fr}}
 
   /* ── ÁREAS ── */
-  .areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
-  .area-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-  .area-head{display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;user-select:none}
-  .area-head:hover{background:#f8fafc}
-  .area-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;background:var(--a-bg,#eff6ff);flex-shrink:0}
-  .area-name{font-weight:700;font-size:.95rem;flex:1}
-  .area-count{font-size:.72rem;color:var(--muted);font-weight:600;white-space:nowrap}
-  .area-caret{color:#94a3b8;transition:transform .15s;margin-left:4px}
+  .areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .area-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .15s,transform .15s}
+  .area-card:hover{box-shadow:0 10px 28px rgba(0,0,0,.1);transform:translateY(-2px)}
+  .area-card.open{box-shadow:0 10px 28px rgba(0,0,0,.12)}
+  .area-head{display:flex;align-items:center;gap:16px;padding:22px 22px;cursor:pointer;user-select:none}
+  .area-icon{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--a-bg,#eff6ff);flex-shrink:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)}
+  .area-name{font-weight:800;font-size:1.18rem;flex:1;letter-spacing:-.01em;color:var(--a-color,var(--text))}
+  .area-count{font-size:.74rem;color:var(--muted);font-weight:700;white-space:nowrap;text-transform:uppercase;letter-spacing:.03em}
+  .area-caret{color:#94a3b8;transition:transform .15s;margin-left:4px;font-size:1.1rem}
   .area-card.open .area-caret{transform:rotate(180deg)}
-  .area-body{display:none;padding:0 18px 16px;flex-wrap:wrap;gap:8px}
+  .area-body{display:none;padding:0 22px 22px;flex-wrap:wrap;gap:9px}
   .area-card.open .area-body{display:flex}
-  .materia-chip{background:var(--a-bg,#eff6ff);color:var(--a-color,#1e40af);border:1px solid transparent;padding:7px 13px;border-radius:999px;font-size:.8rem;font-weight:600;cursor:pointer;transition:filter .12s}
-  .materia-chip:hover{filter:brightness(.94)}
-  .materia-hub{display:none;padding:6px 18px 16px;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--border);margin-top:4px}
+  .materia-chip{background:var(--a-bg,#eff6ff);color:var(--a-color,#1e40af);border:1px solid transparent;padding:9px 16px;border-radius:999px;font-size:.85rem;font-weight:700;cursor:pointer;transition:filter .12s,transform .12s}
+  .materia-chip:hover{filter:brightness(.94);transform:translateY(-1px)}
+  .materia-hub{display:none;padding:8px 22px 20px;flex-wrap:wrap;gap:8px;border-top:1px dashed var(--border);margin-top:4px}
   .materia-hub.show{display:flex}
-  .materia-hub a{font-size:.76rem;font-weight:600;color:var(--text);text-decoration:none;background:#f1f5f9;padding:6px 11px;border-radius:8px;display:inline-flex;align-items:center;gap:5px}
+  .materia-hub a{font-size:.8rem;font-weight:700;color:var(--text);text-decoration:none;background:#f1f5f9;padding:8px 13px;border-radius:9px;display:inline-flex;align-items:center;gap:6px}
   .materia-hub a:hover{background:#e2e8f0}
-  .materia-hub-title{width:100%;font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin:2px 0 2px}
+  .materia-hub-title{width:100%;font-size:.72rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin:2px 0 4px}
 
   /* ── Dashboard ─────────────────────────────────────── */
   .dash-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:box-shadow .15s,transform .1s;box-shadow:var(--shadow)}
@@ -164,114 +165,13 @@
   <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px">
     <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
   </svg>
-  <input class="search-box" type="search" placeholder="Buscar módulo…" id="search-input" autocomplete="off">
+  <input class="search-box" type="search" placeholder="Buscar área o materia…" id="search-input" autocomplete="off">
 </div>
 
 <main>
   <div class="sec-label">Áreas académicas</div>
   <div class="areas-grid" id="areas-grid"></div>
-
-  <div class="sec-label" style="margin-top:32px">Módulos</div>
-  <div class="grid" id="grid">
-
-    <a href="modulos/01-calificaciones.html" class="mod-card c-cal" data-kw="calificaciones notas planilla reportes boletín estudiantes cursos">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        </div>
-        <div class="mod-title">Calificaciones y Reportes</div>
-      </div>
-      <div class="mod-desc">Planilla de notas por periodo, desempeño cognitivo/autoevaluación/coevaluación, importación desde Excel.</div>
-      <div class="mod-footer"><span class="mod-tag">📊 Notas</span><span class="mod-arrow">→</span></div>
-    </a>
-
-    <a href="modulos/02-planeador.html" class="mod-card c-plan" data-kw="planeador clases secuencia didáctica DBA estándares malla período">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <div class="mod-title">Planeador de Clases</div>
-      </div>
-      <div class="mod-desc">Crea y gestiona planeadores por grado y período. Importa JSON de Claude, visualiza e imprime.</div>
-      <div class="mod-footer"><span class="mod-tag">🗂️ Planeación</span><span class="mod-arrow">→</span></div>
-    </a>
-
-    <a href="modulos/03-examenes.html" class="mod-card c-ex3" data-kw="exámenes simulacros 6 7 8 9 10 banco preguntas opción múltiple hoja respuesta">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div class="mod-title">Exámenes · 6° a 10°</div>
-      </div>
-      <div class="mod-desc">Opción múltiple, V/F y abiertos. Banco de preguntas, hoja de respuestas e impresión. Calificación automática 85/15.</div>
-      <div class="mod-footer"><span class="mod-tag">📝 6°–10°</span><span class="mod-arrow">→</span></div>
-    </a>
-
-    <a href="modulos/04-examenes-11.html" class="mod-card c-ex11" data-kw="exámenes 11 saber icfes simulacro competencias afirmaciones">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <div class="mod-title">Simulacros Saber 11°</div>
-      </div>
-      <div class="mod-desc">Tipo ICFES, alineado a la Matriz Saber 11. Clasifica por competencia y afirmación. Cronometrado y en línea.</div>
-      <div class="mod-footer"><span class="mod-tag">🎯 ICFES</span><span class="mod-arrow">→</span></div>
-    </a>
-
-    <a href="modulos/05-asistencia.html" class="mod-card c-asi" data-kw="asistencia fallas tardanzas excusas registro calendario estadísticas">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <div class="mod-title">Control de Asistencia</div>
-      </div>
-      <div class="mod-desc">Registro P/F/T/E, calendario mensual, estadísticas por estudiante. Exportación CSV. Comparte cursos con Comunicados.</div>
-      <div class="mod-footer"><span class="mod-tag">✅ Asistencia</span><span class="mod-arrow">→</span></div>
-    </a>
-
-    <a href="modulos/06-comunicados.html" class="mod-card c-com" data-kw="comunicados citaciones cartas whatsapp padres felicitación mejoramiento circular">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div class="mod-title">Comunicados y Citaciones</div>
-      </div>
-      <div class="mod-desc">4 plantillas: citación, felicitación, mejoramiento, circular. Preview WhatsApp + carta imprimible. Historial completo.</div>
-      <div class="mod-footer"><span class="mod-tag">✉️ Comunicados</span><span class="mod-arrow">→</span></div>
-    </a>
-
-    <a href="modulos/07-horario.html" class="mod-card c-hor" data-kw="horario clases semanal bloques horas schedule tiempo">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px">
-            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-            <line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/>
-          </svg>
-        </div>
-        <div class="mod-title">Horario Semanal</div>
-      </div>
-      <div class="mod-desc">Cuadrícula Lun–Vie · 7 bloques de 50 min · color por asignatura. Guarda automáticamente. Imprimible.</div>
-      <div class="mod-footer"><span class="mod-tag">🗓️ Horario</span><span class="mod-arrow">→</span></div>
-    </a>
-    <a href="modulos/08-eventos.html" class="mod-card c-evt" data-kw="eventos calendario reuniones padres académico festivos recordatorio">
-      <div class="mod-top">
-        <div class="mod-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px">
-            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-            <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-            <circle cx="8" cy="15" r="1.5" fill="currentColor"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/>
-            <circle cx="16" cy="15" r="1.5" fill="currentColor"/>
-          </svg>
-        </div>
-        <div class="mod-title">Eventos Institucionales</div>
-      </div>
-      <div class="mod-desc">Calendario de reuniones, fechas académicas, festivos y eventos externos. Recordatorio automático en el portal.</div>
-      <div class="mod-footer"><span class="mod-tag">📅 Calendario</span><span class="mod-tag">🔔 Recordatorios</span><span class="mod-arrow">→</span></div>
-    </a>
-
-  </div>
-  <div class="no-results" id="no-results">No se encontró ningún módulo con ese término.</div>
+  <div class="no-results" id="no-results">No se encontró ningún área o materia con ese término.</div>
 
 
   <div class="sec-label" style="margin-top:36px">📊 Resumen del sistema</div>
@@ -354,6 +254,7 @@ const MODULOS_HUB = [
   { icon:'📊', label:'Calificaciones', href:'modulos/01-calificaciones.html' },
   { icon:'🗂️', label:'Planeador',      href:'modulos/02-planeador.html' },
   { icon:'📝', label:'Exámenes',       href:'modulos/03-examenes.html' },
+  { icon:'🎯', label:'Simulacros 11°', href:'modulos/04-examenes-11.html' },
   { icon:'✅', label:'Asistencia',     href:'modulos/05-asistencia.html' },
   { icon:'✉️', label:'Comunicados',    href:'modulos/06-comunicados.html' },
   { icon:'🗓️', label:'Horario',        href:'modulos/07-horario.html' },
@@ -363,10 +264,10 @@ const MODULOS_HUB = [
 (function(){
   const wrap = document.getElementById('areas-grid');
   wrap.innerHTML = AREAS.map((area, ai) => `
-    <div class="area-card" id="area-${ai}">
+    <div class="area-card" id="area-${ai}" data-kw="${(area.nombre+' '+area.materias.join(' ')).toLowerCase()}">
       <div class="area-head" onclick="toggleArea(${ai})">
         <div class="area-icon" style="background:${area.bg}">${area.icono}</div>
-        <div class="area-name">${area.nombre}</div>
+        <div class="area-name" style="color:${area.color}">${area.nombre}</div>
         <div class="area-count">${area.materias.length} ${area.materias.length===1?'materia':'materias'}</div>
         <div class="area-caret">▾</div>
       </div>
@@ -405,14 +306,15 @@ function toggleMateria(ai, mi, e){
 // ── BÚSQUEDA ──────────────────────────────────────────────────
 document.getElementById('search-input').addEventListener('input',function(){
   const q=this.value.toLowerCase().trim();
-  const cards=document.querySelectorAll('.mod-card');
+  const cards=document.querySelectorAll('.area-card');
   let v=0;
   cards.forEach(c=>{
-    const hit=!q||(c.dataset.kw+' '+c.textContent).toLowerCase().includes(q);
+    const hit=!q||(c.dataset.kw||'').includes(q);
     c.classList.toggle('hidden',!hit);
-    if(hit)v++;
+    if(hit){v++; if(q)c.classList.add('open');}
+    else c.classList.remove('open');
   });
-  document.getElementById('no-results').classList.toggle('show',q&&v===0);
+  document.getElementById('no-results').classList.toggle('show',!!q&&v===0);
 });
 
 // ── ACTIVIDAD RECIENTE ────────────────────────────────────────
