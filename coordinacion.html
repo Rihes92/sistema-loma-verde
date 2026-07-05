@@ -74,6 +74,7 @@
 <nav class="tabs" id="tabs">
   <button class="active" data-tab="docentes">👩‍🏫 Docentes</button>
   <button data-tab="asignaciones">📋 Asignaciones</button>
+  <button data-tab="resumen">📊 Resumen</button>
 </nav>
 
 <main>
@@ -127,6 +128,30 @@
         <label class="fld">Filtrar por materia<select id="a-filtro-materia"><option value="">Todas</option></select></label>
       </div>
       <div id="asignaciones-out"></div>
+    </div>
+  </section>
+
+  <!-- ───────── RESUMEN / DASHBOARD ───────── -->
+  <section id="tab-resumen" class="hide">
+    <div class="card">
+      <h2>Panorama general</h2>
+      <div id="resumen-stats" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px"></div>
+    </div>
+    <div class="card">
+      <h2>Docentes sin asignaciones</h2>
+      <p class="desc">Faltan por cargarles al menos una materia y grado/grupo.</p>
+      <div id="resumen-sin-asignar"></div>
+    </div>
+    <div class="card">
+      <h2>Por sede</h2>
+      <div id="resumen-sedes"></div>
+    </div>
+    <div class="card">
+      <h2>Docentes y lo que dictan</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="fld">Buscar<input id="r-buscar" placeholder="Nombre, sede o materia…"></label>
+      </div>
+      <div id="resumen-tabla"></div>
     </div>
   </section>
 </main>
@@ -186,6 +211,7 @@ const SEDES=['PRINCIPAL','JUANA JULIA 1','JUANA JULIA 2','CRISTO ES MI LUZ','EL 
   'SAN FRANCISCO','SAN MIGUEL','VERDINAL','EL RINCON','LA GLORIA','CARLOS OSPINA'];
 
 const AREAS = [
+  { nombre:'Primaria',                     materias:['Todas las materias'] },
   { nombre:'Ciencias Sociales',            materias:['Sociales','Competencias Ciudadanas','Filosofía'] },
   { nombre:'Ciencias Naturales',           materias:['Biología','Naturales','Química','Física'] },
   { nombre:'Humanidades',                  materias:['Lengua Castellana','Inglés'] },
@@ -266,7 +292,9 @@ document.getElementById('tabs').addEventListener('click', e=>{
   const t=b.dataset.tab;
   document.getElementById('tab-docentes').classList.toggle('hide', t!=='docentes');
   document.getElementById('tab-asignaciones').classList.toggle('hide', t!=='asignaciones');
+  document.getElementById('tab-resumen').classList.toggle('hide', t!=='resumen');
   if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); }
+  if (t==='resumen') { renderResumen(); }
 });
 
 // ---------- Docentes ----------
@@ -367,10 +395,11 @@ function fillAreaSelect(){
 }
 function fillMateriaSelect(){
   const area = AREAS.find(a=>a.nombre===document.getElementById('a-area').value) || AREAS[0];
-  document.getElementById('a-materia').innerHTML = area.materias.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  const extra = area.materias.includes('Todas las materias') ? '' : '<option value="Todas las materias">Todas las materias</option>';
+  document.getElementById('a-materia').innerHTML = extra + area.materias.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
 }
 function fillMateriaFiltro(){
-  const todas = AREAS.flatMap(a=>a.materias);
+  const todas = Array.from(new Set(['Todas las materias', ...AREAS.flatMap(a=>a.materias)]));
   document.getElementById('a-filtro-materia').innerHTML = '<option value="">Todas</option>'+todas.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
 }
 function fillGradoSelect(){
@@ -425,6 +454,74 @@ function renderAsignaciones(){
       <td>${esc(a.grado)}</td>
       <td>${esc(a.grupo||'—')}</td>
       <td class="c"><button class="btn sm bad" onclick="eliminarAsignacion('${a.id}')">🗑️</button></td>
+    </tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+
+// ---------- Resumen / Dashboard ----------
+document.getElementById('r-buscar').addEventListener('input', renderResumen);
+function renderResumen(){
+  const conAsig = docentes.filter(d=>asignaciones.some(a=>a.docenteId===d.id));
+  const sinAsig = docentes.filter(d=>!asignaciones.some(a=>a.docenteId===d.id));
+  const materiasCubiertas = new Set(asignaciones.map(a=>a.materia)).size;
+  const sedesCubiertas = new Set(docentes.map(d=>d.sede).filter(Boolean)).size;
+
+  document.getElementById('resumen-stats').innerHTML = `
+    <span class="badge" style="font-size:.85rem;padding:6px 14px">👩‍🏫 ${docentes.length} docentes</span>
+    <span class="badge" style="font-size:.85rem;padding:6px 14px;background:#dcfce7;color:#166534">✅ ${conAsig.length} con asignación</span>
+    <span class="badge" style="font-size:.85rem;padding:6px 14px;background:#fef3c7;color:#92400e">⏳ ${sinAsig.length} sin asignación</span>
+    <span class="badge" style="font-size:.85rem;padding:6px 14px">📋 ${asignaciones.length} asignaciones registradas</span>
+    <span class="badge" style="font-size:.85rem;padding:6px 14px">📚 ${materiasCubiertas} materias con docente</span>
+    <span class="badge" style="font-size:.85rem;padding:6px 14px">🏫 ${sedesCubiertas} sedes con docente</span>
+  `;
+
+  const outSin = document.getElementById('resumen-sin-asignar');
+  if(!sinAsig.length){
+    outSin.innerHTML = '<div class="empty">Todos los docentes ya tienen al menos una asignación. 🎉</div>';
+  } else {
+    outSin.innerHTML = `<div class="tableScroll"><table><thead><tr><th>Nombre</th><th>Sede</th><th>Jornada</th></tr></thead><tbody>${
+      sinAsig.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')).map(d=>`<tr>
+        <td>${esc(d.nombre)}</td><td>${esc(d.sede||'—')}</td><td>${esc(d.jornada||'—')}</td>
+      </tr>`).join('')
+    }</tbody></table></div>`;
+  }
+
+  const porSede = {};
+  docentes.forEach(d=>{
+    const s = d.sede || '(sin sede)';
+    if(!porSede[s]) porSede[s] = {total:0, conAsig:0};
+    porSede[s].total++;
+    if(asignaciones.some(a=>a.docenteId===d.id)) porSede[s].conAsig++;
+  });
+  const sedesOrdenadas = Object.keys(porSede).sort();
+  document.getElementById('resumen-sedes').innerHTML = sedesOrdenadas.length
+    ? `<div class="tableScroll"><table><thead><tr><th>Sede</th><th class="c">Docentes</th><th class="c">Con asignación</th></tr></thead><tbody>${
+        sedesOrdenadas.map(s=>`<tr><td>${esc(s)}</td><td class="c">${porSede[s].total}</td><td class="c">${porSede[s].conAsig}</td></tr>`).join('')
+      }</tbody></table></div>`
+    : '<div class="empty">Aún no hay docentes registrados.</div>';
+
+  const q = (document.getElementById('r-buscar').value||'').toLowerCase();
+  let listaDocentes = docentes.slice().sort((a,b)=>(a.sede||'').localeCompare(b.sede||'')||(a.nombre||'').localeCompare(b.nombre||''));
+  if(q){
+    listaDocentes = listaDocentes.filter(d=>{
+      const asigTxt = asignaciones.filter(a=>a.docenteId===d.id).map(a=>`${a.area} ${a.materia} ${a.grado} ${a.grupo}`).join(' ').toLowerCase();
+      return (d.nombre||'').toLowerCase().includes(q) || (d.sede||'').toLowerCase().includes(q) || asigTxt.includes(q);
+    });
+  }
+  const outTabla = document.getElementById('resumen-tabla');
+  if(!listaDocentes.length){ outTabla.innerHTML = '<div class="empty">Sin resultados.</div>'; return; }
+  outTabla.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Docente</th><th>Sede</th><th>Jornada</th><th>Lo que dicta</th>
+  </tr></thead><tbody>${listaDocentes.map(d=>{
+    const asigs = asignaciones.filter(a=>a.docenteId===d.id);
+    const detalle = asigs.length
+      ? asigs.map(a=>`<span class="badge" style="margin:2px 3px 2px 0">${esc(a.materia)} · ${esc(a.grado)}${a.grupo?'-'+esc(a.grupo):''}</span>`).join('')
+      : `<span style="color:var(--warn);font-size:.8rem">⏳ sin asignaciones</span>`;
+    return `<tr>
+      <td><strong>${esc(d.nombre)}</strong></td>
+      <td>${esc(d.sede||'—')}</td>
+      <td>${esc(d.jornada||'—')}</td>
+      <td>${detalle}</td>
     </tr>`;
   }).join('')}</tbody></table></div>`;
 }
