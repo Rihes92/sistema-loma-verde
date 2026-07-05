@@ -111,9 +111,27 @@ const LV_SYNC = (() => {
       if (!remotos || !remotos.length) continue;
 
       // Fusionar: remoto gana si es más reciente
-      if (cfg.transformDown) {
-        // estructura especial con transformDown
-        lsSet(lvKey, cfg.transformDown(remotos));
+      if (cfg.tabla === 'horario') {
+        // Estructura especial {dia:{hora:{...}}}. IMPORTANTE: fusionar
+        // celda por celda, nunca reemplazar todo el objeto — si una
+        // celda que acabas de agregar aún no terminó de subirse a
+        // Supabase, un reemplazo total la borraría de la vista.
+        const local = lsGet(lvKey) || {};
+        remotos.forEach(r => {
+          if (r.dia == null || r.hora == null) return;
+          if (r._eliminado) {
+            if (local[r.dia]) delete local[r.dia][r.hora];
+            return;
+          }
+          if (!local[r.dia]) local[r.dia] = {};
+          local[r.dia][r.hora] = {
+            asig: r.materia || '',
+            grado: (r.curso || '').split('°-')[0],
+            grupo: (r.curso || '').split('°-')[1] || '',
+            nota: r.aula || ''
+          };
+        });
+        lsSet(lvKey, local);
       } else if (cfg.tabla === 'asistencia') {
         // asistencia tiene estructura especial {cursoId_fecha: {...}}
         const local = lsGet(lvKey) || {};
@@ -176,21 +194,56 @@ const LV_SYNC = (() => {
   }
 
   // ── Auto-actualización entre dispositivos ───────────────────
-  //  Cada POLL_MS revisa Supabase. Si algo cambió respecto a lo
-  //  que ya se ve en pantalla, recarga la página automáticamente
-  //  (es seguro: los cambios propios ya se subieron antes de esto).
+  //  Cada POLL_MS revisa Supabase en segundo plano. Si algo cambió
+  //  respecto a lo que ya se ve en pantalla, muestra un aviso — NO
+  //  recarga sola, para no interrumpir una edición en curso.
   const POLL_MS = 15000;
   let autoRefreshTimer = null;
 
   async function chequearYActualizar() {
     if (!online() || document.hidden) return;
+
+    // Si hay cambios locales sin confirmar, intenta subirlos PRIMERO.
+    // Nunca descargues mientras algo tuyo está a medio subir: eso es
+    // lo que causaba que un cambio recién hecho se "borrara" al
+    // fusionarse con una versión de Supabase que aún no lo tenía.
+    if (pendientesGet().length > 0) {
+      await subirPendientes();
+      if (pendientesGet().length > 0) {
+        // Sigue habiendo pendientes (falló la subida) — no descargues
+        // esta vez para no arriesgar el dato local; se reintentará
+        // en el próximo ciclo.
+        return;
+      }
+    }
+
     const antes = snapshotLocal();
     await descargarTodo();
     const despues = snapshotLocal();
     if (antes !== despues) {
-      console.log('[LV Sync] 🔄 Datos nuevos de otro dispositivo — actualizando vista...');
-      location.reload();
+      console.log('[LV Sync] 🔔 Hay datos nuevos de otro dispositivo');
+      mostrarAvisoActualizacion();
     }
+  }
+
+  // ── Aviso de datos nuevos (NO recarga sola — el usuario decide) ─
+  //  Recargar automáticamente en medio de una edición es lo que
+  //  causaba que se "borraran" celdas recién agregadas. Ahora solo
+  //  se avisa; tú tocas el aviso cuando te convenga.
+  function mostrarAvisoActualizacion() {
+    let aviso = document.getElementById('lv-update-aviso');
+    if (aviso) return; // ya está visible
+    aviso = document.createElement('div');
+    aviso.id = 'lv-update-aviso';
+    aviso.style.cssText = `
+      position:fixed;bottom:16px;right:16px;z-index:1000;
+      padding:10px 16px;border-radius:999px;font-size:.8rem;font-weight:700;
+      background:#1e3a8a;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.25);
+      cursor:pointer;
+    `;
+    aviso.textContent = '🔄 Hay cambios nuevos — toca para verlos';
+    aviso.onclick = () => location.reload();
+    document.body.appendChild(aviso);
   }
 
   function iniciarAutoActualizacion() {
