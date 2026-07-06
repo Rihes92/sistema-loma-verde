@@ -86,8 +86,12 @@
         <label class="fld">Nombre completo<input id="d-nombre" placeholder="Ej: Ana Elvira Mendoza Cordero"></label>
         <label class="fld">Sede<select id="d-sede"></select></label>
         <label class="fld">Jornada<select id="d-jornada"><option>Única</option><option>Mañana</option><option>Tarde</option></select></label>
-        <label class="fld">Correo (opcional, para el login)<input id="d-email" type="email" placeholder="docente@correo.com"></label>
+        <label class="fld">Correo (opcional)<input id="d-email" type="email" placeholder="docente@correo.com"></label>
       </div>
+      <div class="row">
+        <label class="fld">Clave de acceso al portal (para el login)<input id="d-clave" placeholder="Ej: 1234"></label>
+      </div>
+      <p class="desc" style="margin-top:6px">Con esta clave el docente entra al portal y solo ve las materias que le asignes abajo. Déjala en blanco si aún no quieres que ese docente pueda entrar.</p>
       <div style="margin-top:12px;display:flex;gap:10px">
         <button class="btn ok" id="btn-docente-save">💾 Guardar docente</button>
         <button class="btn sec hide" id="btn-docente-cancel">Cancelar edición</button>
@@ -178,6 +182,16 @@ const COORD_PASSWORD = 'coordinacion2026';
     document.getElementById('app').classList.remove('hide');
     return;
   }
+  // si ya entraste al portal como Administrador, no hace falta pedir la clave otra vez
+  try{
+    const login = JSON.parse(localStorage.getItem('lv_login')||'null');
+    if(login && login.esAdmin){
+      sessionStorage.setItem('lv_coord_ok','si');
+      document.getElementById('gate').classList.add('hide');
+      document.getElementById('app').classList.remove('hide');
+      return;
+    }
+  }catch(_){}
   document.getElementById('gate-btn').addEventListener('click', intentar);
   document.getElementById('gate-pass').addEventListener('keydown', e=>{ if(e.key==='Enter') intentar(); });
   function intentar(){
@@ -312,6 +326,7 @@ document.getElementById('btn-docente-save').addEventListener('click', ()=>{
     sede: document.getElementById('d-sede').value,
     jornada: document.getElementById('d-jornada').value,
     email: document.getElementById('d-email').value.trim(),
+    clave: document.getElementById('d-clave').value.trim(),
     creado: Date.now()
   };
   if (docenteEditId) {
@@ -323,14 +338,14 @@ document.getElementById('btn-docente-save').addEventListener('click', ()=>{
   lsWrite('docentes', docentes);
   docenteEditId = null;
   document.getElementById('btn-docente-cancel').classList.add('hide');
-  ['d-nombre','d-email'].forEach(id=>document.getElementById(id).value='');
+  ['d-nombre','d-email','d-clave'].forEach(id=>document.getElementById(id).value='');
   renderDocentes(); fillDocenteSelects();
   toast('Docente guardado');
 });
 document.getElementById('btn-docente-cancel').addEventListener('click', ()=>{
   docenteEditId = null;
   document.getElementById('btn-docente-cancel').classList.add('hide');
-  ['d-nombre','d-email'].forEach(id=>document.getElementById(id).value='');
+  ['d-nombre','d-email','d-clave'].forEach(id=>document.getElementById(id).value='');
 });
 window.editarDocente = id=>{
   const d = docentes.find(x=>x.id===id); if(!d) return;
@@ -339,6 +354,7 @@ window.editarDocente = id=>{
   document.getElementById('d-sede').value = d.sede||'';
   document.getElementById('d-jornada').value = d.jornada||'Única';
   document.getElementById('d-email').value = d.email||'';
+  document.getElementById('d-clave').value = d.clave||'';
   document.getElementById('btn-docente-cancel').classList.remove('hide');
   window.scrollTo(0,0);
 };
@@ -365,7 +381,7 @@ function renderDocentes(){
   const out = document.getElementById('docentes-out');
   if(!lista.length){ out.innerHTML = '<div class="empty">Aún no hay docentes registrados.</div>'; return; }
   out.innerHTML = `<div class="tableScroll"><table><thead><tr>
-    <th>Nombre</th><th>Sede</th><th>Jornada</th><th>Dirige (grado-grupo)</th><th class="c">Asignaciones</th><th class="c">Acciones</th>
+    <th>Nombre</th><th>Sede</th><th>Jornada</th><th>Dirige (grado-grupo)</th><th class="c">Login</th><th class="c">Asignaciones</th><th class="c">Acciones</th>
   </tr></thead><tbody>${lista.map(d=>{
     const n = asignaciones.filter(a=>a.docenteId===d.id).length;
     return `<tr>
@@ -373,6 +389,7 @@ function renderDocentes(){
       <td>${esc(d.sede||'—')}</td>
       <td>${esc(d.jornada||'—')}</td>
       <td style="color:var(--muted);font-size:.78rem">${esc(d.dirige||'—')}</td>
+      <td class="c">${d.clave?'<span class="badge" style="background:#dcfce7;color:#166534">🔑 activo</span>':'<span class="badge" style="background:#fef3c7;color:#92400e">sin clave</span>'}</td>
       <td class="c"><span class="badge">${n}</span></td>
       <td class="c">
         <button class="btn sm sec" onclick="editarDocente('${d.id}')">✏️ Editar</button>

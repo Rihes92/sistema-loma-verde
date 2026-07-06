@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ingresar — Sistema Loma Verde</title>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-dark:#172d6e; --primary-light:#3b82f6;
+    --bg:#f1f5f9; --surface:#fff; --text:#1f2937; --muted:#64748b;
+    --border:#e2e8f0; --bad:#dc2626; --radius:14px; --shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 55%,var(--primary-light) 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .card{background:var(--surface);border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,.25);padding:32px 28px;max-width:380px;width:100%}
+  .card h1{font-size:1.25rem;color:var(--primary);text-align:center;margin-bottom:4px}
+  .card p.sub{text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:22px}
+  label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:6px;margin-top:16px}
+  select,input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:.95rem;background:#fff;color:var(--text)}
+  select:focus,input:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+  button{width:100%;margin-top:22px;border:0;border-radius:9px;padding:12px;font-size:.95rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff}
+  button:hover{filter:brightness(1.08)}
+  .err{color:var(--bad);font-size:.82rem;margin-top:12px;text-align:center;min-height:1.2em}
+  .logo{width:60px;height:60px;display:block;margin:0 auto 14px;border-radius:14px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+  .loading{text-align:center;color:var(--muted);font-size:.85rem;padding:20px 0}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">🎓</div>
+  <h1>Sistema Loma Verde</h1>
+  <p class="sub">I.E. San José de Loma Verde</p>
+
+  <div id="loading" class="loading">Cargando datos…</div>
+
+  <form id="form-login" class="hide" style="display:none">
+    <label>Docente</label>
+    <select id="l-docente"></select>
+
+    <label>Clave</label>
+    <input type="password" id="l-clave" placeholder="Tu clave de acceso" autocomplete="current-password">
+
+    <button type="submit">Entrar</button>
+    <div class="err" id="l-error"></div>
+  </form>
+</div>
+
+<script src="sync.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  Login básico por docente.
+//
+//  IMPORTANTE — alcance real de esta seguridad: esto filtra el MENÚ
+//  que ve cada docente según sus asignaciones (para que no tenga que
+//  navegar entre materias que no son suyas), pero NO restringe el
+//  acceso a los datos a nivel de base de datos (no hay RLS estricto
+//  todavía). Alguien con conocimientos técnicos podría igual acceder
+//  directamente a un módulo por URL. Es un paso intermedio, no un
+//  sistema de seguridad robusto.
+//
+//  Llave maestra: da acceso total (como si fuera administrador),
+//  sin necesidad de estar en la lista de docentes. Cámbiala aquí.
+// ═══════════════════════════════════════════════════════════════
+const ADMIN_PASSWORD = 'lomaverde-admin-2026';
+
+function lsRead(s){ try{ return JSON.parse(localStorage.getItem('lv_'+s))||[]; }catch(_){ return []; } }
+
+(async function init(){
+  // si ya hay sesión, saltar directo al portal
+  try{
+    const yaLogueado = JSON.parse(localStorage.getItem('lv_login')||'null');
+    if(yaLogueado && (yaLogueado.docenteId || yaLogueado.esAdmin)){ location.replace('index.html'); return; }
+  }catch(_){}
+
+  // asegurar que los docentes estén actualizados (por si es un dispositivo nuevo)
+  try{ if(typeof LV_SYNC!=='undefined') await LV_SYNC.descargarTodo(); }catch(_){}
+
+  const docentes = lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  const sel = document.getElementById('l-docente');
+  sel.innerHTML = '<option value="__ADMIN__">🔑 Administrador (acceso completo)</option>'
+    + docentes.map(d=>`<option value="${d.id}">${esc(d.nombre)}${d.sede?' — '+esc(d.sede):''}</option>`).join('');
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('form-login').style.display='block';
+
+  document.getElementById('form-login').addEventListener('submit', e=>{
+    e.preventDefault();
+    const errBox = document.getElementById('l-error');
+    errBox.textContent='';
+    const seleccion = sel.value;
+    const clave = document.getElementById('l-clave').value;
+
+    if(seleccion==='__ADMIN__'){
+      if(clave===ADMIN_PASSWORD){
+        localStorage.setItem('lv_login', JSON.stringify({esAdmin:true, nombre:'Administrador'}));
+        location.href='index.html';
+      } else {
+        errBox.textContent='Clave incorrecta.';
+      }
+      return;
+    }
+
+    const d = docentes.find(x=>x.id===seleccion);
+    if(!d){ errBox.textContent='Selecciona un docente válido.'; return; }
+    if(!d.clave){ errBox.textContent='Este docente no tiene clave configurada. Pide a Coordinación que te asigne una.'; return; }
+    if(clave !== d.clave){ errBox.textContent='Clave incorrecta.'; return; }
+
+    localStorage.setItem('lv_login', JSON.stringify({docenteId:d.id, nombre:d.nombre, esAdmin:false}));
+    location.href='index.html';
+  });
+})();
+
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+</script>
+</body>
+</html>

@@ -140,6 +140,19 @@
 <meta name="apple-mobile-web-app-title" content="Loma Verde">
 </head>
 <body>
+<script>
+// ── Candado de acceso: exige haber iniciado sesión en login.html ──
+// (login básico: obliga a entrar, filtra el menú según asignaciones;
+// no es seguridad estricta a nivel de base de datos, ver login.html)
+(function(){
+  try{
+    const login = JSON.parse(localStorage.getItem('lv_login')||'null');
+    if(!login || (!login.docenteId && !login.esAdmin)){
+      location.replace('login.html');
+    }
+  }catch(e){ location.replace('login.html'); }
+})();
+</script>
 
 <div class="hero">
   <div class="hero-inner">
@@ -160,6 +173,7 @@
     <button onclick="this.textContent='⏳ Sincronizando...';(async()=>{await LV_SYNC.subirPendientes();await LV_SYNC.descargarTodo();this.textContent='✅ Sincronizado';setTimeout(()=>location.reload(),600)})()" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)">🔄 Sincronizar ahora</button>
     <a href="coordinacion.html" style="color:rgba(255,255,255,.55);text-decoration:none;font-size:.72rem;margin-left:14px;position:relative;z-index:2">⚙️ Coordinación</a>
   </div>
+  <div id="login-info" style="margin-top:10px;position:relative;z-index:2;font-size:.78rem;color:rgba(255,255,255,.75)"></div>
 </div>
 
 <div class="search-wrap">
@@ -275,6 +289,49 @@ function irAMateria(area, materia, e){
   e.stopPropagation();
   location.href = `materia-hub.html?area=${area}&materia=${materia}`;
 }
+
+// ── Sesión: mostrar quién entró + filtrar materias según sus asignaciones ──
+(function(){
+  let login;
+  try{ login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){ login=null; }
+  if(!login) return; // el candado de arriba ya redirige a login.html
+
+  const infoBox = document.getElementById('login-info');
+  if(infoBox){
+    infoBox.innerHTML = `👋 ${login.esAdmin ? 'Administrador' : (login.nombre||'Docente')}`
+      + ` &nbsp;·&nbsp; <a href="#" onclick="cerrarSesion();return false" style="color:inherit;text-decoration:underline">Cerrar sesión</a>`;
+  }
+  window.cerrarSesion = function(){
+    localStorage.removeItem('lv_login');
+    location.href = 'login.html';
+  };
+
+  if(login.esAdmin) return; // el administrador ve todo, sin filtrar
+
+  let asignaciones = [];
+  try{ asignaciones = JSON.parse(localStorage.getItem('lv_asignaciones')||'[]'); }catch(_){}
+  const misAsig = asignaciones.filter(a=>a.docenteId===login.docenteId);
+  const accesoTotal = misAsig.some(a=>a.area==='Primaria' || a.materia==='Todas las materias');
+  const materiasPermitidas = new Set(misAsig.map(a=>a.materia));
+
+  if(accesoTotal) return; // dicta primaria o "todas las materias": ve todo
+
+  document.querySelectorAll('.area-card').forEach(card=>{
+    const chips = card.querySelectorAll('.materia-chip');
+    let visibles = 0;
+    chips.forEach(chip=>{
+      const permitido = materiasPermitidas.has(chip.textContent.trim());
+      chip.style.display = permitido ? '' : 'none';
+      if(permitido) visibles++;
+    });
+    if(visibles===0) card.classList.add('hidden');
+  });
+
+  if(materiasPermitidas.size===0){
+    document.getElementById('areas-grid').insertAdjacentHTML('beforebegin',
+      `<div style="text-align:center;padding:30px;color:var(--muted)">Aún no tienes materias asignadas. Contacta a Coordinación.</div>`);
+  }
+})();
 
 // ── FECHA ─────────────────────────────────────────────────────
 (function(){
