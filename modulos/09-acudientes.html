@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Acudientes — Sistema Loma Verde</title>
+<script src="../materia-context.js"></script>
+<script src="../sync.js"></script>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+  main{max-width:1100px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 14px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:160px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  button.btn.ok{background:var(--ok)}
+  button.btn.bad{background:var(--bad);color:#fff}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;font-weight:700;color:var(--primary)}
+  td.c,th.c{text-align:center}
+  .tableScroll{overflow-x:auto}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .hide{display:none!important}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700;background:#dbeafe;color:#1e3a8a}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <h1>👪 Acudientes</h1>
+  <span class="pill">I.E. San José de Loma Verde</span>
+  <a href="#" onclick="history.back();return false" class="portal-btn">← Volver</a>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Registrar acudiente</h2>
+    <p class="desc">Esta base de datos es compartida: cualquier docente puede alimentarla y todos ven la misma información, sin importar la materia. Útil para citaciones, comunicados y contacto con las familias.</p>
+    <div class="row">
+      <label class="fld">Grado<input id="a-grado" placeholder="Ej: 6°"></label>
+      <label class="fld">Grupo/Curso<input id="a-grupo" placeholder="Ej: 601"></label>
+      <label class="fld">Estudiante<input id="a-estudiante" placeholder="Nombre completo del estudiante"></label>
+    </div>
+    <div class="row">
+      <label class="fld">Nombre del acudiente<input id="a-nombre" placeholder="Nombre completo"></label>
+      <label class="fld">Parentesco<select id="a-parentesco">
+        <option>Madre</option><option>Padre</option><option>Abuelo/a</option>
+        <option>Tío/a</option><option>Hermano/a</option><option>Otro</option>
+      </select></label>
+    </div>
+    <div class="row">
+      <label class="fld">Teléfono<input id="a-telefono" placeholder="Ej: 300 123 4567"></label>
+      <label class="fld">Correo (opcional)<input id="a-email" type="email" placeholder="correo@ejemplo.com"></label>
+    </div>
+    <div class="row">
+      <label class="fld">Notas (opcional)<textarea id="a-notas" rows="2" placeholder="Observaciones adicionales…"></textarea></label>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:10px">
+      <button class="btn ok" id="btn-acu-save">💾 Guardar</button>
+      <button class="btn sec hide" id="btn-acu-cancel">Cancelar edición</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Acudientes registrados</h2>
+    <div class="row" style="margin-bottom:10px">
+      <label class="fld">Buscar<input id="a-buscar" placeholder="Estudiante, acudiente, grado…"></label>
+      <label class="fld">Grado<select id="a-filtro-grado"><option value="">Todos</option></select></label>
+    </div>
+    <div id="acudientes-out"></div>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script>
+const LS='lv_';
+function lsRead(s){ try{ return JSON.parse(localStorage.getItem(LS+s))||[]; }catch(_){ return []; } }
+function lsWrite(s,arr){
+  try{ localStorage.setItem(LS+s, JSON.stringify(arr)); }catch(_){}
+  if (typeof LV_SYNC!=='undefined' && Array.isArray(arr)) {
+    arr.forEach(r=>{ if(r && r.id) LV_SYNC.marcarCambio('lv_'+s, r); });
+  }
+}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+function quienEsta(){
+  try{
+    const login = JSON.parse(localStorage.getItem('lv_login')||'null');
+    if(login) return login.esAdmin ? 'Administrador' : (login.nombre||'');
+  }catch(_){}
+  return '';
+}
+
+let acudientes = lsRead('acudientes');
+let editId = null;
+
+document.getElementById('btn-acu-save').addEventListener('click', ()=>{
+  const estudiante = document.getElementById('a-estudiante').value.trim();
+  const nombreAcu = document.getElementById('a-nombre').value.trim();
+  if(!estudiante){ toast('Escribe el nombre del estudiante.'); return; }
+  if(!nombreAcu){ toast('Escribe el nombre del acudiente.'); return; }
+  const registro = {
+    id: editId || uid(),
+    grado: document.getElementById('a-grado').value.trim(),
+    grupo: document.getElementById('a-grupo').value.trim(),
+    estudiante,
+    nombreAcudiente: nombreAcu,
+    parentesco: document.getElementById('a-parentesco').value,
+    telefono: document.getElementById('a-telefono').value.trim(),
+    email: document.getElementById('a-email').value.trim(),
+    notas: document.getElementById('a-notas').value.trim(),
+    registradoPor: quienEsta(),
+    creado: Date.now()
+  };
+  if(editId){
+    const i = acudientes.findIndex(a=>a.id===editId);
+    if(i>=0) acudientes[i] = {...acudientes[i], ...registro};
+  } else {
+    acudientes.push(registro);
+  }
+  lsWrite('acudientes', acudientes);
+  editId = null;
+  document.getElementById('btn-acu-cancel').classList.add('hide');
+  ['a-grado','a-grupo','a-estudiante','a-nombre','a-telefono','a-email','a-notas'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('a-parentesco').value = 'Madre';
+  fillFiltroGrado();
+  renderAcudientes();
+  toast('Acudiente guardado');
+});
+document.getElementById('btn-acu-cancel').addEventListener('click', ()=>{
+  editId = null;
+  document.getElementById('btn-acu-cancel').classList.add('hide');
+  ['a-grado','a-grupo','a-estudiante','a-nombre','a-telefono','a-email','a-notas'].forEach(id=>document.getElementById(id).value='');
+});
+window.editarAcudiente = id=>{
+  const a = acudientes.find(x=>x.id===id); if(!a) return;
+  editId = id;
+  document.getElementById('a-grado').value = a.grado||'';
+  document.getElementById('a-grupo').value = a.grupo||'';
+  document.getElementById('a-estudiante').value = a.estudiante||'';
+  document.getElementById('a-nombre').value = a.nombreAcudiente||'';
+  document.getElementById('a-parentesco').value = a.parentesco||'Madre';
+  document.getElementById('a-telefono').value = a.telefono||'';
+  document.getElementById('a-email').value = a.email||'';
+  document.getElementById('a-notas').value = a.notas||'';
+  document.getElementById('btn-acu-cancel').classList.remove('hide');
+  window.scrollTo(0,0);
+};
+window.eliminarAcudiente = id=>{
+  if(!confirm('¿Eliminar este registro de acudiente?')) return;
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_acudientes', {id, _eliminado:true});
+  acudientes = acudientes.filter(a=>a.id!==id);
+  lsWrite('acudientes', acudientes);
+  renderAcudientes();
+  toast('Registro eliminado');
+};
+
+function fillFiltroGrado(){
+  const grados = Array.from(new Set(acudientes.map(a=>a.grado).filter(Boolean))).sort();
+  document.getElementById('a-filtro-grado').innerHTML = '<option value="">Todos</option>'
+    + grados.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join('');
+}
+document.getElementById('a-buscar').addEventListener('input', renderAcudientes);
+document.getElementById('a-filtro-grado').addEventListener('change', renderAcudientes);
+
+function renderAcudientes(){
+  const q = (document.getElementById('a-buscar').value||'').toLowerCase();
+  const filGrado = document.getElementById('a-filtro-grado').value;
+  let lista = acudientes.slice().sort((a,b)=>(a.grado||'').localeCompare(b.grado||'')||(a.estudiante||'').localeCompare(b.estudiante||''));
+  if(filGrado) lista = lista.filter(a=>a.grado===filGrado);
+  if(q) lista = lista.filter(a=>
+    (a.estudiante||'').toLowerCase().includes(q) ||
+    (a.nombreAcudiente||'').toLowerCase().includes(q) ||
+    (a.grado||'').toLowerCase().includes(q) ||
+    (a.grupo||'').toLowerCase().includes(q)
+  );
+  const out = document.getElementById('acudientes-out');
+  if(!lista.length){ out.innerHTML = '<div class="empty">Aún no hay acudientes registrados.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Estudiante</th><th>Grado-Grupo</th><th>Acudiente</th><th>Parentesco</th><th>Teléfono</th><th>Correo</th><th class="c">Acciones</th>
+  </tr></thead><tbody>${lista.map(a=>`<tr>
+    <td><strong>${esc(a.estudiante)}</strong>${a.notas?`<div style="color:var(--muted);font-size:.75rem">${esc(a.notas)}</div>`:''}</td>
+    <td>${esc(a.grado||'—')}${a.grupo?'-'+esc(a.grupo):''}</td>
+    <td>${esc(a.nombreAcudiente)}</td>
+    <td>${esc(a.parentesco||'—')}</td>
+    <td>${esc(a.telefono||'—')}</td>
+    <td>${esc(a.email||'—')}</td>
+    <td class="c">
+      <button class="btn sm sec" onclick="editarAcudiente('${a.id}')">✏️</button>
+      <button class="btn sm bad" onclick="eliminarAcudiente('${a.id}')">🗑️</button>
+    </td>
+  </tr>`).join('')}</tbody></table></div>`;
+}
+
+fillFiltroGrado();
+renderAcudientes();
+</script>
+</body>
+</html>

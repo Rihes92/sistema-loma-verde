@@ -144,6 +144,11 @@ textarea{resize:vertical;min-height:70px}
       <label class="fld">Filtrar por mes
         <input type="month" id="fil-mes" onchange="renderLista()">
       </label>
+      <label class="fld">Filtrar por materia
+        <select id="fil-materia" onchange="renderLista()">
+          <option value="">Todas / Institucional</option>
+        </select>
+      </label>
       <div style="align-self:flex-end">
         <button class="btn sm ok" onclick="switchTab('nuevo')">➕ Agregar</button>
       </div>
@@ -167,6 +172,14 @@ textarea{resize:vertical;min-height:70px}
           <option value="festivo">🎉 Festivo / Sin clase</option>
           <option value="externo">🌐 Externo</option>
         </select>
+      </label>
+    </div>
+    <div class="row" style="margin-bottom:12px">
+      <label class="fld">Área (opcional, para clasificar)
+        <select id="f-area"><option value="">General / Institucional</option></select>
+      </label>
+      <label class="fld">Materia (opcional)
+        <select id="f-materia"><option value="">—</option></select>
       </label>
     </div>
     <div class="row" style="margin-bottom:12px">
@@ -243,6 +256,40 @@ function lsW(d){
   }
 }
 var eventos = lsR();
+
+var AREAS_EV = [
+  { nombre:'Primaria',                     materias:['Todas las materias'] },
+  { nombre:'Ciencias Sociales',            materias:['Sociales','Competencias Ciudadanas','Filosofía'] },
+  { nombre:'Ciencias Naturales',           materias:['Biología','Naturales','Química','Física'] },
+  { nombre:'Humanidades',                  materias:['Lengua Castellana','Plan Lector','Inglés'] },
+  { nombre:'Matemáticas',                  materias:['Matemáticas','Geometría','Estadística'] },
+  { nombre:'Tecnología e Informática',     materias:['Tecnología e Informática'] },
+  { nombre:'Artística y Emprendimiento',   materias:['Artística y Emprendimiento'] },
+  { nombre:'Religión',                     materias:['Religión'] },
+  { nombre:'Ética',                        materias:['Ética'] },
+  { nombre:'Educación Física',             materias:['Educación Física'] },
+];
+
+function fillAreaEvSelects(){
+  var opts = AREAS_EV.map(function(a){return '<option value="'+esc(a.nombre)+'">'+esc(a.nombre)+'</option>';}).join('');
+  document.getElementById('f-area').innerHTML = '<option value="">General / Institucional</option>' + opts;
+  document.getElementById('f-area').addEventListener('change', fillMateriaEvSelect);
+  fillMateriaEvSelect();
+
+  var todasMaterias = [];
+  AREAS_EV.forEach(function(a){ a.materias.forEach(function(m){ if(todasMaterias.indexOf(m)===-1) todasMaterias.push(m); }); });
+  var filSel = document.getElementById('fil-materia');
+  filSel.innerHTML = '<option value="">Todas / Institucional</option>' + todasMaterias.map(function(m){return '<option value="'+esc(m)+'">'+esc(m)+'</option>';}).join('');
+}
+function fillMateriaEvSelect(){
+  var areaVal = document.getElementById('f-area').value;
+  var area = null;
+  for(var i=0;i<AREAS_EV.length;i++){ if(AREAS_EV[i].nombre===areaVal){ area=AREAS_EV[i]; break; } }
+  var sel = document.getElementById('f-materia');
+  if(!area){ sel.innerHTML = '<option value="">—</option>'; return; }
+  sel.innerHTML = area.materias.map(function(m){return '<option value="'+esc(m)+'">'+esc(m)+'</option>';}).join('');
+}
+fillAreaEvSelects();
 
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2);}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];});}
@@ -383,11 +430,13 @@ function renderLista(){
   var wrap = document.getElementById('lista-wrap');
   var filCat = document.getElementById('fil-cat').value;
   var filMes = document.getElementById('fil-mes').value;
+  var filMateria = document.getElementById('fil-materia').value;
   var hoy = hoyISO();
 
   var evs = eventos.slice().filter(function(e){
     if(filCat && e.cat !== filCat) return false;
     if(filMes && e.fechaIni.slice(0,7) !== filMes) return false;
+    if(filMateria && e.materia !== filMateria) return false;
     return true;
   });
   evs.sort(function(a,b){ return a.fechaIni.localeCompare(b.fechaIni); });
@@ -415,6 +464,7 @@ function renderLista(){
       +   '<div class="ev-titulo">' + esc(ev.titulo) + '</div>'
       +   '<div style="margin:3px 0">'
       +     '<span class="badge '+ci.cls+'">'+ci.label+'</span>'
+      +     (ev.materia ? '<span class="badge" style="margin-left:6px;background:#f1f5f9;color:#334155">'+esc(ev.materia)+'</span>' : '')
       +     (ev.hora ? '<span class="muted" style="margin-left:6px">🕐 '+ev.hora+'</span>' : '')
       +     hasta
       +   '</div>'
@@ -442,6 +492,8 @@ function limpiarForm(){
   document.getElementById('f-cat').value = 'reunion';
   document.getElementById('f-rec').value = '1';
   document.getElementById('f-portal').value = '1';
+  document.getElementById('f-area').value = '';
+  fillMateriaEvSelect();
   document.getElementById('form-titulo').textContent = 'Nuevo evento';
   document.getElementById('form-flag').textContent = '';
 }
@@ -458,6 +510,8 @@ function guardarEvento(){
     id: editId || uid(),
     titulo: titulo,
     cat: document.getElementById('f-cat').value,
+    area: document.getElementById('f-area').value,
+    materia: document.getElementById('f-materia').value,
     fechaIni: fechaIni,
     fechaFin: fechaFin,
     hora: document.getElementById('f-hora').value,
@@ -488,6 +542,9 @@ function editarEvento(id){
   editId = id;
   document.getElementById('f-titulo').value = ev.titulo;
   document.getElementById('f-cat').value = ev.cat;
+  document.getElementById('f-area').value = ev.area || '';
+  fillMateriaEvSelect();
+  document.getElementById('f-materia').value = ev.materia || '';
   document.getElementById('f-fecha-ini').value = ev.fechaIni;
   document.getElementById('f-fecha-fin').value = ev.fechaFin || '';
   document.getElementById('f-hora').value = ev.hora || '';
