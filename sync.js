@@ -42,6 +42,19 @@ const LV_SYNC = (() => {
   // ── Utilidades ───────────────────────────────────────────────
   function online() { return navigator.onLine; }
 
+  // navigator.onLine puede decir "true" aunque no haya internet real
+  // (wifi conectado pero sin salida, router caído, etc.). Por eso todo
+  // fetch a Supabase lleva un límite de tiempo: si no responde rápido,
+  // se cancela y se trata como si no hubiera conexión, en vez de dejar
+  // la app colgada esperando indefinidamente.
+  function fetchConTimeout(url, opciones, ms) {
+    ms = ms || 8000;
+    const controlador = new AbortController();
+    const id = setTimeout(() => controlador.abort(), ms);
+    return fetch(url, { ...(opciones||{}), signal: controlador.signal })
+      .finally(() => clearTimeout(id));
+  }
+
   function lsGet(k) {
     try { return JSON.parse(localStorage.getItem(k)); } catch { return null; }
   }
@@ -65,19 +78,23 @@ const LV_SYNC = (() => {
 
   // ── Subir un registro a Supabase (upsert) ───────────────────
   async function upsert(tabla, registro) {
-    const r = await fetch(`${URL}/rest/v1/${tabla}`, {
-      method: 'POST',
-      headers: { ...HDR, 'Prefer': 'resolution=merge-duplicates,return=minimal' },
-      body: JSON.stringify(registro)
-    });
-    return r.ok;
+    try {
+      const r = await fetchConTimeout(`${URL}/rest/v1/${tabla}`, {
+        method: 'POST',
+        headers: { ...HDR, 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+        body: JSON.stringify(registro)
+      });
+      return r.ok;
+    } catch (_) { return false; }
   }
 
   // ── Bajar todos los datos de una tabla ──────────────────────
   async function bajar(tabla) {
-    const r = await fetch(`${URL}/rest/v1/${tabla}?select=*`, { headers: HDR });
-    if (!r.ok) return null;
-    return await r.json();
+    try {
+      const r = await fetchConTimeout(`${URL}/rest/v1/${tabla}?select=*`, { headers: HDR });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (_) { return null; }
   }
 
   // ── Borrar de verdad un registro en Supabase (no solo marcarlo) ─
@@ -86,7 +103,7 @@ const LV_SYNC = (() => {
   //  puede borrar una celda nueva que reutilice el mismo id.
   async function eliminarRegistro(tabla, id) {
     try {
-      const r = await fetch(`${URL}/rest/v1/${tabla}?id=eq.${encodeURIComponent(id)}`, {
+      const r = await fetchConTimeout(`${URL}/rest/v1/${tabla}?id=eq.${encodeURIComponent(id)}`, {
         method: 'DELETE',
         headers: HDR
       });

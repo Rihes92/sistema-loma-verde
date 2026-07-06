@@ -73,8 +73,18 @@ function lsRead(s){ try{ return JSON.parse(localStorage.getItem('lv_'+s))||[]; }
     if(yaLogueado && (yaLogueado.docenteId || yaLogueado.esAdmin)){ location.replace('index.html'); return; }
   }catch(_){}
 
-  // asegurar que los docentes estén actualizados (por si es un dispositivo nuevo)
-  try{ if(typeof LV_SYNC!=='undefined') await LV_SYNC.descargarTodo(); }catch(_){}
+  // Asegurar que los docentes estén actualizados (por si es un dispositivo nuevo).
+  // Esto nunca debe dejar la pantalla de login "cargando" para siempre: si la
+  // red está lenta o "conectada pero sin internet real", después de 5 segundos
+  // seguimos con lo que ya haya guardado localmente en este dispositivo.
+  try{
+    if(typeof LV_SYNC!=='undefined'){
+      await Promise.race([
+        LV_SYNC.descargarTodo(),
+        new Promise(resolve=>setTimeout(resolve, 5000))
+      ]);
+    }
+  }catch(_){}
 
   const docentes = lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
   const sel = document.getElementById('l-docente');
