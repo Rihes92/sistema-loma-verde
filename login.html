@@ -35,8 +35,11 @@
   <div id="loading" class="loading">Cargando datos…</div>
 
   <form id="form-login" class="hide" style="display:none">
-    <label>Docente</label>
+    <label>Docente
+      <a href="#" id="l-actualizar" style="float:right;font-weight:600;color:var(--primary);text-decoration:none;font-size:.78rem">🔄 Actualizar lista</a>
+    </label>
     <select id="l-docente"></select>
+    <div id="l-status" style="font-size:.75rem;color:var(--muted);margin-top:4px;min-height:1.1em"></div>
 
     <label>Clave</label>
     <input type="password" id="l-clave" placeholder="Tu clave de acceso" autocomplete="current-password">
@@ -66,6 +69,40 @@ const ADMIN_PASSWORD = 'lomaverde-admin-2026';
 
 function lsRead(s){ try{ return JSON.parse(localStorage.getItem('lv_'+s))||[]; }catch(_){ return []; } }
 
+let docentes = [];
+const sel = document.getElementById('l-docente');
+const statusBox = document.getElementById('l-status');
+
+function pintarDocentes(){
+  docentes = lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  const actual = sel.value;
+  sel.innerHTML = '<option value="__ADMIN__">🔑 Administrador (acceso completo)</option>'
+    + docentes.map(d=>`<option value="${d.id}">${esc(d.nombre)}${d.sede?' — '+esc(d.sede):''}</option>`).join('');
+  if(actual) sel.value = actual;
+  statusBox.textContent = docentes.length
+    ? `${docentes.length} docente(s) cargado(s) en este dispositivo.`
+    : 'Aún no hay docentes guardados en este dispositivo. Toca "Actualizar lista" estando conectado.';
+}
+
+async function actualizarDocentes(){
+  statusBox.textContent = 'Actualizando…';
+  try{
+    if(typeof LV_SYNC==='undefined'){ statusBox.textContent='No se pudo cargar sync.js.'; return; }
+    if(!navigator.onLine){ statusBox.textContent='Este dispositivo dice que no hay internet. Conéctate e inténtalo de nuevo.'; pintarDocentes(); return; }
+    await Promise.race([
+      LV_SYNC.descargarTodo(),
+      new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')), 9000))
+    ]);
+    pintarDocentes();
+    if(!docentes.length) statusBox.textContent = 'Se conectó, pero no llegó ningún docente. Revisa que existan docentes guardados en Coordinación.';
+  }catch(err){
+    pintarDocentes();
+    statusBox.textContent = 'No se pudo actualizar (' + (err&&err.message==='timeout' ? 'tardó demasiado' : 'sin respuesta') + '). ' + (docentes.length ? 'Se muestran los datos guardados.' : 'Inténtalo de nuevo conectado a internet.');
+  }
+}
+
+document.getElementById('l-actualizar').addEventListener('click', e=>{ e.preventDefault(); actualizarDocentes(); });
+
 (async function init(){
   // si ya hay sesión, saltar directo al portal
   try{
@@ -86,10 +123,7 @@ function lsRead(s){ try{ return JSON.parse(localStorage.getItem('lv_'+s))||[]; }
     }
   }catch(_){}
 
-  const docentes = lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
-  const sel = document.getElementById('l-docente');
-  sel.innerHTML = '<option value="__ADMIN__">🔑 Administrador (acceso completo)</option>'
-    + docentes.map(d=>`<option value="${d.id}">${esc(d.nombre)}${d.sede?' — '+esc(d.sede):''}</option>`).join('');
+  pintarDocentes();
 
   document.getElementById('loading').style.display='none';
   document.getElementById('form-login').style.display='block';
