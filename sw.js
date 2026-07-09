@@ -2,7 +2,7 @@
 //  Sistema Loma Verde — Service Worker v4 (Network First)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v25';
+const CACHE = 'loma-verde-v26';
 
 const ARCHIVOS = [
   './',
@@ -10,6 +10,7 @@ const ARCHIVOS = [
   './login.html',
   './auth.js',
   './sync.js',
+  './lv-tema.css',
   './materia-context.js',
   './materia-hub.html',
   './coordinacion.html',

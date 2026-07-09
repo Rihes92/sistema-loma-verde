@@ -93,6 +93,7 @@
   header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;transition:background .15s,color .15s;margin-left:auto}
   header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
 </style>
+<link rel="stylesheet" href="../lv-tema.css">
 </head>
 <body>
 <header class="appbar">
@@ -315,7 +316,19 @@ const LS='lv11_'; let _mem={}; let PERSIST=true;
 const clone=o=>JSON.parse(JSON.stringify(o));
 function _ls(){try{const t=LS+'_t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage;}catch(_){PERSIST=false;return null;}}
 function lsRead(s){const x=_ls();if(x){try{return JSON.parse(x.getItem(LS+s)||'[]');}catch(_){}}return _mem[s]?clone(_mem[s]):[];}
-function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));}catch(e){PERSIST=false;return false;}} if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){a.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio(LS+s,r);});} return true;}
+function lsWrite(s,a){
+  const previos={};
+  let base=Array.isArray(_mem[s])?_mem[s]:null;
+  if(!base){ const x0=_ls(); if(x0){ try{ base=JSON.parse(x0.getItem(LS+s)||'[]'); }catch(_){ base=[]; } } else base=[]; }
+  base.forEach(function(r){ if(r&&r.id) previos[r.id]=JSON.stringify(r); });
+  _mem[s]=clone(a);
+  const x=_ls();
+  if(x){ try{ x.setItem(LS+s,JSON.stringify(a)); }catch(e){ PERSIST=false; if(typeof LV_SYNC!=='undefined'&&LV_SYNC.revisarEspacio)LV_SYNC.revisarEspacio(); return false; } }
+  if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){
+    a.forEach(function(r){ if(r&&r.id&&previos[r.id]!==JSON.stringify(r)) LV_SYNC.marcarCambio(LS+s,r); });
+  }
+  return true;
+}
 
 const MATRIZ11 = [{"competencia": "Pensamiento social", "afirmaciones": [{"n": "1", "t": "Comprende modelos conceptuales, sus características y contextos de aplicación.", "evidencias": ["1.1 Identifica y usa conceptos sociales básicos.", "1.2 Conoce el Estado social de derecho y su aplicación en Colombia.", "1.3 Conoce la organización del Estado: ramas del poder y organismos de control.", "1.4 Conoce los mecanismos de participación ciudadana."]}, {"n": "2", "t": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.", "evidencias": ["2.1 Localiza en el tiempo y el espacio eventos históricos.", "2.2 Analiza dimensiones históricas de eventos y problemáticas.", "2.3 Relaciona problemáticas con el espacio geográfico."]}]}, {"competencia": "Interpretación y análisis de perspectivas", "afirmaciones": [{"n": "3", "t": "Contextualiza y evalúa usos de fuentes y argumentos.", "evidencias": ["3.1 Inscribe una fuente primaria en su contexto.", "3.2 Evalúa posibilidades y limitaciones de una fuente.", "3.3 Devela prejuicios e intenciones en enunciados o argumentos."]}, {"n": "4", "t": "Comprende perspectivas de distintos actores y grupos sociales.", "evidencias": ["4.1 Reconoce y compara perspectivas de actores y grupos.", "4.2 Reconoce que cosmovisiones e ideologías influyen en argumentos.", "4.3 Relaciona perspectivas en una situación conflictiva con propuestas de solución."]}]}, {"competencia": "Pensamiento reflexivo y sistémico", "afirmaciones": [{"n": "5", "t": "Evalúa usos sociales de las ciencias sociales.", "evidencias": ["5.1 Analiza modelos conceptuales y sus usos en decisiones sociales."]}, {"n": "6", "t": "Comprende que los problemas y soluciones involucran distintas dimensiones y reconoce relaciones entre estas.", "evidencias": ["6.1 Establece relaciones entre dimensiones de una situación problemática.", "6.2 Analiza los efectos en distintas dimensiones de una intervención."]}]}]; const MALLA = [];
 const GRADOS=['Undécimo'];

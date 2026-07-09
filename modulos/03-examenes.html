@@ -93,6 +93,7 @@
   header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;transition:background .15s,color .15s;margin-left:auto}
   header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
 </style>
+<link rel="stylesheet" href="../lv-tema.css">
 </head>
 <body>
 <header class="appbar">
@@ -247,7 +248,20 @@ const LS='lv_'; let _mem={}; let PERSIST=true;
 const clone=o=>JSON.parse(JSON.stringify(o));
 function _ls(){try{const t=LS+'_t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage;}catch(_){PERSIST=false;return null;}}
 function lsRead(s){const x=_ls();if(x){try{return JSON.parse(x.getItem(LS+s)||'[]');}catch(_){}}return _mem[s]?clone(_mem[s]):[];}
-function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));}catch(e){PERSIST=false;return false;}} if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){a.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_'+s,r);});} return true;}
+function lsWrite(s,a){
+  // sincronizar SOLO lo que cambió (antes re-encolaba el array completo)
+  const previos={};
+  let base=Array.isArray(_mem[s])?_mem[s]:null;
+  if(!base){ const x0=_ls(); if(x0){ try{ base=JSON.parse(x0.getItem(LS+s)||'[]'); }catch(_){ base=[]; } } else base=[]; }
+  base.forEach(function(r){ if(r&&r.id) previos[r.id]=JSON.stringify(r); });
+  _mem[s]=clone(a);
+  const x=_ls();
+  if(x){ try{ x.setItem(LS+s,JSON.stringify(a)); }catch(e){ PERSIST=false; if(typeof LV_SYNC!=='undefined'&&LV_SYNC.revisarEspacio)LV_SYNC.revisarEspacio(); return false; } }
+  if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){
+    a.forEach(function(r){ if(r&&r.id&&previos[r.id]!==JSON.stringify(r)) LV_SYNC.marcarCambio('lv_'+s,r); });
+  }
+  return true;
+}
 
 const MALLA = [
   {grado:"Sexto",periodo:"Primer Periodo",eje:"Sujeto, sociedad y civilización: la Tierra como geosistema vivo",temas:"<ul><li>El origen del universo: teorías científicas y mitológicas.</li><li>Estructura del sistema solar y la Tierra como planeta vivo.</li><li>Capas de la Tierra y geodinámica interna.</li><li>Fenómenos climáticos y gestión del riesgo.</li></ul>",ebcDba:"<strong>EBC:</strong> reconozco características de la Tierra que la hacen un planeta vivo.<br><br><strong>DBA 1:</strong> teorías sobre el origen del universo.<br><strong>DBA 2:</strong> la Tierra en transformación.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> interpreta teorías científicas.<br><strong>Ser:</strong> muestra interés científico y preventivo."},
@@ -424,9 +438,20 @@ function renderLista(){
         <button class="btn sm sec" onclick="hojaResp('${x.id}')">🗎 Hoja de respuestas</button>
         <button class="btn sm ok" onclick="genStudent('${x.id}')">📤 Para estudiantes (.html)</button>
         <button class="btn sm sec" onclick="editEx('${x.id}')">Editar</button>
+        <button class="btn sm sec" onclick="dupEx('${x.id}')">📋 Duplicar</button>
         <button class="btn sm bad" onclick="delEx('${x.id}')">Eliminar</button></div></div>`;
   }).join(''):'<div class="empty">No hay exámenes con ese filtro. Crea uno en la otra pestaña.</div>';
 }
+window.dupEx=id=>{
+  const orig=lsRead('examenes').find(e=>e.id===id); if(!orig) return;
+  const copia=JSON.parse(JSON.stringify(orig));
+  copia.id=(typeof uid==='function'?uid():Date.now().toString(36)+Math.random().toString(36).slice(2,7));
+  copia.titulo=(copia.titulo||'Examen')+' (copia)';
+  copia.creado=Date.now(); copia.actualizado=Date.now();
+  const all=lsRead('examenes'); all.push(copia);
+  lsWrite('examenes',all); renderLista();
+  toast('Examen duplicado — edítalo para ajustar título y preguntas');
+};
 window.editEx=id=>{const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;
   document.querySelector('[data-tab="crear"]').click();
   editId=x.id;$('#e-grado').value=x.grado||'';$('#e-periodo').value=x.periodo||'Primer Periodo';refreshEjes();

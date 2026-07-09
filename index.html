@@ -134,6 +134,7 @@
   #ev-popup .pop-foot button{font-size:.78rem;font-weight:600;background:transparent;border:0;color:#64748b;cursor:pointer;padding:4px 8px}
 
   </style>
+<link rel="stylesheet" href="lv-tema.css">
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -184,7 +185,21 @@
 </div>
 
 <main>
-  <div class="sec-label">Áreas académicas</div>
+  <div class="sec-label">⚡ Para hoy</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+    <a class="quick-btn" href="modulos/05-asistencia.html" style="font-size:.95rem;padding:13px 20px;background:var(--primary);color:#fff;border-color:var(--primary)">✅ Asistencia de hoy</a>
+    <a class="quick-btn" href="modulos/01-calificaciones.html" style="font-size:.95rem;padding:13px 20px">📊 Planilla de notas</a>
+    <a class="quick-btn" href="#" onclick="document.getElementById('est-buscar').focus();return false" style="font-size:.95rem;padding:13px 20px">🔎 Buscar estudiante</a>
+  </div>
+
+  <div class="sec-label" style="margin-top:26px">🔎 Buscador de estudiantes</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:8px">
+    <input id="est-buscar" type="search" placeholder="Escribe el nombre de un estudiante…" autocomplete="off"
+      style="width:100%;box-sizing:border-box;padding:11px 14px;border:1px solid #cbd5e1;border-radius:9px;font-size:.95rem">
+    <div id="est-resultados" style="margin-top:10px"></div>
+  </div>
+
+  <div class="sec-label" style="margin-top:26px">Áreas académicas</div>
   <div class="areas-grid" id="areas-grid"></div>
   <div class="no-results" id="no-results">No se encontró ningún área o materia con ese término.</div>
 
@@ -632,6 +647,71 @@ document.getElementById('search-input').addEventListener('input',function(){
 <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js")}</script>
 <script src="auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script src="sync.js"></script>
+<script src="sync.js">
+// ═══ Buscador global de estudiantes ═══
+(function(){
+  const inp=document.getElementById('est-buscar');
+  const out=document.getElementById('est-resultados');
+  if(!inp) return;
+  const escB=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const normB=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const leer=k=>{ try{ return JSON.parse(localStorage.getItem(k))||[]; }catch(_){ return []; } };
+
+  inp.addEventListener('input', ()=>{
+    const q=normB(inp.value.trim());
+    if(q.length<2){ out.innerHTML=''; return; }
+    const cursos=leer('lv_cursos'), acudientes=leer('lv_acudientes'), obs=leer('lv_observador');
+    const cursoMap={}; cursos.forEach(c=>{ cursoMap[c.id]=c; });
+
+    // agrupar estudiantes por nombre (existen repetidos por materia)
+    const porNombre={};
+    leer('lv_estudiantes').forEach(e=>{
+      if(!normB(e.nombre).includes(q)) return;
+      const k=normB(e.nombre);
+      if(!porNombre[k]) porNombre[k]={nombre:e.nombre, cursos:new Set()};
+      const c=cursoMap[e.cursoId];
+      if(c) porNombre[k].cursos.add((c.grado||'')+(c.grupo?'-'+c.grupo:''));
+    });
+    const lista=Object.values(porNombre).slice(0,8);
+    if(!lista.length){ out.innerHTML='<div style="color:var(--muted);font-size:.85rem;padding:6px 2px">Sin resultados. Los estudiantes se crean en el módulo de Calificaciones.</div>'; return; }
+
+    out.innerHTML=lista.map(e=>{
+      const acu=acudientes.find(a=>normB(a.estudiante)===normB(e.nombre));
+      const nObs=obs.filter(o=>!o._eliminado && normB(o.estNombre)===normB(e.nombre)).length;
+      return `<div style="border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <div style="flex:1;min-width:180px">
+          <strong>${escB(e.nombre)}</strong>
+          <div style="font-size:.78rem;color:var(--muted)">
+            ${[...e.cursos].map(c=>'📚 '+escB(c)).join(' · ')||'sin curso'}
+            ${acu?' · 👪 '+escB(acu.nombreAcudiente||'')+(acu.telefono?' ('+escB(acu.telefono)+')':''):''}
+            ${nObs?' · 📔 '+nObs+' anotación(es)':''}
+          </div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <a class="quick-btn" style="font-size:.78rem;padding:6px 10px" href="modulos/01-calificaciones.html">📊 Notas</a>
+          <a class="quick-btn" style="font-size:.78rem;padding:6px 10px" href="modulos/10-observador.html">📔 Observador</a>
+        </div>
+      </div>`;
+    }).join('');
+  });
+})();
+
+// ═══ Cumpleaños del día (usa est.cumple "MM-DD" si está registrado) ═══
+(function(){
+  try{
+    const wrap=document.getElementById('alertas-wrap');
+    if(!wrap) return;
+    const ests=JSON.parse(localStorage.getItem('lv_estudiantes')||'[]');
+    const hoy=new Date(); const clave=String(hoy.getMonth()+1).padStart(2,'0')+'-'+String(hoy.getDate()).padStart(2,'0');
+    const vistos={}; const cumple=[];
+    ests.forEach(e=>{ if(e.cumple===clave && !vistos[e.nombre]){ vistos[e.nombre]=1; cumple.push(e.nombre); } });
+    if(!cumple.length) return;
+    const div=document.createElement('div');
+    div.style.cssText='background:#fdf4ff;border:1px solid #e9d5ff;color:#7e22ce;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:.88rem;font-weight:600';
+    div.innerHTML='🎂 Hoy cumple(n) años: '+cumple.map(n=>String(n).replace(/[&<>"]/g,'')).join(', ');
+    wrap.prepend(div);
+  }catch(_){}
+})();
+</script>
 </body>
 </html>

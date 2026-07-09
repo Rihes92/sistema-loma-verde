@@ -77,6 +77,7 @@
   header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;transition:background .15s,color .15s;margin-left:auto}
   header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
 </style>
+<link rel="stylesheet" href="../lv-tema.css">
 </head>
 <body>
 <script src="../auth.js"></script>
@@ -325,7 +326,20 @@ const LS='lv_'; let _mem={}; let PERSIST=true;
 const clone=o=>JSON.parse(JSON.stringify(o));
 function _ls(){try{const t=LS+'_t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage;}catch(_){PERSIST=false;return null;}}
 function lsRead(s){const x=_ls();if(x){try{return JSON.parse(x.getItem(LS+s)||'[]');}catch(_){}}return _mem[s]?clone(_mem[s]):[];}
-function lsWrite(s,a){_mem[s]=clone(a);const x=_ls();if(x){try{x.setItem(LS+s,JSON.stringify(a));}catch(e){PERSIST=false;return false;}} if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){a.forEach(function(r){if(r&&r.id)LV_SYNC.marcarCambio('lv_'+s,r);});} return true;}
+function lsWrite(s,a){
+  // sincronizar SOLO lo que cambió (antes re-encolaba el array completo)
+  const previos={};
+  let base=Array.isArray(_mem[s])?_mem[s]:null;
+  if(!base){ const x0=_ls(); if(x0){ try{ base=JSON.parse(x0.getItem(LS+s)||'[]'); }catch(_){ base=[]; } } else base=[]; }
+  base.forEach(function(r){ if(r&&r.id) previos[r.id]=JSON.stringify(r); });
+  _mem[s]=clone(a);
+  const x=_ls();
+  if(x){ try{ x.setItem(LS+s,JSON.stringify(a)); }catch(e){ PERSIST=false; if(typeof LV_SYNC!=='undefined'&&LV_SYNC.revisarEspacio)LV_SYNC.revisarEspacio(); return false; } }
+  if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){
+    a.forEach(function(r){ if(r&&r.id&&previos[r.id]!==JSON.stringify(r)) LV_SYNC.marcarCambio('lv_'+s,r); });
+  }
+  return true;
+}
 
 // Contenido original de la malla de Ciencias Sociales (semilla). Ya NO se usa
 // directamente para mostrar la malla — se copia una sola vez a los datos
@@ -717,7 +731,7 @@ function renderLista(){
   const fg=$('#l-grado').value,fp=$('#l-periodo').value;
   if(fg)all=all.filter(p=>p.grado===fg);if(fp)all=all.filter(p=>p.periodo===fp);
   all.sort((a,b)=>(b.actualizado||b.creado)-(a.actualizado||a.creado));$('#doc-out').innerHTML='';
-  if(!all.length){out.innerHTML='<div class="empty">No hay planeadores con ese filtro.</div>';return;}
+  if(!all.length){out.innerHTML='<div class="empty">🗂️ No hay planeadores'+(fg||fp?' con ese filtro':' todavía')+'.<br>Crea el primero en la pestaña <b>Nuevo planeador</b>, o importa un JSON generado con la habilidad de Claude.</div>';return;}
   out.innerHTML=all.map(p=>`<div class="plan-item">
     <div><strong>${esc(p.tema||p.unidad||p.contenidos||'(sin título)')}</strong><br>
       <span class="badge">${esc(p.grado)} ${GLBL[p.grado]||''}</span>
@@ -726,8 +740,20 @@ function renderLista(){
       <button class="btn sm" onclick="verDoc('${p.id}')">Ver / Imprimir</button>
       <button class="btn sm sec" onclick="verGuia('${p.id}')">📄 Guía estudiante</button>
       <button class="btn sm sec" onclick="editPlan('${p.id}')">Editar</button>
+      <button class="btn sm sec" onclick="dupPlan('${p.id}')">📋 Duplicar</button>
       <button class="btn sm bad" onclick="delPlan('${p.id}')">Eliminar</button></div></div>`).join('');
 }
+window.dupPlan=id=>{
+  const orig=lsRead('planeadores').find(x=>x.id===id); if(!orig) return;
+  const copia=JSON.parse(JSON.stringify(orig));
+  copia.id=(typeof uid==='function'?uid():Date.now().toString(36)+Math.random().toString(36).slice(2,7));
+  copia.tema=(copia.tema||copia.unidad||'Planeador')+' (copia)';
+  copia.creado=Date.now(); copia.actualizado=Date.now();
+  delete copia.obsjefe; delete copia.firmajefe; // observaciones del jefe no viajan con la copia
+  const all=lsRead('planeadores'); all.push(copia);
+  lsWrite('planeadores',all); renderLista();
+  toast('Planeador duplicado — edítalo para ajustar tema y fechas');
+};
 window.editPlan=id=>{const p=lsRead('planeadores').find(x=>x.id===id);if(!p)return;document.querySelector('[data-tab="nuevo"]').click();loadInto(p);scrollTo(0,0);};
 window.delPlan=id=>{if(!confirm('¿Eliminar este planeador?'))return;const _r=lsRead('planeadores').find(x=>x.id===id);if(_r&&typeof LV_SYNC!=='undefined')LV_SYNC.marcarCambio('lv_planeadores',Object.assign({},_r,{_eliminado:true}));lsWrite('planeadores',lsRead('planeadores').filter(x=>x.id!==id));renderLista();toast('Eliminado');};
 window.verDoc=id=>{

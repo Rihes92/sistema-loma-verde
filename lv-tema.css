@@ -1,0 +1,50 @@
+/* ═══════════════════════════════════════════════════════════════
+   Sistema Loma Verde — Tema compartido (lv-tema.css)
+   Se carga DESPUÉS del <style> propio de cada página: unifica la
+   paleta institucional y agrega mejoras de uso en tableta.
+   Cambiar un color aquí lo cambia en TODA la app.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root{
+  --primary:#1e3a8a;
+  --primary-dark:#172d6e;
+  --primary-light:#3b82f6;
+  --bg:#f1f5f9;
+  --surface:#ffffff;
+  --text:#1f2937;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --ok:#16a34a;
+  --bad:#dc2626;
+  --warn:#d97706;
+}
+
+/* ── Modo tableta / táctil: objetivos de toque cómodos ── */
+@media (pointer:coarse){
+  button.btn, .quick-btn, nav.tabs button{ min-height:44px; }
+  button.btn.sm{ min-height:38px; }
+  input, select, textarea{ min-height:42px; }
+}
+
+/* ── Tablas anchas: primera columna (nombre del estudiante) fija
+      al hacer scroll horizontal ── */
+.tableScroll{ position:relative; }
+.tableScroll table th:first-child,
+.tableScroll table td:first-child{
+  position:sticky; left:0; z-index:1;
+  background:var(--surface);
+  box-shadow:2px 0 5px -2px rgba(0,0,0,.12);
+}
+.tableScroll table th:first-child{ background:#f8fafc; z-index:2; }
+
+/* ── Estados vacíos más orientadores ── */
+.empty{
+  text-align:center; padding:34px 20px; color:var(--muted);
+  background:#f8fafc; border:1px dashed var(--border); border-radius:12px;
+  font-size:.9rem; line-height:1.6;
+}
+
+/* ── Impresiones con identidad institucional ── */
+@media print{
+  h1, h2{ color:#1e3a8a !important; }
+}
