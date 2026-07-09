@@ -299,8 +299,47 @@ function irAMateria(area, materia, e){
   const infoBox = document.getElementById('login-info');
   if(infoBox){
     infoBox.innerHTML = `👋 ${login.esAdmin ? 'Administrador' : String(login.nombre||'Docente').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}`
+      + ` &nbsp;·&nbsp; <a href="#" onclick="abrirCambioClave();return false" style="color:inherit;text-decoration:underline">Cambiar contraseña</a>`
       + ` &nbsp;·&nbsp; <a href="#" onclick="cerrarSesion();return false" style="color:inherit;text-decoration:underline">Cerrar sesión</a>`;
   }
+  window.abrirCambioClave = function(){
+    if(document.getElementById('lv-clave-modal')) return;
+    const wrap = document.createElement('div');
+    wrap.id = 'lv-clave-modal';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:9998;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px';
+    wrap.innerHTML = `
+      <form id="lv-clave-form" style="background:#fff;border-radius:14px;padding:26px 24px;width:min(92vw,360px);box-shadow:0 12px 40px rgba(0,0,0,.3)">
+        <h3 style="margin:0 0 6px;color:#1e3a8a;font-size:1.05rem">Cambiar contraseña</h3>
+        <p style="margin:0 0 16px;color:#64748b;font-size:.82rem">Mínimo 6 caracteres. La usarás la próxima vez que inicies sesión en cualquier dispositivo.</p>
+        <input id="lv-clave-1" type="password" required minlength="6" placeholder="Nueva contraseña" autocomplete="new-password"
+          style="width:100%;box-sizing:border-box;padding:10px 12px;margin-bottom:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.9rem">
+        <input id="lv-clave-2" type="password" required minlength="6" placeholder="Repite la nueva contraseña" autocomplete="new-password"
+          style="width:100%;box-sizing:border-box;padding:10px 12px;margin-bottom:14px;border:1px solid #cbd5e1;border-radius:8px;font-size:.9rem">
+        <div style="display:flex;gap:8px">
+          <button type="submit" style="flex:1;padding:10px;background:#1e3a8a;color:#fff;border:0;border-radius:8px;font-weight:700;cursor:pointer">Guardar</button>
+          <button type="button" id="lv-clave-cancel" style="padding:10px 14px;background:#f1f5f9;color:#334155;border:0;border-radius:8px;font-weight:600;cursor:pointer">Cancelar</button>
+        </div>
+        <p id="lv-clave-msg" style="font-size:.8rem;margin:10px 0 0;min-height:1.1em;color:#dc2626"></p>
+      </form>`;
+    document.body.appendChild(wrap);
+    wrap.querySelector('#lv-clave-cancel').onclick = ()=> wrap.remove();
+    wrap.addEventListener('click', e=>{ if(e.target===wrap) wrap.remove(); });
+    wrap.querySelector('#lv-clave-form').addEventListener('submit', async e=>{
+      e.preventDefault();
+      const msg = wrap.querySelector('#lv-clave-msg');
+      const a = wrap.querySelector('#lv-clave-1').value, b = wrap.querySelector('#lv-clave-2').value;
+      if(a!==b){ msg.textContent='Las contraseñas no coinciden.'; return; }
+      msg.style.color='#64748b'; msg.textContent='Guardando…';
+      try{
+        await LV_AUTH.cambiarPassword(a);
+        msg.style.color='#059669'; msg.textContent='✅ Contraseña actualizada.';
+        setTimeout(()=>wrap.remove(), 1200);
+      }catch(err){
+        msg.style.color='#dc2626'; msg.textContent = err.message || 'No se pudo cambiar.';
+      }
+    });
+  };
+
   window.cerrarSesion = function(){
     if (typeof LV_AUTH !== 'undefined') { LV_AUTH.logout(); return; }
     localStorage.removeItem('lv_login');

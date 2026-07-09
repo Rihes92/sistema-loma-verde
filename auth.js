@@ -122,5 +122,20 @@ const LV_AUTH = (() => {
     return false;
   }
 
-  return { login, logout, exigirSesion, haySesion, getValidToken, refrescar, usuario, docenteId, URL, KEY };
+  // ── Cambiar la contraseña del usuario actual ────────────────
+  async function cambiarPassword(nueva) {
+    if (!nueva || nueva.length < 6) throw new Error('La contraseña debe tener al menos 6 caracteres.');
+    const t = await getValidToken();
+    if (!t) throw new Error('Tu sesión expiró. Cierra sesión y vuelve a entrar.');
+    const r = await fetch(`${URL}/auth/v1/user`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'apikey': KEY, 'Authorization': 'Bearer ' + t },
+      body: JSON.stringify({ password: nueva })
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error_description || data.msg || 'No se pudo cambiar la contraseña.');
+    return true;
+  }
+
+  return { login, logout, exigirSesion, haySesion, getValidToken, refrescar, usuario, docenteId, cambiarPassword, URL, KEY };
 })();
