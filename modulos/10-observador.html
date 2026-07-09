@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Observador del Estudiante — Sistema Loma Verde</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../sync.js"></script>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+  main{max-width:1100px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 14px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:160px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  button.btn.ok{background:var(--ok)}
+  button.btn.bad{background:var(--bad);color:#fff}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .hide{display:none!important}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.72rem;font-weight:700}
+  .b-t1{background:#fef9c3;color:#854d0e}
+  .b-t2{background:#ffedd5;color:#9a3412}
+  .b-t3{background:#fee2e2;color:#991b1b}
+  .b-aca{background:#dbeafe;color:#1e3a8a}
+  .b-rec{background:#dcfce7;color:#166534}
+  .b-abierto{background:#fef3c7;color:#92400e}
+  .b-cumplido{background:#dcfce7;color:#166534}
+  .b-incumplido{background:#fee2e2;color:#991b1b}
+  .anot{border:1px solid var(--border);border-left-width:5px;border-radius:10px;padding:12px 14px;margin-bottom:12px;background:#fff}
+  .anot.t1{border-left-color:#eab308}.anot.t2{border-left-color:#f97316}.anot.t3{border-left-color:#dc2626}
+  .anot.aca{border-left-color:#3b82f6}.anot.rec{border-left-color:#16a34a}
+  .anot .meta{font-size:.76rem;color:var(--muted)}
+  .anot .desc-txt{margin:6px 0;font-size:.9rem;white-space:pre-wrap}
+  .anot .comp{background:#f8fafc;border:1px dashed var(--border);border-radius:8px;padding:8px 10px;font-size:.84rem;margin-top:6px}
+  .seg{border-top:1px dotted var(--border);margin-top:8px;padding-top:8px;font-size:.82rem}
+  .seg .meta{font-size:.72rem}
+  .est-item{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--border);border-radius:9px;margin-bottom:6px;cursor:pointer;background:#fff}
+  .est-item:hover{background:#eff6ff;border-color:var(--primary-light)}
+  .est-item.sel{background:#eff6ff;border-color:var(--primary);font-weight:700}
+  .est-item .cnt{margin-left:auto;font-size:.72rem;color:var(--muted)}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+  .grid2{display:grid;grid-template-columns:290px 1fr;gap:18px;align-items:start}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  /* ── impresión: solo el área imprimible ── */
+  #print-area{display:none}
+  @media print{
+    body>*{display:none!important}
+    #print-area{display:block!important;font-size:11pt;color:#000}
+    #print-area .p-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid #1e3a8a;padding-bottom:10px;margin-bottom:12px}
+    #print-area .p-head img{width:64px;height:64px;object-fit:contain}
+    #print-area h1{font-size:15pt;color:#1e3a8a;margin:0}
+    #print-area h2{font-size:12pt;margin:14px 0 6px;color:#1e3a8a}
+    #print-area table{width:100%;border-collapse:collapse;font-size:9.5pt;margin-bottom:8px}
+    #print-area th,#print-area td{border:1px solid #666;padding:5px 7px;text-align:left;vertical-align:top}
+    #print-area th{background:#e8eef9}
+    #print-area .p-anot{border:1px solid #666;border-radius:4px;padding:8px 10px;margin-bottom:8px;page-break-inside:avoid}
+    #print-area .firmas{display:flex;gap:40px;margin-top:60px}
+    #print-area .firmas div{flex:1;border-top:1px solid #000;text-align:center;font-size:9pt;padding-top:4px}
+  }
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <h1>📔 Observador del Estudiante</h1>
+  <span class="pill">I.E. San José de Loma Verde</span>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<main>
+  <div class="card" id="card-sin-grupo" style="display:none">
+    <h2>Sin grupos a cargo</h2>
+    <p class="desc">No apareces como director(a) de ningún grupo. El observador solo está disponible para directores de grupo. Pide a Coordinación que registre el campo <b>"dirige"</b> en tu ficha de docente (ej: <code>6-601, 7-701</code>).</p>
+  </div>
+
+  <div class="grid2" id="zona-principal" style="display:none">
+    <!-- columna izquierda: grupos y estudiantes -->
+    <div>
+      <div class="card">
+        <h2>Mis estudiantes</h2>
+        <label class="fld">Grupo que dirijo
+          <select id="sel-curso"></select>
+        </label>
+        <label class="fld" style="margin-top:10px">Buscar estudiante
+          <input id="buscar-est" placeholder="Nombre…">
+        </label>
+        <div id="lista-est" style="margin-top:12px"></div>
+        <p class="desc" id="msg-sin-est" style="display:none;margin-top:10px">Este grupo aún no tiene estudiantes registrados. Créalos en el módulo de <b>Calificaciones</b> y aparecerán aquí.</p>
+      </div>
+    </div>
+
+    <!-- columna derecha: observador del estudiante seleccionado -->
+    <div id="zona-est" style="display:none">
+      <div class="card">
+        <h2 id="tit-est"></h2>
+        <div id="resumen-est" style="margin-bottom:8px"></div>
+        <button class="btn sec sm" id="btn-imprimir">🖨️ Imprimir observador</button>
+      </div>
+
+      <div class="card">
+        <h2>Nueva anotación</h2>
+        <div class="row">
+          <label class="fld">Tipo
+            <select id="n-tipo">
+              <option value="Situación Tipo I">Situación Tipo I (convivencia leve)</option>
+              <option value="Situación Tipo II">Situación Tipo II (agresión/acoso repetido)</option>
+              <option value="Situación Tipo III">Situación Tipo III (presunto delito)</option>
+              <option value="Académica">Anotación académica</option>
+              <option value="Reconocimiento">Reconocimiento positivo ⭐</option>
+            </select>
+          </label>
+          <label class="fld">Fecha<input id="n-fecha" type="date"></label>
+        </div>
+        <label class="fld" style="margin-top:10px">Descripción de la situación
+          <textarea id="n-desc" rows="3" placeholder="Describe objetivamente lo ocurrido…"></textarea>
+        </label>
+        <div class="row" style="margin-top:10px">
+          <label class="fld" style="flex:2">Compromiso / acción pedagógica (opcional)
+            <textarea id="n-comp" rows="2" placeholder="Compromiso del estudiante o acción acordada…"></textarea>
+          </label>
+          <label class="fld">Fecha límite compromiso<input id="n-fecha-comp" type="date"></label>
+        </div>
+        <div style="margin-top:12px">
+          <button class="btn ok" id="btn-guardar">💾 Guardar anotación</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Historial</h2>
+        <div class="row" style="margin-bottom:10px">
+          <label class="fld">Filtrar por tipo
+            <select id="f-tipo">
+              <option value="">Todos</option>
+              <option>Situación Tipo I</option><option>Situación Tipo II</option>
+              <option>Situación Tipo III</option><option>Académica</option><option>Reconocimiento</option>
+            </select>
+          </label>
+        </div>
+        <div id="historial"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast"></div>
+<div id="print-area"></div>
+
+<script>
+const LS='lv_';
+function lsRead(s){ try{ return JSON.parse(localStorage.getItem(LS+s))||[]; }catch(_){ return []; } }
+function lsWriteObs(arr, cambiados){
+  try{ localStorage.setItem(LS+'observador', JSON.stringify(arr)); }
+  catch(_){ if(typeof LV_SYNC!=='undefined'&&LV_SYNC.revisarEspacio) LV_SYNC.revisarEspacio(); }
+  if(typeof LV_SYNC!=='undefined') (cambiados||[]).forEach(r=>{ if(r&&r.id) LV_SYNC.marcarCambio('lv_observador', r); });
+}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+const hoyISO=()=>new Date().toISOString().slice(0,10);
+const fmtF=f=>{ if(!f) return '—'; const d=new Date(f+'T12:00:00'); return d.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}); };
+
+// ── sesión y permisos: solo director de grupo (o admin) ──
+let login=null;
+try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const esAdmin = !!(login&&login.esAdmin);
+const autor = login ? (login.nombre||'Docente') : 'Docente';
+
+// normaliza "6°" → "6", "601" → "601"
+const norm = v => String(v??'').replace(/[°\s]/g,'').toLowerCase();
+
+function gruposDirigidos(){
+  // admin: todos los cursos. docente: cursos cuyo grado-grupo aparezca en su campo "dirige"
+  const cursos = lsRead('cursos');
+  if(esAdmin) return cursos;
+  const docentes = lsRead('docentes');
+  const d = docentes.find(x=>x.id===(login&&login.docenteId));
+  if(!d || !d.dirige) return [];
+  const tokens = String(d.dirige).split(',').map(t=>{
+    const [g,gr] = t.trim().split('-');
+    return { grado:norm(g), grupo:norm(gr||'') };
+  });
+  return cursos.filter(c => tokens.some(t =>
+    t.grado===norm(c.grado) && (!t.grupo || !norm(c.grupo) || t.grupo===norm(c.grupo))
+  ));
+}
+
+// deduplicar cursos por grado-grupo (existen por materia)
+function gruposUnicos(){
+  const vistos={}, out=[];
+  gruposDirigidos().forEach(c=>{
+    const k=norm(c.grado)+'-'+norm(c.grupo);
+    if(!vistos[k]){ vistos[k]=1; out.push({key:k, grado:c.grado, grupo:c.grupo}); }
+  });
+  return out.sort((a,b)=>a.key.localeCompare(b.key,undefined,{numeric:true}));
+}
+
+function estudiantesDe(grupoKey){
+  const cursosIds = lsRead('cursos').filter(c=>norm(c.grado)+'-'+norm(c.grupo)===grupoKey).map(c=>c.id);
+  const vistos={}, out=[];
+  lsRead('estudiantes').forEach(e=>{
+    if(!cursosIds.includes(e.cursoId)) return;
+    const k=norm(e.nombre);
+    if(!vistos[k]){ vistos[k]=1; out.push(e); }
+  });
+  return out.sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+}
+
+const obsDe = est => lsRead('observador')
+  .filter(o=>!o._eliminado && (o.estId===est.id || norm(o.estNombre)===norm(est.nombre)))
+  .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
+
+const claseTipo = t => t==='Situación Tipo I'?'t1':t==='Situación Tipo II'?'t2':t==='Situación Tipo III'?'t3':t==='Reconocimiento'?'rec':'aca';
+const badgeTipo = t => `<span class="badge b-${claseTipo(t)}">${esc(t)}</span>`;
+
+// ── estado de la vista ──
+let grupoSel=null, estSel=null;
+
+function initSelector(){
+  const grupos = gruposUnicos();
+  if(!grupos.length){
+    document.getElementById('card-sin-grupo').style.display = esAdmin ? 'none' : 'block';
+    if(esAdmin){ document.getElementById('zona-principal').style.display='grid'; pintarEstudiantes(); }
+    return;
+  }
+  document.getElementById('zona-principal').style.display='grid';
+  const sel=document.getElementById('sel-curso');
+  sel.innerHTML = grupos.map(g=>`<option value="${esc(g.key)}">${esc(g.grado)} - ${esc(g.grupo||'único')}</option>`).join('');
+  grupoSel = grupos[0].key;
+  sel.value = grupoSel;
+  sel.onchange = ()=>{ grupoSel=sel.value; estSel=null; document.getElementById('zona-est').style.display='none'; pintarEstudiantes(); };
+  pintarEstudiantes();
+}
+
+function pintarEstudiantes(){
+  const cont=document.getElementById('lista-est');
+  const filtro=norm(document.getElementById('buscar-est').value||'');
+  let ests = grupoSel ? estudiantesDe(grupoSel) : [];
+  if(esAdmin && !grupoSel){
+    // admin sin cursos definidos: mostrar todos los estudiantes
+    ests = lsRead('estudiantes');
+  }
+  if(filtro) ests = ests.filter(e=>norm(e.nombre).includes(filtro));
+  document.getElementById('msg-sin-est').style.display = ests.length?'none':'block';
+  cont.innerHTML = ests.map(e=>{
+    const n=obsDe(e).length;
+    return `<div class="est-item ${estSel&&estSel.id===e.id?'sel':''}" data-id="${esc(e.id)}">
+      <span>${esc(e.nombre)}</span><span class="cnt">${n?n+' anotación(es)':''}</span></div>`;
+  }).join('');
+  cont.querySelectorAll('.est-item').forEach(el=>{
+    el.onclick=()=>{ const e=ests.find(x=>x.id===el.dataset.id); if(e) seleccionarEst(e); };
+  });
+}
+
+function seleccionarEst(e){
+  estSel=e;
+  document.getElementById('zona-est').style.display='block';
+  document.getElementById('tit-est').textContent='📔 '+e.nombre;
+  document.getElementById('n-fecha').value=hoyISO();
+  pintarEstudiantes();
+  pintarHistorial();
+}
+
+function pintarResumen(lista){
+  const c={};
+  lista.forEach(o=>{ c[o.tipo]=(c[o.tipo]||0)+1; });
+  const abiertos=lista.filter(o=>o.compromiso&&o.estado==='abierto').length;
+  document.getElementById('resumen-est').innerHTML =
+    Object.entries(c).map(([t,n])=>badgeTipo(t)+' '+n).join(' &nbsp; ')
+    + (abiertos?` &nbsp; <span class="badge b-abierto">⏳ ${abiertos} compromiso(s) abiertos</span>`:'');
+}
+
+function pintarHistorial(){
+  if(!estSel) return;
+  const filtro=document.getElementById('f-tipo').value;
+  let lista=obsDe(estSel);
+  pintarResumen(lista);
+  if(filtro) lista=lista.filter(o=>o.tipo===filtro);
+  const cont=document.getElementById('historial');
+  if(!lista.length){ cont.innerHTML='<div class="empty">Sin anotaciones'+(filtro?' de este tipo':'')+'. ✨</div>'; return; }
+  cont.innerHTML = lista.map(o=>`
+    <div class="anot ${claseTipo(o.tipo)}">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        ${badgeTipo(o.tipo)}
+        <span class="meta">${fmtF(o.fecha)} · registró: ${esc(o.autor||'—')}</span>
+        <span style="margin-left:auto;display:flex;gap:6px">
+          <button class="btn sec sm" onclick="agregarSeguimiento('${esc(o.id)}')">➕ Seguimiento</button>
+          <button class="btn bad sm" onclick="borrarAnotacion('${esc(o.id)}')">🗑️</button>
+        </span>
+      </div>
+      <div class="desc-txt">${esc(o.descripcion)}</div>
+      ${o.compromiso?`<div class="comp"><b>Compromiso:</b> ${esc(o.compromiso)}
+        ${o.fechaCompromiso?` <span class="meta">(límite: ${fmtF(o.fechaCompromiso)})</span>`:''}
+        &nbsp;<span class="badge b-${esc(o.estado||'abierto')}">${esc(o.estado||'abierto')}</span>
+        ${o.estado==='abierto'?`
+          <span style="margin-left:6px">
+            <button class="btn ok sm" onclick="marcarCompromiso('${esc(o.id)}','cumplido')">✔ Cumplido</button>
+            <button class="btn bad sm" onclick="marcarCompromiso('${esc(o.id)}','incumplido')">✖ Incumplido</button>
+          </span>`:''}
+      </div>`:''}
+      ${(o.seguimientos||[]).map(s=>`<div class="seg"><span class="meta">${fmtF(s.fecha)} · ${esc(s.autor||'')}</span><br>${esc(s.texto)}</div>`).join('')}
+    </div>`).join('');
+}
+
+// ── acciones ──
+document.getElementById('btn-guardar').addEventListener('click', ()=>{
+  if(!estSel) return;
+  const desc=document.getElementById('n-desc').value.trim();
+  if(!desc){ toast('Describe la situación.'); return; }
+  const grupos=gruposUnicos().find(g=>g.key===grupoSel);
+  const nueva={
+    id:uid(), estId:estSel.id, estNombre:estSel.nombre,
+    curso: grupos ? (grupos.grado+' - '+(grupos.grupo||'único')) : '',
+    tipo:document.getElementById('n-tipo').value,
+    fecha:document.getElementById('n-fecha').value||hoyISO(),
+    descripcion:desc,
+    compromiso:document.getElementById('n-comp').value.trim(),
+    fechaCompromiso:document.getElementById('n-fecha-comp').value||'',
+    estado:'abierto', seguimientos:[], autor, creado:Date.now()
+  };
+  const arr=lsRead('observador'); arr.push(nueva);
+  lsWriteObs(arr,[nueva]);
+  document.getElementById('n-desc').value=''; document.getElementById('n-comp').value='';
+  document.getElementById('n-fecha-comp').value='';
+  toast('Anotación guardada'); pintarHistorial(); pintarEstudiantes();
+});
+
+window.agregarSeguimiento=function(id){
+  const texto=prompt('Escribe el seguimiento (qué se ha hecho, cómo va el estudiante):');
+  if(!texto||!texto.trim()) return;
+  const arr=lsRead('observador');
+  const o=arr.find(x=>x.id===id); if(!o) return;
+  o.seguimientos=o.seguimientos||[];
+  o.seguimientos.push({fecha:hoyISO(), texto:texto.trim(), autor});
+  lsWriteObs(arr,[o]); toast('Seguimiento agregado'); pintarHistorial();
+};
+
+window.marcarCompromiso=function(id, estado){
+  const arr=lsRead('observador');
+  const o=arr.find(x=>x.id===id); if(!o) return;
+  o.estado=estado;
+  o.seguimientos=o.seguimientos||[];
+  o.seguimientos.push({fecha:hoyISO(), texto:'Compromiso marcado como '+estado+'.', autor});
+  lsWriteObs(arr,[o]); toast('Compromiso '+estado); pintarHistorial();
+};
+
+window.borrarAnotacion=function(id){
+  if(!confirm('¿Enviar esta anotación a la papelera? Podrás recuperarla desde Coordinación durante 30 días.')) return;
+  let arr=lsRead('observador');
+  const o=arr.find(x=>x.id===id); if(!o) return;
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_observador', {...o, _eliminado:true});
+  arr=arr.filter(x=>x.id!==id);
+  lsWriteObs(arr,[]);
+  toast('Anotación enviada a la papelera'); pintarHistorial(); pintarEstudiantes();
+};
+
+// ── impresión ──
+document.getElementById('btn-imprimir').addEventListener('click', ()=>{
+  if(!estSel) return;
+  const lista=obsDe(estSel).slice().sort((a,b)=>(a.fecha||'').localeCompare(b.fecha||''));
+  const grupo=gruposUnicos().find(g=>g.key===grupoSel);
+  document.getElementById('print-area').innerHTML=`
+    <div class="p-head">
+      <img src="../Logo/logo.jpg" alt="">
+      <div>
+        <h1>Institución Educativa San José de Loma Verde</h1>
+        <div>OBSERVADOR DEL ESTUDIANTE — Año ${new Date().getFullYear()}</div>
+      </div>
+    </div>
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(estSel.nombre)}</td>
+          <th style="width:14%">Grupo</th><td>${esc(grupo?grupo.grado+' - '+(grupo.grupo||'único'):'')}</td></tr>
+      <tr><th>Director(a) de grupo</th><td>${esc(autor)}</td>
+          <th>Fecha de impresión</th><td>${new Date().toLocaleDateString('es-CO')}</td></tr>
+    </table>
+    <h2>Registro de anotaciones (${lista.length})</h2>
+    ${lista.length ? lista.map((o,i)=>`
+      <div class="p-anot">
+        <b>${i+1}. ${esc(o.tipo)}</b> — ${fmtF(o.fecha)} · Registró: ${esc(o.autor||'—')}<br>
+        ${esc(o.descripcion)}
+        ${o.compromiso?`<br><b>Compromiso:</b> ${esc(o.compromiso)}${o.fechaCompromiso?' (límite: '+fmtF(o.fechaCompromiso)+')':''} — <i>${esc(o.estado||'abierto')}</i>`:''}
+        ${(o.seguimientos||[]).map(s=>`<br><i>Seguimiento ${fmtF(s.fecha)} (${esc(s.autor||'')}):</i> ${esc(s.texto)}`).join('')}
+      </div>`).join('') : '<p>Sin anotaciones registradas.</p>'}
+    <div class="firmas">
+      <div>Firma del estudiante</div>
+      <div>Firma del acudiente</div>
+      <div>Director(a) de grupo</div>
+    </div>`;
+  window.print();
+});
+
+// ── filtros ──
+document.getElementById('buscar-est').addEventListener('input', pintarEstudiantes);
+document.getElementById('f-tipo').addEventListener('change', pintarHistorial);
+
+// ── arranque: esperar la primera descarga de sync para tener datos frescos ──
+initSelector();
+setTimeout(initSelector, 2500); // reintento por si la descarga llegó después
+</script>
+</body>
+</html>
