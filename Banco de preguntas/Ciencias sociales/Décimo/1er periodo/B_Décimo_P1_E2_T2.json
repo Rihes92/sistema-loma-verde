@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Primer Periodo",
+    "unidad": "Eje 2: Modelos económicos globales y soberanía alimentaria",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750060801aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Qué es la desertización y cuál es la diferencia con la desertificación? ¿Por qué el 40% del territorio colombiano presenta algún grado de degradación del suelo?",
+      "respuesta": "La desertización es la pérdida de productividad de tierras por causas humanas (deforestación, sobrepastoreo, agricultura intensiva sin rotación). La desertificación es el proceso natural de formación de desiertos en zonas áridas. El 40% del territorio colombiano presenta degradación del suelo principalmente por sobrepastoreo en la Costa Caribe y los Llanos, monocultivos intensivos sin rotación en el Altiplano Cundiboyacense, y caficultura tecnificada sin sombra en partes del Eje Cafetero que elimina la materia orgánica y la biodiversidad del suelo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750060801aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explica qué es un organismo genéticamente modificado (OGM) y describe las características de los dos transgénicos más comunes en la agricultura mundial: el maíz Bt y la soya RR.",
+      "respuesta": "Un OGM es un ser vivo al que se han introducido genes de otra especie mediante biotecnología para darle características específicas. El maíz Bt produce internamente una toxina que mata ciertos insectos plaga (derivada de la bacteria Bacillus thuringiensis), reduciendo la necesidad de insecticidas. La soya Roundup Ready (RR) tiene tolerancia al herbicida glifosato, lo que permite fumigar el cultivo sin matarlo. Ambas son semillas patentadas que impiden a los agricultores guardar semilla de su cosecha para volver a sembrar.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750060801aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Describe tres argumentos en contra del uso masivo de transgénicos, uno por cada dimensión: ambiental, económica para el campesino y de soberanía alimentaria.",
+      "respuesta": "Ambiental: los genes de resistencia pueden transferirse a plantas silvestres creando 'supermalezas'. Ya se documentan más de 500 casos de malezas resistentes al glifosato en el mundo. Económico: las semillas transgénicas son patentadas, prohíben guardarlas para la siguiente cosecha y obligan a comprarlas cada año aumentando costos fijos. Soberanía alimentaria: el reemplazo de variedades criollas destruye el patrimonio genético ancestral e impone dependencia de tres corporaciones que controlan el 60% del mercado mundial de semillas.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750060801aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es la soberanía alimentaria y por qué Colombia, a pesar de su riqueza agrícola, enfrenta un déficit en este aspecto?",
+      "respuesta": "La soberanía alimentaria es el derecho de los pueblos a definir sus propias políticas alimentarias, producir sus alimentos con semillas propias de forma sostenible. Colombia tiene déficit porque importa el 40% de los alimentos que consume —dependencia generada por la apertura económica de 1991 que destruyó la producción nacional de granos básicos al exponerla a la competencia de productos subsidiados del exterior. Esto hace que el precio de la canasta familiar sea vulnerable a fluctuaciones del dólar y a crisis alimentarias globales.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750060801aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Una familia de Loma Verde nota que su suelo de café está 'cansado': las plantas producen menos aunque abonen igual. Propón tres prácticas concretas para recuperar la fertilidad del suelo sin comprar insumos externos.",
+      "respuesta": "1) Lombricompostaje con pulpa de café: procesar los residuos del beneficiadero con lombrices californianas produce abono orgánico de alta calidad que devuelve materia orgánica y microorganismos al suelo. 2) Siembra de plantas de cobertura leguminosas entre los surcos de café: cubren el suelo protegiéndolo de la erosión, fijan nitrógeno atmosférico y aportan materia orgánica al descomponerse. 3) Ampliar los árboles de sombra nativos: sus raíces profundas extraen nutrientes y los devuelven a la superficie con la hojarasca, creando el microclima óptimo para la vida microbiana del suelo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750060801fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La desertización y la desertificación son dos términos sinónimos que describen el mismo proceso de formación de desiertos.",
+      "correcta": false,
+      "justificacion": "Falso. Son procesos distintos. La desertificación es el proceso natural de formación de desiertos por causas climáticas. La desertización es la pérdida de productividad de tierras agrícolas por causas principalmente humanas: deforestación, sobrepastoreo, agricultura intensiva. La desertización es reversible si se actúan las causas; la desertificación natural es parte del ciclo climático."
+    },
+    {
+      "id": "lv1750060801fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El 40% del territorio colombiano presenta algún grado de degradación del suelo, según datos del IDEAM.",
+      "correcta": true,
+      "justificacion": "Verdadero. El IDEAM estima que aproximadamente el 40% del territorio nacional colombiano presenta algún grado de degradación del suelo, siendo las zonas más afectadas la Costa Caribe (sobrepastoreo y deforestación), el Altiplano Cundiboyacense (monocultivos intensivos) y algunas zonas cafeteras con cultivo a plena exposición solar."
+    },
+    {
+      "id": "lv1750060801fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "En Colombia, el algodón transgénico Bt fue autorizado para siembra comercial desde 2002, siendo uno de los primeros países de América Latina en aprobar cultivos transgénicos.",
+      "correcta": true,
+      "justificacion": "Verdadero. Colombia autorizó el algodón transgénico Bt para siembra comercial en 2002, principalmente en la Costa Caribe y los Llanos Orientales. En 2007 autorizó también el maíz transgénico. Es uno de los países de América del Sur que más rápidamente adoptó cultivos transgénicos, aunque con escala menor que Brasil o Argentina."
+    },
+    {
+      "id": "lv1750060801fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las tres empresas más grandes del mercado mundial de semillas —Bayer-Monsanto, Syngenta y Corteva— controlan más del 60% de ese mercado.",
+      "correcta": true,
+      "justificacion": "Verdadero. Tras las fusiones y adquisiciones entre 2016 y 2019, tres corporaciones controlan más del 60% del mercado mundial de semillas. Esta concentración preocupa a los movimientos campesinos por el riesgo de monopolio sobre el acceso a la semilla y el consecuente poder de fijar precios sin competencia real."
+    },
+    {
+      "id": "lv1750060801fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El maíz transgénico Bt elimina completamente la necesidad de usar insecticidas en el cultivo, resolviendo el problema del impacto de los agroquímicos sobre la biodiversidad.",
+      "correcta": false,
+      "justificacion": "Falso. El maíz Bt reduce el uso de algunos insecticidas específicos pero no elimina todos los agroquímicos. Además, los cultivos tolerantes a herbicidas (soya RR) han llevado a mayor uso de glifosato con la consecuente aparición de malezas resistentes. Los transgénicos desplazan el problema a otros insumos, no lo resuelven completamente."
+    },
+    {
+      "id": "lv1750060801sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La pérdida de tierra agrícola por desertización es una amenaza global a la seguridad alimentaria.",
+      "enunciado": "Según la FAO, ¿cuántas hectáreas de tierra productiva pierde el mundo cada año por desertización y degradación del suelo?",
+      "opciones": ["Entre 1 y 2 millones de hectáreas.", "Entre 5 y 7 millones de hectáreas.", "Entre 12 y 15 millones de hectáreas.", "Más de 50 millones de hectáreas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La FAO estima que cada año el mundo pierde entre 12 y 15 millones de hectáreas de tierra productiva por desertización y degradación del suelo, un área equivalente aproximadamente a la mitad de Colombia. Esta pérdida amenaza la capacidad de alimentar a una población mundial que superará los 10.000 millones de personas en 2050."
+    },
+    {
+      "id": "lv1750060801sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Las semillas transgénicas tienen características legales específicas que afectan las prácticas tradicionales de los campesinos.",
+      "enunciado": "¿Cuál es el principal problema económico que enfrentan los pequeños agricultores al adoptar semillas transgénicas patentadas?",
+      "opciones": ["Son más caras de cosechar porque requieren maquinaria especializada.", "No pueden guardarse de una cosecha para la siguiente, obligando a comprarlas cada año a la empresa propietaria de la patente.", "Solo funcionan en suelos con fertilizantes específicos que la misma empresa vende.", "Requieren sistemas de riego que los pequeños agricultores no pueden costear."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Las semillas transgénicas patentadas tienen una restricción legal clave: el agricultor no puede guardar semillas de su cosecha para volver a sembrar sin pagar regalías a la empresa propietaria. Esto obliga a comprar nuevas semillas cada ciclo productivo, aumentando los costos fijos y creando dependencia económica de la corporación dueña de la patente."
+    },
+    {
+      "id": "lv1750060801sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El principio de precaución es uno de los argumentos centrales de quienes piden más regulación sobre los transgénicos.",
+      "enunciado": "¿Qué es el principio de precaución en el debate sobre transgénicos?",
+      "opciones": ["El principio de que los agricultores deben precalentar el suelo antes de sembrar semillas transgénicas.", "El principio de que cuando una actividad plantea amenazas al ambiente o la salud, se deben tomar medidas preventivas aunque la evidencia científica no sea concluyente.", "El principio de que las empresas deben pagar seguros antes de vender semillas patentadas.", "El principio de que los gobiernos deben regular el precio de las semillas para proteger a los campesinos."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El principio de precaución es un principio jurídico y ético que establece que cuando hay amenazas potenciales a la salud o el ambiente, aunque la evidencia científica no sea concluyente, se deben tomar medidas preventivas. Es el argumento central de quienes exigen más investigación independiente y de largo plazo antes de permitir el uso masivo de transgénicos."
+    },
+    {
+      "id": "lv1750060801sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La pérdida de la capa superficial del suelo es uno de los procesos de degradación más rápidos y difíciles de revertir.",
+      "enunciado": "¿Qué proceso de degradación del suelo ocurre cuando la capa superficial fértil es arrastrada por el agua de lluvia sobre suelos sin cobertura vegetal?",
+      "opciones": ["Salinización.", "Compactación.", "Erosión hídrica.", "Acidificación."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La erosión hídrica es el arrastre de la capa superficial del suelo por el agua de lluvia o los ríos cuando el suelo carece de cobertura vegetal protectora. Es el proceso de degradación más rápido: la capa superficial tarda entre 200 y 1.000 años en formarse y puede perderse en una sola temporada de lluvias intensas si el suelo está desnudo."
+    },
+    {
+      "id": "lv1750060801sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La aparición de 'supermalezas' resistentes a herbicidas es uno de los riesgos ambientales documentados del uso de cultivos transgénicos.",
+      "enunciado": "¿Cuántos casos de malezas resistentes al glifosato se han documentado en el mundo, como consecuencia del uso masivo de cultivos transgénicos tolerantes a ese herbicida?",
+      "opciones": ["Menos de 50 casos.", "Aproximadamente 100 casos.", "Más de 500 casos.", "Más de 2.000 casos."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Se han documentado más de 500 casos de malezas resistentes al glifosato en el mundo, resultado de la presión selectiva ejercida por el uso masivo de este herbicida en cultivos transgénicos tolerantes. Estas 'supermalezas' son cada vez más difíciles de controlar y requieren herbicidas más potentes y costosos."
+    },
+    {
+      "id": "lv1750060801sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La dependencia alimentaria colombiana de importaciones es una consecuencia directa de la apertura económica de los años 90.",
+      "enunciado": "¿Qué porcentaje de los alimentos que consume Colombia proviene de importaciones?",
+      "opciones": ["El 10%.", "El 20%.", "El 40%.", "El 70%."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia importa aproximadamente el 40% de los alimentos que consume, especialmente maíz, trigo, soya y aceites vegetales. Esta dependencia fue generada principalmente por la apertura económica de 1991 que eliminó la protección arancelaria de los granos básicos colombianos, exponiéndolos a la competencia de productos subsidiados del exterior."
+    },
+    {
+      "id": "lv1750060801sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Algunos suelos agrícolas de regiones con riego intensivo en Colombia presentan pérdida de productividad por acumulación de sustancias minerales.",
+      "enunciado": "¿Cuál de los siguientes es el proceso por el cual los suelos de zonas de riego acumulan sales hasta volverse improductivos?",
+      "opciones": ["Erosión.", "Salinización.", "Compactación.", "Lixiviación."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La salinización es la acumulación de sales en el suelo por riego con agua de mala calidad o por ascenso del agua subterránea salada. Cuando la concentración de sal supera cierto umbral, las raíces no pueden absorber agua y las plantas mueren. Afecta especialmente zonas de riego intensivo como el Valle del Cauca y algunas áreas del Caribe colombiano."
+    },
+    {
+      "id": "lv1750060801sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La biodiversidad no se limita a los ecosistemas silvestres: también existe en las variedades de cultivos que los agricultores han desarrollado por siglos.",
+      "enunciado": "¿Qué es la biodiversidad agrícola y por qué es amenazada por la expansión de monocultivos de semillas mejoradas o transgénicas?",
+      "opciones": ["Es la variedad de plantas silvestres que crecen alrededor de los cultivos.", "Es la variedad de plantas cultivadas, razas de animales y microorganismos asociados a la agricultura, amenazada cuando las variedades criollas son reemplazadas por monocultivos de pocas variedades mejoradas.", "Es la cantidad de especies de insectos que polinizan los cultivos agrícolas.", "Es el número de pesticidas diferentes que se usan en una misma finca."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La biodiversidad agrícola incluye miles de variedades criollas de cultivos adaptadas a microclimas locales, razas de animales domésticos y microorganismos del suelo. Es amenazada cuando los monocultivos de pocas variedades mejoradas o transgénicas reemplazan ese mosaico diverso, reduciendo la resiliencia del sistema alimentario ante plagas, enfermedades y cambio climático."
+    },
+    {
+      "id": "lv1750060801sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Colombia tiene una historia específica de adopción regulada de cultivos transgénicos.",
+      "enunciado": "¿En qué año Colombia autorizó el algodón transgénico Bt para siembra comercial?",
+      "opciones": ["1996.", "2002.", "2010.", "2015."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Colombia autorizó el algodón transgénico Bt para siembra comercial en 2002, principalmente en la Costa Caribe y los Llanos Orientales. Cinco años después, en 2007, autorizó el maíz transgénico. Estas decisiones fueron tomadas por el ICA (Instituto Colombiano Agropecuario) previo concepto del Comité Técnico Nacional de Bioseguridad."
+    },
+    {
+      "id": "lv1750060801sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · Factores de riesgo sobre ecosistemas productivos: desertización y transgénicos",
+      "competencia": "Pensamiento social",
+      "contexto": "La regeneración del suelo agrícola puede lograrse con prácticas agronómicas que aprovechan los recursos disponibles en la misma finca.",
+      "enunciado": "¿Cuál de las siguientes prácticas puede ayudar a una familia cafetera a recuperar la fertilidad del suelo sin gastar en insumos externos?",
+      "opciones": ["Aplicar cal y fertilizantes químicos para neutralizar la acidez del suelo.", "Elaborar compost o lombricompost con la pulpa del café y residuos orgánicos de la finca.", "Rotar el cultivo de café con monocultivos de pinos o eucaliptos para descansar el suelo.", "Eliminar toda la vegetación para aplicar herbicidas que controlen malezas competidoras."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El lombricompostaje con pulpa de café y residuos orgánicos es la práctica más accesible y efectiva para recuperar la fertilidad del suelo sin insumos comprados. Produce un abono orgánico que devuelve materia orgánica, mejora la estructura del suelo, reactiva la microbiota y aumenta la capacidad de retención de agua, todo con recursos disponibles en la misma finca."
+    }
+  ]
+}

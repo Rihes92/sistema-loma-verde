@@ -1,0 +1,310 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "planeadores": [
+    {
+      "id": "p10p1-hidrico-gobernanza-001",
+      "creado": 1750042800000,
+      "grado": "Décimo",
+      "periodo": "Primer Periodo",
+      "ejeIdx": "24",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "1",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Disponibilidad, gobernanza y uso del recurso hídrico en las regiones naturales de Colombia",
+      "unidad": "Eje 1: Conflictos socioambientales y seguridad hídrica regional",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer: Explica las tensiones por el acceso al agua en las distintas regiones colombianas y sugiere acciones orientadas a la sostenibilidad.\nSer: Fundamenta sus argumentos sobre la pérdida de biodiversidad en informes oficiales del Ministerio de Ambiente o de ONG ambientales.",
+      "competencias": "• Pensamiento social.\n• Pensamiento reflexivo y sistémico.",
+      "contenidos": "• Disponibilidad, gobernanza y uso del recurso hídrico en las regiones naturales de Colombia.\n• Distribución desigual del agua: regiones con superávit y déficit hídrico.\n• Gobernanza del agua: actores institucionales, comunitarios y privados.\n• Conflictos por el acceso al agua y su relación con la seguridad alimentaria campesina.",
+      "objetivo": "Analizar la distribución, gobernanza y uso del recurso hídrico en las cinco regiones naturales de Colombia, identificando las causas estructurales de la desigualdad en el acceso al agua, los actores que intervienen en su gestión y las tensiones socioambientales derivadas, comprendiendo cómo estas dinámicas afectan directamente la disponibilidad de agua para el consumo y la producción cafetera de comunidades campesinas como las de Loma Verde, donde el acueducto veredal y las quebradas locales son la única fuente de sustento hídrico.",
+      "pregunta": "Si Colombia tiene el 10% del agua dulce superficial del planeta pero hay municipios donde las familias campesinas no tienen agua limpia ni siquiera para tomar, ¿de quién es el problema: de la naturaleza que no distribuye bien el agua, del Estado que no la administra bien, o de todos nosotros que no la cuidamos?",
+      "explora": "Conversatorio inicial (15 min):\n1. ¿De dónde viene el agua que usa tu familia en casa y en la finca? ¿Es la misma fuente para tomar y para el cultivo?\n2. ¿Han tenido en Loma Verde temporadas en que el agua del acueducto no alcanzó o llegó muy poca? ¿Qué hizo la familia?\n3. ¿Saben qué institución o persona es responsable del acueducto de la vereda? ¿Alguna vez han participado en una reunión de la junta de acueducto?\n4. ¿Creen que el agua que sale del grifo de una ciudad grande como Manizales o Bogotá tiene que ver con lo que pasa en las montañas de veredas como la nuestra?\n\nActividad en parejas (10 min):\nEl docente dibuja en el tablero el mapa de Colombia con las 5 regiones naturales (Andina, Caribe, Pacífico, Amazonia, Orinoquía). Cada pareja recibe una región asignada y escribe: qué tanta agua creen que tiene esa región, quiénes la usan y si creen que hay conflictos por el agua ahí. Socialización rápida.",
+      "glosario": [
+        {"t": "Gobernanza del agua", "d": "Conjunto de reglas, instituciones y prácticas que deciden quién tiene derecho al agua, cuánta puede usar y a qué precio. En Loma Verde, la junta de acueducto veredal es una forma de gobernanza comunitaria del agua; en una ciudad, esa gobernanza la ejerce una empresa de servicios públicos."},
+        {"t": "Disponibilidad hídrica", "d": "Cantidad de agua que existe en un territorio por unidad de área o por persona. Colombia tiene una disponibilidad de 45.408 m³ por habitante al año, seis veces más que el promedio mundial; sin embargo, esa cifra esconde enormes diferencias entre la Amazonia (abundante) y la costa Caribe (escasa)."},
+        {"t": "Estrés hídrico", "d": "Situación en que la demanda de agua supera la disponibilidad renovable de una zona. Cuando una familia campesina necesita 200 litros al día para el hogar y la finca y la quebrada solo da 50, esa familia está en estrés hídrico aunque Colombia 'en promedio' tenga mucha agua."},
+        {"t": "Acuífero", "d": "Depósito subterráneo de agua almacenada en roca porosa. El acuífero de la sabana de Bogotá y los de la Costa Caribe abastecen millones de personas; cuando se sobreexplotan o contaminan, tardan décadas en recuperarse."},
+        {"t": "Cuenca hidrográfica", "d": "Área de terreno que drena sus aguas hacia un mismo río. Colombia tiene cinco macrocuencas: Magdalena-Cauca, Orinoco, Amazonas, Pacífico y Catatumbo. Todo lo que ocurre en la parte alta de la cuenca —tala, ganadería, minería— afecta el agua que llega abajo, donde viven la mayoría de los colombianos."},
+        {"t": "Tarifa diferencial del agua", "d": "Sistema por el cual los usuarios con menor capacidad económica pagan menos por el servicio de agua y los de mayor capacidad pagan más, subsidiando a los más pobres. En Colombia, los estratos 1, 2 y 3 reciben subsidio; los estratos 4, 5 y 6 pagan sobrecosto."},
+        {"t": "Seguridad hídrica", "d": "Capacidad de una población de acceder a suficiente agua de calidad para vivir, producir alimentos y mantener ecosistemas. Una familia cafetera de Loma Verde tiene seguridad hídrica cuando puede procesar su cosecha sin restricciones de agua; pierde esa seguridad cuando el acueducto se corta en verano."},
+        {"t": "Conflicto socioambiental", "d": "Disputa entre actores que tienen intereses opuestos sobre el uso o acceso a un recurso natural. Ejemplo clásico: una empresa minera que usa el agua de una quebrada para su proceso versus una comunidad campesina que bebe de esa misma quebrada aguas abajo."},
+        {"t": "CAR (Corporación Autónoma Regional)", "d": "Entidad del Estado colombiano encargada de administrar, proteger y controlar el uso de los recursos naturales —incluido el agua— en su jurisdicción regional. Hay 33 CAR en el país. La CAR que corresponde al departamento donde está Loma Verde es la responsable de otorgar permisos de uso del agua y controlar la contaminación de fuentes hídricas."},
+        {"t": "Índice de Escasez", "d": "Indicador del IDEAM que mide qué porcentaje del agua disponible en una cuenca ya está siendo usada. Cuando supera el 20% se considera zona de alta demanda; cuando supera el 40%, hay conflicto hídrico potencial. Más de 400 municipios colombianos tienen índice de escasez crítico o muy alto."}
+      ],
+      "bloques": [
+        {
+          "tit": "Bloque 1 — Colombia: un país rico en agua con pobreza hídrica",
+          "txt": "Colombia ocupa el sexto lugar mundial en disponibilidad de agua dulce superficial. Con sus 2.360 km³ de precipitación anual, sus 1.000 ríos y más de 1.800 humedales catalogados, el país tiene una riqueza hídrica excepcional. El caudal medio del río Magdalena —el río de la vida de Colombia— es de 7.200 m³ por segundo, más que el caudal combinado de todos los ríos de Europa occidental. Sin embargo, esta abundancia esconde una paradoja brutal: más de 7,5 millones de colombianos no tienen acceso a agua potable segura y 13 millones carecen de saneamiento básico, según el DANE (2022).\n\nLa razón es estructural: el agua colombiana no está donde están las personas. El 85% del agua superficial se concentra en la Amazonia y la Orinoquía —regiones con baja densidad poblacional—, mientras que el 70% de la población vive en la región Andina y el Caribe, donde está el 15% restante del agua. La costa Caribe, con departamentos como La Guajira, Córdoba y Sucre, sufre los mayores déficits: La Guajira tiene el índice de escasez hídrica más crítico del país y comunidades indígenas Wayuu que caminan horas para conseguir agua de jagüeyes contaminados.\n\nEn la región Andina —donde se ubica Loma Verde— el agua existe pero enfrenta presiones crecientes: deforestación de cuencas altas, contaminación agropecuaria, crecimiento urbano no planificado y un cambio climático que acorta los inviernos y alarga los veranos. El IDEAM calcula que para 2050, bajo escenarios de cambio climático moderado, entre el 50% y el 70% de las cuencas andinas presentarán algún grado de estrés hídrico. Esto significa que el problema del agua no es solo de hoy: es el problema central de la Colombia de las próximas décadas.",
+          "pausa": "¿Por qué Colombia, siendo uno de los países con más agua del mundo, tiene millones de personas sin acceso a agua potable? ¿Es un problema de cantidad o de distribución?",
+          "resp": "Es un problema de distribución, no de cantidad. El agua está concentrada en regiones poco pobladas (Amazonia, Orinoquía) mientras la mayoría de colombianos vive en regiones con menos agua (Andina, Caribe). Además, hay problemas de infraestructura, gobernanza y contaminación que impiden que el agua llegue a quienes la necesitan."
+        },
+        {
+          "tit": "Bloque 2 — Gobernanza del agua en Colombia: actores, normas y conflictos",
+          "txt": "La gobernanza del agua en Colombia involucra múltiples actores con intereses frecuentemente en tensión. A nivel nacional, el Ministerio de Ambiente y Desarrollo Sostenible define la política hídrica; el IDEAM genera el conocimiento técnico (datos de caudales, calidad del agua, índices de escasez); y el Ministerio de Vivienda regula el acceso al agua potable en centros urbanos. A nivel regional, las 33 Corporaciones Autónomas Regionales (CAR) son las encargadas de otorgar concesiones de agua, controlar la contaminación y administrar las cuencas. A nivel local, los municipios son responsables del servicio de acueducto y alcantarillado, aunque en zonas rurales esa responsabilidad recae frecuentemente en las juntas de acción comunal y las juntas de acueducto veredal —como ocurre en Loma Verde.\n\nEl marco legal central es la Ley 373 de 1997 (uso eficiente y ahorro del agua) y el Decreto 1076 de 2015, que compila toda la normativa ambiental y establece que el agua es un bien de uso público cuya propiedad pertenece a la Nación, aunque los particulares pueden acceder a ella mediante concesiones. Este marco genera conflictos recurrentes: empresas agroindustriales con concesiones para riego versus comunidades campesinas que usan la misma fuente; municipios que vierten aguas residuales a ríos que abastecen municipios aguas abajo; empresas petroleras que contaminan acuíferos con sus perforaciones.\n\nEl caso más emblemático es el de la cuenca del río Bogotá: recibe los vertimientos de 10 millones de personas y decenas de industrias, haciendo que su agua sea inutilizable sin tratamiento costoso. En 2014, la Corte Constitucional ordenó al Estado descontaminar el río en un fallo histórico que reconoció el derecho de las generaciones futuras al agua limpia. Veinte años después de ese fallo, el río sigue siendo uno de los más contaminados de América Latina, lo que muestra la brecha entre la norma y la realidad en la gobernanza hídrica colombiana.",
+          "pausa": "¿Qué es una concesión de agua y por qué puede generar conflictos entre una empresa y una comunidad campesina que usan la misma fuente?",
+          "resp": "Una concesión es el permiso que el Estado da a un particular o empresa para usar cierta cantidad de agua de una fuente. El conflicto ocurre cuando la empresa tiene una concesión legal para usar gran parte del caudal y la comunidad campesina, que también depende de esa fuente pero sin concesión formal, se queda sin acceso. La norma favorece al que tiene el permiso, aunque la comunidad llegó primero."
+        },
+        {
+          "tit": "Bloque 3 — El agua en la región Andina cafetera: entre la abundancia aparente y el riesgo real",
+          "txt": "La región Andina colombiana concentra el 70% de la población y la mayor parte de la actividad económica del país, incluyendo el 100% de la producción de café. Esta región recibe entre 1.500 y 3.000 mm de lluvia al año —suficiente en teoría— pero enfrenta vulnerabilidades específicas que hacen que su seguridad hídrica sea más frágil de lo que parece.\n\nPrimero, la estacionalidad: los Andes tienen dos temporadas de lluvias (marzo-mayo y septiembre-noviembre) y dos de sequía. En estas últimas, los caudales de quebradas y ríos caen drásticamente. Las fincas cafeteras dependen del agua durante todo el año para el riego en épocas críticas y para el beneficiadero húmedo donde se procesa el café; cualquier restricción de caudal en temporada seca afecta directamente la calidad del grano y los ingresos del productor.\n\nSegundo, la contaminación difusa: el uso de agroquímicos en los cultivos de café, caña y hortalizas contamina lentamente las fuentes de agua superficiales y subterráneas con nitratos, fosfatos y plaguicidas. El IDEAM ha documentado que el 64% de los monitoreos de calidad del agua en la cuenca del Cauca —que incluye la zona cafetera— muestran niveles de contaminación por agroquímicos superiores a los estándares de potabilidad.\n\nTercero, la reducción del caudal por deforestación: como se vio en el Eje 1, la eliminación de bosques de ribera y de cobertura en las cuencas altas reduce la capacidad de regulación hídrica, haciendo que las fuentes sean más irregulares. Para las juntas de acueducto veredal de municipios cafeteros, esto se traduce en cortes de servicio más frecuentes y más largos cada año. Gestionar bien el agua de una vereda cafetera no es solo abrir y cerrar una llave: es un acto de administración territorial que conecta a cada familia con la salud del bosque de la montaña.",
+          "pausa": "¿Por qué la contaminación por agroquímicos en una finca cafetera puede afectar el agua que toma una familia que vive varios kilómetros abajo en la misma cuenca?",
+          "resp": "Porque los agroquímicos aplicados en la finca son arrastrados por la lluvia hacia las quebradas y ríos, y viajan cuenca abajo contaminando el agua que usan otras familias. La contaminación no respeta límites de finca: una vez en el agua, se distribuye por toda la cuenca."
+        }
+      ],
+      "talleres": "Taller de estructuración — Mapa hídrico de Colombia por regiones\n\nInstrucción: En grupos de cuatro, completen la tabla en el cuaderno usando la información de los bloques dictados.\n\n| Región natural | Disponibilidad de agua | Principal uso del agua | Principal amenaza | ¿Hay conflicto hídrico? |\n|---|---|---|---|---|\n| Andina | | | | |\n| Caribe | | | | |\n| Pacífico | | | | |\n| Amazonia | | | | |\n| Orinoquía | | | | |\n\nPunto de análisis (individual):\nEscribe 5 líneas respondiendo: ¿Por qué la región donde vives (Andina cafetera) tiene agua abundante en teoría pero puede enfrentar escasez en la práctica? Menciona al menos dos razones concretas vistas en clase.",
+      "transfer": "Taller de transferencia (individual, 20 min):\n\n1. Caso de estudio:\n'La Junta de Acueducto de la vereda La Esperanza lleva diez años tomando agua del nacimiento El Silencio. Hace dos años, un empresario compró la finca de la parte alta y comenzó a criar truchas en estanques que usan el mismo nacimiento. Desde entonces, el caudal que llega al acueducto bajó un 40% y en verano prácticamente se corta. El empresario tiene una concesión legal otorgada por la CAR.'\n— ¿Qué tipo de conflicto socioambiental se describe en este caso?\n— ¿Qué actores están involucrados y cuáles son sus intereses?\n— ¿Qué opciones legales tiene la Junta de Acueducto para defender su acceso al agua?\n— ¿Qué haría usted si fuera el presidente de esa junta?\n\n2. Propuesta de acción:\nEscribe una propuesta de tres acciones concretas que la comunidad de Loma Verde podría implementar para proteger y usar mejor el agua del acueducto veredal. Las acciones deben ser realizables sin presupuesto del Estado.\n\nCierre grupal — Mesa de negociación (15 min):\nEl docente divide el salón en tres grupos: Junta de Acueducto (defiende el agua comunitaria), Empresa Piscícola (defiende su concesión legal) y CAR (árbitro que debe tomar una decisión). Cada grupo tiene 3 minutos para argumentar. El grupo CAR propone una solución y la socializa. El docente cierra con reflexión sobre gobernanza compartida del agua.",
+      "clave": "Respuestas modelo — taller de transferencia:\n\n1. Caso La Esperanza:\n— Tipo de conflicto: conflicto socioambiental por acceso al agua entre un usuario comunitario (junta de acueducto) y un usuario privado con concesión (empresa piscícola) sobre la misma fuente hídrica.\n— Actores e intereses: Junta de Acueducto (derecho al agua para consumo humano, uso histórico previo), Empresa Piscícola (derecho legal por concesión, interés económico), CAR (obligación de garantizar uso sostenible), comunidad campesina (seguridad hídrica y alimentaria).\n— Opciones legales: 1) Solicitar revisión de la concesión a la CAR argumentando impacto sobre el mínimo vital de agua para consumo humano (prevalece sobre usos productivos según el Código de Recursos Naturales). 2) Interponer acción de tutela por vulneración del derecho fundamental al agua (reconocido por la Corte Constitucional). 3) Solicitar al municipio mediar ante la CAR para reordenar las concesiones.\n— El consumo humano tiene prioridad legal sobre cualquier uso productivo del agua según el Art. 86 del Decreto 2811 de 1974.\n\n2. Acciones posibles: reforestar la franja de 30 m alrededor del nacimiento (obligación legal del propietario), instalar micromedidores para detectar fugas en la red veredal, crear un fondo comunitario de ahorro de agua que compense en verano.",
+      "evaluacion": "Escala de valoración 1.0 – 5.0:\n\nSuperior (4.6 – 5.0): Explica con datos precisos la paradoja de la abundancia hídrica colombiana y sus causas estructurales; analiza el conflicto de caso identificando actores, intereses y opciones legales con argumentos articulados; propone acciones concretas y viables para el contexto local.\n\nAlto (4.0 – 4.5): Explica correctamente la distribución desigual del agua y los principales actores de gobernanza; analiza el caso con identificación de conflicto y actores, aunque sus propuestas de acción son generales.\n\nBásico (3.0 – 3.9): Identifica que Colombia tiene mucha agua pero hay problemas de acceso; describe al menos dos actores de gobernanza y menciona un conflicto, pero sin profundidad analítica.\n\nBajo (1.0 – 2.9): No logra explicar la paradoja hídrica ni identificar actores de gobernanza; confunde disponibilidad con acceso.\n\nInstrumentos: Tabla hídrica por regiones (rúbrica: completitud, precisión, pertinencia). Análisis de caso (rúbrica: identificación del conflicto, actores, opciones legales, propuesta). Mesa de negociación (participación oral, calidad del argumento).",
+      "recursos": "• Tablero y marcadores de colores\n• Cuadernos y lapiceros\n• Mapa físico de Colombia con regiones naturales\n• Fotocopia del caso 'La Esperanza' para el taller de transferencia\n• (Opcional) Datos de consumo de agua de la junta de acueducto veredal local",
+      "referencias": "• MEN. Estándares Básicos de Competencias en Ciencias Sociales. Bogotá: MEN, 2004.\n• MEN. DBA 1 Décimo: Conflictos territoriales originados por la degradación ambiental, el escaso desarrollo y la inestabilidad política.\n• IDEAM. Estudio Nacional del Agua 2022. Bogotá: IDEAM, 2023.\n• Decreto 2811 de 1974 — Código Nacional de Recursos Naturales Renovables (Art. 86: prioridad del consumo humano).\n• Decreto 1076 de 2015 — Decreto Único Reglamentario del Sector Ambiente.\n• Malla curricular institucional I.E. San José de Loma Verde. Décimo, Primer Periodo.",
+      "dua": "Dificultades de lectura y comprensión: proporcionar la tabla hídrica con los encabezados ya impresos y permitir completar con palabras clave; usar el mapa en el tablero como referencia visual permanente durante todo el bloque.\n\nRitmo avanzado: investigar el Índice de Escasez del IDEAM para la cuenca del río que abastece su municipio; comparar con el índice de escasez de La Guajira y argumentar qué políticas diferenciales se necesitan.\n\nTrabajo cooperativo: en la mesa de negociación, asignar un 'portavoz' y un 'tomador de notas' por grupo; rotar los roles si se hace una segunda ronda.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "clave": "Respuestas modelo — taller de transferencia:\n\n1. Caso La Esperanza:\n— Conflicto socioambiental por acceso al agua entre junta comunitaria y empresa privada con concesión sobre la misma fuente.\n— Actores: Junta de Acueducto (uso histórico, consumo humano), Empresa Piscícola (concesión legal, uso productivo), CAR (regulación), comunidad (seguridad hídrica).\n— Opciones legales: solicitar revisión de concesión a la CAR (consumo humano prevalece sobre uso productivo — Art. 86 Decreto 2811/1974); acción de tutela por vulneración del derecho fundamental al agua; mediación municipal ante la CAR.\n— Consumo humano tiene prioridad legal sobre cualquier uso productivo del agua.\n\n2. Acciones concretas: reforestar franja de 30 m alrededor del nacimiento; instalar micromedidores para detectar fugas en la red veredal; crear fondo comunitario de ahorro de agua para temporada seca.",
+      "sintesis": "• Colombia tiene el 10% del agua dulce superficial del planeta pero más de 7,5 millones de personas no tienen agua potable segura: el problema es de distribución, gobernanza e infraestructura, no de cantidad.\n• El 85% del agua está en la Amazonia y la Orinoquía, pero el 70% de la población vive en la región Andina y el Caribe, donde el agua es más escasa y más disputada.\n• La gobernanza del agua involucra al Estado (Ministerio, IDEAM, CAR), los municipios, las empresas y las comunidades; cuando estos actores tienen intereses opuestos sobre la misma fuente, surge el conflicto socioambiental.\n• En la región cafetera andina, el agua es abundante en promedio pero vulnerable por la estacionalidad, la contaminación agroquímica y la deforestación de cuencas altas.\n• El consumo humano tiene prioridad legal sobre cualquier uso productivo del agua en Colombia, herramienta jurídica que las comunidades campesinas pueden usar para defender sus acueductos veredales.",
+      "errores": "• Creer que Colombia no tiene problemas de agua porque es un país tropical con muchas lluvias: la abundancia promedio esconde déficits críticos en regiones como La Guajira y en temporadas secas de la zona cafetera.\n• Confundir disponibilidad con acceso: tener agua en el río no significa que las familias puedan usarla; se necesita infraestructura, tratamiento y una gobernanza que garantice el derecho.\n• Creer que quien tiene la concesión legal siempre tiene razón frente a quien no la tiene: el derecho al agua para consumo humano prevalece sobre concesiones productivas según el Código de Recursos Naturales.\n• Pensar que el problema del agua en una vereda es solo local y no tiene que ver con lo que pasa en la cuenca completa: la deforestación en la parte alta, la contaminación aguas arriba y las concesiones de otros usuarios afectan el agua que llega al acueducto veredal.",
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "Explica la paradoja hídrica colombiana: ¿cómo puede Colombia ser uno de los países con más agua del mundo y al mismo tiempo tener millones de personas sin acceso a agua potable?",
+          "a": "La paradoja se explica por la distribución desigual: el 85% del agua superficial está en la Amazonia y la Orinoquía, regiones con baja densidad poblacional, mientras el 70% de la población vive en la región Andina y el Caribe, donde hay menos agua. Además, hay problemas de infraestructura (acueductos que no llegan a zonas rurales), contaminación que hace inutilizable el agua disponible, y una gobernanza débil que no garantiza el acceso equitativo. El problema no es de cantidad sino de distribución, infraestructura y gestión.",
+          "verdadero": null,
+          "justificacion": "",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué es la gobernanza del agua y quiénes son los principales actores que la ejercen en Colombia a nivel nacional, regional y local?",
+          "a": "La gobernanza del agua es el conjunto de reglas, instituciones y prácticas que determinan quién tiene derecho al agua, cuánta puede usar y bajo qué condiciones. A nivel nacional: el Ministerio de Ambiente define la política hídrica y el IDEAM genera el conocimiento técnico. A nivel regional: las 33 CAR otorgan concesiones y controlan la contaminación. A nivel local: los municipios administran el acueducto urbano; en zonas rurales, las juntas de acueducto veredal gestionan el agua comunitariamente.",
+          "verdadero": null,
+          "justificacion": "",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Describe las tres principales vulnerabilidades hídricas que enfrenta la región Andina cafetera colombiana, a pesar de tener lluvias abundantes.",
+          "a": "1) Estacionalidad: hay dos temporadas secas al año en que los caudales caen drásticamente, afectando el riego y el beneficiadero del café. 2) Contaminación difusa por agroquímicos: el uso de plaguicidas y fertilizantes contamina lentamente las fuentes hídricas; el IDEAM documenta que el 64% de los monitoreos en la cuenca del Cauca superan los estándares de potabilidad por agroquímicos. 3) Reducción del caudal por deforestación: la tala de bosques de ribera y cobertura en cuencas altas reduce la regulación hídrica y hace las fuentes más irregulares.",
+          "verdadero": null,
+          "justificacion": "",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Analiza el concepto de 'conflicto socioambiental por agua': ¿cuáles son sus causas más frecuentes en Colombia y qué herramientas legales tienen las comunidades para defender su acceso al agua?",
+          "a": "Los conflictos socioambientales por agua surgen cuando actores con intereses distintos compiten por la misma fuente: comunidades vs. empresas mineras o agroindustriales, municipios que vierten residuos vs. municipios aguas abajo, concesionarios legales vs. usuarios históricos sin concesión. Las herramientas legales disponibles son: acción de tutela por vulneración del derecho fundamental al agua (reconocido por la Corte Constitucional); petición de revisión de concesiones a la CAR cuando el consumo humano está en riesgo (Art. 86 del Decreto 2811/1974 establece que el consumo humano es prioritario); y acciones populares para defender el derecho colectivo al ambiente sano.",
+          "verdadero": null,
+          "justificacion": "",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "En Loma Verde, la junta de acueducto veredal administra el agua que usan todas las familias campesinas. ¿Cómo se relaciona esa junta con la gobernanza del agua a nivel regional y nacional? ¿Qué puede hacer esa junta si una empresa aguas arriba empieza a contaminar la fuente?",
+          "a": "La junta de acueducto veredal es el nivel más local de la gobernanza del agua: gestiona la distribución, el mantenimiento y el cobro de tarifas dentro de la vereda. Se articula con la gobernanza regional a través de la CAR, que es la entidad que otorga la concesión de uso del agua de la fuente veredal y que tiene la autoridad para sancionar a quienes la contaminen. Si una empresa contamina la fuente, la junta puede: 1) denunciar ante la CAR para que ejerza control y sancione al contaminador; 2) interponer una acción de tutela si el agua contaminada pone en riesgo el mínimo vital de las familias; 3) solicitar al municipio que medie. Conocer estos mecanismos convierte a la junta en un actor de defensa del territorio.",
+          "verdadero": null,
+          "justificacion": "",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Colombia tiene el 10% del agua dulce superficial del planeta, lo que significa que no hay riesgo de escasez de agua en ninguna de sus regiones.",
+          "a": "",
+          "verdadero": false,
+          "justificacion": "Falso. Aunque Colombia tiene gran abundancia de agua en términos globales, la distribución es profundamente desigual: el 85% del agua está en la Amazonia y la Orinoquía, mientras que la región Caribe —donde viven millones de colombianos— enfrenta déficits hídricos severos. La Guajira es uno de los territorios con mayor escasez de agua potable del país.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "En Colombia, el derecho al agua para consumo humano tiene prioridad legal sobre las concesiones otorgadas a empresas para uso productivo como la agricultura o la minería.",
+          "a": "",
+          "verdadero": true,
+          "justificacion": "Verdadero. El Artículo 86 del Decreto 2811 de 1974 (Código Nacional de Recursos Naturales) establece que el consumo humano es el uso prioritario del agua sobre cualquier otro uso productivo. Esto significa que aunque una empresa tenga una concesión legal, una comunidad puede solicitar a la CAR que la revise si el agua para consumo humano está en riesgo.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Índice de Escasez del IDEAM mide la cantidad total de agua en una cuenca hidrográfica.",
+          "a": "",
+          "verdadero": false,
+          "justificacion": "Falso. El Índice de Escasez no mide la cantidad total de agua sino la relación entre la demanda y la disponibilidad: qué porcentaje del agua disponible ya está siendo usada. Un índice superior al 20% indica alta demanda y superior al 40% indica conflicto hídrico potencial. Es un indicador de presión sobre el recurso, no de abundancia.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las Corporaciones Autónomas Regionales (CAR) en Colombia son responsables de otorgar concesiones de uso del agua y de controlar la contaminación de fuentes hídricas en su jurisdicción.",
+          "a": "",
+          "verdadero": true,
+          "justificacion": "Verdadero. Las 33 CAR del país son las entidades del Estado colombiano con autoridad ambiental a nivel regional. Entre sus funciones principales está otorgar permisos y concesiones para el uso del agua, monitorear la calidad de las fuentes hídricas y sancionar a quienes las contaminen. Son el primer nivel de gobernanza del agua al que pueden acudir las comunidades con conflictos hídricos.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El IDEAM proyecta que para 2050, entre el 50% y el 70% de las cuencas andinas colombianas presentarán algún grado de estrés hídrico debido al cambio climático.",
+          "a": "",
+          "verdadero": true,
+          "justificacion": "Verdadero. Según las proyecciones del IDEAM en el Estudio Nacional del Agua, bajo escenarios de cambio climático moderado, más de la mitad de las cuencas andinas enfrentarán estrés hídrico para 2050, por la combinación de mayor demanda, deforestación y alteración del régimen de lluvias. Esto hace urgente la gestión sostenible del agua en la región cafetera desde ahora.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál es la principal razón por la que Colombia, con el 10% del agua dulce superficial del planeta, tiene millones de personas sin acceso a agua potable?",
+          "a": "",
+          "enunciado": "Colombia ocupa el sexto lugar mundial en disponibilidad de agua dulce, pero el acceso no es equitativo.",
+          "opciones": {
+            "A": "El agua colombiana es de mala calidad y no puede potabilizarse.",
+            "B": "La distribución del agua es desigual: la mayoría está en regiones poco pobladas.",
+            "C": "El país no tiene tecnología para extraer el agua de sus ríos.",
+            "D": "Las lluvias solo caen en la región Amazónica y no llegan a otros territorios."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué porcentaje del agua superficial de Colombia se concentra en la Amazonia y la Orinoquía?",
+          "a": "",
+          "enunciado": "Las cinco regiones naturales de Colombia tienen una distribución muy desigual del recurso hídrico.",
+          "opciones": {
+            "A": "El 30%.",
+            "B": "El 50%.",
+            "C": "El 70%.",
+            "D": "El 85%."
+          },
+          "correcta": "D"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál es la entidad del Estado colombiano responsable de generar el conocimiento técnico sobre caudales, calidad del agua e índices de escasez hídrica?",
+          "a": "",
+          "enunciado": "La gobernanza del agua en Colombia involucra múltiples entidades del Estado con funciones específicas.",
+          "opciones": {
+            "A": "El Ministerio de Vivienda.",
+            "B": "La Contraloría General de la República.",
+            "C": "El IDEAM.",
+            "D": "El DANE."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "Según el IDEAM, ¿qué porcentaje de los monitoreos de calidad del agua en la cuenca del Cauca muestran contaminación por agroquímicos superior a los estándares de potabilidad?",
+          "a": "",
+          "enunciado": "La región cafetera andina enfrenta contaminación difusa de sus fuentes hídricas por el uso agrícola.",
+          "opciones": {
+            "A": "El 20%.",
+            "B": "El 40%.",
+            "C": "El 64%.",
+            "D": "El 90%."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuántas Corporaciones Autónomas Regionales (CAR) existen en Colombia?",
+          "a": "",
+          "enunciado": "Las CAR son las entidades con autoridad ambiental regional en Colombia.",
+          "opciones": {
+            "A": "12.",
+            "B": "22.",
+            "C": "33.",
+            "D": "50."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué norma colombiana establece que el consumo humano tiene prioridad sobre cualquier otro uso productivo del agua?",
+          "a": "",
+          "enunciado": "Existe un marco legal que jerarquiza los usos del agua en Colombia.",
+          "opciones": {
+            "A": "Ley 99 de 1993.",
+            "B": "Artículo 79 de la Constitución de 1991.",
+            "C": "Artículo 86 del Decreto 2811 de 1974.",
+            "D": "Ley 373 de 1997."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué es un conflicto socioambiental por agua?",
+          "a": "",
+          "enunciado": "En Colombia, el acceso al agua genera tensiones entre distintos actores.",
+          "opciones": {
+            "A": "Una disputa técnica entre ingenieros sobre cómo construir acueductos.",
+            "B": "Una disputa entre actores con intereses opuestos sobre el uso o acceso a una fuente de agua.",
+            "C": "Un debate académico sobre la cantidad de agua disponible en el país.",
+            "D": "Un conflicto entre el gobierno nacional y los municipios por el presupuesto del agua."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuántos colombianos carecen de acceso a agua potable segura según el DANE (2022)?",
+          "a": "",
+          "enunciado": "A pesar de la abundancia hídrica de Colombia, el acceso equitativo sigue siendo un desafío.",
+          "opciones": {
+            "A": "Aproximadamente 1 millón.",
+            "B": "Aproximadamente 3 millones.",
+            "C": "Aproximadamente 7,5 millones.",
+            "D": "Aproximadamente 15 millones."
+          },
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué herramienta jurídica puede interponer una comunidad campesina si el agua contaminada de su acueducto veredal pone en riesgo su salud?",
+          "a": "",
+          "enunciado": "El sistema jurídico colombiano ofrece mecanismos de protección para derechos fundamentales como el agua.",
+          "opciones": {
+            "A": "Una demanda civil ordinaria ante el juzgado municipal.",
+            "B": "Una acción de tutela por vulneración del derecho fundamental al agua.",
+            "C": "Una queja ante la Cámara de Comercio local.",
+            "D": "Una carta al Ministerio de Hacienda solicitando compensación económica."
+          },
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿En qué consiste el sistema de tarifa diferencial del agua en Colombia?",
+          "a": "",
+          "enunciado": "Colombia aplica un modelo de subsidios cruzados en el servicio de agua potable.",
+          "opciones": {
+            "A": "Los usuarios rurales pagan más que los urbanos por el costo de la infraestructura.",
+            "B": "Todos los usuarios pagan la misma tarifa independientemente de sus ingresos.",
+            "C": "Los estratos 1, 2 y 3 reciben subsidio; los estratos 4, 5 y 6 pagan sobrecosto para financiarlo.",
+            "D": "Las empresas privadas fijan libremente el precio del agua según la demanda."
+          },
+          "correcta": "C"
+        }
+      ],
+      "tarea": "Tarea para la casa (sin internet):\n\nAuditoría del agua en casa: Durante tres días, la familia registra en el cuaderno todo el agua que usa: cuántos baldes o cuántas horas de grifo abierto para cocinar, bañarse, lavar ropa, regar cultivos y procesar café. Al final, hacen una estimación de cuántos litros usan por día.\n\nProducto esperado: Una tabla con el registro de tres días y un párrafo con dos reflexiones: 1) ¿En qué actividad usa más agua su familia? 2) ¿Qué pasaría si el caudal del acueducto se redujera a la mitad? ¿Qué actividad sacrificarían primero?",
+      "fundamentacion": "## Disponibilidad, gobernanza y uso del recurso hídrico en Colombia\n\n### 1. Contexto histórico amplio\n\nEl agua ha sido históricamente el eje articulador de los asentamientos humanos en Colombia. Las primeras civilizaciones prehispánicas del país —como los Zenúes con sus canales hidráulicos en el Caribe— ya desarrollaban sistemas sofisticados de gestión hídrica. La Colonia introdujo las primeras normativas de uso del agua, orientadas principalmente a abastecer las ciudades fundadas por los españoles y a garantizar el funcionamiento de minas y trapiches. La República mantuvo esa lógica extractiva hasta bien entrado el siglo XX.\n\nEl primer marco legal moderno del agua en Colombia es el Decreto 2811 de 1974, también llamado Código Nacional de Recursos Naturales Renovables, que declaró el agua como bien de uso público perteneciente a la Nación y estableció el sistema de concesiones para su uso. Este código fue revolucionario para su época porque introdujo la noción de que el Estado administra el agua en nombre de todos los colombianos, no solo de quienes tienen tierras junto a los ríos. La Constitución de 1991 elevó el rango del agua al incluir el derecho al ambiente sano (Art. 79) y, mediante jurisprudencia posterior, la Corte Constitucional reconoció el acceso al agua como derecho fundamental innominado, derivado del derecho a la vida y a la dignidad humana. La Ley 142 de 1994 reguló los servicios públicos domiciliarios incluyendo el acueducto, y la Ley 99 de 1993 creó el Sistema Nacional Ambiental (SINA) y las CAR como garantes regionales del recurso.\n\n### 2. Causas estructurales de la desigualdad hídrica\n\nLa desigualdad en el acceso al agua en Colombia tiene raíces estructurales que van más allá de la geografía. La colonización del territorio colombiano siguió un patrón que concentró la infraestructura de servicios en las ciudades y dejó las zonas rurales —donde vive el 25% de la población— con sistemas precarios o sin sistemas formales de acueducto. Esta brecha urbano-rural en el acceso al agua limpia es una de las más altas de América Latina: mientras en las ciudades la cobertura de agua potable supera el 95%, en las zonas rurales dispersas no alcanza el 55% según el DANE.\n\nSegundo factor estructural: la concentración de la tierra. Los grandes propietarios de tierra en Colombia controlan también las fuentes de agua de sus propiedades y, mediante concesiones, pueden captar caudales que históricamente usaban comunidades campesinas sin título formal de concesión. Esta asimetría legal —entre quienes tienen concesiones formales y quienes tienen usos históricos pero no documentados— es fuente permanente de conflictos hídricos en zonas cafeteras, arroceras y ganaderas.\n\n### 3. Estado actual de la gestión hídrica\n\nEl Estudio Nacional del Agua del IDEAM (2022) es el diagnóstico más completo disponible. Sus hallazgos principales: Colombia tiene 2.360 km³ de precipitación anual (equivalente a llenar el lago de Maracaibo 20 veces cada año); el caudal total de sus ríos es de aproximadamente 67.000 m³ por segundo; la disponibilidad per cápita es de 45.408 m³/habitante/año (6 veces el promedio mundial). Sin embargo, más de 400 municipios presentan índice de escasez hídrico alto o muy alto, concentrados en la Caribe seco (La Guajira, Cesar, Bolívar) y en valles andinos con alta demanda agropecuaria (Valle del Cauca, Nariño, Boyacá).\n\nEn cuanto a calidad: el 80% de las aguas residuales generadas en Colombia se vierte a ríos sin tratamiento alguno. Solo 50 de los 1.100 municipios del país tienen sistemas de tratamiento de aguas residuales operativos. El río Bogotá, el Medellín-Porce y el Cauca en su tramo bajo son los más contaminados. La paradoja es que el país que más agua tiene es también uno de los que menos trata sus aguas antes de devolverlas a la naturaleza.\n\n### 4. Consecuencias de corto y largo plazo\n\nA corto plazo: enfermedades de origen hídrico (diarrea, parasitosis, hepatitis A) que siguen siendo la segunda causa de mortalidad infantil en zonas rurales colombianas; pérdida de productividad agrícola en temporadas secas; conflictos comunitarios por el acceso a fuentes compartidas. A mediano plazo: migración de comunidades rurales hacia ciudades por falta de agua para producción; deterioro de ecosistemas acuáticos con impacto en la biodiversidad y la pesca. A largo plazo: el cambio climático amenaza con alterar radicalmente los regímenes de lluvia en los Andes colombianos; modelos del IPCC proyectan reducciones de hasta el 30% en las precipitaciones de la zona cafetera colombiana para finales del siglo XXI, lo que haría inviable la caficultura en altitudes menores a 1.500 m.s.n.m. sin sistemas de riego.\n\n### 5. Conexión con Loma Verde\n\nPara una familia cafetera de Loma Verde, la gestión del agua es una cuestión de supervivencia económica cotidiana. El proceso de beneficio húmedo del café —despulpado, fermentado y lavado— requiere entre 40 y 60 litros por kilogramo de café pergamino. Una familia con 2 hectáreas puede necesitar entre 150.000 y 300.000 litros solo para procesar su cosecha anual. Esa agua viene del acueducto veredal, que a su vez viene de un nacimiento protegido (o no) en la parte alta de la cuenca. Cuando la junta de acueducto gestiona bien —mantiene la franja de bosque alrededor del nacimiento, controla las conexiones ilegales, cobra la tarifa justa para el mantenimiento— el agua fluye toda la temporada. Cuando la gestión falla, el primer perjudicado es el café y con él, el ingreso de la familia. Entender la gobernanza del agua no es un tema abstracto para estos estudiantes: es entender cómo funciona la economía de sus hogares.",
+      "lineatiempo": "1974 — Decreto 2811: Código Nacional de Recursos Naturales Renovables; el agua se declara bien de uso público de la Nación; se crea el sistema de concesiones.\n1991 — Constitución Política: artículos 79 y 80 reconocen el derecho al ambiente sano; base para reconocimiento posterior del agua como derecho fundamental.\n1993 — Ley 99: crea el Ministerio de Ambiente y las 33 Corporaciones Autónomas Regionales (CAR) como gestoras del agua a nivel regional.\n1994 — Ley 142: regula los servicios públicos domiciliarios incluyendo acueducto y saneamiento; introduce subsidios cruzados por estratos.\n1997 — Ley 373: establece el programa de uso eficiente y ahorro del agua; obliga a todos los usuarios a implementar medidas de reducción del consumo.\n2008 — IDEAM publica el primer Estudio Nacional del Agua con datos detallados de disponibilidad, demanda e índices de escasez por cuenca.\n2014 — Corte Constitucional ordena descontaminación del río Bogotá en fallo histórico; reconoce el derecho de las generaciones futuras al agua limpia.\n2015 — Decreto 1076: compila toda la normativa ambiental en un solo decreto; consolida el marco de gobernanza del agua.\n2018 — Corte Suprema de Justicia reconoce la Amazonia colombiana como sujeto de derechos en respuesta a la deforestación que amenaza las fuentes hídricas del país.\n2022 — IDEAM publica Estudio Nacional del Agua: más de 400 municipios con índice de escasez hídrico alto o muy alto; proyecciones de estrés hídrico para el 70% de cuencas andinas en 2050."
+    }
+  ]
+}

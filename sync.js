@@ -1,30 +1,47 @@
 // ═══════════════════════════════════════════════════════════════
 //  Sistema Loma Verde — Capa de sincronización con Supabase
-//  Archivo: sync.js  (incluir en todos los módulos y en index.html)
+//  Archivo: sync.js  (incluir en todos los módulos, DESPUÉS de auth.js)
+//
+//  v2 — mejoras de seguridad y eficiencia:
+//   • Firma cada petición con el token del docente (LV_AUTH), no
+//     con la anon key. Compatible con RLS "solo autenticados".
+//   • Paginación: ya no hay techo de 1.000 filas por tabla.
+//   • Sincronización incremental: solo baja lo que cambió desde la
+//     última descarga (filtro por actualizado_en) — antes bajaba
+//     TODAS las tablas completas cada 15 segundos.
+//   • Subida por lotes: un solo POST por tabla, no uno por registro.
+//   • Aviso cuando el almacenamiento local se acerca al límite +
+//     exportación de respaldo completo.
 // ═══════════════════════════════════════════════════════════════
 
 const LV_SYNC = (() => {
 
   const URL  = 'https://loztrkwlttxyfhbkznyu.supabase.co';
   const KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvenRya3dsdHR4eWZoYmt6bnl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDU5OTQsImV4cCI6MjA5NzAyMTk5NH0.HBBk8NVUVTArqoEsqUWSil3uMIFZfnLFhhlE6M000ao';
-  const HDR  = { 'Content-Type': 'application/json', 'apikey': KEY, 'Authorization': 'Bearer ' + KEY };
+
+  // ── Cabeceras: token del docente si hay sesión, si no la anon key.
+  //  (El fallback a anon key mantiene la app funcionando mientras no
+  //  se haya corrido migracion_seguridad.sql; una vez corrido, la anon
+  //  key sola no puede leer ni escribir nada.)
+  async function hdr() {
+    let bearer = KEY;
+    if (typeof LV_AUTH !== 'undefined' && LV_AUTH.haySesion()) {
+      const t = await LV_AUTH.getValidToken();
+      if (t) bearer = t;
+    }
+    return { 'Content-Type': 'application/json', 'apikey': KEY, 'Authorization': 'Bearer ' + bearer };
+  }
 
   // ── Mapeo: clave localStorage → tabla Supabase ──────────────
+  //  incremental:false → siempre descarga completa (tablas con
+  //  estructura especial o borrados físicos, como horario).
   const MAPA = {
     'lv_cursos':         { tabla: 'cursos',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_estudiantes':    { tabla: 'estudiantes', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_calificaciones': { tabla: 'notas',       id: 'id' },
     'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id' },
     'lv_eventos':        { tabla: 'eventos',      id: 'id' },
-    'lv_horario':        { tabla: 'horario',      id: 'id', transformDown: (rows) => {
-      const obj = {};
-      rows.forEach(r => {
-        if(r.dia == null || r.hora == null || r._eliminado) return;
-        if(!obj[r.dia]) obj[r.dia] = {};
-        obj[r.dia][r.hora] = { asig: r.materia||'', grado: (r.curso||'').split('°-')[0], grupo: (r.curso||'').split('°-')[1]||'', nota: r.aula||'' };
-      });
-      return obj;
-    }},
+    'lv_horario':        { tabla: 'horario',      id: 'id', incremental: false },
     'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_com_historial':  { tabla: 'lv_comunicados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_examenes':       { tabla: 'lv_examenes',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
@@ -42,11 +59,14 @@ const LV_SYNC = (() => {
   // ── Utilidades ───────────────────────────────────────────────
   function online() { return navigator.onLine; }
 
-  // navigator.onLine puede decir "true" aunque no haya internet real
-  // (wifi conectado pero sin salida, router caído, etc.). Por eso todo
-  // fetch a Supabase lleva un límite de tiempo: si no responde rápido,
-  // se cancela y se trata como si no hubiera conexión, en vez de dejar
-  // la app colgada esperando indefinidamente.
+  function puedeSincronizar() {
+    // Sin sesión no se toca la red: con RLS activo daría 401 en todo.
+    if (typeof LV_AUTH !== 'undefined' && !LV_AUTH.haySesion()) return false;
+    return true;
+  }
+
+  // navigator.onLine puede decir "true" aunque no haya internet real.
+  // Todo fetch lleva límite de tiempo para no dejar la app colgada.
   function fetchConTimeout(url, opciones, ms) {
     ms = ms || 8000;
     const controlador = new AbortController();
@@ -55,18 +75,36 @@ const LV_SYNC = (() => {
       .finally(() => clearTimeout(id));
   }
 
+  // fetch firmado que renueva el token y reintenta UNA vez si hay 401
+  async function fetchAuth(url, opciones, ms) {
+    let r = await fetchConTimeout(url, { ...(opciones||{}), headers: { ...(await hdr()), ...((opciones||{}).headers||{}) } }, ms);
+    if (r.status === 401 && typeof LV_AUTH !== 'undefined' && LV_AUTH.haySesion()) {
+      await LV_AUTH.refrescar();
+      r = await fetchConTimeout(url, { ...(opciones||{}), headers: { ...(await hdr()), ...((opciones||{}).headers||{}) } }, ms);
+    }
+    return r;
+  }
+
   function lsGet(k) {
     try { return JSON.parse(localStorage.getItem(k)); } catch { return null; }
   }
   function lsSet(k, v) {
-    try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {}
+    try { localStorage.setItem(k, JSON.stringify(v)); }
+    catch (_) { avisarAlmacenamientoLleno(); }
+  }
+
+  // ── Marcadores de última descarga (sync incremental) ────────
+  function ultimaDescargaGet() { return lsGet('lv_sync_ultima') || {}; }
+  function ultimaDescargaSet(tabla, iso) {
+    const m = ultimaDescargaGet();
+    m[tabla] = iso;
+    lsSet('lv_sync_ultima', m);
   }
 
   // Cola de cambios pendientes
   function pendientesGet() { return lsGet('lv_sync_pendientes') || []; }
   function pendientesAdd(item) {
     const p = pendientesGet();
-    // evitar duplicados por id+tabla
     const idx = p.findIndex(x => x.tabla === item.tabla && x.id === item.id);
     if (idx >= 0) p[idx] = item; else p.push(item);
     lsSet('lv_sync_pendientes', p);
@@ -76,37 +114,70 @@ const LV_SYNC = (() => {
     lsSet('lv_sync_pendientes', p);
   }
 
-  // ── Subir un registro a Supabase (upsert) ───────────────────
-  async function upsert(tabla, registro) {
+  // ── Subir registros a Supabase (upsert, por lotes) ──────────
+  async function upsertLote(tabla, registros) {
     try {
-      const r = await fetchConTimeout(`${URL}/rest/v1/${tabla}`, {
+      const r = await fetchAuth(`${URL}/rest/v1/${tabla}`, {
         method: 'POST',
-        headers: { ...HDR, 'Prefer': 'resolution=merge-duplicates,return=minimal' },
-        body: JSON.stringify(registro)
+        headers: { 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+        body: JSON.stringify(registros)
       });
       return r.ok;
     } catch (_) { return false; }
   }
 
-  // ── Bajar todos los datos de una tabla ──────────────────────
-  async function bajar(tabla) {
-    try {
-      const r = await fetchConTimeout(`${URL}/rest/v1/${tabla}?select=*`, { headers: HDR });
-      if (!r.ok) return null;
-      return await r.json();
-    } catch (_) { return null; }
+  // ── Bajar datos de una tabla, con paginación (sin techo de 1000
+  //    filas) y opcionalmente solo lo que cambió desde `desde` ────
+  const PAGINA = 1000;
+  async function bajar(tabla, desde) {
+    const filas = [];
+    let inicio = 0;
+    while (true) {
+      let url = `${URL}/rest/v1/${tabla}?select=*&order=actualizado_en.asc`;
+      if (desde) url += `&actualizado_en=gt.${encodeURIComponent(desde)}`;
+      try {
+        const r = await fetchAuth(url, {
+          headers: { 'Range-Unit': 'items', 'Range': `${inicio}-${inicio + PAGINA - 1}` }
+        });
+        if (!r.ok) {
+          // Si el filtro/orden por actualizado_en falla (columna aún no
+          // existe en esa tabla), reintentar en modo completo simple.
+          if (desde || url.includes('order=')) return bajarSimple(tabla);
+          return null;
+        }
+        const lote = await r.json();
+        filas.push(...lote);
+        if (lote.length < PAGINA) break;
+        inicio += PAGINA;
+      } catch (_) { return null; }
+    }
+    return filas;
   }
 
-  // ── Borrar de verdad un registro en Supabase (no solo marcarlo) ─
-  //  Importante para tablas como 'horario' donde el id se reutiliza
-  //  (mismo día+bloque). Si solo se marca _eliminado, esa marca vieja
-  //  puede borrar una celda nueva que reutilice el mismo id.
+  // Descarga completa sin orden ni filtro (fallback para tablas sin
+  // columna actualizado_en), también paginada.
+  async function bajarSimple(tabla) {
+    const filas = [];
+    let inicio = 0;
+    while (true) {
+      try {
+        const r = await fetchAuth(`${URL}/rest/v1/${tabla}?select=*`, {
+          headers: { 'Range-Unit': 'items', 'Range': `${inicio}-${inicio + PAGINA - 1}` }
+        });
+        if (!r.ok) return null;
+        const lote = await r.json();
+        filas.push(...lote);
+        if (lote.length < PAGINA) break;
+        inicio += PAGINA;
+      } catch (_) { return null; }
+    }
+    return filas;
+  }
+
+  // ── Borrar de verdad un registro en Supabase ────────────────
   async function eliminarRegistro(tabla, id) {
     try {
-      const r = await fetchConTimeout(`${URL}/rest/v1/${tabla}?id=eq.${encodeURIComponent(id)}`, {
-        method: 'DELETE',
-        headers: HDR
-      });
+      const r = await fetchAuth(`${URL}/rest/v1/${tabla}?id=eq.${encodeURIComponent(id)}`, { method: 'DELETE' });
       return r.ok;
     } catch (_) { return false; }
   }
@@ -118,42 +189,64 @@ const LV_SYNC = (() => {
     const uid = Date.now().toString(36) + Math.random().toString(36).slice(2);
     const datos = cfg.transform ? cfg.transform(registro) : registro;
     pendientesAdd({ _uid: uid, tabla: cfg.tabla, id: registro[cfg.id], datos: datos });
-    if (online()) subirPendientes();
+    if (online() && puedeSincronizar()) subirPendientes();
   }
 
-  // ── Subir todos los cambios pendientes ──────────────────────
+  // ── Subir todos los cambios pendientes (por lotes por tabla) ─
+  let _subiendo = false;
   async function subirPendientes() {
-    const p = pendientesGet();
-    if (!p.length) return;
-    const subidos = [];
-    for (const item of p) {
-      const ok = await upsert(item.tabla, item.datos);
-      if (ok) subidos.push(item._uid);
-    }
-    if (subidos.length) {
-      pendientesClear(subidos);
-      console.log(`[LV Sync] ✅ ${subidos.length} cambio(s) sincronizado(s)`);
-      mostrarBadge(false);
-    }
+    if (_subiendo || !puedeSincronizar()) return;
+    _subiendo = true;
+    try {
+      const p = pendientesGet();
+      if (!p.length) return;
+
+      // agrupar por tabla → un solo POST por tabla
+      const porTabla = {};
+      p.forEach(item => { (porTabla[item.tabla] = porTabla[item.tabla] || []).push(item); });
+
+      const subidos = [];
+      for (const [tabla, items] of Object.entries(porTabla)) {
+        const ok = await upsertLote(tabla, items.map(i => i.datos));
+        if (ok) { items.forEach(i => subidos.push(i._uid)); continue; }
+        // si el lote falla (ej. un registro corrupto), intentar uno a uno
+        // para que un solo registro malo no bloquee a los demás
+        for (const item of items) {
+          if (await upsertLote(tabla, item.datos)) subidos.push(item._uid);
+        }
+      }
+      if (subidos.length) {
+        pendientesClear(subidos);
+        console.log(`[LV Sync] ✅ ${subidos.length} cambio(s) sincronizado(s)`);
+        mostrarBadge(false);
+      }
+    } finally { _subiendo = false; }
   }
 
   // ── Descargar datos de Supabase y fusionar con localStorage ─
-  async function descargarTodo() {
-    if (!online()) return;
+  async function descargarTodo(forzarCompleta) {
+    if (!online() || !puedeSincronizar()) return;
     console.log('[LV Sync] ⬇️ Descargando datos...');
+    const marcas = ultimaDescargaGet();
+
     for (const [lvKey, cfg] of Object.entries(MAPA)) {
-      const remotos = await bajar(cfg.tabla);
-      if (!remotos || !remotos.length) continue;
+      const incremental = cfg.incremental !== false && !forzarCompleta;
+      const desde = incremental ? marcas[cfg.tabla] : null;
+      const remotos = await bajar(cfg.tabla, desde || null);
+      if (!remotos) continue;             // error de red: no tocar marcas
+      if (!remotos.length) continue;      // nada nuevo
+
+      // Avanzar la marca de última descarga al actualizado_en más
+      // reciente RECIBIDO (hora del servidor, no del dispositivo).
+      let maxTs = marcas[cfg.tabla] || '';
+      remotos.forEach(r => { if (r.actualizado_en && r.actualizado_en > maxTs) maxTs = r.actualizado_en; });
+      if (maxTs && cfg.incremental !== false) ultimaDescargaSet(cfg.tabla, maxTs);
 
       // Fusionar: remoto gana si es más reciente
       if (cfg.tabla === 'horario') {
-        // Estructura especial { materia: { dia:{hora:{...}} } }. Cada
-        // materia tiene su propio sub-horario totalmente independiente
-        // (ctx_materia en la fila de Supabase), para que borrar/agregar
-        // clases en una materia nunca afecte a otra. IMPORTANTE: fusionar
-        // celda por celda, nunca reemplazar todo el objeto — si una
-        // celda que acabas de agregar aún no terminó de subirse a
-        // Supabase, un reemplazo total la borraría de la vista.
+        // Estructura especial { materia: { dia:{hora:{...}} } }, fusión
+        // celda por celda — ver comentarios históricos: nunca reemplazar
+        // todo el objeto, y los borrados llegan como _eliminado.
         const local = lsGet(lvKey) || {};
         remotos.forEach(r => {
           if (r.dia == null || r.hora == null) return;
@@ -185,24 +278,70 @@ const LV_SYNC = (() => {
         local.forEach(x => { localMap[x[cfg.id]] = x; });
         remotos.forEach(r => {
           const localItem = localMap[r[cfg.id]];
-          // remoto gana si no existe local o si remoto es más reciente
           if (!localItem || new Date(r.actualizado_en) > new Date(localItem.actualizado_en || 0)) {
             const _item = (cfg.transform && r.datos) ? r.datos : r;
-          if (_item && _item._eliminado) { delete localMap[_item[cfg.id]]; }
-          else localMap[r[cfg.id]] = _item;
+            if (_item && _item._eliminado) { delete localMap[_item[cfg.id]]; }
+            else localMap[r[cfg.id]] = _item;
           }
         });
         lsSet(lvKey, Object.values(localMap));
       }
     }
     console.log('[LV Sync] ✅ Descarga completa');
+    revisarEspacio();
 
-    // Con los cursos ya frescos en localStorage, etiquetar los que
-    // todavía no tengan materia (ver materia-context.js). Se hace aquí,
-    // justo después de la descarga real, para evitar la condición de
-    // carrera donde la migración corría antes de que llegaran los datos.
+    // Etiquetar cursos/registros viejos sin materia (ver materia-context.js)
     if (typeof window.lvMigrarCursosSinMateria === 'function') {
       window.lvMigrarCursosSinMateria();
+    }
+  }
+
+  // ── Respaldo completo: exportar / importar todo ──────────────
+  function exportarRespaldo() {
+    const dump = { _version: 1, _fecha: new Date().toISOString() };
+    Object.keys(MAPA).forEach(k => { dump[k] = lsGet(k); });
+    const blob = new Blob([JSON.stringify(dump)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL_createObjectURL(blob);
+    a.download = `respaldo-loma-verde-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  // (window.URL puede estar tapado por la constante URL de este módulo)
+  function URL_createObjectURL(b){ return window.URL.createObjectURL(b); }
+
+  // ── Vigilancia del espacio de almacenamiento local ───────────
+  //  localStorage suele tener ~5 MB. Si pasa del 80%, avisar; si un
+  //  guardado FALLA por espacio, avisar en rojo — antes fallaba en
+  //  silencio y se podían perder datos al cerrar la pestaña.
+  const LIMITE_BYTES = 5 * 1024 * 1024;
+  function bytesUsados() {
+    let total = 0;
+    try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); total += k.length + (localStorage.getItem(k) || '').length; } } catch(_){}
+    return total * 2; // UTF-16: 2 bytes por carácter
+  }
+  function revisarEspacio() {
+    const uso = bytesUsados() / LIMITE_BYTES;
+    if (uso > 0.8) mostrarAvisoEspacio(Math.round(uso * 100), false);
+  }
+  function avisarAlmacenamientoLleno() { mostrarAvisoEspacio(100, true); }
+
+  function mostrarAvisoEspacio(pct, critico) {
+    let el = document.getElementById('lv-espacio-aviso');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'lv-espacio-aviso';
+      el.style.cssText = `position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:1001;
+        padding:10px 18px;border-radius:12px;font-size:.8rem;font-weight:700;
+        box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;max-width:92vw;text-align:center`;
+      el.onclick = () => exportarRespaldo();
+      document.body.appendChild(el);
+    }
+    if (critico) {
+      el.style.background = '#fee2e2'; el.style.color = '#991b1b'; el.style.border = '2px solid #dc2626';
+      el.textContent = '🛑 Almacenamiento LLENO: los cambios podrían no guardarse en este dispositivo. Toca aquí para descargar un respaldo YA.';
+    } else {
+      el.style.background = '#fef3c7'; el.style.color = '#92400e'; el.style.border = '1px solid #fcd34d';
+      el.textContent = `⚠️ Almacenamiento local al ${pct}%. Toca aquí para descargar un respaldo.`;
     }
   }
 
@@ -242,27 +381,16 @@ const LV_SYNC = (() => {
   }
 
   // ── Auto-actualización entre dispositivos ───────────────────
-  //  Cada POLL_MS revisa Supabase en segundo plano. Si algo cambió
-  //  respecto a lo que ya se ve en pantalla, muestra un aviso — NO
-  //  recarga sola, para no interrumpir una edición en curso.
   const POLL_MS = 15000;
   let autoRefreshTimer = null;
 
   async function chequearYActualizar() {
-    if (!online() || document.hidden) return;
+    if (!online() || document.hidden || !puedeSincronizar()) return;
 
-    // Si hay cambios locales sin confirmar, intenta subirlos PRIMERO.
-    // Nunca descargues mientras algo tuyo está a medio subir: eso es
-    // lo que causaba que un cambio recién hecho se "borrara" al
-    // fusionarse con una versión de Supabase que aún no lo tenía.
+    // Subir lo propio PRIMERO; nunca descargar con subidas a medias.
     if (pendientesGet().length > 0) {
       await subirPendientes();
-      if (pendientesGet().length > 0) {
-        // Sigue habiendo pendientes (falló la subida) — no descargues
-        // esta vez para no arriesgar el dato local; se reintentará
-        // en el próximo ciclo.
-        return;
-      }
+      if (pendientesGet().length > 0) return; // reintento en el próximo ciclo
     }
 
     const antes = snapshotLocal();
@@ -275,12 +403,9 @@ const LV_SYNC = (() => {
   }
 
   // ── Aviso de datos nuevos (NO recarga sola — el usuario decide) ─
-  //  Recargar automáticamente en medio de una edición es lo que
-  //  causaba que se "borraran" celdas recién agregadas. Ahora solo
-  //  se avisa; tú tocas el aviso cuando te convenga.
   function mostrarAvisoActualizacion() {
     let aviso = document.getElementById('lv-update-aviso');
-    if (aviso) return; // ya está visible
+    if (aviso) return;
     aviso = document.createElement('div');
     aviso.id = 'lv-update-aviso';
     aviso.style.cssText = `
@@ -297,8 +422,6 @@ const LV_SYNC = (() => {
   function iniciarAutoActualizacion() {
     if (autoRefreshTimer) clearInterval(autoRefreshTimer);
     autoRefreshTimer = setInterval(chequearYActualizar, POLL_MS);
-
-    // Al volver a la pestaña/app (ej. cambias de iPad a Mac) revisa al instante
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden) chequearYActualizar();
     });
@@ -307,20 +430,20 @@ const LV_SYNC = (() => {
 
   // ── Inicialización ───────────────────────────────────────────
   async function init() {
-    // IMPORTANTE: subir primero lo que quedó pendiente de una sesión
-    // anterior (por ejemplo, si cerraste la app antes de que terminara
-    // de subir). Si se descarga antes de subir, un cambio propio que
-    // aún no llegó a Supabase puede quedar tapado al fusionar.
+    if (!puedeSincronizar()) {
+      // sin sesión (ej. pantalla de login): no tocar la red
+      revisarEspacio();
+      return;
+    }
+    // Subir primero lo pendiente de sesiones anteriores
     const p = pendientesGet();
     if (p.length) {
       mostrarBadge(true);
       if (online()) await subirPendientes();
     }
 
-    // Ahora sí, bajar datos remotos (ya con lo propio a salvo)
     await descargarTodo();
 
-    // Escuchar cambios de conectividad
     window.addEventListener('online', () => {
       console.log('[LV Sync] 🌐 Conexión restaurada — sincronizando...');
       subirPendientes();
@@ -330,12 +453,12 @@ const LV_SYNC = (() => {
       console.log('[LV Sync] 📵 Sin conexión — modo offline');
     });
 
-    // Activar revisión periódica + al volver a la pestaña
     iniciarAutoActualizacion();
   }
 
   // ── API pública ──────────────────────────────────────────────
-  return { init, marcarCambio, subirPendientes, descargarTodo, mostrarBadge, online, chequearYActualizar, eliminarRegistro };
+  return { init, marcarCambio, subirPendientes, descargarTodo, mostrarBadge, online,
+           chequearYActualizar, eliminarRegistro, exportarRespaldo, revisarEspacio };
 
 })();
 

@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T12:25:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_10_3_e5_a01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los Objetivos de Desarrollo Sostenible (ODS) propuestos por la Organización de las Naciones Unidas (ONU) operan como directrices globales de carácter ambiental y social. Sin embargo, su implementación en territorios rurales de Colombia a menudo choca con realidades institucionales y brechas presupuestales históricas.",
+      "enunciado": "Explique de qué manera la formulación del ODS 6 (Agua limpia y saneamiento) impacta sistémicamente en la planeación de las políticas públicas de un municipio rural, y analice qué tensiones lógicas surgen entre las directrices de este organismo internacional y las capacidades fiscales de los gobiernos locales.",
+      "respuesta": "La formulación del ODS 6 impacta de manera sistémica al obligar a los entes territoriales a alinear sus Planes de Desarrollo Municipal con metas globales de cobertura, calidad y sostenibilidad del recurso hídrico. No obstante, surge una tensión estructural profunda: mientras la directriz multilateral exige altos estándares técnico-ambientales e infraestructura de potabilización costosa, las administraciones de los municipios rurales sufren de una crónica escasez de recursos propios, alta dependencia de las transferencias del Sistema General de Participaciones (SGP) y dispersión geográfica de la población campesina. Esto genera que las directrices internacionales queden relegadas a metas retóricas o formales en los documentos de planeación, evidenciando la desconexión sistémica entre las agendas globales y las realidades fiscales locales.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "La UNESCO diseña directrices multilaterales en materia educativa encaminadas a estandarizar la calidad de los procesos de aprendizaje y la inclusión de minorías étnicas, promoviendo el desarrollo de competencias adaptadas a la globalización contemporánea.",
+      "enunciado": "Identifique los componentes esenciales de la agenda de educación multilateral de la UNESCO (ODS 4) y deduzca de qué forma estas directrices internacionales se reflejan en las políticas de inclusión y flexibilización curricular aplicadas por el Ministerio de Educación Nacional de Colombia.",
+      "respuesta": "Los componentes esenciales del ODS 4 de la UNESCO abarcan la equidad en el acceso, la eliminación de disparidades de género y etnia, la calidad del aprendizaje y la dotación de infraestructura inclusiva. En Colombia, estas directrices se reflejan directamente a través del diseño e implementación del Decreto 1421 de 2017, el cual reglamenta la atención educativa a la población con discapacidad y minorías étnicas bajo el modelo de educación inclusiva. Asimismo, impulsa las directrices del Ministerio de Educación Nacional para la adopción del Plan Individual de Ajustes Razonables (PIAR) en las instituciones educativas, demostrando una apropiación jurídica y metodológica interna de los mandatos multilaterales para flexibilizar el currículo conforme a la diversidad poblacional.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Acuerdo de París de 2015 es un tratado ambiental multilateral vinculante dentro de la Convención Marco de las Naciones Unidas sobre el Cambio Climático, cuyo objetivo principal es limitar el calentamiento global muy por debajo de los 2 grados centígrados.",
+      "enunciado": "A partir de un análisis sistémico, evalúe las repercusiones jurídicas y ambientales que tiene para el Estado colombiano el asumir los compromisos de reducción de emisiones de gases de efecto invernadero (GEI) dictados por las directrices del Acuerdo de París.",
+      "respuesta": "Jurídicamente, asumir las directrices del Acuerdo de París obliga a Colombia a incorporar estos mandatos en su bloque de constitucionalidad en sentido lato, lo que impulsa la creación de agendas legislativas específicas, como la Ley de Acción Climática (Ley 2169 de 2021) que establece metas de neutralidad de carbono. Ambiental y económicamente, genera una reconfiguración sistémica del modelo productivo nacional: exige acelerar la transición energética reduciendo la dependencia de combustibles fósiles, robustecer la lucha contra la deforestación amazónica y transformar las prácticas agropecuarias en las regiones; esto presiona una reestructuración de los sectores productivos que tensiona los intereses económicos tradicionales frente a la preservación ecológica.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "Las agencias financieras internacionales, como el Fondo Monetario Internacional (FMI) y el Banco Mundial, emiten de manera constante directrices crediticias multilaterales fundamentadas en la austeridad fiscal y la eficiencia del mercado.",
+      "enunciado": "Analice de manera analítica cómo la adopción de las directrices fiscales recomendadas por el FMI incide en la formulación de reformas tributarias en Colombia y qué consecuencias lógicas se derivan de ello en la inversión social en educación.",
+      "respuesta": "Las directrices del FMI operan bajo el mecanismo de condicionalidad, lo que implica que para acceder a créditos internacionales o mantener una calificación de riesgo favorable, el Estado colombiano es instado a adoptar reformas tributarias estructurales orientadas a garantizar la sostenibilidad de la deuda pública mediante el aumento de los ingresos fiscales o el recorte del gasto. La consecuencia lógica directa sobre el sector social es una restricción en la expansión presupuestal real para rubros como la educación pública superior y rural. Al priorizar el cumplimiento de metas macroeconómicas externas de déficit fiscal (regla fiscal), se limitan los recursos destinados a la infraestructura y formalización docente, subordinando el bienestar social a la estabilidad financiera exigida.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Convenio sobre la Diversidad Biológica de las Naciones Unidas establece directrices multilaterales que reconocen el valor soberano de los Estados sobre sus recursos biológicos y la necesidad de un reparto justo y equitativo de los beneficios derivados de su utilización.",
+      "enunciado": "Explique el vínculo lógico que existe entre estas directrices de protección ambiental internacional y el reconocimiento de los conocimientos ancestrales de las comunidades indígenas y campesinas en las normativas colombianas sobre patentes y bioprospección.",
+      "respuesta": "Existe un vínculo sistémico indisoluble, dado que el Convenio (específicamente regulado por el Protocolo de Nagoya) determina que el acceso a los recursos genéticos debe contar con el Consentimiento Fundamentado Previo de las comunidades locales que han custodiado dichos saberes de forma tradicional. En la legislación colombiana y andina (Decisión 391 de la CAN), esto obliga a que cualquier investigación científica o patente comercial de carácter biotecnológico deba pasar de forma previa por un proceso de concertación y reconocimiento de la propiedad intelectual colectiva de las comunidades étnicas, evitando la biopiratería y materializando la directriz multilateral de equidad ambiental dentro del ordenamiento jurídico interno.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_vf01",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Las directrices económicas emanadas de la Organización para la Cooperación y el Desarrollo Económicos (OCDE) carecen por completo de impacto en la legislación colombiana debido a que Colombia no es un miembro pleno de dicha institución internacional.",
+      "correcta": false,
+      "justificacion": "La afirmación es falsa puesto que Colombia fue admitida formalmente como miembro de pleno derecho de la OCDE en el año 2020. En consecuencia, el Estado colombiano se encuentra bajo el compromiso institucional de armonizar de forma progresiva sus marcos regulatorios, estatutos fiscales, estándares de transparencia financiera y políticas laborales con las directrices técnico-económicas de dicho organismo multilateral."
+    },
+    {
+      "id": "lv_10_3_e5_vf02",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El principio de soberanía nacional permite que Colombia ignore de manera legítima las directrices y fallos de carácter jurídico-proteccionista de los organismos internacionales de derechos humanos cuando estos entran en contradicción con decretos de orden público de carácter presidencial.",
+      "correcta": false,
+      "justificacion": "Es falsa. De conformidad con el artículo 93 de la Constitución Política de Colombia, los tratados internacionales sobre derechos humanos debidamente ratificados prevalecen en el orden interno y forman parte del bloque de constitucionalidad. Ningún decreto ejecutivo de orden público puede vulnerar o desconocer las obligaciones de protección jurídica internacional suscritas por el Estado, ya que la constitución misma sitúa estas directrices por encima de las normas de rango administrativo."
+    },
+    {
+      "id": "lv_10_3_e5_vf03",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Las directrices de la Organización Mundial de la Salud (OMS) en materia de emergencias sanitarias internacionales facultan a este organismo multilateral para suprimir de forma automática las funciones aduaneras y las fuerzas de policía de las naciones de manera autónoma y soberana.",
+      "correcta": false,
+      "justificacion": "La afirmación es categóricamente falsa. La OMS formula directrices técnico-médicas de bioseguridad internacional a través del Reglamento Sanitario Internacional, pero carece de un brazo militar o de coacción soberana. Corresponde única y exclusivamente a los gobiernos internos de cada Estado independiente ejercer sus facultades soberanas para emitir los decretos que regulen sus fronteras o restrinjan la movilidad ciudadana."
+    },
+    {
+      "id": "lv_10_3_e5_vf04",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El Fondo de Población de las Naciones Unidas (UNFPA) diseña directrices multilaterales de carácter demográfico y reproductivo que buscan que los gobiernos integren variables de equidad de género en sus censos de población nacionales.",
+      "correcta": true,
+      "justificacion": "La afirmación es verdadera. El mandato técnico de UNFPA consiste en orientar a los institutos de estadística nacionales (como el DANE en Colombia) para que incorporen enfoques diferenciales, metodologías de género y recolección de variables sobre salud reproductiva y brechas demográficas, permitiendo diseñar políticas de planeación con rigor científico internacional."
+    },
+    {
+      "id": "lv_10_3_e5_vf05",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Organización Mundial del Comercio (OMC) establece directrices multilaterales orientadas a la reducción progresiva de los aranceles aduaneros, con el fin de dinamizar el mercado global y evitar medidas de proteccionismo unilateral desleal.",
+      "correcta": true,
+      "justificacion": "Es verdadera. La OMC constituye el marco institucional y normativo encargado de regular las reglas del comercio entre las naciones. Sus acuerdos y directrices multilaterales exigen a los Estados signatarios compromisos claros de liberalización del mercado, reducción de barreras arancelarias y resolución pacífica de controversias comerciales bajo los principios de nación más favorecida y reciprocidad."
+    },
+    {
+      "id": "lv_10_3_e5_m01",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "La Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) emite periódicamente directrices multilaterales orientadas a consolidar la seguridad alimentaria mundial y a incentivar modelos agrícolas sostenibles que protejan a las poblaciones rurales vulnerables del cambio climático.",
+      "enunciado": "Cuando un municipio rural de Colombia decide reconfigurar sus programas de asistencia técnica agropecuaria para priorizar la soberanía alimentaria de las familias campesinas, la adopción lícita de las directrices de la FAO se evidencia principalmente en:",
+      "opciones": [
+        "la entrega forzosa de subsidios económicos exclusivos para la compra de semillas transgénicas de multinacionales.",
+        "el fomento técnico de prácticas agroecológicas locales, diversificación de cultivos y protección de las semillas nativas de la región.",
+        "la prohibición legal de comercializar productos agrícolas tradicionales en las plazas de mercado públicas del municipio.",
+        "la enajenación de las tierras ejidales para la consolidación de grandes enclaves mineros de explotación transnacional."
+      ],
+      "correcta": 1,
+      "justificacion": "Las directrices de la FAO enfocadas en la sostenibilidad y la erradicación del hambre promueven de forma explícita los sistemas agrícolas basados en la resiliencia climática, la biodiversidad y la agricultura familiar. Por ende, la correcta traducción de estos lineamientos internacionales en el ámbito local se manifiesta en el fortalecimiento de la soberanía alimentaria mediante la protección de las variedades de semillas nativas y la transición hacia la agroecología, evitando la dependencia económica del campesinado frente a monopolios de semillas patentes."
+    },
+    {
+      "id": "lv_10_3_e5_m02",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las agencias multilaterales de crédito, al estructurar sus directrices de financiación económica para infraestructura en América Latina, imponen los denominados 'estándares de salvaguardas ambientales y sociales' como condición obligatoria previa al desembolso de los recursos económicos.",
+      "enunciado": "Si el Estado colombiano solicita un crédito internacional al Banco Interamericano de Desarrollo (BID) para construir una vía en una zona con resguardos indígenas, la existencia de estas salvaguardas multilaterales obliga lógicamente a que el proyecto nacional:",
+      "opciones": [
+        "omita las consultas con la comunidad para agilizar los plazos de ejecución exigidos por el mercado internacional.",
+        "desplace de manera definitiva a la población nativa sin compensación alguna, invocando razones de utilidad pública estatal.",
+        "despliegue de forma vinculante un estudio de impacto ambiental riguroso y un proceso transparente de consulta previa con la comunidad étnica.",
+        "subordine de forma total las decisiones del tribunal constitucional a los conceptos jurídicos emitidos por los abogados de la fiduciaria bancaria."
+      ],
+      "correcta": 2,
+      "justificacion": "Las salvaguardas socioambientales de la banca multilateral de desarrollo (como el BID o el Banco Mundial) operan en estricta consonancia con los tratados de derechos humanos. Estas pautas exigen que cualquier infraestructura financiada deba mitigar los daños ecológicos y respetar los derechos colectivos de las minorías de manera obligatoria. De esta forma, el crédito internacional queda condicionado al cumplimiento del derecho constitucional de la consulta previa y la viabilidad ambiental, impidiendo el uso de los fondos públicos en obras que degraden el tejido social local."
+    },
+    {
+      "id": "lv_10_3_e5_m03",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "La Declaración de la OIT relativa a los principios y derechos fundamentales en el trabajo constituye una directriz multilateral que obliga a todos los Estados miembros a respetar y promover principios como la libertad de asociación, el reconocimiento del derecho a la negociación colectiva y la eliminación del trabajo forzoso.",
+      "enunciado": "En el marco de la legislación laboral interna de Colombia, la incorporación de estas directrices de la OIT al bloque de constitucionalidad implica jurídicamente que:",
+      "opciones": [
+        "los contratos de prestación de servicios civiles pueden desconocer la libertad sindical por mutuo acuerdo entre particulares.",
+        "las leyes nacionales que regulen las jornadas laborales deben ajustarse progresivamente a los estándares internacionales de dignidad laboral.",
+        "las fuerzas militares adquieren la potestad legal de disolver las huelgas legítimas de los trabajadores del sector salud.",
+        "los sindicatos de trabajadores de la nación quedan inhabilitados para presentar pliegos de peticiones ante los ministerios del Estado."
+      ],
+      "correcta": 1,
+      "justificacion": "Dado que las directrices y convenios de la OIT sobre derechos laborales fundamentales se integran directamente al bloque de constitucionalidad en Colombia según el artículo 93 constitucional, el Congreso de la República y los jueces laborales están limitados y orientados por estas normas. Por lo tanto, cualquier reforma legal o código interno del trabajo debe alinearse con la progresividad del derecho internacional laboral, garantizando la dignidad del trabajador y proscribiendo normas regresivas que restrinjan libertades sindicales reconocidas globalmente."
+    },
+    {
+      "id": "lv_10_3_e5_m04",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Convenio de Basilea es un tratado ambiental multilateral que regula de forma estricta los movimientos transfronterizos de desechos peligrosos y obliga a los Estados partes a garantizar que la gestión de estos residuos, incluida su eliminación, se realice de manera ecológicamente racional.",
+      "enunciado": "Desde una perspectiva sistémica de las relaciones internacionales y el derecho interno de Colombia, el impacto de las directrices del Convenio de Basilea se traduce en la formulación de regulaciones nacionales que:",
+      "opciones": [
+        "permiten la libre importación de chatarra tecnológica de países desarrollados para reducir costos de manufactura industrial.",
+        "prohíben y penalizan el ingreso ilegal de residuos tóxicos al territorio nacional, obligando a las empresas a implementar planes de gestión posconsumo.",
+        "eximen a las industrias químicas transnacionales de la obtención de licencias ambientales previas ante el Ministerio del Medio Ambiente.",
+        "transfieren de forma obligatoria la propiedad del suelo rural a entidades científicas europeas encargadas del confinamiento de uranio."
+      ],
+      "correcta": 1,
+      "justificacion": "Las directrices multilaterales del Convenio de Basilea buscan evitar el 'dumping ambiental', consistente en que los países industrializados viertan sus desechos peligrosos en naciones en desarrollo. Al integrarse esta directriz a la normatividad ambiental colombiana (a través de la Ley 253 de 1996 y decretos reglamentarios), se estructuran prohibiciones expresas y se consolida el principio de responsabilidad extendida del productor en la política nacional de residuos peligrosos, forzando un control sistémico sobre la industria."
+    },
+    {
+      "id": "lv_10_3_e5_m05",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "La Convención sobre el Estatuto de los Refugiados de 1951 de la ONU establece directrices jurídicas que definen los derechos de las personas desarraigadas y los deberes legales de los Estados de acogida, resaltando el principio de no devolución (non-refoulement) como norma imperativa de derecho internacional.",
+      "enunciado": "Cuando Colombia se enfrenta a crisis humanitarias por flujos migratorios mixtos transnacionales en sus fronteras, la aplicación lógica de la directriz del principio de no devolución obliga institucionalmente al Estado a:",
+      "opciones": [
+        "expulsar de manera sumaria e inmediata a todo ciudadano extranjero que carezca de pasaporte sellado en aduanas.",
+        "prohibir de forma permanente el tránsito de mercancías y de asistencia médica básica hacia los corregimientos fronterizos.",
+        "garantizar que ninguna persona sea repatriada forzosamente a un territorio donde su vida o libertad corran peligro por motivos de persecución política o violencia.",
+        "conceder la nacionalidad colombiana automática e incondicional con plenos derechos electorales a todos los migrantes que ingresen por las zonas veredales."
+      ],
+      "correcta": 2,
+      "justificacion": "El principio de no devolución es la piedra angular de las directrices multilaterales de protección a refugiados. Jurídicamente tiene carácter de 'ius cogens' (norma imperativa internacional). Obliga a las cancillerías y autoridades migratorias de Colombia a evaluar de forma individualizada las solicitudes de asilo y refugio, prohibiendo la expulsión colectiva o el retorno forzoso de un sujeto a un Estado donde sea evidente la amenaza de persecución, tortura o muerte, salvaguardando el derecho humano a la vida por encima de controles migratorios administrativos."
+    },
+    {
+      "id": "lv_10_3_e5_m06",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Programa de las Naciones Unidas para el Medio Ambiente (PNUMA) coordina la formulación de directrices multilaterales sobre la gestión sostenible de los ecosistemas mundiales, alertando que la degradación ambiental deteriora las bases económicas que sustentan el desarrollo social de las naciones en desarrollo.",
+      "enunciado": "Analizando la relación de interdependencia entre economía e institucionalidad ambiental internacional, las directrices del PNUMA impulsan lógicamente a que los Ministerios de Hacienda y de Medio Ambiente de Colombia deban coordinar:",
+      "opciones": [
+        "la eliminación absoluta de las regalías mineras para incentivar la exploración de hidrocarburos pesados en los páramos colombianos.",
+        "el diseño de impuestos verdes, contabilidad ambiental nacional y la valoración económica de los servicios ecosistémicos rurales.",
+        "la privatización legal de los parques nacionales naturales para transferir el costo de su vigilancia a corporaciones hoteleras extranjeras.",
+        "la sustitución forzosa del peso colombiano por bonos de carbono emitidos por bolsas de valores financieras privadas internacionales."
+      ],
+      "correcta": 1,
+      "justificacion": "Las directrices modernas del PNUMA promueven la transición hacia una 'economía verde' que internalice los costos de la degradación ecológica en las políticas fiscales. De manera sistémica, esto induce a las carteras de ambiente y hacienda a estructurar mecanismos internos como el impuesto al carbono, incentivos tributarios para energías limpias y la inclusión del capital natural en las cuentas nacionales, traduciendo una pauta macroambiental en una estructura macroeconómica estatal."
+    },
+    {
+      "id": "lv_10_3_e5_m07",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "El Convenio de Minamata es un tratado multilateral ambiental patrocinado por la ONU que busca proteger la salud humana y el medio ambiente de las emisiones y liberaciones antropógenas de mercurio y compuestos de mercurio de alta toxicidad.",
+      "enunciado": "Teniendo en cuenta que en diversas regiones colombianas la minería de oro informal utiliza mercurio de forma indiscriminada, la ratificación estatal de las directrices del Convenio de Minamata impone al gobierno el deber de:",
+      "opciones": [
+        "subsidiar de forma indefinida la importación de insumos mercuriales para evitar pérdidas financieras en las microempresas mineras.",
+        "diseñar e implementar planes nacionales para la reconversión tecnológica, erradicación del mercurio y formalización de la pequeña minería.",
+        "otorgar amnistías penales definitivas a las organizaciones que viertan sustancias químicas en las fuentes hídricas veredales.",
+        "clausurar de forma total la producción agrícola de todos los municipios que registren pasivos ambientales en el país."
+      ],
+      "correcta": 1,
+      "justificacion": "El Convenio de Minamata, ratificado por Colombia mediante la Ley 1892 de 2018, establece plazos taxativos y directrices imperativas para la eliminación del mercurio en los procesos industriales y mineros. Esto fuerza de manera directa al Ministerio de Minas y Energía a formular e implementar políticas públicas internas para la sustitución de esta sustancia por métodos gravimétricos limpios, proveyendo asistencia técnica al minero tradicional para mitigar la contaminación de las cuencas hidrográficas nacionales."
+    },
+    {
+      "id": "lv_10_3_e5_m08",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Convención de las Naciones Unidas contra la Corrupción constituye una directriz multilateral jurídica obligatoria que insta a los Estados firmantes a robustecer sus órganos de control interno, promover la rendición de cuentas pública y tipificar de forma estricta los delitos asociados al soborno transnacional y el peculado.",
+      "enunciado": "La articulación de esta directriz multilateral dentro de las políticas de control del Estado colombiano se materializa sistémicamente a través de:",
+      "opciones": [
+        "la disolución definitiva de las personerías municipales para centralizar la vigilancia presupuestal en agencias privadas extranjeras.",
+        "el fortalecimiento normativo de la Fiscalía y la Contraloría mediante leyes sobre transparencia, estatutos anticorrupción y protección a denunciantes.",
+        "la legalización excepcional del cohecho cuando los recursos desviados se destinen a obras de caridad de las instituciones eclesiásticas.",
+        "la supresión del derecho al debido proceso para todos los alcaldes de los municipios de categoría quinta y sexta de la nación."
+      ],
+      "correcta": 1,
+      "justificacion": "Las directrices multilaterales de lucha contra la corrupción exigen reformas institucionales de carácter estructural y operativo. En Colombia, esto se traduce en la adopción de herramientas legales nacionales de control, como el Estatuto Anticorrupción (Ley 1474 de 2011) y la Ley de Transparencia y del Derecho de Acceso a la Información Pública (Ley 1712 de 2014), robusteciendo las facultades investigativas de la Fiscalía, Procuraduría y Contraloría General de la República para sintonizarlas con los estándares punitivos internacionales."
+    },
+    {
+      "id": "lv_10_3_e5_m09",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "El Pacto Internacional de Derechos Económicos, Sociales y Culturales (PIDESC) de la ONU fija directrices multilaterales obligatorias que exigen a los Estados signatarios adoptar medidas, hasta el máximo de los recursos de que dispongan, para lograr progresivamente la plena efectividad de los derechos a la vivienda, alimentación y seguridad social.",
+      "enunciado": "Bajo las directrices del PIDESC y el marco jurisprudencial de la Corte Constitucional colombiana, la prohibición de la regresividad de los derechos sociales implica de manera estricta que:",
+      "opciones": [
+        "el Congreso de la República puede disminuir de forma arbitraria los presupuestos anuales de salud si el mercado bursátil decae.",
+        "un gobierno nacional no puede adoptar medidas legislativas o reformas normativas que desmejoren el nivel de protección de un derecho social ya alcanzado, salvo justificación imperativa extrema.",
+        "los subsidios a las poblaciones rurales de escasos recursos deben ser eliminados de manera forzosa para favorecer el pago de la deuda externa.",
+        "las directrices internacionales se suspenden automáticamente cada vez que el índice de desempleo nacional supera el límite de un dígito."
+      ],
+      "correcta": 1,
+      "justificacion": "El principio de no regresividad, derivado de las directrices multilaterales del PIDESC, dictamina que una vez un Estado ha alcanzado un nivel determinado de protección de un derecho social (como la cobertura en educación o salud), no puede desmejorar o recortar dichas garantías mediante reformas legislativas ordinarias. Cualquier medida regresiva es presumiblemente inconstitucional y el Estado debe demostrar de forma exhaustiva ante el tribunal constitucional que agotó todas las opciones alternativas antes de lesionar la dignidad de los ciudadanos."
+    },
+    {
+      "id": "lv_10_3_e5_m10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Convención Internacional para la Regulación de la Caza de Ballenas y otros acuerdos internacionales sobre fauna marina protegida operan bajo directrices multilaterales de conservación ecológica, estableciendo vedas comerciales y moratorias globales aplicables a los espacios marinos territoriales de las naciones firmantes.",
+      "enunciado": "Desde un punto de vista ecológico e institucional sistémico, si un Estado insular o costero con soberanía marítima decide desacatar de forma unilateral estas directrices de conservación biológica global para impulsar la pesca industrial masiva, la consecuencia lógica inmediata en el orden internacional corresponde a:",
+      "opciones": [
+        "la obtención automática de créditos económicos no reembolsables por parte del Programa de las Naciones Unidas para el Desarrollo.",
+        "el aislamiento diplomático del Estado, imposición de sanciones comerciales multilaterales por violar tratados ambientales y la pérdida de certificaciones de sostenibilidad del mercado exterior.",
+        "la anulación inmediata de su constitución política interna por parte de la Asamblea General de la Organización de los Estados Americanos.",
+        "el redespliegue de misiones de paz forzosas integradas por los cascos azules en sus ciudades capitales terrestres continentales."
+      ],
+      "correcta": 1,
+      "justificacion": "El desacato unilateral de tratados ambientales multilaterales rompe el principio de reciprocidad y confianza del derecho internacional ('pacta sunt servanda'). Aunque los organismos ambientales no poseen ejércitos de coerción física directa, la arquitectura global reacciona de forma sistémica mediante sanciones comerciales legítimas contempladas en los tratados, embargos a las exportaciones pesqueras por parte de naciones aliadas y la descalificación de los sellos verdes del país infractor, forzando al Estado desobediente a retornar al cumplimiento normativo para evitar el colapso de sus mercados externos."
+    }
+  ]
+}

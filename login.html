@@ -16,13 +16,14 @@
   .card h1{font-size:1.25rem;color:var(--primary);text-align:center;margin-bottom:4px}
   .card p.sub{text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:22px}
   label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:6px;margin-top:16px}
-  select,input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:.95rem;background:#fff;color:var(--text)}
-  select:focus,input:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+  input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:.95rem;background:#fff;color:var(--text)}
+  input:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
   button{width:100%;margin-top:22px;border:0;border-radius:9px;padding:12px;font-size:.95rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff}
   button:hover{filter:brightness(1.08)}
+  button:disabled{opacity:.6;cursor:wait}
   .err{color:var(--bad);font-size:.82rem;margin-top:12px;text-align:center;min-height:1.2em}
   .logo{width:60px;height:60px;display:block;margin:0 auto 14px;border-radius:14px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
-  .loading{text-align:center;color:var(--muted);font-size:.85rem;padding:20px 0}
+  .nota{font-size:.75rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -32,130 +33,91 @@
   <h1>Sistema Loma Verde</h1>
   <p class="sub">I.E. San José de Loma Verde</p>
 
-  <div id="loading" class="loading">Cargando datos…</div>
+  <form id="form-login">
+    <label>Correo institucional</label>
+    <input type="email" id="l-email" required placeholder="tu.correo@ejemplo.com" autocomplete="username" autocapitalize="none">
 
-  <form id="form-login" class="hide" style="display:none">
-    <label>Docente
-      <a href="#" id="l-actualizar" style="float:right;font-weight:600;color:var(--primary);text-decoration:none;font-size:.78rem">🔄 Actualizar lista</a>
-    </label>
-    <select id="l-docente"></select>
-    <div id="l-status" style="font-size:.75rem;color:var(--muted);margin-top:4px;min-height:1.1em"></div>
+    <label>Contraseña</label>
+    <input type="password" id="l-clave" required placeholder="Tu contraseña" autocomplete="current-password">
 
-    <label>Clave</label>
-    <input type="password" id="l-clave" placeholder="Tu clave de acceso" autocomplete="current-password">
-
-    <button type="submit">Entrar</button>
+    <button type="submit" id="l-btn">Entrar</button>
     <div class="err" id="l-error"></div>
   </form>
+
+  <p class="nota">Si no tienes usuario o olvidaste tu contraseña,<br>pide a Coordinación que te lo restablezca.</p>
 </div>
 
+<script src="auth.js"></script>
 <script src="sync.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════
-//  Login básico por docente.
+//  Login con Supabase Auth (usuario y contraseña reales, validados
+//  en el servidor). Reemplaza el login anterior, que comparaba
+//  claves guardadas en texto plano en el navegador.
 //
-//  IMPORTANTE — alcance real de esta seguridad: esto filtra el MENÚ
-//  que ve cada docente según sus asignaciones (para que no tenga que
-//  navegar entre materias que no son suyas), pero NO restringe el
-//  acceso a los datos a nivel de base de datos (no hay RLS estricto
-//  todavía). Alguien con conocimientos técnicos podría igual acceder
-//  directamente a un módulo por URL. Es un paso intermedio, no un
-//  sistema de seguridad robusto.
-//
-//  Llave maestra: da acceso total (como si fuera administrador),
-//  sin necesidad de estar en la lista de docentes. Cámbiala aquí.
+//  Después de autenticar:
+//   1. Descarga los datos (ya firmados con el token del docente).
+//   2. Busca el registro del docente por su correo en lv_docentes
+//      para conservar el filtrado de menú por asignaciones.
+//   3. Lee su rol en la tabla `perfiles` (docente / coordinador /
+//      admin) — el rol de administrador ya no depende de una clave
+//      maestra escrita en el código.
 // ═══════════════════════════════════════════════════════════════
-const ADMIN_PASSWORD = 'lomaverde-admin-2026';
 
-function lsRead(s){ try{ return JSON.parse(localStorage.getItem('lv_'+s))||[]; }catch(_){ return []; } }
+// si ya hay sesión, saltar directo al portal
+if (LV_AUTH.haySesion() && localStorage.getItem('lv_login')) location.replace('index.html');
 
-let docentes = [];
-const sel = document.getElementById('l-docente');
-const statusBox = document.getElementById('l-status');
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem(k))||[]; }catch(_){ return []; } }
 
-function pintarDocentes(){
-  docentes = lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
-  const actual = sel.value;
-  sel.innerHTML = '<option value="__ADMIN__">🔑 Administrador (acceso completo)</option>'
-    + docentes.map(d=>`<option value="${d.id}">${esc(d.nombre)}${d.sede?' — '+esc(d.sede):''}</option>`).join('');
-  if(actual) sel.value = actual;
-  statusBox.textContent = docentes.length
-    ? `${docentes.length} docente(s) cargado(s) en este dispositivo.`
-    : 'Aún no hay docentes guardados en este dispositivo. Toca "Actualizar lista" estando conectado.';
+async function leerRol(userId){
+  try{
+    const t = await LV_AUTH.getValidToken();
+    const r = await fetch(`${LV_AUTH.URL}/rest/v1/perfiles?id=eq.${encodeURIComponent(userId)}&select=rol`, {
+      headers: { 'apikey': LV_AUTH.KEY, 'Authorization': 'Bearer ' + t }
+    });
+    if(!r.ok) return 'docente';
+    const rows = await r.json();
+    return (rows[0] && rows[0].rol) || 'docente';
+  }catch(_){ return 'docente'; }
 }
 
-async function actualizarDocentes(){
-  statusBox.textContent = 'Actualizando…';
+document.getElementById('form-login').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const errBox = document.getElementById('l-error');
+  const btn = document.getElementById('l-btn');
+  errBox.textContent=''; btn.disabled=true; btn.textContent='Verificando…';
   try{
-    if(typeof LV_SYNC==='undefined'){ statusBox.textContent='No se pudo cargar sync.js.'; return; }
-    if(!navigator.onLine){ statusBox.textContent='Este dispositivo dice que no hay internet. Conéctate e inténtalo de nuevo.'; pintarDocentes(); return; }
-    await Promise.race([
-      LV_SYNC.descargarTodo(),
-      new Promise((_,reject)=>setTimeout(()=>reject(new Error('timeout')), 9000))
-    ]);
-    pintarDocentes();
-    if(!docentes.length) statusBox.textContent = 'Se conectó, pero no llegó ningún docente. Revisa que existan docentes guardados en Coordinación.';
-  }catch(err){
-    pintarDocentes();
-    statusBox.textContent = 'No se pudo actualizar (' + (err&&err.message==='timeout' ? 'tardó demasiado' : 'sin respuesta') + '). ' + (docentes.length ? 'Se muestran los datos guardados.' : 'Inténtalo de nuevo conectado a internet.');
-  }
-}
+    const email = document.getElementById('l-email').value.trim().toLowerCase();
+    const user = await LV_AUTH.login(email, document.getElementById('l-clave').value);
 
-document.getElementById('l-actualizar').addEventListener('click', e=>{ e.preventDefault(); actualizarDocentes(); });
+    btn.textContent='Cargando tus datos…';
+    // bajar datos con el token recién obtenido (incluye lv_docentes)
+    try{ await Promise.race([ LV_SYNC.descargarTodo(), new Promise(res=>setTimeout(res, 12000)) ]); }catch(_){}
 
-(async function init(){
-  // si ya hay sesión, saltar directo al portal
-  try{
-    const yaLogueado = JSON.parse(localStorage.getItem('lv_login')||'null');
-    if(yaLogueado && (yaLogueado.docenteId || yaLogueado.esAdmin)){ location.replace('index.html'); return; }
-  }catch(_){}
+    const rol = await leerRol(user.id);
+    const esAdmin = (rol==='admin' || rol==='coordinador');
 
-  // Asegurar que los docentes estén actualizados (por si es un dispositivo nuevo).
-  // Esto nunca debe dejar la pantalla de login "cargando" para siempre: si la
-  // red está lenta o "conectada pero sin internet real", después de 5 segundos
-  // seguimos con lo que ya haya guardado localmente en este dispositivo.
-  try{
-    if(typeof LV_SYNC!=='undefined'){
-      await Promise.race([
-        LV_SYNC.descargarTodo(),
-        new Promise(resolve=>setTimeout(resolve, 5000))
-      ]);
-    }
-  }catch(_){}
+    // mapear el usuario a su registro de docente (para el menú filtrado)
+    const docentes = lsRead('lv_docentes');
+    const d = docentes.find(x => (x.email||'').trim().toLowerCase() === email);
 
-  pintarDocentes();
-
-  document.getElementById('loading').style.display='none';
-  document.getElementById('form-login').style.display='block';
-
-  document.getElementById('form-login').addEventListener('submit', e=>{
-    e.preventDefault();
-    const errBox = document.getElementById('l-error');
-    errBox.textContent='';
-    const seleccion = sel.value;
-    const clave = document.getElementById('l-clave').value;
-
-    if(seleccion==='__ADMIN__'){
-      if(clave===ADMIN_PASSWORD){
-        localStorage.setItem('lv_login', JSON.stringify({esAdmin:true, nombre:'Administrador'}));
-        location.href='index.html';
-      } else {
-        errBox.textContent='Clave incorrecta.';
-      }
+    if(!d && !esAdmin){
+      errBox.textContent = 'Tu usuario es válido, pero no está vinculado a ningún docente. Pide a Coordinación que registre tu correo ('+email+') en tu ficha de docente.';
+      btn.disabled=false; btn.textContent='Entrar';
       return;
     }
 
-    const d = docentes.find(x=>x.id===seleccion);
-    if(!d){ errBox.textContent='Selecciona un docente válido.'; return; }
-    if(!d.clave){ errBox.textContent='Este docente no tiene clave configurada. Pide a Coordinación que te asigne una.'; return; }
-    if(clave !== d.clave){ errBox.textContent='Clave incorrecta.'; return; }
-
-    localStorage.setItem('lv_login', JSON.stringify({docenteId:d.id, nombre:d.nombre, esAdmin:false}));
+    localStorage.setItem('lv_login', JSON.stringify({
+      docenteId: d ? d.id : null,
+      nombre: d ? d.nombre : (esAdmin ? 'Administración' : email),
+      esAdmin: esAdmin
+    }));
     location.href='index.html';
-  });
-})();
-
-function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+  }catch(err){
+    errBox.textContent = err.message || 'No se pudo iniciar sesión.';
+    btn.disabled=false; btn.textContent='Entrar';
+  }
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Primer Periodo",
+    "unidad": "Eje 1: Conflictos socioambientales y seguridad hídrica regional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750046401aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explica el mecanismo del efecto invernadero y por qué la actividad humana lo ha intensificado hasta causar el calentamiento global.",
+      "respuesta": "El efecto invernadero es un proceso natural en el que gases como el CO₂, el metano y el vapor de agua en la atmósfera retienen parte del calor solar, manteniendo la temperatura terrestre habitable. El problema actual es que la quema de combustibles fósiles desde la Revolución Industrial ha aumentado la concentración de CO₂ de 280 ppm (nivel preindustrial) a 421 ppm (2023), intensificando artificialmente el efecto y elevando la temperatura global 1,1°C. La ganadería intensiva agrega metano; los fertilizantes, óxido nitroso; y la deforestación elimina los bosques que absorberían ese CO₂ extra.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750046401aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Cuáles son las tres principales fuentes de contaminación hídrica en Colombia y cómo afectan específicamente a las comunidades rurales cafeteras?",
+      "respuesta": "1) Aguas residuales domésticas: el 80% se vierten sin tratamiento a ríos, contaminando las fuentes de agua de comunidades aguas abajo. 2) Agroquímicos agrícolas: fertilizantes y plaguicidas se filtran a quebradas y acuíferos, superando los límites de potabilidad (64% de monitoreos en la cuenca del Cauca). 3) Aguas mieles del beneficiadero: tienen una DBO 200 veces superior a las aguas residuales domésticas y pueden matar toda la vida acuática de una quebrada si no se tratan.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750046401aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Describe tres efectos documentados del cambio climático en Colombia y explica cómo cada uno afecta la actividad cafetera.",
+      "respuesta": "1) Desplazamiento altitudinal: la zona óptima del café (1.200-1.800 m.s.n.m.) se vuelve más caliente; fincas en altitudes bajas ven reducirse productividad y calidad. 2) Intensificación del Fenómeno El Niño: sequías más largas afectan el riego y el caudal del beneficiadero. 3) Intensificación del Fenómeno La Niña: exceso de lluvia favorece enfermedades fúngicas como la roya, que puede destruir cosechas completas.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750046401aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es la justicia climática y por qué Colombia es un ejemplo paradigmático de su violación?",
+      "respuesta": "La justicia climática reconoce que los países que menos han contaminado históricamente son los más vulnerables al cambio climático. Colombia emite menos del 0,5% de los GEI globales pero figura entre los 10 países más vulnerables: sus glaciares desaparecen, sus lluvias se alteran y su economía cafetera es altamente sensible a las variaciones climáticas. Los países que más contaminan (EE.UU., China, UE) son los que menos sufren las consecuencias.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750046401aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Una familia cafetera de Loma Verde quiere reducir su impacto ambiental. ¿Qué tres acciones concretas podría implementar en su finca para disminuir la contaminación hídrica y del suelo sin salir de su predio?",
+      "respuesta": "1) Instalar trampa de grasa o lombricompostaje para tratar las aguas mieles del beneficiadero antes de que lleguen a la quebrada. 2) Reducir agroquímicos y sustituirlos por abonos orgánicos (compost de pulpa de café) para proteger la microbiota del suelo y evitar filtración de nitratos a las fuentes de agua. 3) Sembrar o mantener franja de vegetación nativa de al menos 30 metros alrededor de nacimientos y quebradas, cumpliendo el Decreto 1076 de 2015.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750046401fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El 97% de los científicos climáticos del mundo coinciden en que el calentamiento global es real y causado principalmente por la actividad humana.",
+      "correcta": true,
+      "justificacion": "Verdadero. Múltiples estudios que analizan la literatura científica publicada muestran que más del 97% de los científicos climáticos activos concuerdan en que el calentamiento global actual es real y tiene causa humana. Este consenso es comparable al que existe en medicina sobre la relación entre el tabaco y el cáncer de pulmón."
+    },
+    {
+      "id": "lv1750046401fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Colombia es uno de los países que más contribuye al calentamiento global, lo que justifica que sea también uno de los más afectados por sus consecuencias.",
+      "correcta": false,
+      "justificacion": "Falso. Colombia emite menos del 0,5% de los gases de efecto invernadero globales, siendo uno de los países de menor responsabilidad histórica en el calentamiento. Sin embargo, figura entre los 10 países más vulnerables a sus efectos. Esta contradicción es el núcleo del concepto de justicia climática."
+    },
+    {
+      "id": "lv1750046401fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las aguas mieles del proceso de beneficio húmedo del café tienen una demanda bioquímica de oxígeno (DBO) 200 veces mayor que las aguas residuales domésticas.",
+      "correcta": true,
+      "justificacion": "Verdadero. Las aguas mieles del beneficiadero son extremadamente ricas en materia orgánica. Su altísima DBO significa que cuando llegan a una quebrada, las bacterias que las descomponen consumen todo el oxígeno disuelto en el agua, asfixiando la vida acuática. Una finca sin tratamiento puede contaminar kilómetros de fuentes hídricas."
+    },
+    {
+      "id": "lv1750046401fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La temperatura promedio global ha aumentado aproximadamente 1,1°C desde la era preindustrial, con la mayor aceleración en los últimos 50 años.",
+      "correcta": true,
+      "justificacion": "Verdadero. Según el IPCC y múltiples registros de temperatura global, el calentamiento desde la era preindustrial (circa 1850) es de aproximadamente 1,1°C, con tasa de calentamiento acelerada significativamente desde mediados del siglo XX, coincidiendo con la expansión industrial masiva y el consumo intensivo de combustibles fósiles."
+    },
+    {
+      "id": "lv1750046401fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El Acuerdo de París de 2015 incluye mecanismos de sanción obligatorios para los países que no cumplan sus metas de reducción de emisiones de gases de efecto invernadero.",
+      "correcta": false,
+      "justificacion": "Falso. El Acuerdo de París es voluntario: cada país fija sus propias metas de reducción (NDC) sin que exista un mecanismo de sanción obligatorio si no las cumplen. Esta es su principal debilidad: depende de la voluntad política de cada gobierno, no de una autoridad internacional coercitiva."
+    },
+    {
+      "id": "lv1750046401sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Ambos términos se usan frecuentemente como sinónimos, pero tienen significados distintos.",
+      "enunciado": "¿Cuál de las siguientes es la principal diferencia entre el calentamiento global y el cambio climático?",
+      "opciones": ["El calentamiento global es causado por el ser humano; el cambio climático es natural.", "El calentamiento global es el aumento de temperatura; el cambio climático son sus efectos sobre lluvias, eventos extremos y ecosistemas.", "El calentamiento global afecta solo los polos; el cambio climático afecta los trópicos.", "El calentamiento global es un fenómeno del siglo XXI; el cambio climático ocurrió en el pasado."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El calentamiento global es la causa (aumento de temperatura media global por acumulación de GEI); el cambio climático describe los efectos: lluvias irregulares, eventos extremos más frecuentes, alteración de ecosistemas, desplazamiento de zonas productivas agrícolas."
+    },
+    {
+      "id": "lv1750046401sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El aumento de CO₂ en la atmósfera es el principal indicador del calentamiento global causado por el ser humano.",
+      "enunciado": "¿Cuál es la concentración actual aproximada de CO₂ en la atmósfera, el nivel más alto en 3 millones de años?",
+      "opciones": ["280 partes por millón (ppm).", "350 partes por millón (ppm).", "421 partes por millón (ppm).", "550 partes por millón (ppm)."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. En 2023, la concentración de CO₂ atmosférico alcanzó 421 ppm, el nivel más alto en al menos 3 millones de años. El nivel preindustrial era de 280 ppm. Este aumento es consecuencia directa de la quema de combustibles fósiles desde la Revolución Industrial."
+    },
+    {
+      "id": "lv1750046401sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El derretimiento de los glaciares tropicales colombianos es una de las evidencias más visibles del cambio climático en el país.",
+      "enunciado": "¿Cuántos de los nevados colombianos que existían en el siglo XIX permanecen activos hoy?",
+      "opciones": ["19 nevados.", "12 nevados.", "6 nevados.", "2 nevados."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia tenía 19 nevados en el siglo XIX; hoy solo quedan 6. El Nevado del Cocuy perdió el 90% de su superficie glaciar entre 1850 y 2020. Esta pérdida accelerará el estrés hídrico en zonas andinas que dependen del deshielo glaciar para abastecer ríos en temporada seca."
+    },
+    {
+      "id": "lv1750046401sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Las diferencias en huella de carbono entre países son el fundamento del debate sobre justicia climática.",
+      "enunciado": "¿Cuál es la huella de carbono promedio anual de un colombiano, en comparación con un ciudadano de Estados Unidos?",
+      "opciones": ["Colombia: 1,9 t CO₂/año; EE.UU.: 15 t CO₂/año.", "Colombia: 5 t CO₂/año; EE.UU.: 8 t CO₂/año.", "Colombia: 0,5 t CO₂/año; EE.UU.: 5 t CO₂/año.", "Colombia: 3 t CO₂/año; EE.UU.: 12 t CO₂/año."],
+      "correcta": 0,
+      "justificacion": "La opción A es correcta. Un colombiano promedio genera 1,9 toneladas de CO₂ equivalente al año; un estadounidense genera 15 toneladas, casi 8 veces más. Esta diferencia ilustra la injusticia climática: los países con mayor huella de carbono histórica son los que menos sufren las consecuencias del calentamiento global."
+    },
+    {
+      "id": "lv1750046401sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "No toda la contaminación es visible o produce humo y basura; algunas formas afectan la fauna de manera silenciosa.",
+      "enunciado": "¿Qué tipo de contaminación afecta a los insectos polinizadores al desorientarlos durante sus ciclos nocturnos de actividad?",
+      "opciones": ["Contaminación hídrica.", "Contaminación del suelo.", "Contaminación sonora.", "Contaminación lumínica."],
+      "correcta": 3,
+      "justificacion": "La opción D es correcta. La contaminación lumínica —la iluminación artificial nocturna— desorienta a los insectos, especialmente los polinizadores nocturnos como las polillas, alterando sus patrones de vuelo y reproducción. Esto tiene consecuencias sobre la polinización de cultivos como el café, que depende de insectos para producir frutos."
+    },
+    {
+      "id": "lv1750046401sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los gases de efecto invernadero no tienen todos el mismo poder de calentamiento por unidad de masa.",
+      "enunciado": "¿Cuál es el gas de efecto invernadero con mayor potencial de calentamiento por molécula entre los mencionados, siendo 25 veces más potente que el CO₂?",
+      "opciones": ["Dióxido de carbono (CO₂).", "Metano (CH₄).", "Óxido nitroso (N₂O).", "Vapor de agua (H₂O)."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El metano (CH₄) es 25 veces más potente que el CO₂ como gas de efecto invernadero por molécula. Es producido principalmente por la ganadería (digestión del ganado bovino), los rellenos sanitarios y la producción de gas y petróleo. Aunque menos abundante que el CO₂, su potencia hace que reducir las emisiones de metano tenga un efecto climático rápido."
+    },
+    {
+      "id": "lv1750046401sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento social",
+      "contexto": "La conciencia ecológica va más allá de las acciones individuales cotidianas.",
+      "enunciado": "¿Cuál de las siguientes opciones describe mejor la 'conciencia ecológica ciudadana' según lo visto en clase?",
+      "opciones": ["Reciclar la basura doméstica y apagar las luces al salir de un cuarto.", "Reconocer la dependencia humana del ambiente, exigir políticas públicas y adoptar prácticas sostenibles colectivas.", "Dejar de consumir productos importados para reducir la huella de carbono del transporte.", "Plantar un árbol al año como compensación por el CO₂ que produce cada persona."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La conciencia ecológica ciudadana incluye el reciclaje pero va mucho más allá: implica reconocer la dependencia estructural de la sociedad del entorno natural, participar activamente en decisiones sobre el territorio, exigir políticas públicas ambientales y adoptar prácticas productivas sostenibles que beneficien a la comunidad."
+    },
+    {
+      "id": "lv1750046401sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Don Alberto, caficultor de Loma Verde, ha notado la aparición de insectos dañinos que antes no existían en su zona.",
+      "enunciado": "¿Cuál de los siguientes fenómenos explica la aparición de plagas nuevas en fincas cafeteras de altitudes medias en Colombia?",
+      "opciones": ["La llegada de semillas contaminadas de otras regiones del país.", "El aumento de temperatura por el cambio climático que permite que plagas de zonas más cálidas suban a mayor altitud.", "La eliminación de los predadores naturales por el uso de plaguicidas.", "La introducción de variedades de café extranjeras resistentes a plagas locales."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El aumento de temperatura causado por el cambio climático permite que plagas como la broca y la roya, adaptadas a zonas más cálidas y bajas, colonicen altitudes más altas donde antes las bajas temperaturas las controlaban naturalmente. Este desplazamiento altitudinal de plagas es uno de los efectos más documentados del cambio climático en la caficultura."
+    },
+    {
+      "id": "lv1750046401sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La contaminación hídrica por aguas residuales domésticas es una de las principales amenazas para las fuentes de agua en Colombia.",
+      "enunciado": "¿Qué porcentaje de las aguas residuales generadas en Colombia se vierten a ríos y quebradas sin ningún tipo de tratamiento?",
+      "opciones": ["El 20%.", "El 40%.", "El 60%.", "El 80%."],
+      "correcta": 3,
+      "justificacion": "La opción D es correcta. El 80% de las aguas residuales generadas en Colombia se vierten a fuentes hídricas sin ningún tratamiento previo, según datos del IDEAM y el Ministerio de Ambiente. Solo 50 de los 1.100 municipios del país tienen sistemas de tratamiento de aguas residuales operativos."
+    },
+    {
+      "id": "lv1750046401sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 1 · Tipologías de contaminación global, calentamiento climático y conciencia ecológica",
+      "competencia": "Pensamiento social",
+      "contexto": "El Acuerdo de París es el principal instrumento internacional de gobernanza climática vigente.",
+      "enunciado": "¿En qué año se firmó el Acuerdo de París sobre cambio climático y cuántos países lo suscribieron?",
+      "opciones": ["2009, con 120 países.", "2012, con 150 países.", "2015, con 196 países.", "2019, con 180 países."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El Acuerdo de París fue firmado en diciembre de 2015 durante la COP21 por 196 países. Es el principal marco internacional para la reducción de emisiones de gases de efecto invernadero, aunque sus compromisos son voluntarios y no incluyen mecanismos de sanción obligatorios."
+    }
+  ]
+}

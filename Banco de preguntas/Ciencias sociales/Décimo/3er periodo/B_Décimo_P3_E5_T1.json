@@ -1,0 +1,293 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T12:20:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+    "docente": "Richard miguel hernández sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_10_3_e5_a01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El artículo 2 de la Carta de la Organización de los Estados Americanos (OEA) establece como uno de sus propósitos esenciales afianzar la paz y la seguridad del continente, así como promover y consolidar la democracia representativa dentro del respeto al principio de no intervención.",
+      "enunciado": "Analice cómo coexisten de manera lógica y sistémica los principios de promoción de la democracia y de no intervención dentro de la OEA cuando se presenta una crisis institucional interna en un Estado miembro. ¿De qué manera el organismo articula estas visiones sin vulnerar la soberanía estatal?",
+      "respuesta": "La coexistencia de estos principios se articula sistemáticamente a través de mecanismos como la Carta Democrática Interamericana (aprobada en 2001). Cuando se presenta una crisis que altera el orden constitucional de un Estado miembro, la OEA no interviene de forma militar ni unilateral bajo el principio de no intervención; en su lugar, despliega gestiones diplomáticas previas y colectivas con el consentimiento o solicitud del propio Estado afectado. Si la alteración persiste y se produce una ruptura del orden democrático, la Asamblea General colectiva puede suspender al Estado de su derecho de participación mediante una votación de dos tercios de sus miembros. De esta manera, el organismo no interfiere en la autonomía interna de las instituciones, sino que ejerce una presión multilateral y legítima basada en un tratado previamente suscrito por el propio Estado, equilibrando el respeto a la soberanía con la defensa regional de los valores democráticos.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "Los Objetivos de Desarrollo Sostenible (ODS) de la Organización de las Naciones Unidas (ONU) constituyen directrices multilaterales que buscan orientar las políticas públicas globales hacia la sostenibilidad ambiental y la equidad social para el año 2030.",
+      "enunciado": "Explique de qué manera la formulación de los ODS influye de forma directa en el diseño y planeación de los planes de desarrollo municipal en entornos rurales de Colombia, citando un ejemplo concreto relacionado con la sostenibilidad hídrica.",
+      "respuesta": "La formulación de los ODS actúa como un marco de referencia normativo y técnico obligatorio que los entes territoriales en Colombia deben armonizar con sus planes de desarrollo, de acuerdo con las directrices del Departamento Nacional de Planeación (DNP). En los entornos rurales colombianos, esto se traduce en la asignación presupuestal y la creación de programas específicos. Por ejemplo, en consonancia con el ODS 6 (Agua limpia y saneamiento), un plan de desarrollo municipal en una zona rural debe incluir metas claras de inversión pública para la construcción de sistemas de acueducto veredal, plantas de tratamiento de agua potable de bajo costo y proyectos de reforestación para la protección de las microcuencas locales, transformando una directriz internacional abstracta en una política pública local ejecutable con impacto real en la población campesina.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.",
+      "conectado": "Pensamiento reflexivo y sistémico",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El bloque de constitucionalidad es una figura jurídica en Colombia que permite integrar normas y tratados internacionales sobre derechos humanos directamente al ordenamiento interno, otorgándoles un rango equivalente al de la propia Constitución Política.",
+      "enunciado": "Evalúe cómo la aprobación de un tratado internacional de derechos humanos genera una modificación en la agenda legislativa del Congreso de la República de Colombia. Deduzca las implicaciones lógicas de este proceso sobre las leyes preexistentes.",
+      "respuesta": "La ratificación de un tratado de derechos humanos obliga sistémicamente al Congreso de la República a adecuar la agenda legislativa nacional para garantizar que las leyes internas no contradigan las disposiciones del convenio internacional. Este proceso exige la formulación de leyes estatutarias u ordinarias que desarrollen los nuevos estándares internacionales incorporados al bloque de constitucionalidad. Con respecto a las leyes preexistentes, las implicaciones lógicas operan bajo el principio de supremacía constitucional difusa e interpretación conforme: toda norma interna que restrinja o vulnere los derechos consagrados en el tratado internacional deviene en inconstitucional, lo que obliga al legislativo a derogarla o modificarla, y a los jueces ordinarios a aplicar la excepción de inconstitucionalidad para garantizar la primacía de los compromisos internacionales asumidos por el Estado.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "competencia": "Pensamiento social",
+      "contexto": "El Consejo de Seguridad de la ONU es el órgano de las Naciones Unidas encargado de velar por el mantenimiento de la paz y la seguridad internacionales. Para ello, dispone de herramientas como la imposición de sanciones económicas o la autorización del uso de la fuerza armada multilateral.",
+      "enunciado": "Identifique las principales limitaciones políticas y operativas que enfrenta el Consejo de Seguridad de la ONU para garantizar la paz colectiva mundial, haciendo especial énfasis en el mecanismo del derecho al veto de sus miembros permanentes.",
+      "respuesta": "La principal limitación política del Consejo de Seguridad radica en el derecho al veto que poseen de forma exclusiva sus cinco miembros permanentes (Estados Unidos, Rusia, China, Francia y el Reino Unido). Esta estructura heredada de la posguerra implica que si solo uno de estos países vota en contra de una resolución de fondo, esta es rechazada de inmediato, bloqueando la capacidad operativa del organismo. Esto genera una parálisis institucional cuando los conflictos geopolíticos involucran de manera directa o indirecta los intereses económicos, territoriales o estratégicos de estas potencias mundiales, impidiendo el despliegue de misiones de paz o la imposición de sanciones eficaces, lo que desvirtúa en la práctica el principio de seguridad colectiva equitativa e igualitaria ante el derecho internacional.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_a05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El Sistema Interamericano de Derechos Humanos está compuesto por dos órganos principales encargados de velar por la vigencia de las libertades en el continente americano: la Comisión Interamericana de Derechos Humanos (CIDH) y la Corte Interamericana de Derechos Humanos (Corte IDH).",
+      "enunciado": "Compare las funciones procesales de la Comisión Interamericana de Derechos Humanos frente a las de la Corte Interamericana de Derechos Humanos. Precise bajo qué condiciones lógicas un ciudadano colombiano puede lograr que su caso sea fallado por la Corte IDH.",
+      "respuesta": "Las funciones procesales son complementarias pero claramente diferenciadas: la Comisión (CIDH) tiene una función de carácter político-investigativo, recibe las peticiones individuales de los ciudadanos, examina las presuntas violaciones cometidas por los Estados y emite recomendaciones e informes. Por el contrario, la Corte IDH es un órgano judicial que dicta sentencias vinculantes y obligatorias para los Estados que han aceptado su competencia contenciosa. Un ciudadano colombiano no puede acudir de forma directa ante la Corte IDH; para que el caso sea fallado por este tribunal, se requiere de forma obligatoria que el ciudadano agote primero todos los recursos judiciales internos en Colombia, interponga la petición formal ante la Comisión Interamericana, y que esta, tras evaluar el incumplimiento de las recomendaciones por parte del Estado colombiano, decida someter formalmente el caso ante la jurisdicción de la Corte IDH.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_10_3_e5_vf01",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Asamblea General de la Organización de las Naciones Unidas (ONU) tiene la facultad legal de dictar resoluciones de obligatorio cumplimiento y de imponer sanciones de carácter militar directo a los Estados miembros que violen los derechos humanos.",
+      "correcta": false,
+      "justificacion": "Las resoluciones adoptadas por la Asamblea General de la ONU tienen el carácter de recomendaciones políticas y declaraciones morales para los Estados miembros; no poseen un carácter vinculante ni coercitivo directo. El único órgano dentro de la estructura de las Naciones Unidas que ostenta la facultad jurídica e institucional de imponer sanciones obligatorias y autorizar el uso legítimo de la fuerza armada multilateral es el Consejo de Seguridad."
+    },
+    {
+      "id": "lv_10_3_e5_vf02",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las sentencias de carácter condenatorio emitidas por la Corte Interamericana de Derechos Humanos contra el Estado colombiano carecen de fuerza vinculante, por lo que el Congreso de la República puede ignorar sus mandatos sin incurrir en responsabilidad internacional.",
+      "correcta": false,
+      "justificacion": "Colombia ratificó la Convención Americana sobre Derechos Humanos en 1972 y aceptó explícitamente la competencia contenciosa de la Corte IDH. En consecuencia, las sentencias dictadas por este tribunal internacional son obligatorias, vinculantes y definitivas para el Estado colombiano; su incumplimiento genera responsabilidad internacional y viola el bloque de constitucionalidad consagrado en el artículo 93 de la Carta Política de 1991."
+    },
+    {
+      "id": "lv_10_3_e5_vf03",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El Fondo Monetario Internacional (FMI) y el Banco Mundial son agencias multilaterales cuyas directrices y créditos económicos a menudo exigen reformas estructurales internas en las agendas fiscales de los países en desarrollo que solicitan su financiamiento.",
+      "correcta": true,
+      "justificacion": "Tanto el FMI como el Banco Mundial operan bajo el mecanismo de condicionalidad macroeconómica. Al otorgar créditos o asistencia financiera a países en desarrollo, imponen directrices que obligan al Estado receptor a ejecutar reformas de ajuste estructural, tales como la reducción del gasto público, privatizaciones, reformas tributarias o flexibilización laboral, incidiendo de forma directa en la política económica interna del país."
+    },
+    {
+      "id": "lv_10_3_e5_vf04",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las operaciones de mantenimiento de la paz de la ONU, conocidas popularmente como los 'Cascos Azules', tienen como principio operativo intervenir militarmente en los países para derrocar gobiernos dictatoriales e imponer regímenes democráticos por la fuerza.",
+      "correcta": false,
+      "justificacion": "Los Cascos Azules operan bajo tres principios fundamentales dictados por el derecho internacional: consentimiento de las partes en conflicto, imparcialidad estricta y el no uso de la fuerza, salvo en situaciones de legítima defensa propia o en cumplimiento del mandato de protección de civiles. Su objetivo es monitorear acuerdos de paz y estabilizar zonas de conflicto, no realizar intervenciones bélicas de imposición de regímenes políticos."
+    },
+    {
+      "id": "lv_10_3_e5_vf05",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "La Organización de los Estados Americanos (OEA) es un organismo de integración regional cuyo ámbito de aplicación y competencia jurídica se restringe exclusivamente a las naciones ubicadas en el continente americano.",
+      "correcta": true,
+      "justificacion": "La OEA fue creada mediante la Carta de Bogotá en 1948 con el propósito explícito de constituir un foro político y jurídico regional para los Estados soberanos del hemisferio occidental (América). Aunque cuenta con la participación de observadores permanentes de otros continentes, sus decisiones, convenios y órganos de protección de derechos solo tienen jurisdicción y aplicación dentro de los límites geográficos y políticos de las Américas."
+    },
+    {
+      "id": "lv_10_3_e5_m01",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento social",
+      "contexto": "La estructura organizativa de la Organización de las Naciones Unidas (ONU) contempla diversos órganos especializados para atender problemáticas específicas del orden internacional, distribuyendo las funciones deliberativas, ejecutivas y judiciales entre sus miembros.",
+      "enunciado": "El órgano principal de la ONU de carácter eminentemente judicial, encargado de dirimir controversias jurídicas estrictas surgidas de forma exclusiva entre Estados soberanos, se denomina:",
+      "opciones": [
+        "la Corte Penal Internacional.",
+        "la Corte Internacional de Justicia.",
+        "la Comisión de Derecho Internacional.",
+        "el Consejo de Administración Fiduciaria."
+      ],
+      "correcta": 1,
+      "justificacion": "La Corte Internacional de Justicia (CIJ), con sede en La Haya, es el órgano judicial principal de las Naciones Unidas. Su función esencial es resolver, de conformidad con el derecho internacional, las disputas jurídicas que le sean sometidas directamente por los Estados miembros. Se diferencia de la Corte Penal Internacional porque la CIJ juzga Estados, mientras que la Corte Penal Internacional juzga responsabilidades individuales de personas naturales por crímenes de lesa humanidad."
+    },
+    {
+      "id": "lv_10_3_e5_m02",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En el año 2015, los Estados miembros de la UNESCO adoptaron la agenda mundial de educación de aquí a 2030, formalizada en el ODS 4, el cual busca garantizar una educación inclusiva, equitativa y de calidad, promoviendo oportunidades de aprendizaje durante toda la vida.",
+      "enunciado": "Cuando la UNESCO formula estas directrices técnico-educativas de carácter multilateral, el impacto sistémico sobre los ministerios de educación de las naciones aliadas se evidencia principalmente en:",
+      "opciones": [
+        "la obligación de transferir el control presupuestal de los colegios públicos a las oficinas centrales de la UNESCO.",
+        "la homologación automática e idéntica de todos los planes de estudio y currículos de ciencias sociales del mundo.",
+        "el diseño de políticas públicas internas enfocadas en estándares de evaluación por competencias y equidad en la cobertura rural.",
+        "la supresión de las lenguas indígenas locales para adoptar idiomas globales de comunicación comercial multinacional."
+      ],
+      "correcta": 2,
+      "justificacion": "Las directrices multilaterales de organismos como la UNESCO operan como marcos orientadores de política pública. Las naciones aliadas traducen estas recomendaciones en sus propios contextos nacionales, lo que influye en que los Ministerios de Educación estructuren reformas normativas enfocadas en mejorar la calidad evaluativa, la inclusión de minorías y el fortalecimiento de la infraestructura educativa en zonas vulnerables o rurales, sin perder su soberanía administrativa."
+    },
+    {
+      "id": "lv_10_3_e5_m03",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.",
+      "competencia": "Pensamiento social",
+      "contexto": "El Convenio 169 de la Organización Internacional del Trabajo (OIT) sobre pueblos indígenas y tribales establece la obligatoriedad del mecanismo de la consulta previa antes de autorizar proyectos de exploración o explotación económica dentro de los territorios de comunidades ancestrales.",
+      "enunciado": "La incorporación de este convenio internacional al ordenamiento jurídico interno de Colombia, a través de las leyes aprobatorias del Congreso y la jurisprudencia de la Corte Constitucional, demuestra que:",
+      "opciones": [
+        "las directrices internacionales carecen de validez cuando entran en contradicción con el código de minas nacional.",
+        "los tratados internacionales ratificados en materia de derechos humanos se integran al bloque de constitucionalidad y reconfiguran la agenda jurídica del país.",
+        "la OIT adquiere la facultad de sancionar penalmente a las empresas privadas que operan en los municipios colombianos.",
+        "las comunidades indígenas colombianas pierden su autonomía jurídica al quedar supeditadas a los tribunales laborales de Ginebra."
+      ],
+      "correcta": 1,
+      "justificacion": "Conforme al artículo 93 de la Constitución Política de Colombia, los tratados y convenios internacionales ratificados por el Congreso que reconocen los derechos humanos prevalecen en el orden interno y forman parte del bloque de constitucionalidad. La adopción del Convenio 169 de la OIT obligó a reconfigurar toda la normativa ambiental y minera del país, exigiendo que cualquier proyecto de desarrollo deba surtir de forma vinculante el proceso de consulta previa con las comunidades étnicas."
+    },
+    {
+      "id": "lv_10_3_e5_m04",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Durante el desarrollo de confrontaciones bélicas internas o internacionales, la vigencia y aplicación del Derecho Internacional Humanitario (DIH) constituye una limitación jurídica imperativa orientada a mitigar los efectos de la violencia sobre los actores no combatientes.",
+      "enunciado": "El conjunto de convenios multilaterales que sirve de base fundamental para la regulación internacional del DIH, y que los organismos como la ONU exigen aplicar de forma rigurosa en todos los escenarios de conflicto armado, corresponde a:",
+      "opciones": [
+        "los Protocolos de Kioto y el Acuerdo de París sobre cambio climático global.",
+        "los Convenios de Ginebra de 1949 y sus Protocolos Adicionales.",
+        "el Tratado de Versalles y los acuerdos de desmilitarización de la posguerra.",
+        "la Declaración de Cartagena de Indias sobre el estatuto de refugiados políticos."
+      ],
+      "correcta": 1,
+      "justificacion": "Los Convenios de Ginebra de 1949 y sus Protocolos Adicionales son los instrumentos jurídicos internacionales fundamentales que constituyen el cuerpo del Derecho Internacional Humanitario. Estos tratados imponen límites al principio de libertad absoluta de los medios de guerra, protegiendo específicamente a las personas que no participan en las hostilidades (civiles, personal médico y religioso) o que han quedado fuera de combate (heridos, náufragos, prisioneros de guerra)."
+    },
+    {
+      "id": "lv_10_3_e5_m05",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento social",
+      "contexto": "La Organización de los Estados Americanos (OEA) fue constituida a mediados del siglo XX en un escenario geopolítico global caracterizado por la tensión de la Guerra Fría y la necesidad de consolidar alianzas estratégicas de seguridad en el hemisferio occidental.",
+      "enunciado": "El tratado internacional fundacional que dio origen formal a la OEA y que definió sus principios rectores de solidaridad continental y defensa de la soberanía fue suscrito en el año 1948 durante la novena Conferencia Internacional Americana realizada en la ciudad de:",
+      "opciones": [
+        "Washington, Estados Unidos.",
+        "Río de Janeiro, Brasil.",
+        "Bogotá, Colombia.",
+        "San Francisco, Estados Unidos."
+      ],
+      "correcta": 2,
+      "justificacion": "La OEA fue adoptada formalmente en Bogotá, Colombia, el 30 de abril de 1948, mediante la suscripción de la Carta de la Organización de los Estados Americanos por parte de 21 naciones del continente. Este evento histórico coincidió trágicamente con los disturbios sociales del 'Bogotazo' tras el asesinato del líder político Jorge Eliécer Gaitán, consolidando no obstante el nacimiento del organismo regional más antiguo del mundo."
+    },
+    {
+      "id": "lv_10_3_e5_m06",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los tratados e instrumentos internacionales en materia ambiental reflejan un proceso de concertación multilateral ante problemáticas que desbordan las fronteras políticas de los Estados nacionales, exigiendo compromisos globales coordinados.",
+      "enunciado": "El tratado internacional auspiciado por la ONU que establece directrices jurídicas obligatorias para que las naciones reduzcan sus emisiones de gases de efecto invernadero, sirviendo de pilar para las políticas ambientales internas contemporáneas de Colombia, es el:",
+      "opciones": [
+        "Tratado de Libre Comercio de las Américas.",
+        "Acuerdo de París sobre el Cambio Climático.",
+        "Protocolo de Montreal para la protección de la capa de ozono.",
+        "Estatuto de Roma de la Corte Penal Internacional."
+      ],
+      "correcta": 1,
+      "justificacion": "El Acuerdo de París, adoptado en el marco de la COP21 de la Convención Marco de las Naciones Unidas sobre el Cambio Climático en 2015, es el instrumento multilateral vinculante que traza las directrices ambientales actuales. Su objetivo central es mantener el aumento de la temperatura global muy por debajo de los 2 °C, obligando a los Estados firmantes, como Colombia, a diseñar e implementar Contribuciones Determinadas a Nivel Nacional (NDC) en sus legislaciones internas."
+    },
+    {
+      "id": "lv_10_3_e5_m07",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.",
+      "competencia": "Pensamiento social",
+      "contexto": "La Oficina del Alto Comisionado de las Naciones Unidas para los Refugiados (ACNUR) coopera activamente con el Estado colombiano debido a las dinámicas históricas de desplazamiento forzado interno generadas por el conflicto armado y los flujos migratorios transnacionales contemporáneos de la región.",
+      "enunciado": "La incidencia operativa de las recomendaciones de ACNUR sobre la agenda interna de Colombia se manifiesta de manera directa a través de:",
+      "opciones": [
+        "el nombramiento directo de funcionarios extranjeros para administrar los consulados de Colombia en las zonas de frontera.",
+        "el diseño de leyes específicas de atención humanitaria integral, estatutos de protección temporal y rutas de restitución de tierras.",
+        "la transferencia forzosa de la soberanía territorial de las zonas fronterizas rurales a campamentos administrados por el ejército de la ONU.",
+        "la anulación automática de las cédulas de ciudadanía de los habitantes locales de los corregimientos fronterizos."
+      ],
+      "correcta": 1,
+      "justificacion": "El acompañamiento técnico y las directrices institucionales de ACNUR impulsan al Estado colombiano a legislar y robustecer sus políticas internas de atención a poblaciones vulnerables. Esto se evidencia en la estructuración de normativas como la Ley 1448 de 2011 (Ley de Víctimas y Restitución de Tierras) y la implementación del Estatuto Temporal de Protección para Migrantes, garantizando la armonización de las leyes internas con el derecho internacional de los refugiados."
+    },
+    {
+      "id": "lv_10_3_e5_m08",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Declaración Universal de los Derechos Humanos, proclamada por la Asamblea General de la ONU en 1948, constituyó un hito histórico al definir por primera vez un catálogo normativo de libertades fundamentales inherentes a todos los seres humanos, independientemente de su nacionalidad o soberanía política.",
+      "enunciado": "Desde una perspectiva sistémica de las relaciones internacionales, la principal limitación que enfrentó originalmente la Declaración Universal de 1948 para garantizar la vigencia real de los derechos radicó en que:",
+      "opciones": [
+        "fue redactada exclusivamente en un idioma que las naciones latinoamericanas no dominaban.",
+        "carecía de un mecanismo judicial vinculante y de sanciones punitivas inmediatas ante el incumplimiento de los Estados firmantes.",
+        "reconocía únicamente los derechos económicos de los grandes monopolios financieros transnacionales.",
+        "fue revocada de forma inmediata por el Consejo de Seguridad de la ONU durante las tensiones del Bloque Oriental."
+      ],
+      "correcta": 1,
+      "justificacion": "La Declaración Universal de los Derechos Humanos se adoptó bajo la forma jurídica de una resolución de la Asamblea General, lo que implicaba que su alcance original era declarativo y moral, mas no un tratado vinculante que impusiera sanciones directas. Para subsanar esta limitación e introducir mecanismos de exigibilidad judicial forzosa, la comunidad internacional tuvo que formular posteriormente los Pactos Internacionales de Derechos Civiles, Políticos, Económicos y Sociales en 1966."
+    },
+    {
+      "id": "lv_10_3_e5_m09",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA).",
+      "competencia": "Pensamiento social",
+      "contexto": "La Organización de los Estados Americanos (OEA) opera mediante diversos órganos políticos internos que permiten la deliberación y toma de decisiones multilaterales de los Estados que integran el hemisferio.",
+      "enunciado": "El órgano supremo de la OEA, encargado de definir las políticas y líneas de acción general del organismo, y que reúne de forma ordinaria una vez al año a los ministros de relaciones exteriores de todas las naciones miembros, se denomina:",
+      "opciones": [
+        "la Reunión de Consulta de Ministros de Relaciones Exteriores.",
+        "el Consejo Permanente de la Organización.",
+        "la Asamblea General.",
+        "la Secretaría General Ejecutiva."
+      ],
+      "correcta": 2,
+      "justificacion": "De conformidad con la Carta de la OEA, la Asamblea General es el órgano supremo de la organización. Tiene la atribución de determinar las directrices de la política de la entidad, coordinar las actividades de sus órganos subsidiarios, aprobar el presupuesto institucional y elegir a los miembros de las agencias especializadas, reuniéndose con carácter ordinario de forma anual."
+    },
+    {
+      "id": "lv_10_3_e5_m10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental.",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La Organización Mundial de la Salud (OMS), como organismo especializado de la ONU en gestión sanitaria internacional, emite directrices técnicas y declaraciones de emergencia de salud pública de importancia internacional (ESPII) ante crisis epidemiológicas globales.",
+      "enunciado": "Analizando la interconexión entre las esferas jurídica y sanitaria, la adopción de las directrices fitosanitarias y de bioseguridad emitidas por la OMS obliga de forma lógica a que un Estado soberano como Colombia efectúe de inmediato:",
+      "opciones": [
+        "la privatización total de todos sus hospitales y centros de salud veredales rurales.",
+        "la reconfiguración temporal de sus medidas aduaneras, portuarias y decretos de orden público de control de movilidad ciudadana.",
+        "la supresión de las funciones institucionales de control asignadas al Instituto Nacional de Vigilancia de Medicamentos y Alimentos (Invima).",
+        "el aislamiento definitivo e indefinido de sus delegaciones diplomáticas ante la Asamblea General de las Naciones Unidas."
+      ],
+      "correcta": 1,
+      "justificacion": "Las directrices y alertas sanitarias dictadas por la OMS en el marco del Reglamento Sanitario Internacional (RSI) tienen un impacto multidimensional y sistémico. Para que estas directrices tengan aplicabilidad real, el Estado colombiano debe activar sus órganos internos de gobierno, lo que se traduce en la expedición de decretos presidenciales de emergencia y resoluciones ministeriales que modifican el tránsito en fronteras y los protocolos locales de bioseguridad, adaptando el marco normativo interno ante la crisis global."
+    }
+  ]
+}

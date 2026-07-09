@@ -1,0 +1,224 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "planeadores": [
+    {
+      "id": "p10p2-violencia-sigloxx-001",
+      "creado": 1750068000000,
+      "grado": "Décimo",
+      "periodo": "Segundo Periodo",
+      "ejeIdx": "26",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "8",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia",
+      "unidad": "Eje 3: Historia del conflicto armado e incidencia sociocultural",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer: Compara los diferentes tipos de violencia (directa, estructural y cultural) generados por los actores armados y sus repercusiones nacionales. Procesa e interpreta fuentes primarias y secundarias para analizar las raíces de la violencia social contemporánea.\nSer: Propone estrategias pacíficas de negociación y utiliza el diálogo como recurso mediador en la solución de diferencias escolares o comunitarias.",
+      "competencias": "• Pensamiento social.\n• Interpretación y análisis de perspectivas.",
+      "contenidos": "• El período de La Violencia (1948-1958): causas bipartidistas y magnitud.\n• El Frente Nacional (1958-1974): solución pactada y exclusión política.\n• Surgimiento de las guerrillas (1960s-1970s): FARC, ELN, M-19 y EPL.\n• El narcotráfico como factor de agudización del conflicto (1980s-1990s).\n• Consecuencias humanitarias: desplazamiento, masacres y memoria histórica.",
+      "objetivo": "Analizar las causas estructurales e históricas de la violencia en Colombia durante la segunda mitad del siglo XX, identificando los actores, las motivaciones y las consecuencias humanitarias del conflicto armado interno, y reflexionando sobre cómo estos procesos históricos tuvieron expresiones concretas en comunidades rurales cafeteras como Loma Verde, donde el conflicto no fue ajeno sino parte de la vida cotidiana de generaciones anteriores.",
+      "pregunta": "Si la violencia en Colombia lleva más de 70 años y ha cambiado de forma varias veces —de guerra de partidos a guerrillas, de guerrillas a narcotráfico, de narcotráfico a bandas criminales— ¿eso significa que Colombia es un país condenado a la violencia, o hay causas concretas que se pueden resolver? ¿Cuáles son esas causas y qué tiene que ver la tierra con todo esto?",
+      "explora": "Conversatorio inicial (15 min):\n1. ¿Sus abuelos o personas mayores de la vereda les han contado algo sobre épocas de violencia en la región?\n2. ¿Conocen qué fueron 'los chulavitas' o 'los pájaros'? ¿O saben qué fue el 9 de abril de 1948?\n3. ¿Creen que la violencia en Colombia tiene que ver con la tierra y quién la posee?\n4. ¿Han escuchado hablar de las FARC o el ELN? ¿Qué saben de su historia y origen?\n\nActividad en parejas (10 min):\nEl docente escribe en el tablero la línea del tiempo: 1948 — 1958 — 1964 — 1980s — 1990s — 2016. Cada pareja recibe un período y debe escribir en 3 minutos qué recuerda o intuye que ocurrió. Socialización colectiva y corrección.",
+      "glosario": [
+        {"t": "La Violencia", "d": "Período de guerra civil no declarada entre los partidos Liberal y Conservador (1948-1958). Cobró entre 200.000 y 300.000 vidas y desplazó a millones de campesinos. Fue detonada por el asesinato de Jorge Eliécer Gaitán el 9 de abril de 1948, evento conocido como el Bogotazo."},
+        {"t": "Bogotazo", "d": "Violenta revuelta popular en Bogotá el 9 de abril de 1948 tras el asesinato de Gaitán. El centro de la ciudad fue destruido, murieron entre 3.000 y 5.000 personas, y los disturbios se extendieron a otras ciudades. Marcó el inicio de La Violencia."},
+        {"t": "Frente Nacional", "d": "Acuerdo político entre los partidos Liberal y Conservador (1958-1974): se alternaron la presidencia y dividieron todos los cargos del Estado por mitad. Puso fin a La Violencia bipartidista pero excluyó otros movimientos políticos, contribuyendo al surgimiento de las guerrillas."},
+        {"t": "FARC", "d": "Guerrilla marxista-leninista fundada en 1964 en Marquetalia (Tolima) por sobrevivientes de comunidades campesinas de autodefensa. En su momento más expansivo tuvo entre 20.000 y 30.000 combatientes. Firmó el Acuerdo de Paz con el gobierno en 2016."},
+        {"t": "ELN", "d": "Guerrilla marxista con influencia de la Teología de la Liberación, fundada en 1964 e inspirada en la Revolución Cubana. Su fundador intelectual fue el sacerdote Camilo Torres Restrepo, muerto en combate en 1966. Sigue activo y nunca firmó un acuerdo de paz."},
+        {"t": "Narcotráfico", "d": "Producción, transporte y venta ilegal de drogas. Desde finales de los años 70 se convirtió en un factor central del conflicto colombiano: financió tanto a guerrillas como a paramilitares y generó una economía ilegal que dejó decenas de miles de muertos en los años 80 y 90."},
+        {"t": "Paramilitarismo", "d": "Grupos armados ilegales de extrema derecha surgidos en los años 80 para combatir a las guerrillas, con frecuente tolerancia de sectores del Ejército y terratenientes. Las AUC cometieron miles de masacres y se desmovilizaron entre 2003 y 2006, aunque muchos integrantes se rearmaron."},
+        {"t": "Desplazamiento forzado", "d": "Abandono involuntario del territorio por amenazas de actores armados. Colombia tiene más de 8 millones de desplazados internos históricos, siendo el segundo país del mundo con más desplazados después de Siria."},
+        {"t": "Memoria histórica", "d": "Reconstrucción colectiva del pasado traumático para reconocer víctimas, establecer la verdad y prevenir la repetición. El Centro Nacional de Memoria Histórica (CNMH) publicó el informe '¡Basta Ya!' en 2013."},
+        {"t": "Reforma agraria", "d": "Redistribución de la tierra de los grandes propietarios a los campesinos sin tierra. Su ausencia efectiva en Colombia es considerada la causa estructural más importante del conflicto armado: la concentración de la tierra (índice Gini de 0,89) dejó sin opciones legales a millones de campesinos."}
+      ],
+      "bloques": [
+        {
+          "tit": "Bloque 1 — La Violencia y el Frente Nacional: las raíces del conflicto",
+          "txt": "Para entender la violencia colombiana de la segunda mitad del siglo XX es necesario retroceder al 9 de abril de 1948: el día en que el candidato presidencial liberal Jorge Eliécer Gaitán fue asesinado en el centro de Bogotá. Gaitán era un abogado de origen popular que había movilizado a millones de colombianos con un discurso que denunciaba la oligarquía bipartidista y exigía justicia social. Su muerte desató el Bogotazo —una explosión de furia popular que destruyó el centro de Bogotá y mató entre 3.000 y 5.000 personas— y fue el detonador del período conocido como La Violencia.\n\nEntre 1948 y 1958, Colombia vivió una guerra civil no declarada entre liberales y conservadores que cobró entre 200.000 y 300.000 vidas y desplazó a millones de campesinos. La guerra no fue solo ideológica: fue también una guerra por la tierra. En los departamentos cafeteros —Caldas, Quindío, Risaralda, Tolima, Valle— los líderes de uno y otro partido utilizaron la violencia para apropiarse de las fincas de sus enemigos políticos. Las 'chusmas' liberales y los 'chulavitas' conservadores y los 'pájaros' (sicarios pagados por terratenientes) sembraron el terror en veredas y municipios cafeteros.\n\nEn 1958, los líderes de los dos partidos firmaron el Pacto de Sitges y el Pacto de Benidorm, que dieron origen al Frente Nacional: un acuerdo de 16 años en que se alternarían la presidencia y dividirían por igual todos los cargos del Estado. El Frente Nacional puso fin a la violencia bipartidista, pero su exclusión de cualquier otro movimiento político del acceso al poder dejó a izquierdistas, comunistas y movimientos cívicos sin representación. Esta exclusión es considerada por muchos historiadores como una de las causas del surgimiento de las guerrillas.",
+          "pausa": "¿Por qué el asesinato de Gaitán el 9 de abril de 1948 fue más que el crimen de un político: fue el detonador de una guerra?",
+          "resp": "Porque Gaitán era el líder de las masas populares colombianas que se sentían excluidas del poder por la élite bipartidista. Su muerte no solo eliminó a un candidato: destruyó la esperanza de cambio pacífico que esas masas habían depositado en él. Al cerrarse esa vía, la violencia se convirtió en la única salida que muchos vieron disponible."
+        },
+        {
+          "tit": "Bloque 2 — Guerrillas y narcotráfico: la agudización del conflicto",
+          "txt": "En 1964, en las montañas del Tolima, el Ejército colombiano atacó la comunidad campesina de Marquetalia, donde sobrevivientes de La Violencia habían construido una 'república independiente' de autodefensa. Los sobrevivientes de esa operación militar —liderados por Manuel Marulanda Vélez, alias 'Tirofijo'— fundaron las FARC. Ese mismo año, en Santander, jóvenes universitarios inspirados en la Revolución Cubana fundaron el ELN bajo la influencia intelectual del sacerdote Camilo Torres Restrepo. Nacían las dos guerrillas que dominarían el conflicto colombiano durante más de medio siglo.\n\nDurante los años 60 y 70, las guerrillas operaron principalmente en zonas rurales de influencia limitada. Pero en los años 80, el narcotráfico cambió todo. La producción y exportación de cocaína —que alcanzó su apogeo con los carteles de Medellín (Pablo Escobar) y Cali (los hermanos Rodríguez Orejuela)— generó una economía ilegal de miles de millones de dólares que financió tanto a guerrillas (que cobraban 'gramaje' o impuesto a los cultivos de coca) como a grupos paramilitares creados por narcotraficantes y terratenientes para combatirlas. El Estado colombiano, el gobierno de EE.UU. y las élites económicas se aliaron contra los carteles en la guerra del narcotráfico que en los años 80-90 dejó más de 30.000 muertos en Medellín y otras ciudades.\n\nLas masacres paramilitares —El Aro (1997), Mapiripán (1997), Bojayá (2002), El Salado (2000)— son el registro más oscuro de este período: comunidades campesinas enteras fueron asesinadas acusadas de colaborar con la guerrilla, sus tierras fueron abandonadas y apropiadas por terratenientes aliados con los paramilitares. Entre 1985 y 2015, más de 8 millones de colombianos fueron desplazados de sus tierras, la mayoría campesinos de zonas cafeteras, ganaderas y mineras.",
+          "pausa": "¿Cómo cambió el narcotráfico la naturaleza del conflicto colombiano en los años 80? ¿Lo hizo más o menos ideológico?",
+          "resp": "El narcotráfico lo hizo menos ideológico y más económico: antes, guerrillas y paramilitares tenían discursos políticos claros. Con el narcotráfico, el dinero de la coca financió a todos los actores, corrompió sus objetivos políticos originales y los convirtió en parte de una economía criminal. La lucha por el territorio ya no era solo por ideología sino por controlar los cultivos de coca, las rutas de tráfico y las fuentes de extorsión."
+        },
+        {
+          "tit": "Bloque 3 — Consecuencias humanitarias y memoria histórica",
+          "txt": "El informe '¡Basta Ya! Colombia: Memorias de guerra y dignidad', publicado en 2013 por el Centro Nacional de Memoria Histórica, es el diagnóstico más completo del conflicto armado colombiano. Sus cifras son escalofriantes: entre 1958 y 2012, el conflicto produjo al menos 220.000 muertos, de los cuales el 81% fueron civiles no combatientes; más de 25.000 desapariciones forzadas; 27.000 secuestros; y el desplazamiento de más de 5,7 millones de personas en ese período.\n\nLas comunidades rurales cafeteras del Eje Cafetero y del sur del país fueron afectadas de múltiples formas. La extorsión (el 'vacuna') que guerrillas y paramilitares cobraban a los caficultores reducía directamente los ingresos de las familias. La amenaza permanente impedía que los campesinos salieran a trabajar sus fincas en zonas de conflicto. El reclutamiento forzado de jóvenes arrebataba a las familias sus hijos. Y el desplazamiento forzado —la estrategia más utilizada por los actores armados para controlar el territorio— convirtió a cientos de miles de familias cafeteras en desplazados urbanos sin tierra y sin oficio.\n\nLa memoria histórica no es solo recordar el pasado: es la condición para no repetirlo. El CNMH ha documentado que las causas estructurales del conflicto —la concentración de la tierra, la exclusión política, la debilidad del Estado en territorios rurales, la pobreza— no han sido resueltas. El Acuerdo de Paz firmado en 2016 entre el gobierno de Juan Manuel Santos y las FARC fue el intento más ambicioso de resolver esas causas, con puntos sobre reforma rural integral, participación política y sustitución de cultivos ilícitos. Su implementación ha sido parcial y lenta, lo que explica el resurgimiento de la violencia en algunas regiones.",
+          "pausa": "¿Por qué decir que el 81% de las víctimas mortales del conflicto fueron civiles cambia la forma en que entendemos la naturaleza de esa guerra?",
+          "resp": "Porque desmiente la narrativa de que fue una 'guerra entre actores armados'. Si el 81% de los muertos eran civiles campesinos, mujeres, niños y líderes comunitarios, entonces fue principalmente una guerra contra la población civil, no entre ejércitos. Los civiles no fueron 'daño colateral': fueron el objetivo deliberado de estrategias de terror para controlar territorios."
+        }
+      ],
+      "talleres": "Taller de estructuración — Mapa de actores del conflicto colombiano\n\nInstrucción: En grupos de tres, completen en el cuaderno el siguiente cuadro:\n\n| Actor | Período de mayor actividad | Origen / causa declarada | Principal fuente de financiación | Consecuencia sobre civiles |\n|---|---|---|---|---|\n| Liberales y conservadores (La Violencia) | | | | |\n| FARC | | | | |\n| ELN | | | | |\n| Carteles de narcotráfico | | | | |\n| Paramilitares / AUC | | | | |\n\nAnálisis escrito (individual, 8 min):\nResponde en 5 líneas: ¿Cuál crees que fue la causa más importante del conflicto: la pobreza rural, la exclusión política, el narcotráfico o la debilidad del Estado? Argumenta con datos del dictado.",
+      "transfer": "Taller de transferencia (individual, 20 min):\n\n1. Caso de memoria histórica:\n'La abuela de un estudiante de Loma Verde recuerda que en los años 90, un grupo armado llegó a la vereda y obligó a varias familias a abandonar sus fincas en menos de 24 horas. Las familias que se fueron perdieron sus tierras. Las que se quedaron tuvieron que pagar una vacuna mensual.'\n— ¿Qué tipo de violencia describe este caso: directa, estructural o cultural?\n— ¿Qué consecuencias tuvo para las familias que se fueron y para las que se quedaron?\n— ¿Cómo se relaciona con las causas históricas del conflicto vistas en clase?\n\n2. Análisis de causas:\nEscribe un párrafo de 8 líneas argumentando por qué la falta de reforma agraria fue una causa estructural de la violencia. Usa al menos dos datos históricos del dictado.\n\nCierre grupal — Tribunal histórico simulado (12 min):\nEl docente plantea: 'El Frente Nacional fue el origen de las guerrillas colombianas.' EQUIPO A: defiende esa tesis. EQUIPO B: la refuta argumentando que las guerrillas habrían surgido de todas formas por la pobreza rural. El docente modera.",
+      "clave": "Respuestas modelo:\n\n1. Caso memoria histórica:\n— Violencia directa (amenazas, desplazamiento, extorsión) y estructural (ausencia del Estado que permitió que ocurriera sin consecuencias).\n— Para los que se fueron: pérdida de tierra, cultivo, vivienda y modo de vida; desplazamiento hacia ciudades sin empleo; trauma psicológico. Para los que se quedaron: pérdida de ingresos por extorsión; amenaza permanente; posible reclutamiento forzado.\n— Relación con causas: conflicto por control del territorio (causas agrarias), debilidad del Estado, terror como estrategia de apropiación de tierras (patrón documentado en el Basta Ya).\n\n2. Reforma agraria (elementos esperados): Colombia nunca tuvo reforma agraria efectiva; el INCORA creado en 1960 nunca redistribuyó suficiente tierra; las FARC nacieron de comunidades campesinas sin tierra (Marquetalia, 1964); el índice Gini de tierras es 0,89; sin tierra, los campesinos no tienen opciones legales de sustento.",
+      "evaluacion": "Escala de valoración 1.0 – 5.0:\n\nSuperior (4.6 – 5.0): Explica con datos las causas y períodos del conflicto; completa el cuadro de actores correctamente; analiza el caso identificando tipos de violencia y consecuencias; argumenta sobre reforma agraria con datos históricos concretos.\n\nAlto (4.0 – 4.5): Explica los períodos principales y los actores; completa el cuadro con las ideas principales; analiza el caso con las consecuencias principales.\n\nBásico (3.0 – 3.9): Identifica los períodos y actores principales; completa el cuadro básicamente; responde el caso de forma general.\n\nBajo (1.0 – 2.9): No logra identificar períodos ni actores; confunde causas con consecuencias.\n\nInstrumentos: Cuadro de actores. Análisis escrito. Análisis de caso. Párrafo sobre reforma agraria. Tribunal histórico.",
+      "recursos": "• Tablero y marcadores de colores\n• Cuadernos y lapiceros\n• Fotocopia del caso de memoria histórica\n• Línea de tiempo del conflicto dibujada en el tablero",
+      "referencias": "• MEN. Estándares Básicos de Competencias en Ciencias Sociales. Bogotá: MEN, 2004.\n• MEN. DBA 2 Décimo: Causas y consecuencias de la violencia en la segunda mitad del siglo XX.\n• Centro Nacional de Memoria Histórica. ¡Basta Ya! Colombia: Memorias de guerra y dignidad. Bogotá: CNMH, 2013.\n• Comisión de la Verdad. Hay futuro si hay verdad. Bogotá: CEV, 2022.\n• Malla curricular institucional I.E. San José de Loma Verde. Décimo, Segundo Periodo.",
+      "dua": "Dificultades de lectura: cuadro de actores con primera fila de ejemplo; usar línea de tiempo como referencia visual permanente.\n\nRitmo avanzado: leer el resumen ejecutivo del Basta Ya y preparar exposición de 5 minutos sobre un capítulo; investigar qué memoria histórica existe en su municipio.\n\nTrabajo cooperativo: en el tribunal histórico, asignar buscador de datos, argumentador principal y refutador dentro de cada equipo.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": "• La Violencia (1948-1958) fue una guerra civil bipartidista que costó entre 200.000 y 300.000 vidas y fue también una guerra por la tierra en las zonas cafeteras.\n• El Frente Nacional (1958-1974) puso fin a La Violencia pero excluyó otros movimientos políticos, contribuyendo al surgimiento de las FARC y el ELN en 1964.\n• El narcotráfico de los años 80 agudizó el conflicto: financió guerrillas y paramilitares, corrompió sus objetivos y desencadenó una guerra criminal con decenas de miles de muertos.\n• El 81% de las víctimas del conflicto fueron civiles; más de 8 millones fueron desplazados, principalmente familias campesinas.\n• La falta de reforma agraria, la exclusión política y la debilidad del Estado son las causas estructurales que el Acuerdo de Paz de 2016 intentó comenzar a resolver.",
+      "errores": "• Creer que el conflicto comenzó con las FARC o el narcotráfico: tiene raíces en La Violencia de 1948 y en la concentración histórica de la tierra desde la Colonia.\n• Confundir paramilitares con el Ejército Nacional: aunque hubo complicidad documentada, los paramilitares eran grupos ilegales financiados por narcotraficantes y terratenientes.\n• Creer que el Acuerdo de Paz de 2016 terminó el conflicto: el ELN siguió activo, muchos exguerrilleros se rearmaron y los grupos paramilitares continuaron operando.\n• Pensar que las víctimas son solo quienes murieron: el conflicto produjo desaparición forzada, secuestro, reclutamiento de menores y violencia sexual; cada forma deja consecuencias que duran generaciones.",
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué fue La Violencia en Colombia y cuáles fueron sus causas principales? ¿Por qué fue también una guerra por la tierra?",
+          "a": "La Violencia fue una guerra civil no declarada entre los partidos Liberal y Conservador (1948-1958) que cobró entre 200.000 y 300.000 vidas. Sus causas: fanatismo político bipartidista, asesinato de Gaitán como detonador y ausencia del Estado en zonas rurales. Fue también una guerra por la tierra porque los líderes de ambos partidos usaron la violencia para apropiarse de las fincas de sus enemigos políticos en los departamentos cafeteros.",
+          "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles fueron las condiciones políticas que llevaron al surgimiento de las guerrillas colombianas en 1964? ¿Qué papel jugó el Frente Nacional?",
+          "a": "Dos condiciones: 1) La exclusión política del Frente Nacional que reservó todos los cargos del Estado para liberales y conservadores, dejando sin representación a movimientos de izquierda. 2) La situación agraria: la Operación Marquetalia atacó comunidades campesinas de autodefensa; los sobrevivientes fundaron las FARC. El ELN surgió de universitarios inspirados en la Revolución Cubana. El Frente Nacional cerró la vía política para el cambio pacífico.",
+          "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo cambió el narcotráfico la naturaleza del conflicto armado colombiano en los años 80 y qué consecuencias tuvo para la población civil?",
+          "a": "El narcotráfico financió a todos los actores (guerrillas cobraban gramaje; paramilitares eran financiados por narcotraficantes), transformando la guerra de ideológica a económico-criminal. Las guerrillas perdieron su pureza ideológica. Para la población civil: masacres paramilitares (El Aro, Mapiripán, El Salado), desplazamientos masivos y terror como mecanismo de control territorial. Más de 30.000 personas murieron en la guerra contra los carteles solo en Medellín.",
+          "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Según el informe '¡Basta Ya!' del CNMH, ¿cuáles son las cifras del conflicto entre 1958 y 2012 y qué revelan sobre su naturaleza?",
+          "a": "Las cifras: al menos 220.000 muertos (81% civiles), más de 25.000 desapariciones forzadas, 27.000 secuestros y 5,7 millones de desplazados. Revelan que no fue principalmente una guerra entre actores armados sino contra la población civil: el 81% de víctimas no combatientes muestra que los civiles fueron el objetivo deliberado de estrategias de terror para controlar territorios, no daño colateral.",
+          "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "En Loma Verde, una abuela recuerda que en los años 90 su familia fue obligada a pagar vacuna a un grupo armado. ¿Cómo se relaciona esa experiencia con las causas históricas del conflicto y qué herramientas tiene hoy para recuperar sus derechos como víctima?",
+          "a": "Se relaciona con: ausencia histórica del Estado en zonas rurales, guerra por control del territorio y el ciclo de violencia no resuelto desde La Violencia. Herramientas actuales: inscribirse en el Registro Único de Víctimas (RUV); solicitar reparación bajo la Ley 1448 de 2011 (Ley de Víctimas y Restitución de Tierras); acudir a la Jurisdicción Especial para la Paz (JEP); solicitar restitución de tierras si fue despojada.",
+          "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Jorge Eliécer Gaitán fue asesinado el 9 de abril de 1948, evento que desencadenó el Bogotazo y el inicio de La Violencia.",
+          "a": "", "verdadero": true,
+          "justificacion": "Verdadero. Gaitán era el candidato liberal con mayor respaldo popular. Su asesinato el 9 de abril de 1948 desencadenó el Bogotazo (revuelta que destruyó el centro de Bogotá y mató entre 3.000 y 5.000 personas) y fue el detonador de La Violencia, que duraría hasta 1958.",
+          "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Frente Nacional permitió a otros partidos políticos participar en igualdad de condiciones en la vida política colombiana.",
+          "a": "", "verdadero": false,
+          "justificacion": "Falso. El Frente Nacional fue un acuerdo de exclusión: al dividir por mitad todos los cargos del Estado entre los dos partidos tradicionales y alternar la presidencia (1958-1974), cerró el acceso al poder a cualquier otro movimiento político. Esta exclusión es una causa del surgimiento de las guerrillas.",
+          "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las FARC fueron fundadas en 1964 en Marquetalia (Tolima) como respuesta a una operación militar contra comunidades campesinas de autodefensa.",
+          "a": "", "verdadero": true,
+          "justificacion": "Verdadero. La Operación Marquetalia (1964) fue un ataque del Ejército contra una comunidad campesina de autodefensa en el Tolima. Los sobrevivientes, liderados por Manuel Marulanda Vélez, fundaron las FARC ese mismo año. Este origen agrario y campesino marcó la ideología inicial de la guerrilla.",
+          "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Según el informe '¡Basta Ya!', el 81% de las víctimas mortales del conflicto entre 1958 y 2012 fueron civiles no combatientes.",
+          "a": "", "verdadero": true,
+          "justificacion": "Verdadero. El informe '¡Basta Ya!' (2013) documentó que de los al menos 220.000 muertos del conflicto, el 81% eran civiles. Este dato es fundamental para entender que fue principalmente una guerra contra la población civil, no entre ejércitos.",
+          "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Acuerdo de Paz firmado en 2016 puso fin definitivo a todo el conflicto armado en Colombia.",
+          "a": "", "verdadero": false,
+          "justificacion": "Falso. El Acuerdo de Paz de 2016 puso fin a las hostilidades con las FARC, que se convirtieron en partido político. Sin embargo, el ELN continuó activo, muchos exguerrilleros se rearmaron en disidencias y grupos paramilitares como el Clan del Golfo continuaron operando. El conflicto se transformó, no terminó.",
+          "enunciado": "", "opciones": {}, "correcta": ""
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuántas vidas cobró el período de La Violencia en Colombia entre 1948 y 1958?",
+          "a": "",
+          "enunciado": "La Violencia fue uno de los conflictos armados más letales de América Latina del siglo XX.",
+          "opciones": {"A": "Entre 10.000 y 20.000 vidas.", "B": "Entre 50.000 y 80.000 vidas.", "C": "Entre 200.000 y 300.000 vidas.", "D": "Más de 500.000 vidas."},
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿En qué consistió el Pacto del Frente Nacional (1958-1974)?",
+          "a": "",
+          "enunciado": "El Frente Nacional fue la solución pactada que puso fin a La Violencia bipartidista en Colombia.",
+          "opciones": {"A": "Un acuerdo de paz entre el gobierno y las guerrillas.", "B": "Un tratado de libre comercio entre Colombia y Venezuela.", "C": "Un acuerdo entre liberales y conservadores para alternar la presidencia y dividir los cargos del Estado por 16 años.", "D": "Una reforma agraria que redistribuyó tierras entre los campesinos desplazados."},
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál fue el alias del fundador de las FARC, líder campesino que sobrevivió la Operación Marquetalia en 1964?",
+          "a": "",
+          "enunciado": "Las FARC tuvieron un liderazgo histórico que se mantuvo décadas desde su fundación.",
+          "opciones": {"A": "'El Mono Jojoy'.", "B": "'Alfonso Cano'.", "C": "'Tirofijo' (Manuel Marulanda Vélez).", "D": "'Iván Márquez'."},
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuántos colombianos han sido desplazados forzadamente a lo largo del conflicto armado?",
+          "a": "",
+          "enunciado": "El desplazamiento forzado es una de las consecuencias humanitarias más graves del conflicto colombiano.",
+          "opciones": {"A": "Aproximadamente 500.000 personas.", "B": "Aproximadamente 2 millones de personas.", "C": "Aproximadamente 5 millones de personas.", "D": "Más de 8 millones de personas."},
+          "correcta": "D"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿En qué año fue publicado el informe '¡Basta Ya! Colombia: Memorias de guerra y dignidad' del CNMH?",
+          "a": "",
+          "enunciado": "El CNMH ha producido el diagnóstico más completo del conflicto armado colombiano.",
+          "opciones": {"A": "2005.", "B": "2010.", "C": "2013.", "D": "2016."},
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál factor es considerado la causa estructural más importante del conflicto colombiano?",
+          "a": "",
+          "enunciado": "El conflicto armado tiene causas históricas profundas que van más allá de la ideología de los grupos armados.",
+          "opciones": {"A": "La influencia de la Revolución Cubana en los universitarios de los años 60.", "B": "La intervención de Estados Unidos en la política colombiana.", "C": "La concentración de la tierra y la falta de reforma agraria efectiva.", "D": "La debilidad del partido conservador frente al partido liberal."},
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál fue el sacerdote colombiano que fundó intelectualmente el ELN y murió en combate en 1966?",
+          "a": "",
+          "enunciado": "El ELN tuvo una figura fundacional única en la historia de las guerrillas latinoamericanas.",
+          "opciones": {"A": "El padre Francisco de Roux.", "B": "El padre Camilo Torres Restrepo.", "C": "El padre Alfonso López Trujillo.", "D": "El padre Gustavo Petro."},
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Cuál de estas masacres paramilitares es documentada como una de las más graves del conflicto colombiano?",
+          "a": "",
+          "enunciado": "Las masacres paramilitares de los años 90 y principios del siglo XXI son parte del registro más oscuro del conflicto.",
+          "opciones": {"A": "La masacre de las bananeras (1928).", "B": "La masacre de El Salado (2000).", "C": "La masacre de Palonegro (1900).", "D": "La masacre de Ciénaga (1928)."},
+          "correcta": "B"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿En qué año se firmó el Acuerdo de Paz entre el gobierno colombiano y las FARC?",
+          "a": "",
+          "enunciado": "El Acuerdo de Paz fue resultado de más de cuatro años de negociaciones en La Habana, Cuba.",
+          "opciones": {"A": "2010.", "B": "2013.", "C": "2016.", "D": "2019."},
+          "correcta": "C"
+        },
+        {
+          "tipo": "sm",
+          "q": "¿Qué ley colombiana reconoció a las víctimas del conflicto y estableció mecanismos de reparación y restitución de tierras?",
+          "a": "",
+          "enunciado": "Colombia desarrolló un marco jurídico específico para atender a las víctimas del conflicto armado.",
+          "opciones": {"A": "Ley 99 de 1993.", "B": "Ley 387 de 1997 (Ley de Desplazados).", "C": "Ley 1448 de 2011 (Ley de Víctimas y Restitución de Tierras).", "D": "Ley 1658 de 2013."},
+          "correcta": "C"
+        }
+      ],
+      "tarea": "Tarea para la casa (sin internet):\n\nEntrevista de memoria histórica: Busca a una persona mayor de 60 años en tu familia o vereda y pregúntale: ¿Recuerda épocas de violencia en la región? ¿Cómo afectó a su familia o vecinos?\n\nProducto esperado: Un párrafo de 8-10 líneas con lo que te contó y una reflexión: ¿qué aprendiste que no encontrarías en ningún libro? ¿Cómo se relaciona con lo visto en clase?",
+      "fundamentacion": "## Causas y consecuencias de la violencia en Colombia (segunda mitad del siglo XX)\n\n### 1. Contexto histórico amplio\n\nLa violencia en Colombia tiene raíces que se remontan a la Colonia: la Conquista despojó a los pueblos indígenas de sus tierras, y la concentración de la tierra en manos de pocas familias fue el patrón dominante desde el siglo XIX. Las guerras civiles del siglo XIX (más de ocho entre 1840 y 1902, culminando en la Guerra de los Mil Días 1899-1902) ya mostraban el patrón: violencia política ligada a la disputa por el poder y la tierra. El siglo XX comenzó con la masacre de las bananeras (1928), cuando el Ejército asesinó a trabajadores en huelga de la United Fruit Company —inmortalizado por García Márquez en 'Cien años de soledad'. El período 1930-1948 fue de creciente movilización campesina liderada por Gaitán, quien exigía reforma agraria. Su asesinato el 9 de abril de 1948 cerró esa ventana de reforma pacífica.\n\n### 2. Causas estructurales\n\nEl historiador Daniel Pécaut identifica tres causas estructurales que se reproducen en cada ciclo. Primera, la concentración de la tierra: Colombia tiene uno de los índices de Gini de tierras más altos del mundo (0,89), con el 1% de los propietarios poseyendo más del 80% de la tierra productiva. Sin reforma agraria, los campesinos sin tierra no tienen opciones legales de subsistencia. Segunda, la debilidad del Estado: nunca construyó presencia efectiva en todo su territorio; las zonas rurales remotas fueron históricamente gobernadas por terratenientes, gamonales o guerrillas. Tercera, la exclusión política: el Frente Nacional codificó la exclusión, cerrando vías de cambio pacífico.\n\n### 3. Los ciclos de violencia\n\nCuatro ciclos interconectados: Primer ciclo (1948-1958): La Violencia bipartidista. Segundo ciclo (1964-1980s): surgimiento y expansión de guerrillas. Tercer ciclo (1980s-2000s): guerra entre carteles, guerrillas y paramilitares —el más letal. Cuarto ciclo (2000s-presente): debilitamiento de las FARC por la Política de Seguridad Democrática, negociaciones (2012-2016), Acuerdo de Paz y resurgimiento de nuevas violencias. Cada ciclo comparte la misma estructura profunda: disputa por el territorio, financiada por alguna economía ilegal (esmeraldas, coca, petróleo) y perpetuada por la debilidad del Estado.\n\n### 4. Dimensiones del impacto\n\nLa Comisión de la Verdad (2022) identificó seis dimensiones: humanitaria (muertos, desapariciones, desplazados), psicosocial (trauma, duelo no procesado), económica (destrucción de economías agrícolas), cultural (destrucción de tejidos comunitarios), institucional (corrupción por dinero ilegal) y ambiental (deforestación, desplazamiento de comunidades guardianas del ambiente).\n\n### 5. Conexión con Loma Verde\n\nEl Eje Cafetero fue escenario de La Violencia en los años 50: miles de familias fueron desplazadas por la violencia bipartidista y muchos actuales propietarios tienen esas historias en su memoria familiar. En los años 80-90, los grupos armados cobraban extorsiones, reclutaban jóvenes y generaban desplazamientos silenciosos en la zona cafetera. La memoria de esas experiencias es la base para entender por qué el campo colombiano tiene las cicatrices que tiene y para participar informadamente en los debates sobre paz, reforma agraria y justicia transicional.",
+      "lineatiempo": "1928 — Masacre de las bananeras: el Ejército asesina a trabajadores de la United Fruit Company.\n1948 — 9 de abril: asesinato de Gaitán; Bogotazo; inicio de La Violencia (1948-1958).\n1958 — Pacto del Frente Nacional: fin de La Violencia bipartidista; alternancia liberal-conservadora por 16 años.\n1964 — Operación Marquetalia: fundación de las FARC. El ELN es fundado ese mismo año en Santander.\n1966 — Muerte del padre Camilo Torres en combate; símbolo del ELN.\n1978 — Pablo Escobar comienza a construir el Cartel de Medellín; inicio del narcotráfico masivo.\n1985 — Toma del Palacio de Justicia por el M-19; 98 personas muertas incluyendo 11 magistrados.\n1989 — Asesinato del candidato Luis Carlos Galán; guerra del Estado contra los carteles.\n1993 — Muerte de Pablo Escobar; colapso del Cartel de Medellín.\n2000 — Masacre de El Salado: una de las peores masacres paramilitares.\n2002 — Inicio del gobierno Uribe y la Política de Seguridad Democrática; debilitamiento militar de las FARC.\n2013 — Publicación del '¡Basta Ya!'; inicio de las negociaciones de paz en La Habana.\n2016 — Firma del Acuerdo de Paz con las FARC.\n2022 — Publicación del informe final de la Comisión de la Verdad: 'Hay futuro si hay verdad'."
+    }
+  ]
+}

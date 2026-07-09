@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Segundo Periodo",
+    "unidad": "Eje 3: Historia del conflicto armado e incidencia sociocultural",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750071601aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Explica el triángulo de la violencia de Johan Galtung: ¿cuáles son los tres tipos de violencia y cómo se relacionan entre sí?",
+      "respuesta": "Galtung identifica tres tipos interconectados: 1) Violencia directa: actos visibles de daño físico o psicológico (masacres, secuestros, amenazas). 2) Violencia estructural: daño producido por estructuras que impiden satisfacer necesidades básicas (pobreza, desigualdad, exclusión); no tiene autor identificable. 3) Violencia cultural: aspectos culturales que justifican o normalizan las otras dos (discursos de odio, estigmatización, normalización de la brutalidad). Las tres se refuerzan mutuamente: la cultural legitima la directa; la estructural genera condiciones para la directa; eliminar solo la directa no produce paz duradera.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750071601aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Cómo se manifiesta la violencia estructural en el conflicto colombiano? ¿Por qué la concentración de la tierra es violencia estructural?",
+      "respuesta": "La violencia estructural se manifiesta en: Gini de ingresos de 0,54 (el más alto de América Latina), el 1% más rico recibiendo el 20% del ingreso nacional, más de 12 millones en pobreza, acceso desigual a salud y educación entre campo y ciudad. La concentración de la tierra es violencia estructural porque impide a millones satisfacer su necesidad básica de sustento: sin tierra, no hay alimento, ingreso ni futuro. Esta estructura mata lentamente a través de la desnutrición y la desesperanza, sin un actor armado.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750071601aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es la violencia cultural y cómo se manifestó en el conflicto armado colombiano? Da dos ejemplos concretos.",
+      "respuesta": "La violencia cultural son los aspectos culturales que justifican o normalizan la violencia. Ejemplos en Colombia: 1) La estigmatización de comunidades como 'auxiliadoras de la guerrilla' que justificó masacres paramilitares —si toda la comunidad 'es guerrilla', atacarla parece legítimo; este discurso precedió a masacres como El Salado. 2) La presentación de la pobreza rural como resultado de la 'flojera' del campesino normaliza la violencia estructural al eliminar la responsabilidad del sistema y culpar a la víctima.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750071601aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Cuál es la diferencia entre paz negativa y paz positiva según Galtung? ¿Por qué el Acuerdo de Paz de 2016 intentó construir paz positiva?",
+      "respuesta": "Paz negativa es la simple ausencia de violencia directa (cese al fuego); es frágil porque no resuelve las causas del conflicto. Paz positiva incluye además la ausencia de violencia estructural y cultural: hay justicia social, equidad y eliminación de las estructuras que generan daño. El Acuerdo de 2016 intentó construir paz positiva porque sus seis puntos abordan las causas estructurales (Reforma Rural Integral, sustitución de cultivos) y culturales (punto de víctimas, memoria histórica) del conflicto, no solo el cese al fuego.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750071601aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Aplica el marco de Galtung a Loma Verde: identifica una forma de violencia directa, una estructural y una cultural presentes, aunque no haya conflicto armado activo.",
+      "respuesta": "Ejemplos posibles: Directa: amenazas o extorsiones residuales de grupos armados; violencia intrafamiliar. Estructural: precio del café que no cubre los costos de producción; falta de médico residente; carretera destapada que impide comercializar en invierno; ausencia de internet para estudiantes; jóvenes sin opciones educativas más allá del bachillerato. Cultural: discursos que presentan al campesino como 'menos capaz' o 'ignorante'; normalización de la migración juvenil como única salida; desvalorización del trabajo agrícola frente al trabajo urbano.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750071601fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Johan Galtung es el sociólogo noruego que desarrolló el triángulo de la violencia, identificando tres tipos: directa, estructural y cultural.",
+      "correcta": true,
+      "justificacion": "Verdadero. Johan Galtung, sociólogo y matemático noruego nacido en 1930 y fundador del campo de los Estudios para la Paz, desarrolló el concepto del triángulo de la violencia en su artículo de 1969 en el Journal of Peace Research."
+    },
+    {
+      "id": "lv1750071601fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La violencia estructural siempre tiene un autor identificable que puede ser llevado ante la justicia por los daños que causa.",
+      "correcta": false,
+      "justificacion": "Falso. La característica definitoria de la violencia estructural es que NO tiene un autor individual identificable: el daño lo produce el sistema —las estructuras económicas, las políticas de distribución. Un campesino que muere de una enfermedad prevenible por falta de acceso a salud es víctima de violencia estructural, pero no hay un asesino concreto al que procesar judicialmente."
+    },
+    {
+      "id": "lv1750071601fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El coeficiente de Gini de ingresos de Colombia (0,54 en 2022) es el más alto de América Latina, indicando desigualdad estructural extrema.",
+      "correcta": true,
+      "justificacion": "Verdadero. Colombia tiene el coeficiente de Gini de ingresos más alto de América Latina: 0,54. El 1% más rico recibe el 20% del ingreso nacional, mientras más de 12 millones viven en pobreza. Esta desigualdad es una forma de violencia estructural con consecuencias sobre la salud, la educación y las oportunidades de vida."
+    },
+    {
+      "id": "lv1750071601fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La paz positiva según Galtung se logra únicamente cuando se firma un acuerdo de paz y cesan los enfrentamientos armados.",
+      "correcta": false,
+      "justificacion": "Falso. Lo que Galtung llama 'paz negativa' es la cesación de hostilidades. La paz positiva requiere además la eliminación de la violencia estructural (justicia social, equidad) y la violencia cultural (discursos que justifican la violencia). Un cese al fuego sin transformación social es paz negativa, no paz positiva, y tiende a ser frágil."
+    },
+    {
+      "id": "lv1750071601fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El punto sobre Reforma Rural Integral del Acuerdo de Paz de 2016 busca atacar la violencia estructural agraria en la raíz del conflicto colombiano.",
+      "correcta": true,
+      "justificacion": "Verdadero. La Reforma Rural Integral es el primer punto del Acuerdo de Paz. Promete redistribuir tres millones de hectáreas, formalizar siete millones de pequeñas propiedades y cerrar brechas de servicios entre campo y ciudad. Al atacar la concentración de la tierra y el abandono rural, busca eliminar la violencia estructural agraria que generó el conflicto desde los años 50."
+    },
+    {
+      "id": "lv1750071601sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El triángulo de la violencia identifica formas de daño que no siempre son físicamente visibles.",
+      "enunciado": "¿Cuál de los siguientes ejemplos corresponde a violencia estructural según el marco de Galtung?",
+      "opciones": ["Una masacre paramilitar en un municipio del Chocó.", "Un discurso que estigmatiza a los campesinos como 'auxiliadores de la guerrilla'.", "La falta de acceso a servicios de salud en zonas rurales que causa muertes prevenibles.", "Las amenazas de un grupo armado a un líder comunitario."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La falta de acceso a salud en zonas rurales es violencia estructural: el daño (muertes prevenibles) lo produce el sistema de distribución de servicios, no un actor individual identificable. Las opciones A y D son violencia directa; la B es violencia cultural."
+    },
+    {
+      "id": "lv1750071601sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Las expresiones culturales y los discursos sociales pueden ser formas de violencia según Galtung.",
+      "enunciado": "¿Qué tipo de violencia representa la frase 'el pobre es pobre porque no trabaja'?",
+      "opciones": ["Violencia directa, porque puede dañar psicológicamente a quien la escucha.", "Violencia estructural, porque reproduce la desigualdad económica.", "Violencia cultural, porque normaliza la pobreza y elimina la responsabilidad del sistema.", "No es violencia porque es solo una opinión personal."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Esta frase es violencia cultural porque normaliza la pobreza como consecuencia de una falla individual (la pereza), eliminando la responsabilidad del sistema de distribución de riqueza y poder. Esto hace tolerable la violencia estructural al culpar a la víctima en lugar de al sistema."
+    },
+    {
+      "id": "lv1750071601sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Galtung desarrolló dos conceptos de paz con implicaciones muy distintas.",
+      "enunciado": "¿Cuál es la diferencia fundamental entre paz negativa y paz positiva?",
+      "opciones": ["La paz negativa la logran los países ricos; la positiva, los pobres.", "La paz negativa es la ausencia de violencia directa; la paz positiva incluye además la ausencia de violencia estructural y cultural.", "La paz negativa dura más tiempo porque es más fácil de mantener.", "La paz negativa se logra con acuerdos políticos; la positiva, con la fuerza militar."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Paz negativa es la ausencia de violencia directa (cese al fuego). Paz positiva incluye además la ausencia de violencia estructural (justicia social, equidad) y cultural (discursos de dignidad, no estigmatización). La paz negativa es condición necesaria pero insuficiente para la paz duradera."
+    },
+    {
+      "id": "lv1750071601sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La desigualdad de ingresos en Colombia es una de las expresiones más graves de la violencia estructural.",
+      "enunciado": "¿Cuál es el coeficiente de Gini de ingresos de Colombia (2022)?",
+      "opciones": ["0,30.", "0,42.", "0,54.", "0,70."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia tiene un coeficiente de Gini de ingresos de 0,54, el más alto de América Latina. Esto significa que los ingresos están muy concentrados: el 1% más rico recibe el 20% del ingreso nacional. Esta desigualdad extrema es una forma de violencia estructural que limita las oportunidades de millones de colombianos."
+    },
+    {
+      "id": "lv1750071601sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento social",
+      "contexto": "Las masacres son la expresión más extrema de la violencia directa en el conflicto colombiano.",
+      "enunciado": "¿Cuántas masacres documentó el CNMH en Colombia entre 1980 y 2012?",
+      "opciones": ["Más de 200.", "Más de 600.", "Más de 1.900.", "Más de 5.000."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El CNMH documentó más de 1.900 masacres en Colombia entre 1980 y 2012. Este número extraordinario refleja que la masacre —el asesinato colectivo de civiles— fue utilizada sistemáticamente como estrategia de terror para controlar territorios y desplazar comunidades."
+    },
+    {
+      "id": "lv1750071601sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento social",
+      "contexto": "El Acuerdo de Paz de 2016 tiene seis puntos que abordan distintas dimensiones del conflicto.",
+      "enunciado": "¿Qué punto del Acuerdo de Paz de 2016 aborda directamente la violencia estructural agraria en la raíz del conflicto?",
+      "opciones": ["El punto sobre Participación Política.", "El punto sobre Fin del Conflicto.", "El punto sobre Reforma Rural Integral.", "El punto sobre Implementación y Verificación."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La Reforma Rural Integral es el primer y más extenso punto del Acuerdo. Promete redistribuir tres millones de hectáreas a campesinos sin tierra, formalizar siete millones de hectáreas de pequeñas propiedades y cerrar las brechas de servicios entre el campo y la ciudad, atacando directamente la violencia estructural agraria."
+    },
+    {
+      "id": "lv1750071601sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La relación entre violencia estructural y directa es uno de los aportes más importantes del marco de Galtung.",
+      "enunciado": "¿Por qué el incumplimiento de la Reforma Rural puede generar nuevamente violencia directa?",
+      "opciones": ["Porque los guerrilleros desmovilizados regresan a las armas cuando no reciben pensiones.", "Porque la violencia directa es inevitable en zonas rurales sin presencia militar.", "Porque sin tierra ni oportunidades, los jóvenes rurales son vulnerables al reclutamiento de grupos armados que ofrecen ingresos.", "Porque los terratenientes arman grupos paramilitares cuando el Estado intenta redistribuir tierras."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La violencia directa es el síntoma de la violencia estructural no resuelta. Cuando los jóvenes rurales no tienen tierra, empleo, educación ni futuro en el campo, son vulnerables al reclutamiento de grupos armados. Si la reforma agraria no llega, los mismos jóvenes que pudieron ser agricultores se convierten en combatientes, reiniciando el ciclo."
+    },
+    {
+      "id": "lv1750071601sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El triángulo de Galtung distingue con claridad los tres tipos de violencia.",
+      "enunciado": "¿Cuál de los siguientes sería un ejemplo de violencia directa en el conflicto colombiano?",
+      "opciones": ["La ausencia de médicos en los centros de salud rurales.", "La frase 'los campesinos son ignorantes' para deslegitimar sus demandas.", "El secuestro de civiles por grupos guerrilleros.", "El precio del café que no cubre los costos de producción."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El secuestro es violencia directa: un acto concreto y visible que daña físicamente y psicológicamente a una persona identificable, cometido por un actor identificable. Las opciones A y D son violencia estructural; la B es violencia cultural."
+    },
+    {
+      "id": "lv1750071601sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El marco analítico de Galtung tiene un origen académico preciso.",
+      "enunciado": "¿En qué año publicó Johan Galtung el artículo que formalizó el triángulo de la violencia?",
+      "opciones": ["1955.", "1969.", "1987.", "2001."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Galtung publicó 'Violence, Peace, and Peace Research' en 1969 en el Journal of Peace Research. Este artículo formalizó la distinción entre violencia directa, estructural y cultural, y se convirtió en uno de los textos más citados en el campo de los estudios para la paz."
+    },
+    {
+      "id": "lv1750071601sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 3 · Tipologías de la violencia: directa, estructural y cultural",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La pobreza no es solo una condición económica; para Galtung es una forma de violencia.",
+      "enunciado": "¿Cuántos colombianos viven en pobreza, siendo esta una expresión de violencia estructural?",
+      "opciones": ["Aproximadamente 2 millones.", "Aproximadamente 5 millones.", "Más de 12 millones.", "Más de 20 millones."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Más de 12 millones de colombianos —aproximadamente el 26% de la población— viven en pobreza. Esta cifra es una expresión de violencia estructural porque la pobreza en un país con los recursos de Colombia no es una fatalidad natural sino el resultado de políticas históricas que distribuyeron desigualmente la riqueza y el acceso a oportunidades."
+    }
+  ]
+}

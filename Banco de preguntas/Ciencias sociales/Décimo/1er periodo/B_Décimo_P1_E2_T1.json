@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Primer Periodo",
+    "unidad": "Eje 2: Modelos económicos globales y soberanía alimentaria",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750057201aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "¿Cuál es el origen histórico de la globalización económica moderna y cuáles fueron los organismos internacionales que le dieron forma en el siglo XX?",
+      "respuesta": "La globalización económica moderna tiene su origen en la Conferencia de Bretton Woods (1944), donde se crearon el FMI y el Banco Mundial y se estableció el dólar como moneda de referencia internacional. Se aceleró en los años 80 con la revolución tecnológica y la adopción del modelo neoliberal. La creación de la OMC en 1995 —que reemplazó al GATT— estableció el marco legal internacional para el comercio libre. Estos organismos (FMI, BM, OMC) son los pilares institucionales del orden económico global contemporáneo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750057201aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué fue la apertura económica colombiana de 1991 y cuáles fueron sus principales efectos sobre la agricultura de pequeños productores?",
+      "respuesta": "La apertura económica de 1991 fue la eliminación drástica de aranceles que protegían a la industria y agricultura colombiana de la competencia extranjera, implementada bajo presión del FMI y el BM durante el gobierno de César Gaviria. Sus efectos sobre la pequeña agricultura fueron severos: el maíz, el frijol y el trigo colombianos no podían competir con granos subsidiados del exterior. Entre 1990 y 2000, Colombia pasó de ser autosuficiente en granos a importar el 40% de los alimentos que consume.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750057201aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Describe la distribución del valor en la cadena global del café: ¿qué porcentaje del precio final recibe el caficultor colombiano y por qué esa distribución es tan desigual?",
+      "respuesta": "El caficultor colombiano recibe entre el 5% y el 10% del precio final de la taza. La distribución es tan desigual porque el mayor valor lo capturan quienes controlan la tostión, la marca, la logística y el punto de venta —las multinacionales tostadoras (Nestlé, JDE, Starbucks)— no quienes producen la materia prima. El productor vende un commodity estándar cuyo precio fija la Bolsa de Nueva York; los tostadores venden una experiencia de marca diferenciada. El poder de negociación está en la marca, no en el campo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750057201aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Qué es el 'Consenso de Washington' y cómo influyó en la política económica de Colombia en los años 90?",
+      "respuesta": "El Consenso de Washington fue el conjunto de políticas económicas promovidas por el FMI, el BM y el gobierno de EE.UU. desde los años 80: apertura comercial, privatización de empresas públicas, reducción del déficit fiscal y liberalización financiera. Influyó directamente en Colombia porque fue la condición implícita para acceder a créditos internacionales. La apertura económica de 1991, las privatizaciones de los años 90 y la independencia del Banco de la República son manifestaciones directas del Consenso de Washington en Colombia.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750057201aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Una familia cafetera de Loma Verde quiere reducir su dependencia del precio internacional del café. Propón tres estrategias concretas y explica cómo cada una reduciría su vulnerabilidad económica.",
+      "respuesta": "1) Cultivar productos de pancoger (maíz, frijol, plátano): reduce el gasto en alimentos y garantiza seguridad alimentaria cuando el precio del café cae. 2) Producir café especial y obtener certificaciones (origen, orgánico, Fair Trade): accede a precios diferenciados que pueden duplicar o triplicar el precio base, sin depender solo de la Bolsa de Nueva York. 3) Transformar parte del café en casa (tostión y venta local como café molido): captura más eslabones de la cadena de valor y accede a mayor parte del precio al consumidor, reduciendo la dependencia del exportador.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750057201fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La Organización Mundial del Comercio (OMC) fue creada en 1995 para reemplazar al GATT y establecer un marco legal internacional para el comercio libre entre sus 164 países miembros.",
+      "correcta": true,
+      "justificacion": "Verdadero. La OMC fue fundada el 1 de enero de 1995 en sustitución del GATT (Acuerdo General sobre Aranceles Aduaneros y Comercio). Actualmente tiene 164 países miembros y administra los acuerdos comerciales internacionales, resuelve disputas comerciales entre países y negocia nuevas reducciones de barreras al comercio."
+    },
+    {
+      "id": "lv1750057201fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "En la cadena global del café, el caficultor colombiano recibe aproximadamente el 50% del precio que paga el consumidor final en una tienda europea o norteamericana.",
+      "correcta": false,
+      "justificacion": "Falso. El caficultor colombiano recibe entre el 5% y el 10% del precio final al consumidor, no el 50%. La mayor parte del valor la capturan los tostadores multinacionales, distribuidores y puntos de venta. Esta distribución desigual es una expresión concreta de las asimetrías del mercado transnacional."
+    },
+    {
+      "id": "lv1750057201fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La apertura económica colombiana de 1991 fue una decisión soberana y autónoma del gobierno colombiano, sin presión de organismos financieros internacionales.",
+      "correcta": false,
+      "justificacion": "Falso. La apertura económica de 1991 fue impulsada por el FMI y el Banco Mundial como parte del 'Consenso de Washington', el conjunto de políticas que estos organismos condicionaban a los países en desarrollo para acceder a créditos. Colombia no adoptó ese modelo por convicción ideológica autónoma sino bajo presión de los préstamos internacionales que necesitaba."
+    },
+    {
+      "id": "lv1750057201fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Cuando la tasa de cambio peso-dólar sube (el dólar se encarece), el precio interno del café en Colombia también tiende a subir, aunque el precio internacional del café no haya cambiado.",
+      "correcta": true,
+      "justificacion": "Verdadero. El precio interno del café se calcula con base en el precio en la Bolsa de Nueva York multiplicado por la tasa de cambio peso-dólar. Si el dólar sube pero el precio internacional no cambia, el caficultor recibe más pesos por la misma cantidad de café. Esta es la razón por la que en épocas de dólar alto el ingreso cafetero se sostiene aunque el café no valga más en el mercado mundial."
+    },
+    {
+      "id": "lv1750057201fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Colombia es el principal productor mundial de café arábigo suave lavado, la variedad de mayor calidad y precio en el mercado internacional.",
+      "correcta": true,
+      "justificacion": "Verdadero. Colombia es reconocida mundialmente como el productor más importante de café arábigo suave lavado, caracterizado por su suavidad, acidez equilibrada y aroma. Esto le da una ventaja comparativa en el mercado de cafés especiales, aunque su producción total (12-14 millones de sacos) sea menor que la de Brasil y Vietnam."
+    },
+    {
+      "id": "lv1750057201sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El orden económico global posterior a la Segunda Guerra Mundial fue diseñado en una conferencia específica.",
+      "enunciado": "¿En qué año y conferencia se sentaron las bases del orden económico global moderno, creando el FMI y el Banco Mundial?",
+      "opciones": ["La Conferencia de Yalta, 1945.", "La Conferencia de Bretton Woods, 1944.", "La creación de la ONU, 1945.", "El Acuerdo de Maastricht, 1992."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La Conferencia de Bretton Woods (julio de 1944) fue el momento fundacional del orden económico global moderno: 44 países diseñaron allí el FMI, el Banco Mundial y el sistema del patrón oro-dólar que ordenó el comercio internacional hasta 1971."
+    },
+    {
+      "id": "lv1750057201sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La cadena de valor del café distribuye el precio al consumidor final de forma muy desigual entre sus actores.",
+      "enunciado": "¿Qué porcentaje del precio final de la taza de café recibe aproximadamente el caficultor colombiano?",
+      "opciones": ["Entre el 30% y el 40%.", "Entre el 20% y el 30%.", "Entre el 10% y el 20%.", "Entre el 5% y el 10%."],
+      "correcta": 3,
+      "justificacion": "La opción D es correcta. El caficultor colombiano recibe entre el 5% y el 10% del precio final de la taza. La mayor parte del valor la capturan los tostadores multinacionales, distribuidores y puntos de venta por su control de la marca, la tecnología y los canales de distribución."
+    },
+    {
+      "id": "lv1750057201sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La apertura económica colombiana tuvo efectos diferenciados según el sector productivo y el tipo de actor económico.",
+      "enunciado": "¿Cuál fue el efecto más grave de la apertura económica de 1991 sobre la seguridad alimentaria de las familias rurales colombianas?",
+      "opciones": ["El aumento del precio del café, que desplazó los cultivos de pancoger.", "La llegada de granos subsidiados del exterior que los pequeños productores colombianos no podían igualar en precio.", "La privatización de los acueductos rurales que dejó sin agua a las fincas.", "La eliminación de las cooperativas cafeteras que compraban el café a los productores."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. La llegada de maíz, trigo y otros granos subsidiados de EE.UU. a precios por debajo del costo de producción colombiano fue el efecto más grave sobre la seguridad alimentaria rural. Los pequeños productores colombianos, sin subsidios equivalentes, no podían competir en precio y abandonaron esos cultivos."
+    },
+    {
+      "id": "lv1750057201sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El café, el petróleo y el oro son ejemplos de un tipo específico de bien que se transa en los mercados internacionales.",
+      "enunciado": "¿Qué es un 'commodity' en el contexto del comercio internacional?",
+      "opciones": ["Un bien manufacturado con alta tecnología exportado por países industrializados.", "Un bien primario estandarizado cuyo precio lo determina la oferta y la demanda global en bolsas internacionales.", "Un bien protegido por aranceles que solo puede venderse dentro del país productor.", "Un bien con marca registrada que se vende a precios diferenciados según la calidad."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Un commodity es un bien primario estandarizado —como el café verde, el petróleo crudo o el oro— cuyo precio se determina en mercados financieros internacionales (bolsas de valores y de commodities) por la oferta y la demanda global, no por el productor individual."
+    },
+    {
+      "id": "lv1750057201sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Los caficultores colombianos tienen algunas herramientas para escapar parcialmente de la dependencia del precio internacional básico.",
+      "enunciado": "¿Cuál de las siguientes estrategias permite a un caficultor colombiano recibir un precio mayor al que fija la Bolsa de Nueva York por su café?",
+      "opciones": ["Aumentar el volumen de producción para tener más poder de negociación.", "Obtener una certificación de café especial (origen, orgánico, Fair Trade) que acceda a precios diferenciados.", "Vender directamente a la Bolsa de Nueva York sin intermediarios.", "Retrasar la venta de café hasta que los precios suban en el mercado internacional."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Las certificaciones de café especial (denominación de origen, café orgánico, Rainforest Alliance, Fair Trade) permiten al productor acceder a mercados diferenciados donde el precio no depende solo del commodity básico. Las primas pueden duplicar o triplicar el precio base, mejorando significativamente el ingreso familiar."
+    },
+    {
+      "id": "lv1750057201sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El café es uno de los productos más importantes del comercio internacional, con un mercado de enorme escala.",
+      "enunciado": "¿Cuánto dinero mueve anualmente el mercado global del café, siendo el segundo commodity más transado después del petróleo?",
+      "opciones": ["Más de 10.000 millones de dólares.", "Más de 50.000 millones de dólares.", "Más de 200.000 millones de dólares.", "Más de 500.000 millones de dólares."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El mercado global del café mueve más de 200.000 millones de dólares anuales, siendo el segundo commodity más transado del mundo después del petróleo. Esta escala contrasta con el ingreso que reciben los productores en países como Colombia, que es una fracción mínima de ese valor total."
+    },
+    {
+      "id": "lv1750057201sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La globalización no es simétrica: permite el movimiento libre de algunos factores productivos pero no de otros.",
+      "enunciado": "¿Cuál es la principal asimetría de la globalización que beneficia al capital financiero pero perjudica a los trabajadores de países en desarrollo?",
+      "opciones": ["El capital puede moverse libremente entre países, pero las personas que buscan trabajo tienen restricciones de migración.", "Las empresas pueden proteger sus mercados con aranceles, pero los países pobres no pueden hacerlo.", "Los países ricos pueden devaluar su moneda, pero los pobres no pueden competir en precios.", "Las multinacionales pagan impuestos en sus países de origen pero no en los países donde producen."],
+      "correcta": 0,
+      "justificacion": "La opción A es correcta. La principal asimetría de la globalización es que el capital (dinero, inversiones, empresas) puede moverse libremente entre países buscando menores costos, mientras que las personas que buscan trabajo enfrentan controles migratorios estrictos. Esta asimetría favorece a quienes poseen capital y perjudica a los trabajadores."
+    },
+    {
+      "id": "lv1750057201sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Colombia es un actor central en el mercado mundial del café, aunque no es el mayor productor en volumen.",
+      "enunciado": "¿Cuántos sacos de 60 kg de café produce Colombia anualmente, siendo el principal productor mundial de café arábigo suave lavado?",
+      "opciones": ["Entre 2 y 4 millones de sacos.", "Entre 5 y 8 millones de sacos.", "Entre 12 y 14 millones de sacos.", "Entre 30 y 40 millones de sacos."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia produce entre 12 y 14 millones de sacos de 60 kg al año. Aunque es significativo, este volumen es menor al de Brasil (aproximadamente 60 millones de sacos) y Vietnam (más de 30 millones). Colombia compensa con calidad: es el principal productor de café arábigo suave lavado del mundo."
+    },
+    {
+      "id": "lv1750057201sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La apertura económica transformó la estructura de la seguridad alimentaria colombiana en una década.",
+      "enunciado": "¿Qué porcentaje de los alimentos que consume Colombia se importaba hacia el año 2000, después de una década de apertura económica?",
+      "opciones": ["El 10%.", "El 20%.", "El 40%.", "El 70%."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Entre 1990 y 2000, Colombia pasó de ser prácticamente autosuficiente en granos básicos a importar aproximadamente el 40% de los alimentos que consume. La eliminación de aranceles expuso a los productores colombianos a la competencia de granos subsidiados del exterior, especialmente de EE.UU."
+    },
+    {
+      "id": "lv1750057201sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P1 · Eje 2 · El paradigma de la globalización y las dinámicas del mercado transnacional",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "En la cadena global del café, el valor no se distribuye proporcionalmente entre todos los actores.",
+      "enunciado": "¿Cuál de los siguientes actores de la cadena del café captura la mayor parte del valor del precio final al consumidor?",
+      "opciones": ["El caficultor que produce el grano de mayor calidad.", "La cooperativa que beneficia y exporta el café.", "Las multinacionales tostadoras que controlan la marca, la tecnología y la distribución.", "El gobierno colombiano que regula las exportaciones cafeteras."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Las multinacionales tostadoras (Nestlé, JDE Peet's, Lavazza, Starbucks) capturan la mayor parte del valor por su control de la tostión, el empaque, la marca y los canales de distribución. Controlan entre el 40% y el 50% del mercado mundial del café y tienen el poder de comprar en cualquier país productor si los precios colombianos suben."
+    }
+  ]
+}

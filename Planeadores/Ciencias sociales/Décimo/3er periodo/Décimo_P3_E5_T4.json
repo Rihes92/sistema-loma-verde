@@ -1,0 +1,220 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T17:28:45Z",
+  "planeadores": [
+    {
+      "id": "p10p3-pazseguridad-004",
+      "creado": 1781890125,
+      "grado": "Décimo",
+      "periodo": "Tercer periodo",
+      "ejeIdx": 5,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "8",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH.",
+      "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Reconoce el impacto institucional de las directrices de los organismos multilaterales analizando las ventajas y desventajas de la pertenencia de Colombia a estos .\n* Argumenta el rol de los tribunales e instituciones internacionales en el amparo de los Derechos Humanos frente a crisis de soberanía.\nSer:* Participa en foros o mesas redondas académicas simulando la toma de decisiones diplomáticas ante tensiones entre Estados.",
+      "competencias": "* Pensamiento social.\n\n* Pensamiento reflexivo y sistémico.",
+      "contenidos": "* El papel de los organismos de integración transnacional (ONU, OEA).\n* Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental .\n* Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.\n* Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "objetivo": "Evaluar la efectividad del multilateralismo en el mantenimiento de la paz, el funcionamiento de la seguridad colectiva y la protección de los Derechos Humanos mediante el análisis sistémico de misiones de pacificación y jurisprudencia transnacional, con la finalidad de que los estudiantes construyan una postura crítica sobre la soberanía frente a las intervenciones internacionales y estimen los impactos de estas dinámicas en el contexto de su realidad regional.",
+      "pregunta": "¿Cómo se equilibra el principio de soberanía de un país cuando organismos globales intervienen bajo la premisa de resguardar la seguridad colectiva y los Derechos Humanos?",
+      "explora": "Conversatorio preliminar: el docente introduce el tema mostrando una imagen de los Cascos Azules en una misión humanitaria y pregunta a los estudiantes si conocen qué funciones cumplen estos contingentes y quién les otorga la facultad de ingresar a territorios extranjeros. Como actividad corta, los estudiantes reciben tarjetas con conceptos como: soberanía nacional, intervención humanitaria, seguridad colectiva y paz duradera; y deben pasar al tablero para ubicarlos de forma lógica dentro de una balanza dibujada que representa el orden internacional.",
+      "glosario": [
+        {
+          "t": "seguridad colectiva",
+          "d": "régimen jurídico y político global en el que los Estados se comprometen de manera concertada a considerar la agresión contra cualquiera de sus miembros como un ataque a la totalidad de la comunidad, activando respuestas de defensa comunes."
+        },
+        {
+          "t": "Cascos Azules",
+          "d": "contingentes militares, policiales y civiles cedidos voluntariamente por los Estados miembros a la ONU para conformar misiones encargadas de supervisar ceses al fuego, proteger poblaciones vulnerables y pacificar zonas en conflicto."
+        },
+        {
+          "t": "misión de pacificación",
+          "d": "operación internacional desplegada bajo el mandato expreso del Consejo de Seguridad de la ONU cuyo propósito es crear las condiciones básicas para una paz sostenible en territorios afectados por confrontaciones armadas."
+        },
+        {
+          "t": "Derecho Internacional Humanitario",
+          "d": "cuerpo de normas convencionales y consuetudinarias que, por razones humanitarias, busca limitar los efectos de los conflictos armados, protegiendo a las personas que no participan en las hostilidades y restringiendo los métodos de guerra."
+        },
+        {
+          "t": "justicia transnacional",
+          "d": "órganos de administración judicial e instituciones internacionales cuya competencia funcional y jurisdiccional se ejerce por encima de las fronteras nacionales para sancionar crímenes de lesa humanidad o amparar derechos conculcados."
+        },
+        {
+          "t": "soberanía de los Estados",
+          "d": "principio rector del derecho internacional que confiere a cada nación independencia absoluta y autoridad política suprema sobre su ámbito territorial y poblacional, prohibiendo la injerencia de poderes externos."
+        },
+        {
+          "t": "Capítulo VII",
+          "d": "apartado medular de la Carta de la ONU que faculta al Consejo de Seguridad para determinar la existencia de amenazas a la paz y ordenar la adopción de medidas coercitivas, incluyendo el uso de la fuerza militar."
+        },
+        {
+          "t": "intervención humanitaria",
+          "d": "acción coercitiva ejercida por una coalición de Estados o un bloque transnacional dentro del territorio de un país soberano con el propósito exclusivo de detener violaciones masivas, sistemáticas y graves a los Derechos Humanos."
+        },
+        {
+          "t": "veto diplomático",
+          "d": "prerrogativa institucional exclusiva que poseen los cinco miembros permanentes del Consejo de Seguridad de la ONU para rechazar de manera solitaria cualquier proyecto de resolución sustantiva, provocando su archivo inmediato."
+        },
+        {
+          "t": "crimen de lesa humanidad",
+          "d": "conductas atroces que se cometen como parte de un ataque generalizado o sistemático contra una población civil, cuya persecución penal no prescribe y se encuentra sometida a la jurisdicción de tribunales internacionales."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La paradoja de la seguridad colectiva y la soberanía westfaliana",
+          "txt": "El mantenimiento de la paz global se asienta sobre el principio de la seguridad colectiva, un modelo donde la defensa mutua reemplaza a las alianzas militares aisladas. La Carta de las Naciones Unidas consagra en su artículo 2 la igualdad soberana de los Estados y la prohibición del uso de la fuerza; sin embargo, este principio halla su excepción en el Capítulo VII. Cuando el Consejo de Seguridad determina que la conducta interna de una nación constituye una amenaza para la estabilidad del concierto internacional, adquiere la potestad legal de decretar sanciones de bloqueo mercantil o intervenciones armadas. Esto devela una contradicción fundacional: para asegurar la paz duradera del planeta, el sistema transnacional se otorga la atribución de relativizar la soberanía de los países infractores.",
+          "pausa": "Considerando las reglas de redacción fijadas, ¿cómo debe estructurarse la mayúscula inicial después del signo de dos puntos en este plan?",
+          "resp": "Después de : se debe escribir rigurosamente en minúscula, a menos que siga un nombre propio o se inicie el desarrollo de una cita textual directa."
+        },
+        {
+          "tit": "Los Cascos Azules y los límites materiales de la pacificación",
+          "txt": "Las misiones de paz de la ONU representan el brazo operativo del multilateralismo ante escenarios de conflagración o postconflicto. Los Cascos Azules operan bajo los principios tradicionales de consentimiento de las partes, imparcialidad absoluta y no uso de la fuerza excepto en legítima defensa o cumplimiento de mandato. En la práctica contemporánea, estas fuerzas afrontan encrucijadas críticas: la falta de recursos logísticos, la renuencia de las guerrillas locales y las asimetrías de poder dentro del Consejo de Seguridad suelen paralizar su efectividad. Su presencia en diversas latitudes demuestra que pacificar un territorio no se reduce a silenciar los fusiles, sino a edificar cimientos de justicia social, reconstrucción institucional y vigencia real de los Derechos Humanos fundamentales.",
+          "pausa": "¿Cuál es la restricción medular que diferencia a una fuerza de paz de un ejército de ocupación tradicional?",
+          "resp": "La fuerza de paz requiere el consentimiento previo del Estado receptor para desplegarse, actúa de manera neutral e imparcial, y tiene prohibido iniciar hostilidades tácticas, limitándose a labores de contención y protección."
+        },
+        {
+          "tit": "La justicia penal transnacional y el amparo reforzado de la dignidad",
+          "txt": "Cuando las instituciones estatales domésticas colapsan, sufren cooptación por actores criminales o se muestran incapaces de procesar crímenes atroces, se activa el andamiaje de la justicia penal transnacional. Tribunales como la Corte Penal Internacional (CPI) o los comités de monitorización de Derechos Humanos ejercen una jurisdicción regida por el principio de complementariedad. Este modelo jurídico implica que el concierto transnacional no desplaza la soberanía de los jueces locales, sino que interviene como una garantía judicial de última instancia. Para naciones que atraviesan procesos de conflicto armado o transición política, la fiscalización de estos tribunales se erige como un escudo de amparo que presiona al legislativo a adecuar sus normas y evitar la impunidad estructural.",
+          "pausa": "¿De qué manera el principio de complementariedad resguarda la autonomía interna de la justicia de un país?",
+          "resp": "Lo hace estableciendo que las cortes internacionales solo adquieren competencia si los tribunales del país afectado no quieren o no pueden investigar y juzgar de manera genuina los crímenes cometidos bajo su jurisdicción."
+        }
+      ],
+      "talleres": "Instrucciones metodológicas para el taller de estructuración interactiva: los estudiantes se organizarán en comisiones técnicas de cuatro participantes. Cada comisión recibirá una bitácora impresa con estudios documentales sobre misiones de la ONU (por ejemplo, MINUSTAH en Haití, UNPROFOR en la antigua Yugoslavia, o la Misión de Verificación en Colombia). En un pliego de papel, estructurarán una matriz comparativa analítica respondiendo de manera rigurosa a los siguientes ejes de indagación:\n1. Nombre oficial de la misión de pacificación y contexto del conflicto.\n2. Mandato jurídico otorgado por el Consejo de Seguridad (observación, ayuda humanitaria o imposición de la paz).\n3. Derechos Humanos que se pretendían salvaguardar de forma prioritaria.\n4. Logros institucionales evidenciados en el territorio de intervención.\n5. Dos fallas estructurales o limitaciones de soberanía que se manifestaron durante el despliegue.\nLas comisiones sustentarán sus matrices mediante la técnica de debate de asamblea general.",
+      "transfer": "Actividades estructuradas de transferencia de saberes contextuales:\n1. Estudio de caso jurisprudencial: se entrega a los estudiantes un resumen analítico de una sentencia emitida por un tribunal internacional que ordena a un Estado reformar sus fuerzas de seguridad interna tras comprobarse la violación sistemática de los Derechos Humanos en zonas rurales en conflicto. Los estudiantes resolverán un cuestionario crítico evaluando el dilema entre acatar el fallo supranacional o defender la autonomía operativa del ejército de la nación.\n2. Reflexión analítica del entorno local: los estudiantes consultarán con sus familiares o líderes de la vereda sobre los informes o advertencias emitidas por oficinas de Derechos Humanos de organismos internacionales en relación con las condiciones de seguridad en las zonas rurales de Montería, redactando un escrito explicativo de dos páginas sobre cómo estas alertas globales impactan la tranquilidad y el tejido comunitario de los campesinos del corregimiento.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia:\n1. En el examen del caso jurisprudencial, la respuesta modelo debe argumentar que el acatamiento del fallo internacional es obligatorio para el Estado en virtud de la teoría de los compromisos adquiridos de buena fe (pacta sunt servanda). La subordinación de las fuerzas de seguridad a parámetros universales de protección civil no menoscaba la soberanía, sino que eleva la legitimidad democrática interna del Estado social de derecho, superando visiones militaristas cerradas.\n2. En la reflexión sobre el entorno de Loma Verde, si se analiza una alerta temprana del Sistema de Alertas de la ONU en articulación con las defensorías locales, la respuesta esperada debe advertir que la ventaja radica en visibilizar ante el gobierno central riesgos de seguridad rural que suelen ser omitidos, forzando la adopción de planes de contingencia social; la desventaja potencial es el rezago económico que puede ocasionar la estigmatización territorial del corregimiento en los mercados locales.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño:\n* Superior: analiza de forma sistémica y con un vocabulario técnico impecable los mecanismos de seguridad colectiva y vigencia de los Derechos Humanos, argumentando con rigor lógico las contradicciones entre soberanía e intervención internacional, y aplicando dichos análisis de forma crítica a las dinámicas del contexto rural regional.\n* Alto: describe de manera correcta las funciones de las misiones de paz de la ONU, diferencia las categorías básicas de los Derechos Humanos frente a la soberanía y completa las matrices legislativas de caso de forma coherente.\n* Básico: identifica qué son los Cascos Azules y la ONU, pero presenta dificultades conceptuales al explicar el funcionamiento del Capítulo VII o al evaluar el rol de los tribunales internacionales frente a los jueces domésticos.\n* Bajo: muestra confusión conceptual severa al confundir las agencias internacionales, no comprende el concepto de seguridad colectiva o carece de capacidad argumentativa para evaluar dilemas de derechos.\nInstrumentos de evaluación adoptados: rúbrica cualitativa para el taller de matrices de pacificación, lista de cotejo de desempeño para asambleas escolares y diario de campo escrito sobre estudios jurisprudenciales.",
+      "recursos": "Copias analíticas de la Carta de las Naciones Unidas (Capítulos VI y VII), textos impresos de la Declaración Universal de los Derechos Humanos, guías didácticas con casos de misiones de paz, pliegos de papel, fichas temáticas y marcadores.",
+      "referencias": "Información oficial extraída del documento \"Actual - Malla curricular - Ciencias sociales.xlsx\":\n* Estándares Básicos de Competencias (EBC): Identifico las organizaciones internacionales que surgieron a lo largo del siglo XX y evalúo el impacto de su gestión.\n* EBC: Relaciono algunos de estos procesos políticos internacionales con los procesos colombianos.\n* Derechos Básicos de Aprendizaje (DBA): DBA 4: El papel de los organismos internacionales como formas de alianza entre los Estados y sus intereses.\nFuentes bibliográficas adicionales de rigor académico:\n* Diez de Velasco, M. (2018). Las organizaciones internacionales y el mantenimiento de la paz global. Madrid: Tecnos.\n* Cassese, A. (2020). Derecho internacional penal y protección convencional de los Derechos Humanos. Bogotá: Temis.\n* Corte Constitucional de Colombia, Sentencia C-370 de 2006 (M.P. Manuel José Cepeda Espinosa) sobre los límites del derecho a la justicia y los estándares internacionales.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje (DUA):\n* Para estudiantes con barreras de lectoescritura o de comprensión abstracta: provisión de mapas de calor geopolíticos e infografías esquemáticas que ilustren el proceso de activación de una misión de paz. Uso de glosarios conceptuales simplificados.\n* Para estudiantes con ritmo de aprendizaje avanzado: asignación de un análisis crítico comparativo sobre los debates en el Consejo de Seguridad relativos a la aplicación del principio de la Responsabilidad de Proteger (R2P) en crisis humanitarias contemporáneas.\n* Estructuración de trabajo cooperativo formativo: organización de los equipos asignando roles precisos y rotativos (embajador de paz, relator de actas, analista de riesgos territoriales, portavoz de asamblea) para promover la equidad participativa y el desarrollo integral de las potencialidades de aprendizaje.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La seguridad colectiva constituye la base jurídica del multilateralismo moderno, obligando a los Estados a cooperar activamente ante agresiones armadas.",
+        "El Consejo de Seguridad de la ONU posee la facultad legal exclusiva de decretar sanciones e intervenciones militares amparado en el Capítulo VII de su Carta.",
+        "Los Cascos Azules funcionan como herramientas neutrales de pacificación, operando supeditados al consentimiento del Estado receptor y la imparcialidad.",
+        "La justicia penal transnacional ejerce una competencia complementaria, actuando cuando los tribunales locales demuestran ineficacia o incapacidad material.",
+        "Las intervenciones y alertas humanitarias globales generan tensiones permanentes con el principio clásico de soberanía absoluta de los Estados miembros."
+      ],
+      "errores": [
+        "Creer que la ONU puede desplegar tropas armadas de forma autónoma en cualquier país sin la previa deliberación y voto del Consejo de Seguridad: es imperativo aclarar que el despliegue requiere de una resolución aprobada que no haya sido vetada por ninguna potencia permanente.",
+        "Confundir el Derecho Internacional de los Derechos Humanos con el Derecho Internacional Humanitario: se debe explicar que el primero aplica de forma permanente en tiempos de paz y guerra, mientras que el DIH regula exclusivamente situaciones de conflicto armado.",
+        "Pensar que los Cascos Azules actúan como ejércitos ofensivos encargados de combatir y derrotar a uno de los bandos en una guerra civil: es necesario precisar que sus funciones prioritarias son la contención, la protección de civiles y el monitoreo de acuerdos políticos de cese al fuego.",
+        "Suponer que las condenas o sentencias dictadas por tribunales internacionales carecen de validez en Colombia si el presidente decide ignorarlas: se debe recordar que la incorporación de tratados al bloque de constitucionalidad confiere a estos fallos fuerza vinculante de obligatorio cumplimiento interno."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Bajo qué supuestos jurídicos explícitos el Capítulo VII de la Carta de la ONU autoriza al Consejo de Seguridad a ordenar el empleo de la fuerza militar coercitiva?",
+          "a": "El Consejo de Seguridad puede ordenar el uso de la fuerza armada coercitiva cuando compruebe la existencia de una amenaza a la paz, un quebrantamiento de la paz o un acto explícito de agresión internacional.",
+          "verdadero": null,
+          "justificacion": "Estas causales normativas delimitan el monopolio legal de la coacción colectiva para evitar intervenciones arbitrarias o unilaterales de las potencias mundiales.",
+          "enunciado": "Estudio de las excepciones al principio de no intervención consagradas en el ordenamiento del derecho internacional público.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo opera formalmente el principio de complementariedad que rige el ejercicio jurisdiccional de la Corte Penal Internacional (CPI)?",
+          "a": "Opera determinando que la CPI solo puede asumir el juzgamiento de crímenes atroces si los tribunales del Estado bajo cuya jurisdicción ocurrieron los hechos no quieren o no tienen la capacidad material para investigarlos y sancionarlos de forma genuina.",
+          "verdadero": null,
+          "justificacion": "Este principio preserva la primacía de las soberanías nacionales de los Estados partes, actuando la corte transnacional únicamente ante la impunidad estructural doméstica.",
+          "enunciado": "Evaluación de los límites de la justicia universal en procesos de paz o de transición política institucional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles son los tres principios rectores tradicionales que regulan la operatividad táctica de las misiones de paz de la ONU?",
+          "a": "Los principios rectores son: el consentimiento formal de las partes en conflicto, la imparcialidad absoluta en su actuación de campo y el no uso de la fuerza, exceptuando escenarios de legítima defensa o cumplimiento estricto del mandato.",
+          "verdadero": null,
+          "justificacion": "Estos pilares doctrinales garantizan que la presencia de los Cascos Azules no sea catalogada como una agresión armada o una invasión extranjera ilegítima.",
+          "enunciado": "Análisis de las variables operativas que diferencian las acciones de pacificación de las operaciones militares de combate directo.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera el concepto de bloque de constitucionalidad constriñe la autonomía del Congreso de Colombia al redactar leyes de orden público?",
+          "a": "Lo restringe porque eleva los tratados de Derechos Humanos ratificados a rango constitucional, obligando a que toda nueva ley deba ser materialmente compatible con dichos estándares internacionales bajo pena de ser declarada inexequible.",
+          "verdadero": null,
+          "justificacion": "El bloque subordina la potestad legislativa ordinaria doméstica al marco de los compromisos convencionales humanitarios asumidos por el Estado.",
+          "enunciado": "Control previo y posterior de las fuentes normativas internas en relación con el principio de jerarquía legal.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué impacto produce el ejercicio del derecho de veto por parte de un miembro permanente del Consejo de Seguridad sobre un proyecto de paz?",
+          "a": "Produce la parálisis jurídica inmediata del proyecto de resolución, impidiendo que la ONU adopte medidas coercitivas o humanitarias formales ante una crisis internacional, sin importar que los restantes catorce miembros voten a favor.",
+          "verdadero": null,
+          "justificacion": "El diseño de poder de la postguerra supeditó la operatividad del sistema de seguridad colectiva a la unanimidad geopolítica de las potencias nucleares.",
+          "enunciado": "Examen de los bloqueos diplomáticos multilaterales ante confrontaciones bélicas o crisis humanitarias contemporáneas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Derecho Internacional Humanitario contiene las normas jurídicas encargadas de regular la protección de las poblaciones civiles exclusivamente en tiempos de paz y estabilidad democrática.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El Derecho Internacional Humanitario (DIH) es una rama especializada del derecho internacional que se activa de forma exclusiva durante conflictos armados (internos o internacionales) para limitar el sufrimiento y humanizar las hostilidades.",
+          "enunciado": "Ámbitos temporales y materiales de aplicación de los Convenios de Ginebra en las disputas territoriales armadas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los fallos emitidos por la Corte Interamericana de Derechos Humanos poseen un carácter meramente consultivo, careciendo de fuerza vinculante para las autoridades de Colombia.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Colombia, al ratificar la Convención Americana y aceptar de forma voluntaria la jurisdicción contenciosa de la Corte IDH, se obligó jurídicamente a cumplir a cabalidad las sentencias de dicho tribunal, las cuales integran el bloque de constitucionalidad.",
+          "enunciado": "Análisis de la obligatoriedad de la justicia convencional en los ordenamientos jurídicos de los Estados partes.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Cualquier Estado soberano miembro de la ONU puede rehusarse legítimamente a acatar una sanción económica decretada por el Consejo de Seguridad bajo el Capítulo VII.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Por mandato del artículo 25 de la Carta de la ONU, todos los Estados miembros aceptan y se obligan a cumplir de buena fe las decisiones del Consejo de Seguridad tomadas bajo las cláusulas del Capítulo VII, poseyendo estas un carácter jurídicamente vinculante superior.",
+          "enunciado": "Evaluación del alcance coercitivo y la primacía de las resoluciones de seguridad colectiva global.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La Asamblea General de la ONU carece de competencias normativas directas para ordenar de forma unilateral el envío de una fuerza de invasión militar a un país.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "La Carta de Naciones Unidas concentró de manera exclusiva la potestad coercitiva y el uso legal de la fuerza militar en el Consejo de Seguridad, restringiendo las facultades de la Asamblea General a la emisión de recomendaciones y declaraciones políticas no vinculantes.",
+          "enunciado": "Distribución interna de competencias y equilibrios orgánicos en el sistema de las Naciones Unidas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los crímenes de guerra y de lesa humanidad se caracterizan por ser imprescriptibles, lo que significa que pueden ser perseguidos y juzgados sin importar el tiempo transcurrido.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "El Estatuto de Roma y los principios del derecho consuetudinario internacional estipulan que los crímenes más atroces que afectan a la humanidad entera no prescriben legalmente, impidiendo que el paso de los años extinga la acción penal o cobije con impunidad a los autores.",
+          "enunciado": "Estudio de las garantías de justicia, verdad y no repetición frente a violaciones masivas y sistemáticas a la dignidad.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar una indagación cualitativa en el hogar o la vereda: el estudiante dialogará con sus padres, abuelos o vecinos adultos sobre el papel que han cumplido las misiones u organizaciones de Derechos Humanos en la historia del departamento de Córdoba para proteger a la población rural. El estudiante redactará en su cuaderno un informe descriptivo manuscrito de dos páginas detallando los testimonios obtenidos y propondrá una conclusión personal sobre por qué la paz y el cuidado de los derechos son indispensables para que los jóvenes del campo puedan estudiar y prosperar en sus parcelas.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA SOBRE MANTENIMIENTO DE LA PAZ Y SEGURIDAD COLECTIVA\n\n## Marco histórico de la edificación del orden multilateral\nLa construcción teórica y operativa del sistema contemporáneo de mantenimiento de la paz y seguridad colectiva surgió como una respuesta directa a la catástrofe humanitaria y al colapso institucional total que significó la Segunda Guerra Mundial. El ordenamiento internacional decimonónico, edificado sobre los supuestos de la Paz de Westfalia de 1648 y consolidado en el Concierto de Europa de 1815, concebía la soberanía como una potestad absoluta, ciega e inmune a fiscalizaciones externas. Bajo aquella lógica, el recurso a la guerra (ius ad bellum) constituía un atributo legítimo y discrecional de la potencia estatal para dirimir sus controversias territoriales o comerciales. La Sociedad de Naciones, instituida en 1919 con la promesa de neutralizar los conflictos mundiales, feneció de manera temprana debido a su inoperancia orgánica, la ausencia de mecanismos coercitivos reales y el mantenimiento de las visiones hegemónicas cerradas de los imperios occidentales.\n\nLa Conferencia de San Francisco de 1945 modificó este panorama axiológico al propiciar la adopción de la Carta de las Naciones Unidas. Este instrumento fundacional introdujo una transformación revolucionaria en la dogmática jurídica internacional: proscribió de forma generalizada el uso de la amenaza o la fuerza en las relaciones interestatales (artículo 2.4) y centralizó la capacidad de coacción legal en un órgano ejecutivo de membresía restringida: el Consejo de Seguridad. El nuevo multilateralismo no se concibió como un foro de debate abstracto, sino como una estructura de seguridad colectiva institucionalizada, donde la preservación de la paz dejaba de ser un asunto bilateral para transformarse en una obligación difusa e indivisible que atañe a la comunidad internacional en su conjunto. Este entramado fue blindado con la adopción de la Declaración Universal de los Derechos Humanos en 1948, situando la dignidad de la persona como un límite infranqueable a la potestad legislativa y militar de los Estados.\n\n## Desglose conceptual de la arquitectura de pacificación\n\n### La seguridad colectiva y las cláusulas del Capítulo VII\nEl andamiaje normativo de la seguridad colectiva halla su núcleo coercitivo en el Capítulo VII de la Carta de la ONU, titulado \"Acción en caso de amenazas a la paz, quebrantamientos de la paz o actos de agresión\". Este apartado faculta al Consejo de Seguridad para emitir resoluciones de carácter jurídicamente vinculante y obligatorio para la totalidad de las naciones del planeta (artículo 25). El procedimiento se activa mediante una calificación formal de la crisis; una vez determinada la existencia de una amenaza, el Consejo dispone de una escala gradual de respuestas coactivas. Las medidas iniciales, prescritas en el artículo 41, abarcan la interrupción total o parcial de las relaciones económicas, embargos de armamento, bloqueos de telecomunicaciones y la ruptura diplomática. Si estas acciones resultan insuficientes, el artículo 42 habilita la adopción de acciones militares directas por medio de fuerzas aéreas, navales o terrestres de los Estados miembros, rompiendo de forma legal el velo de la no intervención en asuntos internos.\n\n### Dogmática operativa de las misiones de paz (Cascos Azules)\nLas Operaciones de Mantenimiento de la Paz (OMP), cuyos contingentes son denominados Cascos Azules, constituyen una innovación pragmática de la ONU que no se encuentra tipificada de forma literal en el texto original de la Carta de 1945. Surgidas en el marco de la crisis de Suez en 1956, la doctrina jurídica las ubica en el denominado \"Capítulo Seis y Medio\", al situarse en un espacio intermedio entre la solución pacífica de controversias (Capítulo VI) y la imposición coercitiva de la fuerza (Capítulo VII). Las misiones de paz basan su legitimidad en tres principios axiológicos innegociables: el consentimiento formal de las partes en conflicto (garantizando que la ONU no actúe como fuerza invasora), la imparcialidad absoluta en el trato de los actores sobre el terreno y el no uso de la fuerza, limitando el empleo de sus armas de dotación a los supuestos estrictos de legítima defensa o para la protección de civiles bajo mandatos reforzados.\n\n### Justicia penal transnacional y el principio de complementariedad\nLa protección universal de los Derechos Humanos y la vigencia del Derecho Internacional Humanitario (DIH) demandaron la creación de un aparato judicial supranacional capaz de combatir la impunidad criminal en contextos de debilidad institucional doméstica. La adopción del Estatuto de Roma en 1998, que dio nacimiento a la Corte Penal Internacional (CPI), institucionalizó la justicia penal transnacional con competencia permanente para perseguir y sancionar cuatro crímenes nucleares: genocidio, crímenes de lesa humanidad, crímenes de guerra y el crimen de agresión. La dogmática de este tribunal se rige por el principio de complementariedad, el cual establece una pauta de precedencia: la jurisdicción internacional no anula ni sustituye a los jueces ordinarios de los Estados soberanos. La CPI solo adquiere competencia latente e interviene cuando se demuestra que el aparato judicial interno no quiere (falta de voluntad genuina por cooptación o fraude procesal) o no puede (colapso material del sistema judicial) adelantar el proceso de manera imparcial.\n\n## Tensiones contemporáneas entre soberanía e intervención humanitaria\nLa operatividad del orden multilateral afronta agudas tensiones doctrinales originadas por la mutación de las amenazas a la seguridad global en el siglo XXI. El modelo original de la ONU fue diseñado para contener guerras interestatales (conflictos tradicionales entre ejércitos regulares de naciones soberanas); sin embargo, el escenario contemporáneo se caracteriza por la proliferación de conflictos armados internos, guerras asimétricas y crisis humanitarias complejas provocadas por agentes no estatales. Ante la ocurrencia de limpiezas étnicas o masacres sistemáticas perpetradas por un gobierno contra su propia población, la comunidad internacional desarrolló el principio doctrinal de la \"Responsabilidad de Proteger\" (R2P), avalado en la Cumbre Mundial de la ONU de 2005. Este principio postula que la soberanía no es un escudo de impunidad absoluta, sino una responsabilidad primaria de cuidado; si un Estado es incapaz o cómplice de la atrocidad, la comunidad transnacional asume el deber subsidiario de intervenir, generando una fricción permanente con el axioma de autodeterminación de los pueblos.\n\nEstas intervenciones humanitarias cojean materialmente debido a las asimetrías de poder institucionalizadas en el diseño orgánico del Consejo de Seguridad. El derecho de veto otorgado en 1945 a las cinco potencias vencedoras de la Segunda Guerra Mundial (Estados Unidos, Rusia, China, Reino Unido y Francia) provoca con frecuencia la parálisis jurídica del multilateralismo. El uso del veto por intereses geopolíticos particulares impide la adopción de resoluciones oportunas ante crisis de flagrante violación de Derechos Humanos, lo que resiente la legitimidad del sistema y empuja a que las poblaciones vulnerables queden desprotegidas o expuestas a intervenciones unilaterales al margen del derecho internacional codificado.\n\n## Interconexión regional y la realidad de las comunidades rurales en Montería\nPara la comunidad educativa de la Institución Educativa San José de Loma Verde, el abordaje de las categorías de mantenimiento de la paz, la seguridad colectiva y la vigencia de los Derechos Humanos reviste una trascendencia pedagógica vital. El departamento de Córdoba y los territorios rurales dispersos del municipio de Montería han sido escenarios históricos de profundas afectaciones del conflicto armado interno, sufriendo el tejido social los rigores de la violencia estructural, el despojo territorial agrario y la fragilidad en la presencia material de las instituciones de protección de la administración de justicia ordinaria. Comprender que la vigencia de los Derechos Humanos cuenta con dispositivos de amparo transnacionales y que el Estado colombiano está constitucionalmente obligado a incorporar estos estándares en sus marcos normativos internos dota a los estudiantes de herramientas conceptuales críticas para su ejercicio ciudadano.\n\nLa escuela rural, concebida como un centro de interés STEM+ y de narrativas transmedias, se transforma en el espacio propicio para deconstruir las lógicas de la violencia y analizar críticamente la efectividad real de los discursos de pacificación global. Al contrastar las grandes declaraciones multilaterales de Ginebra o Nueva York con las realidades del campesinado local en Loma Verde, las nuevas generaciones comprenden que la paz duradera no es una concesión retórica de los bloques hegemónicos, sino una construcción comunitaria diaria que exige la superación de las asimetrías del desarrollo regional. El dominio técnico de estos mecanismos del derecho internacional faculta a la juventud rural para agenciar demandas pacíficas de justicia distributiva, liderar procesos de memoria histórica y defender el territorio usable bajo los amparos del bloque de constitucionalidad, consolidando una ciudadanía activa, autónoma y transformadora de su entorno social.",
+      "lineatiempo": "1945: firma y entrada en vigencia de la Carta de las Naciones Unidas en San Francisco, instituyendo el régimen de seguridad colectiva global.\n1948: adopción unánime de la Declaración Universal de los Derechos Humanos por la Asamblea General de la ONU como estándar ético universal.\n1949: suscripción de los cuatro Convenios de Ginebra, ejes de la codificación y desarrollo del Derecho Internacional Humanitario moderno.\n1956: despliegue de la Primera Fuerza de Emergencia de la ONU (misión de paz pionera) para mitigar y resolver la crisis del canal de Suez.\n1991: adopción de la Constitución Política de Colombia, la cual integra formalmente el bloque de constitucionalidad en el ordenamiento nacional.\n1998: aprobación del Estatuto de Roma por la comunidad internacional, sentando las bases jurídicas de la Corte Penal Internacional y el principio de complementariedad."
+    }
+  ]
+}

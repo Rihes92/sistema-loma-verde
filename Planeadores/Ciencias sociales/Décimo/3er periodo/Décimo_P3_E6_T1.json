@@ -1,0 +1,220 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T17:35:10Z",
+  "planeadores": [
+    {
+      "id": "p10p3-guerras-005",
+      "creado": 1781890510,
+      "grado": "Décimo",
+      "periodo": "Tercer periodo",
+      "ejeIdx": 6,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "9",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Antecedentes y detonantes de la Primera y Segunda Guerra Mundial",
+      "unidad": "Eje 6: Conflictos bélicos globales del siglo XX y transformaciones fronterizas",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Representa e interpreta las transformaciones geopolíticas mundiales mediante la lectura comparada de mapas temáticos históricos .\n* Explica el desarrollo de las guerras mundiales y asume una postura crítica frente al uso de la ciencia y la tecnología para fines bélicos .\nSer:* Defiende la solución pacífica de las controversias y el respeto por los tratados internacionales de paz; de manera transversal, cimenta la lógica argumentativa citando sus fuentes de información y reconociendo los derechos de autoría en sus proyectos de aula para evitar el plagio.",
+      "competencias": "* Pensamiento reflexivo y sistémico.\n\n* Interpretación y análisis de perspectivas.",
+      "contenidos": "* Antecedentes y detonantes de la Primera y Segunda Guerra Mundial .\n* Avances militares, científicos y tecnológicos aplicados a la destrucción masiva .\n* Consecuencias demográficas y sociales de las conflagraciones mundiales .\n* Reconfiguración geopolítica y mutación de las fronteras (Bloque de Aliados frente al Eje).",
+      "objetivo": "Explicar los antecedentes de carácter estructural, los factores de competencia imperialista y los detonantes coyunturales que provocaron la Primera y Segunda Guerra Mundial mediante el análisis cartográfico comparado y el examen crítico de fuentes históricas, con el fin de promover una postura ética en favor de la resolución pacífica de las controversias internacionales y el reconocimiento del impacto destructivo de la tecnología bélica sobre las sociedades contemporáneas.",
+      "pregunta": "¿Cómo se vincula la ruptura de los tratados internacionales de paz en los albores de las guerras mundiales con la necesidad actual de fortalecer las garantías humanitarias en las regiones periféricas de Colombia?",
+      "explora": "Conversatorio introductorio: el docente expone un mapamundi político de principios del siglo XX y cuestiona a los estudiantes acerca de por qué extensos territorios de África y Asia figuran bajo los mismos colores que las potencias de Europa, indagando el significado de la palabra imperio. Como actividad corta, los estudiantes reciben fichas didácticas con conceptos clave como: nacionalismo radical, carrera armamentista, diplomacia secreta e imperialismo mercantil; y deben pasar al tablero para organizarlas cronológicamente según consideren que surgieron antes o durante el estallido de las confrontaciones bélicas globales.",
+      "glosario": [
+        {
+          "t": "paz armada",
+          "d": "periodo histórico comprendido entre 1871 y 1914 caracterizado por la ausencia de conflictos bélicos directos entre las potencias de Europa, las cuales desarrollaron una intensa carrera armamentista y un sistema de alianzas secretas ante la inminencia de una guerra."
+        },
+        {
+          "t": "imperialismo",
+          "d": "sistema político y económico mediante el cual las naciones industrializadas ejercieron una dominación formal o informal sobre territorios vulnerables de África, Asia y Oceanía para asegurar materias primas y mercados exclusivos."
+        },
+        {
+          "t": "sistema de alianzas",
+          "d": "red de tratados e intereses diplomáticos de carácter secreto y defensivo recíproco que dividió a Europa en bloques contrapuestos (la Triple Entente y la Triple Alianza), provocando que un litigio local activara un conflicto de escala continental."
+        },
+        {
+          "t": "detonante coyuntural",
+          "d": "suceso específico de corta duración que, al encender las tensiones acumuladas por causas estructurales preexistentes, desencadena de forma inmediata el estallido latente de una conflagración bélica o social."
+        },
+        {
+          "t": "Tratado de Versalles",
+          "d": "acuerdo de paz suscrito en 1919 que puso fin formal a la Primera Guerra Mundial, imponiendo severas sanciones económicas, territoriales y militares a Alemania, lo que alimentó sentimientos colectivos de revanchismo político."
+        },
+        {
+          "t": "revanchismo",
+          "d": "postura política radical fundada en el resentimiento nacionalista que persigue la recuperación de territorios perdidos y la reparación del orgullo nacional mediante el uso de la fuerza militar contra las potencias vencedoras."
+        },
+        {
+          "t": "totalitarismo",
+          "d": "régimen político autocrático caracterizado por el control absoluto del Estado sobre todas las esferas de la vida pública y privada, la supresión de las libertades civiles, el culto al líder y la eliminación de la disidencia legal."
+        },
+        {
+          "t": "espacio vital",
+          "d": "doctrina geopolítica expansionista (Lebensraum) adoptada por el régimen nazi que justificaba la invasión militar y la anexión de territorios extranjeros bajo la premisa de garantizar los recursos necesarios para el desarrollo de la población."
+        },
+        {
+          "t": "sociedad de naciones",
+          "d": "organismo internacional de carácter consultivo instituido tras la Primera Guerra Mundial para promover la cooperación y resolver controversias pacíficamente, cuya inoperancia institucional facilitó el rearme y la Segunda Guerra Mundial."
+        },
+        {
+          "t": "irredentismo",
+          "d": "movimiento ideológico y político que propugna la anexión de territorios que se consideran unidos por vínculos de cultura, etnia o historia a una patria originaria, utilizado para legitimar agresiones fronterizas."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "Las raíces estructurales de la Gran Guerra: imperialismo y bloques enfrentados",
+          "txt": "El estallido de la Primera Guerra Mundial en 1914 no constituyó un hecho fortuito; representó la eclosión de tensiones estructurales acumuladas durante las décadas previas de la paz armada. Las potencias industrializadas de Europa participaban en una competencia feroz por el control territorial de África y Asia para abastecer sus economías de materias primas. Esta rivalidad imperialista espoleó una acelerada carrera armamentista y la configuración de alianzas secretas recíprocas. Por un lado se consolidó la Triple Entente (Francia, Gran Bretaña y Rusia) y, por el otro, la Triple Alianza (Alemania, Austro-Hungría e Italia). El nacionalismo radical exacerbó los ánimos colectivos de las poblaciones, convirtiendo a la península de los Balcanes en el polvorín geográfico del continente europeo, donde cualquier fricción diplomática activaría los compromisos de defensa mutua de los bloques.",
+          "pausa": "Considerando los lineamientos de este diseño de aula, ¿cómo debe emplearse la mayúscula inicial luego del signo de dos puntos?",
+          "resp": "Después de : se debe utilizar rigurosamente minúscula, exceptuando los casos en que se inicie una cita textual explícita o prosiga un nombre propio."
+        },
+        {
+          "tit": "El polvorín balcánico y el estallido de la conflagración mundial",
+          "txt": "La coyuntura que desató la Gran Guerra sobrevino el 28 de junio de 1914 en Sarajevo con el asesinato del archiduque Francisco Fernando, heredero del Imperio austrohúngaro, a manos de un militante nacionalista serbio. Este atentado activó una cadena de ultimátums y movilizaciones militares que la diplomacia europea fue incapaz de contener. Austro-Hungría declaró la guerra a Serbia; Rusia movilizó sus tropas en defensa de su aliado eslavo; y Alemania, aplicando sus planes de contingencia militar, invadió Bélgica para atacar a Francia, provocando la inmediata intervención de Gran Bretaña. La guerra de movimientos devino rápidamente en una desgastante guerra de trincheras, donde la aplicación de innovaciones científicas e industriales como los gases tóxicos, las ametralladoras automáticas y los tanques blindados multiplicaron la destrucción material y demográfica a escalas nunca antes vistas.",
+          "pausa": "¿Por qué los mecanismos diplomáticos tradicionales resultaron inoperantes para frenar la escalada bélica tras el magnicidio de Sarajevo?",
+          "resp": "Porque el sistema de alianzas defensivas obligaba a los bloques a movilizar sus ejércitos de forma automatizada y preferente, restando espacio a las mesas de concertación política y primando los planes tácticos militares."
+        },
+        {
+          "tit": "La fragilidad de Versalles y el origen de la Segunda Guerra Mundial",
+          "txt": "El armisticio de 1918 y la firma del Tratado de Versalles en 1919 estructuraron un orden internacional profundamente frágil. En lugar de cimentar una paz duradera basada en la cooperación mutua, el tratado impuso condiciones humillantes a Alemania, despojándola de territorios coloniales y obligándola a pagar cuantiosas indemnizaciones económicas que asfixiaron su estabilidad social. Este escenario de resentimiento y crisis económica fue el caldo de cultivo idóneo para el ascenso de regímenes totalitarios como el fascismo en Italia y el nacionalsocialismo en Alemania. La ineficacia orgánica de la Sociedad de Naciones ante agresiones como la invasión italiana a Etiopía o la anexión alemana de Austria demostró la inviabilidad de la seguridad colectiva tradicional. El detonante definitivo ocurrió el 1 de septiembre de 1939, cuando la Alemania nazi, impulsada por la doctrina del espacio vital y el nacionalismo radical expansionista, invadió Polonia, provocando la declaración de guerra por parte de Francia y Gran Bretaña.",
+          "pausa": "¿De qué manera el Tratado de Versalles se transformó en un puente causal entre ambos conflictos bélicos mundiales?",
+          "resp": "Se transformó en un puente porque sus cláusulas punitivas y de sometimiento económico sembraron un profundo sentimiento de revanchismo político e inestabilidad social en Alemania, capitalizado por los discursos totalitarios radicales."
+        }
+      ],
+      "talleres": "Instrucciones metodológicas para el taller de estructuración interactiva: los estudiantes se organizarán en mesas de trabajo cooperativo de cuatro integrantes. Recibirán copias analíticas de mapas de la geografía política de Europa en dos momentos: 1914 (vísperas de la Gran Guerra) y 1923 (periodo de entreguerras tras la firma de los tratados de paz). Deberán diseñar en un pliego de cartulina una matriz de análisis cartográfico comparativo que responda de forma exhaustiva a los siguientes requerimientos conceptuales:\n1. Identificación de los imperios multiétnicos coloniales existentes en 1914 que desaparecieron tras el conflicto.\n2. Enumeración de los nuevos Estados soberanos que emergieron en Europa central y oriental en la matriz de 1923.\n3. Descripción de las transformaciones de las fronteras de Alemania y Francia (regiones de Alsacia y Lorena).\n4. Evaluación analítica de cómo la reconfiguración territorial de entreguerras pudo sembrar tensiones para el estallido de 1939.\nCada grupo designará un vocero oficial para sustentar la matriz ante la asamblea escolar.",
+      "transfer": "Actividades estructuradas de transferencia de saberes de aula:\n1. Estudio de caso historiográfico: se presenta a los estudiantes un compendio de fuentes primarias impresas que recogen fragmentos de los discursos de los líderes políticos en 1938 (el Pacto de Múnich y la política de apaciguamiento anglo-francesa frente al rearme alemán). Los estudiantes deberán resolver un cuestionario escrito donde evalúen de manera crítica si las concesiones diplomáticas frente a las agresiones de regímenes autocráticos previenen el conflicto o, por el contrario, estimulan la expansión bélica sistémica.\n2. Reflexión analítica del entorno local: los estudiantes realizarán una indagación o reflexión personal sobre el valor que posee el respeto por las normas de convivencia y la solución pacífica de las controversias dentro de su propio corregimiento de Loma Verde, redactando un escrito analítico de dos páginas donde argumenten por qué la ruptura de los pactos locales o comunitarios puede derivar en dinámicas de exclusión y violencia similares a las tensiones internacionales estudiadas.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia:\n1. En el examen de las fuentes del Pacto de Múnich, la respuesta modelo debe estructurar críticamente que la política de apaciguamiento fundamentada en ceder territorios (como los Sudetes checoslovacos) a las demandas del totalitarismo alemán resultó contraproducente. La historia de 1939 demostró que estas concesiones diplomáticas no preservaron la seguridad colectiva, sino que evidenciaron la debilidad institucional de las democracias occidentales, alentando al régimen nazi a continuar con su agenda expansionista militar mediante la invasión de Polonia.\n2. En la reflexión sobre el entorno local en Loma Verde, la respuesta del estudiante debe articular de forma lógica que, de manera análoga a los pactos de paz internacionales, los acuerdos comunitarios y los manuales de convivencia rural son las garantías que previenen que los disensos lógicos deriven en agresiones. Romper los compromisos comunitarios de linderos o el uso compartido de fuentes de agua desata microconflictos que destruyen el tejido social veredal, demostrando que la paz estable se fundamenta en el respeto irrestricto a los pactos concertados.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño:\n* Superior: interpreta y compara con alto rigor metodológico y lenguaje técnico las variables geopolíticas, antecedentes y detonantes de ambos conflictos mundiales, sustentando posturas críticas impecables frente al uso de la ciencia bélica y la vigencia de los tratados de paz en conexión con las realidades del entorno rural.\n* Alto: explica de forma correcta el origen y los hitos de las guerras mundiales, elabora la matriz cartográfica comparativa asociando los cambios de fronteras y argumenta la importancia de la diplomacia pacífica.\n* Básico: identifica las alianzas y los detonantes de los conflictos globales de manera descriptiva, pero presenta vacíos al trazar nexos causales entre Versalles y el ascenso de los totalitarismos agrarios o urbanos.\n* Bajo: confunde las alianzas de la Primera Guerra Mundial con las de la Segunda, o carece de capacidad argumentativa para explicar las causas de los conflictos fronterizos.\nInstrumentos de evaluación adoptados: rúbrica cualitativa para matrices cartográficas, lista de cotejo de debates escolares y portafolio escrito de análisis historiográfico.",
+      "recursos": "Copias analíticas de mapas políticos históricos (1914, 1919 y 1939), fragmentos de fuentes primarias de entreguerras, guías estructuradas para el taller de cartografía, pliegos de cartulina, marcadores y reglas de trazado.",
+      "referencias": "Información oficial extraída del documento \"Actual - Malla curricular - Ciencias sociales.xlsx\":\n* Estándares Básicos de Competencias (EBC): Analizo desde el punto de vista político, económico, social y cultural algunos de los hechos históricos mundiales sobresalientes del siglo XX.\n* EBC: Promuevo debates para discutir los resultados de mi investigación y relacionarlos con otros.\n* Derechos Básicos de Aprendizaje (DBA): DBA 5: Conflictos bélicos en las sociedades contemporáneas, sus causas, consecuencias e incidencia en la vida de los pueblos.\nFuentes bibliográficas complementarias de rigor académico:\n* Hobsbawm, E. (1995). Historia del siglo XX. Barcelona: Crítica.\n* Parker, R. A. C. (2012). El siglo XX: Europa 1918-1945. Madrid: Siglo XXI Editores.\n* Renouvin, P. (1990). La crisis europea y la Primera Guerra Mundial. Madrid: Akal.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje (DUA) aplicadas en el aula:\n* Frente a dificultades de comprensión abstracta o barreras de lectoescritura: provisión de mapas táctiles o cromáticos simplificados con flechas direccionales que indiquen los bloques bélicos, uso de resúmenes de fuentes escritos en lenguaje claro y apoyos visuales sobre las innovaciones de la ciencia bélica.\n* Para estudiantes con ritmo de aprendizaje avanzado o alta motivación: asignación de un análisis crítico escrito sobre el papel que desempeñó la diplomacia secreta en la firma del Pacto Ribbentrop-Molotov y sus implicaciones para la división de Europa oriental.\n* Diseño de trabajo cooperativo estructurado: conformación de equipos asignando de forma explícita roles de responsabilidad individualizada (cartógrafo técnico, analista de fuentes, moderador de tiempo, relator de conclusiones) para asegurar que todos participen de acuerdo con sus potencialidades.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La Primera Guerra Mundial emergió de contradicciones estructurales arraigadas en la competencia imperialista por mercados coloniales y la carrera de la paz armada.",
+        "El asesinato del archiduque Francisco Fernando en Sarajevo operó como el detonante coyuntural que activó la movilización automatizada de las alianzas secretas.",
+        "El Tratado de Versalles de 1919 estructuró una paz punitiva que asfixió la economía de Alemania, incubando resentimientos capitalizados por discursos totalitarios.",
+        "El nacionalismo radical y la doctrina expansionista del espacio vital nazi constituyeron los vectores ideológicos que impulsaron el rearme en el periodo de entreguerras.",
+        "La invasión militar de Alemania a Polonia en septiembre de 1939 destruyó el frágil orden de la Sociedad de Naciones, detonando la Segunda Guerra Mundial."
+      ],
+      "errores": [
+        "Creer que el magnicidio de Sarajevo fue la única causa real de la Primera Guerra Mundial: se debe precisar que el atentado fue solo el detonante de tensiones estructurales previas de carácter imperialista, comercial y armamentista.",
+        "Suponer que los bloques beligerantes de la Primera y la Segunda Guerra Mundial estaban integrados por las mismas potencias coloniales de forma idéntica: se debe aclarar que Italia cambió de bando político en 1915 y Japón combatió junto a los Aliados en la primera contienda y con el Eje en la segunda.",
+        "Considerar que el Tratado de Versalles resolvió con justicia y equidad las controversias de fronteras en Europa central: es indispensable explicar que sus condiciones humillantes actuaron como un puente de causalidad que estimuló el rearme totalitario.",
+        "Pensar que la Sociedad de Naciones poseía una fuerza militar soberana capaz de frenar las invasiones de Alemania e Italia en entreguerras: se debe reiterar que este organismo carecía de mecanismos coactivos directos, lo que causó su colapso material."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué diferencias sustantivas existían entre la conformación de bloques de la Triple Entente y la de la Triple Alianza antes de 1914?",
+          "a": "La Triple Entente se estructuró de forma gradual mediante pactos de asistencia defensiva entre Francia, Rusia y Gran Bretaña, respondiendo al crecimiento de la hegemonía alemana. La Triple Alianza vinculaba de forma previa a los imperios centrales (Alemania y Austro-Hungría) con Italia, buscando aislar diplomáticamente a Francia.",
+          "verdadero": null,
+          "justificacion": "Estas alianzas reflejaban el equilibrio inestable de poder que caracterizó a la paz armada europea a principios del siglo XX.",
+          "enunciado": "Análisis del tejido diplomático secreto que fragmentó el continente europeo a finales del siglo XIX.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera las cláusulas económicas impuestas a Alemania en el Tratado de Versalles desestabilizaron el orden de entreguerras?",
+          "a": "Obligaron a Alemania a pagar indemnizaciones hiperinflacionarias inviables que colapsaron su moneda, hundieron a la población en el desempleo crónico y minaron la legitimidad de la República de Weimar, abriendo paso a discursos totalitarios radicales.",
+          "verdadero": null,
+          "justificacion": "La asfixia financiera generada por las cláusulas punitivas impidió la consolidación de la estabilidad democrática y sembró revanchismos políticos.",
+          "enunciado": "Evaluación del impacto material de los acuerdos de paz firmados en París sobre las estructuras estatales vencidas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo justificaba ideológicamente el régimen nacionalsocialista su política de expansión territorial y anexión fronteriza en Europa central?",
+          "a": "La justificaba bajo la doctrina geopolítica del espacio vital (Lebensraum), argumentando que la raza aria requería la anexión de tierras agrícolas y productivas habitadas por pueblos eslavos en el este para asegurar la autosuficiencia de su población.",
+          "verdadero": null,
+          "justificacion": "Esta premisa ideológica transformó el expansionismo militar en un imperativo supuestamente biológico y natural de supervivencia estatal.",
+          "enunciado": "Estudio de las construcciones discursivas y las pseudociencias que validaron las agresiones armadas totalitarias en el siglo XX.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál fue el papel histórico de la península de los Balcanes en la configuración de la crisis que detonó la Gran Guerra en 1914?",
+          "a": "Funcionaba como una zona de agudas tensiones fronterizas donde colisionaban los intereses expansionistas del Imperio austrohúngaro, el nacionalismo paneslavista de Serbia y la influencia del Imperio ruso, configurando un polvorín geopolítico inestable.",
+          "verdadero": null,
+          "justificacion": "El cruce de reclamos identitarios e imperialistas en esta franja geográfica convirtió a un magnicidio local en un detonante de carácter global.",
+          "enunciado": "Litigios de fronteras e insurgencias étnicas en los márgenes de los imperios multiétnicos europeos en vísperas de la guerra.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué razones institucionales explican la parálisis e inoperancia de la Sociedad de Naciones ante las agresiones del Eje en la década de 1930?",
+          "a": "Carecía de un mecanismo de fuerza militar coercitiva propia para hacer cumplir sus resoluciones, sus decisiones requerían de una unanimidad asamblearia compleja y potencias clave como Estados Unidos nunca formalizaron su ingreso al organismo transnacional.",
+          "verdadero": null,
+          "justificacion": "El diseño de este organismo supeditó la seguridad colectiva a la diplomacia declarativa, desprovista de capacidad disuasoria real frente a regímenes militaristas.",
+          "enunciado": "Examen de las falencias del primer modelo de gobernanza multilateral global en el periodo de entreguerras.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Imperio de los Estados Unidos ingresó a la Primera Guerra Mundial de forma inmediata en 1914 tras el asesinato del heredero austrohúngaro en Sarajevo.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Estados Unidos mantuvo una estricta política de neutralidad inicial y aislamiento diplomático frente al conflicto de Europa, decidiendo su intervención militar tardía únicamente en 1917 tras la guerra submarina irrestricta y el incidente del telegrama Zimmermann.",
+          "enunciado": "Evolución cronológica y participación de los actores extraeuropeos en el curso de la Gran Guerra.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La invasión militar efectuada por las fuerzas de la Alemania nazi sobre territorio polaco el 1 de septiembre de 1939 operó como el detonante de la Segunda Guerra Mundial.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Este acto de agresión expansionista forzó a Francia y al Reino Unido a abandonar la política de apaciguamiento, activando los tratados defensivos que sostenían con Polonia y declarando formalmente la guerra a Berlín dos días después.",
+          "enunciado": "Análisis de las rupturas de las fronteras en Europa oriental y el estallido de la conflagración total.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El reino de Italia se mantuvo fiel y combatió de forma unificada dentro del bloque de la Triple Alianza junto a Alemania durante toda la Primera Guerra Mundial.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Aunque inicialmente formaba parte de la Triple Alianza, Italia se declaró neutral en 1914 y, tras la firma secreta del Tratado de Londres en 1915, ingresó formalmente al conflicto combatiendo a favor del bloque de los Aliados tras recibir promesas de anexiones territoriales.",
+          "enunciado": "Dinámicas del oportunismo diplomático y mutaciones en las coaliciones militares de la conflagración de 1914.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los avances científicos aplicados a la destrucción masiva, como las armas químicas y los gases asfixiantes, fueron empleados por primera vez durante la Segunda Guerra Mundial.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El uso a gran escala de gases químicos e industriales tóxicos (como el gas mostaza y el cloro) constituyó una de las características trágicas de la guerra de trincheras durante la Primera Guerra Mundial, marcando el nacimiento de la guerra química industrializada.",
+          "enunciado": "Evaluación del impacto de la ciencia y la tecnología industrial sobre las dinámicas de la destrucción masiva contemporánea.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El auge de los regímenes totalitarios en la Europa de entreguerras estuvo estrechamente vinculado al descontento social generado por las humillaciones de Versalles.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Los discursos ultranacionalistas del fascismo e Italia y el nazismo en Alemania capitalizaron políticamente el resentimiento colectivo popular, la ruina económica de la postguerra y la ineficacia de las democracias liberales para prometer un retorno a la grandeza imperial.",
+          "enunciado": "Estudio del colapso de las instituciones parlamentarias y el ascenso de las autocracias de masas en el siglo XX.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar una indagación en el entorno familiar sin usar internet: el estudiante dialogará con sus padres o abuelos acerca de si conocen relatos, películas o historias transmitidas oralmente sobre cómo las guerras mundiales afectaron el abastecimiento de mercancías o la economía de los pueblos colombianos en el siglo XX. El estudiante redactará en su cuaderno un informe de dos páginas describiendo las impresiones de sus familiares y elaborará una conclusión personal sobre por qué la paz internacional es valiosa para la tranquilidad del campo.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA SOBRE ANTECEDENTES Y DETONANTES DE LAS GUERRAS MUNDIALES\n\n## Marco histórico de la competencia imperialista global\nLa comprensión rigurosa de las conflagraciones bélicas que fracturaron el tejido social y geopolítico del planeta durante la primera mitad del siglo XX exige un examen analítico de carácter sistémico que trascienda la mera enumeración de batallas o efemérides diplomáticas coloniales. Los conflictos de 1914 y 1939 constituyeron la eclosión material de contradicciones estructurales arraigadas en la propia naturaleza del capitalismo industrializado y la expansión de las potencias eurocéntricas durante la segunda mitad del siglo XIX. El proceso de unificación de Alemania en 1871, bajo la égida prusiana de Otto von Bismarck, alteró radicalmente el equilibrio de poder diseñado en el Congreso de Viena de 1815. La fulgurante industrialización germana posicionó al nuevo imperio como una potencia económica y militar que rivalizaba de forma directa con la hegemonía naval y comercial de Gran Bretaña y los intereses históricos de Francia.\n\nEsta mutación del paisaje político europeo coincidió con el auge del imperialismo formalizado en la Conferencia de Berlín de 1884-1885, donde las naciones industrializadas procedieron al reparto cartográfico de África y a la delimitación de zonas de influencia exclusiva en Asia y Oceanía. Las potencias perseguían la captura de materias primas esenciales (carbón, hierro, caucho) para dinamizar sus matrices productivas y la consolidación de mercados cautivos que absorbieran sus excedentes de capital financiero. Hacia finales de la centuria, la saturación del espacio colonial usable generó una fricción permanente entre los imperios consolidados (Gran Bretaña y Francia) y las potencias emergentes desprovistas de colonias extensas (Alemania e Italia). La geopolítica global devino en un juego de suma cero, donde la expansión de una nación requería el menoscabo territorial de otra, configurando el escenario de la paz armada, un periodo de aparente calma donde los Estados estructuraron una febril carrera de armamentos e internalizaron la inevitabilidad de un enfrentamiento armado total.\n\n## Estructura dogmática y el sistema de alianzas secretas\nLa fisonomía jurídica y diplomática de la paz armada se articuló en torno a una densa red de tratados bilaterales y multilaterales de carácter secreto y eminentemente defensivo. El diseño original de Bismarck perseguía el aislamiento sistemático de Francia para evitar que esta reclamara las regiones de Alsacia y Lorena, perdidas en la guerra franco-prusiana de 1870. Para tal fin, consolidó la Triple Alianza en 1882, asociando al Imperio alemán con el Imperio austrohúngaro y el Reino de Italia. Sin embargo, la posterior destitución del canciller y el viraje agresivo de la política exterior guillermina (la Weltpolitik) empujaron a las restantes potencias a deponer sus rivalidades coloniales periféricas. Francia y el Imperio ruso suscribieron una alianza militar defensiva en 1894, la cual se complementó con la Entente Cordiale entre Francia y Gran Bretaña en 1904, dando nacimiento al bloque de la Triple Entente en 1907.\n\nEste sistema de alianzas contrapuestas eliminó la flexibilidad del concierto internacional, transformando los mecanismos de resolución pacífica de controversias en automatismos militares rígidos. Los tratados estipulaban que la movilización de tropas de uno de los miembros activaba de ipso facto el compromiso de asistencia armada de sus aliados. De este modo, la autonomía de las cancellerías fue supeditada a los planes de contingencia diseñados por los estados mayores de los ejércitos. Paralelamente, los discursos del nacionalismo radical operaron como el vector ideológico que legitimó la carrera armamentista ante las masas ciudadanas. El chovinismo, la xenofobia de Estado y el militarismo escolarizado moldearon una cultura colectiva que concebía el conflicto armado no como una tragedia humana, sino como un instrumento necesario de depuración nacional y consolidación de la grandeza patria, concentrando las mayores tensiones geopolíticas en la inestable península de los Balcanes.\n\n## Desglose analítico de los detonantes coyunturales\n\n### La Primera Guerra Mundial y el magnicidio de Sarajevo\nEl tránsito de las tensiones latentes a la conflagración abierta sobrevino a partir de un detonante coyuntural específico: el asesinato del archiduque Francisco Fernando, heredero del trono austrohúngaro, cometido en Sarajevo el 28 de junio de 1914 por Gavrilo Princip, un militante adscrito a la organización nacionalista serbia de la Mano Negra. Este suceso desató la denominada crisis de julio, un escenario de escalada diplomática donde los mecanismos de contención multilateral naufragaron ante la rigidez de las alianzas. El Imperio austrohúngaro, contando con el aval militar incondicional de Alemania (el \"cheque en blanco\"), presentó un ultimátum humillante a Serbia que lesionaba su soberanía jurídica. El rechazo parcial de los términos motivó la declaración de guerra austrohúngara a Belgrado el 28 de julio de 1914.\n\nA partir de ese hito cronológico, los planes de movilización militar clausuraron las vías de concertación política. El Imperio ruso ordenó el despliegue de sus ejércitos para amparar a su aliado eslavo; Alemania, aplicando de forma estricta el Plan Schlieffen, declaró la guerra a Rusia e invadió los territorios neutrales de Bélgica con el propósito de flanquear las defensas francesas. Esta agresión fronteriza compeló la inmediata entrada del Reino Unid en el conflicto. En el término de una semana, las raíces estructurales del imperialismo y la rigidez de los tratados diplomáticos secretos transformaron un magnicidio local balcánico en la Primera Guerra Mundial, un conflicto de desgaste caracterizado por la inmovilidad táctica de las trincheras y la aplicación sistemática del desarrollo científico industrializado con propósitos de destrucción masiva.\n\n### El Tratado de Versalles y el origen de la Segunda Guerra Mundial\nLa firma del armisticio en 1918 inauguró el periodo de entreguerras, un lapso de profunda fragilidad institucional signado por las falencias del Tratado de Versalles de 1919. Las potencias vencedoras, lideradas por el revanchismo del primer ministro francés Georges Clemenceau, optaron por la imposición de una paz punitiva que quebrantó la soberanía y la economía de Alemania. Cláusulas como el artículo 231 (que imputaba la responsabilidad moral exclusiva del conflicto al Estado alemán), el despojo de sus colonias, la pérdida de las regiones carboníferas del Sarre y la imposición de indemnizaciones monetarias hiperinflacionarias asfixiaron la viabilidad de la naciente República de Weimar, sumiendo a la nación en una crisis social estructural.\n\nEste escenario de humillación colectiva y ruina económica, exacerbado por el colapso financiero global de la Gran Depresión de 1929, constituyó el ecosistema que propició el ascenso de los movimientos totalitarios de masas: el fascismo en Italia con Benito Mussolini y el nacionalsocialismo en Alemania con Adolf Hitler. Estos regímenes sustituyeron la legalidad democrática por estructuras corporativas y autocráticas fundadas en el racismo de Estado, el irredentismo fronterizo y el rearme militar. La inoperancia de la Sociedad de Naciones para sancionar agresiones flagrantes (como la invasión japonesa a Manchuria o el expansionismo italiano) evidenció la quiebra del orden multilateral. El detonante definitivo de la Segunda Guerra Mundial aconteció el 1 de septiembre de 1939, cuando la Alemania nazi invadió Polonia tras suscribir el pacto de no agresión Ribbentrop-Molotov con la URSS, forzando a Gran Bretaña y Francia a declarar la guerra y dando inicio al mayor conflicto bélico de la historia humana.\n\n## Interconexión con la comunidad de Loma Verde y la realidad rural\nPara la comunidad educativa de la Institución Educativa San José de Loma Verde, ubicada en el municipio de Montería, el estudio crítico de las guerras mundiales, sus antecedentes estructurales y las dinámicas de ruptura de los tratados internacionales de paz reviste un inmenso valor pedagógico y ciudadano. A primera vista, los escenarios de las trincheras europeas o las agresiones fronterizas totalitarias del siglo XX podrían percibirse como fenómenos históricos abstractos y ajenos a la cotidianidad de las familias campesinas de las regiones periféricas de Colombia. No obstante, el análisis reflexivo de estos procesos institucionales devela que las causas que provocan el colapso del orden social —tales como la competencia desmedida por el control de recursos económicos vitales, la primacía de los discursos de odio intolerantes sobre la alteridad y la ineficacia de los pactos éticos de convivencia— guardan una estrecha correlación con las dinámicas de violencia y despojo territorial que históricamente han afectado al departamento de Córdoba.\n\nLa escuela rural, concebida como un escenario de transformación y un centro de interés que fomenta el pensamiento crítico y las narrativas transmedias, tiene el deber de deconstruir los relatos históricos que glorifican el desarrollo de la ciencia con fines bélicos y militares. Estudiar cómo la carrera armamentista industrializada sacrificó el bienestar social de las poblaciones para alimentar la destrucción masiva faculta a los estudiantes de Décimo grado para valorar la paz estable como un derecho humano inalienable y una condición material indispensable para la supervivencia comunitaria. Al contrastar la fragilidad del Tratado de Versalles con las deudas históricas y las complejidades de la construcción de paz en los territorios rurales colombianos, los jóvenes aprenden que los pactos y los manuales de convivencia local son herramientas que deben defenderse mediante argumentos lógicos y el reconocimiento recíproco, cimentando una ciudadanía democrática, autónoma y comprometida con el cuidado del entorno y la solución pacífica de las controversias sociales de su corregimiento.",
+      "lineatiempo": "1882: firma del tratado secreto de la Triple Alianza entre el Imperio alemán, el Imperio austrohúngaro y el Reino de Italia.\n1884: celebración de la Conferencia de Berlín para el reparto cartográfico colonial de los territorios de África.\n1907: consolidación del bloque político de la Triple Entente integrado por las naciones de Francia, Rusia y Gran Bretaña.\n1914: asesinato del archiduque Francisco Fernando en Sarajevo, operando como el detonante coyuntural de la Primera Guerra Mundial.\n1919: firma del Tratado de Versalles en París, imponiendo sanciones punitivas a Alemania e instituyendo la Sociedad de Naciones.\n1933: ascenso de Adolf Hitler a la cancillería de Alemania, marcando la instauración del régimen totalitario del nacionalsocialismo.\n1939: invasión de la Alemania nazi a Polonia, evento que operó como el detonante definitivo de la Segunda Guerra Mundial."
+    }
+  ]
+}

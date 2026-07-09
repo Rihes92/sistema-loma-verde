@@ -1,0 +1,120 @@
+{
+  "app": "loma_verde_banco",
+  "id": "banco-p10p2-dih-personas-001",
+  "grado": "Décimo",
+  "periodo": "Segundo Periodo",
+  "ejeIdx": "26",
+  "area": "Competencias Ciudadanas",
+  "asignatura": "Democracia y Paz",
+  "tema": "¿A quién protege el DIH? Personas protegidas y prohibiciones absolutas en el conflicto colombiano",
+  "docente": "Richard Miguel Hernández Sabié",
+  "creado": 1782957723071,
+  "resumen": {
+    "total": 10,
+    "abiertas": 5,
+    "fv": 5,
+    "sm": 0
+  },
+  "banco": [
+    {
+      "tipo": "abierta",
+      "q": "Explica con tus propias palabras qué es el principio de distinción en el DIH y por qué es considerado su norma más fundamental.",
+      "a": "El principio de distinción obliga a todos los actores armados a diferenciar en todo momento entre combatientes y población civil, y entre objetivos militares y bienes civiles. Solo los combatientes y los objetivos militares pueden ser atacados legítimamente. Es la norma más fundamental del DIH porque sin ella todo el sistema de protección se derrumba: si no existe distinción, cualquier persona o bien puede convertirse en blanco de la guerra, lo que genera sufrimiento masivo e indiscriminado sobre la población más vulnerable.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "¿En qué momento un combatiente deja de ser un objetivo militar legítimo y se convierte en una persona protegida por el DIH? Menciona al menos tres situaciones concretas.",
+      "a": "Un combatiente deja de ser un objetivo militar legítimo y pasa a ser una persona protegida cuando: 1) queda herido o enfermo y ya no puede combatir (queda hors de combat); 2) se rinde voluntariamente, deponiendo las armas y manifestando su intención de no seguir combatiendo; 3) es capturado por la parte adversaria y queda bajo su control. En todas estas situaciones, el combatiente adquiere el estatuto de prisionero de guerra o de herido protegido y debe ser tratado humanamente, sin que pueda ser torturado, ejecutado ni sometido a tratos degradantes.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "Analiza el fenómeno de los 'falsos positivos' en Colombia. ¿Por qué la JEP los clasifica como crímenes de guerra y no como simples faltas disciplinarias del Ejército?",
+      "a": "Los 'falsos positivos' fueron ejecuciones extrajudiciales de civiles colombianos que miembros del Ejército asesinaron deliberadamente y luego presentaron como guerrilleros muertos en combate para obtener beneficios. La JEP los clasifica como crímenes de guerra porque implican el asesinato deliberado de personas civiles —personas protegidas por el DIH bajo el principio de distinción—. Además, la escala y sistematicidad del fenómeno (al menos 6.402 víctimas entre 1988 y 2014) indica que no se trató de actos individuales aislados sino de una práctica institucional, lo que los eleva a la categoría de crímenes de sistema juzgables ante la JEP e incluso ante la Corte Penal Internacional.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "¿Qué diferencia existe entre el Derecho Internacional Humanitario y los Derechos Humanos en cuanto a su ámbito de aplicación, a quiénes obligan y qué situaciones regulan? Usa un ejemplo colombiano para ilustrar cada uno.",
+      "a": "Los Derechos Humanos son normas que protegen a las personas en todo tiempo y lugar; obligan principalmente a los Estados y son permanentes. Ejemplo colombiano: el derecho a la educación gratuita (Art. 67 CP) obliga al Estado en todo momento, incluso en tiempos de paz. El DIH, en cambio, solo se aplica durante situaciones de conflicto armado; obliga tanto a los Estados como a los grupos armados no estatales y regula la conducta bélica. Ejemplo colombiano: la obligación de no atacar a la población civil campesina durante operaciones militares en el norte de Caldas es una norma del DIH, no de los DDHH, porque solo aplica en el contexto del conflicto armado.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "abierta",
+      "q": "Imagina que eres un líder de la JAC de una vereda de Loma Verde y un grupo armado llega a la zona. Con base en lo aprendido sobre el DIH, ¿qué derechos puede invocar tu comunidad y ante qué instancias puede denunciar si se produce una violación?",
+      "a": "La comunidad puede invocar: el derecho a no ser desplazada forzadamente (Art. 17 del Protocolo Adicional II); el derecho a que sus cosechas y bienes de subsistencia no sean destruidos (Art. 14 PA II); el derecho a recibir asistencia humanitaria; y el derecho a que el personal de salud ejerza su labor sin ser amenazado. Ante una violación, puede denunciar ante: la Defensoría del Pueblo, la Fiscalía General de la Nación, el CICR, la JEP (si es parte del conflicto armado), la Unidad para las Víctimas, y organizaciones internacionales como Human Rights Watch o la CIDH si el Estado no actúa.",
+      "verdadero": null,
+      "justificacion": "",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "El DIH protege únicamente a la población civil durante los conflictos armados; los combatientes, una vez capturados, no tienen ningún derecho reconocido por el derecho internacional.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. El DIH protege tanto a la población civil como a los combatientes que han quedado fuera de combate (heridos, enfermos, capturados). El III Convenio de Ginebra de 1949 reconoce a los prisioneros de guerra el derecho a un trato humano y digno, a no ser torturados, a comunicarse con sus familias y a ser liberados al término de las hostilidades. La protección del combatiente capturado es tan antigua como el propio DIH moderno.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "Según el DIH, un hospital que es utilizado temporalmente por un grupo armado como puesto de mando pierde automáticamente e irreversiblemente su protección especial.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. Si bien el uso militar de un hospital puede hacer que pierda temporalmente su protección, el DIH exige que antes de atacarlo se haya advertido a quienes lo utilizan indebidamente (cuando las circunstancias lo permitan) y que se les haya dado un plazo razonable para cesar ese uso. Además, la pérdida de protección solo opera mientras dure el uso indebido; una vez cesa, el bien recupera su inmunidad. El principio de proporcionalidad también limita la respuesta permitida.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "La JEP fue creada para juzgar exclusivamente a los exintegrantes de las FARC-EP por los crímenes cometidos durante el conflicto armado colombiano.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. La JEP tiene competencia sobre todos los actores del conflicto armado colombiano que hayan cometido crímenes graves: miembros de las FARC-EP, agentes del Estado (militares y policías) y terceros civiles que hayan participado o financiado el conflicto. Algunos de sus macrocasos más relevantes —como el macrocaso 003 de 'falsos positivos'— investigan exclusivamente a miembros de la Fuerza Pública del Estado colombiano.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "El desplazamiento forzado de la población civil es una violación del DIH, independientemente del actor armado que lo cause (Estado o grupo armado no estatal).",
+      "a": "",
+      "verdadero": true,
+      "justificacion": "Verdadero. El artículo 17 del Protocolo Adicional II (1977) prohíbe expresamente ordenar el desplazamiento de la población civil por razones relacionadas con el conflicto armado, salvo en casos de necesidad militar imperiosa o para proteger a la propia población. Esta prohibición aplica tanto a las fuerzas armadas estatales como a los grupos armados no estatales. En Colombia, el desplazamiento forzado —con más de 8 millones de personas afectadas— es considerado el crimen de mayor escala del conflicto y es investigado por la JEP en varios de sus macrocasos.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    },
+    {
+      "tipo": "fv",
+      "q": "El emblema de la Cruz Roja solo puede ser utilizado por los médicos y enfermeros del Ejército; las organizaciones humanitarias civiles no tienen derecho a usarlo como señal de protección.",
+      "a": "",
+      "verdadero": false,
+      "justificacion": "Falso. El emblema de la Cruz Roja (o de la Media Luna Roja o del Cristal Rojo) puede ser utilizado tanto por el personal sanitario de las fuerzas armadas como por las sociedades nacionales de la Cruz Roja y de la Media Luna Roja, el CICR y, bajo ciertas condiciones, por personal médico civil que preste asistencia en zonas de conflicto. Su uso está regulado por los Convenios de Ginebra y sus Protocolos Adicionales, y su uso indebido constituye una violación grave del DIH.",
+      "enunciado": "",
+      "opciones": {},
+      "correcta": ""
+    }
+  ]
+}

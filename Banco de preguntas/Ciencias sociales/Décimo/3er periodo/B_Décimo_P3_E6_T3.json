@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T13:40:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 6: Conflictos bélicos globales del siglo XX y transformaciones fronterizas",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_dec10_p3_e6_dem_01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las dos guerras mundiales provocaron un colapso demográfico sin precedentes históricos en el continente europeo, afectando de forma asimétrica a la población masculina en edad productiva: explique las consecuencias sociales y económicas a mediano plazo que produjo este déficit poblacional en la reconfiguración del mercado laboral y en las estructuras familiares de la posguerra.",
+      "respuesta": "El déficit demográfico de población masculina joven obligó a las sociedades de posguerra a reconfigurar de manera estructural su mercado de trabajo, consolidando la incorporación masiva y definitiva de las mujeres en sectores industriales, comerciales y de gestión pública que antes les estaban vedados. Económicamente, esta alteración forzó procesos de automatización tecnológica y racionalización de la mano de obra disponible; socialmente, las estructuras familiares tradicionales se transformaron drásticamente debido a la emergencia de millones de hogares monoparentales jefaturados por mujeres viudas, impulsando transformaciones legales y culturales en favor de la autonomía civil y la emancipación femenina durante la segunda mitad del siglo XX.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Al finalizar la Segunda Guerra Mundial, la alteración de las fronteras políticas forzó el desplazamiento demográfico de más de doce millones de personas, principalmente de origen alemán en Europa Oriental: analice este fenómeno desde la perspectiva del desarraigo sociocultural y evalúe cómo las tensiones resultantes desafiaron la cohesión social de las naciones receptoras devastadas por el conflicto.",
+      "respuesta": "Los desplazamientos forzados masivos de posguerra generaron una profunda crisis humanitaria caracterizada por el desarraigo sociocultural, ya que millones de civiles perdieron sus patrimonios, lazos comunitarios y referentes territoriales de identidad al ser expulsados de sus regiones ancestrales. Desde la perspectiva de las naciones receptoras, que ya se encontraban devastadas materialmente y con graves crisis de desabastecimiento, la llegada de oleadas de refugiados agudizó la presión sobre la precaria infraestructura de vivienda, salud y empleo; esto desató tensiones sociales y brotes de xenofobia o rechazo interno, evidenciando que la reconfiguración de las fronteras políticas genera traumas de exclusión y fragmentación social difíciles de asimilar en el tejido cultural.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El trauma social y la violencia generalizada del Holocausto y de los bombardeos sistemáticos sobre centros urbanos durante las guerras mundiales transformaron los enfoques jurídicos globales: explique la relación existente entre estas catástrofes humanitarias y el surgimiento del derecho internacional de los Derechos Humanos a partir de 1945.",
+      "respuesta": "Existe una relación de causalidad directa: el horror y la escala de deshumanización alcanzados en eventos como el Holocausto demostraron que los marcos legales internos de los Estados soberanos eran insuficientes para proteger a sus propios ciudadanos frente al exterminio sistemático. Esta constatación forzó a la comunidad internacional a construir un sistema normativo transnacional que limitara el poder de los gobiernos; esto se materializó en la Declaración Universal de los Derechos Humanos de 1948 y en los Juicios de Núremberg, institucionalizando principios de justicia universal según los cuales los crímenes de lesa humanidad superan la soberanía estatal y deben ser perseguidos globalmente para salvaguardar la dignidad humana.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Durante la Primera Guerra Mundial, el uso de la propaganda estatal a gran escala modificó las pautas de comportamiento social y la percepción del enemigo en las poblaciones civiles de la retaguardia: argumente de qué manera esta manipulación ideológica sistemática debilitó los lazos de empatía transnacional y facilitó la prolongación del conflicto.",
+      "respuesta": "La propaganda estatal de guerra operó mediante la deshumanización deliberada del adversario, presentándolo en medios impresos y discursos como una amenaza existencial y bárbara contra la civilización y los valores nacionales. Al moldear esta perspectiva en la opinión pública, los gobiernos lograron canalizar el sufrimiento civil en forma de odio patriótico, lo que neutralizó las posturas pacifistas e internacionalistas de los movimientos obreros y sociales; esta pérdida colectiva de empatía transnacional facilitó que las sociedades civiles de la retaguardia aceptaran el racionamiento, el reclutamiento masivo y el sacrificio de millones de vidas en los frentes, asumiendo el desgaste bélico prolongado como un imperativo moral ineludible.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La desmovilización de millones de soldados al término de las conflagraciones mundiales provocó complejos fenómenos de inestabilidad psicológica colectiva, conocidos históricamente como la 'neurosis de guerra' o trastorno de estrés postraumático: analice cómo afectó esta secuela clínica y social la reintegración comunitaria de los veteranos y de qué forma influyó en la emergencia de discursos políticos radicales o resentimientos sociales en el periodo de entreguerras.",
+      "respuesta": "El retorno de millones de combatientes con graves secuelas psíquicas desbordó las capacidades de los sistemas de salud pública y alteró la convivencia familiar, ya que la sociedad civil de la retaguardia no comprendía los traumas del combate industrializado de trincheras. Al encontrarse con economías en crisis y desempleo generalizado, los veteranos experimentaron un profundo sentimiento de alienación, abandono y resentimiento frente a las instituciones democráticas que los enviaron a combatir; este descontento e inestabilidad social fueron aprovechados por movimientos fascistas y ultranacionalistas durante el periodo de entreguerras, instrumentalizando el trauma y la camaradería militar de los veteranos para canalizarlos hacia discursos radicales que prometían orden, revancha y la destrucción del orden liberal vigente.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_06",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La gran epidemia de influenza de 1918, conocida históricamente como la 'gripe española', constituyó un fenómeno biológico aislado cuyos índices de mortalidad y propagación global no tuvieron ninguna relación con las dinámicas de transporte militar o las condiciones de desabastecimiento social derivadas de la Primera Guerra Mundial.",
+      "correcta": false,
+      "justificacion": "la propagación letal de la influenza de 1918 estuvo íntimamente ligada al contexto bélico de la Primera Guerra Mundial; el hacinamiento de tropas en los frentes de combate y trincheras, las deficiencias nutricionales de las poblaciones civiles por el bloqueo económico, y el desplazamiento masivo de millones de soldados en barcos y trenes para la desmovilización funcionaron como vectores aceleradores que expandieron el virus de manera global, multiplicando la mortalidad demográfica en un tejido social previamente debilitado."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_07",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El concepto de 'guerra total' aplicado en los conflictos mundiales implicó la subordinación completa de las estructuras industriales civiles hacia la producción bélica: esto provocó que las poblaciones de la retaguardia experimentaran racionamientos estrictos de alimentos y bienes de consumo básico.",
+      "correcta": true,
+      "justificacion": "la lógica de la guerra total borró la línea divisoria entre el frente militar y la retaguardia civil; para sostener el consumo logístico de millones de combatientes, los Estados intervinieron las economías nacionales imponiendo cartillas de racionamiento, priorizando las materias primas para armamento y forzando a las sociedades civiles a cambiar sus pautas de consumo cotidiano, lo que provocó una generalizada escasez social de alimentos, carbón y vestuario."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_08",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "Los movimientos pacifistas y de objeción de conciencia liderados por intelectuales y sindicatos obreros durante la Primera Guerra Mundial contaron con el pleno respaldo normativo de las potencias europeas: esto garantizó que los ciudadanos disidentes ejercieran su libertad de expresión sin censura ni persecución penal.",
+      "correcta": false,
+      "justificacion": "lejos de amparar la disidencia, los Estados en guerra implementaron leyes de excepción coercitivas que tipificaron el pacifismo, la objeción de conciencia y las huelgas laborales como delitos de alta traición o actos de sabotaje antipatriótico; agencias oficiales clausuraron imprentas, censuraron la correspondencia y persiguieron penalmente a líderes obreros e intelectuales con el fin de blindar la cohesión ideológica interna y evitar el colapso del esfuerzo militar."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_09",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "El fenómeno demográfico del 'Baby Boom' surgido en varios países occidentales tras la Segunda Guerra Mundial representó una respuesta de recuperación poblacional facilitada por la estabilidad económica de la posguerra y el retorno de los combatientes a la vida civil.",
+      "correcta": true,
+      "justificacion": "tras años de privaciones materiales, postergación de proyectos familiares y una altísima mortalidad bélica, el cese de las hostilidades en 1945 y la posterior reactivación económica del periodo de posguerra generaron un clima de confianza social; esto propició un incremento drástico y sostenido en las tasas de natalidad que reconfiguró la pirámide demográfica occidental en las décadas subsiguientes."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_10",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La destrucción masiva de las redes de infraestructura urbana, sanitaria y de transporte en Europa y Japón al finalizar la Segunda Guerra Mundial no alteró las tasas de mortalidad civil de la posguerra: esto se debió a que la asistencia humanitaria de emergencia neutralizó los riesgos epidemiológicos.",
+      "correcta": false,
+      "justificacion": "a pesar de los esfuerzos de agencias de asistencia como la UNRRA, el colapso absoluto de los sistemas de alcantarillado, el agua potable, las redes de energía y los hospitales en las ciudades bombardeadas provocó que las tasas de mortalidad civil continuaran elevadas meses después de firmada la paz; la falta de salubridad y la escasez de medicamentos detonaron brotes de tifus, tuberculosis y desnutrición severa, demostrando que los efectos demográficos destructivos de la guerra trascienden el fin formal de los combates."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_11",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento social",
+      "contexto": "El historiador Eric Hobsbawm, en su análisis sobre el siglo XX, acuñó el término 'guerra total' para describir los conflictos globales donde la distinción entre combatientes y no combatientes desaparece, debido a que toda la población civil pasa a estar implicada en el esfuerzo de producción o a sufrir los efectos de la destrucción bélica industrializada.",
+      "enunciado": "Considerando esta definición, ¿cuál de las siguientes situaciones describe una consecuencia social directa derivada de la implementación de la 'guerra total' en las ciudades europeas durante la Segunda Guerra Mundial?",
+      "opciones": [
+        "El traslado exclusivo de las batallas a territorios insulares deshabitados",
+        "La conversión de las poblaciones civiles en objetivos estratégicos de bombardeos para quebrar la moral nacional",
+        "La descentralización de la producción industrial en favor de cooperativas artesanales autónomas",
+        "La inmunidad jurídica de las zonas residenciales frente a los bloqueos de suministros alimenticios"
+      ],
+      "correcta": 1,
+      "justificacion": "en el marco de la guerra total, la capacidad de resistencia de una nación dependía del sostenimiento productivo y psicológico de su sociedad civil; por ello, potencias de ambos bloques justificaron los bombardeos estratégicos sistemáticos sobre metrópolis densamente pobladas para destruir fábricas y desmoralizar a la población, convirtiendo la retaguardia en un espacio de altísima mortalidad demográfica."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_12",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las pérdidas demográficas de la Primera Guerra Mundial alteraron significativamente el equilibrio de género en la estructura poblacional de Europa Occidental, generando un fenómeno demográfico denominado históricamente como el de las 'generaciones sobrantes' o el exceso de población femenina en los censos de la década de 1920.",
+      "enunciado": "Desde una perspectiva sistémica, ¿qué impacto social y económico de largo plazo provocó esta asimetría demográfica de género dentro de las sociedades occidentales del periodo de entreguerras?",
+      "opciones": [
+        "El retorno obligatorio de las mujeres a los roles tradicionales del ámbito doméstico preindustrial",
+        "La quiebra definitiva del sector agrícola debido a la falta absoluta de mano de obra en el campo",
+        "La inserción irreversible de las mujeres en el mercado laboral y el fortalecimiento de las demandas de igualdad de derechos civiles y políticos",
+        "La prohibición legal del matrimonio civil para proteger los presupuestos de seguridad social del Estado"
+      ],
+      "correcta": 2,
+      "justificacion": "la muerte de millones de hombres jóvenes obligó a las mujeres a mantener su rol activo en la economía formal de la posguerra para garantizar el sustento de las industrias y de sus propios hogares; este cambio fáctico e irreversible minó los discursos tradicionales de reclusión doméstica y sirvió como catalizador para que los movimientos feministas y sufragistas exigieran con éxito el voto y el reconocimiento de derechos civiles."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_13",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento social",
+      "contexto": "La firma de los armisticios no significó el cese inmediato de los sufrimientos poblacionales. En 1945, el mapa de Europa Central sufrió una reconfiguración radical mediante los acuerdos de las potencias aliadas, fijando nuevas fronteras como la línea Oder-Neisse y autorizando la transferencia de colectivos humanos nacionales.",
+      "enunciado": "¿Qué consecuencia demográfica de escala masiva se produjo de forma directa debido a esta mutación fronteriza forzada por los acuerdos de la posguerra?",
+      "opciones": [
+        "La migración espontánea y voluntaria de comunidades campesinas hacia las llanuras siberianas",
+        "El desplazamiento forzado y la expulsión de millones de civiles de etnia alemana desde los territorios anexados por Polonia, Checoslovaquia y la URSS",
+        "La asimilación cultural inmediata y pacífica de las minorías fronterizas bajo control multilateral",
+        "La prohibición internacional de los flujos de transporte ferroviario de pasajeros en Europa Oriental"
+      ],
+      "correcta": 1,
+      "justificacion": "para evitar futuras disputas étnicas y consolidar geográficamente las nuevas esferas de influencia acordadas en Yalta y Potsdam, los gobiernos de Europa Oriental, respaldados por la Unión Soviética, ejecutaron la expulsión masiva de aproximadamente doce millones de alemanes étnicos hacia las zonas de ocupación aliada, configurando uno de los desplazamientos forzados más trágicos y populosos del siglo XX."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_14",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El exterminio industrializado ejecutado por el régimen nacionalsocialista, conocido como el Holocausto, provocó la aniquilación demográfica de cerca de seis millones de judíos, además de comunidades de gitanos, personas con discapacidad y disidentes políticos, desestructurando por completo el mapa cultural y comunitario de Europa Oriental.",
+      "enunciado": "Analizando este hecho desde sus secuelas globales de largo plazo, ¿qué proceso geopolítico y demográfico en el Medio Oriente se vio acelerado de manera directa debido al trauma social del Holocausto y la crisis de los refugiados judíos sobrevivientes en la posguerra?",
+      "opciones": [
+        "La disolución del Imperio Otomano y el reparto colonial franco-británico del Golfo Pérsico",
+        "El aumento de los flujos migratorios judíos hacia Palestina y el posterior respaldo internacional para la fundación del Estado de Israel",
+        "La asimilación de la población judía sobreviviente dentro de las estructuras comunistas de la Unión Soviética",
+        "La firma de un tratado de libre comercio incondicional entre las potencias occidentales y la Liga Árabe"
+      ],
+      "correcta": 1,
+      "justificacion": "el impacto emocional y moral del descubrimiento de los campos de exterminio nazis generó una ola de simpatía y urgencia internacional respecto a la situación de los cientos de miles de judíos sobrevivientes desplazados; esto fortaleció el proyecto sionista, intensificó la migración hacia el territorio de Palestina y propició el aval de la ONU en 1947 para la partición del territorio, acelerando la creación de Israel."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_15",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento social",
+      "contexto": "Durante la Primera Guerra Mundial, las economías de las potencias europeas se volcaron de manera exclusiva al sostenimiento logístico militar, provocando una grave crisis de desabastecimiento interno en el mercado civil. En el Imperio ruso, esta situación generó largas filas de racionamiento de pan, inflación descontrolada y protestas populares lideradas por mujeres y obreros en Petrogrado en 1917.",
+      "enunciado": "Este escenario de desgaste social y descontento demográfico derivado de la prolongación de la guerra funcionó como el detonante estructural para:",
+      "opciones": [
+        "La consolidación de la monarquía absoluta de los Romanov bajo el amparo de la Iglesia Ortodoxa",
+        "El estallido de la Revolución rusa, que provocó el colapso del zarismo y la posterior salida de Rusia del conflicto",
+        "La firma inmediata de un tratado de integración económica comercial con el Imperio alemán",
+        "El inicio de una reforma agraria de libre mercado inspirada en los modelos productivos estadounidenses"
+      ],
+      "correcta": 1,
+      "justificacion": "las privaciones demográficas y sociales impuestas por la ineficacia del gobierno zarista en la Primera Guerra Mundial socavaron por completo la legitimidad del régimen; el hambre y el cansancio de las tropas y civiles estallaron en las revueltas de 1917, provocando la abdicación del Zar y abriendo el camino para la revolución bolchevique que transformó la estructura política global."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_16",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El fin de las hostilidades globales trajo consigo el reto de reintegrar a la vida civil a millones de combatientes desmovilizados. En naciones occidentales como Estados Unidos, el gobierno promulgó en 1944 la ley conocida como el 'G.I. Bill' (Servicemen's Readjustment Act) para mitigar el impacto del retorno masivo de veteranos al mercado laboral.",
+      "enunciado": "Alineando este hecho con las consecuencias de la posguerra, ¿de qué manera esta política social transformó la estructura educativa y socioeconómica de esa generación?",
+      "opciones": [
+        "Impidiendo que los veteranos de guerra compitieran por empleos industriales de manufactura privada",
+        "Subvencionando la educación superior, técnica y el acceso a créditos de vivienda, expandiendo la clase media e impulsando el desarrollo profesional",
+        "Obligando a los excombatientes a enlistarse de forma indefinida en las fuerzas de reserva agraria",
+        "Deportando a los veteranos de origen extranjero para proteger los salarios de los trabajadores nativos"
+      ],
+      "correcta": 1,
+      "justificacion": "el G.I. Bill fue un mecanismo de ingeniería social diseñado para evitar las crisis de desempleo que históricamente seguían a las grandes desmovilizaciones; al financiar los estudios universitarios y técnicos de millones de veteranos, el Estado no solo retrasó su ingreso masivo al mercado de trabajo, sino que incrementó la cualificación científica y profesional de la población, dinamizando la economía de posguerra."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_17",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento social",
+      "contexto": "Las consecuencias demográficas de las guerras mundiales no se limitaron a las potencias combatientes metropolitanas; los imperios coloniales europeos reclutaron de manera forzada o incentivada a millones de soldados y trabajadores en África y Asia (como el Ejército de la India Británica o los tiradores senegaleses franceses) para combatir en los frentes del conflicto.",
+      "enunciado": "Este contacto directo de las poblaciones colonizadas con las dinámicas destructivas y las contradicciones ideológicas de las metrópolis europeas actuó socialmente como un antecedente clave para:",
+      "opciones": [
+        "La sumisión voluntaria y definitiva de las colonias a las estructuras jurídicas de París y Londres",
+        "El fortalecimiento de los movimientos de descolonización e independencia en la posguerra, al erosionarse el mito de la superioridad civilizatoria europea",
+        "La asimilación lingüística absoluta e incondicional de los pueblos africanos al modelo cultural occidental",
+        "La disolución de las identidades nacionales locales en favor de un modelo de ciudadanía transatlántica"
+      ],
+      "correcta": 1,
+      "justificacion": "al participar activamente en la defensa de las metrópolis que los oprimían y constatar la vulnerabilidad y la destrucción material de Europa, las tropas coloniales cuestionaron el mito de la superioridad blanca y civilizatoria; de regreso a sus territorios de origen, los veteranos y las élites locales utilizaron los discursos de libertad y autodeterminación aprendidos para organizar los procesos de emancipación nacional."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_18",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "La destrucción masiva de viviendas debida a los bombardeos aéreos sistemáticos durante la Segunda Guerra Mundial dejó a decenas de millones de personas sin hogar en el continente europeo, transformando los paisajes urbanos en campos de escombros e inaugurando una prolongada crisis habitacional y de refugiados sin precedentes.",
+      "enunciado": "Frente a este colapso social y de infraestructura urbana, ¿qué estrategia de planificación estatal e internacional fue priorizada en la posguerra para reactivar las economías y reconstruir el tejido habitacional en Europa Occidental?",
+      "opciones": [
+        "El abandono definitivo de los centros urbanos y la ruralización de la población sobreviviente",
+        "La implementación del Plan Marshall financiado por Estados Unidos para la reconstrucción material e industrial",
+        "La entrega de la soberanía urbana a corporaciones mercantiles privadas de origen asiático",
+        "La prohibición de la inversión pública en la edificación de viviendas de interés social"
+      ],
+      "correcta": 1,
+      "justificacion": "la escala de la destrucción material exigió una intervención económica de magnitudes inéditas; el Plan Marshall no solo buscó frenar la expansión del comunismo soviético, sino proveer el capital y los recursos tecnológicos necesarios para reconstruir las ciudades, reactivar las industrias y estabilizar las condiciones de vida de las poblaciones civiles devastadas."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_19",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento social",
+      "contexto": "En el año 1946, en un escenario mundial marcado por el desarraigo de millones de niños huérfanos, desnutrición generalizada y la desestructuración de los servicios sanitarios locales debido a las secuelas de la Segunda Guerra Mundial, la recién fundada Organización de las Naciones Unidas (ONU) tomó la determinación de institucionalizar una agencia especializada de asistencia de emergencia.",
+      "enunciado": "¿Qué organismo de alcance global nació directamente en este contexto con el propósito inicial de proveer alimentación, atención médica y amparo social urgente a las infancias víctimas de la guerra?",
+      "opciones": [
+        "La Organización Mundial del Comercio (OMC)",
+        "El Fondo de las Naciones Unidas para la Infancia (UNICEF)",
+        "La Organización Internacional del Trabajo (OIT)",
+        "El Alto Comisionado de las Naciones Unidas para los Refugiados (ACNUR)"
+      ],
+      "correcta": 1,
+      "justificacion": "el UNICEF (Fondo Internacional de Emergencia de las Naciones Unidas para la Infancia) fue creado de forma específica en diciembre de 1946 para atender de manera prioritaria a los niños de Europa y Japón que sufrían las consecuencias demográficas y sanitarias de la posguerra, convirtiéndose posteriormente en una agencia permanente de protección de los derechos de la niñez a nivel global."
+    },
+    {
+      "id": "lv_dec10_p3_e6_dem_20",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Consecuencias demográficas y sociales de las conflagraciones mundiales",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Las experiencias traumáticas colectivas de la guerra de trincheras en el primer conflicto mundial y la posterior industrialización de la muerte en el segundo generaron una profunda crisis existencial en la intelectualidad y el arte del siglo XX, provocando la pérdida de confianza en la idea decimonónica del progreso indefinido guiado por la razón.",
+      "enunciado": "Esta secuela sociocultural e ideológica se manifestó en el plano filosófico y artístico a través del surgimiento de corrientes de vanguardia orientadas a:",
+      "opciones": [
+        "Exaltar los valores tradicionales de las monarquías absolutas agrarias",
+        "Cuestionar los valores de la modernidad burguesa y explorar el absurdo, la angustia y el existencialismo",
+        "Fomentar el realismo académico neoclásico como único modelo de representación estética",
+        "Aislar los procesos creativos de los sucesos políticos e históricos de la época"
+      ],
+      "correcta": 1,
+      "justificacion": "el impacto psicológico y social de la mortandad masiva tecnológica destruyó el optimismo ilustrado que creía que la ciencia y la razón llevarían necesariamente a la mejora de la humanidad; filósofos y artistas procesaron este trauma mediante movimientos como el dadaísmo, el surrealismo y el existencialismo, evidenciando el quiebre espiritual de una sociedad confrontada con su propia capacidad de autodestrucción."
+    }
+  ]
+}

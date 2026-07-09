@@ -1,0 +1,220 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T11:56:25Z",
+  "planeadores": [
+    {
+      "id": "p10p2-mecanismos-001",
+      "creado": 1781867785,
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": 4,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "4",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Mecanismos constitucionales de amparo de los DD. HH.: acción de tutela, acciones populares y de cumplimiento",
+      "unidad": "Eje 4: Multiculturalidad, alteridad y amparo constitucional",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Compara la aplicabilidad y alcance de los mecanismos de protección de derechos (acción de tutela frente a acciones populares o de cumplimiento) .\n* Argumenta la necesidad ética y jurídica de rechazar las formas de discriminación o segregación observables en el entorno.\nSer:* Adopta una postura respetuosa ante las diferentes identidades y visiones del mundo.",
+      "competencias": "* Interpretación y análisis de perspectivas.\n\n* Pensamiento social.",
+      "contenidos": "* La pluralidad étnica y cultural como riqueza comunitaria .\n* Origen y consecuencias de las formas de discriminación y exclusión social hoy.\n* Mecanismos constitucionales de amparo de los DD. HH.: acción de tutela, acciones populares y de cumplimiento.",
+      "objetivo": "Comparar la aplicabilidad, naturaleza y alcance jurídico de los mecanismos constitucionales de amparo (acción de tutela, acciones populares y de cumplimiento) mediante el análisis sistémico de casos reales y del entorno rural, con el propósito de fundamentar el ejercicio autónomo de una ciudadanía activa, ética y crítica frente a la defensa de la dignidad humana y los derechos colectivos en la comunidad.",
+      "pregunta": "¿Cómo transforman los mecanismos de amparo constitucional la realidad social de las comunidades rurales en Montería frente a la aparente distancia de las instituciones estatales?",
+      "explora": "Conversatorio inicial a partir de una situación hipotética: se presenta el caso de un puesto de salud rural que no cuenta con medicamentos esenciales para atender a la población de Loma Verde. El docente pregunta a los estudiantes qué harían para exigir este derecho. Posteriormente, se realiza una actividad corta de emparejamiento visual en el tablero, asociando tres conceptos básicos (derecho individual, derecho colectivo, deber del funcionario) con situaciones cotidianas del entorno escolar.",
+      "glosario": [
+        {
+          "t": "acción de tutela",
+          "d": "mecanismo preferente y sumario establecido en el artículo 86 de la Constitución para reclamar ante los jueces la protección inmediata de los derechos fundamentales cuando estos resulten vulnerados o amenazados por la acción u omisión de cualquier autoridad pública o de particulares."
+        },
+        {
+          "t": "acciones populares",
+          "d": "medios procesales destinados a la protección de los derechos e intereses colectivos, tales como el patrimonio público, el espacio, la seguridad, la salubridad públicas y el medio ambiente sano, orientados a evitar el daño contingente, hacer cesar el peligro o restituir las cosas a su estado anterior."
+        },
+        {
+          "t": "acción de cumplimiento",
+          "d": "mecanismo constitucional que permite a toda persona acudir ante la jurisdicción contencioso administrativa para hacer efectivo el cumplimiento de una ley o de un acto administrativo emanado de una autoridad que se muestra renuente a acatarlo."
+        },
+        {
+          "t": "derechos fundamentales",
+          "d": "prerrogativas inherentes a la dignidad humana que gozan de una protección constitucional reforzada y cuya aplicación es inmediata, constituyendo el núcleo ético y jurídico del ordenamiento social."
+        },
+        {
+          "t": "derechos colectivos",
+          "d": "intereses supraindividuales que pertenecen de forma difusa a un grupo o a la comunidad entera, indivisibles en su goce y cuyo amparo constitucional requiere de procedimientos procesales específicos como las acciones populares."
+        },
+        {
+          "t": "perjuicio irremediable",
+          "d": "daño inminente, grave y de difícil reparación que justifica la procedencia excepcional de la acción de tutela como mecanismo transitorio, incluso cuando existan otros medios de defensa judicial ordinarios."
+        },
+        {
+          "t": "estado social de derecho",
+          "d": "modelo político organizativo adoptado por Colombia en 1991 que fundamenta la estructura estatal en el respeto de la dignidad humana, el trabajo, la solidaridad y la prevalencia del interés general, garantizando derechos reales y efectivos."
+        },
+        {
+          "t": "subsidiaridad",
+          "d": "principio procesal que determina que la acción de tutela solo procede cuando el afectado no dispone de otro medio de defensa judicial apto, salvo que se use de forma transitoria para evitar un perjuicio irremediable."
+        },
+        {
+          "t": "interés colectivo",
+          "d": "conjunto de necesidades y aspiraciones compartidas por el cuerpo social que la normatividad tutela para asegurar la convivencia, la sostenibilidad y la transparencia institucional."
+        },
+        {
+          "t": "legitimidad en la causa",
+          "d": "calidad jurídica que faculta a una persona, ya sea a título individual o como miembro de una colectividad, para actuar válidamente como demandante o demandado dentro de un proceso judicial de amparo."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La tutela y el amparo inmediato de la dignidad",
+          "txt": "La acción de tutela representa la mayor innovación jurídica de la Constitución de 1991. Concebida para la protección inmediata de los derechos fundamentales, su naturaleza es preferente y sumaria, lo que significa que los jueces deben darle prelación sobre cualquier otro asunto y resolverla en un término perentorio de diez días hábiles. No requiere formalidades técnicas ni el acompañamiento obligatorio de un abogado, lo que democratiza el acceso a la justicia. Opera bajo el principio de subsidiaridad: no reemplaza las vías judiciales comunes, sino que interviene ante la inexistencia de estas o para impedir un perjuicio irreparable en la esfera del ciudadano común.",
+          "pausa": "¿Por qué se afirma que la acción de tutela democratizó el acceso a la administración de justicia en las zonas rurales colombianas?",
+          "resp": "Porque elimina las barreras económicas y procedimentales complejas, permitiendo que cualquier persona, sin importar su nivel de escolaridad o recursos para pagar un abogado, radique de manera directa una solicitud de amparo ante cualquier juez de la república."
+        },
+        {
+          "tit": "Las acciones populares y la defensa del entorno común",
+          "txt": "A diferencia de la tutela, que resguarda el núcleo básico del individuo, las acciones populares defienden intereses colectivos arraigados en el bienestar general de las comunidades. Reguladas por la Ley 472 de 1998, buscan prevenir daños, detener amenazas o restaurar derechos vinculados al medio ambiente sano, la moralidad administrativa, el espacio público y la seguridad ciudadana. Tienen un carácter preventivo y restitutorio. En el ámbito de las regiones rurales, las acciones populares adquieren un protagonismo inmenso al convertirse en la herramienta idónea para exigir la mitigación de pasivos ambientales generados por actividades extractivas, el mantenimiento de vías de acceso indispensables o la preservación de cuencas de agua comunitarias.",
+          "pausa": "¿Cuál es la distinción fundamental entre el objeto de protección de una tutela y el de una acción popular?",
+          "resp": "La tutela protege derechos de naturaleza individual e inmediata vinculados directamente a la dignidad de la persona, mientras que la acción popular ampara derechos de carácter supraindividual y difuso que afectan las condiciones de bienestar de toda una colectividad o comunidad."
+        },
+        {
+          "tit": "La acción de cumplimiento y la obediencia institucional",
+          "txt": "La acción de cumplimiento encuentra su asiento constitucional en el artículo 87 y su desarrollo normativo en la Ley 393 de 1997. Su finalidad fundamental no es debatir una controversia de derechos o reparar daños ya causados, sino asegurar la vigencia material de la ley y de los actos administrativos. Cuando un funcionario o una entidad del Estado se muestra renuente a cumplir una obligación expresa, clara y exigible consignada en una norma con fuerza de ley o en un acto administrativo, el ciudadano puede interponer esta acción. Exige como requisito de procedibilidad que se haya requerido previamente al funcionario renuente, otorgando un marco procesal ágil para combatir la ineficacia administrativa del aparato burocrático.",
+          "pausa": "Si un alcalde se niega a pavimentar una vía a pesar de existir un acuerdo municipal previo que lo ordena de forma explícita, ¿cuál es el mecanismo preciso para accionar?",
+          "resp": "El mecanismo idóneo es la acción de cumplimiento, ya que existe un acto administrativo previo y específico que impone un mandato claro, concreto y exigible a la autoridad local, la cual ha mostrado renuencia frente a su ejecución."
+        }
+      ],
+      "talleres": "Instrucciones para el taller de estructuración interactivo: los estudiantes se organizarán en equipos de cuatro integrantes. Recibirán un pliego de papel periódico y fichas con descripciones de problemáticas sociales específicas. Deberán construir un cuadro matriz comparativo que responda a los siguientes criterios de análisis de forma rigurosa:\n1. Nombre del mecanismo constitucional aplicable.\n2. Tipo de derechos que protege (individuales, colectivos o eficacia normativa).\n3. Término legal establecido para su resolución.\n4. Autoridad judicial competente ante la cual se interpone.\n5. Requisitos previos o de procedibilidad exigidos.\nCada equipo expondrá su matriz justificando de manera analítica la selección de cada mecanismo frente a la problemática planteada.",
+      "transfer": "Actividad de transferencia teórico-práctica:\n1. Análisis de caso: se presenta a los estudiantes un caso documentado donde una empresa agroindustrial vierte pesticidas en un arroyo que abastece el acueducto veredal de una comunidad rural, generando brotes en la piel de varios niños y afectando la pesca artesanal de los habitantes. Los estudiantes deben identificar de forma argumentada qué acciones constitucionales concurrentes proceden, delimitando quiénes serían los legitimados por activa y qué pretensiones específicas se deben formular ante los jueces.\n2. Reflexión del entorno local: los estudiantes realizarán un diagnóstico participativo sobre las problemáticas más apremiantes de su corregimiento o vereda en relación con los servicios públicos, las vías de comunicación y el medio ambiente, redactando un bosquejo estructurado de una posible acción constitucional para mitigar dicha vulneración.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia:\n1. Frente al análisis de caso mixto, coexisten dos vías constitucionales diferenciadas pero complementarias: por un lado, procede la acción de tutela como mecanismo preferente para proteger los derechos fundamentales a la salud, a la vida y a la integridad física de los niños afectados directamente por los vertimientos químicos. Por otro lado, es plenamente viable la interposición de una acción popular para amparar los derechos colectivos al medio ambiente sano, a la seguridad y salubridad públicas, y al equilibrio ecológico de la comunidad entera. Los legitimados por activa para la tutela son los padres de los menores en ejercicio de su representación legal; para la acción popular, cualquier habitante de la comunidad puede interponerla en defensa del interés colectivo.\n2. En el bosquejo del entorno local, si la problemática es el abandono crónico de la infraestructura de alcantarillado veredal, la respuesta modelo debe estructurar formalmente las pretensiones bajo la lógica de una acción popular, argumentando la afectación a la salubridad pública y aportando indicios claros como actas comunitarias o registros fotográficos de las aguas residuales expuestas.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño:\n* Superior: diferencia con absoluta precisión conceptual la naturaleza, términos, autoridades y procedencia de la tutela, las acciones populares y de cumplimiento, formulando soluciones jurídicas perfectamente sustentadas ante problemas del contexto rural.\n* Alto: clasifica adecuadamente los mecanismos de amparo y asocia las problemáticas con la acción constitucional correspondiente, aportando argumentos válidos con una redacción clara.\n* Básico: identifica los mecanismos de protección constitucional de forma general, pero presenta dificultades conceptuales al determinar los requisitos de procedibilidad o los términos de resolución de cada uno.\n* Bajo: confunde las funciones de los mecanismos de amparo o no logra estructurar diferencias básicas entre los derechos individuales y colectivos.\nInstrumentos de evaluación seleccionados: rúbrica de evaluación de la matriz comparativa, lista de cotejo de la argumentación en el estudio de caso y portafolio de evidencias de aprendizaje escrito.",
+      "recursos": "Texto de la Constitución Política de Colombia de 1991, copias impresas de los decretos y leyes reguladoras (Decreto 2591 de 1991, Ley 472 de 1998, Ley 393 de 1997), guías de casos didácticos estructurados, pliegos de papel, marcadores de colores y la malla curricular de Ciencias Sociales como soporte directivo.",
+      "referencias": "Ministerio de Educación Nacional (2004). Estándares Básicos de Competencias en Ciencias Sociales. Bogotá: MEN. Ministerio de Educación Nacional (2016). Derechos Básicos de Aprendizaje de Ciencias Sociales (Grado 10º). Bogotá: MEN. Quinche Ramírez, M. F. (2022). El derecho constitucional colombiano de la post-constitución de 1991. Bogotá: Editorial Universidad del Rosario. Cepeda Espinosa, M. J. (2015). Los derechos fundamentales en Colombia: evolución y hermenéutica constitucional. Bogotá: Temis. Corte Constitucional de Colombia, Sentencia T-406 de 1992 (M.P. Ciro Angarita Barón) sobre los fundamentos del Estado social de derecho y los derechos fundamentales.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje:\n* Frente a dificultades de comprensión o de lectoescritura: se proveerán esquemas visuales simplificados de los procesos judiciales, flujogramas de colores diferenciados para cada mecanismo y audios cortos explicativos de los conceptos del glosario.\n* Para estudiantes con ritmo de aprendizaje avanzado: se asignará el análisis complementario de jurisprudencia real de la Corte Constitucional (sentencias de unificación SU) vinculadas a la protección de territorios campesinos y consultas previas.\n* Trabajo cooperativo formativo: conformación de grupos heterogéneos asignando roles explícitos (relator, sintetizador, gestor de tiempo, dinamizador) para asegurar la participación equitativa y la corresponsabilidad en el desarrollo de la matriz comparativa.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La Constitución de 1991 transformó la cultura jurídica colombiana al descentralizar el amparo normativo e instituir acciones judiciales ágiles al alcance de toda la ciudadanía.",
+        "La acción de tutela actúa como un escudo inmediato de protección ante la vulneración o amenaza inminente de los derechos fundamentales de las personas.",
+        "Las acciones populares canalizan las demandas colectivas para salvaguardar el patrimonio común, el medio ambiente, la seguridad y la salubridad de los territorios.",
+        "La acción de cumplimiento constituye un control ciudadano sobre la eficiencia del Estado, exigiendo el acatamiento real de leyes y actos administrativos vigentes.",
+        "El dominio de estos mecanismos consolida el ejercicio de una ciudadanía activa en los contextos rurales, reduciendo las brechas institucionales históricas."
+      ],
+      "errores": [
+        "Considerar que la acción de tutela es procedente para resolver disputas meramente comerciales o de linderos entre particulares: se debe aclarar que su fin exclusivo es el amparo de derechos fundamentales cuando no existan otros medios idóneos de defensa judicial.",
+        "Creer que las acciones populares otorgan indemnizaciones de carácter económico directo a cada individuo de la comunidad: se debe precisar que estas acciones buscan la protección y restitución del derecho colectivo, habiéndose eliminado los incentivos económicos mediante reformas legales.",
+        "Suponer que la acción de cumplimiento sirve para controvertir la validez de una ley o de un acto administrativo: es necesario explicar que su único propósito es exigir la ejecución material de una norma clara y preexistente, no discutir su legalidad.",
+        "Pensar que para radicar una acción de tutela ante un juez se requiere obligatoriamente contratar los servicios de un abogado titulado: se debe reiterar que la tutela se caracteriza por la informalidad y la universalidad, permitiendo el amparo directo."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Bajo qué condiciones específicas se considera procedente la acción de tutela de forma transitoria aun cuando existan mecanismos ordinarios en la justicia común?",
+          "a": "Procede de forma transitoria cuando se demuestra la configuración inminente de un perjuicio irremediable, el cual debe ser grave, requerir medidas urgentes y ser impostergable, afectando directamente derechos fundamentales.",
+          "verdadero": null,
+          "justificacion": "El principio de subsidiaridad cede excepcionalmente para evitar que la lentitud de los procesos ordinarios cause una afectación irreversible a la dignidad humana.",
+          "enunciado": "Un ciudadano padece una enfermedad catastrófica y su entidad prestadora de salud se niega a suministrarle el medicamento vital.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la función del requisito de procedibilidad exigido en la acción de cumplimiento de acuerdo con la normatividad colombiana?",
+          "a": "El requisito consiste en demostrar que el demandante requirió previamente y por escrito a la autoridad renuente el cumplimiento de la obligación, y esta se ratificó en su incumplimiento o guardó silencio durante los diez días siguientes.",
+          "verdadero": null,
+          "justificacion": "Busca dar una oportunidad inicial a la administración pública para corregir su omisión por la vía directa antes de activar el aparato judicial del Estado.",
+          "enunciado": "Una asociación comunitaria pretende interponer una acción de cumplimiento contra una secretaría de educación municipal.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué tipo de derechos e intereses colectivos pueden ser defendidos mediante el ejercicio de las acciones populares reguladas por la Ley 472 de 1998?",
+          "a": "Derechos relacionados con el medio ambiente sano, la moralidad administrativa, el espacio público, el patrimonio público, la seguridad y salubridad públicas, la libre competencia económica y la prevención de desastres.",
+          "verdadero": null,
+          "justificacion": "La ley agrupa en las acciones populares aquellos intereses difusos que pertenecen a la comunidad y que no pueden ser fragmentados individualmente.",
+          "enunciado": "Una comunidad rural observa cómo una empresa arroja escombros de forma sistemática sobre las márgenes de una fuente hídrica.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo opera el término de resolución judicial en el trámite de una acción de tutela y qué implicaciones tiene para el juez su inobservancia?",
+          "a": "El juez dispone de un término perentorio e improrrogable de diez días hábiles para resolver la solicitud en primera instancia. Su incumplimiento genera sanciones disciplinarias y eventuales responsabilidades penales.",
+          "verdadero": null,
+          "justificacion": "La celeridad es un principio medular de la tutela para garantizar que el amparo de los derechos fundamentales sea oportuno y eficaz ante amenazas graves.",
+          "enunciado": "Un juzgado recibe un volumen muy elevado de demandas ordinarias en una semana determinada.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera el concepto de Estado social de derecho justifica la existencia de mecanismos de amparo preferentes dentro de la Constitución de 1991?",
+          "a": "Sustenta que el Estado no debe limitarse a proclamar derechos formales en el papel, sino que tiene la obligación ética y legal de proveer herramientas judiciales expeditas que remuevan obstáculos y materialicen la igualdad.",
+          "verdadero": null,
+          "justificacion": "El modelo social de derecho vincula el poder público con la efectividad de los principios y derechos constitucionales en la vida diaria de los asociados.",
+          "enunciado": "Análisis del paso de la Constitución de 1886 a la Constitución de 1991.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La acción de tutela puede ser interpuesta verbalmente ante el juez de la república si el solicitante no sabe escribir o se encuentra en una situación de urgencia extrema.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "El Decreto 2591 de 1991 estipula que, en atención al principio de informalidad y para garantizar el acceso efectivo a la justicia, la tutela puede presentarse de forma verbal cuando el afectado se encuentre en circunstancias de indefensión o analfabetismo.",
+          "enunciado": "Un habitante de una zona rural dispersa que no domina la escritura formal necesita amparo médico inmediato.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las acciones populares exigen obligatoriamente demostrar que ya se causó un daño económico o material perjudicial a un miembro particular de la sociedad para que puedan prosperar.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las acciones populares poseen una naturaleza esencialmente preventiva y restitutoria; por ende, basta con demostrar la existencia de una amenaza o peligro contingente sobre el derecho colectivo, sin requerir que el daño ya se haya consumado.",
+          "enunciado": "Evaluación del carácter preventivo de las acciones colectivas en el régimen legal colombiano.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La acción de cumplimiento es el mecanismo constitucional idóneo para solicitar de forma directa la indemnización económica por los perjuicios ocasionados por un accidente vial.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La acción de cumplimiento busca exclusivamente la materialización de mandatos contenidos en leyes o actos administrativos ante funcionarios renuentes, no la declaración de responsabilidades contractuales o extracontractuales ni la liquidación de perjuicios monetarios.",
+          "enunciado": "Un particular busca el pago de indemnizaciones tras un siniestro vial con un vehículo oficial.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Cualquier juez de la república, sin importar su especialidad (civil, penal, laboral), tiene la competencia para conocer y resolver en primera instancia una acción de tutela.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "La Constitución y sus decretos reglamentarios establecen una competencia generalizada y preferente, convirtiendo a todos los jueces en jueces constitucionales cuando conocen de una tutela, asegurando la cobertura en todo el territorio nacional.",
+          "enunciado": "Distribución de competencias judiciales para el trámite preferente de los derechos fundamentales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los derechos colectivos protegidos mediante acciones populares son equivalentes y se tramitan bajo el mismo procedimiento expedito de diez días que caracteriza a la acción de tutela.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las acciones populares tienen un trámite procesal regulado por la Ley 472 de 1998, el cual incluye etapas de pruebas, traslados y alegatos, siendo mucho más extenso que el término sumario de diez días hábiles fijado de manera estricta para la tutela.",
+          "enunciado": "Comparación procesal de los términos de resolución entre los distintos mecanismos constitucionales.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar un ejercicio de observación del entorno comunitario: el estudiante dialogará con los líderes de la junta de acción comunal o con sus familiares adultos para identificar una problemática de carácter general que afecte a la vereda (vías en mal estado, falta de alumbrado público o manejo de basuras). Escribirá en su cuaderno un informe detallado que describa la situación, indique a qué autoridad local le corresponde atenderla y sugiera razonadamente cuál de los mecanismos constitucionales estudiados se podría emplear para buscar una solución.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA SOBRE LOS MECANISMOS DE AMPARO\n\n## Marco histórico e institucional de la Constitución de 1991\nLa Constitución Política de Colombia de 1991 representó una profunda transformación institucional y axiológica en la historia jurídica del país. El tránsito desde el modelo de la Constitución de 1886, fundado en un Estado de derecho centralizado y confesional, hacia un Estado social de derecho conllevó situar la dignidad humana y la efectividad de los derechos en el centro de la actividad estatal. En este nuevo ecosistema normativo, la consagración formal de los derechos fundamentales y colectivos habría sido inocua sin el diseño paralelo de dispositivos judiciales ágiles, preferentes e informales destinados a su protección real y material.\n\n## Concepto y dogmática de los mecanismos constitucionales\nLos mecanismos constitucionales de amparo se erigen como verdaderas garantías procesales objetivas. Su configuración responde a la necesidad de descentralizar la defensa de la Constitución, entregando a los ciudadanos herramientas directas para controlar la arbitrariedad del poder público y de los particulares con posiciones de supremacía.\n\nLa acción de tutela, positivada en el artículo 86 de la carta política, constituye una acción de naturaleza subsidiaria, preferente y sumaria. Su dogmática se fundamenta en la protección de los derechos fundamentales cuando no existan medios de defensa ordinarios idóneos, o cuando se use como mecanismo transitorio para conjurar un perjuicio irremediable. La tutela rompe con los formalismos tradicionales del derecho procesal civil: puede ser interpuesta por cualquier persona, no exige rigorismos técnicos ni postulación mediante abogado, y compele a los jueces a dictar un fallo de obligatorio cumplimiento en un término estricto de diez días.\n\nPor otra parte, las acciones populares, consagradas en el artículo 88 superior y reguladas mediante la Ley 472 de 1998, operan en la dimensión de los intereses supraindividuales. Defienden los denominados derechos de tercera generación (derechos colectivos), cuyo goce no es divisible ni exclusivo de un individuo, sino difuso en el cuerpo social. Su finalidad es eminentemente preventiva y restitutoria: busca precaver la ocurrencia de daños ambientales, defender la moralidad administrativa y velar por la seguridad pública.\n\nFinalmente, la acción de cumplimiento, prescrita en el artículo 87 de la Constitución y desarrollada por la Ley 393 de 1997, complementa este engranaje exigiendo la eficacia de la función administrativa. No dirime controversias de derechos, sino que combate la renuencia de las autoridades públicas frente al acatamiento de mandatos imperativos expresados en leyes y actos administrativos, consolidando el imperio de la legalidad.\n\n## Conexión con el contexto rural actual y la comunidad de Loma Verde\nEn los espacios rurales, caracterizados históricamente por asimetrías socioeconómicas y una percepción de lejanía institucional, el conocimiento y la apropiación de estos mecanismos constitucionales se transforman en un vector de emancipación ciudadana. La defensa del agua como bien común, el acceso a servicios de salud dignos en corregimientos periféricos y la exigencia de una infraestructura educativa mínima encuentran en la tutela y en las acciones populares canales pacíficos, técnicos y vinculantes para obligar al aparato estatal a materializar las promesas de equidad e inclusión consignadas en el pacto constitucional de 1991.",
+      "lineatiempo": "1991: promulgación de la Constitución Política de Colombia e institución de la acción de tutela y las acciones populares.\n1991: expedición del Decreto 2591 de 1991, el cual reglamenta el trámite y procedimiento de la acción de tutela.\n1992: emisión de la Sentencia T-406 de 1992 por la Corte Constitucional, fijando la doctrina del Estado social de derecho y la aplicación inmediata de los derechos fundamentales.\n1997: sanción de la Ley 393 de 1997, encargada de regular los alcances y requisitos de procedibilidad de la acción de cumplimiento.\n1998: sanción de la Ley 472 de 1998, la cual dota de un procedimiento judicial específico e integral a las acciones populares y de grupo en Colombia.\n2010: expedición de la Ley 1425 de 2010, mediante la cual se derogan los incentivos económicos que se otorgaban originalmente a los demandantes en las acciones populares."
+    }
+  ]
+}

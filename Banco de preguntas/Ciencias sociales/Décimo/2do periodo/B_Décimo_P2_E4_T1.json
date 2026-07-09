@@ -1,0 +1,242 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-16T00:00:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Segundo Periodo",
+    "unidad": "Eje 4: Multiculturalidad, alteridad y amparo constitucional",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv1750082401aa1",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué estableció el Artículo 7 de la Constitución de 1991 sobre la diversidad étnica y cultural, y por qué fue un cambio radical frente a las constituciones anteriores?",
+      "respuesta": "El Artículo 7 declara que 'el Estado reconoce y protege la diversidad étnica y cultural de la Nación colombiana'. Fue radical porque las constituciones anteriores —especialmente la de 1886— promovían la homogeneización cultural: una sola lengua, una sola religión y una identidad nacional hispano-mestiza. Los pueblos indígenas y afrocolombianos eran tratados como ciudadanos de segunda clase. El Artículo 7 reconoce que esa diversidad es una riqueza a proteger, lo que implicó derechos concretos: territorios, lenguas propias, educación intercultural bilingüe y mecanismos especiales de participación.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750082401aa2",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Describe los cinco grupos étnicos reconocidos constitucionalmente en Colombia, indicando dónde se ubican y una característica cultural distintiva de cada uno.",
+      "respuesta": "1) Pueblos indígenas (87 pueblos, 4,4% de la población): en todo el país, con mayor concentración en el Cauca, La Guajira y el Amazonas. Los Wayuu son los más numerosos. Característica: más de 65 lenguas propias. 2) Afrocolombianos (4,6 millones): principalmente en el Pacífico, Caribe y Urabá. Característica: música, gastronomía y espiritualidades de raíz africana. 3) Raizales: en San Andrés; hablan creole anglófono. 4) Palenqueros: en San Basilio de Palenque; hablan el único criollo de base española del mundo. 5) Rom (gitanos): en varias ciudades; hablan romanés y tienen tradiciones nómadas propias.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750082401aa3",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Cómo refleja el vallenato la mezcla de culturas que caracteriza a Colombia? ¿Qué elemento de cada cultura incorpora?",
+      "respuesta": "El vallenato combina tres instrumentos de origen completamente distinto: la gaita (instrumento de viento de origen indígena chibcha del Caribe colombiano), el tambor (de origen africano traído con los esclavos durante la Colonia) y el acordeón (de origen europeo, específicamente alemán, llegado con inmigrantes en el siglo XIX). La combinación de estos tres elementos creó un género completamente nuevo y colombiano que no existía en ninguna de las tres culturas originarias. Fue declarado Patrimonio Inmaterial de la Humanidad por la UNESCO en 2015.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750082401aa4",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "¿Por qué el Paisaje Cultural Cafetero fue declarado Patrimonio de la Humanidad por la UNESCO en 2011? ¿Qué elementos culturales valora esa declaración?",
+      "respuesta": "El Paisaje Cultural Cafetero fue declarado Patrimonio de la Humanidad como 'paisaje cultural' porque combina excepcionalmente una identidad cultural viva con un paisaje natural transformado. La UNESCO valoró: la arquitectura del bahareque, la estructura de pequeñas propiedades familiares cafeteras, las tradiciones culinarias, los jardines domésticos, la arquitectura urbana de los pueblos cafeteros y la relación cotidiana de las familias con la planta del café. No es solo un paisaje natural sino una forma de vida cultural única en el mundo.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750082401aa5",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "¿Qué elementos de la identidad cultural de Loma Verde tienen raíces en diferentes tradiciones étnicas (indígena, africana, europea)? Da tres ejemplos concretos.",
+      "respuesta": "1) La arepa: alimento central de la dieta cafetera con origen indígena prehispánico; es el maíz procesado que los pueblos indígenas consumían antes de la conquista. 2) El chocolate de mesa del desayuno: tiene origen mesoamericano (mayas y aztecas); llegó a Colombia con los españoles. 3) Las plantas medicinales del jardín casero: muchas tienen nombres y usos de origen indígena (altamisa, poleo, ruda) que las familias campesinas transmiten de generación en generación como patrimonio etnobotánico de origen prehispánico.",
+      "sugerida": true
+    },
+    {
+      "id": "lv1750082401fv1",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El Artículo 7 de la Constitución de 1991 reconoce y protege la diversidad étnica y cultural de la Nación colombiana.",
+      "correcta": true,
+      "justificacion": "Verdadero. El Artículo 7 establece que 'el Estado reconoce y protege la diversidad étnica y cultural de la Nación colombiana'. Este artículo, junto con los artículos 8, 10, 68 y 70, forma el marco constitucional de los derechos culturales, completamente nuevo respecto a la Constitución de 1886."
+    },
+    {
+      "id": "lv1750082401fv2",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "El pueblo palenquero de San Basilio de Palenque habla el único idioma criollo de base española del mundo, declarado Patrimonio Inmaterial por la UNESCO.",
+      "correcta": true,
+      "justificacion": "Verdadero. El palenquero es la única lengua criolla de base española del mundo, hablada en San Basilio de Palenque (Bolívar). La UNESCO declaró la expresión cultural de San Basilio Patrimonio Inmaterial en 2005. Este pueblo fue fundado por esclavos cimarrones en el siglo XVII y es considerado el primer pueblo libre de América."
+    },
+    {
+      "id": "lv1750082401fv3",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "",
+      "enunciado": "Los Wayuu son el pueblo indígena más numeroso de Colombia, con más de 380.000 personas ubicadas principalmente en La Guajira.",
+      "correcta": true,
+      "justificacion": "Verdadero. Los Wayuu son el pueblo indígena más numeroso de Colombia, con aproximadamente 380.000 personas en el territorio nacional (principalmente en La Guajira, en la frontera con Venezuela). Son conocidos por sus mochilas tejidas, su sistema matrilineal, su lengua wayuunaiki y su resistencia histórica."
+    },
+    {
+      "id": "lv1750082401fv4",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La gastronomía colombiana (arepa, chocolate, sancocho) es de origen exclusivamente español, introducida durante la Colonia.",
+      "correcta": false,
+      "justificacion": "Falso. La gastronomía colombiana es el resultado del mestizaje de múltiples tradiciones. La arepa tiene origen indígena prehispánico. El chocolate tiene origen mesoamericano (mayas y aztecas). El sancocho combina técnicas de cocción indígenas y africanas con ingredientes europeos. La cocina del Pacífico colombiano es de raíz afrocolombiana. Prácticamente nada en la mesa colombiana es de una sola cultura."
+    },
+    {
+      "id": "lv1750082401fv5",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El Paisaje Cultural Cafetero fue declarado Patrimonio de la Humanidad por la UNESCO en 2011 por sus características naturales, no por su valor cultural.",
+      "correcta": false,
+      "justificacion": "Falso. El Paisaje Cultural Cafetero fue declarado Patrimonio de la Humanidad como 'paisaje cultural': la UNESCO reconoció el valor de la cultura viva asociada al café (arquitectura, gastronomía, tradiciones, relación con la tierra) tanto como el paisaje natural. No es una reserva natural sino una categoría que reconoce la interacción entre cultura humana y paisaje natural."
+    },
+    {
+      "id": "lv1750082401sm1",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "Colombia es uno de los países más biodiversos del mundo en términos de diversidad biológica y cultural.",
+      "enunciado": "¿Cuántos pueblos indígenas reconocidos tiene Colombia?",
+      "opciones": ["Más de 20 pueblos.", "Más de 50 pueblos.", "Más de 87 pueblos.", "Más de 200 pueblos."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia reconoce más de 87 pueblos indígenas con sus propias lenguas y territorios. Con más de 65 lenguas distintas (de las cuales muchas están en peligro de extinción), Colombia es uno de los países más lingüísticamente diversos de América Latina."
+    },
+    {
+      "id": "lv1750082401sm2",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "Los pueblos indígenas de Colombia tienen diversidad de ubicaciones, lenguas y tradiciones.",
+      "enunciado": "¿Cuál es el pueblo indígena más numeroso de Colombia?",
+      "opciones": ["El pueblo Nasa.", "El pueblo Emberá.", "El pueblo Wayuu.", "El pueblo Zenú."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Los Wayuu son el pueblo indígena más numeroso de Colombia, con aproximadamente 380.000 personas reconocidas, ubicadas principalmente en La Guajira. Son conocidos por sus mochilas tejidas, su sistema de organización matrilineal y su lengua wayuunaiki."
+    },
+    {
+      "id": "lv1750082401sm3",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Colombia tiene expresiones lingüísticas únicas en el mundo.",
+      "enunciado": "¿Cuál es la única lengua criolla de base española del mundo, hablada en San Basilio de Palenque?",
+      "opciones": ["El creole.", "El palenquero.", "El romanés.", "El nasa yuwe."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El palenquero es la única lengua criolla de base española del mundo, hablada exclusivamente en San Basilio de Palenque (Bolívar). Se originó en el siglo XVII cuando los esclavos cimarrones fugados mezclaron el español con lenguas africanas para crear un código de comunicación propio."
+    },
+    {
+      "id": "lv1750082401sm4",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El vallenato es considerado una expresión perfecta del mestizaje cultural colombiano.",
+      "enunciado": "¿Qué tres elementos musicales de diferente origen étnico se combinan en el vallenato?",
+      "opciones": ["Guitarra española, tambor africano y flauta andina.", "Gaita indígena, tambor africano y acordeón europeo.", "Guitarra española, maracas indígenas y saxofón europeo.", "Chirimía africana, flauta indígena y violín europeo."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. El vallenato combina la gaita (instrumento indígena chibcha), el tambor (africano) y el acordeón (europeo de origen alemán). Esta mezcla de tres culturas en un solo género musical es la metáfora perfecta del mestizaje colombiano: algo nuevo y propio que surge de combinaciones que nadie planeó."
+    },
+    {
+      "id": "lv1750082401sm5",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "El conocimiento etnobotánico de los pueblos indígenas colombianos es un patrimonio científico de alcance global.",
+      "enunciado": "¿Cuántas plantas con usos medicinales han documentado las comunidades indígenas y afrocolombianas de Colombia?",
+      "opciones": ["Más de 500 plantas.", "Más de 2.000 plantas.", "Más de 6.000 plantas.", "Más de 15.000 plantas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Colombia tiene más de 6.000 plantas con usos medicinales documentados en las comunidades indígenas y afrocolombianas, uno de los patrimonios etnobotánicos más ricos del mundo. Muchos de esos conocimientos son la base de medicamentos modernos, como la quinina (derivada de la quina andina) que fue el primer tratamiento contra la malaria."
+    },
+    {
+      "id": "lv1750082401sm6",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El Paisaje Cultural Cafetero recibió un reconocimiento internacional que valora tanto su dimensión cultural como paisajística.",
+      "enunciado": "¿En qué año declaró la UNESCO el Paisaje Cultural Cafetero como Patrimonio de la Humanidad?",
+      "opciones": ["2005.", "2008.", "2011.", "2015."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. En 2011, la UNESCO declaró el Paisaje Cultural Cafetero de Colombia como Patrimonio de la Humanidad, reconociendo la cultura viva asociada al café en los departamentos de Caldas, Quindío, Risaralda y parte del norte del Valle del Cauca. Fue el primer Paisaje Cultural declarado en Colombia."
+    },
+    {
+      "id": "lv1750082401sm7",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "Las comunidades afrocolombianas tienen presencia significativa en todo el país, con mayor concentración en el Pacífico y el Caribe.",
+      "enunciado": "¿Cuántos afrocolombianos aproximadamente se reconocen como tal en Colombia?",
+      "opciones": ["Aproximadamente 500.000 personas.", "Aproximadamente 2 millones de personas.", "Aproximadamente 4,6 millones de personas.", "Aproximadamente 10 millones de personas."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. Según el DANE (2018), aproximadamente 4,6 millones de colombianos se reconocen como afrocolombianos, negros, raizales o palenqueros, siendo la minoría étnica más numerosa del país. Tienen mayor concentración en el Pacífico, el Caribe y el Urabá."
+    },
+    {
+      "id": "lv1750082401sm8",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "La gastronomía colombiana es el resultado de siglos de mestizaje entre tradiciones culinarias de distintos orígenes.",
+      "enunciado": "¿Cuál de los siguientes alimentos tiene origen indígena prehispánico y es central en la dieta cafetera colombiana?",
+      "opciones": ["El arroz.", "El trigo.", "La arepa.", "La papa frita."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. La arepa tiene origen indígena prehispánico: es el maíz procesado (molido y cocinado en forma de disco) que los pueblos indígenas de la región andina y caribeña consumían antes de la llegada de los españoles. El arroz y el trigo son de origen asiático y europeo respectivamente; la papa frita es una preparación moderna de la papa (indígena andina)."
+    },
+    {
+      "id": "lv1750082401sm9",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "La Constitución de 1991 desarrolla los derechos culturales en varios artículos específicos.",
+      "enunciado": "¿Qué artículo de la Constitución de 1991 garantiza el derecho de los pueblos étnicos a una educación que respete y desarrolle su identidad cultural?",
+      "opciones": ["Artículo 7.", "Artículo 10.", "Artículo 68.", "Artículo 79."],
+      "correcta": 2,
+      "justificacion": "La opción C es correcta. El Artículo 68 de la Constitución establece que los integrantes de los grupos étnicos tienen derecho a una formación que respete y desarrolle su identidad cultural. Este artículo es la base constitucional para la etnoeducación y la educación intercultural bilingüe en las comunidades indígenas y afrocolombianas."
+    },
+    {
+      "id": "lv1750082401sm10",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "10° · P2 · Eje 4 · La pluralidad étnica y cultural como riqueza comunitaria",
+      "competencia": "Pensamiento social",
+      "contexto": "Los grupos étnicos colombianos tienen características lingüísticas y culturales propias que los distinguen entre sí.",
+      "enunciado": "¿Cuál de los siguientes grupos étnicos de Colombia tiene su propia lengua llamada creole (criollo anglófono)?",
+      "opciones": ["Los palenqueros de San Basilio.", "Los raizales del archipiélago de San Andrés.", "Los rom (gitanos).", "Los Wayuu de La Guajira."],
+      "correcta": 1,
+      "justificacion": "La opción B es correcta. Los raizales del archipiélago de San Andrés, Providencia y Santa Catalina hablan el creole, una lengua criolla anglófona que combina inglés con elementos africanos. Los palenqueros hablan el palenquero (criollo de base española); los rom hablan romanés; los Wayuu hablan wayuunaiki."
+    }
+  ]
+}

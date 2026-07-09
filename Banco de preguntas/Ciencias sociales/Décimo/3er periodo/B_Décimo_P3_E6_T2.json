@@ -1,0 +1,292 @@
+{
+  "app": "loma_verde_banco_preguntas",
+  "exportado": "2026-06-19T13:35:00.000Z",
+  "origen": {
+    "grado": "Décimo",
+    "periodo": "Tercer periodo",
+    "unidad": "Eje 6: Conflictos bélicos globales del siglo XX y transformaciones fronterizas",
+    "docente": "Richard Miguel Hernández Sabié"
+  },
+  "preguntas": [
+    {
+      "id": "lv_dec10_p3_e6_tec_01",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La Primera Guerra Mundial introdujo el uso a gran escala de armas químicas como el gas cloro y el gas mostaza, desarrollados mediante la cooperación de comunidades científicas e industriales: explique cómo esta aplicación de la ciencia alteró los límites éticos tradicionales de la guerra y analice su impacto sobre la vulnerabilidad de la población civil y militar de la época.",
+      "respuesta": "La introducción de armas químicas alteró profundamente los límites éticos de la guerra al transformar el combate tradicional en un proceso industrializado de exterminio invisible e indiscriminado. Científicos de ambos bandos subordinaron la ética humanitaria al pragmatismo militar, justificando el desarrollo de agentes destinados a causar sufrimientos atroces o asfixia masiva; la vulnerabilidad de las tropas y de las poblaciones cercanas a los frentes aumentó exponencialmente, ya que estas armas no dependían de la puntería, sino de factores ambientales como la dirección del viento, lo que hacía inútiles las tácticas convencionales de trinchera y forzó la creación de equipos de protección especializados, sentando el precedente para la posterior regulación internacional de armas no convencionales.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_02",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El Proyecto Manhattan reunió a las mentes científicas más destacadas de las potencias aliadas con el fin de desarrollar la primera arma nuclear antes que la Alemania nazi: asuma una postura crítica analizando las tensiones existentes entre la búsqueda de la seguridad colectiva aliada y las consecuencias ético-humanitarias globales derivadas del lanzamiento de las bombas atómicas sobre Hiroshima y Nagasaki en 1945.",
+      "respuesta": "El Proyecto Manhattan ejemplifica la encrucijada donde el avance científico es instrumentalizado con fines de destrucción masiva. Desde la perspectiva aliada, el desarrollo de la bomba atómica se justificaba bajo la premisa de la seguridad colectiva y la necesidad de forzar una rápida rendición del Imperio del Japón para evitar una costosa invasión terrestre; sin embargo, al priorizar este objetivo militar, se omitieron las devastadoras consecuencias ético-humanitarias inmediatas y de largo plazo sobre cientos de miles de civiles no combatientes, quienes sufrieron los efectos térmicos, de radiación y mutaciones genéticas, inaugurando de forma contradictoria una era de disuasión nuclear basada en el miedo a la aniquilación mutua total.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_03",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Durante la Segunda Guerra Mundial, el perfeccionamiento del motor de combustión interna y la aerodinámica permitieron el desarrollo de bombarderos de largo alcance y cohetes como las bombas guiadas V-1 y V-2 alemanas: explique detalladamente cómo este avance tecnológico modificó el concepto geográfico de 'frente de batalla' y afectó de forma directa la infraestructura urbana de las naciones en conflicto.",
+      "respuesta": "Los avances en la aviación militar de largo alcance y los primeros misiles balísticos como los cohetes V-2 disolvieron la noción tradicional de un frente de batalla geográficamente delimitado en las fronteras. Al superar las barreras geográficas y las líneas de defensa físicas, la violencia de la guerra se trasladó directamente a las retaguardias estratégicas, convirtiendo los centros urbanos densamente poblados e industriales (como Londres, Coventry o Dresde) en blancos sistemáticos; esto provocó la destrucción masiva de infraestructura habitacional, de transporte y de servicios públicos, borrando la separación histórica entre soldados en el frente y civiles en la retaguardia, e integrando a toda la geografía urbana en el teatro de operaciones bélicas.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_04",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "La mecanización del campo de batalla durante el siglo XX mediante la introducción de tanques de guerra modernos y artillería autopropulsada transformó la movilidad militar de las potencias: argumente cómo esta innovación tecnológica influyó en el diseño de las fronteras territoriales europeas y en la velocidad de ocupación de los Estados en comparación con los conflictos del siglo XIX.",
+      "respuesta": "La mecanización del campo de batalla sustituyó la lenta movilización basada en infantería a pie y tracción animal por unidades blindadas autónomas de gran velocidad y poder de fuego. Esta innovación tecnológica permitió la implementación de la guerra relámpago (Blitzkrieg), la cual superó la inmovilidad defensiva que había caracterizado a la Primera Guerra Mundial; en comparación con el siglo XIX, donde las campañas militares tomaban meses o años para avanzar unos pocos kilómetros, las divisiones mecanizadas del siglo XX permitieron la invasión y colapso total de Estados enteros (como Polonia o Francia) en cuestión de semanas, provocando una disolución acelerada de las fronteras y forzando reconfiguraciones geopolíticas inmediatas a gran escala.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_05",
+      "tipo": "abierta",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La rápida evolución de las tecnologías de telecomunicaciones, como el cifrado mediante la máquina Enigma y el posterior desarrollo de las primeras computadoras como Colossus para descifrar códigos, fue crucial en la Segunda Guerra Mundial: analice cómo la inteligencia informática afectó el desenlace de las operaciones militares y defina por qué se considera un avance científico aplicado indirectamente a la destrucción destructiva a gran escala.",
+      "respuesta": "Las tecnologías de telecomunicaciones e informática primitiva alteraron el desenlace de la guerra al transformar la información estratégica en el recurso militar más valioso. El descifrado de los códigos alemanes e industriales permitió a los Aliados anticipar con precisión los movimientos de tropas, rutas de suministros y ataques de submarinos en el Atlántico, acortando la duración estimada del conflicto en varios años; se considera un avance aplicado indirectamente a la destrucción masiva porque la ventaja informática no destruía por sí misma, sino que optimizaba la letalidad de los bombardeos, emboscadas navales y operaciones de artillería, permitiendo coordinar ataques simultáneos con una precisión y escala destructiva imposibles de lograr con métodos análogos.",
+      "sugerida": true
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_06",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La invención y el despliegue del radar durante la Segunda Guerra Mundial funcionaron exclusivamente como un sistema de defensa aérea pasiva: esto impidió que dicha tecnología tuviera cualquier tipo de aplicación en las estrategias ofensivas o de ataque por parte de las potencias militares.",
+      "correcta": false,
+      "justificacion": "si bien el radar nació como una herramienta fundamental para la detección temprana de aeronaves enemigas (defensa pasiva), evolucionó rápidamente para ser instalado de forma ofensiva en aviones bombarderos aliados y buques de guerra, permitiendo la localización precisa de objetivos nocturnos, la navegación en condiciones de nula visibilidad y el hundimiento sistemático de submarinos del Eje, potenciando las capacidades de destrucción masiva."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_07",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El uso de la ametralladora automática Maxim en la Primera Guerra Mundial alteró las tácticas militares tradicionales: esto forzó a los ejércitos a abandonar las cargas de infantería en campo abierto y dio origen a la guerra de trincheras debido al alto poder de fuego defensivo.",
+      "correcta": true,
+      "justificacion": "la introducción de la ametralladora Maxim transformó el campo de batalla en un espacio letal automatizado donde los asaltos de infantería tradicionales a campo abierto resultaban en masacres masivas en pocos minutos; ante la imposibilidad de avanzar frente a ráfagas continuas de proyectiles, los ejércitos se vieron forzados a excavar extensas redes de trincheras para proteger a sus tropas, estancando los frentes de combate durante años."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_08",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "Las investigaciones médicas y científicas desarrolladas en los campos de concentración nazis y por unidades como el Escuadrón 731 japonés carecían de intenciones militares: se trataba de proyectos puramente académicos orientados a la salud pública global.",
+      "correcta": false,
+      "justificacion": "los experimentos humanos realizados en los campos de concentración y por el Escuadrón 731 japonés estaban directamente vinculados a objetivos militares estratégicos, tales como el perfeccionamiento de armas biológicas y bacteriológicas (peste, cólera) y el estudio de los límites de la resistencia humana a la congelación o descompresión para optimizar el rendimiento de sus propios soldados y pilotos, violando los principios éticos de la ciencia."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_09",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "",
+      "enunciado": "El desarrollo de los primeros lanzallamas portátiles durante la Primera Guerra Mundial por parte del ejército alemán tuvo como propósito principal la destrucción rápida de infraestructura vegetal: esto evitaba su uso directo contra los soldados enemigos debido a restricciones éticas compartidas.",
+      "correcta": false,
+      "justificacion": "el lanzallamas (Flammenwerfer) fue diseñado de manera específica como un arma de asalto ofensiva para atacar directamente a los soldados atrincherados; su función tecnológica consistía en proyectar líquido inflamable dentro de los búnkeres y trincheras para neutralizar la resistencia enemiga mediante el fuego o la asfixia por consumo de oxígeno, sin que existieran restricciones éticas efectivas que impidieran su uso humano."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_10",
+      "tipo": "vf",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "",
+      "enunciado": "La rápida industrialización y la producción en cadena, inspiradas en los modelos de fabricación civil automotriz, fueron aplicadas por las potencias mundiales para multiplicar la fabricación de tanques, aviones y municiones: esto transformó los conflictos en guerras de desgaste logístico.",
+      "correcta": true,
+      "justificacion": "la aplicación de los métodos de producción en masa (como el taylorismo y el fordismo) a la industria militar transformó la naturaleza de las guerras mundiales, supeditando la victoria no solo a la destreza estratégica de los generales, sino a la capacidad industrial y logística de las naciones para reponer de forma ininterrumpida el armamento, los vehículos y el material bélico destruidos en los frentes de batalla."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_11",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "A comienzos de 1915, el estancamiento de la guerra de trincheras en el frente occidental europeo llevó a los altos mandos militares y a las industrias químicas a buscar soluciones tecnológicas capaces de romper las líneas de defensa enemigas sin necesidad de grandes asaltos de infantería.",
+      "enunciado": "¿Qué innovación científico-tecnológica de destrucción masiva fue desplegada de forma sistemática por primera vez en la batalla de Ypres en abril de 1915 para sofocar las defensas aliadas?",
+      "opciones": [
+        "El misil balístico de corto alcance guiado por radio",
+        "El gas cloro liberado mediante cilindros presurizados",
+        "El cañón de artillería pesada con munición nuclear",
+        "El avión de combate monoplaza con hélices sincronizadas"
+      ],
+      "correcta": 1,
+      "justificacion": "el uso industrial del gas cloro por parte del Imperio alemán en la batalla de Ypres marcó el nacimiento de la guerra química moderna; este avance científico-industrial permitía dispersar nubes tóxicas letales que penetraban en las trincheras enemigas, causando asfixia generalizada y abriendo brechas en frentes defensivos previamente inexpugnables."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_12",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "A lo largo de 1939, los físicos teóricos Albert Einstein y Leó Szilárd enviaron una carta al presidente estadounidense Franklin D. Roosevelt alertando que descubrimientos recientes en Alemania indicaban que el uranio podría convertirse en una nueva e incomparable fuente de energía con potencial militar.",
+      "enunciado": "Esta advertencia científica estimuló la movilización de recursos económicos y tecnológicos en Estados Unidos, dando origen directo a:",
+      "opciones": [
+        "La creación del Comité Internacional para el Control del Carbón y del Acero",
+        "La puesta en marcha del Proyecto Manhattan para el desarrollo de la bomba atómica",
+        "La fundación de la Sociedad de Naciones para la desmovilización de reactores",
+        "El diseño de la Operación Barbarroja para la extracción de recursos siberianos"
+      ],
+      "correcta": 1,
+      "justificacion": "la carta Einstein-Szilárd alertó sobre la posibilidad de que la Alemania nazi construyera armas nucleares basadas en la fisión nuclear; esto impulsó al gobierno de los Estados Unidos a financiar en secreto el Proyecto Manhattan, uniendo la investigación científica avanzada con la capacidad industrial militar para fabricar las primeras bombas atómicas."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_13",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Durante la Primera Guerra Mundial, las redes de alambre de púas y los nidos de ametralladoras imposibilitaban el avance de las tropas a pie, lo que provocaba que los conflictos terrestres se estancaran en trincheras con un costo humano insostenible.",
+      "enunciado": "¿Qué desarrollo de ingeniería mecánica y militar fue diseñado por los británicos para romper este equilibrio defensivo, logrando atravesar terrenos irregulares, resistir proyectiles y aplastar fortificaciones?",
+      "opciones": [
+        "El camión de transporte blindado con tracción anfibia",
+        "El vehículo blindado de tracción de orugas conocido como tanque",
+        "El helicóptero de asalto provisto de cohetes incendiarios",
+        "La locomotora blindada de alta velocidad para transporte de obuses"
+      ],
+      "correcta": 1,
+      "justificacion": "el tanque de guerra, introducido por los británicos en la batalla del Somme, combinó el blindaje metálico, la tracción de orugas y el armamento integrado para superar las defensas de alambre de púas y trincheras, devolviendo la movilidad ofensiva a los ejércitos y transformando las tácticas de combate terrestre."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_14",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En la década de 1940, la aviación militar alemana implementó ataques aéreos masivos nocturnos conocidos como el Blitz sobre ciudades como Londres, buscando destruir infraestructuras clave y quebrar la moral social de la población mediante el pánico.",
+      "enunciado": "Para contrarrestar la superioridad numérica alemana y localizar los escuadrones enemigos en la oscuridad antes de que arrojaran sus bombas, los científicos británicos perfeccionaron y desplegaron:",
+      "opciones": [
+        "La red de reflectores ultrasónicos de alta frecuencia terrestre",
+        "El sistema de detección y localización por ondas de radio denominado radar",
+        "El satélite de reconocimiento meteorológico de órbita baja",
+        "La boya hidroacústica de detección de perturbaciones atmosféricas"
+      ],
+      "correcta": 1,
+      "justificacion": "el perfeccionamiento del radar (Radio Detection and Ranging) por la comunidad científica británica permitió a la Real Fuerza Aérea (RAF) detectar la distancia, dirección y velocidad de los bombarderos alemanes en cualquier condición climática, optimizando la defensa aérea y evitando una destrucción aún mayor de sus ciudades."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_15",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "Hacia el final de la Segunda Guerra Mundial, la escasez de pilotos y la necesidad de atacar objetivos lejanos sin arriesgar tripulaciones llevaron a los ingenieros del Tercer Reich a desarrollar los programas de las armas de represalia (Vergeltungswaffen).",
+      "enunciado": "¿Qué hito de la ingeniería aeroespacial y de la tecnología de destrucción masiva representó el cohete V-2 lanzado sobre Amberes y Londres a partir de 1944?",
+      "opciones": [
+        "El primer dron de reconocimiento autónomo con cámaras térmicas",
+        "El primer misil balístico de largo alcance guiado automáticamente",
+        "El primer avión de pasajeros adaptado para bombardeo de saturación",
+        "La primera mina submarina con sistema de propulsión magnética"
+      ],
+      "correcta": 1,
+      "justificacion": "el cohete V-2, diseñado por Wernher von Braun, fue el primer misil balístico de largo alcance en la historia; volaba a velocidades supersónicas y alcanzaba el espacio exterior antes de caer sobre su objetivo, haciendo imposible su interceptación y sentando las bases tecnológicas tanto para la destrucción masiva con misiles como para la futura carrera espacial."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_16",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "Durante la Primera Guerra Mundial, la guerra naval dio un giro radical cuando los ingenieros navales lograron perfeccionar los motores diésel-eléctricos y los sistemas de ventilación interna en embarcaciones capaces de operar por debajo de la superficie del agua.",
+      "enunciado": "El uso a gran escala de los submarinos alemanes (U-Boote) alteró el equilibrio del conflicto debido a que su tecnología estaba orientada principalmente a:",
+      "opciones": [
+        "Rescatar de forma humanitaria a las tripulaciones de buques mercantes hundidos",
+        "Efectuar un bloqueo económico hundiendo barcos de abastecimiento y comercio aliados",
+        "Cartografiar de forma científica las fosas profundas del océano Atlántico norte",
+        "Establecer cables de telecomunicaciones submarinas entre los países del Eje"
+      ],
+      "correcta": 1,
+      "justificacion": "la estrategia de la guerra submarina irrestricta de Alemania utilizaba el sigilo tecnológico de estas naves para torpedear buques de guerra y barcos mercantes de abastecimiento que se dirigían a Gran Bretaña, buscando asfixiar económicamente a la potencia isleña mediante la destrucción de sus recursos logísticos."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_17",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos applied a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "El desarrollo de la metalurgia pesada y la ingeniería de fundición a principios del siglo XX permitieron la creación de piezas de artillería de calibres monumentales, capaces de disparar proyectiles de varias toneladas a distancias superiores a los treinta kilómetros.",
+      "enunciado": "La incorporación de mega-artillería como el cañón 'Gran Berta' o el 'Cañón de París' transformó las lógicas militares de la Primera Guerra Mundial al demostrar que:",
+      "opciones": [
+        "Las fortificaciones de hormigón y las ciudades de la retaguardia ya no eran lugares seguros",
+        "Los combates terrestres pasarían a resolverse de manera exclusiva mediante la diplomacia",
+        "El uso de soldados de infantería resultaba obsoleto para la toma efectiva de territorios",
+        "Los ejércitos debían limitar sus ataques a bases estrictamente despobladas"
+      ],
+      "correcta": 0,
+      "justificacion": "la artillería superpesada de largo alcance destruyó el mito de que los fuertes de hormigón reforzado eran impenetrables; además, al permitir el bombardeo de ciudades fortificadas desde distancias seguras, expandió la escala de la destrucción masiva sobre la infraestructura civil y militar sin necesidad de un enfrentamiento directo."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_18",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "En la antesala de la Segunda Guerra Mundial, la aviación militar experimentó un salto cualitativo con la introducción de los motores de reacción (turborreactores), desarrollados de manera independiente por ingenieros en Gran Bretaña y Alemania, superando los límites de velocidad de los motores de hélice tradicionales.",
+      "enunciado": "El despliegue de los primeros aviones de combate a reacción, como el Messerschmitt Me 262 alemán, evidenció que la carrera tecnológica bélica buscaba fundamentalmente:",
+      "opciones": [
+        "Aumentar el confort y la seguridad en los vuelos comerciales intercontinentales",
+        "Lograr la superioridad aérea absoluta mediante la velocidad para evadir las defensas enemigas",
+        "Reducir los costos de producción industrial utilizando materiales reciclados biodegradables",
+        "Sustituir por completo el uso de bombas explosivas por herramientas de reconocimiento óptico"
+      ],
+      "correcta": 1,
+      "justificacion": "el desarrollo de los motores a reacción respondía a la necesidad estratégica de conseguir superioridad en el aire; aviones más veloces que cualquier caza convencional de la época permitían interceptar con mayor letalidad las formaciones de bombardeo aliadas o evadir el fuego antiaéreo enemigo, acelerando el ritmo y la destructividad de las batallas aéreas."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_19",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Pensamiento reflexivo y sistémico",
+      "contexto": "A partir de 1916, el uso extensivo de ametralladoras y alambre de púas en los campos de batalla europeos redujo la efectividad de la caballería tradicional, la cual había sido el símbolo de movilidad de los ejércitos durante siglos, forzando una reingeniería total del transporte de tropas.",
+      "enunciado": "Desde una perspectiva de análisis sistémico, el reemplazo definitivo de los caballos por vehículos motorizados, camiones blindados y motocicletas en las cadenas logísticas militares provocó:",
+      "opciones": [
+        "El estancamiento permanente de los suministros en las bases logísticas de origen",
+        "La dependencia absoluta de los ejércitos del petróleo y de las líneas de suministro de combustible",
+        "La reducción del tamaño geográfico de los frentes debido a la lentitud de los motores",
+        "El fin definitivo del uso de la cartografía y el reconocimiento del terreno"
+      ],
+      "correcta": 1,
+      "justificacion": "la motorización y mecanización completa de los ejércitos aumentaron la velocidad de despliegue y destrucción, pero crearon una nueva e irreversible vulnerabilidad sistémica: la necesidad absoluta de petróleo, gasolina y lubricantes, lo que convirtió a los campos petroleros y refinerías en los objetivos geográficos más codiciados y bombardeados del siglo XX."
+    },
+    {
+      "id": "lv_dec10_p3_e6_tec_20",
+      "tipo": "multiple",
+      "grado": "Décimo",
+      "tema": "Avances militares, científicos y tecnológicos aplicados a la destrucción masiva",
+      "competencia": "Interpretación y análisis de perspectivas",
+      "contexto": "El 6 y el 9 de agosto de 1945, el ejército de los Estados Unidos realizó el lanzamiento de las bombas atómicas 'Little Boy' y 'Fat Man' sobre las ciudades japonesas de Hiroshima y Nagasaki, provocando de manera inmediata la muerte de más de cien mil personas y la destrucción total de sus entornos geográficos.",
+      "enunciado": "Analizando las consecuencias históricas de este acontecimiento, la introducción de la tecnología de fisión nuclear en el conflicto militar determinó directamente:",
+      "opciones": [
+        "El inicio de una era de desarme militar incondicional supervisado por la Sociedad de Naciones",
+        "La rendición incondicional del Imperio del Japón y el inicio de la era de disuasión nuclear global",
+        "La disolución del Bloque de los Aliados y el retorno inmediato al aislamiento comercial",
+        "La prohibición absoluta de la investigación científica en las universidades occidentales"
+      ],
+      "correcta": 1,
+      "justificacion": "el uso destructivo de la energía atómica en Hiroshima y Nagasaki forzó la capitulación final de Japón, poniendo fin a la Segunda Guerra Mundial; al mismo tiempo, transformó la geopolítica global al demostrar el poder de destrucción masiva de la nueva tecnología, desatando una carrera armamentista y el equilibrio del terror bipolar durante la posterior Guerra Fría."
+    }
+  ]
+}

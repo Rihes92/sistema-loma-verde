@@ -117,7 +117,7 @@ const LV_CTX = (() => {
     pill.className = 'pill';
     pill.style.cssText = 'background:rgba(255,255,255,.22);cursor:pointer;display:flex;align-items:center;gap:5px';
     pill.title = 'Cambiar de materia';
-    pill.innerHTML = `📍 ${materia}`;
+    pill.textContent = `📍 ${materia}`;
     pill.onclick = limpiar;
     if (portalBtn) header.insertBefore(pill, portalBtn);
     else header.appendChild(pill);

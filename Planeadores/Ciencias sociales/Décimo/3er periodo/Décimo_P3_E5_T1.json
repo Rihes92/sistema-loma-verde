@@ -1,0 +1,220 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T12:15:36Z",
+  "planeadores": [
+    {
+      "id": "p10p3-organismos-001",
+      "creado": 1781871336,
+      "grado": "Décimo",
+      "periodo": "Tercer periodo",
+      "ejeIdx": 5,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "5",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "El papel de los organismos de integración transnacional (ONU, OEA)",
+      "unidad": "Eje 5: Instituciones multilaterales y derecho internacional",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Reconoce el impacto institucional de las directrices de los organismos multilaterales analizando las ventajas y desventajas de la pertenencia de Colombia a estos .\n* Argumenta el rol de los tribunales e instituciones internacionales en el amparo de los Derechos Humanos frente a crisis de soberanía.\nSer:* Participa en foros o mesas redondas académicas simulando la toma de decisiones diplomáticas ante tensiones entre Estados.",
+      "competencias": "* Pensamiento social.\n\n* Pensamiento reflexivo y sistémico.",
+      "contenidos": "* El papel de los organismos de integración transnacional (ONU, OEA).\n* Formulación de directrices multilaterales en materia económica, jurídica, educativa y ambiental .\n* Incidencia de las políticas internacionales en la agenda legislativa e interna de Colombia.\n* Mantenimiento de la paz, la seguridad colectiva y la vigencia de los DD. HH..",
+      "objetivo": "Analizar críticamente el papel, las directrices multilaterales y el impacto institucional de los organismos de integración transnacional (ONU y OEA) a través de la interpretación del derecho internacional y debates simulados, con el fin de evaluar la incidencia de estas agendas internacionales en el mantenimiento de la paz, los Derechos Humanos y la soberanía en Colombia y el contexto local rural.",
+      "pregunta": "¿Hasta qué punto las directrices de organismos globales como la ONU y la OEA logran transformar las condiciones de seguridad y derechos en comunidades rurales apartadas como Loma Verde, o se quedan en simples declaraciones teóricas?",
+      "explora": "Conversatorio introductorio basado en una noticia real o hipotética sobre una misión humanitaria o una directriz ambiental de la ONU en territorios vulnerables de Colombia. El docente interroga a los estudiantes sobre si han escuchado hablar de los Cascos Azules o de las alertas de Derechos Humanos que emiten estas entidades. Posteriormente, se realiza un ejercicio rápido en el tablero donde los estudiantes clasifican logotipos de agencias internacionales (como Unicef, Unesco, Pnud, OEA) bajo las categorías de: Paz/Seguridad, Cultura/Educación o Desarrollo Social.",
+      "glosario": [
+        {
+          "t": "organismo transnacional",
+          "d": "asociación de Estados que trasciende las fronteras nacionales para coordinar políticas públicas, comerciales o de seguridad, regulada por el derecho internacional y dotada de personería jurídica propia."
+        },
+        {
+          "t": "multilateralismo",
+          "d": "sistema de coordinación de relaciones e intereses entre tres o más Estados soberanos bajo un marco normativo común para resolver controversias globales de forma cooperativa."
+        },
+        {
+          "t": "derecho internacional",
+          "d": "cuerpo de normas jurídicas, tratados, convenciones y costumbres que regulan los deberes y las prerrogativas de los Estados soberanos y otras entidades con personalidad jurídica internacional."
+        },
+        {
+          "t": "soberanía nacional",
+          "d": "autoridad suprema, exclusiva e independiente que posee un Estado para autodeterminarse, dictar sus propias leyes y ejercer control gubernamental sobre su territorio y población sin interferencias externas."
+        },
+        {
+          "t": "seguridad colectiva",
+          "d": "régimen diplomático y militar global mediante el cual un grupo de Estados se compromete a considerar la agresión contra cualquiera de sus miembros como un ataque a la totalidad del bloque, activando respuestas coordinadas de defensa."
+        },
+        {
+          "t": "carta comunitaria",
+          "d": "instrumento internacional constitutivo que define las competencias, propósitos, estructuras jerárquicas y principios vinculantes que regulan la convivencia y operatividad de una organización de Estados."
+        },
+        {
+          "t": "directriz multilateral",
+          "d": "lineamiento, resolución o recomendación técnica emanada de un foro internacional que busca estandarizar conductas, metas de desarrollo o normativas domésticas entre las naciones signatarias."
+        },
+        {
+          "t": "sistema interamericano",
+          "d": "marco institucional de carácter regional conformado por los Estados de las Américas para promover la democracia, los Derechos Humanos, la seguridad continental y el desarrollo cooperativo, liderado por la OEA."
+        },
+        {
+          "t": "supranacionalidad",
+          "d": "modelo de integración política o económica en el cual los Estados miembros ceden parte de sus competencias soberanas y jurisdiccionales a órganos centrales cuyas resoluciones tienen carácter prevalente y obligatorio."
+        },
+        {
+          "t": "misión de observación",
+          "d": "despliegue de personal civil, diplomático o militar técnico por parte de un organismo internacional para verificar de manera neutral el cumplimiento de acuerdos de paz, procesos electorales o garantías de Derechos Humanos."
+        }
+      ],
+      "bloques": [
+        {
+          "tit": "La arquitectura del multilateralismo: génesis y funciones de la ONU y la OEA",
+          "txt": "El orden geopolítico contemporáneo se configuró tras la devastación de las conflagraciones mundiales del siglo XX. La Organización de las Naciones Unidas (ONU), instituida en 1945 mediante la Carta de San Francisco, surgió con la premisa medular de evitar que las generaciones venideras sufrieran el flagelo de la guerra. Su estructura promueve la seguridad colectiva, la autodeterminación de los pueblos y la vigencia universal de los Derechos Humanos. A nivel regional, la Organización de los Estados Americanos (OEA), fundada en Bogotá en 1948, opera como el principal foro político de las Américas. Ambos organismos transnacionales basan su legitimidad en el multilateralismo, actuando como mediadores en tensiones limítrofes y humanitarias mediante sus asambleas generales y consejos de seguridad, buscando equilibrar el poder global con el respeto mutuo entre naciones.",
+          "pausa": "¿De qué manera la existencia de la ONU y la OEA redefine los límites de la soberanía tradicional de los Estados miembros?",
+          "resp": "Redefine la soberanía porque, al adherirse voluntariamente a estos organismos, los Estados se comprometen a subordinar parte de sus decisiones a tratados internacionales, aceptando la vigilancia externa en materia de derechos fundamentales y resoluciones de paz."
+        },
+        {
+          "tit": "Directrices multilaterales y su inserción en los ámbitos nacionales",
+          "txt": "Las agencias e instituciones multilaterales formulan directrices globales que abarcan dimensiones económicas, jurídicas, educativas y ambientales. En la esfera económica y social, el Programa de las Naciones Unidas para el Desarrollo (PNUD) y la CEPAL trazan hojas de ruta para el combate a la pobreza; en educación, la UNESCO promueve la equidad y la preservación cultural; mientras que las cumbres ambientales internacionales establecen metas imperativas contra el calentamiento global. Estos lineamientos transnacionales no se quedan en meras aspiraciones abstractas. Se introducen formalmente en la agenda legislativa de los países signatarias a través de la ratificación de tratados, influyendo directamente en el diseño de planes nacionales de desarrollo, la adopción de normativas ecológicas y la asignación presupuestal para minorías, adaptando el marco institucional local a las exigencias del concierto internacional.",
+          "pausa": "¿Cómo se evidencia una directriz multilateral ambiental en la planeación territorial interna de nuestro país?",
+          "resp": "Se evidencia en la creación de leyes nacionales de protección de páramos, la delimitación de reservas forestales obligatorias y el diseño de políticas públicas de mitigación del cambio climático alineadas con el Acuerdo de París."
+        },
+        {
+          "tit": "Incidencia en Colombia: soberanía, paz y amparo de Derechos Humanos",
+          "txt": "La inserción de Colombia en el entramado multilateral posee profundas repercusiones institucionales que oscilan entre la cooperación técnica y las crisis de soberanía. La Constitución de 1991 incorporó el concepto de bloque de constitucionalidad, que otorga rango prevalente a los tratados internacionales de Derechos Humanos ratificados por el Congreso. De este modo, la Corte Interamericana de Derechos Humanos (Corte IDH), órgano autónomo de la OEA, y los diversos comités de la ONU ejercen una jurisdicción complementaria de amparo. Esto se ha traducido en condenas históricas al Estado colombiano por omisiones en masacres o persecución a minorías, obligando a reformas normativas internas. Asimismo, la presencia de misiones de verificación de la ONU en la implementación de acuerdos de paz demuestra cómo el derecho internacional se convierte en un actor central de la gobernanza interna, amparando libertades civiles en contextos de debilidad institucional periférica.",
+          "pausa": "Frente a una violación de Derechos Humanos no resuelta eficazmente por los jueces internos, ¿cuál es el rol que asumen los tribunales internacionales?",
+          "resp": "Asumen un rol subsidiario y complementario, revisando el caso para determinar la responsabilidad internacional del Estado, ordenar medidas de reparación integral a las víctimas y exigir reformas estructurales para evitar la repetición."
+        }
+      ],
+      "talleres": "Instrucciones para el taller de estructuración interactiva: los estudiantes se agruparán en mesas de trabajo sistémico. Analizarán fragmentos impresos de las cartas constitutivas de la ONU y la OEA junto con una matriz de análisis. Cada grupo deberá completar un cuadro comparativo exhaustivo estructurado bajo las siguientes variables de indagación:\n1. Nombre del organismo y año de vinculación de Colombia.\n2. Principales agencias especializadas y sus campos de acción (económico, educativo, ambiental, de seguridad).\n3. Mecanismo principal empleado para intervenir en disputas internacionales.\n4. Ventajas institucionales para Colombia (cooperación, créditos, legitimación de la paz).\n5. Desventajas o tensiones con la soberanía nacional (condenas judiciales, presiones geopolíticas).\nLos pliegos de trabajo serán expuestos mediante la técnica de museo pedagógico, donde un relator sustentará la coherencia analítica de su matriz ante sus compañeros.",
+      "transfer": "Actividades de transferencia y contextualización analítica:\n1. Estudio de caso: se expone a los estudiantes un escenario geopolítico real: la Corte Interamericana de Derechos Humanos dicta una sentencia condenatoria contra un Estado americano por la falta de protección a líderes ambientales en zonas rurales de explotación minera, exigiendo la suspensión de licencias extractivas. Los estudiantes deben responder un cuestionario crítico sobre qué órgano interamericano operó, cómo impacta esta decisión la soberanía legal interna y cuál es la validez del derecho internacional en estos litigios.\n2. Reflexión del entorno local: los estudiantes realizarán un rastreo reflexivo en su núcleo familiar o comunitario sobre proyectos o programas implementados en el corregimiento que cuenten con el respaldo de agencias de la ONU (ej. programas de sustitución de cultivos, proyectos productivos de la FAO o asistencia de UNICEF en escuelas rurales), redactando un informe descriptivo y crítico sobre su eficacia material.",
+      "clave": "Respuestas modelo orientadoras para las actividades de transferencia:\n1. En el estudio de caso, el órgano que operó fue la Corte IDH tras el trámite previo ante la Comisión Interamericana de Derechos Humanos (CIDH). La decisión impacta la soberanía legal interna de forma vinculante porque, según el principio de convencionalidad aceptado por el Estado, los fallos de la Corte IDH son de obligatorio cumplimiento y superan interpretaciones de jueces internos. Esto demuestra que la validez del derecho internacional es prevalente en la protección de los Derechos Humanos colectivos e individuales.\n2. En la reflexión del entorno, si se analiza un proyecto de la FAO sobre soberanía alimentaria en huertas escolares de Loma Verde, la respuesta modelo debe resaltar que la ventaja radica en la transferencia tecnológica y el financiamiento técnico que las autoridades locales descuidan, mientras que la desventaja potencial es la falta de continuidad del programa una vez la agencia transnacional retira la misión del territorio.",
+      "evaluacion": "Rúbrica cualitativa de evaluación y criterios de desempeño:\n* Superior: analiza críticamente y con alto rigor la estructura y las directrices de la ONU y la OEA, evaluando con argumentos sistémicos las ventajas, desventajas e incidencia del derecho internacional en la agenda legislativa y en los derechos de las comunidades rurales.\n* Alto: describe con propiedad las funciones de la ONU y la OEA, identifica el impacto institucional de sus directrices y completa las matrices de caso asociando de forma válida el derecho internacional con la soberanía nacional.\n* Básico: reconoce de forma general qué son la ONU y la OEA, pero presenta vacíos al explicar la articulación de sus agencias o al argumentar la subordinación de la soberanía interna a los fallos de tribunales internacionales.\n* Bajo: confunde los roles de los organismos internacionales, confunde la ONU con la OEA o no logra identificar el impacto de las directrices multilaterales en Colombia.\nInstrumentos seleccionados: rúbrica de desempeño de mesa redonda, matriz comparativa escrita de agencias y portafolio de análisis de casos.",
+      "recursos": "Copias analíticas de la Declaración Universal de los Derechos Humanos, fragmentos de la Carta de la ONU y de la OEA, guías de estudio de casos de la Corte IDH, mapas políticos globales y la malla curricular institucional de Ciencias Sociales.",
+      "referencias": "Información tomada directamente del archivo \"Actual - Malla curricular - Ciencias sociales.xlsx\":\n* Estándares Básicos de Competencias (EBC): Identifico las organizaciones internacionales que surgieron a lo largo del siglo XX y evalúo el impacto de su gestión.\n* EBC: Relaciono algunos de estos procesos políticos internacionales con los procesos colombianos.\n* Derechos Básicos de Aprendizaje (DBA): DBA 4: El papel de los organismos internacionales como formas de alianza entre los Estados y sus intereses.\nFuentes bibliográficas adicionales de rigor académico:\n* Toro Huertas, J. (2019). El multilateralismo americano: evolución y desafíos de la OEA en el siglo XXI. Bogotá: Editorial Universidad Nacional.\n* Monroy Cabra, M. G. (2021). Derecho internacional público y bloque de constitucionalidad en Colombia. Bogotá: Temis.\n* ONU (1945). Carta de las Naciones Unidas. San Francisco: Organización de las Naciones Unidas.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje:\n* Frente a dificultades de comprensión o lectoescritura: provisión de organigramas visuales con códigos de colores para diferenciar las dependencias de la ONU y la OEA, uso de infografías simplificadas sobre el trámite de un caso ante el sistema interamericano y lectura guiada de fragmentos normativos.\n* Para estudiantes con ritmo de aprendizaje avanzado: asignación de ensayos analíticos breves sobre la reforma al derecho de veto en el Consejo de Seguridad de la ONU y su impacto en la parálisis de soluciones ante crisis globales vigentes.\n* Trabajo cooperativo estructurado: conformación de equipos diversos adjudicando roles de responsabilidad explícitos (secretario diplomático, moderador de debate, analista de datos, relator de síntesis) para el desarrollo de la simulación de mesa redonda.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El orden multilateral posterior a 1945 erigió a la ONU y a la OEA como los principales foros transnacionales de diálogo político y neutralización de conflictos bélicos.",
+        "Las directrices multilaterales orientan la formulación de políticas públicas internas en los Estados signatarios en materias ambientales, de desarrollo productivo y educación.",
+        "La ratificación de tratados internacionales integra estas normas al bloque de constitucionalidad, vinculando directamente la agenda legislativa de Colombia.",
+        "Los tribunales internacionales actúan como un mecanismo de amparo judicial reforzado para resguardar los Derechos Humanos frente a deficiencias estatales.",
+        "La articulación de agencias especializadas en las periferias rurales busca mitigar las brechas de vulnerabilidad estructural, redefiniendo la gobernanza en los territorios."
+      ],
+      "errores": [
+        "Suponer que la ONU posee un ejército propio soberano para invadir países infractores de Derechos Humanos: es necesario aclarar que los Cascos Azules son contingentes militares cedidos voluntariamente por los Estados miembros bajo mandatos estrictos de mantenimiento de la paz, no fuerzas invasoras independientes.",
+        "Creer que todas las resoluciones de la Asamblea General de la ONU son de obligatorio cumplimiento legal para los Estados: se debe explicar que la mayoría de estas resoluciones operan como recomendaciones diplomáticas, poseyendo carácter vinculante solo las decisiones del Consejo de Seguridad bajo el Capítulo VII.",
+        "Confundir la Organización de los Estados Americanos (OEA) con un órgano dependiente del gobierno de los Estados Unidos: se debe precisar que es un foro multilateral soberano integrado por las naciones independientes de América, donde cada Estado cuenta con un voto equivalente.",
+        "Pensar que un ciudadano puede demandar directamente ante la Corte Interamericana de Derechos Humanos de forma inmediata ante un agravio: se debe reiterar el requisito de procedibilidad que obliga a agotar los recursos judiciales internos y tramitar primero la petición ante la Comisión Interamericana (CIDH)."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la distinción medular entre el carácter de las resoluciones adoptadas por la Asamblea General de la ONU y las emanadas del Consejo de Seguridad?",
+          "a": "Las resoluciones de la Asamblea General poseen una naturaleza predominantemente recomendatoria y política, mientras que las decisiones del Consejo de Seguridad, encargadas del mantenimiento de la paz y seguridad colectivas, son jurídicamente vinculantes y de obligatorio cumplimiento para todos los Estados miembros de acuerdo con la Carta constitutiva.",
+          "verdadero": null,
+          "justificacion": "La arquitectura jurídica de la ONU concentró la capacidad de coerción legal y militar en el Consejo de Seguridad para garantizar reacciones expeditas ante amenazas de guerra.",
+          "enunciado": "Evaluación de la estructura institucional de Naciones Unidas y sus mecanismos de coacción jurídica internacional.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo opera el mecanismo del bloque de constitucionalidad en Colombia para integrar las directrices y tratados multilaterales sobre Derechos Humanos al ordenamiento interno?",
+          "a": "Opera mediante el artículo 93 de la Constitución Política, el cual establece que los tratados y convenios internacionales ratificados por el Congreso, que reconocen los Derechos Humanos y prohíben su limitación en estados de excepción, prevalecen en el orden interno y sirven de criterio obligatorio para interpretar los derechos fundamentales.",
+          "verdadero": null,
+          "justificacion": "Este mecanismo difumina la frontera estricta entre el derecho internacional y el doméstico, elevando las garantías multilaterales al máximo rango normativo del país.",
+          "enunciado": "Análisis de la jerarquía normativa y la supremacía de la Carta Política de 1991 frente a convenios de integración.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué se entiende por el principio de subsidiariedad dentro del contexto de actuación del Sistema Interamericano de Protección de los Derechos Humanos liderado por la OEA?",
+          "a": "Significa que las instancias internacionales (CIDH y Corte IDH) no reemplazan ni anulan a los jueces nacionales, sino que intervienen de forma complementaria únicamente cuando las instituciones judiciales del Estado concernido han fallado, han sido ineficaces o han impedido el acceso a la justicia ordinaria frente a una violación de derechos.",
+          "verdadero": null,
+          "justificacion": "Conserva el respeto por la soberanía de los Estados soberanos, otorgándoles la primera oportunidad para investigar, sancionar y reparar los abusos cometidos dentro de su territorio.",
+          "enunciado": "Litigio internacional de víctimas de violencia estructural ante la Comisión Interamericana de Derechos Humanos.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera el Programa de las Naciones Unidas para el Desarrollo (PNUD) influye materialmente en las políticas públicas de descentralización y equidad social en Colombia?",
+          "a": "Influye a través de la cooperación técnica, la elaboración de informes independientes sobre el Índice de Desarrollo Humano (IDH) a nivel departamental y el financiamiento directo de proyectos comunitarios que sirven como insumos técnicos para que los gobiernos locales formulen sus planes de desarrollo de manera articulada con las metas globales.",
+          "verdadero": null,
+          "justificacion": "El PNUD no legisla, pero condiciona la agenda interna aportando datos científicos y recursos económicos supeditados al cumplimiento de estándares multilaterales.",
+          "enunciado": "Revisión de las estrategias de superación de brechas socioeconómicas territoriales mediante asesorías transnacionales.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles fueron los propósitos geopolíticos centrales que motivaron la firma de la Carta de la OEA en la Novena Conferencia Internacional Americana de 1948?",
+          "a": "Lograr un orden de paz y de justicia en el continente, fomentar la solidaridad recíproca entre los Estados americanos, defender su soberanía e integridad territorial frente a agresiones externas (en el marco de la naciente Guerra Fría) y promover el desarrollo cooperativo económico, social y cultural bajo regímenes democráticos.",
+          "verdadero": null,
+          "justificacion": "La OEA se estructuró para consolidar una alianza regional hegemónica y de seguridad mutua ante influencias ideológicas externas en el hemisferio occidental.",
+          "enunciado": "Contextualización histórica del nacimiento del multilateralismo regional en la segunda mitad del siglo XX.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La Corte Interamericana de Derechos Humanos posee la facultad jurídica latente de destituir de manera directa al presidente de una república soberana si constata que violó la Convención Americana.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La Corte IDH emite sentencias que declaran la responsabilidad internacional del Estado y ordenan reparaciones, pero carece de competencias jurisdiccionales internas de orden penal o político para destituir o sancionar directamente a funcionarios individuales, lo cual recae en los órganos de control domésticos de cada nación.",
+          "enunciado": "Alcances sancionatorios y límites del derecho convencional interamericano frente a las autoridades de los Estados partes.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El derecho de veto en el Consejo de Seguridad de la ONU faculta a cualquiera de los cinco miembros permanentes para impedir de forma solitaria la adopción de una resolución sustantiva.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "De acuerdo con el artículo 27 de la Carta de la ONU, las decisiones sustantivas requieren el voto afirmativo de nueve miembros, incluidos los votos de los cinco miembros permanentes. El voto en contra de uno solo de estos cinco (EE. UU., Rusia, China, Reino Unido o Francia) bloquea de ipso facto la aprobación de la medida.",
+          "enunciado": "Mecanismos de equilibrio de poder hegemónico y toma de decisiones en la arquitectura de seguridad global.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las agencias de la ONU como la FAO y la UNESCO tienen la potestad de decretar impuestos aduaneros obligatorios dentro del territorio de Colombia para financiar sus proyectos humanitarios.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las agencias especializadas operan bajo mandatos de asistencia técnica y cooperación voluntaria financiada por cuotas de los Estados miembros y donaciones. Carecen por completo de facultades legislativas o fiscales para imponer tributos dentro de una nación soberana.",
+          "enunciado": "Evaluación de la autonomía financiera y los marcos de intervención de las agencias del sistema de Naciones Unidas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La República de Colombia fue uno de los Estados signatarios fundadores que participó de manera directa en la redacción y adopción de la Carta de la ONU en San Francisco en 1945.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Colombia asistió activamente a la Conferencia de San Francisco, siendo uno de los 51 Estados fundadores originales que suscribieron la Carta fundacional de las Naciones Unidas, consolidando su tradición jurídica multilateral desde los albores del sistema de gobernanza global.",
+          "enunciado": "Participación histórica de las naciones latinoamericanas en la edificación de la institucionalidad mundial.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El Consejo de Seguridad de la ONU está integrado exclusivamente de forma perpetua por las cinco potencias vencedoras de la Segunda Guerra Mundial, sin admitir variación en sus miembros.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El Consejo de Seguridad se compone de 15 miembros: 5 permanentes con derecho de veto y 10 miembros no permanentes elegidos por la Asamblea General por periodos geográficamente equitativos de dos años, garantizando la rotación diplomática del resto de las naciones del planeta.",
+          "enunciado": "Composición orgánica y dinamismo representativo de las instancias de seguridad colectiva transnacional.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar una indagación cualitativa en el hogar o la comunidad: el estudiante dialogará con sus padres, abuelos o líderes de la Junta de Acción Comunal sobre la existencia de ayudas humanitarias, misiones de observación o manuales de convivencia y proyectos productivos agrícolas que ostenten logotipos de agencias internacionales (como la ONU, PMA, FAO o la OEA) en su corregimiento. Registrará en su cuaderno una descripción manuscrita sobre el propósito práctico de dicho programa y planteará una reflexión analítica personal de una página sobre cómo esa iniciativa transnacional se traduce en un beneficio o limitación para los campesinos de la vereda.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA SOBRE LOS ORGANISMOS DE INTEGRACIÓN TRANSNACIONAL\n\n## Marco histórico y geopolítico de la postguerra\nLa arquitectura del multilateralismo contemporáneo se edificó sobre las ruinas materiales y morales legadas por la Segunda Guerra Mundial. El colapso del concierto de naciones decimonónico y la inoperancia de la Sociedad de Naciones evidenciaron la urgencia de instituir un nuevo orden interastatal fundado en bases normativas vinculantes, dotado de la capacidad coactiva necesaria para neutralizar las pulsiones bélicas de las potencias hegemónicas. En este horizonte, la Conferencia de San Francisco de 1945 representó un hito ecuménico al culminar con la promulgación de la Carta de las Naciones Unidas. Esta carta política internacional no solo redefinió las relaciones diplomáticas, sino que universalizó los principios de autodeterminación de los pueblos, la solución pacífica de las controversias y la primacía inalienable de los Derechos Humanos.\n\nA nivel del hemisferio occidental, este dinamismo se replicó de manera temprana. La Novena Conferencia Internacional Americana, celebrada en Bogotá en 1948 en medio de las convulsiones políticas del \"Bogotazo\", dio nacimiento a la Organización de los Estados Americanos (OEA). Este organismo regional se estructuró bajo las tensiones ideológicas germinales de la Guerra Fría, operando como un dispositivo de seguridad hemisférica mutua, consolidación de regímenes democráticos y foro de resolución arbitral para las naciones del continente americano. El tránsito hacia el multilateralismo implicó que los Estados aceptaran, por primera vez en la historia moderna, la existencia de una superestructura legal y consultiva con prerrogativas para escrutar y emitir dictámenes sobre conductas gubernamentales internas.\n\n## Estructura orgánica y dogmática jurídica del derecho internacional\nLa fisonomía de las organizaciones internacionales se asienta en una compleja tipología de órganos especializados deliberativos y ejecutivos. En la ONU, la Asamblea General opera como el epicentro democrático y representativo del planeta, donde cada Estado miembro ejerce su derecho al voto en condiciones de igualdad formal. No obstante, el diseño de poder real se concentra en el Consejo de Seguridad, cuerpo ejecutivo de membresía restringida dotado del monopolio de la fuerza legal internacional y de la capacidad de emitir resoluciones vinculantes bajo los supuestos de ruptura de la paz colectiva. El controvertido derecho de veto otorgado a los cinco miembros permanentes refleja la pragmática geopolítica de la postguerra, supeditando la acción militar global al consenso de las potencias nucleares.\n\nParalelamente, el despliegue operativo de estos organismos se ejecuta a través de agencias, programas y fondos especializados que configuran la gobernanza multilateral temática. El Programa de las Naciones Unidas para el Desarrollo (PNUD), la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO), la UNESCO y el Fondo de las Naciones Unidas para la Infancia (UNICEF) traducen las grandes declaraciones abstractas en directrices técnicas. Estas directrices adoptan la forma de recomendaciones, metas de sostenibilidad y convenios que los Estados signatarios internalizan voluntariamente en sus agendas legislativas domésticas, alterando los marcos presupuestales, las políticas de equidad social y las normativas de conservación ecológica de los países integrados.\n\n## Tensión entre soberanía nacional y bloque de constitucionalidad en Colombia\nLa inserción de la República de Colombia en este entramado normativo transnacional genera profundas tensiones y transformaciones en la concepción clásica del principio de soberanía absoluta de Bodino. La Constitución Política de 1991, de filiación marcadamente internacionalista, zanjó la disputa doctrinal entre el monismo y el dualismo jurídico mediante la estructuración del bloque de constitucionalidad. Según lo prescrito en el artículo 93 constitucional, los tratados internacionales atinentes a Derechos Humanos y derecho internacional humanitario ratificados por el Congreso de la República adquieren una jerarquía prevalente, integrándose formalmente al núcleo dogmático de la Constitución como parámetros obligatorios de control de convencionalidad.\n\nEsta apertura jurídica otorga a los tribunales internacionales una jurisdicción complementaria y vinculante de inmensa trascendencia. La Corte Interamericana de Derechos Humanos (Corte IDH) y las misiones de monitorización de la ONU ejercen un rol de supervisión judicial que ha conminado al Estado colombiano a modificar leyes internas, reparar integralmente a comunidades víctimas de la violencia estructural y adecuar sus estándares de orden público a los tratados de derechos civiles. Lejos de constituir una erosión nociva de la soberanía, esta articulación multilateral opera como una garantía institucional reforzada para las poblaciones asentadas en las periferias del territorio nacional, donde la presencia del aparato estatal ha sido históricamente fragmentaria o conflictiva.\n\n## Interconexión comunitaria y el entorno rural de Loma Verde\nPara una comunidad educativa de carácter rural como la de la Institución Educativa San José de Loma Verde, ubicada en el municipio de Montería, el estudio de las instituciones multilaterales deja de ser un ejercicio de abstracción cartográfica para convertirse en un análisis de supervivencia comunitaria. Las directrices de la FAO en materia de soberanía alimentaria, las alertas tempranas de los relatores de Derechos Humanos de la ONU sobre la seguridad de líderes campesinos y la presencia de agencias de cooperación internacional configuran la cotidianidad del territorio. El dominio de las herramientas del derecho internacional faculta a las nuevas generaciones rurales para comprender que las dinámicas de exclusión y las luchas agrarias locales se encuentran interconectadas con agendas globales, permitiéndoles agenciar demandas técnicas y pacíficas amparadas en la legalidad internacional frente a las deudas históricas del desarrollo regional.",
+      "lineatiempo": "1945: firma y ratificación de la Carta de las Naciones Unidas en San Francisco, erigiendo la arquitectura del multilateralismo global con Colombia como miembro fundador.\n1948: adopción de la Carta de la Organización de los Estados Americanos (OEA) en Bogotá, estableciendo el marco de seguridad e integración del sistema interamericano.\n1948: proclamación de la Declaración Universal de los Derechos Humanos por la Asamblea General de la ONU, fijando el estándar dogmático de la dignidad humana.\n1969: suscripción de la Convención Americana sobre Derechos Humanos (Pacto de San José), la cual instituye la Comisión y la Corte Interamericana como órganos de control.\n1991: promulgación de la Constitución Política de Colombia, que constitucionaliza los tratados internacionales de Derechos Humanos a través del bloque de constitucionalidad.\n2015: adopción de la Agenda 2030 y los Objetivos de Desarrollo Sostenible (ODS) por la ONU, reorientando las directrices de planificación e inversión pública en Colombia."
+    }
+  ]
+}

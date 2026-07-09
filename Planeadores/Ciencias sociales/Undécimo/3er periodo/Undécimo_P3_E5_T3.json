@@ -1,0 +1,199 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-20T14:12:00Z",
+  "planeadores": [
+    {
+      "id": "p11p3-eje5-tema-003",
+      "creado": 1782053520,
+      "grado": "Undécimo",
+      "periodo": "Tercer periodo",
+      "ejeIdx": 5,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "Guía N° 7",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "Manifestaciones geopolíticas en América Latina: la revolución cubana, dictaduras de seguridad nacional, movimientos guerrilleros e intervencionismo",
+      "unidad": "Eje 5: El orden bipolar de la Guerra Fría y sus secuelas latinoamericanas",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber-hacer:* Interpreta mapas históricos temáticos explicando las zonas de influencia militar y económica de las potencias durante la Guerra Fría.* Establece la conexión causal entre el conflicto de baja intensidad global del siglo XX y el recrudecimiento de la violencia política partidista en Colombia.Ser:* Emite juicios críticos reflexivos sobre el uso del desarrollo científico con propósitos de intimidación militar.",
+      "competencias": "* Pensamiento social.* Pensamiento reflexivo y sistémico.",
+      "contenidos": "* Características de los bloques hegemónicos (modelo capitalista-occidental frente al bloque socialista-soviético).\n* Impacto de la bipolaridad en la vida cotidiana global.\n* Manifestaciones geopolíticas en América Latina: la revolución cubana, dictaduras de seguridad nacional, movimientos guerrilleros e intervencionismo.\n* Amenazas nucleares y armamentismo de destrucción masiva.",
+      "objetivo": "El estudiante analizará las manifestaciones geopolíticas de la Guerra Fría en América Latina, incluyendo la Revolución Cubana, las dictaduras de seguridad nacional y el intervencionismo extranjero, mediante el examen crítico de fuentes y la formulación de nexos causales, con el propósito de comprender la radicalización de los movimientos guerrilleros y los impactos de la polarización ideológica en la historia política contemporánea de Colombia.",
+      "pregunta": "¿De qué manera las lógicas contrainsurgentes e intervencionistas de la Guerra Fría transformaron los conflictos sociales y la participación de los líderes comunitarios en los entornos rurales de nuestra región caribeña?",
+      "explora": "Conversatorio: diálogo guiado con el grupo a partir del siguiente interrogante: \"Si una potencia extranjera financiara y tomara decisiones sobre la organización política o militar de nuestro país argumentando protegernos de un peligro externo, ¿qué pasaría con nuestra soberanía e identidad local?\". Actividad corta: el docente proyecta una caricatura histórica sobre la intervención de las superpotencias en el Caribe; los estudiantes disponen de cuatro minutos para anotar en sus cuadernos dos ideas sobre cómo la rivalidad ajena modificó las decisiones políticas de la región y las comparten a viva voz.",
+      "glosario": [
+        {"t": "Revolución cubana", "d": "Proceso político y revolucionario armado liderado por Fidel Castro y el Movimiento 26 de Julio entre 1953 y 1959 que derrocó la dictadura de Fulgencio Batista, instaurando un régimen de corte socialista alineado con la Unión Soviética y transformando el equilibrio geopolítico hemisférico."},
+        {"t": "Intervencionismo", "d": "Política exterior mediante la cual un Estado poderoso interfiere de manera directa o indirecta en los asuntos internos, soberanía, economía o estructuras militares de otra nación, utilizando presiones diplomáticas, bloqueos económicos o incursiones armadas."},
+        {"t": "Doctrina de seguridad nacional", "d": "Concepción estratégica y militar promovida por los Estados Unidos en América Latina durante la posguerra, enfocada en capacitar a las fuerzas armadas locales para combatir al enemigo interno, asimilando la disidencia ideológica y la protesta social con la subversión."},
+        {"t": "Movimiento guerrillero", "d": "Organización armada de carácter irregular y base civil que emplea tácticas de combate dispersas (emboscadas, sabotajes) en terrenos de difícil acceso, orientada a subvertir el orden político establecido y motivada, en el contexto latinoamericano, por visiones marxistas o nacionalistas."},
+        {"t": "Contrainsurgencia", "d": "Conjunto de medidas de orden militar, político, psicológico y civil adoptadas por un Estado para combatir, neutralizar y erradicar las acciones de los movimientos guerrilleros o insurgentes que operan dentro de su territorio nacional."},
+        {"t": "Foquismo", "d": "Teoría revolucionaria e insurrecional desarrollada por Ernesto 'Che' Guevara que postulaba que no era necesario esperar a que existieran todas las condiciones de madurez política para hacer la revolución, ya que un pequeño foco guerrillero rural podía detonar el levantamiento de masas."},
+        {"t": "Frente Nacional", "d": "Pacto político de coalición y alternancia presidencial entre los partidos Liberal y Conservador en Colombia (1958-1974) encaminado a pacificar las disputas partidistas, pero que clausuró las opciones de participación democrática para corrientes políticas alternativas."},
+        {"t": "Guerra de baja intensidad", "d": "Estrategia militar de las superpotencias que priorizaba el uso de fuerzas locales, operaciones encubiertas, guerra psicológica y sabotajes económicos en territorios de la periferia global, evitando un choque frontal nuclear directo."},
+        {"t": "Enemigo interno", "d": "Categoría discursiva de control que criminalizó la disidencia, los sindicatos y las ligas agrarias, asumiendo que cualquier cuestionamiento a las estructuras tradicionales de propiedad o poder era un acto de desestabilización comunista internacional."},
+        {"t": "Soberanía nacional", "d": "Principio jurídico y político fundamental que confiere a un Estado la potestad exclusiva e independiente de ejercer autoridad sobre su territorio y de autodeterminar sus leyes y modelo de desarrollo sin injerencias de potencias extranjeras."}
+      ],
+      "bloques": [
+        {
+          "tit": "La Revolución Cubana y el quiebre de la hegemonía continental",
+          "txt": "El triunfo de la Revolución Cubana en enero de 1959 alteró radicalmente la geopolítica en América Latina. Lo que inició como un movimiento nacionalista contra los abusos de la dictadura de Batista mutó rápidamente en un proceso socialista debido a las presiones de Washington y la subsiguiente alianza estratégica de La Habana con Moscú. Cuba se convirtió en el faro ideológico de los movimientos de izquierda latinoamericanos, demostrando que era factible desafiar el predominio de los Estados Unidos en el hemisferio occidental. Este acontecimiento impulsó la adopción del modelo del foquismo rural en el continente, estimulando la creación de movimientos guerrilleros que buscaban replicar la experiencia de la Sierra Maestra para transformar las estructuras agrarias y socioeconómicas regionales.",
+          "pausa": "¿Por qué el triunfo de un movimiento revolucionario en una isla del Caribe generó tanta alarma e influyó en las políticas de seguridad de todo el continente?",
+          "resp": "Se espera que los estudiantes expliquen que Cuba demostró la vulnerabilidad de la zona de influencia de los Estados Unidos en plena Guerra Fría. Su alineación con el bloque soviético instaló el conflicto bipolar en el patio trasero estadounidense, amenazando los intereses económicos y políticos de las élites tradicionales."
+        },
+        {
+          "tit": "La Doctrina de Seguridad Nacional y la institucionalización de las dictaduras",
+          "txt": "Como estrategia de contención ante la influencia de la Revolución Cubana, los Estados Unidos difundieron la Doctrina de Seguridad Nacional a través de la Escuela de las Américas. Esta doctrina alteró las funciones tradicionales de los ejércitos de la región, enfocándolos en combatir al 'enemigo interno' en lugar de defender las fronteras nacionales frente a agresiones extranjeras. Bajo esta lógica maniquea, la protesta sindical, las demandas universitarias y las ligas campesinas fueron criminalizadas, catalogándolas de brazos encubiertos del comunismo soviético. Esto legitimó el derrocamiento de gobiernos democráticos y el establecimiento de dictaduras militares institucionales en el Cono Sur y Centroamérica, las cuales suprimieron las libertades civiles bajo el pretexto de salvaguardar el orden occidental y cristiano.",
+          "pausa": "¿Qué consecuencias institucionales tuvo el hecho de redefinir las funciones del ejército hacia el combate de sus propios ciudadanos en lugar de amenazas externas?",
+          "resp": "Se espera que los estudiantes expongan que provocó la pérdida de las garantías democráticas, el uso desproporcionado de la fuerza del Estado contra la disidencia civil, violaciones sistemáticas a los Derechos Humanos y la clausura de los espacios políticos pacíficos de concertación."
+        },
+        {
+          "tit": "Intervencionismo y la radicalización de la insurgencia armada en Colombia",
+          "txt": "En Colombia, la confrontación global se articuló de manera trágica con los conflictos agrarios históricos. El pacto excluyente del Frente Nacional resolvió la pugna interpartidista liberal-conservadora, pero cerró los espacios democráticos para opciones de izquierda. Influenciados por la Doctrina de Seguridad Nacional, el Estado central y los terratenientes locales leyeron las reclamaciones campesinas por la tierra a través del prisma contrainsurgente. Operaciones militares de gran envergadura (como el ataque a Marquetalia bajo asesoría estadounidense) y la estigmatización de las ligas agrarias clausuraron las vías de concertación pacífica. Esto impulsó la creación de las guerrillas de primera generación (FARC, ELN, EPL), las cuales adoptaron los marcos teóricos marxistas, maoístas o cubanos, prolongando el conflicto social y armado en las periferias rurales.",
+          "pausa": "¿Cómo se vincula el cierre de los espacios democráticos durante el Frente Nacional con la adopción de las vías de lucha armada en los campos de Colombia?",
+          "resp": "Se espera que los estudiantes deduzcan que al no existir canales legales, pluralistas y seguros para tramitar las demandas agrarias de los campesinos, y al responder el Estado con represión militar bajo la etiqueta del anticomunismo, se cancelaron las opciones de diálogo, empujando a los líderes rurales hacia la radicalización insurgente."
+        }
+      ],
+      "talleres": "Taller analítico de manifestaciones geopolíticas: los estudiantes se organizarán en grupos cooperativos para construir un cuadro comparativo basado en la lectura reflexiva del material de clase. La matriz en sus cuadernos constará de las siguientes columnas: 1. Acontecimiento geopolítico (Revolución Cubana, Doctrina de Seguridad Nacional, Surgimiento de Guerrillas en Colombia), 2. Superpotencia patrocinadora o instigadora (EE. UU. / URSS), 3. Discurso o justificación ideológica utilizada para legitimarse, y 4. Impacto directo en los derechos civiles y la tenencia de la tierra en las comunidades agrarias de la periferia. El docente asesorará a los grupos velando por el rigor lógico en el desglose de los nexos causales.",
+      "transfer": "Estudio de caso sobre discursos contrainsurgentes y reflexión del entorno local: se entrega a los estudiantes un texto histórico sintético titulado \"El prisma de la sospecha en los campos del Sinú\", el cual detalla cómo las reuniones lícitas de las ligas campesinas en las décadas de 1960 y 1970 fueron catalogadas por autoridades locales y grandes propietarios como 'células de agitación castro-comunista', atrayendo la persecución militar y frustrando proyectos locales de parcelación comunitaria. Los estudiantes redactarán individualmente un ensayo argumentativo de tres párrafos en sus cuadernos: en el primero, deconstruirán el impacto del discurso del enemigo interno sobre la organización campesina; en el segundo, conectarán la influencia internacional de la Guerra Fría con la radicalización violenta de la política agraria colombiana; y en el tercero, plantearán una propuesta pedagógica basada en la escucha activa y la deliberación lógica para prevenir que en la Institución Educativa San José de Loma Verde la diversidad de pensamientos sea estigmatizada o segregada.",
+      "clave": "Respuestas modelo para las actividades de transferencia: 1. Deconstrucción del discurso: el discurso del enemigo interno despojó a los campesinos de su condición de interlocutores válidos, reduciendo sus demandas justas de tierra arable a problemas de orden público y seguridad nacional. 2. Nexo con la Guerra Fría: la influencia de las superpotencias internacionalizó un conflicto estructural interno, sustituyendo las reformas institucionales democráticas por soluciones militares que exacerbaron la confrontación armada en el territorio. 3. Propuesta escolar pluralista: se propone institucionalizar los 'Foros Dialógicos de Aula', donde se debatan tensiones cotidianas bajo reglas estrictas de lógica argumentativa y respeto a la alteridad, prohibiendo calificativos despectivos o etiquetas políticas ideológicas para de este modo sanar los hábitos de convivencia ciudadana.",
+      "evaluacion": "RÚBRICA CUALITATIVA DE EVALUACIÓN:\n- SUPERIOR: Argumenta con excelente rigor metodológico y lógica las causas y secuencias del intervencionismo y la doctrina de seguridad nacional en América Latina. Establece de forma exhaustiva los nexos causales con la historia política y agraria de Colombia, estructurando escritos analíticos propios con total coherencia y autonomía.\n- ALTO: Caracteriza con claridad los acontecimientos geopolíticos continentales de la posguerra. Vincula de forma adecuada la influencia externa con el surgimiento de las guerrillas en el país y participa constructivamente en los espacios de debate grupal.\n- BÁSICO: Identifica los conceptos generales de Guerra Fría, Revolución Cubana y dictaduras, pero muestra marcadas dificultades para trazar nexos causales profundos entre las macroestructuras internacionales y las dinámicas locales del conflicto agrario colombiano.\n- BAJO: Confunde las alianzas de las superpotencias o justifica el empleo de discursos de odio, persecución y represión militar contra colectivos civiles. Su producción escrita carece de lógica argumentativa interna.\n\nINSTRUMENTOS DE EVALUACIÓN: matriz analítica de acontecimientos geopolíticos, rúbrica cualitativa de producción de textos (ensayo argumentativo) y registro de observación de la participación crítica en clase.",
+      "recursos": "Guías conceptuales impresas con datos históricos, mapa de América Latina durante la Guerra Fría, pizarrón, marcadores de colores, cuadernos de Ciencias Sociales y fichas de deconstrucción de fuentes.",
+      "referencias": "Ministerio de Educación Nacional (2006). Estándares Básicos de Competencias en Ciencias Sociales. Bogotá: MEN.\nMinisterio de Educación Nacional (2016). Derechos Básicos de Aprendizaje: Ciencias Sociales (Grado 11). Bogotá: MEN.\nGaleano, E. (1971). Las venas abiertas de América Latina. Montevideo: Universidad de la República.\nPalacios, M. (2003). Entre la legitimidad y la violencia: Colombia 1875-1994. Bogotá: Grupo Editorial Norma.\nRouquié, A. (1984). El Estado militar en América Latina. Buenos Aires: Emecé Editores.",
+      "dua": "Estrategias de Diseño Universal para el Aprendizaje: 1. Para los estudiantes que enfrentan barreras de lectoescritura, se adaptarán las lecturas mediante esquemas gráficos de causa-efecto con códigos de color claros para los bloques y mapas iconográficos de la Escuela de las Américas. 2. Para aquellos con ritmos de aprendizaje avanzados, se les facilitarán fragmentos cortos de las declaraciones de la OEA o discursos de Salvador Allende para que analicen las posturas jurídicas continentales frente al intervencionismo. 3. Para potenciar el aprendizaje cooperativo, los equipos heterogéneos operarán con roles definidos (líder de fuentes, organizador gráfico, controlador de tiempo y portavoz), garantizando que las aptitudes de cada estudiante enriquezcan la construcción compartida del conocimiento.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La Revolución Cubana de 1959 rompió la hegemonía indiscutida de los Estados Unidos en el hemisferio occidental, sirviendo de inspiración a los movimientos de izquierda latinoamericanos.",
+        "La Doctrina de Seguridad Nacional estadounidense redefinió las misiones del ejército local hacia la contención del enemigo interno, socavando las garantías democráticas continentales.",
+        "Las dictaduras militares institucionales instauradas en el Cono Sur y Centroamérica suprimieron las libertades civiles aplicando la violencia de Estado bajo discursos anticomunistas.",
+        "En Colombia, el cierre político del Frente Nacional y el enfoque contrainsurgente militarizaron el conflicto agrario, clausurando las vías de concertación pacífica del campesinado.",
+        "Las guerrillas de primera generación (FARC, ELN, EPL) emergieron debido a la confluencia de la marginación rural estructural local y los discursos revolucionarios globales."
+      ],
+      "errores": [
+        "Creer que las guerrillas en Colombia brotaron de forma exclusiva por la infiltración foránea soviética o cubana; la corrección estriba en comprender que estas organizaciones se arraigaron sobre problemáticas agrarias internas crónicas, desigualdad en la tenencia de la tierra arable y exclusión de los canales democráticos legítimos.",
+        "Asumir que las dictaduras militares en América Latina fueron hechos aislados provocados únicamente por la ambición de oficiales locales; la corrección demuestra que respondieron a una estrategia geopolítica continental planificada y financiada por los Estados Unidos mediante la Doctrina de Seguridad Nacional.",
+        "Pensar que la Revolución Cubana fue planeada desde sus orígenes como un satélite de la Unión Soviética; la corrección enseña que inicialmente se trató de una rebelión nacionalista y democrática contra Batista, que adoptó el socialismo ante el posterior bloqueo estadounidense y el aislamiento diplomático regional.",
+        "Confundir la protesta comunitaria o sindical con un acto de subversión armada; la corrección radica en distinguir entre el legítimo ejercicio constitucional del derecho al disenso social y las dinámicas clandestinas de las organizaciones insurgentes ilegales, superando la herencia discursiva de la Guerra Fría."
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles fueron las causas políticas y económicas que propiciaron el giro ideológico de la Revolución Cubana hacia el socialismo y su posterior alianza con la Unión Soviética?",
+          "a": "El giro socialista fue el resultado de la hostilidad de los Estados Unidos ante las reformas agrarias y nacionalizaciones de empresas extranjeras decretadas por el gobierno revolucionario. Ante el embargo económico, el boicot petrolero y el intento de invasión en Bahía de Cochinos, Cuba buscó el respaldo militar y financiero de la URSS para asegurar su supervivencia.",
+          "verdadero": null,
+          "justificacion": "Las presiones de Washington aceleraron la radicalización del régimen cubano, forzando su inserción oficial en la órbita de influencia del Pacto de Varsovia.",
+          "enunciado": "Evolución y alineación geopolítica del proceso revolucionario caribeño.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿De qué manera el concepto de 'enemigo interno' modificado por la Doctrina de Seguridad Nacional alteró el accionar de los ejércitos latinoamericanos?",
+          "a": "Desplazó el foco de la defensa de la soberanía nacional contra ejércitos extranjeros hacia la vigilancia y represión interna de la propia población civil. Sindicatos, ligas campesinas y movimientos estudiantiles fueron asimilados a células de infiltración comunista, justificando violaciones a los derechos fundamentales y golpes de Estado.",
+          "verdadero": null,
+          "justificacion": "La doctrina militar criminalizó la protesta social, subordinando el orden democrático constitucional interno a los intereses estratégicos de contención global occidentales.",
+          "enunciado": "Efectos institucionales de los discursos político-militares de control hemisférico.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Explique de qué forma el pacto político del Frente Nacional en Colombia influyó indirectamente en el surgimiento de las organizaciones guerrilleras de izquierda.",
+          "a": "Al establecer la alternancia presidencial obligatoria y el reparto de la burocracia únicamente entre los partidos Liberal y Conservador, el Frente Nacional clausuró las vías legales de participación democrática para opciones políticas de izquierda o movimientos de base agraria, empujando a diversos sectores hacia la clandestinidad armada.",
+          "verdadero": null,
+          "justificacion": "La asfixia democrática institucionalizada impidió canalizar pacíficamente las demandas de reforma social, legitimando discursivamente la insurgencia rural.",
+          "enunciado": "Estructuras de exclusión política y su lazo con el conflicto armado interno.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿En qué consistía la estrategia de la 'guerra de baja intensidad' aplicada por las superpotencias en el escenario latinoamericano?",
+          "a": "Consistía en un conjunto de operaciones político-militares encubiertas, apoyo técnico-financiero a ejércitos contrainsurgentes o facciones rebeldes paramilitares, bloqueos económicos y guerra psicológica, con el objeto de desestabilizar o sostener regímenes aliados sin comprometer de forma abierta tropas propias ni desatar una confrontación nuclear.",
+          "verdadero": null,
+          "justificacion": "Las superpotencias instrumentalizaron las contradicciones locales de los países del Tercer Mundo para librar su rivalidad sin chocar frontalmente en Europa.",
+          "enunciado": "Modalidades de confrontación bélica indirecta en la periferia global.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál fue el impacto de la teoría del 'foquismo' propuesta por Ernesto Guevara en la configuración de la violencia política en el continente durante los años 60?",
+          "a": "El foquismo postulaba que un pequeño grupo armado asentado en la ruralidad podía generar las condiciones revolucionarias acelerando el levantamiento de las masas. Esto propició la proliferación de guerrillas rurales en toda América Latina que descuidaron la organización política de base urbana y priorizaron el choque militar directo, sufriendo fuertes derrotas por las fuerzas estatales.",
+          "verdadero": null,
+          "justificacion": "La teoría guevarista militarizó la acción política de la izquierda continental, asumiendo la violencia revolucionaria como el método universal de transformación social.",
+          "enunciado": "Modelos insurreccionales y tácticas guerrilleras de la posguerra.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La Alianza para el Progreso fue un programa de asistencia económica diseñado por los Estados Unidos que buscaba exclusivamente expandir la industrialización militar pesada en las naciones de Centroamérica.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Lanzada por John F. Kennedy en 1961, la Alianza para el Progreso era un plan de ayuda económica y social que pretendía mitigar la pobreza y la marginalidad rural en América Latina para contrarrestar el atractivo ideológico de la Revolución Cubana, sirviendo como una estrategia preventiva de carácter reformista capitalista.",
+          "enunciado": "Estrategias de diplomacia económica y contención ideológica continental.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Bajo la Doctrina de Seguridad Nacional, las demandas de los trabajadores agrícolas latinoamericanos de una reforma agraria eran analizadas por el Estado como conflictos laborales locales legítimos.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Dicha doctrina militar asimiló todo reclamo distributivo, de sindicación agraria o alteración del latifundio como una manifestación de agitación comunista y subversión del orden público, despojando a las movilizaciones campesinas de su legitimidad sectorial y respondiendo con represión armada contrainsurgente.",
+          "enunciado": "Criminalización del disenso social bajo marcos discursivos bipolares.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La guerrilla del Ejército Popular de Liberación (EPL) en Colombia se alineó doctrinalmente con las tesis marxistas-leninistas del bloque soviético encabezado por Moscú.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El EPL, fundado en 1967 como brazo armado del Partido Comunista de Colombia (Marxista-Leninista), se adscribió a la línea ideológica maoísta tras la ruptura chino-soviética. Defendía la tesis de la guerra popular prolongada, planteando que la revolución debía construirse desde los campos periféricos cercándolo hacia los centros urbanos.",
+          "enunciado": "Diversificación doctrinal de las insurgencias armadas colombianas.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La Operación Cóndor fue un sistema coordinado de contrainteligencia y represión ilegal implementado por las dictaduras militares del Cono Sur para perseguir y asesinar a disidentes políticos más allá de sus fronteras nacionales.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Efectuada en las décadas de 1970 u 1980, la Operación Cóndor constituyó una red de terrorismo de Estado entre los regímenes de Chile, Argentina, Brasil, Paraguay, Uruguay y Bolivia, contando con el respaldo y asesoramiento logístico de las agencias de inteligencia estadounidenses para erradicar la militancia de izquierda continental.",
+          "enunciado": "Estructuras transnacionales de represión y terrorismo de Estado.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El ataque militar colombiano a la zona rural autónoma de Marquetalia en 1964 contó con la planeación de directrices estratégicas derivadas del Plan Lazo de asesoría estadounidense.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "La ofensiva contrainsurgente sobre las denominadas 'repúblicas independientes' campesinas fue el resultado directo de la aplicación de la asesoría militar norteamericana encomendada por la misión Yarborough y materializada en el Plan Lazo, el cual promovía el uso de la fuerza combinada y la guerra psicológica sobre poblaciones rurales sospechosas de simpatías comunistas.",
+          "enunciado": "Intersección del intervencionismo extranjero en la violencia rural nacional.",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Actividad de memoria histórica comunitaria: el estudiante entablará un diálogo en su hogar con sus padres, abuelos o vecinos de mayor edad en el corregimiento de Loma Verde. Les formulará las siguientes preguntas: \"¿Qué recuerdos tienen sobre las cooperativas o asociaciones campesinas que funcionaban en la región durante las décadas de 1970 u 1980?, ¿hubo momentos en que los líderes locales sufrieran persecución o prevención por reclamar mejoras sobre las tierras?, y ¿cómo se percibía el orden militar en las veredas en esos años?\". El estudiante sistematizará las narraciones recogidas mediante una crónica escrita a mano en su cuaderno, deconstruyendo de manera lógica cómo la geopolítica explicada en la clase se materializó en las vivencias del campesinado local, sin recurrir a fuentes digitales ni internet.",
+      "fundamentacion": "# MANIFESTACIONES GEOPOLÍTICAS EN AMÉRICA LATINA: DOCTRINAS DE CONTROL, INTERVENCIONISMO Y LA INSTRUMENTALIZACIÓN DEL CONFLICTO AGRARIO\n\n## La reconfiguración del espacio latinoamericano tras el sismo de La Habana\n\nEl estudio científico de la historia contemporánea de América Latina exige situar los procesos domésticos de la segunda mitad del siglo XX dentro de la matriz analítica de la Guerra Fría. La finalización de la Segunda Guerra Mundial y el subsiguiente ordenamiento bipolar no quedaron restringidos a un diferendo diplomático o militar en las llanuras centroeuropeas; constituyeron un marco estructurante que redefinió las relaciones de poder, las soberanías y las dinámicas distributivas en el Tercer Mundo. En el hemisferio occidental, la consolidación de la hegemonía de los Estados Unidos de América se había cimentado históricamente a través de la formulación de la Doctrina Monroe y la instrumentalización institucional del Sistema Interamericano (expresado en el Tratado Interamericano de Asistencia Recíproca - TIAR y la Organización de los Estados Americanos - OEA). Este andamiaje institucional, concebido para repeler cualquier injerencia de potencias extracontinentales, sufrió un quiebre estructural definitivo el 1 de enero de 1959 con el triunfo de la Revolución Cubana.\n\nEl proceso insurreccional liderado por Fidel Castro, Ernesto 'Che' Guevara y el Movimiento 26 de Julio contra la dictadura cleptocrática de Fulgencio Batista no poseía en su génesis una filiación dogmática marxista-leninista de carácter unívoco; constituía una rebelión de base nacionalista, democrática y antiimperialista motivada por la profunda crisis de legitimidad del régimen y las brutales desigualdades agrarias que caracterizaban a la isla caribeña. No obstante, la inmediata implementación de medidas de justicia distributiva (como la Ley de Reforma Agraria de mayo de 1959, que afectó los latifundios de las corporaciones azucareras estadounidenses) concitó la hostilidad simétrica del gobierno de Washington. La subsiguiente concatenación de represalias económicas —que incluyó la cancelación de la cuota azucarera, el boicot petrolero y la posterior financiación encubierta de la invasión mercenaria en Bahía de Cochinos en 1961— empujó al régimen revolucionario a declarar el carácter socialista del proceso y a estructurar una alianza estratégica de carácter militar, financiero y logístico con la Unión de Repúblicas Socialistas Soviéticas (URSS). Cuba mutó de forma irreversible de una periferia neocolonial estadounidense a un bastión geoestratégico del bloque socialista oriental a escasas noventa millas de las costas de Florida, transformando la cuenca del Caribe en el epicentro de la mayor tensión de la posguerra: la Crisis de los Misiles de 1962, acontecimiento que situó a la población ecuménica bajo la certidumbre inminente de un holocausto termonuclear.\n\nEl triunfo y consolidación de la experiencia cubana alteró sustancialmente los horizontes discursivos y políticos de la izquierda latinoamericana. La Revolución demostró, de forma empírica, la viabilidad de subvertir los regímenes tradicionales y de desafiar con éxito la hegemonía continental estadounidense. En el plano metodológico, el guevarismo codificó la teoría del 'foquismo' rural, un postulado insurreccional que sostenía que un núcleo reducido de combatientes decididos, asentado en terrenos de difícil acceso geográfico, poseía la capacidad de generar de forma artificial las condiciones objetivas y subjetivas para la revolución mediante la acción armada, dinamizando la conciencia del campesinado sin necesidad de esperar la maduración política de los partidos obreros urbanos. Esta teorización estimuló la emergencia de movimientos guerrilleros de primera generación a lo largo del continente (en países como Guatemala, Venezuela, Perú y Bolivia), los cuales asumieron la vía armada como el único canal idóneo para quebrar las estructuras de dominación oligárquica, fragmentando los espacios de participación pacífica e inaugurando un periodo de profunda militarización de la conflictividad social agraria.\n\n## La Escuela de las Américas y la criminalización del enemigo interno\n\nLa respuesta geoestratégica del gobierno de los Estados Unidos ante la irrupción del socialismo caribeño combinó programas de cooptación económica reformista (la Alianza para el Progreso, orientada a financiar transformaciones de infraestructura menores para amortiguar el descontento popular) con el diseño e implantación de un agresivo modelo político-militar contrainsurgente: la Doctrina de Seguridad Nacional. Difundida de forma sistemática a través de centros de adiestramiento hemisférico como la Escuela de las Américas (instituida en Panamá), esta concepción doctrinal alteró la ontología de las fuerzas militares latinoamericanas. Los ejércitos nacionales ya no debían configurarse para la defensa de la soberanía territorial formal frente a incursiones de ejércitos convencionales extranjeros; su misión prioritaria se redefinió en torno al control de las variables de orden público domésticas mediante la neutralización y erradicación del 'enemigo interno'.\n\nBajo la lógica maniquea y polarizante de la bipolaridad global, la noción de enemigo interno fue expandida de manera deliberada para abarcar no solo a las organizaciones insurgentes clandestinas, sino a toda manifestación de disenso ideológico, protesta obrera, activismo universitario o demanda campesina de reforma agraria. Cualquier cuestionamiento a las matrices tradicionales de acumulación de capital o a la tenencia concentrada de la tierra arable fue catalogado discursivamente como un vector de la guerra psicológica encubierta del comunismo internacional dirigida a socavar los cimientos de la 'civilización occidental y cristiana'. Esta ideologización militar legitimó el colapso de las democracias formales de la región y justificó la instauración de dictaduras militares institucionales en el Cono Sur (Brasil en 1964, Chile y Uruguay en 1973, Argentina en 1976) y regímenes autoritarios contrainsurgentes en Centroamérica. Estos regímenes convirtieron el aparato estatal en una maquinaria de terrorismo de Estado, institucionalizando la censura de prensa, los estados de sitio perpetuos, las desapariciones forzadas y la coordinación represiva transnacional (la Operación Cóndor), clausurando de raíz la deliberación pluralista indispensable para la convivencia democrática.\n\n## El Frente Nacional y la captura contrainsurgente de las luchas agrarias en Colombia\n\nEn Colombia, las manifestaciones geopolíticas de la Guerra Fría se imbricaron con las contradicciones estructurales irresueltas de la formación social nacional, específicamente en lo relativo a la marginalidad de las periferias geográficas y la extrema concentración de la propiedad rural. Tras la fase armada de 'La Violencia' bipartidista, las élites de los partidos Liberal y Conservador clausuraron la disputa mediante el pacto del Frente Nacional (1958-1974). Si bien este diseño institucional logró pacificar las cúpulas partidistas mediante la alternancia presidencial milimétrica de la burocracia, operó cerrando los espacios de representación democrática para terceras fuerzas políticas, movimientos de izquierda o ligas campesinas autónomas. El Frente Nacional instituyó una democracia restringida, donde el disenso social carecía de canales institucionales de trámite, congelando las estructuras de poder de la oligarquía agraria andina y terrateniente.\n\nEn este escenario de asfixia política, las demandas de los movimientos campesinos por el acceso equitativo a la tierra en regiones periféricas como el valle del Sinú y el Caribe colombiano fueron capturadas discursivamente por los códigos de la contrainsurgencia global. Bajo la influencia del Plan Lazo (directriz militar diseñada con asesoría de la misión militar estadounidense Yarborough), el Estado colombiano y los sectores latifundistas tradicionales asimilaron las movilizaciones agrarias, los sindicatos de usuarios (como la ANUC) y las zonas comunitarias autónomas de asentamiento campesino a 'repúblicas independientes' al servicio del expansionismo soviético o cubano. La respuesta oficial ante el problema distributivo de la tierra abandonó la mediación institucional y priorizó la intervención militar masiva (como el ataque a Marquetalia en 1964). Al criminalizar la protesta social y responder con bombardeos y persecución judicial a los reclamos legítimos de justicia agraria, el Estado cerró las vías de la concertación pacífica, empujando a los sectores radicalizados del campesinado y de la intelectualidad hacia la conformación de las guerrillas de primera generación. Emergen así las FARC de orientación marxista-leninista soviética, el ELN inspirado en el foquismo cubano y la teología de la liberación, y el EPL adscrito a las tesis maoístas de la guerra popular prolongada del campo a la ciudad. De este modo, la confrontación geopolítica global de la Guerra Fría exacerbó las tensiones locales preexistentes, dotando de una narrativa teórica de largo aliento a la guerra interna colombiana y prolongando el sufrimiento de las comunidades rurales hasta los umbrales del siglo XXI.",
+      "lineatiempo": [
+        "1959: Triunfo de la Revolución Cubana liderada por Fidel Castro y el Movimiento 26 de Julio, derrocando la dictadura de Fulgencio Batista e iniciando transformaciones agrarias estructurales en la isla caribeña.",
+        "1961: Declaración oficial del carácter socialista de la Revolución Cubana tras el intento de invasión armada financiado por los Estados Unidos en Bahía de Cochinos, y lanzamiento de la Alianza para el Progreso.",
+        "1962: Crisis de los Misiles en Cuba; el descubrimiento de rampas de lanzamiento nucleares soviéticas sitúa al planeta al borde de una conflagración atómica directa e instala definitivamente la Guerra Fría en el continente.",
+        "1963: Consolidación de los programas de adiestramiento contrainsurgente en la Escuela de las Américas en Panamá, difundiendo la Doctrina de Seguridad Nacional y la noción del enemigo interno en los ejércitos de la región.",
+        "1964: Implementación del Plan Lazo por las fuerzas armadas colombianas con asesoría estadounidense; bombardeo e intervención militar en la zona campesina autónoma de Marquetalia, detonando la posterior fundación de las FARC.",
+        "1965: Fundación del Ejército de Liberación Nacional (ELN) en Colombia, bajo la influencia directa del foquismo de la Revolución Cubana, introduciendo la vertiente insurreccional rural en el conflicto interno nacional.",
+        "1967: Constitución oficial del Ejército Popular de Liberación (EPL) en Colombia, adscrito a las tesis maoístas de la guerra popular prolongada y la movilización campesina periférica frente a la ruptura chino-soviética.",
+        "1973: Golpe de Estado militar en Chile comandado por el general Augusto Pinochet, derrocando el gobierno democrático y socialista de Salvador Allende, inaugurando una dictadura institucional de seguridad nacional emblemática en el Cono Sur."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-06-19T14:06:48",
+  "planeadores": [
+    {
+      "id": "p11p2-tema-001",
+      "creado": "2026-06-19T14:06:48",
+      "grado": "Undécimo",
+      "periodo": 2,
+      "ejeIdx": 4,
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "001",
+      "grupos": "01 – 02 – 03",
+      "fecha": "",
+      "area": "Ciencias Sociales",
+      "asignatura": "Ciencias Sociales",
+      "tema": "El respeto por las identidades étnicas, religiosas, de género y de filiación política en una sociedad de derecho.",
+      "unidad": "Eje 4: Inclusión social y superación de discursos legitimadores de violencia",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Argumenta cómo los prejuicios históricos perpetúan la marginación de grupos minoritarios en las esferas de representación ciudadana. Formula propuestas lógicas de mediación y diálogo frente a dilemas reales o simulados de convivencia institucional.",
+      "competencias": "Interpretación y análisis de perspectivas. Pensamiento social.",
+      "contenidos": "El respeto por las identidades étnicas, religiosas, de género y de filiación política en una sociedad de derecho. Desmontaje de discursos de odio o narrativas de exclusión que normalizan el uso de la fuerza. Mecanismos constitucionales idóneos para proteger las libertades civiles fundamentales.",
+      "objetivo": "Analizar la importancia del respeto por las identidades diversas y el desmontaje de narrativas de odio para fortalecer el Estado social de derecho, mediante el estudio de mecanismos constitucionales y el fomento de una cultura de paz, con el fin de promover una convivencia ciudadana inclusiva y respetuosa en el entorno escolar y local.",
+      "pregunta": "¿Cómo el reconocimiento de la diversidad identitaria y el rechazo a los discursos de odio pueden transformar nuestra realidad local frente a la persistencia de brechas sociales y formas de violencia?",
+      "explora": "Conversatorio inicial: '¿Qué entendemos por identidad y por qué a veces nos cuesta aceptar lo diferente?'. Actividad corta: Lluvia de ideas sobre situaciones cotidianas de exclusión observadas en la institución o en el municipio.",
+      "glosario": [
+        {"t": "Alteridad", "d": "Capacidad de reconocer al 'otro' como un sujeto con derechos, dignidad y una visión del mundo legítima, distinta a la propia."},
+        {"t": "Sociedad de derecho", "d": "Sistema en el cual las normas jurídicas, la Constitución y los derechos fundamentales rigen la vida pública y limitan el ejercicio del poder."},
+        {"t": "Identidad étnica", "d": "Sentido de pertenencia a un grupo humano que comparte una herencia cultural, tradiciones, historia y lenguaje comunes."},
+        {"t": "Filiación política", "d": "Vínculo de una persona con un partido, movimiento o ideología política, reconocido como un derecho fundamental en un régimen pluralista."},
+        {"t": "Discurso de odio", "d": "Narrativa que incita a la violencia, discriminación o menosprecio hacia personas o grupos por razones de su identidad."},
+        {"t": "Constitución de 1991", "d": "Norma superior en Colombia que consagra el carácter pluriétnico y multicultural de la nación y protege los derechos fundamentales."},
+        {"t": "Acción de tutela", "d": "Mecanismo jurídico rápido y preferente para la protección inmediata de derechos constitucionales fundamentales cuando resultan amenazados o vulnerados."},
+        {"t": "Pluralismo", "d": "Principio democrático que reconoce y garantiza la convivencia pacífica de diversas ideologías, religiones y formas de vida."},
+        {"t": "Inclusión social", "d": "Proceso que busca garantizar que todas las personas, sin distinción, tengan igualdad de oportunidades para participar en la vida social y política."},
+        {"t": "Dignidad humana", "d": "Valor intrínseco de cada persona, que exige ser tratada con respeto y prohíbe cualquier forma de degradación o trato cruel."}
+      ],
+      "bloques": [
+        {
+          "tit": "Fundamentos de la diversidad y el Estado de derecho",
+          "txt": "Análisis sobre cómo la Constitución de 1991 abandona el modelo monista del siglo XIX para reconocer la realidad pluriétnica y multicultural de Colombia. Se enfatiza que la democracia no es solo el gobierno de las mayorías, sino la protección garante de las minorías.",
+          "pausa": "¿Por qué el respeto a la diferencia es la piedra angular para evitar el retorno de la violencia?",
+          "resp": "Porque la negación del otro (el 'enemigo interno') ha sido históricamente la base de las narrativas que justifican la violencia."
+        },
+        {
+          "tit": "Desmontaje de los discursos de odio",
+          "txt": "Revisión teórica sobre cómo operan los estereotipos y prejuicios en la creación de narrativas de exclusión. Se analizan ejemplos de cómo la lengua y los discursos de los líderes pueden normalizar la violencia o, por el contrario, fomentar la reconciliación.",
+          "pausa": "¿Cómo detectar cuando un discurso es violento aunque no use palabras soeces?",
+          "resp": "Cuando estigmatiza, deshumaniza o excluye a un grupo basándose únicamente en su identidad o creencias."
+        },
+        {
+          "tit": "Mecanismos de protección ciudadana",
+          "txt": "Estudio práctico de la acción de tutela y otros mecanismos constitucionales. Se enseña al estudiante no solo a identificarlos, sino a comprender su uso ético como herramienta de defensa de las libertades civiles.",
+          "pausa": "¿De qué manera el uso de la tutela ayuda a materializar la paz en el territorio?",
+          "resp": "Al permitir que el ciudadano exija justicia y derechos frente a la omisión o arbitrariedad del Estado o particulares."
+        }
+      ],
+      "talleres": "Actividad de estructuración: Elaboración de un cuadro comparativo donde identifiquen un prejuicio común hacia un grupo étnico, religioso, de género o político, y propongan un argumento sólido fundamentado en la Constitución de 1991 para refutarlo y proponer una acción de inclusión.",
+      "transfer": "Estudio de caso: Analizar un conflicto reciente de la comunidad local relacionado con la discriminación (ej. acceso a espacios públicos, expresiones de odio en redes sociales locales). Reflexión del entorno: Propuesta de una jornada escolar de sensibilización sobre la diversidad.",
+      "clave": "La respuesta debe identificar la normativa constitucional (art. 13 - igualdad, art. 7 - diversidad) y aplicar un análisis de casos realistas donde la mediación escolar sea la vía principal de resolución.",
+      "evaluacion": "Rúbrica: Superior (Propone soluciones creativas y fundamentadas); Alto (Analiza correctamente los conceptos y aplica la norma); Básico (Identifica conceptos sin profundizar); Bajo (No logra vincular teoría con contexto). Instrumentos: Observación en clase, participación en debates y revisión de la propuesta de intervención local.",
+      "recursos": "Documento de la Constitución Política de 1991, tablero, marcadores, acceso a noticias locales recientes, materiales de papelería.",
+      "referencias": "Constitución Política de Colombia (1991). Artículos 7, 13, 16. Derechos Básicos de Aprendizaje (DBA) en Ciencias Sociales. Bibliografía adicional: Arendt, H. (1998). La condición humana. Paidós.",
+      "dua": "Dificultades: Lectura en voz alta de los artículos constitucionales. Ritmo avanzado: Investigar sentencias de la Corte Constitucional sobre diversidad. Cooperativo: Grupos mixtos para la elaboración del cuadro comparativo.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El Estado social de derecho se fundamenta en la protección de la dignidad de todos, sin distinción de identidad.",
+        "La diversidad étnica, religiosa, política y de género enriquece la democracia y no debe ser causa de exclusión.",
+        "Los discursos de odio son narrativas que históricamente han servido para normalizar la violencia y marginar al otro.",
+        "La Constitución de 1991 ofrece herramientas claras, como la acción de tutela, para proteger los derechos fundamentales frente a la discriminación.",
+        "La construcción de paz local requiere una participación activa, crítica y comprometida con el respeto irrestricto de las libertades civiles."
+      ],
+      "errores": [
+        "Confundir pluralismo con relativismo moral absoluto; se corrige explicando que los valores constitucionales son el límite de la diversidad.",
+        "Pensar que la igualdad significa homogeneidad; se corrige enfatizando el derecho a ser diferente y tener oportunidades equitativas.",
+        "Creer que la acción de tutela se puede usar para cualquier situación; se corrige instruyendo sobre su procedencia exclusiva ante derechos fundamentales.",
+        "Justificar la intolerancia por razones de 'tradición'; se corrige argumentando que la Constitución prevalece sobre costumbres que vulneran la dignidad humana."
+      ],
+      "banco": [
+        {"tipo": "abierta", "q": "¿Cuál es la diferencia entre una democracia de mayorías y una sociedad de derecho en términos de inclusión de minorías?", "a": "La democracia de mayorías puede oprimir a las minorías; la sociedad de derecho garantiza derechos inalienables a todos, protegiendo a las minorías de la tiranía.", "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "abierta", "q": "Explique el concepto de alteridad y su relación con el respeto por las identidades políticas.", "a": "La alteridad es reconocer al otro como un igual legítimo. En política, implica aceptar que el opositor tiene el mismo derecho a expresarse y existir, evitando la deshumanización.", "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "abierta", "q": "¿Cómo afectan los discursos de odio a la convivencia pacífica en una comunidad pequeña?", "a": "Generan polarización, fracturan el tejido social, normalizan la desconfianza y pueden escalar de la violencia verbal a la física o simbólica.", "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "abierta", "q": "Defina la función de la acción de tutela como mecanismo de amparo constitucional.", "a": "Es un instrumento ágil para la protección inmediata de derechos fundamentales cuando estos son vulnerados por acciones u omisiones de autoridades o particulares.", "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "abierta", "q": "¿Por qué se dice que el reconocimiento de la diversidad es un requisito para la paz en Colombia?", "a": "Porque gran parte del conflicto histórico ha sido causado por la exclusión de grupos identitarios; la paz depende de la inclusión y el diálogo pluriétnico.", "verdadero": null, "justificacion": "", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "fv", "q": "La Constitución de 1991 promueve la homogeneidad cultural por encima de la identidad étnica.", "a": "Falso. La Constitución reconoce explícitamente a Colombia como una nación pluriétnica y multicultural (art. 7).", "verdadero": false, "justificacion": "La Constitución protege y fomenta la diversidad, no la homogeneidad.", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "fv", "q": "La filiación política es un derecho fundamental que no debe ser motivo de discriminación.", "a": "Verdadero. El pluralismo político es un principio de la democracia y la discriminación por ideas políticas es inconstitucional.", "verdadero": true, "justificacion": "La libertad de expresión y de pensamiento incluye la filiación política.", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "fv", "q": "El uso del lenguaje excluyente es una forma de violencia cultural según los estándares democráticos.", "a": "Verdadero. El lenguaje que deshumaniza o margina es una base para la violencia estructural y cultural.", "verdadero": true, "justificacion": "El lenguaje construye realidades; cuando este margina, fomenta la exclusión.", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "fv", "q": "La acción de tutela protege los derechos económicos colectivos de manera preferente sobre los derechos fundamentales individuales.", "a": "Falso. La acción de tutela es para proteger derechos fundamentales, no colectivos o económicos directamente.", "verdadero": false, "justificacion": "Para derechos colectivos existen otros mecanismos como las acciones populares.", "enunciado": "", "opciones": {}, "correcta": ""},
+        {"tipo": "fv", "q": "La dignidad humana exige tratar a todas las personas con respeto, independientemente de su origen o religión.", "a": "Verdadero. La dignidad humana es inherente a toda persona sin distinción alguna.", "verdadero": true, "justificacion": "Es un valor supremo en nuestra Constitución.", "enunciado": "", "opciones": {}, "correcta": ""}
+      ],
+      "tarea": "Observación del entorno local: Identifique una señal, mensaje o situación en su barrio donde se evidencie una exclusión o un prejuicio. Escriba una breve reflexión (máximo una página) sobre cómo esta situación contradice los principios de una sociedad de derecho y proponga una acción de mediación posible.",
+      "fundamentacion": "# FUNDAMENTACIÓN ACADÉMICA: DIVERSIDAD E IDENTIDAD EN LA SOCIEDAD DE DERECHO\n\n## Marco histórico del Estado social de derecho en Colombia\nLa transición desde la Constitución de 1886 hacia la de 1991 no debe entenderse como un simple cambio normativo, sino como una ruptura epistemológica respecto a cómo se entiende la nación. Mientras que la carta del 86 buscaba la unificación religiosa y cultural, la del 91 reconoce la pluriculturalidad como valor constitucional. Este giro es vital para el docente de Ciencias Sociales, pues el conflicto colombiano ha sido, en gran medida, la respuesta violenta a la negación de esta pluralidad.\n\n## Referentes teóricos y alteridad\nLa noción de alteridad, según filósofos como Emmanuel Levinas, postula que la ética comienza con el encuentro con el 'otro'. En nuestra clase, es fundamental para desmontar la lógica del enemigo. Hannah Arendt, por su parte, advierte sobre la 'banalidad del mal', que ocurre cuando las sociedades dejan de pensar críticamente y aceptan narrativas de odio como parte de la 'normalidad'. La formación ciudadana, por ende, es un ejercicio activo de resistencia a la deshumanización.\n\n## Desglose de conceptos clave\n*   **Sociedad de derecho vs. Estado de derecho:** La primera enfatiza la justicia social y los derechos humanos como esencia, no solo la aplicación fría de la ley.\n*   **Discurso de odio:** No es solo libertad de expresión; es una herramienta que reduce al otro a un estereotipo para justificar su exclusión.\n*   **Pluralismo:** Reconocimiento de que la coexistencia de visiones contrarias no solo es tolerada, sino necesaria para la vitalidad democrática.\n\n## Conexión con el contexto actual\nEn el escenario post-acuerdo y de profunda polarización en Colombia, el docente debe ser un agente mediador que desarticule el lenguaje bélico. La paz en el territorio no se logra solo con leyes, sino con la transformación de la cultura política cotidiana donde se respete la filiación ideológica ajena y se dignifique a las comunidades históricamente excluidas.",
+      "lineatiempo": "1991: Promulgación de la Constitución Política de Colombia (reconocimiento pluriétnico). 1993: Ley 70 (derechos de comunidades negras). 2000: Ratificación de tratados internacionales contra el racismo. 2016: Acuerdo de paz (énfasis en la dignificación de víctimas). 2026: Continúa la lucha por la implementación plena de los derechos de género y poblaciones diversas."
+    }
+  ]
+}
