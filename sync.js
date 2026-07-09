@@ -38,9 +38,9 @@ const LV_SYNC = (() => {
   const MAPA = {
     'lv_cursos':         { tabla: 'cursos',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_estudiantes':    { tabla: 'estudiantes', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
-    'lv_calificaciones': { tabla: 'notas',       id: 'id' },
-    'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id' },
-    'lv_eventos':        { tabla: 'eventos',      id: 'id' },
+    'lv_calificaciones': { tabla: 'notas',       id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_as_asistencia':  { tabla: 'asistencia',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_eventos':        { tabla: 'eventos',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_horario':        { tabla: 'horario',      id: 'id', incremental: false },
     'lv_planeadores':    { tabla: 'lv_planeadores', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_com_historial':  { tabla: 'lv_comunicados',  id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
@@ -268,7 +268,7 @@ const LV_SYNC = (() => {
       } else if (cfg.tabla === 'asistencia') {
         // asistencia tiene estructura especial {cursoId_fecha: {...}}
         const local = lsGet(lvKey) || {};
-        remotos.forEach(r => { local[r.id] = r; });
+        remotos.forEach(r => { local[r.id] = (r.datos || r); });
         lsSet(lvKey, local);
       } else {
         // arrays normales
@@ -428,8 +428,26 @@ const LV_SYNC = (() => {
     window.addEventListener('focus', () => chequearYActualizar());
   }
 
+  // ── Migración de cola: pendientes encolados por la versión anterior
+  //    para notas/eventos/asistencia iban en formato plano (columna por
+  //    columna) y la base los rechazaba con 400. Se envuelven en
+  //    {id, datos} para que suban con el formato nuevo.
+  function migrarPendientesViejos() {
+    const envolver = { 'notas': 1, 'eventos': 1, 'asistencia': 1 };
+    const p = pendientesGet();
+    let cambio = false;
+    p.forEach(it => {
+      if (envolver[it.tabla] && it.datos && !('datos' in it.datos)) {
+        it.datos = { id: it.id, datos: it.datos };
+        cambio = true;
+      }
+    });
+    if (cambio) lsSet('lv_sync_pendientes', p);
+  }
+
   // ── Inicialización ───────────────────────────────────────────
   async function init() {
+    migrarPendientesViejos();
     if (!puedeSincronizar()) {
       // sin sesión (ej. pantalla de login): no tocar la red
       revisarEspacio();
