@@ -696,6 +696,24 @@ document.getElementById('search-input').addEventListener('input',function(){
   });
 })();
 
+// ═══ Alerta de situaciones Tipo II / III recientes (últimos 7 días) ═══
+(function(){
+  try{
+    const wrap=document.getElementById('alertas-wrap');
+    if(!wrap) return;
+    const hace7=Date.now()-7*24*3600*1000;
+    const graves=(JSON.parse(localStorage.getItem('lv_observador')||'[]'))
+      .filter(o=>!o._eliminado&&(o.tipo==='Situación Tipo II'||o.tipo==='Situación Tipo III')
+        &&(o.creado||0)>hace7);
+    if(!graves.length) return;
+    const div=document.createElement('div');
+    div.style.cssText='background:#fee2e2;border:1px solid #fca5a5;color:#991b1b;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:.88rem;font-weight:600;cursor:pointer';
+    div.innerHTML='🚨 '+graves.length+' situación(es) Tipo II/III registradas esta semana — toca para ver el observador';
+    div.onclick=()=>location.href='modulos/10-observador.html';
+    wrap.prepend(div);
+  }catch(_){}
+})();
+
 // ═══ Cumpleaños del día (usa est.cumple "MM-DD" si está registrado) ═══
 (function(){
   try{

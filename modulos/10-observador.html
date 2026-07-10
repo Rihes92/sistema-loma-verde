@@ -44,12 +44,13 @@
   .b-t3{background:#fee2e2;color:#991b1b}
   .b-aca{background:#dbeafe;color:#1e3a8a}
   .b-rec{background:#dcfce7;color:#166534}
+  .b-vis{background:#ccfbf1;color:#115e59}
   .b-abierto{background:#fef3c7;color:#92400e}
   .b-cumplido{background:#dcfce7;color:#166534}
   .b-incumplido{background:#fee2e2;color:#991b1b}
   .anot{border:1px solid var(--border);border-left-width:5px;border-radius:10px;padding:12px 14px;margin-bottom:12px;background:#fff}
   .anot.t1{border-left-color:#eab308}.anot.t2{border-left-color:#f97316}.anot.t3{border-left-color:#dc2626}
-  .anot.aca{border-left-color:#3b82f6}.anot.rec{border-left-color:#16a34a}
+  .anot.aca{border-left-color:#3b82f6}.anot.rec{border-left-color:#16a34a}.anot.vis{border-left-color:#14b8a6}
   .anot .meta{font-size:.76rem;color:var(--muted)}
   .anot .desc-txt{margin:6px 0;font-size:.9rem;white-space:pre-wrap}
   .anot .comp{background:#f8fafc;border:1px dashed var(--border);border-radius:8px;padding:8px 10px;font-size:.84rem;margin-top:6px}
@@ -130,13 +131,25 @@
               <option value="Situación Tipo III">Situación Tipo III (presunto delito)</option>
               <option value="Académica">Anotación académica</option>
               <option value="Reconocimiento">Reconocimiento positivo ⭐</option>
+              <option value="Visita domiciliaria">Visita domiciliaria 🏠</option>
             </select>
           </label>
           <label class="fld">Fecha<input id="n-fecha" type="date"></label>
         </div>
-        <label class="fld" style="margin-top:10px">Descripción de la situación
+        <label class="fld" style="margin-top:10px"><span id="lbl-desc">Descripción de la situación</span>
           <textarea id="n-desc" rows="3" placeholder="Describe objetivamente lo ocurrido…"></textarea>
         </label>
+        <div id="campos-visita" class="hide" style="margin-top:10px">
+          <div class="row">
+            <label class="fld">Quién realizó la visita<input id="v-quien" placeholder="Docente, orientador, comisaría…"></label>
+          </div>
+          <label class="fld" style="margin-top:10px">Situación encontrada
+            <textarea id="v-situacion" rows="2" placeholder="Condiciones del hogar, con quién vive, hallazgos relevantes…"></textarea>
+          </label>
+          <label class="fld" style="margin-top:10px">Acuerdos con la familia
+            <textarea id="v-acuerdos" rows="2" placeholder="Compromisos acordados durante la visita…"></textarea>
+          </label>
+        </div>
         <div class="row" style="margin-top:10px">
           <label class="fld" style="flex:2">Compromiso / acción pedagógica (opcional)
             <textarea id="n-comp" rows="2" placeholder="Compromiso del estudiante o acción acordada…"></textarea>
@@ -156,6 +169,7 @@
               <option value="">Todos</option>
               <option>Situación Tipo I</option><option>Situación Tipo II</option>
               <option>Situación Tipo III</option><option>Académica</option><option>Reconocimiento</option>
+              <option>Visita domiciliaria</option>
             </select>
           </label>
         </div>
@@ -232,7 +246,7 @@ const obsDe = est => lsRead('observador')
   .filter(o=>!o._eliminado && (o.estId===est.id || norm(o.estNombre)===norm(est.nombre)))
   .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
 
-const claseTipo = t => t==='Situación Tipo I'?'t1':t==='Situación Tipo II'?'t2':t==='Situación Tipo III'?'t3':t==='Reconocimiento'?'rec':'aca';
+const claseTipo = t => t==='Situación Tipo I'?'t1':t==='Situación Tipo II'?'t2':t==='Situación Tipo III'?'t3':t==='Reconocimiento'?'rec':t==='Visita domiciliaria'?'vis':'aca';
 const badgeTipo = t => `<span class="badge b-${claseTipo(t)}">${esc(t)}</span>`;
 
 // ── estado de la vista ──
@@ -311,6 +325,11 @@ function pintarHistorial(){
         </span>
       </div>
       <div class="desc-txt">${esc(o.descripcion)}</div>
+      ${o.tipo==='Visita domiciliaria'?`<div class="comp">
+        ${o.vQuien?`<b>Realizada por:</b> ${esc(o.vQuien)}<br>`:''}
+        ${o.vSituacion?`<b>Situación encontrada:</b> ${esc(o.vSituacion)}<br>`:''}
+        ${o.vAcuerdos?`<b>Acuerdos:</b> ${esc(o.vAcuerdos)}`:''}
+      </div>`:''}
       ${o.compromiso?`<div class="comp"><b>Compromiso:</b> ${esc(o.compromiso)}
         ${o.fechaCompromiso?` <span class="meta">(límite: ${fmtF(o.fechaCompromiso)})</span>`:''}
         &nbsp;<span class="badge b-${esc(o.estado||'abierto')}">${esc(o.estado||'abierto')}</span>
@@ -323,6 +342,13 @@ function pintarHistorial(){
       ${(o.seguimientos||[]).map(s=>`<div class="seg"><span class="meta">${fmtF(s.fecha)} · ${esc(s.autor||'')}</span><br>${esc(s.texto)}</div>`).join('')}
     </div>`).join('');
 }
+
+// ── campos condicionales de visita domiciliaria ──
+document.getElementById('n-tipo').addEventListener('change', ()=>{
+  const esVisita = document.getElementById('n-tipo').value==='Visita domiciliaria';
+  document.getElementById('campos-visita').classList.toggle('hide', !esVisita);
+  document.getElementById('lbl-desc').textContent = esVisita ? 'Motivo de la visita' : 'Descripción de la situación';
+});
 
 // ── acciones ──
 document.getElementById('btn-guardar').addEventListener('click', ()=>{
@@ -340,11 +366,18 @@ document.getElementById('btn-guardar').addEventListener('click', ()=>{
     fechaCompromiso:document.getElementById('n-fecha-comp').value||'',
     estado:'abierto', seguimientos:[], autor, creado:Date.now()
   };
+  if(nueva.tipo==='Visita domiciliaria'){
+    nueva.vQuien=document.getElementById('v-quien').value.trim();
+    nueva.vSituacion=document.getElementById('v-situacion').value.trim();
+    nueva.vAcuerdos=document.getElementById('v-acuerdos').value.trim();
+  }
   const arr=lsRead('observador'); arr.push(nueva);
   lsWriteObs(arr,[nueva]);
   document.getElementById('n-desc').value=''; document.getElementById('n-comp').value='';
   document.getElementById('n-fecha-comp').value='';
+  ['v-quien','v-situacion','v-acuerdos'].forEach(i=>document.getElementById(i).value='');
   toast('Anotación guardada'); pintarHistorial(); pintarEstudiantes();
+  if(nueva.tipo==='Situación Tipo II'||nueva.tipo==='Situación Tipo III') abrirAlertaWhatsApp(nueva);
 });
 
 window.agregarSeguimiento=function(id){
@@ -376,6 +409,34 @@ window.borrarAnotacion=function(id){
   toast('Anotación enviada a la papelera'); pintarHistorial(); pintarEstudiantes();
 };
 
+// ── alerta WhatsApp por situaciones Tipo II / Tipo III ──
+function telWa(t){
+  let n=String(t||'').replace(/\D/g,'');
+  if(n.length===10 && n.startsWith('3')) n='57'+n; // celular colombiano
+  return n;
+}
+function abrirAlertaWhatsApp(o){
+  const docentes=lsRead('docentes').filter(d=>d.telefono&&telWa(d.telefono).length>=11);
+  const msg=`🚨 ALERTA ${o.tipo.toUpperCase()} — I.E. San José de Loma Verde\n`+
+    `Estudiante: ${o.estNombre} (${o.curso})\n`+
+    `Situación: ${o.descripcion.slice(0,200)}\n`+
+    `Registrado por: ${o.autor} — ${fmtF(o.fecha)}\n`+
+    `Revisa el observador en el Sistema Loma Verde.`;
+  const wrap=document.createElement('div');
+  wrap.id='wa-alerta-modal';
+  wrap.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px';
+  wrap.innerHTML=`<div style="background:#fff;border-radius:14px;padding:24px;width:min(92vw,420px);max-height:80vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.3)">
+    <h3 style="color:#991b1b;margin:0 0 6px">🚨 ${esc(o.tipo)} registrada</h3>
+    <p style="color:#64748b;font-size:.85rem;margin:0 0 14px">Según el protocolo, notifica a coordinación y docentes. Toca un nombre para enviarle la alerta por WhatsApp (mensaje ya escrito):</p>
+    ${docentes.length?docentes.map(d=>`<a href="https://wa.me/${telWa(d.telefono)}?text=${encodeURIComponent(msg)}" target="_blank"
+        style="display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #e2e8f0;border-radius:9px;margin-bottom:6px;text-decoration:none;color:#1f2937;font-weight:600">
+        💬 ${esc(d.nombre)} <span style="margin-left:auto;font-size:.75rem;color:#64748b">${esc(d.sede||'')}</span></a>`).join('')
+      :'<p style="font-size:.85rem;color:#92400e;background:#fef3c7;padding:10px;border-radius:8px">Ningún docente tiene teléfono registrado. Coordinación puede agregarlos en la ficha de cada docente.</p>'}
+    <button class="btn sec" style="width:100%;margin-top:8px" onclick="document.getElementById('wa-alerta-modal').remove()">Cerrar</button>
+  </div>`;
+  document.body.appendChild(wrap);
+}
+
 // ── impresión ──
 document.getElementById('btn-imprimir').addEventListener('click', ()=>{
   if(!estSel) return;
@@ -400,6 +461,7 @@ document.getElementById('btn-imprimir').addEventListener('click', ()=>{
       <div class="p-anot">
         <b>${i+1}. ${esc(o.tipo)}</b> — ${fmtF(o.fecha)} · Registró: ${esc(o.autor||'—')}<br>
         ${esc(o.descripcion)}
+        ${o.tipo==='Visita domiciliaria'?`${o.vQuien?`<br><b>Realizada por:</b> ${esc(o.vQuien)}`:''}${o.vSituacion?`<br><b>Situación encontrada:</b> ${esc(o.vSituacion)}`:''}${o.vAcuerdos?`<br><b>Acuerdos:</b> ${esc(o.vAcuerdos)}`:''}`:''}
         ${o.compromiso?`<br><b>Compromiso:</b> ${esc(o.compromiso)}${o.fechaCompromiso?' (límite: '+fmtF(o.fechaCompromiso)+')':''} — <i>${esc(o.estado||'abierto')}</i>`:''}
         ${(o.seguimientos||[]).map(s=>`<br><i>Seguimiento ${fmtF(s.fecha)} (${esc(s.autor||'')}):</i> ${esc(s.texto)}`).join('')}
       </div>`).join('') : '<p>Sin anotaciones registradas.</p>'}

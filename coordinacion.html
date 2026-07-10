@@ -91,6 +91,7 @@
         <label class="fld">Sede<select id="d-sede"></select></label>
         <label class="fld">Jornada<select id="d-jornada"><option>Única</option><option>Mañana</option><option>Tarde</option></select></label>
         <label class="fld">Correo (opcional)<input id="d-email" type="email" placeholder="docente@correo.com"></label>
+        <label class="fld">Teléfono / WhatsApp<input id="d-telefono" placeholder="Ej: 300 123 4567"></label>
       </div>
       <p class="desc" style="margin-top:6px">El acceso al portal ahora es con usuario y contraseña reales (Supabase). Para habilitar a un docente: registra aquí su <b>correo</b> y crea su usuario con ese mismo correo en Supabase → Authentication → Users.</p>
       <div style="margin-top:12px;display:flex;gap:10px">
@@ -511,6 +512,7 @@ document.getElementById('btn-docente-save').addEventListener('click', ()=>{
     sede: document.getElementById('d-sede').value,
     jornada: document.getElementById('d-jornada').value,
     email: document.getElementById('d-email').value.trim(),
+    telefono: document.getElementById('d-telefono').value.trim(),
     creado: Date.now()
   };
   if (docenteEditId) {
@@ -522,14 +524,14 @@ document.getElementById('btn-docente-save').addEventListener('click', ()=>{
   lsWrite('docentes', docentes);
   docenteEditId = null;
   document.getElementById('btn-docente-cancel').classList.add('hide');
-  ['d-nombre','d-email'].forEach(id=>document.getElementById(id).value='');
+  ['d-nombre','d-email','d-telefono'].forEach(id=>document.getElementById(id).value='');
   renderDocentes(); fillDocenteSelects();
   toast('Docente guardado');
 });
 document.getElementById('btn-docente-cancel').addEventListener('click', ()=>{
   docenteEditId = null;
   document.getElementById('btn-docente-cancel').classList.add('hide');
-  ['d-nombre','d-email'].forEach(id=>document.getElementById(id).value='');
+  ['d-nombre','d-email','d-telefono'].forEach(id=>document.getElementById(id).value='');
 });
 window.editarDocente = id=>{
   const d = docentes.find(x=>x.id===id); if(!d) return;
@@ -538,6 +540,7 @@ window.editarDocente = id=>{
   document.getElementById('d-sede').value = d.sede||'';
   document.getElementById('d-jornada').value = d.jornada||'Única';
   document.getElementById('d-email').value = d.email||'';
+  document.getElementById('d-telefono').value = d.telefono||'';
   document.getElementById('btn-docente-cancel').classList.remove('hide');
   window.scrollTo(0,0);
 };

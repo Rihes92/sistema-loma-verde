@@ -112,6 +112,18 @@ const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 
+// ── WhatsApp: normalizar número colombiano y mensaje prellenado ──
+function telWa(t){
+  let n=String(t||'').replace(/\D/g,'');
+  if(n.length===10 && n.startsWith('3')) n='57'+n;
+  return n;
+}
+function waMsg(a){
+  return encodeURIComponent(
+    `Buenos días. Le escribimos de la I.E. San José de Loma Verde respecto a su acudido(a) ${a.estudiante||''}`+
+    `${a.grado?' ('+a.grado+(a.grupo?'-'+a.grupo:'')+')':''}. `);
+}
+
 function quienEsta(){
   try{
     const login = JSON.parse(localStorage.getItem('lv_login')||'null');
@@ -212,7 +224,8 @@ function renderAcudientes(){
     <td>${esc(a.grado||'—')}${a.grupo?'-'+esc(a.grupo):''}</td>
     <td>${esc(a.nombreAcudiente)}</td>
     <td>${esc(a.parentesco||'—')}</td>
-    <td>${esc(a.telefono||'—')}</td>
+    <td>${a.telefono?`<a href="https://wa.me/${telWa(a.telefono)}?text=${waMsg(a)}" target="_blank"
+        style="color:#16a34a;font-weight:700;text-decoration:none;white-space:nowrap">💬 ${esc(a.telefono)}</a>`:'—'}</td>
     <td>${esc(a.email||'—')}</td>
     <td class="c">
       <button class="btn sm sec" onclick="editarAcudiente('${a.id}')">✏️</button>
