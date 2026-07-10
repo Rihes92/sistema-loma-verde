@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mi Grupo — Sistema Loma Verde</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../sync.js"></script>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  main{max-width:1150px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text)}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .hide{display:none!important}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
+  .kpi .n{font-size:1.7rem;font-weight:800}
+  .kpi .l{font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+  .est{border:1px solid var(--border);border-left-width:6px;border-radius:11px;padding:12px 14px;background:#fff;cursor:pointer;transition:transform .1s}
+  .est:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+  .est.verde{border-left-color:#16a34a}.est.amarillo{border-left-color:#d97706}.est.rojo{border-left-color:#dc2626}
+  .est .nom{font-weight:700;display:flex;align-items:center;gap:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+  .chip{font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px;background:#f1f5f9;color:#475569}
+  .chip.mal{background:#fee2e2;color:#991b1b}
+  .chip.med{background:#fef3c7;color:#92400e}
+  .chip.bien{background:#dcfce7;color:#166534}
+  .barra{height:8px;border-radius:99px;background:#e2e8f0;overflow:hidden;margin-top:8px}
+  .barra>div{height:100%;border-radius:99px}
+  .det-mat{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--border);font-size:.86rem}
+  .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .modal-bg{position:fixed;inset:0;z-index:999;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+  .modal{background:#fff;border-radius:14px;padding:22px;width:min(94vw,560px);max-height:88vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.3)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <h1>🧭 Mi Grupo — Tablero del director</h1>
+  <span class="pill">Sin notas: solo avance y alertas</span>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<main>
+  <div class="card" id="sin-grupo" style="display:none">
+    <h2>Sin grupos a cargo</h2>
+    <p class="desc">Este tablero es para directores de grupo. Pide a Coordinación que registre el grupo que diriges en tu ficha de docente (campo <b>"Dirige"</b>, ej: <code>6-601</code>).</p>
+  </div>
+
+  <div id="zona" style="display:none">
+    <div class="card">
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <label style="font-size:.82rem;font-weight:600;color:var(--muted)">Grupo:&nbsp;<select id="sel-grupo"></select></label>
+        <span class="desc" style="margin:0" id="periodo-info"></span>
+      </div>
+      <div class="kpis" style="margin-top:14px" id="kpis"></div>
+    </div>
+
+    <div class="card">
+      <h2>Estudiantes <span style="font-weight:400;font-size:.8rem;color:var(--muted)">— toca una tarjeta para ver el detalle</span></h2>
+      <div class="grid" id="tarjetas"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+const LS='lv_';
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||[]; }catch(_){ return []; } }
+function lsObj(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||{}; }catch(_){ return {}; } }
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
+const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const esAdmin=!!(login&&login.esAdmin);
+
+// pesos por defecto de la definitiva (mismos del módulo de Calificaciones)
+const W={cognitivo:60,acumulativo:25,auto:5,co:5,hetero:5}, PASSING=3.0;
+function defin(cal){
+  if(!cal) return 0;
+  const v=(cal.cognitivas||[]).filter(n=>typeof n==='number'&&n>0);
+  const cog=v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
+  const acu=cal.acumulativo||0,au=cal.auto||0,co=cal.co||0,he=cal.hetero||0;
+  if(!cog&&!acu&&!au&&!co&&!he) return 0;
+  return (cog*W.cognitivo+acu*W.acumulativo+au*W.auto+co*W.co+he*W.hetero)/100;
+}
+
+// ── grupos dirigidos (misma lógica del Observador) ──
+function gruposDirigidos(){
+  const cursos=lsRead('cursos');
+  if(esAdmin) return cursos;
+  const d=lsRead('docentes').find(x=>x.id===(login&&login.docenteId));
+  if(!d||!d.dirige) return [];
+  const tokens=String(d.dirige).split(',').map(t=>{const [g,gr]=t.trim().split('-');return {grado:norm(g),grupo:norm(gr||'')};});
+  return cursos.filter(c=>tokens.some(t=>t.grado===norm(c.grado)&&(!t.grupo||!norm(c.grupo)||t.grupo===norm(c.grupo))));
+}
+function gruposUnicos(){
+  const v={},out=[];
+  gruposDirigidos().forEach(c=>{const k=norm(c.grado)+'-'+norm(c.grupo);
+    if(!v[k]){v[k]=1;out.push({key:k,grado:c.grado,grupo:c.grupo});}});
+  return out.sort((a,b)=>a.key.localeCompare(b.key,undefined,{numeric:true}));
+}
+
+// ── datos del grupo seleccionado ──
+function analizarGrupo(grupoKey){
+  const cursos=lsRead('cursos').filter(c=>norm(c.grado)+'-'+norm(c.grupo)===grupoKey);
+  const cursoIds=cursos.map(c=>c.id);
+  const materiaDe={}; cursos.forEach(c=>{ materiaDe[c.id]=c.materia||c.area||'Materia'; });
+
+  // estudiantes únicos del grupo (por nombre, existen por materia)
+  const estMap={};
+  lsRead('estudiantes').forEach(e=>{
+    if(!cursoIds.includes(e.cursoId)) return;
+    const k=normN(e.nombre);
+    if(!estMap[k]) estMap[k]={nombre:e.nombre, ids:[], cursos:[]};
+    estMap[k].ids.push(e.id); estMap[k].cursos.push(e.cursoId);
+  });
+
+  // notas: periodo con más registros = periodo actual
+  const notas=lsRead('calificaciones').filter(n=>cursoIds.includes(n.cursoId));
+  const cuentaPer={}; notas.forEach(n=>{ if(defin(n)>0) cuentaPer[n.periodo]=(cuentaPer[n.periodo]||0)+1; });
+  const periodos=Object.keys(cuentaPer).sort();
+  const perActual=periodos.length?periodos[periodos.length-1]:null;
+  const perAnterior=periodos.length>1?periodos[periodos.length-2]:null;
+
+  // asistencia: cursos de 05 que correspondan al grupo (por nombre/grado)
+  const asist=lsObj('as_asistencia');
+  const cursos05=lsRead('as_cursos');
+  const ests05=lsObj('as_estudiantes');
+  const ids05=cursos05.filter(c05=>cursos.some(c=>
+      (c05.nombre&&c.nombre&&normN(c05.nombre)===normN(c.nombre)) ||
+      (norm(c05.grado||'')===norm(grupoKey.split('-')[0])&&norm(c05.grupo||'')===norm(grupoKey.split('-')[1]||''))
+    )).map(c=>c.id).concat(cursoIds);
+  const regs=Object.entries(asist).filter(([k,v])=>ids05.some(id=>k.startsWith(id+'_')))
+    .map(([k,v])=>v).sort((a,b)=>String(a.fecha||'').localeCompare(String(b.fecha||'')));
+  // mapa nombre→ids de estudiantes en 05
+  const nombre05={};
+  Object.values(ests05).forEach(arr=>{ (arr||[]).forEach(e=>{ const k=normN(e.nombre); (nombre05[k]=nombre05[k]||[]).push(e.id); }); });
+
+  const obs=lsRead('observador').filter(o=>!o._eliminado);
+  const hoy=Date.now();
+
+  const lista=Object.values(estMap).map(est=>{
+    const k=normN(est.nombre);
+    // académico
+    const notasEst=notas.filter(n=>est.ids.includes(n.estId));
+    const matAct=[], matAnt=[];
+    const porMateria={};
+    notasEst.forEach(n=>{
+      const d=defin(n); if(d<=0) return;
+      if(n.periodo===perActual){ matAct.push(d); porMateria[materiaDe[n.cursoId]||'Materia']=d; }
+      if(n.periodo===perAnterior) matAnt.push(d);
+    });
+    const promAct=matAct.length?matAct.reduce((a,b)=>a+b,0)/matAct.length:0;
+    const promAnt=matAnt.length?matAnt.reduce((a,b)=>a+b,0)/matAnt.length:0;
+    const tendencia=(promAct&&promAnt)?(promAct-promAnt>0.15?'sube':(promAnt-promAct>0.15?'baja':'igual')):'igual';
+    const materiasBajas=Object.values(porMateria).filter(d=>d<PASSING).length;
+
+    // asistencia
+    const ids05est=(nombre05[k]||[]).concat(est.ids);
+    let F=0,total=0,seguidas=0,rachaMax=0;
+    regs.forEach(reg=>{
+      let e=null;
+      for(const id of ids05est){ if((reg.registros||{})[id]){ e=(reg.registros||{})[id]; break; } }
+      if(!e) return;
+      total++;
+      if(e==='F'){ F++; seguidas++; rachaMax=Math.max(rachaMax,seguidas); } else seguidas=0;
+    });
+    const pctF=total?Math.round(F/total*100):0;
+    const rachaActual=seguidas; // fallas al final de la serie = racha vigente
+
+    // observador
+    const oEst=obs.filter(o=>normN(o.estNombre)===k);
+    const graves=oEst.filter(o=>(o.tipo==='Situación Tipo II'||o.tipo==='Situación Tipo III')&&(hoy-(o.creado||0))<45*86400000).length;
+    const incumplidos=oEst.filter(o=>o.estado==='incumplido').length;
+    const reconocimientos=oEst.filter(o=>o.tipo==='Reconocimiento').length;
+
+    // riesgo
+    let pts=0; const razones=[];
+    if(pctF>=25){pts+=2;razones.push({t:`${pctF}% de inasistencia`,n:'mal'});}
+    else if(pctF>=15){pts+=1;razones.push({t:`${pctF}% de inasistencia`,n:'med'});}
+    if(rachaActual>=3){pts+=2;razones.push({t:`${rachaActual} fallas seguidas — posible deserción`,n:'mal'});}
+    if(promAct>0&&promAct<PASSING){pts+=2;razones.push({t:'desempeño general bajo',n:'mal'});}
+    else if(promAct>0&&promAct<3.3){pts+=1;razones.push({t:'desempeño en el límite',n:'med'});}
+    if(tendencia==='baja'){pts+=1;razones.push({t:'el avance viene bajando',n:'med'});}
+    if(materiasBajas>=3){pts+=1;razones.push({t:`${materiasBajas} materias en bajo`,n:'mal'});}
+    if(graves){pts+=2;razones.push({t:`situación Tipo II/III reciente`,n:'mal'});}
+    if(incumplidos){pts+=1;razones.push({t:'compromiso incumplido en observador',n:'med'});}
+    if(!razones.length){
+      if(reconocimientos) razones.push({t:`⭐ ${reconocimientos} reconocimiento(s)`,n:'bien'});
+      if(tendencia==='sube') razones.push({t:'mejorando',n:'bien'});
+      if(!razones.length) razones.push({t:'sin alertas',n:'bien'});
+    } else if(tendencia==='sube') razones.push({t:'pero viene mejorando',n:'bien'});
+
+    const nivel=pts>=5?'rojo':(pts>=2?'amarillo':'verde');
+    return {nombre:est.nombre, nivel, pts, razones, tendencia, pctF, rachaActual, totalAsist:total,
+            porMateria, promAct, graves, incumplidos, reconocimientos, sinNotas:!matAct.length};
+  }).sort((a,b)=>b.pts-a.pts||a.nombre.localeCompare(b.nombre));
+
+  return {lista, perActual, totalRegs:regs.length};
+}
+
+// ── UI ──
+const TFLECHA={sube:'📈',baja:'📉',igual:'➡️'};
+const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};
+let grupoSel=null;
+
+function render(){
+  const {lista,perActual,totalRegs}=analizarGrupo(grupoSel);
+  document.getElementById('periodo-info').textContent =
+    (perActual?`Avance con corte al ${PERNOM[perActual]||'periodo '+perActual}`:'Aún no hay notas registradas')+
+    (totalRegs?` · ${totalRegs} día(s) de asistencia registrados`:'');
+
+  const v=lista.filter(x=>x.nivel==='verde').length,
+        a=lista.filter(x=>x.nivel==='amarillo').length,
+        r=lista.filter(x=>x.nivel==='rojo').length;
+  document.getElementById('kpis').innerHTML=`
+    <div class="kpi"><div class="n">${lista.length}</div><div class="l">Estudiantes</div></div>
+    <div class="kpi" style="background:#f0fdf4"><div class="n" style="color:#16a34a">${v}</div><div class="l">🟢 Bien</div></div>
+    <div class="kpi" style="background:#fffbeb"><div class="n" style="color:#d97706">${a}</div><div class="l">🟡 Atención</div></div>
+    <div class="kpi" style="background:#fef2f2"><div class="n" style="color:#dc2626">${r}</div><div class="l">🔴 Riesgo alto</div></div>`;
+
+  const cont=document.getElementById('tarjetas');
+  if(!lista.length){ cont.innerHTML='<div class="empty">📚 Este grupo aún no tiene estudiantes registrados en Calificaciones.</div>'; return; }
+  cont.innerHTML=lista.map((e,i)=>`
+    <div class="est ${e.nivel}" onclick="detalle(${i})">
+      <div class="nom">${e.nivel==='rojo'?'🔴':e.nivel==='amarillo'?'🟡':'🟢'} ${esc(e.nombre)} <span style="margin-left:auto">${TFLECHA[e.tendencia]}</span></div>
+      <div class="chips">${e.razones.slice(0,3).map(rz=>`<span class="chip ${rz.n}">${esc(rz.t)}</span>`).join('')}</div>
+      ${e.totalAsist?`<div class="barra" title="Asistencia"><div style="width:${100-e.pctF}%;background:${e.pctF>=25?'#dc2626':e.pctF>=15?'#d97706':'#16a34a'}"></div></div>
+      <div style="font-size:.68rem;color:var(--muted);margin-top:3px">asistencia ${100-e.pctF}%</div>`:''}
+    </div>`).join('');
+  window._lista=lista;
+}
+
+window.detalle=function(i){
+  const e=window._lista[i]; if(!e) return;
+  const mats=Object.entries(e.porMateria);
+  const bg=document.createElement('div'); bg.className='modal-bg';
+  bg.onclick=ev=>{ if(ev.target===bg) bg.remove(); };
+  bg.innerHTML=`<div class="modal">
+    <h2 style="color:var(--primary);margin-bottom:4px">${e.nivel==='rojo'?'🔴':e.nivel==='amarillo'?'🟡':'🟢'} ${esc(e.nombre)} ${TFLECHA[e.tendencia]}</h2>
+    <div class="chips" style="margin-bottom:12px">${e.razones.map(rz=>`<span class="chip ${rz.n}">${esc(rz.t)}</span>`).join('')}</div>
+    <h3 style="font-size:.9rem;color:var(--primary);margin:10px 0 4px">Avance por materia (sin notas)</h3>
+    ${mats.length?mats.map(([m,d])=>`<div class="det-mat">
+      <span class="dot" style="background:${d<PASSING?'#dc2626':d<3.5?'#d97706':d<4.3?'#16a34a':'#059669'}"></span>
+      <span style="flex:1">${esc(m)}</span>
+      <span style="font-size:.78rem;color:var(--muted)">${d<PASSING?'En bajo':d<3.5?'Justo':d<4.3?'Bien':'Sobresale'}</span>
+    </div>`).join(''):'<p class="desc">Sin notas registradas todavía.</p>'}
+    <h3 style="font-size:.9rem;color:var(--primary);margin:14px 0 4px">Asistencia</h3>
+    <p style="font-size:.86rem">${e.totalAsist?`Asistió el <b>${100-e.pctF}%</b> de ${e.totalAsist} día(s) registrados.${e.rachaActual>=2?` <span style="color:#dc2626;font-weight:700">Lleva ${e.rachaActual} fallas seguidas.</span>`:''}`:'Sin registros de asistencia.'}</p>
+    <h3 style="font-size:.9rem;color:var(--primary);margin:14px 0 4px">Observador</h3>
+    <p style="font-size:.86rem">${e.graves?`<span style="color:#dc2626;font-weight:700">${e.graves} situación(es) Tipo II/III recientes.</span> `:''}${e.incumplidos?`${e.incumplidos} compromiso(s) incumplidos. `:''}${e.reconocimientos?`⭐ ${e.reconocimientos} reconocimiento(s). `:''}${(!e.graves&&!e.incumplidos&&!e.reconocimientos)?'Sin anotaciones relevantes.':''}</p>
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button class="btn" onclick="location.href='10-observador.html'">📔 Abrir observador</button>
+      <button class="btn sec" onclick="this.closest('.modal-bg').remove()">Cerrar</button>
+    </div>
+  </div>`;
+  document.body.appendChild(bg);
+};
+
+// ── arranque ──
+function init(){
+  const grupos=gruposUnicos();
+  if(!grupos.length){
+    document.getElementById('sin-grupo').style.display= esAdmin?'none':'block';
+    if(!esAdmin) return;
+  }
+  document.getElementById('zona').style.display='block';
+  const sel=document.getElementById('sel-grupo');
+  sel.innerHTML=grupos.map(g=>`<option value="${esc(g.key)}">${esc(g.grado)} - ${esc(g.grupo||'único')}</option>`).join('');
+  if(!grupoSel&&grupos.length) grupoSel=grupos[0].key;
+  if(grupoSel) sel.value=grupoSel;
+  sel.onchange=()=>{ grupoSel=sel.value; render(); };
+  if(grupoSel) render();
+}
+init();
+setTimeout(init,2500);
+</script>
+</body>
+</html>
