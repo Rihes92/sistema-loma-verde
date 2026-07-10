@@ -136,6 +136,7 @@
           </label>
           <label class="fld">Fecha<input id="n-fecha" type="date"></label>
         </div>
+        <div id="sugerencias" style="margin-top:10px"></div>
         <label class="fld" style="margin-top:10px"><span id="lbl-desc">Descripción de la situación</span>
           <textarea id="n-desc" rows="3" placeholder="Describe objetivamente lo ocurrido…"></textarea>
         </label>
@@ -247,7 +248,7 @@ const obsDe = est => lsRead('observador')
   .sort((a,b)=>(b.fecha||'').localeCompare(a.fecha||''));
 
 const claseTipo = t => t==='Situación Tipo I'?'t1':t==='Situación Tipo II'?'t2':t==='Situación Tipo III'?'t3':t==='Reconocimiento'?'rec':t==='Visita domiciliaria'?'vis':'aca';
-const badgeTipo = t => `<span class="badge b-${claseTipo(t)}">${esc(t)}</span>`;
+const badgeTipo = (t,icono) => `<span class="badge b-${claseTipo(t)}">${icono?icono+' ':''}${esc(t)}</span>`;
 
 // ── estado de la vista ──
 let grupoSel=null, estSel=null;
@@ -317,7 +318,7 @@ function pintarHistorial(){
   cont.innerHTML = lista.map(o=>`
     <div class="anot ${claseTipo(o.tipo)}">
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-        ${badgeTipo(o.tipo)}
+        ${badgeTipo(o.tipo,o.icono)}
         <span class="meta">${fmtF(o.fecha)} · registró: ${esc(o.autor||'—')}</span>
         <span style="margin-left:auto;display:flex;gap:6px">
           <button class="btn sec sm" onclick="agregarSeguimiento('${esc(o.id)}')">➕ Seguimiento</button>
@@ -343,12 +344,91 @@ function pintarHistorial(){
     </div>`).join('');
 }
 
+// ── Catálogo de situaciones frecuentes (Ley 1620 / Manual de Convivencia) ──
+const SITUACIONES={
+ 'Situación Tipo I':[
+  'Llegadas tarde reiteradas a clase o a la institución',
+  'Interrupciones constantes que afectan el desarrollo de la clase',
+  'Uso del celular u otros dispositivos sin autorización',
+  'Incumplimiento reiterado de deberes y tareas académicas',
+  'Porte inadecuado del uniforme',
+  'Vocabulario soez o tratos descorteses hacia compañeros',
+  'Conflicto o discusión entre compañeros sin agresión física',
+  'Salir del aula o de la institución sin autorización',
+  'Arrojar basura o no cuidar los espacios del colegio'],
+ 'Situación Tipo II':[
+  'Agresión física entre estudiantes sin lesiones graves',
+  'Agresión verbal o psicológica reiterada (acoso escolar / bullying)',
+  'Ciberacoso: mensajes, publicaciones o burlas por medios digitales',
+  'Discriminación reiterada por cualquier condición',
+  'Amenazas o intimidación a compañeros',
+  'Daño intencional a bienes de la institución o de compañeros'],
+ 'Situación Tipo III':[
+  'Agresión física con lesiones que requieren atención médica',
+  'Porte de armas o elementos que pongan en riesgo a la comunidad',
+  'Porte, consumo o distribución de sustancias psicoactivas',
+  'Presunto abuso, acoso o violencia sexual (activar ruta de atención)',
+  'Hurto comprobado',
+  'Amenazas graves contra la vida o la integridad de una persona'],
+};
+
+// ── Reconocimientos con ícono motivador ──
+const RECONOCIMIENTOS=[
+ {icono:'⭐', t:'Comportamiento ejemplar'},
+ {icono:'🤝', t:'Compañerismo y solidaridad'},
+ {icono:'📚', t:'Esfuerzo y dedicación académica'},
+ {icono:'🏆', t:'Liderazgo positivo'},
+ {icono:'🎨', t:'Creatividad y talento'},
+ {icono:'💪', t:'Superación personal'},
+ {icono:'🌱', t:'Mejora notable en su proceso'},
+ {icono:'🙋', t:'Participación destacada en clase'},
+ {icono:'🕊️', t:'Resolución pacífica de conflictos'},
+ {icono:'⏰', t:'Puntualidad y responsabilidad'},
+];
+let iconoSel='';
+
+function pintarSugerencias(){
+  const tipo=document.getElementById('n-tipo').value;
+  const cont=document.getElementById('sugerencias');
+  iconoSel='';
+  if(SITUACIONES[tipo]){
+    cont.innerHTML=`<label class="fld">Situación frecuente (opcional — se inserta en la descripción y puedes completarla)
+      <select id="sug-sel"><option value="">— Elegir de la lista del Manual de Convivencia —</option>
+      ${SITUACIONES[tipo].map(t=>`<option>${esc(t)}</option>`).join('')}</select></label>`;
+    document.getElementById('sug-sel').addEventListener('change',e=>{
+      if(!e.target.value) return;
+      const d=document.getElementById('n-desc');
+      d.value=(d.value.trim()? d.value.trim()+'\n':'')+e.target.value+'. ';
+      d.focus();
+    });
+  } else if(tipo==='Reconocimiento'){
+    cont.innerHTML=`<div style="font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:6px">Motivo del reconocimiento (toca uno — puedes ajustar el texto):</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+      ${RECONOCIMIENTOS.map((r,i)=>`<button type="button" class="btn sec sm rec-btn" data-i="${i}" style="font-size:.82rem">${r.icono} ${esc(r.t)}</button>`).join('')}</div>`;
+    cont.querySelectorAll('.rec-btn').forEach(b=>{
+      b.addEventListener('click',()=>{
+        const r=RECONOCIMIENTOS[+b.dataset.i];
+        iconoSel=r.icono;
+        const d=document.getElementById('n-desc');
+        d.value=`${r.icono} Felicitaciones por: ${r.t.toLowerCase()}. `;
+        cont.querySelectorAll('.rec-btn').forEach(x=>{x.style.background='';x.style.color='';});
+        b.style.background='var(--ok)'; b.style.color='#fff';
+        d.focus();
+      });
+    });
+  } else {
+    cont.innerHTML='';
+  }
+}
+
 // ── campos condicionales de visita domiciliaria ──
 document.getElementById('n-tipo').addEventListener('change', ()=>{
   const esVisita = document.getElementById('n-tipo').value==='Visita domiciliaria';
   document.getElementById('campos-visita').classList.toggle('hide', !esVisita);
   document.getElementById('lbl-desc').textContent = esVisita ? 'Motivo de la visita' : 'Descripción de la situación';
+  pintarSugerencias();
 });
+pintarSugerencias();
 
 // ── acciones ──
 document.getElementById('btn-guardar').addEventListener('click', ()=>{
@@ -366,6 +446,7 @@ document.getElementById('btn-guardar').addEventListener('click', ()=>{
     fechaCompromiso:document.getElementById('n-fecha-comp').value||'',
     estado:'abierto', seguimientos:[], autor, creado:Date.now()
   };
+  if(nueva.tipo==='Reconocimiento' && iconoSel) nueva.icono=iconoSel;
   if(nueva.tipo==='Visita domiciliaria'){
     nueva.vQuien=document.getElementById('v-quien').value.trim();
     nueva.vSituacion=document.getElementById('v-situacion').value.trim();
@@ -376,6 +457,7 @@ document.getElementById('btn-guardar').addEventListener('click', ()=>{
   document.getElementById('n-desc').value=''; document.getElementById('n-comp').value='';
   document.getElementById('n-fecha-comp').value='';
   ['v-quien','v-situacion','v-acuerdos'].forEach(i=>document.getElementById(i).value='');
+  pintarSugerencias();
   toast('Anotación guardada'); pintarHistorial(); pintarEstudiantes();
   if(nueva.tipo==='Situación Tipo II'||nueva.tipo==='Situación Tipo III') abrirAlertaWhatsApp(nueva);
 });
@@ -459,7 +541,7 @@ document.getElementById('btn-imprimir').addEventListener('click', ()=>{
     <h2>Registro de anotaciones (${lista.length})</h2>
     ${lista.length ? lista.map((o,i)=>`
       <div class="p-anot">
-        <b>${i+1}. ${esc(o.tipo)}</b> — ${fmtF(o.fecha)} · Registró: ${esc(o.autor||'—')}<br>
+        <b>${i+1}. ${o.icono?o.icono+' ':''}${esc(o.tipo)}</b> — ${fmtF(o.fecha)} · Registró: ${esc(o.autor||'—')}<br>
         ${esc(o.descripcion)}
         ${o.tipo==='Visita domiciliaria'?`${o.vQuien?`<br><b>Realizada por:</b> ${esc(o.vQuien)}`:''}${o.vSituacion?`<br><b>Situación encontrada:</b> ${esc(o.vSituacion)}`:''}${o.vAcuerdos?`<br><b>Acuerdos:</b> ${esc(o.vAcuerdos)}`:''}`:''}
         ${o.compromiso?`<br><b>Compromiso:</b> ${esc(o.compromiso)}${o.fechaCompromiso?' (límite: '+fmtF(o.fechaCompromiso)+')':''} — <i>${esc(o.estado||'abierto')}</i>`:''}
