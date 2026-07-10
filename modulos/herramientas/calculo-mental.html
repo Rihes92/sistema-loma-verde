@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cálculo Mental · Sistema Loma Verde</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  main{max-width:860px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.95rem;background:#fff;color:var(--text);width:100%}
+  button.btn{border:0;border-radius:8px;padding:10px 18px;font-size:.9rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}
+  .hide{display:none!important}
+  .pregunta{font-size:3.2rem;font-weight:800;text-align:center;color:var(--primary);margin:16px 0;letter-spacing:.02em}
+  #respuesta{font-size:2rem;text-align:center;max-width:260px;margin:0 auto;display:block}
+  .timer{font-size:1.5rem;font-weight:800;text-align:center;color:var(--warn)}
+  .marcador{display:flex;justify-content:center;gap:24px;font-size:.95rem;margin-top:12px;font-weight:700}
+  .nota-final{font-size:3rem;font-weight:800;text-align:center;color:var(--primary)}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:14px 0}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .kpi .n{font-size:1.5rem;font-weight:800}.kpi .l{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .orienta{background:#eff6ff;border-left:5px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.88rem}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <h1>🧮 Cálculo Mental — Fluidez numérica</h1>
+  <a href="../15-herramientas.html">← Herramientas</a>
+</header>
+
+<main>
+<!-- SETUP -->
+<section id="sec-setup">
+  <div class="card">
+    <h2>Datos del estudiante</h2>
+    <div class="row">
+      <label class="fld">Curso del sistema (opcional)<select id="sysCurso"></select></label>
+      <label class="fld">Estudiante (opcional)<select id="sysEst"></select></label>
+      <label class="fld">Nombre<input id="nombreEst" placeholder="O escríbelo aquí"></label>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <label class="fld">Grado<select id="gradoSel"></select></label>
+      <label class="fld">Duración<select id="durSel"><option value="60">1 minuto</option><option value="120" selected>2 minutos</option><option value="180">3 minutos</option></select></label>
+    </div>
+    <p class="desc" style="margin-top:10px" id="nivel-desc"></p>
+    <button class="btn ok" id="btnIniciar">▶️ Iniciar prueba</button>
+  </div>
+</section>
+
+<!-- PRUEBA -->
+<section id="sec-prueba" class="hide">
+  <div class="card">
+    <div class="timer" id="timer">⏱️ --</div>
+    <div class="pregunta" id="pregunta">—</div>
+    <input id="respuesta" type="number" inputmode="numeric" placeholder="?" autocomplete="off">
+    <div style="text-align:center;margin-top:12px">
+      <button class="btn" id="btnResponder">Responder ⏎</button>
+      <button class="btn sec" id="btnSaltar">Saltar</button>
+    </div>
+    <div class="marcador"><span style="color:var(--ok)">✔ <span id="mCorrectas">0</span></span>
+      <span style="color:var(--bad)">✘ <span id="mErrores">0</span></span></div>
+  </div>
+</section>
+
+<!-- REPORTE -->
+<section id="sec-reporte" class="hide">
+  <div class="card">
+    <h2>Resultado</h2>
+    <div class="nota-final" id="rNota">—</div>
+    <div class="kpis">
+      <div class="kpi"><div class="n" id="rOpm">—</div><div class="l">correctas / min</div></div>
+      <div class="kpi"><div class="n" id="rCorrectas">—</div><div class="l">correctas</div></div>
+      <div class="kpi"><div class="n" id="rErrores">—</div><div class="l">errores</div></div>
+      <div class="kpi"><div class="n" id="rPrecision">—</div><div class="l">precisión</div></div>
+      <div class="kpi"><div class="n" id="rNivel">—</div><div class="l">nivel</div></div>
+    </div>
+    <div class="orienta" id="rOrienta"></div>
+    <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+      <button class="btn ok" id="btnPlanilla">📊 Enviar nota a la planilla</button>
+      <button class="btn sec" id="btnOtra">🔁 Nueva prueba</button>
+    </div>
+  </div>
+</section>
+
+<div class="card">
+  <h2>Historial</h2>
+  <div id="historial"></div>
+</div>
+</main>
+
+<script>
+// ── Niveles por grado: tipos de operación y meta de correctas/min ──
+//  La meta es interna (sin referente oficial MEN para cálculo mental);
+//  ajustable según la experiencia institucional.
+const NIVELES={
+ '1':{d:'Sumas y restas hasta 20', meta:6, gen:()=>op2(['+','-'],1,20,true)},
+ '2':{d:'Sumas y restas hasta 100', meta:7, gen:()=>op2(['+','-'],5,100,true)},
+ '3':{d:'Sumas/restas hasta 1.000 y tablas del 2 al 5', meta:7, gen:()=>Math.random()<.5?op2(['+','-'],20,999,true):mult(2,5)},
+ '4':{d:'Cuatro operaciones: tablas completas y divisiones exactas', meta:8, gen:()=>{const r=Math.random();return r<.3?op2(['+','-'],50,999,true):r<.7?mult(2,9):divi(2,9);}},
+ '5':{d:'Cuatro operaciones con números mayores', meta:8, gen:()=>{const r=Math.random();return r<.3?op2(['+','-'],100,9999,true):r<.65?mult(3,12):divi(3,12);}},
+ '6':{d:'Operaciones con enteros (positivos y negativos)', meta:7, gen:()=>op2(['+','-'],-50,50,false)},
+ '7':{d:'Enteros y multiplicación con negativos', meta:7, gen:()=>{const r=Math.random();return r<.5?op2(['+','-'],-99,99,false):multNeg();}},
+ '8':{d:'Potencias, raíces exactas y porcentajes básicos', meta:6, gen:()=>{const r=Math.random();return r<.35?potencia():r<.65?raiz():porcentaje();}},
+ '9':{d:'Potencias, raíces y porcentajes', meta:7, gen:()=>{const r=Math.random();return r<.35?potencia():r<.65?raiz():porcentaje();}},
+ '10':{d:'Porcentajes, potencias y operaciones combinadas', meta:7, gen:()=>{const r=Math.random();return r<.4?porcentaje():r<.7?combinada():potencia();}},
+ '11':{d:'Cálculo rápido tipo ICFES: porcentajes y combinadas', meta:8, gen:()=>{const r=Math.random();return r<.5?porcentaje():combinada();}},
+};
+const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+function op2(ops,min,max,noNeg){
+  const o=ops[ri(0,ops.length-1)];
+  let a=ri(min,max),b=ri(min,max);
+  if(o==='-'&&noNeg&&b>a)[a,b]=[b,a];
+  return {q:`${a} ${o} ${b<0?'('+b+')':b}`, r:o==='+'?a+b:a-b};
+}
+function mult(t1,t2){const a=ri(t1,t2),b=ri(2,9);return {q:`${a} × ${b}`,r:a*b};}
+function multNeg(){const a=ri(2,12)*(Math.random()<.5?-1:1),b=ri(2,9)*(Math.random()<.5?-1:1);return {q:`${a<0?'('+a+')':a} × ${b<0?'('+b+')':b}`,r:a*b};}
+function divi(t1,t2){const b=ri(t1,t2),c=ri(2,9);return {q:`${b*c} ÷ ${b}`,r:c};}
+function potencia(){const a=ri(2,12),e=a>6?2:ri(2,3);return {q:`${a}${e===2?'²':'³'}`,r:Math.pow(a,e)};}
+function raiz(){const a=ri(2,15);return {q:`√${a*a}`,r:a};}
+function porcentaje(){const ps=[10,20,25,50,75];const p=ps[ri(0,ps.length-1)];const base=ri(1,20)*20;return {q:`${p}% de ${base}`,r:base*p/100};}
+function combinada(){const a=ri(2,9),b=ri(2,9),c=ri(1,20);return {q:`${a} × ${b} + ${c}`,r:a*b+c};}
+
+// ── selector del sistema ──
+let SYS=null;
+try{
+  SYS=LV_HERR.selectorEstudiante('sysCurso','sysEst',()=>{
+    const e=SYS.estudiante(); if(e) document.getElementById('nombreEst').value=e.nombre;
+    const c=SYS.curso(); if(c&&c.grado){ const g=String(c.grado).replace('°','');
+      if(NIVELES[g]) { document.getElementById('gradoSel').value=g; pintarNivel(); } }
+  });
+}catch(_){}
+
+const gradoSel=document.getElementById('gradoSel');
+gradoSel.innerHTML=Object.keys(NIVELES).map(g=>`<option value="${g}">${g}°</option>`).join('');
+function pintarNivel(){ document.getElementById('nivel-desc').textContent='📐 '+NIVELES[gradoSel.value].d+' · Meta: '+NIVELES[gradoSel.value].meta+' correctas por minuto.'; }
+gradoSel.addEventListener('change',pintarNivel); pintarNivel();
+
+// ── prueba ──
+let ST=null, timerInt=null, ultimo=null;
+function iniciar(){
+  const nombre=document.getElementById('nombreEst').value.trim();
+  if(!nombre){ alert('Escribe o elige el estudiante.'); return; }
+  const dur=+document.getElementById('durSel').value;
+  ST={nombre, grado:gradoSel.value, dur, resta:dur, correctas:0, errores:0, saltadas:0, actual:null};
+  document.getElementById('sec-setup').classList.add('hide');
+  document.getElementById('sec-reporte').classList.add('hide');
+  document.getElementById('sec-prueba').classList.remove('hide');
+  document.getElementById('mCorrectas').textContent='0';
+  document.getElementById('mErrores').textContent='0';
+  siguiente();
+  timerInt=setInterval(()=>{
+    ST.resta--;
+    const m=Math.floor(ST.resta/60),s=ST.resta%60;
+    document.getElementById('timer').textContent=`⏱️ ${m}:${String(s).padStart(2,'0')}`;
+    if(ST.resta<=0) terminar();
+  },1000);
+  document.getElementById('timer').textContent=`⏱️ ${Math.floor(dur/60)}:${String(dur%60).padStart(2,'0')}`;
+}
+function siguiente(){
+  ST.actual=NIVELES[ST.grado].gen();
+  document.getElementById('pregunta').textContent=ST.actual.q+' = ?';
+  const inp=document.getElementById('respuesta');
+  inp.value=''; inp.focus();
+}
+function responder(){
+  if(!ST||!ST.actual) return;
+  const v=document.getElementById('respuesta').value.trim();
+  if(v==='') return;
+  if(+v===ST.actual.r){ ST.correctas++; document.getElementById('mCorrectas').textContent=ST.correctas; }
+  else { ST.errores++; document.getElementById('mErrores').textContent=ST.errores; }
+  siguiente();
+}
+function terminar(){
+  clearInterval(timerInt);
+  document.getElementById('sec-prueba').classList.add('hide');
+  document.getElementById('sec-reporte').classList.remove('hide');
+  const min=ST.dur/60;
+  const opm=ST.correctas/min;
+  const intentos=ST.correctas+ST.errores;
+  const prec=intentos?ST.correctas/intentos:0;
+  const meta=NIVELES[ST.grado].meta;
+  // Nota: 60% precisión + 40% velocidad frente a la meta del grado (escala 1–5)
+  const nVel=Math.min(1,opm/meta), nPrec=prec;
+  let nota=1+(nPrec*0.6+nVel*0.4)*4;
+  nota=Math.round(nota*10)/10;
+  const nivel=opm<meta*0.5?'Muy lento':opm<meta*0.8?'Lento':opm<=meta*1.2?'Óptimo':'Rápido';
+  const orienta=[];
+  if(prec<0.7) orienta.push('La precisión está baja ('+Math.round(prec*100)+'%): conviene reforzar el procedimiento antes que la velocidad — práctica corta diaria sin cronómetro.');
+  else if(opm<meta*0.8) orienta.push('Buena precisión pero ritmo lento: práctica lúdica cronometrada (retos de 1 minuto, bingo de operaciones) para automatizar.');
+  else orienta.push('Fluidez adecuada para el grado. Mantener con retos periódicos y subir gradualmente la dificultad.');
+  if(ST.grado>='3'&&ST.grado<='5'&&prec<0.7) orienta.push('Revisar dominio de las tablas de multiplicar: son la base de la fluidez en este grado.');
+
+  document.getElementById('rNota').textContent=nota.toFixed(1);
+  document.getElementById('rOpm').textContent=opm.toFixed(1);
+  document.getElementById('rCorrectas').textContent=ST.correctas;
+  document.getElementById('rErrores').textContent=ST.errores;
+  document.getElementById('rPrecision').textContent=Math.round(prec*100)+'%';
+  document.getElementById('rNivel').textContent=nivel;
+  document.getElementById('rOrienta').innerHTML='🧭 <b>Orientación:</b> '+orienta.join(' ');
+
+  ultimo={nota, opm:+opm.toFixed(1), nivel, prec:Math.round(prec*100)};
+  try{
+    const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+    LV_HERR.guardarResultado({
+      herramienta:'Cálculo Mental', estudiante:ST.nombre, estId:e?e.id:'',
+      curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):(ST.grado+'°'), grado:ST.grado+'°',
+      nota, nivel:ultimo.opm+' correctas/min ('+nivel+') · precisión '+ultimo.prec+'%',
+      detalle:{opm:ultimo.opm, correctas:ST.correctas, errores:ST.errores, precision:ultimo.prec, duracion:ST.dur, meta}
+    });
+  }catch(_){}
+  pintarHistorial();
+}
+
+document.getElementById('btnIniciar').addEventListener('click',iniciar);
+document.getElementById('btnResponder').addEventListener('click',responder);
+document.getElementById('btnSaltar').addEventListener('click',()=>{ if(ST){ST.errores++;document.getElementById('mErrores').textContent=ST.errores;siguiente();} });
+document.getElementById('respuesta').addEventListener('keydown',e=>{ if(e.key==='Enter') responder(); });
+document.getElementById('btnOtra').addEventListener('click',()=>{
+  document.getElementById('sec-reporte').classList.add('hide');
+  document.getElementById('sec-setup').classList.remove('hide');
+});
+document.getElementById('btnPlanilla').addEventListener('click',()=>{
+  const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+  if(!c||!e){ alert('Para enviar a la planilla, elige el curso y el estudiante del sistema antes de la prueba.'); return; }
+  if(!ultimo) return;
+  const per=prompt('¿A qué periodo va la nota? (1, 2 o 3)','1');
+  if(!per) return;
+  if(!confirm('Enviar nota '+ultimo.nota.toFixed(1)+' de '+e.nombre+' a la planilla de '+(c.materia||c.nombre)+', periodo '+per+'?')) return;
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id, estId:e.id, periodo:per, nota:ultimo.nota, etiqueta:'Cálculo Mental'});
+  alert(r.msg);
+});
+
+function pintarHistorial(){
+  const rs=LV_HERR.resultados({herramienta:'Cálculo Mental'}).slice(0,15);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Estudiante</th><th>Grado</th><th>Resultado</th><th>Nota</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${String(r.estudiante||'').replace(/</g,'&lt;')}</td><td>${r.grado||''}</td><td>${String(r.nivel||'').replace(/</g,'&lt;')}</td><td><b>${(+r.nota).toFixed(1)}</b></td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">🧮 Sin pruebas todavía. Los resultados quedan sincronizados y aparecen en el perfil del estudiante.</div>';
+}
+pintarHistorial();
+setTimeout(pintarHistorial,2500);
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Recuperar contraseña — Sistema Loma Verde</title>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-dark:#172d6e; --primary-light:#3b82f6;
+    --bg:#f1f5f9; --surface:#fff; --text:#1f2937; --muted:#64748b;
+    --border:#e2e8f0; --bad:#dc2626; --ok:#059669; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 55%,var(--primary-light) 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+  .card{background:var(--surface);border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,.25);padding:32px 28px;max-width:400px;width:100%}
+  .card h1{font-size:1.15rem;color:var(--primary);text-align:center;margin-bottom:4px}
+  .card p.sub{text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:20px}
+  label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:6px;margin-top:14px}
+  input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:.95rem;background:#fff;color:var(--text)}
+  input:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+  button{width:100%;margin-top:20px;border:0;border-radius:9px;padding:12px;font-size:.95rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff}
+  button:disabled{opacity:.6;cursor:wait}
+  .msg{font-size:.84rem;margin-top:14px;text-align:center;min-height:1.2em}
+  .msg.err{color:var(--bad)} .msg.ok{color:var(--ok);font-weight:600}
+  .logo{width:60px;height:60px;margin:0 auto 14px;border-radius:14px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+  a.volver{display:block;text-align:center;margin-top:18px;color:var(--primary);font-size:.82rem;font-weight:600;text-decoration:none}
+  .nota{font-size:.75rem;color:var(--muted);text-align:center;margin-top:14px;line-height:1.5;background:#f8fafc;border-radius:8px;padding:10px}
+  .hide{display:none!important}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">🔑</div>
+  <h1>Recuperar contraseña</h1>
+  <p class="sub">I.E. San José de Loma Verde</p>
+
+  <!-- Paso 1: pedir el enlace -->
+  <form id="form-pedir">
+    <label>Correo con el que entras al sistema</label>
+    <input type="email" id="r-email" required placeholder="tu.correo@ejemplo.com" autocomplete="username" autocapitalize="none">
+    <button type="submit" id="btn-pedir">Enviarme el enlace de recuperación</button>
+    <div class="msg" id="msg-pedir"></div>
+    <div class="nota">Te llegará un correo con un enlace. Ábrelo <b>en este mismo dispositivo</b> y podrás crear tu nueva contraseña.<br><br>Si tu usuario tiene un correo que no existe de verdad (asignado por la institución), pídele a Coordinación que te restablezca la clave.</div>
+  </form>
+
+  <!-- Paso 2: definir la nueva contraseña (al volver desde el correo) -->
+  <form id="form-nueva" class="hide">
+    <p class="sub" style="margin:0 0 4px">✅ Enlace verificado</p>
+    <label>Nueva contraseña (mínimo 6 caracteres)</label>
+    <input type="password" id="r-pass1" required minlength="6" autocomplete="new-password">
+    <label>Repite la nueva contraseña</label>
+    <input type="password" id="r-pass2" required minlength="6" autocomplete="new-password">
+    <button type="submit" id="btn-nueva">Guardar nueva contraseña</button>
+    <div class="msg" id="msg-nueva"></div>
+  </form>
+
+  <a class="volver" href="login.html">← Volver al inicio de sesión</a>
+</div>
+
+<script>
+const URL_SB='https://loztrkwlttxyfhbkznyu.supabase.co';
+const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvenRya3dsdHR4eWZoYmt6bnl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDU5OTQsImV4cCI6MjA5NzAyMTk5NH0.HBBk8NVUVTArqoEsqUWSil3uMIFZfnLFhhlE6M000ao';
+
+// ── ¿Venimos del enlace del correo? (token en el hash de la URL) ──
+const hash=new URLSearchParams(location.hash.replace(/^#/,''));
+const tokenRecuperacion=hash.get('access_token');
+const esRecovery=hash.get('type')==='recovery' && tokenRecuperacion;
+const errorHash=hash.get('error_description');
+
+if(errorHash){
+  document.getElementById('msg-pedir').textContent='El enlace no es válido o ya expiró ('+decodeURIComponent(errorHash).replace(/\+/g,' ')+'). Pide uno nuevo.';
+  document.getElementById('msg-pedir').className='msg err';
+}
+if(esRecovery){
+  document.getElementById('form-pedir').classList.add('hide');
+  document.getElementById('form-nueva').classList.remove('hide');
+}
+
+// ── Paso 1: enviar el correo de recuperación ──
+document.getElementById('form-pedir').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const msg=document.getElementById('msg-pedir');
+  const btn=document.getElementById('btn-pedir');
+  msg.textContent=''; msg.className='msg'; btn.disabled=true;
+  try{
+    const email=document.getElementById('r-email').value.trim().toLowerCase();
+    const destino=location.origin+location.pathname; // esta misma página
+    const r=await fetch(`${URL_SB}/auth/v1/recover?redirect_to=${encodeURIComponent(destino)}`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':KEY},
+      body:JSON.stringify({email})
+    });
+    if(!r.ok){
+      const d=await r.json().catch(()=>({}));
+      throw new Error(d.error_description||d.msg||'No se pudo enviar el correo.');
+    }
+    msg.textContent='📬 Enlace enviado. Revisa tu correo (también la carpeta de spam).';
+    msg.className='msg ok';
+  }catch(err){
+    msg.textContent=err.message; msg.className='msg err';
+  }finally{ btn.disabled=false; }
+});
+
+// ── Paso 2: guardar la nueva contraseña con el token del enlace ──
+document.getElementById('form-nueva').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const msg=document.getElementById('msg-nueva');
+  const btn=document.getElementById('btn-nueva');
+  const a=document.getElementById('r-pass1').value, b=document.getElementById('r-pass2').value;
+  msg.className='msg err'; msg.textContent='';
+  if(a!==b){ msg.textContent='Las contraseñas no coinciden.'; return; }
+  btn.disabled=true;
+  try{
+    const r=await fetch(`${URL_SB}/auth/v1/user`,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','apikey':KEY,'Authorization':'Bearer '+tokenRecuperacion},
+      body:JSON.stringify({password:a})
+    });
+    const d=await r.json().catch(()=>({}));
+    if(!r.ok) throw new Error(d.error_description||d.msg||'No se pudo cambiar. El enlace pudo expirar: pide uno nuevo.');
+    msg.className='msg ok';
+    msg.textContent='✅ Contraseña cambiada. Llevándote al inicio de sesión…';
+    localStorage.removeItem('lv_auth_session'); localStorage.removeItem('lv_login');
+    setTimeout(()=>location.href='login.html',1800);
+  }catch(err){
+    msg.textContent=err.message; btn.disabled=false;
+  }
+});
+</script>
+</body>
+</html>

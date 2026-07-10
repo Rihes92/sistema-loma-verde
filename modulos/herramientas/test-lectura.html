@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test de Lectura · I.E. San José de Loma Verde</title>
+<style>
+:root{
+  --azul:#1e3a8a; --azul-claro:#f8faff; --azul-borde:#d1d9f0;
+  --verde:#16a34a; --verde-claro:#f0fdf4;
+  --rojo:#dc2626; --rojo-claro:#fef2f2;
+  --gris:#94a3b8; --gris-claro:#f1f5f9;
+  --amarillo:#f59e0b; --amarillo-claro:#fffbeb;
+}
+*{box-sizing:border-box;}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#eef1f8;margin:0;padding:0;color:#1a1a1a;}
+header.app-header{background:var(--azul);color:#fff;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+header.app-header h1{font-size:17px;margin:0;}
+header.app-header .sub{font-size:11px;opacity:.85;}
+nav.tabs{display:flex;gap:6px;background:#fff;padding:8px 16px;border-bottom:1px solid #ddd;flex-wrap:wrap;}
+nav.tabs button{background:none;border:none;padding:8px 16px;border-radius:6px 6px 0 0;font-size:13px;font-weight:bold;color:#555;cursor:pointer;}
+nav.tabs button.active{background:var(--azul-claro);color:var(--azul);border-bottom:3px solid var(--azul);}
+main{max-width:1100px;margin:0 auto;padding:18px;}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;margin-bottom:16px;}
+.card h2{color:var(--azul);font-size:16px;margin-top:0;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+label{font-size:12.5px;font-weight:bold;color:#333;display:block;margin-bottom:4px;}
+input[type=text],input[type=date],select,textarea{width:100%;padding:8px 10px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px;}
+textarea{min-height:90px;font-family:inherit;}
+button.btn{background:var(--azul);color:#fff;border:none;padding:10px 18px;border-radius:6px;font-size:13.5px;font-weight:bold;cursor:pointer;}
+button.btn:hover{opacity:.9;}
+button.btn.secundario{background:#fff;color:var(--azul);border:1.5px solid var(--azul);}
+button.btn.verde{background:var(--verde);}
+button.btn.rojo{background:var(--rojo);}
+button.btn.gris{background:#64748b;}
+button.btn:disabled{opacity:.45;cursor:not-allowed;}
+.acciones{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
+
+/* Panel de lectura */
+.lectura-layout{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+.panel-proyeccion{background:#fff;border-radius:10px;border:2px solid var(--azul);padding:24px;min-height:340px;}
+.panel-proyeccion.fullscreen-mode{position:fixed;inset:0;z-index:999;border-radius:0;overflow:auto;padding:60px;}
+.texto-proyeccion{font-size:26px;line-height:2.2;text-align:left;}
+.fullscreen-mode .texto-proyeccion{font-size:42px;line-height:2.4;}
+.palabra{display:inline-block;padding:1px 3px;border-radius:4px;margin:0 1px;cursor:pointer;}
+.palabra.pendiente{color:#1a1a1a;}
+.palabra.correcta-tent{background:#dcfce7;color:#166534;text-decoration:underline;text-decoration-color:#16a34a;}
+.palabra.correcta{background:#bbf7d0;color:#14532d;text-decoration:underline;text-decoration-color:#15803d;text-decoration-thickness:2px;}
+.palabra.incorrecta-tent{background:#fee2e2;color:#991b1b;text-decoration:underline wavy #dc2626;}
+.palabra.incorrecta{background:#fecaca;color:#7f1d1d;text-decoration:underline wavy #b91c1c;}
+.palabra.omitida-tent{background:#f1f5f9;color:#94a3b8;text-decoration:line-through;text-decoration-style:dashed;}
+.palabra.omitida{background:#e2e8f0;color:#64748b;text-decoration:line-through;}
+.palabra.actual{outline:3px solid #f59e0b;}
+
+.panel-docente{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:16px;}
+.panel-docente h3{color:#14532d;font-size:13px;margin:0 0 10px;text-transform:uppercase;}
+.cronometro{font-size:34px;font-weight:bold;color:var(--azul);text-align:center;background:var(--azul-claro);border-radius:8px;padding:10px;margin-bottom:10px;}
+.stat-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px dashed #cbd5e1;}
+.leyenda{font-size:11px;color:#555;margin-top:12px;line-height:1.8;}
+.leyenda span{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:middle;}
+.aviso{background:var(--amarillo-claro);border:1px solid var(--amarillo);border-radius:6px;padding:8px 10px;font-size:11.5px;margin-top:10px;color:#92400e;}
+
+/* Comprensión */
+.pregunta-c{margin-bottom:16px;padding:12px;background:var(--gris-claro);border-radius:8px;}
+.pregunta-c p{margin:0 0 8px;font-weight:bold;font-size:13.5px;}
+.opciones-c label{display:flex;gap:8px;align-items:center;font-weight:normal;font-size:13px;margin-bottom:6px;cursor:pointer;}
+
+/* Reporte */
+.reporte-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0;}
+.stat-box{background:var(--azul-claro);border:1px solid var(--azul-borde);border-radius:8px;padding:12px;text-align:center;}
+.stat-box .valor{font-size:24px;font-weight:bold;color:var(--azul);}
+.stat-box .etiqueta{font-size:11px;color:#555;text-transform:uppercase;}
+.diagnostico-box{border-left:5px solid var(--azul);background:var(--azul-claro);border-radius:6px;padding:14px 16px;margin-top:10px;}
+.diagnostico-box h4{margin:0 0 6px;color:var(--azul);}
+.nota-final{font-size:46px;font-weight:bold;text-align:center;color:var(--verde);}
+
+table.hist{width:100%;border-collapse:collapse;font-size:12.5px;}
+table.hist th,table.hist td{border:1px solid #ddd;padding:6px 8px;text-align:left;}
+table.hist th{background:var(--azul-claro);color:var(--azul);}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+@media print{
+  header.app-header, nav.tabs, .acciones, .no-print{display:none !important;}
+  body{background:#fff;}
+  .card{border:1px solid #000;}
+}
+</style>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div>
+    <h1>📖 Test de Lectura — Prueba de Seguimiento 2026</h1>
+    <div class="sub">I.E. San José de Loma Verde · Grados 1° a 5° de Primaria</div>
+  </div>
+  <div class="sub" id="fechaHoy"></div>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="setup">1. Datos y texto</button>
+  <button class="tab-btn" data-tab="lectura">2. Lectura en vivo</button>
+  <button class="tab-btn" data-tab="reporte">3. Reporte</button>
+  <button class="tab-btn" data-tab="historial">Historial / Exportar</button>
+</nav>
+<div class="card no-print" style="margin:12px 16px 0;background:#eff6ff;border-color:#bfdbfe;font-size:12px;color:#1e40af;">
+  ℹ La comprensión lectora de estos estudiantes se evalúa en el examen escrito de Lengua Castellana (ver Especificaciones generales 2026). Este Test de Lectura mide únicamente velocidad y calidad de la lectura en voz alta.
+</div>
+
+<main>
+
+<!-- TAB 1: SETUP -->
+<section id="tab-setup" class="tab-panel active">
+  <div class="card">
+    <h2>Datos del estudiante</h2>
+    <div class="grid3">
+      <div><label>Curso del sistema (opcional)</label><select id="sysCurso"></select></div>
+      <div><label>Estudiante del sistema (opcional)</label><select id="sysEst"></select></div>
+      <div><label>Nombre completo</label><input type="text" id="nombreEst" placeholder="Nombre y apellidos (o elígelo arriba)"></div>
+      <div><label>Grado</label>
+        <select id="gradoSel">
+          <option value="1">1°</option>
+          <option value="2">2°</option>
+          <option value="3">3°</option>
+          <option value="4">4°</option>
+          <option value="5">5°</option>
+        </select>
+      </div>
+      <div><label>Docente evaluador</label><input type="text" id="docenteEst" placeholder="Nombre del docente"></div>
+      <div><label>Fecha</label><input type="date" id="fechaEst"></div>
+      <div><label>Periodo</label><input type="text" id="periodoEst" placeholder="Ej. Periodo 1 - 2026" value="Periodo 1 - 2026"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Texto de lectura</h2>
+    <label>Selecciona un texto predeterminado para el grado, o escribe uno propio</label>
+    <select id="textoSel" style="margin-bottom:10px;"></select>
+    <label>Texto a proyectar (editable)</label>
+    <textarea id="textoLibre"></textarea>
+    <div class="acciones">
+      <button class="btn secundario" id="btnCargarTexto">Cargar texto seleccionado</button>
+    </div>
+  </div>
+
+  <div class="acciones">
+    <button class="btn verde" id="btnIniciarLectura">Continuar a Lectura en vivo →</button>
+  </div>
+</section>
+
+<!-- TAB 2: LECTURA -->
+<section id="tab-lectura" class="tab-panel">
+  <div class="card no-print">
+    <strong>Instrucciones:</strong> proyecte esta pantalla con el videobeam (use "Pantalla completa"). Diga al estudiante:
+    <em>"Lee en voz alta, lo mejor que puedas — inicia ya"</em> y presione <strong>Iniciar</strong>. Puede activar el micrófono para marcado automático, y siempre puede corregir cualquier palabra con un clic.
+  </div>
+
+  <div class="lectura-layout">
+    <div class="panel-proyeccion" id="panelProyeccion">
+      <button class="btn secundario no-print" id="btnFullscreen" style="float:right;">⛶ Pantalla completa</button>
+      <div class="texto-proyeccion" id="textoProyeccion"></div>
+    </div>
+
+    <div class="panel-docente no-print">
+      <h3>Panel del docente</h3>
+      <div class="cronometro" id="cronometro">00:00</div>
+      <label style="display:flex;align-items:center;gap:6px;font-weight:normal;font-size:12.5px;margin-bottom:8px;">
+        <input type="checkbox" id="chkMic" checked style="width:auto;"> Usar reconocimiento automático de voz (micrófono)
+      </label>
+      <div class="acciones" style="margin-top:0;">
+        <button class="btn verde" id="btnIniciar">▶ Iniciar lectura</button>
+        <button class="btn rojo" id="btnTerminar" disabled>■ Estudiante terminó</button>
+      </div>
+      <div class="aviso" id="micEstado">Al presionar "Iniciar lectura" se activan el cronómetro y el micrófono al mismo tiempo (si el navegador lo permite). El marcado automático solo actúa cuando el reconocedor CONFIRMA una palabra, por lo que puede ir un poco atrasado respecto a la voz — es normal. Siempre puede corregir cualquier palabra con un clic.</div>
+
+      <div style="margin-top:14px;">
+        <div class="stat-row"><span>Palabras totales</span><strong id="statTotal">0</strong></div>
+        <div class="stat-row"><span>Palabras correctas</span><strong id="statCorrectas">0</strong></div>
+        <div class="stat-row"><span>Palabras incorrectas</span><strong id="statIncorrectas">0</strong></div>
+        <div class="stat-row"><span>Palabras omitidas</span><strong id="statOmitidas">0</strong></div>
+        <div class="stat-row"><span>PPM al minuto 1</span><strong id="statPPM1">—</strong></div>
+      </div>
+
+      <div class="leyenda">
+        <div><span style="background:#dcfce7;"></span> Correcta — detectada por el micrófono</div>
+        <div><span style="background:#bbf7d0;"></span> Correcta — marcada a mano por el docente</div>
+        <div><span style="background:#fecaca;"></span> Incorrecta / mal pronunciada (siempre manual)</div>
+        <div><span style="background:#f1f5f9;"></span> Omitida — detectada por el micrófono</div>
+        <div><span style="background:#e2e8f0;"></span> Omitida — marcada a mano por el docente</div>
+        <div><span style="background:#fff;border:1px solid #ccc;"></span> Pendiente (aún no leída)</div>
+        <div style="margin-top:6px;">Todas las palabras (tentativas o no) cuentan igual en el resultado. Un clic sobre cualquier palabra la corrige manualmente (pendiente → correcta → incorrecta → omitida → pendiente).</div>
+      </div>
+      <div class="acciones">
+        <button class="btn secundario" id="btnReiniciarMarcado">↺ Reiniciar marcado</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="acciones no-print">
+    <button class="btn verde" id="btnCalcularReporte">Calcular diagnóstico →</button>
+  </div>
+</section>
+
+<!-- TAB 3: REPORTE -->
+<section id="tab-reporte" class="tab-panel">
+  <div class="card" id="reporteCard">
+    <h2>Reporte de diagnóstico</h2>
+    <div id="reporteContenido"></div>
+    <div class="acciones no-print">
+      <button class="btn secundario" id="btnImprimir">🖨 Imprimir / Guardar PDF</button>
+      <button class="btn verde" id="btnGuardarHistorial">💾 Guardar en historial</button>
+      <button class="btn gris" id="btnNuevo">＋ Nuevo estudiante</button>
+    </div>
+  </div>
+</section>
+
+<!-- TAB 5: HISTORIAL -->
+<section id="tab-historial" class="tab-panel">
+  <div class="card">
+    <h2>Historial de evaluaciones (guardado en este navegador)</h2>
+    <div class="acciones" style="margin-top:0;margin-bottom:14px;">
+      <button class="btn secundario" id="btnExportarCSV">⬇ Exportar CSV (para el tablero de indicadores)</button>
+      <button class="btn gris" id="btnLimpiarHistorial">🗑 Limpiar historial</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="hist" id="tablaHistorial">
+        <thead><tr><th>Fecha</th><th>Estudiante</th><th>Grado</th><th>Docente</th><th>PPM</th><th>Nivel veloc.</th><th>Calidad</th><th>Nota final</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+document.getElementById('fechaHoy').textContent = new Date().toLocaleDateString('es-CO', {year:'numeric',month:'long',day:'numeric'});
+document.getElementById('fechaEst').valueAsDate = new Date();
+
+/* ===================== BANCO DE TEXTOS POR GRADO ===================== */
+const BANCO = {
+  1: [{
+    titulo: "Mi mamá",
+    texto: "Mi mamá amasa masa. Papá pisa la loma. Tomás toma sopa. Lola pasa la sal. Susi le pone sal a la sopa."
+  }],
+  2: [{
+    titulo: "Clara y la flor",
+    texto: "Clara tiene una flor azul en su jardín. Cada mañana la riega con agua fresca y limpia las hojas con cuidado. Un pájaro pequeño llega a cantar cerca de la flor todos los días. Clara sonríe feliz al ver crecer su planta y le cuenta a su abuela cada detalle."
+  }],
+  3: [{
+    titulo: "El conejo y la luciérnaga",
+    texto: "Inicio: En una vereda rodeada de cafetales vivía un conejo llamado Beto, muy curioso y algo miedoso de la oscuridad. Nudo: Una tarde, Beto se alejó demasiado buscando zanahorias y la noche lo sorprendió lejos de su madriguera, sin saber cómo volver. Desenlace: Una luciérnaga que vivía cerca lo vio temblando y decidió alumbrarle el camino de regreso con su luz. Desde esa noche, Beto y la luciérnaga se hicieron amigos y él perdió el miedo a la oscuridad."
+  }],
+  4: [{
+    titulo: "El guardián del río",
+    texto: "Andrés es un niño de nueve años que vive cerca del río de la vereda Loma Verde. Todas las mañanas, antes de ir al colegio, camina por la orilla observando los peces y las aves que allí habitan. Su abuelo, un hombre sabio y trabajador, le enseñó que el río debe cuidarse porque de él viven muchas familias del campo. Un día, Andrés encontró basura acumulada cerca del puente y decidió organizar con sus compañeros una jornada de limpieza. Gracias a su iniciativa, el río volvió a estar limpio y los vecinos empezaron a llamarlo con cariño 'el guardián del río'."
+  }],
+  5: [{
+    titulo: "La ardilla",
+    texto: "Existen unas 200 especies de ardillas que viven en todo el mundo. La ardilla más pequeña es la ardilla pigmea africana, que mide 13 centímetros; la ardilla gigante hindú mide casi un metro. Los cuatro dientes frontales de las ardillas nunca dejan de crecer, por lo que no se desgastan. Las ardillas viven en árboles, madrigueras o túneles. Su alimentación se basa en frutos secos, hojas, raíces, semillas y otras plantas. También pueden atrapar y comer animales pequeños. Estos mamíferos tienen que estar siempre en guardia, pues para algunos depredadores son exquisitos bocados. Las ardillas voladoras constituyen otro tipo de ardillas. Abren sus patas y se deslizan de árbol en árbol. Estos saltos que les hacen planear en el aire pueden superar los 46 metros.",
+    fuente: "Tomado y adaptado de: www.nationalgeographic.es · Instrumento oficial ICFES / Todos a Aprender, grado 5°."
+  }]
+};
+
+/* ===================== RANGOS DE VELOCIDAD POR GRADO (ver Criterios_Test_de_Lectura.docx) =====================
+   3° y 5°: oficiales (ICFES / Programa Todos a Aprender). 4°: interpolación entre 3° y 5° oficiales.
+   1° y 2°: estimación interna provisional (no existe instrumento oficial ICFES/MEN de este tipo para esos grados). */
+const VELOCIDAD = {
+  1:[{max:19,n:"Muy lenta"},{max:34,n:"Lenta"},{max:49,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  2:[{max:34,n:"Muy lenta"},{max:59,n:"Lenta"},{max:74,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  3:[{max:59,n:"Muy lenta"},{max:84,n:"Lenta"},{max:89,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  4:[{max:79,n:"Muy lenta"},{max:99,n:"Lenta"},{max:106,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  5:[{max:99,n:"Muy lenta"},{max:114,n:"Lenta"},{max:124,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+};
+
+/* Textos de apoyo para el reporte: rangos en palabras (ver Criterios_Test_de_Lectura.docx) y estatus de la fuente */
+const RANGO_TEXTO = {
+  1:{"Muy lenta":"menos de 20 PPM","Lenta":"20–34 PPM","Óptimo":"35–49 PPM","Rápido":"más de 49 PPM"},
+  2:{"Muy lenta":"menos de 35 PPM","Lenta":"35–59 PPM","Óptimo":"60–74 PPM","Rápido":"más de 74 PPM"},
+  3:{"Muy lenta":"menos de 60 PPM","Lenta":"61–84 PPM","Óptimo":"85–89 PPM","Rápido":"más de 89 PPM"},
+  4:{"Muy lenta":"menos de 80 PPM","Lenta":"80–99 PPM","Óptimo":"100–106 PPM","Rápido":"más de 106 PPM"},
+  5:{"Muy lenta":"menos de 100 PPM","Lenta":"100–114 PPM","Óptimo":"115–124 PPM","Rápido":"más de 124 PPM"},
+};
+const ESTATUS_FUENTE = {
+  1:"estimación interna, sin instrumento oficial ICFES/MEN para este grado",
+  2:"estimación interna, sin instrumento oficial ICFES/MEN para este grado",
+  3:"dato oficial ICFES / Programa Todos a Aprender",
+  4:"interpolación entre los rangos oficiales de 3° y 5°",
+  5:"dato oficial ICFES / Programa Todos a Aprender",
+};
+const DESCRIPCION_CALIDAD = {
+  A: "lee lentamente, corta las unidades de sentido largas (palabras y oraciones) y predomina el silabeo. Es un nivel inicial de decodificación.",
+  B: "lee sin pausas ni entonación; lee palabra por palabra, sin respetar las unidades de sentido (oraciones).",
+  C: "ya une palabras formando oraciones con sentido y hace pausas, aunque persisten errores de pronunciación (omisiones, anomalías de acento) y de entonación.",
+  D: "lee de forma continua, con pausas y entonación adecuadas al contenido, respetando la puntuación. Presenta pocos errores de pronunciación.",
+};
+
+function generarOrientacion(nivelVeloc, nivelCal){
+  const lentaOBaja = (nivelVeloc==='Muy lenta'||nivelVeloc==='Lenta');
+  const calBaja = (nivelCal==='A'||nivelCal==='B');
+  if(lentaOBaja && calBaja){
+    return {
+      resumen: 'El estudiante está en una etapa inicial de la fluidez lectora: tanto el ritmo como la precisión están por debajo de lo esperado para su grado.',
+      fortalezas: ['Está en proceso activo de consolidar la decodificación (reconocimiento de letras, sílabas y palabras).'],
+      mejorar: ['Velocidad de lectura por debajo del rango esperado para su grado.', 'Precisión y fluidez todavía en desarrollo (omisiones, cambios de palabra o falta de pausas).'],
+      sugerencias: [
+        'Practicar lectura en voz alta a diario, 10–15 minutos, con textos cortos que el estudiante ya conozca.',
+        'Reforzar conciencia fonológica: identificación de sonidos, sílabas y formación de palabras.',
+        'Hacer lectura acompañada (docente y estudiante leen juntos en voz alta) para modelar fluidez y entonación.',
+        'Releer el mismo texto varias veces durante la semana: la repetición mejora velocidad y confianza sin necesidad de textos nuevos.'
+      ]
+    };
+  }
+  if(lentaOBaja && !calBaja){
+    return {
+      resumen: 'El estudiante lee con buena precisión y calidad, pero su ritmo de lectura está por debajo de lo esperado para su grado.',
+      fortalezas: ['Buena precisión: pocos errores de pronunciación.', 'Buena calidad de lectura: pausas y entonación adecuadas.'],
+      mejorar: ['Ritmo de lectura (velocidad) por debajo del rango esperado para su grado.'],
+      sugerencias: [
+        'Practicar lectura cronometrada: leer el mismo texto varias veces registrando el tiempo, para que el estudiante note su propia mejora.',
+        'Usar textos breves y de interés del estudiante para motivar mayor velocidad sin sacrificar comprensión.',
+        'Evitar interrumpir para corregir mientras lee; anotar los errores y retomarlos después de terminar la lectura.'
+      ]
+    };
+  }
+  if(!lentaOBaja && calBaja){
+    return {
+      resumen: 'El estudiante alcanza o supera el ritmo de lectura esperado para su grado, pero se presentan imprecisiones que afectan la calidad de la lectura.',
+      fortalezas: ['Buen ritmo de lectura: alcanza o supera la velocidad esperada para su grado.'],
+      mejorar: ['Precisión: se detectan omisiones, cambios de palabra, anomalías de acento o falta de pausas/entonación.'],
+      sugerencias: [
+        'Recordar que "leer bien" va antes que "leer rápido": no premiar la velocidad si sacrifica la precisión.',
+        'Practicar lectura expresiva (diálogos, cuentos con distintas voces) para trabajar pausas y entonación.',
+        'Fomentar la autocorrección: pedir al estudiante que relea la oración si nota que se equivocó.'
+      ]
+    };
+  }
+  return {
+    resumen: 'El estudiante presenta una fluidez lectora adecuada para su grado, tanto en ritmo como en calidad.',
+    fortalezas: ['Ritmo de lectura adecuado o superior a lo esperado para su grado.', 'Buena calidad: lee con fluidez, pausas y entonación adecuada, con pocos errores de pronunciación.'],
+    mejorar: ['No se detectan dificultades significativas de fluidez en esta aplicación.'],
+    sugerencias: [
+      'Proponer textos de mayor longitud y complejidad de forma progresiva.',
+      'Fomentar la lectura silenciosa y actividades de producción escrita a partir de lo leído.',
+      'Estimular la lectura por placer, dejando que el estudiante elija títulos de su interés.'
+    ]
+  };
+}
+
+function normaliza(w){
+  return w.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-zñ0-9]/g,'');
+}
+function clasificaVelocidad(grado, ppm){
+  const tabla = VELOCIDAD[grado];
+  for(const t of tabla){ if(ppm <= t.max) return t.n; }
+  return "Rápido";
+}
+function notaVelocidad(nivel){
+  return {"Muy lenta":1.7,"Lenta":3.0,"Óptimo":4.0,"Rápido":4.8}[nivel] || 3.0;
+}
+function nivelCalidad(pctCorrectas){
+  if(pctCorrectas >= 0.92) return "D";
+  if(pctCorrectas >= 0.75) return "C";
+  if(pctCorrectas >= 0.5) return "B";
+  return "A";
+}
+function notaCalidad(nivel){
+  return {"A":1.5,"B":2.5,"C":3.5,"D":4.7}[nivel] || 2.5;
+}
+
+/* ===================== ESTADO ===================== */
+let estado = {
+  palabras: [], // {texto, estado: 'pendiente'|'correcta'|'incorrecta'|'omitida', tentativo:false}
+  punteroLectura: 0,
+  cronometro: {segundos:0, intervalo:null, corriendo:false, ppm1:null},
+  reconocimiento: null,
+  micActivo: false,
+  microDebeSeguir: false,
+  reporte: null
+};
+
+/* ===================== TABS ===================== */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=> irATab(btn.dataset.tab));
+});
+function irATab(tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if(tab==='historial') pintarHistorial();
+}
+
+/* ===================== SETUP: cargar banco por grado ===================== */
+function poblarSelectorTextos(){
+  const grado = document.getElementById('gradoSel').value;
+  const sel = document.getElementById('textoSel');
+  sel.innerHTML = '';
+  (BANCO[grado]||[]).forEach((t,i)=>{
+    const opt = document.createElement('option');
+    opt.value = i; opt.textContent = t.titulo;
+    sel.appendChild(opt);
+  });
+  const optLibre = document.createElement('option');
+  optLibre.value = 'libre'; optLibre.textContent = '✎ Escribir texto propio';
+  sel.appendChild(optLibre);
+}
+document.getElementById('gradoSel').addEventListener('change', poblarSelectorTextos);
+poblarSelectorTextos();
+
+document.getElementById('btnCargarTexto').addEventListener('click', ()=>{
+  const grado = document.getElementById('gradoSel').value;
+  const sel = document.getElementById('textoSel').value;
+  if(sel === 'libre'){
+    document.getElementById('textoLibre').value = '';
+  } else {
+    const t = BANCO[grado][sel];
+    document.getElementById('textoLibre').value = t.texto;
+  }
+});
+// cargar por defecto el primero
+document.getElementById('btnCargarTexto').click();
+
+/* ===================== INICIAR LECTURA: tokenizar texto ===================== */
+document.getElementById('btnIniciarLectura').addEventListener('click', ()=>{
+  const texto = document.getElementById('textoLibre').value.trim();
+  if(!texto){ alert('Escribe o carga un texto primero.'); return; }
+  const palabras = texto.split(/\s+/).filter(w=>w.length>0);
+  estado.palabras = palabras.map(w=>({texto:w, estado:'pendiente'}));
+  estado.punteroLectura = 0;
+  estado.cronometro = {segundos:0, intervalo:null, corriendo:false, ppm1:null};
+  renderPalabras();
+  actualizarStats();
+  document.getElementById('cronometro').textContent = '00:00';
+  document.getElementById('btnTerminar').disabled = true;
+  irATab('lectura');
+});
+
+function renderPalabras(){
+  const cont = document.getElementById('textoProyeccion');
+  cont.innerHTML = '';
+  estado.palabras.forEach((pw, idx)=>{
+    const span = document.createElement('span');
+    span.className = 'palabra ' + pw.estado + (idx===estado.punteroLectura?' actual':'');
+    span.textContent = pw.texto + ' ';
+    span.addEventListener('click', ()=> ciclarEstadoPalabra(idx));
+    cont.appendChild(span);
+  });
+}
+function ciclarEstadoPalabra(idx){
+  const ciclo = ['pendiente','correcta','incorrecta','omitida'];
+  const actual = estado.palabras[idx].estado.replace('-tent','');
+  const next = ciclo[(ciclo.indexOf(actual)+1)%ciclo.length];
+  estado.palabras[idx].estado = next;
+  renderPalabras();
+  actualizarStats();
+}
+function actualizarStats(){
+  const total = estado.palabras.length;
+  const correctas = estado.palabras.filter(p=>p.estado.startsWith('correcta')).length;
+  const incorrectas = estado.palabras.filter(p=>p.estado.startsWith('incorrecta')).length;
+  const omitidas = estado.palabras.filter(p=>p.estado.startsWith('omitida')).length;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statCorrectas').textContent = correctas;
+  document.getElementById('statIncorrectas').textContent = incorrectas;
+  document.getElementById('statOmitidas').textContent = omitidas;
+}
+
+/* ===================== CRONÓMETRO ===================== */
+document.getElementById('btnIniciar').addEventListener('click', ()=>{
+  if(estado.cronometro.corriendo) return;
+  estado.cronometro.corriendo = true;
+  estado.cronometro.segundos = 0;
+  estado.punteroLectura = 0;
+  document.getElementById('btnTerminar').disabled = false;
+  estado.cronometro.intervalo = setInterval(()=>{
+    estado.cronometro.segundos++;
+    const m = String(Math.floor(estado.cronometro.segundos/60)).padStart(2,'0');
+    const s = String(estado.cronometro.segundos%60).padStart(2,'0');
+    document.getElementById('cronometro').textContent = m+':'+s;
+    if(estado.cronometro.segundos === 60 && estado.cronometro.ppm1===null){
+      const correctasHastaAhora = estado.palabras.filter(p=>p.estado.startsWith('correcta')).length;
+      estado.cronometro.ppm1 = correctasHastaAhora || estado.punteroLectura;
+      document.getElementById('statPPM1').textContent = estado.cronometro.ppm1;
+    }
+    if(estado.cronometro.segundos >= 300){ pararCronometro(); }
+  },1000);
+  // El micrófono arranca junto con el cronómetro, si está habilitado el checkbox.
+  if(document.getElementById('chkMic').checked){
+    iniciarReconocimiento();
+  }
+});
+document.getElementById('btnTerminar').addEventListener('click', pararCronometro);
+function pararCronometro(){
+  if(estado.cronometro.intervalo) clearInterval(estado.cronometro.intervalo);
+  estado.cronometro.corriendo = false;
+  document.getElementById('btnTerminar').disabled = true;
+  estado.microDebeSeguir = false;
+  if(estado.reconocimiento && estado.micActivo){ estado.reconocimiento.stop(); }
+}
+document.getElementById('btnReiniciarMarcado').addEventListener('click', ()=>{
+  estado.palabras.forEach(p=>p.estado='pendiente');
+  estado.punteroLectura = 0;
+  renderPalabras(); actualizarStats();
+});
+
+/* ===================== PANTALLA COMPLETA ===================== */
+document.getElementById('btnFullscreen').addEventListener('click', ()=>{
+  const el = document.getElementById('panelProyeccion');
+  if(!document.fullscreenElement){
+    el.classList.add('fullscreen-mode');
+    el.requestFullscreen && el.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen && document.exitFullscreen();
+  }
+});
+document.addEventListener('fullscreenchange', ()=>{
+  if(!document.fullscreenElement) document.getElementById('panelProyeccion').classList.remove('fullscreen-mode');
+});
+
+/* ===================== RECONOCIMIENTO DE VOZ (HÍBRIDO, con auto-reinicio) =====================
+   El navegador (Chrome/Edge) corta la sesión de reconocimiento continuo por su cuenta cada cierto
+   tiempo o tras un silencio, incluso si el estudiante sigue leyendo. Si no se reinicia sola, la app
+   deja de marcar palabras aunque el cronómetro siga corriendo — eso causaba que solo se marcara una
+   parte del texto. Por eso, mientras la lectura esté activa (estado.microDebeSeguir = true), cualquier
+   "onend" inesperado dispara un reinicio automático del micrófono, de forma transparente para el docente. */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+function iniciarReconocimiento(){
+  if(!SR){
+    document.getElementById('micEstado').textContent = 'Este navegador no soporta reconocimiento de voz. Use Chrome o Edge de escritorio, o continúe marcando manualmente con clics (funciona igual).';
+    return;
+  }
+  estado.microDebeSeguir = true;
+  arrancarSesionSR();
+}
+
+function arrancarSesionSR(){
+  estado.reconocimiento = new SR();
+  estado.reconocimiento.lang = 'es-CO';
+  estado.reconocimiento.continuous = true;
+  estado.reconocimiento.interimResults = true;
+
+  estado.reconocimiento.onstart = ()=>{
+    estado.micActivo = true;
+    document.getElementById('micEstado').textContent = '🎤 Escuchando la lectura. El marcado automático (color claro) puede ir un poco atrasado respecto a la voz — es normal. Corrija cualquier palabra con un clic.';
+  };
+  estado.reconocimiento.onend = ()=>{
+    estado.micActivo = false;
+    if(estado.microDebeSeguir){
+      // El navegador cortó la sesión solo, pero la lectura sigue: reiniciar sin que el docente haga nada.
+      document.getElementById('micEstado').textContent = '🎤 Reconectando micrófono (esto es normal, puede pasar varias veces durante una lectura larga)...';
+      setTimeout(()=>{ if(estado.microDebeSeguir) arrancarSesionSR(); }, 250);
+    } else {
+      document.getElementById('micEstado').textContent = 'Micrófono inactivo.';
+    }
+  };
+  estado.reconocimiento.onerror = (e)=>{
+    if(e.error === 'not-allowed' || e.error === 'service-not-allowed'){
+      estado.microDebeSeguir = false;
+      document.getElementById('micEstado').textContent = 'Permiso de micrófono denegado. Puede continuar marcando manualmente con clics sobre cada palabra.';
+    }
+    // Otros errores (no-speech, network, aborted) se dejan pasar: "onend" se encargará de reintentar.
+  };
+  estado.reconocimiento.onresult = (event)=>{
+    // IMPORTANTE: solo se procesan resultados FINALES (isFinal). Los resultados
+    // interinos cambian mientras el estudiante todavía está pronunciando la palabra
+    // y son poco fiables; usarlos causaba que se marcaran palabras antes de leerse.
+    let finalTranscript = '';
+    for(let i = event.resultIndex; i < event.results.length; i++){
+      if(event.results[i].isFinal){
+        finalTranscript += ' ' + event.results[i][0].transcript;
+      }
+    }
+    if(finalTranscript.trim()) procesarTranscripcion(finalTranscript);
+  };
+  try{ estado.reconocimiento.start(); }catch(err){ /* ya estaba iniciado, se ignora */ }
+}
+
+function procesarTranscripcion(transcript){
+  const dichas = transcript.split(/\s+/).map(normaliza).filter(w=>w.length>0);
+  // Ventana de búsqueda reducida: solo mira unas pocas palabras hacia adelante,
+  // así una mala transcripción no "salta" y marca como omitido un tramo largo
+  // de palabras que el estudiante aún no ha leído.
+  const VENTANA = 3;
+  dichas.forEach(palabraDicha=>{
+    if(estado.punteroLectura >= estado.palabras.length) return;
+    let encontrado = -1;
+    for(let off=0; off<VENTANA && (estado.punteroLectura+off)<estado.palabras.length; off++){
+      const idx = estado.punteroLectura + off;
+      const esperada = normaliza(estado.palabras[idx].texto);
+      if(esperada === palabraDicha || (esperada.length>=5 && palabraDicha.length>=5 && (esperada.startsWith(palabraDicha)||palabraDicha.startsWith(esperada)))){
+        encontrado = idx; break;
+      }
+    }
+    if(encontrado >= 0){
+      // Las palabras saltadas quedan como "omitida-tent" (tentativo, más claro),
+      // nunca como confirmadas: el docente decide si de verdad se omitieron.
+      for(let idx = estado.punteroLectura; idx < encontrado; idx++){
+        estado.palabras[idx].estado = 'omitida-tent';
+      }
+      estado.palabras[encontrado].estado = 'correcta-tent';
+      estado.punteroLectura = encontrado + 1;
+    }
+  });
+  renderPalabras();
+  actualizarStats();
+}
+
+/* ===================== REPORTE ===================== */
+document.getElementById('btnCalcularReporte').addEventListener('click', ()=>{
+  const grado = parseInt(document.getElementById('gradoSel').value);
+  const total = estado.palabras.length;
+  const correctas = estado.palabras.filter(p=>p.estado.startsWith('correcta')).length;
+  const incorrectas = estado.palabras.filter(p=>p.estado.startsWith('incorrecta')).length;
+  const omitidas = estado.palabras.filter(p=>p.estado.startsWith('omitida')).length;
+  const segundos = estado.cronometro.segundos || 1;
+  let ppm;
+  if(segundos < 60){ ppm = Math.round((correctas/segundos)*60); }
+  else { ppm = estado.cronometro.ppm1 !== null ? estado.cronometro.ppm1 : Math.round((correctas/segundos)*60); }
+
+  const nivelVeloc = clasificaVelocidad(grado, ppm);
+  const pctCorrectas = total>0 ? correctas/total : 0;
+  const nivelCal = nivelCalidad(pctCorrectas);
+
+  const nVel = notaVelocidad(nivelVeloc);
+  const nCal = notaCalidad(nivelCal);
+  // Nota final: solo velocidad y calidad. La comprensión lectora se evalúa
+  // aparte, en el examen escrito de Lengua Castellana (no se duplica aquí).
+  let notaFinal = nVel*0.55 + nCal*0.45;
+  notaFinal = Math.round(notaFinal*10)/10;
+
+  const orientacion = generarOrientacion(nivelVeloc, nivelCal);
+
+  estado.reporte = {
+    nombre: document.getElementById('nombreEst').value || '(sin nombre)',
+    grado, docente: document.getElementById('docenteEst').value || '(sin registrar)',
+    fecha: document.getElementById('fechaEst').value, periodo: document.getElementById('periodoEst').value,
+    total, correctas, incorrectas, omitidas, ppm, nivelVeloc, nivelCal, notaFinal, orientacion
+  };
+  pintarReporte();
+  irATab('reporte');
+});
+
+function listaHtml(items){
+  return '<ul style="margin:6px 0 0 18px;padding:0;font-size:13px;line-height:1.7;">' +
+    items.map(i=>`<li>${i}</li>`).join('') + '</ul>';
+}
+
+function pintarReporte(){
+  const r = estado.reporte;
+  const o = r.orientacion;
+  const pctCorrectas = r.total>0 ? Math.round((r.correctas/r.total)*100) : 0;
+  const rango = RANGO_TEXTO[r.grado][r.nivelVeloc];
+  const fuente = ESTATUS_FUENTE[r.grado];
+
+  const html = `
+    <div class="grid2">
+      <div><strong>Estudiante:</strong> ${r.nombre}</div>
+      <div><strong>Grado:</strong> ${r.grado}°</div>
+      <div><strong>Docente:</strong> ${r.docente}</div>
+      <div><strong>Fecha:</strong> ${r.fecha} · ${r.periodo}</div>
+    </div>
+    <div class="reporte-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="stat-box"><div class="valor">${r.ppm}</div><div class="etiqueta">Palabras/min</div></div>
+      <div class="stat-box"><div class="valor">${r.nivelVeloc}</div><div class="etiqueta">Nivel velocidad</div></div>
+      <div class="stat-box"><div class="valor">${r.nivelCal}</div><div class="etiqueta">Nivel de calidad</div></div>
+    </div>
+    <div class="nota-final">${r.notaFinal.toFixed(1)}</div>
+    <div style="text-align:center;margin-top:8px"><button class="btn verde" onclick="enviarNotaPlanilla(${r.notaFinal})">📊 Enviar nota a la planilla</button></div>
+    <div style="text-align:center;color:#666;font-size:12px;margin-bottom:14px;">Nota final (escala 1.0 – 5.0) · 55% velocidad + 45% calidad. La comprensión lectora se evalúa aparte, en el examen escrito.</div>
+
+    <div class="diagnostico-box">
+      <h4>Resumen del desempeño lector</h4>
+      <p style="margin:0 0 10px;font-size:13.5px;">${o.resumen}</p>
+
+      <p style="margin:0 0 4px;font-size:13px;"><strong>Velocidad:</strong> el estudiante leyó ${r.ppm} palabras por minuto, lo que lo ubica en el nivel <strong>${r.nivelVeloc}</strong> para ${r.grado}° grado (rango esperado: ${rango}). <span style="color:#6b7280;font-style:italic;">Fuente del rango: ${fuente}.</span></p>
+
+      <p style="margin:0 0 4px;font-size:13px;"><strong>Calidad de la lectura:</strong> nivel <strong>${r.nivelCal}</strong> — el estudiante ${DESCRIPCION_CALIDAD[r.nivelCal]}</p>
+
+      <p style="margin:0 0 10px;font-size:13px;"><strong>Detalle de palabras leídas:</strong> de ${r.total} palabras del texto, ${r.correctas} se leyeron correctamente (${pctCorrectas}%), ${r.incorrectas} se leyeron con errores y ${r.omitidas} fueron omitidas.</p>
+
+      <p style="margin:0 0 2px;font-size:13px;"><strong>Fortalezas:</strong></p>
+      ${listaHtml(o.fortalezas)}
+
+      <p style="margin:10px 0 2px;font-size:13px;"><strong>Aspectos a mejorar:</strong></p>
+      ${listaHtml(o.mejorar)}
+
+      <p style="margin:10px 0 2px;font-size:13px;"><strong>Sugerencias para el docente:</strong></p>
+      ${listaHtml(o.sugerencias)}
+    </div>
+  `;
+  document.getElementById('reporteContenido').innerHTML = html;
+}
+
+document.getElementById('btnImprimir').addEventListener('click', ()=> window.print());
+document.getElementById('btnNuevo').addEventListener('click', ()=>{
+  document.getElementById('nombreEst').value='';
+  estado.palabras = []; estado.punteroLectura = 0; estado.reporte = null;
+  irATab('setup');
+});
+
+
+/* ============ INTEGRACIÓN SISTEMA LOMA VERDE ============ */
+let SYS=null;
+try{
+  SYS=LV_HERR.selectorEstudiante('sysCurso','sysEst',()=>{
+    const e=SYS.estudiante(); if(e) document.getElementById('nombreEst').value=e.nombre;
+    const c=SYS.curso(); if(c&&c.grado){ const g=String(c.grado).replace('°','');
+      const sel=document.getElementById('gradoSel'); if([...sel.options].some(o=>o.value===g)) sel.value=g; }
+  });
+  const d=document.getElementById('docenteEst'); if(d&&!d.value) d.value=LV_HERR.autor;
+}catch(_){}
+
+function registrarEnSistema(r){
+  try{
+    const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+    LV_HERR.guardarResultado({
+      herramienta:'Test de Lectura', estudiante:r.nombre, estId:e?e.id:'',
+      curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):(r.grado+'°'),
+      grado:r.grado+'°', nota:r.notaFinal,
+      nivel:'PPM '+r.ppm+' ('+r.nivelVeloc+') · Calidad '+r.nivelCal,
+      detalle:{ppm:r.ppm,nivelVeloc:r.nivelVeloc,nivelCal:r.nivelCal,correctas:r.correctas,
+               incorrectas:r.incorrectas,omitidas:r.omitidas,total:r.total,periodo:r.periodo}
+    });
+  }catch(_){}
+}
+
+window.enviarNotaPlanilla=function(nota){
+  const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+  if(!c||!e){ alert('Para enviar a la planilla, elige arriba el curso y el estudiante del sistema (pestaña Datos).'); return; }
+  const per=prompt('¿A qué periodo va la nota? (1, 2 o 3)','1');
+  if(!per) return;
+  if(!confirm('Enviar nota '+nota.toFixed(1)+' de '+e.nombre+' a la planilla de '+(c.materia||c.nombre)+' ('+(c.grado||'')+(c.grupo?'-'+c.grupo:'')+'), periodo '+per+'?')) return;
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id, estId:e.id, periodo:per, nota, etiqueta:'Test de Lectura'});
+  alert(r.msg);
+};
+
+/* ===================== HISTORIAL (localStorage) ===================== */
+document.getElementById('btnGuardarHistorial').addEventListener('click', ()=>{
+  if(!estado.reporte){ alert('Primero calcula el diagnóstico.'); return; }
+  const historial = JSON.parse(localStorage.getItem('historialLectura')||'[]');
+  historial.push(estado.reporte);
+  localStorage.setItem('historialLectura', JSON.stringify(historial));
+  try{ registrarEnSistema(historial[historial.length-1]); }catch(_){}
+  alert('Guardado en el historial.');
+  pintarHistorial();
+});
+function pintarHistorial(){
+  const historial = JSON.parse(localStorage.getItem('historialLectura')||'[]');
+  const tbody = document.querySelector('#tablaHistorial tbody');
+  tbody.innerHTML = historial.map(r=>`
+    <tr>
+      <td>${r.fecha}</td><td>${r.nombre}</td><td>${r.grado}°</td><td>${r.docente}</td>
+      <td>${r.ppm}</td><td>${r.nivelVeloc}</td><td>${r.nivelCal}</td><td>${r.notaFinal.toFixed(1)}</td>
+    </tr>`).join('');
+}
+document.getElementById('btnLimpiarHistorial').addEventListener('click', ()=>{
+  if(confirm('¿Borrar todo el historial guardado en este navegador?')){
+    localStorage.removeItem('historialLectura');
+    pintarHistorial();
+  }
+});
+document.getElementById('btnExportarCSV').addEventListener('click', ()=>{
+  const historial = JSON.parse(localStorage.getItem('historialLectura')||'[]');
+  if(historial.length===0){ alert('No hay registros para exportar.'); return; }
+  const headers = ['Fecha','Periodo','Estudiante','Grado','Docente','PalabrasTotales','Correctas','Incorrectas','Omitidas','PPM','NivelVelocidad','NivelCalidad','NotaFinal'];
+  const rows = historial.map(r=>[r.fecha,r.periodo,r.nombre,r.grado,r.docente,r.total,r.correctas,r.incorrectas,r.omitidas,r.ppm,r.nivelVeloc,r.nivelCal,r.notaFinal].join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8;'});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'historial_test_lectura.csv';
+  link.click();
+});
+</script>
+</body>
+</html>

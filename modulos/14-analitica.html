@@ -288,6 +288,13 @@ window.perfil=function(clave){
       ${res11.length?`<div class="sec-h">🎯 Simulacros Saber 11</div>
       <p style="font-size:.88rem">${res11.length} simulacro(s) · promedio de aciertos: <b>${Math.round(res11.reduce((a,r)=>a+(r.totalClosed?r.correct/r.totalClosed:0),0)/res11.length*100)}%</b></p>`:''}
 
+      <div class="sec-h">🧰 Evaluaciones formativas (Herramientas)</div>
+      ${(()=>{ const hs=lsRead('herramientas').filter(h=>!h._eliminado&&!String(h.herramienta||'').startsWith('_')&&normN(h.estudiante)===clave).sort((a,b)=>(b.creado||0)-(a.creado||0));
+        return hs.length?`<div class="tableScroll"><table><thead><tr><th>Fecha</th><th>Herramienta</th><th>Resultado</th><th class="c">Nota</th></tr></thead><tbody>
+          ${hs.slice(0,10).map(h=>`<tr><td>${esc(h.fecha||'')}</td><td>${esc(h.herramienta)}</td><td style="font-size:.8rem">${esc(h.nivel||'')}</td>
+            <td class="c"><span class="badge ${h.nota<3?'b-bajo':h.nota<4?'b-med':'b-ok'}">${(+h.nota).toFixed(1)}</span></td></tr>`).join('')}
+        </tbody></table></div>${hs.length>1?'<p class="desc">La comparación entre fechas muestra la evolución (ej: PPM de lectura entre periodos).</p>':''}`:'<p class="desc">Sin evaluaciones con herramientas todavía.</p>'; })()}
+
       <div class="sec-h">👪 Acudiente</div>
       <p style="font-size:.88rem">${acud?`${esc(acud.nombreAcudiente)} (${esc(acud.parentesco||'—')}) · ${esc(acud.telefono||'sin teléfono')}`:'Sin acudiente registrado.'}</p>
     </div>`;

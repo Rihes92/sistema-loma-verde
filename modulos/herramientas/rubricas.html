@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Rúbricas · Sistema Loma Verde</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  main{max-width:900px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text);width:100%}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}button.btn.bad{background:var(--bad);color:#fff}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .crit{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .crit .nom{font-weight:700;margin-bottom:8px}
+  .niveles{display:flex;gap:6px;flex-wrap:wrap}
+  .niv{flex:1;min-width:100px;border:2px solid var(--border);border-radius:9px;padding:8px;text-align:center;cursor:pointer;font-size:.8rem;font-weight:700;background:#fff}
+  .niv small{display:block;font-weight:400;color:var(--muted)}
+  .niv.sel{border-color:var(--primary);background:#eff6ff}
+  .item{border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .nota-live{font-size:2.2rem;font-weight:800;text-align:center;color:var(--primary);margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <h1>📋 Rúbricas — Evaluación formativa</h1>
+  <a href="../15-herramientas.html">← Herramientas</a>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Mis rúbricas</h2>
+    <p class="desc">Crea una rúbrica una vez y úsala en clase para evaluar con toques: cada criterio se valora en 4 niveles y la nota sale sola (escala 1.0–5.0). Sirve para cualquier área: exposiciones, laboratorios, cuadernos, proyectos, participación…</p>
+    <div id="lista-rub"></div>
+    <button class="btn ok" id="btn-nueva-rub" style="margin-top:8px">➕ Nueva rúbrica</button>
+  </div>
+
+  <!-- editor -->
+  <div class="card hide" id="card-editor">
+    <h2 id="ed-titulo">Nueva rúbrica</h2>
+    <div class="row">
+      <label class="fld">Nombre<input id="e-nombre" placeholder="Ej: Exposición oral"></label>
+      <label class="fld">Área / uso<input id="e-area" placeholder="Ej: Ciencias Sociales"></label>
+    </div>
+    <label class="fld" style="margin-top:10px">Criterios (uno por línea — todos pesan igual)
+      <textarea id="e-criterios" rows="5" placeholder="Dominio del tema&#10;Claridad al hablar&#10;Material de apoyo&#10;Manejo del tiempo"></textarea></label>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <button class="btn ok" id="btn-guardar-rub">💾 Guardar rúbrica</button>
+      <button class="btn sec" id="btn-cancelar-rub">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- evaluación -->
+  <div class="card hide" id="card-eval">
+    <h2 id="ev-titulo"></h2>
+    <div class="row">
+      <label class="fld">Curso del sistema (opcional)<select id="sysCurso"></select></label>
+      <label class="fld">Estudiante (opcional)<select id="sysEst"></select></label>
+      <label class="fld">Nombre<input id="ev-nombre" placeholder="O escríbelo aquí"></label>
+    </div>
+    <div id="ev-criterios" style="margin-top:14px"></div>
+    <div class="nota-live" id="ev-nota">—</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn ok" id="btn-guardar-eval">💾 Guardar evaluación</button>
+      <button class="btn" id="btn-planilla-eval">📊 Guardar y enviar a planilla</button>
+      <button class="btn sec" id="btn-cerrar-eval">Cerrar</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Evaluaciones recientes</h2>
+    <div id="historial"></div>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+const NIVELES=[{t:'Bajo',v:2.0},{t:'Básico',v:3.0},{t:'Alto',v:4.0},{t:'Superior',v:5.0}];
+
+// ── definiciones de rúbrica (guardadas y sincronizadas como registros) ──
+function rubricas(){ return LV_HERR.resultados({herramienta:'_rubrica_def'}); }
+function leerTodo(){ try{ return JSON.parse(localStorage.getItem('lv_herramientas'))||[]; }catch(_){ return []; } }
+
+let editId=null, rubActiva=null, valores={};
+
+function pintarRubricas(){
+  const rs=rubricas();
+  document.getElementById('lista-rub').innerHTML=rs.length?rs.map(r=>`<div class="item">
+    <div style="flex:1;min-width:160px"><strong>${esc(r.nombre)}</strong>
+      <span style="font-size:.78rem;color:var(--muted)"> · ${esc(r.area||'')} · ${(r.criterios||[]).length} criterios</span></div>
+    <button class="btn sm ok" onclick="evaluar('${r.id}')">✅ Evaluar</button>
+    <button class="btn sm sec" onclick="editarRub('${r.id}')">✏️</button>
+    <button class="btn sm bad" onclick="borrarRub('${r.id}')">🗑️</button>
+  </div>`).join(''):'<div class="empty">📋 Aún no tienes rúbricas. Crea la primera — queda guardada y sincronizada para reutilizarla siempre.</div>';
+}
+
+document.getElementById('btn-nueva-rub').addEventListener('click',()=>{
+  editId=null;
+  document.getElementById('ed-titulo').textContent='Nueva rúbrica';
+  document.getElementById('e-nombre').value=''; document.getElementById('e-area').value='';
+  document.getElementById('e-criterios').value='';
+  document.getElementById('card-editor').classList.remove('hide');
+  document.getElementById('card-editor').scrollIntoView({behavior:'smooth'});
+});
+document.getElementById('btn-cancelar-rub').addEventListener('click',()=>document.getElementById('card-editor').classList.add('hide'));
+
+document.getElementById('btn-guardar-rub').addEventListener('click',()=>{
+  const nombre=document.getElementById('e-nombre').value.trim();
+  const criterios=document.getElementById('e-criterios').value.split('\n').map(x=>x.trim()).filter(Boolean);
+  if(!nombre||criterios.length<2){ toast('Ponle nombre y al menos 2 criterios.'); return; }
+  const arr=leerTodo();
+  if(editId){
+    const r=arr.find(x=>x.id===editId);
+    if(r){ r.nombre=nombre; r.area=document.getElementById('e-area').value.trim(); r.criterios=criterios;
+      try{ localStorage.setItem('lv_herramientas',JSON.stringify(arr)); }catch(_){}
+      if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_herramientas', r); }
+  } else {
+    LV_HERR.guardarResultado({herramienta:'_rubrica_def', nombre,
+      area:document.getElementById('e-area').value.trim(), criterios, estudiante:'', nota:0});
+  }
+  document.getElementById('card-editor').classList.add('hide');
+  pintarRubricas(); toast('Rúbrica guardada');
+});
+
+window.editarRub=id=>{
+  const r=rubricas().find(x=>x.id===id); if(!r) return;
+  editId=id;
+  document.getElementById('ed-titulo').textContent='Editar rúbrica';
+  document.getElementById('e-nombre').value=r.nombre||'';
+  document.getElementById('e-area').value=r.area||'';
+  document.getElementById('e-criterios').value=(r.criterios||[]).join('\n');
+  document.getElementById('card-editor').classList.remove('hide');
+  document.getElementById('card-editor').scrollIntoView({behavior:'smooth'});
+};
+window.borrarRub=id=>{
+  if(!confirm('¿Eliminar esta rúbrica? (las evaluaciones ya hechas se conservan)')) return;
+  let arr=leerTodo();
+  const r=arr.find(x=>x.id===id); if(!r) return;
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_herramientas',{...r,_eliminado:true});
+  arr=arr.filter(x=>x.id!==id);
+  try{ localStorage.setItem('lv_herramientas',JSON.stringify(arr)); }catch(_){}
+  pintarRubricas(); toast('Rúbrica eliminada');
+};
+
+// ── evaluación con toques ──
+let SYS=null;
+window.evaluar=id=>{
+  rubActiva=rubricas().find(x=>x.id===id); if(!rubActiva) return;
+  valores={};
+  document.getElementById('ev-titulo').textContent='✅ Evaluando con: '+rubActiva.nombre;
+  document.getElementById('ev-nombre').value='';
+  if(!SYS){ try{ SYS=LV_HERR.selectorEstudiante('sysCurso','sysEst',()=>{
+    const e=SYS.estudiante(); if(e) document.getElementById('ev-nombre').value=e.nombre; }); }catch(_){} }
+  document.getElementById('ev-criterios').innerHTML=(rubActiva.criterios||[]).map((c,i)=>`
+    <div class="crit"><div class="nom">${i+1}. ${esc(c)}</div>
+      <div class="niveles">${NIVELES.map((n,j)=>`<div class="niv" data-c="${i}" data-v="${n.v}" onclick="marcar(this)">${esc(n.t)}<small>${n.v.toFixed(1)}</small></div>`).join('')}</div>
+    </div>`).join('');
+  document.getElementById('ev-nota').textContent='—';
+  document.getElementById('card-eval').classList.remove('hide');
+  document.getElementById('card-eval').scrollIntoView({behavior:'smooth'});
+};
+window.marcar=el=>{
+  const c=el.dataset.c;
+  document.querySelectorAll(`.niv[data-c="${c}"]`).forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel');
+  valores[c]=+el.dataset.v;
+  const vals=Object.values(valores);
+  if(vals.length===(rubActiva.criterios||[]).length){
+    const nota=vals.reduce((a,b)=>a+b,0)/vals.length;
+    document.getElementById('ev-nota').textContent=nota.toFixed(1);
+  }
+};
+function notaActual(){
+  const vals=Object.values(valores);
+  if(vals.length!==(rubActiva.criterios||[]).length) return null;
+  return +(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
+}
+function guardarEval(){
+  const nombre=document.getElementById('ev-nombre').value.trim();
+  const nota=notaActual();
+  if(!nombre){ toast('Escribe o elige el estudiante.'); return null; }
+  if(nota==null){ toast('Valora todos los criterios.'); return null; }
+  const e=SYS&&SYS.estudiante(), c=SYS&&SYS.curso();
+  LV_HERR.guardarResultado({
+    herramienta:'Rúbrica: '+rubActiva.nombre, estudiante:nombre, estId:e?e.id:'',
+    curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):'', grado:c?String(c.grado||''):'',
+    nota, nivel:(rubActiva.criterios||[]).map((cr,i)=>NIVELES.find(n=>n.v===valores[i]).t[0]).join(''),
+    detalle:{rubrica:rubActiva.nombre, criterios:(rubActiva.criterios||[]).map((cr,i)=>({c:cr,v:valores[i]}))}
+  });
+  pintarHistorial();
+  return nota;
+}
+document.getElementById('btn-guardar-eval').addEventListener('click',()=>{
+  if(guardarEval()!=null){ toast('Evaluación guardada'); valores={}; document.querySelectorAll('.niv').forEach(x=>x.classList.remove('sel')); document.getElementById('ev-nota').textContent='—'; document.getElementById('ev-nombre').value=''; if(SYS){const se=document.getElementById('sysEst'); if(se) se.value='';} }
+});
+document.getElementById('btn-planilla-eval').addEventListener('click',()=>{
+  const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+  if(!c||!e){ toast('Para la planilla elige curso y estudiante del sistema.'); return; }
+  const nota=guardarEval(); if(nota==null) return;
+  const per=prompt('¿A qué periodo va la nota? (1, 2 o 3)','1'); if(!per) return;
+  if(!confirm('Enviar nota '+nota.toFixed(1)+' de '+e.nombre+' a la planilla de '+(c.materia||c.nombre)+', periodo '+per+'?')) return;
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id, estId:e.id, periodo:per, nota, etiqueta:rubActiva.nombre});
+  toast(r.msg);
+});
+document.getElementById('btn-cerrar-eval').addEventListener('click',()=>document.getElementById('card-eval').classList.add('hide'));
+
+function pintarHistorial(){
+  const rs=LV_HERR.resultados().filter(r=>String(r.herramienta||'').startsWith('Rúbrica: ')).slice(0,15);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Estudiante</th><th>Rúbrica</th><th>Nota</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${esc(r.estudiante)}</td><td>${esc(String(r.herramienta).replace('Rúbrica: ',''))}</td><td><b>${(+r.nota).toFixed(1)}</b></td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Sin evaluaciones todavía.</div>';
+}
+pintarRubricas(); pintarHistorial();
+setTimeout(()=>{ pintarRubricas(); pintarHistorial(); },2500);
+</script>
+</body>
+</html>
