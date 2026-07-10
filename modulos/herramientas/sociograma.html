@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sociograma del Aula · SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:880px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.02rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text);width:100%;font-family:inherit}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .crit{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .crit .nom{font-weight:700;margin-bottom:8px}
+  .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+  .niv{border:2px solid var(--border);border-radius:9px;padding:8px;cursor:pointer;font-size:.76rem;background:#fff}
+  .niv b{display:block;font-size:.8rem}
+  .niv.sel{border-color:var(--primary);background:#eff6ff}
+  .nota-live{font-size:2.2rem;font-weight:800;text-align:center;color:var(--primary);margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .kpi .n{font-size:1.4rem;font-weight:800}.kpi .l{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .orienta{background:#eff6ff;border-left:5px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.88rem;margin-top:12px}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🕸️ Sociograma del Aula</h1>
+  <a href="../15-herramientas.html" style="margin-left:auto">← Herramientas</a>
+  <a href="../../index.html">🏠 Portal</a>
+</header>
+<main>
+
+<div class="card">
+  <h2>Sociograma del aula</h2>
+  <p class="desc">Pregunta a cada estudiante: <b>"¿Con quiénes prefieres trabajar en clase?"</b> (hasta 3 compañeros) y márcalo aquí. El análisis muestra quiénes son elegidos, las parejas mutuas y — lo más importante — <b>quiénes no fueron elegidos por nadie</b>: los estudiantes que necesitan integración.</p>
+  <label class="fld">Curso<select id="sysCurso"></select></label>
+  <div id="zona-elecciones" style="margin-top:14px"></div>
+  <button class="btn ok hide" id="btnAnalizar" style="margin-top:10px">📊 Analizar y guardar</button>
+</div>
+<div class="card hide" id="card-resultado">
+  <h2>Resultado</h2>
+  <div id="resultado"></div>
+</div>
+<div class="card"><h2>Sociogramas anteriores</h2><div id="historial"></div></div>
+</main>
+<div id="toast"></div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
+const sc=document.getElementById('sysCurso');
+let ests=[], elecciones={};
+function pintarCursos(){
+  const cs=LV_HERR.cursos();
+  sc.innerHTML='<option value="">— Elegir curso —</option>'+cs.map(c=>
+    `<option value="${c.id}">${c.grado||''}${c.grupo?'-'+c.grupo:''} · ${c.materia||c.nombre||''}</option>`).join('');
+}
+pintarCursos(); setTimeout(pintarCursos,2500);
+sc.addEventListener('change',()=>{
+  ests=sc.value?LV_HERR.estudiantesDe(sc.value):[];
+  elecciones={};
+  const z=document.getElementById('zona-elecciones');
+  if(!ests.length){ z.innerHTML='<div class="empty">Este curso no tiene estudiantes en Calificaciones.</div>';
+    document.getElementById('btnAnalizar').classList.add('hide'); return; }
+  z.innerHTML=ests.map((e,i)=>`
+    <div class="crit"><div class="nom">${esc(e.nombre)} elige a:</div>
+      <div class="niveles" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+        ${ests.filter(x=>x.id!==e.id).map(x=>`<div class="niv" data-de="${e.id}" data-a="${x.id}" onclick="elegir(this)">${esc(x.nombre)}</div>`).join('')}
+      </div></div>`).join('');
+  document.getElementById('btnAnalizar').classList.remove('hide');
+});
+window.elegir=el=>{
+  const de=el.dataset.de, a=el.dataset.a;
+  elecciones[de]=elecciones[de]||[];
+  const i=elecciones[de].indexOf(a);
+  if(i>=0){ elecciones[de].splice(i,1); el.classList.remove('sel'); }
+  else{
+    if(elecciones[de].length>=3){ toast('Máximo 3 elecciones por estudiante.'); return; }
+    elecciones[de].push(a); el.classList.add('sel');
+  }
+};
+document.getElementById('btnAnalizar').addEventListener('click',()=>{
+  const recibidas={}; ests.forEach(e=>recibidas[e.id]=0);
+  Object.values(elecciones).flat().forEach(id=>{ if(id in recibidas) recibidas[id]++; });
+  const mutuas=[];
+  Object.entries(elecciones).forEach(([de,lista])=>lista.forEach(a=>{
+    if((elecciones[a]||[]).includes(de) && de<a){
+      const n1=ests.find(e=>e.id===de),n2=ests.find(e=>e.id===a);
+      if(n1&&n2) mutuas.push(n1.nombre+' ↔ '+n2.nombre);
+    }}));
+  const orden=ests.slice().sort((a,b)=>recibidas[b.id]-recibidas[a.id]);
+  const aislados=orden.filter(e=>recibidas[e.id]===0);
+  const max=Math.max(1,...Object.values(recibidas));
+  document.getElementById('card-resultado').classList.remove('hide');
+  document.getElementById('resultado').innerHTML=`
+    ${aislados.length?`<div class="orienta" style="border-left-color:#dc2626;background:#fef2f2">⚠️ <b>Sin elecciones (prioridad de integración):</b> ${aislados.map(e=>esc(e.nombre)).join(', ')}.
+      Sugerencias: asignarles rol visible en trabajos de grupo, parejas rotativas, y registrar seguimiento en el Observador.</div>`
+      :'<div class="orienta" style="border-left-color:#16a34a;background:#f0fdf4">✅ Todos los estudiantes fueron elegidos por al menos un compañero.</div>'}
+    <div style="margin-top:12px">${orden.map(e=>`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:.86rem">
+        <span style="width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(e.nombre)}</span>
+        <div style="flex:1;height:16px;background:#e2e8f0;border-radius:99px;overflow:hidden">
+          <div style="height:100%;width:${recibidas[e.id]/max*100}%;background:${recibidas[e.id]===0?'#dc2626':'#3b82f6'};border-radius:99px"></div></div>
+        <b style="width:24px;text-align:right">${recibidas[e.id]}</b></div>`).join('')}</div>
+    ${mutuas.length?`<p style="font-size:.85rem;margin-top:10px">🤝 <b>Parejas mutuas:</b> ${mutuas.map(esc).join(' · ')}</p>`:''}`;
+  const c=LV_HERR.cursos().find(x=>x.id===sc.value);
+  LV_HERR.guardarResultado({ herramienta:'Sociograma', estudiante:'Grupo '+(c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):''),
+    curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):'', grado:c?String(c.grado||''):'', nota:0,
+    nivel:aislados.length+' sin elecciones de '+ests.length,
+    detalle:{aislados:aislados.map(e=>e.nombre), mutuas, recibidas:orden.map(e=>({n:e.nombre,r:recibidas[e.id]}))} });
+  pintarHistorial(); toast('Sociograma guardado');
+  document.getElementById('card-resultado').scrollIntoView({behavior:'smooth'});
+});
+function pintarHistorial(){
+  const rs=LV_HERR.resultados({herramienta:'Sociograma'}).slice(0,8);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Grupo</th><th>Resultado</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${esc(r.estudiante)}</td><td>${esc(r.nivel||'')}</td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Sin sociogramas todavía. Repítelo cada periodo para ver la evolución del grupo.</div>';
+}
+pintarHistorial(); setTimeout(pintarHistorial,2500);
+</script>
+</body>
+</html>

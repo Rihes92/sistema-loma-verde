@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tiquete de Salida · SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:880px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.02rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text);width:100%;font-family:inherit}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .crit{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .crit .nom{font-weight:700;margin-bottom:8px}
+  .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+  .niv{border:2px solid var(--border);border-radius:9px;padding:8px;cursor:pointer;font-size:.76rem;background:#fff}
+  .niv b{display:block;font-size:.8rem}
+  .niv.sel{border-color:var(--primary);background:#eff6ff}
+  .nota-live{font-size:2.2rem;font-weight:800;text-align:center;color:var(--primary);margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .kpi .n{font-size:1.4rem;font-weight:800}.kpi .l{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .orienta{background:#eff6ff;border-left:5px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.88rem;margin-top:12px}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🎟️ Tiquete de Salida</h1>
+  <a href="../15-herramientas.html" style="margin-left:auto">← Herramientas</a>
+  <a href="../../index.html">🏠 Portal</a>
+</header>
+<main>
+
+<div class="card">
+  <h2>Tiquete de salida</h2>
+  <p class="desc">Al cierre de la clase, haz 1 a 3 preguntas rápidas al grupo (proyectadas o en voz alta) y registra cuántos respondieron bien cada una. Te dice al instante si el tema quedó comprendido o hay que retomarlo mañana.</p>
+  <div class="row">
+    <label class="fld">Curso<select id="sysCurso"></select></label>
+    <label class="fld">Tema de la clase<input id="tema" placeholder="Ej: Fracciones equivalentes"></label>
+    <label class="fld">Estudiantes presentes<input id="presentes" type="number" min="1" placeholder="Cuántos respondieron"></label>
+  </div>
+  <div id="preguntas" style="margin-top:12px"></div>
+  <button class="btn sec sm" id="btnAddPregunta">➕ Agregar pregunta (máx. 3)</button>
+  <button class="btn ok" id="btnAnalizar" style="margin-left:6px">📊 Analizar comprensión</button>
+  <div id="reporte" class="hide" style="margin-top:14px"></div>
+</div>
+<div class="card"><h2>Tiquetes anteriores</h2><div id="historial"></div></div>
+</main>
+<div id="toast"></div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+let nPregs=0;
+function addPregunta(){
+  if(nPregs>=3) return toast('Máximo 3 preguntas.');
+  nPregs++;
+  const div=document.createElement('div');
+  div.className='crit';
+  div.innerHTML=`<div class="nom">Pregunta ${nPregs}</div>
+    <div class="row">
+      <label class="fld" style="flex:2">Texto (opcional)<input class="q-txt" placeholder="Ej: ¿2/4 es equivalente a 1/2?"></label>
+      <label class="fld">Respondieron BIEN<input class="q-ok" type="number" min="0" value="0"></label>
+    </div>`;
+  document.getElementById('preguntas').appendChild(div);
+}
+addPregunta();
+document.getElementById('btnAddPregunta').addEventListener('click',addPregunta);
+
+let SYSC=null;
+(function(){ const sc=document.getElementById('sysCurso');
+  function pintar(){ const cs=LV_HERR.cursos();
+    sc.innerHTML='<option value="">— Curso —</option>'+cs.map(c=>`<option value="${c.id}">${c.grado||''}${c.grupo?'-'+c.grupo:''} · ${c.materia||''}</option>`).join(''); }
+  pintar(); setTimeout(pintar,2500); })();
+
+document.getElementById('btnAnalizar').addEventListener('click',()=>{
+  const total=+document.getElementById('presentes').value||0;
+  if(!total){ toast('Indica cuántos estudiantes respondieron.'); return; }
+  const qs=[...document.querySelectorAll('#preguntas .crit')].map((d,i)=>({
+    txt:d.querySelector('.q-txt').value.trim()||('Pregunta '+(i+1)),
+    ok:Math.min(total,+d.querySelector('.q-ok').value||0)
+  }));
+  const pcts=qs.map(q=>Math.round(q.ok/total*100));
+  const prom=Math.round(pcts.reduce((a,b)=>a+b,0)/pcts.length);
+  const color=p=>p<50?'#dc2626':p<75?'#d97706':'#16a34a';
+  const veredicto = prom<50
+    ? '🔴 El tema NO quedó comprendido: retómalo mañana desde otro ángulo (ejemplo concreto, material manipulable) antes de avanzar.'
+    : prom<75
+    ? '🟡 Comprensión parcial: repaso breve al inicio de la próxima clase, enfocado en las preguntas más falladas.'
+    : '🟢 El grupo comprendió el tema: puedes avanzar. Considera un reto extra para los más rápidos.';
+  document.getElementById('reporte').classList.remove('hide');
+  document.getElementById('reporte').innerHTML=
+    qs.map((q,i)=>`<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:.86rem">
+      <span style="width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(q.txt)}</span>
+      <div style="flex:1;height:18px;background:#e2e8f0;border-radius:99px;overflow:hidden">
+        <div style="height:100%;width:${pcts[i]}%;background:${color(pcts[i])}"></div></div>
+      <b style="width:44px;text-align:right">${pcts[i]}%</b></div>`).join('')
+    +`<div class="orienta" style="margin-top:10px">${veredicto}</div>`;
+  const c=LV_HERR.cursos().find(x=>x.id===document.getElementById('sysCurso').value);
+  LV_HERR.guardarResultado({ herramienta:'Tiquete de salida',
+    estudiante:'Grupo '+(c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):''),
+    curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):'', grado:'',
+    nota:0, nivel:prom+'% de comprensión · '+esc(document.getElementById('tema').value||'sin tema'),
+    detalle:{tema:document.getElementById('tema').value, presentes:total, preguntas:qs, pcts, promedio:prom} });
+  pintarHistorial(); toast('Tiquete guardado');
+});
+function pintarHistorial(){
+  const rs=LV_HERR.resultados({herramienta:'Tiquete de salida'}).slice(0,10);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Grupo</th><th>Resultado</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${esc(r.estudiante)}</td><td>${esc(r.nivel||'')}</td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Sin tiquetes todavía. Úsalo al cierre de cada clase importante.</div>';
+}
+pintarHistorial(); setTimeout(pintarHistorial,2500);
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Condición Física · SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:880px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.02rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text);width:100%;font-family:inherit}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .crit{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .crit .nom{font-weight:700;margin-bottom:8px}
+  .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+  .niv{border:2px solid var(--border);border-radius:9px;padding:8px;cursor:pointer;font-size:.76rem;background:#fff}
+  .niv b{display:block;font-size:.8rem}
+  .niv.sel{border-color:var(--primary);background:#eff6ff}
+  .nota-live{font-size:2.2rem;font-weight:800;text-align:center;color:var(--primary);margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .kpi .n{font-size:1.4rem;font-weight:800}.kpi .l{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .orienta{background:#eff6ff;border-left:5px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.88rem;margin-top:12px}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🏃 Condición Física</h1>
+  <a href="../15-herramientas.html" style="margin-left:auto">← Herramientas</a>
+  <a href="../../index.html">🏠 Portal</a>
+</header>
+<main>
+
+<div class="card">
+  <h2>Datos del estudiante</h2>
+  <p class="desc">Registra las pruebas físicas aplicadas. Los rangos de referencia son estimaciones internas por edad (ajustables); la nota promedia las pruebas registradas — puedes aplicar solo algunas.</p>
+  <div class="row">
+    <label class="fld">Curso del sistema (opcional)<select id="sysCurso"></select></label>
+    <label class="fld">Estudiante (opcional)<select id="sysEst"></select></label>
+    <label class="fld">Nombre<input id="nombreEst" placeholder="O escríbelo aquí"></label>
+    <label class="fld">Edad (años)<input id="edad" type="number" min="5" max="20" value="12"></label>
+  </div>
+</div>
+<div class="card">
+  <h2>Pruebas</h2>
+  <div id="pruebas"></div>
+  <button class="btn ok" id="btnCalcular" style="margin-top:10px">✅ Calcular y guardar</button>
+  <div id="reporte" class="hide" style="margin-top:14px">
+    <div class="nota-live" id="rNota">—</div>
+    <div id="rDetalle"></div>
+    <button class="btn" id="btnPlanilla" style="margin-top:10px">📊 Enviar nota a la planilla</button>
+  </div>
+</div>
+<div class="card"><h2>Historial</h2><div id="historial"></div></div>
+</main>
+<div id="toast"></div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+// referencia interna: [flojo, aceptable, bueno] por grupo de edad; invertir=true si menor es mejor
+const PRUEBAS=[
+ {id:'v30', n:'Velocidad 30 m (segundos)', inv:true, ref:{ninos:[8.5,7.2,6.2], jov:[6.8,5.8,5.0]}},
+ {id:'salto', n:'Salto largo sin impulso (cm)', inv:false, ref:{ninos:[90,120,150], jov:[140,175,210]}},
+ {id:'abd', n:'Abdominales en 30 s (repeticiones)', inv:false, ref:{ninos:[8,14,20], jov:[14,20,26]}},
+ {id:'flex', n:'Flexibilidad sentado (cm alcanzados)', inv:false, ref:{ninos:[-5,2,8], jov:[-8,0,7]}},
+ {id:'res', n:'Resistencia: metros en 6 minutos', inv:false, ref:{ninos:[700,900,1100], jov:[900,1150,1400]}},
+];
+let SYS=null;
+try{ SYS=LV_HERR.selectorEstudiante('sysCurso','sysEst',()=>{
+  const e=SYS.estudiante(); if(e) document.getElementById('nombreEst').value=e.nombre; }); }catch(_){}
+document.getElementById('pruebas').innerHTML=PRUEBAS.map(p=>`
+  <div class="row" style="margin-bottom:8px;align-items:end">
+    <label class="fld" style="flex:2">${esc(p.n)}<input id="p-${p.id}" type="number" step="0.1" placeholder="Deja vacío si no se aplicó"></label>
+  </div>`).join('');
+function nivelDe(p,valor,edad){
+  const ref=edad<12?p.ref.ninos:p.ref.jov;
+  let idx; // 0 flojo, 1 aceptable, 2 bueno, 3 sobresaliente
+  if(p.inv) idx = valor>ref[0]?0 : valor>ref[1]?1 : valor>ref[2]?2 : 3;
+  else idx = valor<ref[0]?0 : valor<ref[1]?1 : valor<ref[2]?2 : 3;
+  return {idx, t:['Por mejorar','Aceptable','Bueno','Sobresaliente'][idx], nota:[2.5,3.3,4.2,5.0][idx]};
+}
+let ultimo=null;
+document.getElementById('btnCalcular').addEventListener('click',()=>{
+  const nombre=document.getElementById('nombreEst').value.trim();
+  if(!nombre){ toast('Escribe o elige el estudiante.'); return; }
+  const edad=+document.getElementById('edad').value||12;
+  const res=[];
+  PRUEBAS.forEach(p=>{
+    const v=document.getElementById('p-'+p.id).value;
+    if(v==='') return;
+    const nv=nivelDe(p,+v,edad);
+    res.push({prueba:p.n, valor:+v, nivel:nv.t, nota:nv.nota});
+  });
+  if(!res.length){ toast('Registra al menos una prueba.'); return; }
+  const nota=Math.round(res.reduce((a,r)=>a+r.nota,0)/res.length*10)/10;
+  document.getElementById('rNota').textContent=nota.toFixed(1);
+  document.getElementById('rDetalle').innerHTML=`<table><thead><tr><th>Prueba</th><th>Registro</th><th>Nivel</th></tr></thead><tbody>
+    ${res.map(r=>`<tr><td>${esc(r.prueba)}</td><td>${r.valor}</td><td>${esc(r.nivel)}</td></tr>`).join('')}</tbody></table>`;
+  document.getElementById('reporte').classList.remove('hide');
+  const e=SYS&&SYS.estudiante(), c=SYS&&SYS.curso();
+  ultimo={nota};
+  LV_HERR.guardarResultado({ herramienta:'Condición Física', estudiante:nombre, estId:e?e.id:'',
+    curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):'', grado:'', nota,
+    nivel:res.map(r=>r.nivel[0]).join('')+' · '+res.length+' prueba(s)',
+    detalle:{edad, pruebas:res} });
+  pintarHistorial();
+});
+document.getElementById('btnPlanilla').addEventListener('click',()=>{
+  const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+  if(!c||!e){ toast('Elige curso y estudiante del sistema.'); return; }
+  if(!ultimo) return;
+  const per=prompt('¿A qué periodo va la nota? (1, 2 o 3)','1'); if(!per) return;
+  if(!confirm('Enviar nota '+ultimo.nota.toFixed(1)+' de '+e.nombre+' a la planilla, periodo '+per+'?')) return;
+  toast(LV_HERR.enviarAPlanilla({cursoId:c.id, estId:e.id, periodo:per, nota:ultimo.nota, etiqueta:'Condición Física'}).msg);
+});
+function pintarHistorial(){
+  const rs=LV_HERR.resultados({herramienta:'Condición Física'}).slice(0,12);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Estudiante</th><th>Resultado</th><th>Nota</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${esc(r.estudiante)}</td><td>${esc(r.nivel||'')}</td><td><b>${(+r.nota).toFixed(1)}</b></td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Sin registros todavía.</div>';
+}
+pintarHistorial(); setTimeout(pintarHistorial,2500);
+</script>
+</body>
+</html>

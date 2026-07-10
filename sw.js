@@ -2,7 +2,7 @@
 //  Sistema Loma Verde — Service Worker v4 (Network First)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v35';
+const CACHE = 'loma-verde-v36';
 
 const ARCHIVOS = [
   './',
@@ -35,6 +35,15 @@ const ARCHIVOS = [
   './modulos/herramientas/test-lectura.html',
   './modulos/herramientas/calculo-mental.html',
   './modulos/herramientas/rubricas.html',
+  './modulos/herramientas/escritura.html',
+  './modulos/herramientas/indagacion.html',
+  './modulos/herramientas/reading-aloud.html',
+  './modulos/herramientas/sociograma.html',
+  './modulos/herramientas/fisica.html',
+  './modulos/herramientas/tiquete.html',
+  './Logo/sabie.svg',
+  './Logo/sabie-192.png',
+  './Logo/sabie-512.png',
   './Logo/logo.jpg',
   './Logo/icon-192.png',
   './Logo/icon-512.png',

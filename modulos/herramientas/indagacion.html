@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Rúbrica de Indagación · SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:880px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.02rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text);width:100%;font-family:inherit}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .crit{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .crit .nom{font-weight:700;margin-bottom:8px}
+  .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+  .niv{border:2px solid var(--border);border-radius:9px;padding:8px;cursor:pointer;font-size:.76rem;background:#fff}
+  .niv b{display:block;font-size:.8rem}
+  .niv.sel{border-color:var(--primary);background:#eff6ff}
+  .nota-live{font-size:2.2rem;font-weight:800;text-align:center;color:var(--primary);margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .kpi .n{font-size:1.4rem;font-weight:800}.kpi .l{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .orienta{background:#eff6ff;border-left:5px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.88rem;margin-top:12px}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🔬 Rúbrica de Indagación</h1>
+  <a href="../15-herramientas.html" style="margin-left:auto">← Herramientas</a>
+  <a href="../../index.html">🏠 Portal</a>
+</header>
+<main>
+
+<section>
+  <div class="card">
+    <h2>Datos</h2>
+    <p class="desc">Evalúa un proceso de indagación científica (laboratorio, experiencia, salida de campo). Sirve para Ciencias Naturales y también para proyectos de otras áreas.</p>
+    <div class="row">
+      <label class="fld">Curso del sistema (opcional)<select id="sysCurso"></select></label>
+      <label class="fld">Estudiante (opcional)<select id="sysEst"></select></label>
+      <label class="fld">Nombre<input id="nombreEst" placeholder="O escríbelo aquí"></label>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Valoración por criterios</h2>
+    <div id="criterios"></div>
+    <div class="nota-live" id="notaLive">—</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn ok" id="btnGuardar">💾 Guardar evaluación</button>
+      <button class="btn" id="btnPlanilla">📊 Guardar y enviar a planilla</button>
+      <button class="btn sec" id="btnLimpiar">🔁 Siguiente estudiante</button>
+    </div>
+  </div>
+  <div class="card"><h2>Historial</h2><div id="historial"></div></div>
+</section>
+</main>
+<div id="toast"></div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+const HERRAMIENTA="Rúbrica de Indagación";
+const CRITERIOS=[{"n": "Pregunta de investigación", "d": ["No formula pregunta o no se relaciona con el tema.", "Pregunta general, difícil de investigar.", "Pregunta clara y posible de investigar con lo disponible.", "Pregunta precisa, investigable y con interés genuino."]}, {"n": "Hipótesis o predicción", "d": ["No propone hipótesis.", "Propone una idea sin justificarla.", "Hipótesis clara con una justificación sencilla.", "Hipótesis argumentada desde sus conocimientos previos."]}, {"n": "Procedimiento y observación", "d": ["No sigue pasos; observación desordenada.", "Sigue los pasos con ayuda constante.", "Sigue el procedimiento y observa con atención.", "Procedimiento riguroso; propone mejoras al método."]}, {"n": "Registro de datos y evidencias", "d": ["No registra lo observado.", "Registro incompleto o confuso.", "Registra en tablas/dibujos organizados.", "Registro completo, organizado y reutilizable por otros."]}, {"n": "Conclusión y comunicación", "d": ["No concluye o repite la consigna.", "Conclusión simple sin conexión con los datos.", "Conclusión basada en los datos; la comunica con claridad.", "Conclusión sólida, contrasta con la hipótesis y comunica muy bien."]}];
+const NIVELES=[{t:'Bajo',v:2.0},{t:'Básico',v:3.0},{t:'Alto',v:4.0},{t:'Superior',v:5.0}];
+let SYS=null, valores={};
+try{ SYS=LV_HERR.selectorEstudiante('sysCurso','sysEst',()=>{
+  const e=SYS.estudiante(); if(e) document.getElementById('nombreEst').value=e.nombre; }); }catch(_){}
+
+function pintar(){
+  document.getElementById('criterios').innerHTML=CRITERIOS.map((c,i)=>`
+    <div class="crit"><div class="nom">${i+1}. ${esc(c.n)}</div>
+      <div class="niveles">${NIVELES.map((nv,j)=>`<div class="niv" data-c="${i}" data-v="${nv.v}" onclick="marcar(this)"><b>${nv.t} · ${nv.v.toFixed(1)}</b>${esc(c.d[j])}</div>`).join('')}</div>
+    </div>`).join('');
+}
+window.marcar=el=>{
+  document.querySelectorAll(`.niv[data-c="${el.dataset.c}"]`).forEach(x=>x.classList.remove('sel'));
+  el.classList.add('sel'); valores[el.dataset.c]=+el.dataset.v;
+  const vals=Object.values(valores);
+  if(vals.length===CRITERIOS.length)
+    document.getElementById('notaLive').textContent=(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
+};
+function nota(){ const v=Object.values(valores); return v.length===CRITERIOS.length? +(v.reduce((a,b)=>a+b,0)/v.length).toFixed(1):null; }
+function guardar(){
+  const nombre=document.getElementById('nombreEst').value.trim();
+  const nt=nota();
+  if(!nombre){ toast('Escribe o elige el estudiante.'); return null; }
+  if(nt==null){ toast('Valora todos los criterios.'); return null; }
+  const e=SYS&&SYS.estudiante(), c=SYS&&SYS.curso();
+  LV_HERR.guardarResultado({ herramienta:HERRAMIENTA, estudiante:nombre, estId:e?e.id:'',
+    curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):'', grado:c?String(c.grado||''):'',
+    nota:nt, nivel:CRITERIOS.map((cr,i)=>NIVELES.find(n=>n.v===valores[i]).t[0]).join(''),
+    detalle:{criterios:CRITERIOS.map((cr,i)=>({c:cr.n,v:valores[i]}))} });
+  pintarHistorial(); return nt;
+}
+function limpiar(){ valores={}; document.querySelectorAll('.niv').forEach(x=>x.classList.remove('sel'));
+  document.getElementById('notaLive').textContent='—'; document.getElementById('nombreEst').value='';
+  const se=document.getElementById('sysEst'); if(se) se.value=''; }
+document.getElementById('btnGuardar').addEventListener('click',()=>{ if(guardar()!=null){ toast('Evaluación guardada'); limpiar(); } });
+document.getElementById('btnLimpiar').addEventListener('click',limpiar);
+document.getElementById('btnPlanilla').addEventListener('click',()=>{
+  const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+  if(!c||!e){ toast('Para la planilla elige curso y estudiante del sistema.'); return; }
+  const nt=guardar(); if(nt==null) return;
+  const per=prompt('¿A qué periodo va la nota? (1, 2 o 3)','1'); if(!per) return;
+  if(!confirm('Enviar nota '+nt.toFixed(1)+' de '+e.nombre+' a la planilla, periodo '+per+'?')) return;
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id, estId:e.id, periodo:per, nota:nt, etiqueta:HERRAMIENTA});
+  toast(r.msg); limpiar();
+});
+function pintarHistorial(){
+  const rs=LV_HERR.resultados({herramienta:HERRAMIENTA}).slice(0,12);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Estudiante</th><th>Curso</th><th>Nota</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${esc(r.estudiante)}</td><td>${esc(r.curso||'')}</td><td><b>${(+r.nota).toFixed(1)}</b></td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Sin evaluaciones todavía.</div>';
+}
+pintar(); pintarHistorial(); setTimeout(pintarHistorial,2500);
+
+</script>
+</body>
+</html>

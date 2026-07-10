@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Reading Aloud — Inglés · SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../../sync.js"></script>
+<script src="herramientas-comun.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;margin:0;font-weight:700;flex:1}
+  header.appbar a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:880px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.08);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.02rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;background:#fff;color:var(--text);width:100%;font-family:inherit}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.ok{background:var(--ok)}button.btn.sec{background:#e2e8f0;color:var(--text)}button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .crit{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .crit .nom{font-weight:700;margin-bottom:8px}
+  .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:6px}
+  .niv{border:2px solid var(--border);border-radius:9px;padding:8px;cursor:pointer;font-size:.76rem;background:#fff}
+  .niv b{display:block;font-size:.8rem}
+  .niv.sel{border-color:var(--primary);background:#eff6ff}
+  .nota-live{font-size:2.2rem;font-weight:800;text-align:center;color:var(--primary);margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:.85rem}
+  th,td{padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;color:var(--primary)}
+  .empty{text-align:center;padding:26px;color:var(--muted)}
+  .kpi{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+  .kpi .n{font-size:1.4rem;font-weight:800}.kpi .l{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase}
+  .orienta{background:#eff6ff;border-left:5px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.88rem;margin-top:12px}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🗣️ Reading Aloud — Inglés</h1>
+  <a href="../15-herramientas.html" style="margin-left:auto">← Herramientas</a>
+  <a href="../../index.html">🏠 Portal</a>
+</header>
+<main>
+
+<div class="card">
+  <h2>Student & text</h2>
+  <p class="desc">Lectura en voz alta en inglés. El docente cronometra 1 minuto, cuenta las palabras leídas y los errores, y valora la calidad. Nota = 55% velocidad + 45% calidad (mismo modelo del Test de Lectura).</p>
+  <div class="row">
+    <label class="fld">Curso del sistema (opcional)<select id="sysCurso"></select></label>
+    <label class="fld">Estudiante (opcional)<select id="sysEst"></select></label>
+    <label class="fld">Nombre<input id="nombreEst" placeholder="O escríbelo aquí"></label>
+  </div>
+  <div class="row" style="margin-top:10px">
+    <label class="fld">Nivel<select id="bandaSel"></select></label>
+    <label class="fld">Texto de muestra<select id="textoSel"></select></label>
+  </div>
+  <label class="fld" style="margin-top:10px">Texto a leer (editable)<textarea id="textoLibre" rows="5"></textarea></label>
+</div>
+<div class="card">
+  <h2>⏱️ Cronómetro y registro</h2>
+  <div style="text-align:center">
+    <div style="font-size:2.4rem;font-weight:800;color:var(--warn)" id="crono">1:00</div>
+    <button class="btn ok" id="btnCrono">▶️ Iniciar 1 minuto</button>
+  </div>
+  <div class="row" style="margin-top:14px">
+    <label class="fld">Palabras leídas en el minuto<input id="leidas" type="number" min="0" placeholder="Cuéntalas en el texto"></label>
+    <label class="fld">Errores (mala pronunciación, omisiones)<input id="errores" type="number" min="0" value="0"></label>
+    <label class="fld">Calidad de la lectura<select id="calidad">
+      <option value="1">A — Word by word, much hesitation</option>
+      <option value="2">B — Short phrases, monotone</option>
+      <option value="3">C — Mostly fluent, minor errors</option>
+      <option value="4">D — Fluent, natural intonation</option></select></label>
+  </div>
+  <button class="btn ok" style="margin-top:12px" id="btnCalcular">✅ Calcular resultado</button>
+  <div id="reporte" class="hide" style="margin-top:14px">
+    <div class="nota-live" id="rNota">—</div>
+    <div class="row">
+      <div class="kpi"><div class="n" id="rWpm">—</div><div class="l">WPM correctas</div></div>
+      <div class="kpi"><div class="n" id="rNivel">—</div><div class="l">nivel</div></div>
+    </div>
+    <div class="orienta" id="rOrienta"></div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+      <button class="btn" id="btnPlanilla">📊 Enviar nota a la planilla</button>
+    </div>
+  </div>
+</div>
+<div class="card"><h2>Historial</h2><div id="historial"></div></div>
+</main>
+<div id="toast"></div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+
+const BANDAS={
+ 'b13':{t:'1° a 3°', meta:[15,30,45], textos:[
+   'I see a cat. The cat is black. It likes milk. I like my cat.',
+   'This is my school. I play with my friends. We read and we write. School is fun.',
+   'My family is big. I have a mother, a father and two brothers. We live in the country.']},
+ 'b45':{t:'4° a 5°', meta:[35,55,75], textos:[
+   'My name is Ana and I live on a farm. Every morning I help my father with the animals. We have cows, chickens and a very old horse called Lucero.',
+   'The river near my town is long and green. In summer we swim and fish with my cousins. My grandmother tells us stories about the river at night.',
+   'Yesterday we planted corn in the field. First we prepared the soil, then we put the seeds in small holes. In some months we will have a good harvest.']},
+ 'b69':{t:'6° a 9°', meta:[55,80,105], textos:[
+   'Climate change is affecting farmers around the world. When the rain does not come on time, the crops can be lost. Many communities are learning new ways to take care of the water and the soil.',
+   'The internet has changed the way people learn. Today a student in a small town can watch classes from other countries. However, not everyone has access to this technology, and that creates new differences.',
+   'Sports teach us more than physical skills. When we play on a team, we learn to respect rules, to lose with dignity and to win with humility. These lessons are useful for the rest of our lives.']},
+ 'b1011':{t:'10° a 11°', meta:[80,105,130], textos:[
+   'Education is one of the most powerful tools to transform a community. Studies show that each additional year of schooling increases opportunities and reduces inequality. However, quality matters as much as access.',
+   'Scientists estimate that the Amazon rainforest produces about twenty percent of the oxygen generated on land. Protecting it is not only an environmental issue but also an economic and social challenge for South America.',
+   'Before making a decision, critical thinkers ask themselves: what is the evidence? Who benefits from this information? Learning to question sources is an essential skill in a world full of instant news.']}
+};
+let SYS=null;
+try{ SYS=LV_HERR.selectorEstudiante('sysCurso','sysEst',()=>{
+  const e=SYS.estudiante(); if(e) document.getElementById('nombreEst').value=e.nombre; }); }catch(_){}
+const bandaSel=document.getElementById('bandaSel');
+bandaSel.innerHTML=Object.entries(BANDAS).map(([k,b])=>`<option value="${k}">${b.t}</option>`).join('');
+function pintarTextos(){
+  const b=BANDAS[bandaSel.value];
+  document.getElementById('textoSel').innerHTML=b.textos.map((t,i)=>`<option value="${i}">Texto ${i+1}: ${esc(t.slice(0,40))}…</option>`).join('');
+  document.getElementById('textoLibre').value=b.textos[0];
+}
+bandaSel.addEventListener('change',pintarTextos);
+document.getElementById('textoSel').addEventListener('change',e=>{
+  document.getElementById('textoLibre').value=BANDAS[bandaSel.value].textos[+e.target.value];
+});
+pintarTextos();
+
+let cronoInt=null;
+document.getElementById('btnCrono').addEventListener('click',()=>{
+  clearInterval(cronoInt); let s=60;
+  document.getElementById('crono').textContent='1:00';
+  cronoInt=setInterval(()=>{ s--;
+    document.getElementById('crono').textContent='0:'+String(s).padStart(2,'0');
+    if(s<=0){ clearInterval(cronoInt); document.getElementById('crono').textContent='⏰ Time!'; }
+  },1000);
+});
+
+let ultimo=null;
+document.getElementById('btnCalcular').addEventListener('click',()=>{
+  const nombre=document.getElementById('nombreEst').value.trim();
+  if(!nombre){ toast('Escribe o elige el estudiante.'); return; }
+  const leidas=+document.getElementById('leidas').value||0;
+  const errores=+document.getElementById('errores').value||0;
+  if(!leidas){ toast('Registra las palabras leídas.'); return; }
+  const wpm=Math.max(0,leidas-errores);
+  const m=BANDAS[bandaSel.value].meta; // [lento, esperado, rápido]
+  const nivel=wpm<m[0]?'Very slow':wpm<m[1]?'Slow':wpm<=m[2]?'Expected':'Fast';
+  const nVel=1+Math.min(1,wpm/m[1])*4;
+  const nCal=1+((+document.getElementById('calidad').value-1)/3)*4;
+  const nota=Math.round((nVel*0.55+nCal*0.45)*10)/10;
+  document.getElementById('rNota').textContent=nota.toFixed(1);
+  document.getElementById('rWpm').textContent=wpm;
+  document.getElementById('rNivel').textContent=nivel;
+  document.getElementById('rOrienta').innerHTML='🧭 '+(wpm<m[0]
+    ?'Ritmo muy bajo para el nivel: practicar con lectura coral (docente y estudiante a la vez) y textos cortos repetidos.'
+    :wpm<m[1]?'Va en camino: lectura en parejas y re-lectura del mismo texto 2-3 veces por semana.'
+    :'Fluidez adecuada. Subir gradualmente la complejidad del texto y trabajar entonación con diálogos.');
+  document.getElementById('reporte').classList.remove('hide');
+  const e=SYS&&SYS.estudiante(), c=SYS&&SYS.curso();
+  ultimo={nota};
+  LV_HERR.guardarResultado({ herramienta:'Reading Aloud (Inglés)', estudiante:nombre, estId:e?e.id:'',
+    curso:c?(c.grado||'')+(c.grupo?'-'+c.grupo:''):'', grado:BANDAS[bandaSel.value].t,
+    nota, nivel:wpm+' WPM ('+nivel+')',
+    detalle:{wpm, leidas, errores, calidad:document.getElementById('calidad').value, banda:BANDAS[bandaSel.value].t} });
+  pintarHistorial();
+});
+document.getElementById('btnPlanilla').addEventListener('click',()=>{
+  const c=SYS&&SYS.curso(), e=SYS&&SYS.estudiante();
+  if(!c||!e){ toast('Elige curso y estudiante del sistema.'); return; }
+  if(!ultimo) return;
+  const per=prompt('¿A qué periodo va la nota? (1, 2 o 3)','1'); if(!per) return;
+  if(!confirm('Enviar nota '+ultimo.nota.toFixed(1)+' de '+e.nombre+' a la planilla, periodo '+per+'?')) return;
+  toast(LV_HERR.enviarAPlanilla({cursoId:c.id, estId:e.id, periodo:per, nota:ultimo.nota, etiqueta:'Reading Aloud'}).msg);
+});
+function pintarHistorial(){
+  const rs=LV_HERR.resultados({herramienta:'Reading Aloud (Inglés)'}).slice(0,12);
+  document.getElementById('historial').innerHTML=rs.length?
+    `<table><thead><tr><th>Fecha</th><th>Estudiante</th><th>Resultado</th><th>Nota</th></tr></thead><tbody>
+    ${rs.map(r=>`<tr><td>${r.fecha}</td><td>${esc(r.estudiante)}</td><td>${esc(r.nivel||'')}</td><td><b>${(+r.nota).toFixed(1)}</b></td></tr>`).join('')}
+    </tbody></table>`:'<div class="empty">Sin lecturas todavía.</div>';
+}
+pintarHistorial(); setTimeout(pintarHistorial,2500);
+</script>
+</body>
+</html>

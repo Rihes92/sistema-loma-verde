@@ -1,7 +1,7 @@
 {
-  "name": "Sistema Loma Verde",
-  "short_name": "Loma Verde",
-  "description": "Portal Docente I.E. San José de Loma Verde",
+  "name": "SABIE — Sistema de Aprendizaje, Bienestar e Inclusión Educativa",
+  "short_name": "SABIE",
+  "description": "SABIE · I.E. San José de Loma Verde",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,9 +10,29 @@
   "orientation": "portrait-primary",
   "lang": "es",
   "icons": [
-    { "src": "Logo/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "Logo/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "Logo/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "Logo/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "Logo/sabie-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Logo/sabie-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "Logo/sabie-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "Logo/sabie-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }

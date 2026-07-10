@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Analítica — Sistema Loma Verde</title>
+<title>Analítica — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../sync.js"></script>
@@ -319,7 +319,7 @@ window.imprimirPerfil=function(clave){
     ${d.obs.length?d.obs.map(o=>`<div class="p-box">[${esc(o.tipo)}] ${esc(o.fecha||'')} — ${esc(o.descripcion||'')}</div>`).join(''):'<p>Sin anotaciones.</p>'}
     <h2>PIAR</h2><p>${d.piar?`PIAR activo (${esc((d.piar.anexo1||{}).categoria||'')}): ${(d.piar.barreras||[]).length} barrera(s), ${(d.piar.ajustes||[]).length} ajuste(s).`:'No registrado.'}</p>
     <h2>Acudiente</h2><p>${d.acud?`${esc(d.acud.nombreAcudiente)} (${esc(d.acud.parentesco||'—')}) · ${esc(d.acud.telefono||'')}`:'Sin registro.'}</p>
-    <p style="font-size:8.5pt;color:#555;margin-top:16px">Generado por el Sistema Loma Verde · ${new Date().toLocaleDateString('es-CO')}</p>`;
+    <p style="font-size:8.5pt;color:#555;margin-top:16px">Generado por el SABIE · ${new Date().toLocaleDateString('es-CO')}</p>`;
   window.print();
 };
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Observador del Estudiante — Sistema Loma Verde</title>
+<title>Observador del Estudiante — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../sync.js"></script>
@@ -503,7 +503,7 @@ function abrirAlertaWhatsApp(o){
     `Estudiante: ${o.estNombre} (${o.curso})\n`+
     `Situación: ${o.descripcion.slice(0,200)}\n`+
     `Registrado por: ${o.autor} — ${fmtF(o.fecha)}\n`+
-    `Revisa el observador en el Sistema Loma Verde.`;
+    `Revisa el observador en el SABIE.`;
   const wrap=document.createElement('div');
   wrap.id='wa-alerta-modal';
   wrap.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:20px';

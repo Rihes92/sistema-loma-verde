@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Inclusión (DUA · PIAR) — Sistema Loma Verde</title>
+<title>Inclusión (DUA · PIAR) — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../sync.js"></script>
@@ -358,7 +358,7 @@ function imprimirTexto(titulo, cuerpo){
   document.getElementById('print-area').innerHTML=`
     <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>${esc(titulo)}</div></div></div>
     <div class="p-box">${esc(cuerpo)}</div>
-    <p style="font-size:8.5pt;color:#555">Elaborado por ${esc(autor)} · ${new Date().toLocaleDateString('es-CO')} · Sistema Loma Verde</p>`;
+    <p style="font-size:8.5pt;color:#555">Elaborado por ${esc(autor)} · ${new Date().toLocaleDateString('es-CO')} · SABIE</p>`;
   window.print();
 }
 
