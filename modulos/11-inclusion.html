@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Inclusión (DUA · PIAR) — Sistema Loma Verde</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../sync.js"></script>
+<script src="inclusion-catalogo.js"></script>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  nav.tabs{display:flex;gap:6px;padding:10px 18px;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto}
+  nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button.active{background:var(--primary);color:#fff}
+  main{max-width:1100px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 14px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:160px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  button.btn.ok{background:var(--ok)}
+  button.btn.bad{background:var(--bad);color:#fff}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .hide{display:none!important}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.72rem;font-weight:700;background:#dbeafe;color:#1e3a8a}
+  .cat-title{font-size:.78rem;font-weight:800;color:var(--primary);text-transform:uppercase;letter-spacing:.03em;margin:12px 0 6px}
+  .chk{display:flex;align-items:flex-start;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;margin-bottom:5px;cursor:pointer;font-size:.86rem;background:#fff}
+  .chk:hover{background:#eff6ff}
+  .chk input{width:auto;min-height:auto;margin-top:3px}
+  .chk.on{background:#eff6ff;border-color:var(--primary-light);font-weight:600}
+  .gen{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:16px;font-size:.9rem;white-space:pre-wrap;line-height:1.65}
+  .item{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:#fff;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+  .seg{border-top:1px dotted var(--border);margin-top:8px;padding-top:8px;font-size:.84rem}
+  #print-area{display:none}
+  @media print{
+    body>*{display:none!important}
+    #print-area{display:block!important;font-size:11pt;color:#000}
+    #print-area .p-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid #1e3a8a;padding-bottom:10px;margin-bottom:12px}
+    #print-area .p-head img{width:60px;height:60px;object-fit:contain}
+    #print-area h1{font-size:14pt;color:#1e3a8a;margin:0}
+    #print-area h2{font-size:11.5pt;margin:12px 0 6px;color:#1e3a8a}
+    #print-area table{width:100%;border-collapse:collapse;font-size:9.5pt;margin-bottom:8px}
+    #print-area th,#print-area td{border:1px solid #666;padding:5px 7px;text-align:left;vertical-align:top}
+    #print-area th{background:#e8eef9}
+    #print-area .p-box{border:1px solid #666;border-radius:4px;padding:8px 10px;margin-bottom:8px;page-break-inside:avoid;white-space:pre-wrap}
+    #print-area .firmas{display:flex;gap:30px;margin-top:55px}
+    #print-area .firmas div{flex:1;border-top:1px solid #000;text-align:center;font-size:9pt;padding-top:4px}
+  }
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <h1>♿ Inclusión — DUA · PIAR</h1>
+  <span class="pill">Decreto 1421/2017</span>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="dua">🎨 Planear con DUA</button>
+  <button data-tab="piar">📋 PIAR</button>
+  <button data-tab="acts">💾 Actividades guardadas</button>
+</nav>
+
+<main>
+<!-- ═════════ PESTAÑA DUA ═════════ -->
+<section id="tab-dua">
+  <div class="card">
+    <h2>1 · Punto de partida</h2>
+    <p class="desc">Elige un planeador existente (sus datos precargan la actividad) y marca las barreras que predominan en el grupo. La app propone una actividad con opciones DUA; tú la ajustas.</p>
+    <div class="row">
+      <label class="fld" style="flex:2">Planeador base
+        <select id="d-planeador"><option value="">— Sin planeador (actividad libre) —</option></select>
+      </label>
+      <label class="fld">Grado<select id="d-grado"></select></label>
+      <label class="fld">Tema<input id="d-tema" placeholder="Tema de la actividad"></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2 · Barreras presentes en el grupo</h2>
+    <div id="d-barreras"></div>
+  </div>
+
+  <div class="card">
+    <h2>3 · Actividad generada</h2>
+    <button class="btn ok" id="btn-generar">✨ Generar actividad DUA</button>
+    <div id="d-resultado" class="hide" style="margin-top:14px">
+      <textarea id="d-texto" rows="22" style="font-family:inherit"></textarea>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ok" id="btn-guardar-act">💾 Guardar</button>
+        <button class="btn sec" id="btn-imprimir-act">🖨️ Imprimir</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ PESTAÑA PIAR ═════════ -->
+<section id="tab-piar" class="hide">
+  <div class="card">
+    <h2>Estudiante con PIAR</h2>
+    <p class="desc">El PIAR (Plan Individual de Ajustes Razonables) es obligatorio para estudiantes con discapacidad (Decreto 1421/2017). Lo construyen los docentes con la familia; se elabora al inicio del año y se actualiza cada periodo.</p>
+    <div class="row">
+      <label class="fld" style="flex:2">Buscar estudiante<input id="p-buscar" placeholder="Nombre del estudiante…"></label>
+    </div>
+    <div id="p-lista" style="margin-top:10px"></div>
+  </div>
+
+  <div id="p-detalle" class="hide">
+    <div class="card">
+      <h2 id="p-titulo"></h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn sec sm" id="btn-print-piar">🖨️ Imprimir PIAR (Anexos 1 y 2)</button>
+        <button class="btn sec sm" id="btn-print-acta">🖨️ Imprimir Acta de acuerdos (Anexo 3)</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Anexo 1 · Información general</h2>
+      <div class="row">
+        <label class="fld">Categoría / diagnóstico<select id="a1-categoria"></select></label>
+        <label class="fld">¿Tiene diagnóstico médico?<select id="a1-diag"><option>No / en proceso</option><option>Sí, con soporte médico</option></select></label>
+      </div>
+      <label class="fld" style="margin-top:10px">Fortalezas, gustos e intereses (qué hace bien, qué le gusta)
+        <textarea id="a1-fortalezas" rows="2"></textarea></label>
+      <label class="fld" style="margin-top:10px">Qué hace con apoyo / qué se le dificulta
+        <textarea id="a1-apoyos" rows="2"></textarea></label>
+      <label class="fld" style="margin-top:10px">Entorno familiar y de salud relevante (con quién vive, tratamientos, terapias)
+        <textarea id="a1-familia" rows="2"></textarea></label>
+      <label class="fld" style="margin-top:10px">Expectativas del estudiante y su familia
+        <textarea id="a1-expectativas" rows="2"></textarea></label>
+    </div>
+
+    <div class="card">
+      <h2>Anexo 2 · Barreras identificadas</h2>
+      <p class="desc">Marca las barreras del estudiante. De aquí salen los ajustes recomendados.</p>
+      <div id="p-barreras"></div>
+    </div>
+
+    <div class="card">
+      <h2>Anexo 2 · Ajustes razonables por área</h2>
+      <div class="row">
+        <label class="fld">Área / materia<input id="aj-area" placeholder="Ej: Ciencias Sociales"></label>
+        <label class="fld">Periodo<select id="aj-periodo"><option>Primer Periodo</option><option>Segundo Periodo</option><option>Tercer Periodo</option></select></label>
+      </div>
+      <label class="fld" style="margin-top:10px">Objetivo / propósito del área en el periodo
+        <textarea id="aj-objetivo" rows="2" placeholder="Qué se espera que logre este estudiante en el periodo…"></textarea></label>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ok" id="btn-sugerir-ajustes">✨ Sugerir ajustes según barreras</button>
+        <button class="btn sec" id="btn-actividad-piar">🎨 Generar actividad adaptada (desde planeador)</button>
+      </div>
+      <label class="fld" style="margin-top:10px">Ajustes y apoyos acordados (editable)
+        <textarea id="aj-texto" rows="8"></textarea></label>
+      <button class="btn ok sm" style="margin-top:8px" id="btn-guardar-ajuste">💾 Guardar ajustes del periodo</button>
+      <div id="aj-guardados" style="margin-top:14px"></div>
+    </div>
+
+    <div class="card">
+      <h2>Seguimiento</h2>
+      <div class="row">
+        <label class="fld" style="flex:3">Nueva entrada de seguimiento<input id="seg-texto" placeholder="Avances, dificultades, reunión con familia…"></label>
+        <label class="fld" style="flex:0;min-width:auto"><span>&nbsp;</span><button class="btn ok" id="btn-seg">➕</button></label>
+      </div>
+      <div id="seg-lista" style="margin-top:8px"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ PESTAÑA ACTIVIDADES ═════════ -->
+<section id="tab-acts" class="hide">
+  <div class="card">
+    <h2>Actividades DUA guardadas</h2>
+    <div id="acts-lista"></div>
+  </div>
+</section>
+</main>
+
+<div id="toast"></div>
+<div id="print-area"></div>
+
+<script>
+const LS='lv_';
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||[]; }catch(_){ return []; } }
+function lsSave(k,arr,cambiados){
+  try{ localStorage.setItem(LS+k, JSON.stringify(arr)); }
+  catch(_){ if(typeof LV_SYNC!=='undefined'&&LV_SYNC.revisarEspacio)LV_SYNC.revisarEspacio(); }
+  if(typeof LV_SYNC!=='undefined') (cambiados||[]).forEach(r=>{ if(r&&r.id) LV_SYNC.marcarCambio(LS+k, r); });
+}
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+const hoyISO=()=>new Date().toISOString().slice(0,10);
+const fmtF=f=>{ if(!f) return '—'; const d=new Date(String(f).slice(0,10)+'T12:00:00'); return d.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}); };
+let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const autor=login?(login.nombre||'Docente'):'Docente';
+const IE='Institución Educativa San José de Loma Verde';
+
+// ── tabs ──
+document.getElementById('tabs').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  ['dua','piar','acts'].forEach(t=>document.getElementById('tab-'+t).classList.toggle('hide', b.dataset.tab!==t));
+  if(b.dataset.tab==='acts') renderActs();
+  if(b.dataset.tab==='piar') renderListaPiar();
+});
+
+// ── pintar checklist de barreras (compartido DUA y PIAR) ──
+function pintarBarreras(contId, seleccion){
+  const cont=document.getElementById(contId);
+  const cats=[...new Set(BARRERAS.map(b=>b.cat))];
+  cont.innerHTML=cats.map(cat=>
+    `<div class="cat-title">${esc(cat)}</div>`+
+    BARRERAS.filter(b=>b.cat===cat).map(b=>
+      `<label class="chk ${seleccion&&seleccion.includes(b.id)?'on':''}"><input type="checkbox" value="${b.id}" ${seleccion&&seleccion.includes(b.id)?'checked':''}> ${esc(b.t)}</label>`
+    ).join('')
+  ).join('');
+  cont.querySelectorAll('input').forEach(ch=>{
+    ch.addEventListener('change',()=>ch.closest('.chk').classList.toggle('on',ch.checked));
+  });
+}
+function barrerasMarcadas(contId){
+  return [...document.querySelectorAll('#'+contId+' input:checked')].map(i=>i.value);
+}
+
+// ── motor: barreras → estrategias por principio DUA ──
+function estrategias(barrerasIds){
+  const puntos=new Set();
+  barrerasIds.forEach(id=>{ const b=BARRERAS.find(x=>x.id===id); if(b) b.dua.forEach(p=>puntos.add(p)); });
+  const porPrincipio={'Implicación':[], 'Representación':[], 'Acción y expresión':[]};
+  [...puntos].sort().forEach(p=>{ const d=DUA[p]; if(d) porPrincipio[d.pr].push({cod:p,...d}); });
+  return porPrincipio;
+}
+function ajustesDe(barrerasIds){
+  const out=[];
+  barrerasIds.forEach(id=>{ const b=BARRERAS.find(x=>x.id===id); if(b) b.ajustes.forEach(a=>{ if(!out.includes(a)) out.push(a); }); });
+  return out;
+}
+
+// ═══════════ PESTAÑA DUA ═══════════
+const GRADOS=['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto','Séptimo','Octavo','Noveno','Décimo','Undécimo'];
+document.getElementById('d-grado').innerHTML=GRADOS.map(g=>`<option>${g}</option>`).join('');
+pintarBarreras('d-barreras');
+
+function cargarPlaneadores(){
+  const sel=document.getElementById('d-planeador');
+  const pls=lsRead('planeadores').filter(p=>!p._eliminado)
+    .sort((a,b)=>(b.actualizado||b.creado||0)-(a.actualizado||a.creado||0));
+  sel.innerHTML='<option value="">— Sin planeador (actividad libre) —</option>'+
+    pls.map(p=>`<option value="${esc(p.id)}">${esc(p.tema||p.unidad||'(sin título)')} · ${esc(p.grado||'')} · ${esc(p.materia||'')}</option>`).join('');
+  sel.onchange=()=>{
+    const p=pls.find(x=>x.id===sel.value); if(!p) return;
+    if(p.grado) document.getElementById('d-grado').value=p.grado;
+    document.getElementById('d-tema').value=p.tema||p.unidad||'';
+  };
+}
+cargarPlaneadores();
+setTimeout(cargarPlaneadores,2500);
+
+function generarActividad(barrerasIds, base){
+  const nivel=nivelDe(base.grado);
+  const est=estrategias(barrerasIds);
+  const aj=ajustesDe(barrerasIds);
+  const L=[];
+  L.push(`ACTIVIDAD CON DISEÑO UNIVERSAL PARA EL APRENDIZAJE (DUA)`);
+  L.push(`${IE}`);
+  L.push(``);
+  L.push(`Tema: ${base.tema||'(por definir)'}`);
+  L.push(`Grado: ${base.grado} (${nivel.t}) · Área: ${base.area||base.materia||''} · Periodo: ${base.periodo||''}`);
+  if(base.competencias) L.push(`Competencia (del planeador): ${String(base.competencias).slice(0,300)}`);
+  L.push(`Enfoque del nivel: ${nivel.tono}.`);
+  L.push(``);
+  L.push(`── 1. INICIO · Implicación (el porqué) ──`);
+  L.push(`Meta de hoy visible y en palabras sencillas: "Al final de la clase podré explicar/hacer… sobre ${base.tema||'el tema'}".`);
+  (est['Implicación'].length?est['Implicación']:[{t:'Conectar con la vida del estudiante',e:'iniciar con una pregunta sobre su experiencia con el tema'}]).forEach(x=>{
+    L.push(`• ${x.t}: ${x.e}.`);
+  });
+  L.push(``);
+  L.push(`── 2. DESARROLLO · Representación (el qué) ──`);
+  L.push(`Presentar "${base.tema||'el contenido'}" por al menos DOS vías (explicación oral + apoyo visual/concreto).`);
+  (est['Representación'].length?est['Representación']:[{t:'Múltiples medios',e:'imagen + texto corto + ejemplo del contexto'}]).forEach(x=>{
+    L.push(`• ${x.t}: ${x.e}.`);
+  });
+  if(base.contenidos) L.push(`Contenidos del planeador a cubrir: ${String(base.contenidos).replace(/<[^>]+>/g,' ').slice(0,400)}`);
+  L.push(``);
+  L.push(`── 3. PRÁCTICA · Acción y expresión (el cómo) ──`);
+  L.push(`El estudiante ELIGE cómo demostrar lo aprendido (todas las opciones evalúan la misma meta):`);
+  L.push(`   Opción A (oral/visual) · Opción B (escrita con plantilla) · Opción C (concreta: maqueta, dramatización, dibujo explicado).`);
+  (est['Acción y expresión']).forEach(x=>{ L.push(`• ${x.t}: ${x.e}.`); });
+  L.push(``);
+  L.push(`── 4. CIERRE · Autorregulación ──`);
+  L.push(`Autoevaluación breve: ¿qué aprendí? · ¿qué me costó? · ¿qué necesito la próxima clase?`);
+  L.push(`Retroalimentación del docente centrada en el proceso y el avance.`);
+  if(aj.length){
+    L.push(``);
+    L.push(`── AJUSTES ESPECÍFICOS SEGÚN LAS BARRERAS MARCADAS ──`);
+    aj.forEach(a=>L.push(`• ${a}`));
+  }
+  if(base.evidencias){ L.push(``); L.push(`Evidencias de aprendizaje (del planeador): ${String(base.evidencias).replace(/<[^>]+>/g,' ').slice(0,300)}`); }
+  L.push(``);
+  L.push(`Pautas DUA aplicadas: ${[...new Set(barrerasIds.flatMap(id=>{const b=BARRERAS.find(x=>x.id===id);return b?b.dua:[];}))].sort().join(', ')||'generales'} (CAST).`);
+  return L.join('\n');
+}
+
+document.getElementById('btn-generar').addEventListener('click',()=>{
+  const ids=barrerasMarcadas('d-barreras');
+  const pl=lsRead('planeadores').find(p=>p.id===document.getElementById('d-planeador').value);
+  const base={
+    tema:document.getElementById('d-tema').value.trim()||(pl&&(pl.tema||pl.unidad))||'',
+    grado:document.getElementById('d-grado').value,
+    periodo:pl?pl.periodo:'', area:pl?pl.area:'', materia:pl?pl.materia:'',
+    competencias:pl?pl.competencias:'', contenidos:pl?pl.contenidos:'', evidencias:pl?pl.evidencias:''
+  };
+  if(!base.tema){ toast('Escribe el tema o elige un planeador.'); return; }
+  document.getElementById('d-texto').value=generarActividad(ids,base);
+  document.getElementById('d-resultado').classList.remove('hide');
+  document.getElementById('d-resultado').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('btn-guardar-act').addEventListener('click',()=>{
+  const texto=document.getElementById('d-texto').value.trim();
+  if(!texto){ toast('No hay actividad para guardar.'); return; }
+  const pl=lsRead('planeadores').find(p=>p.id===document.getElementById('d-planeador').value);
+  const acts=lsRead('inclusion_actividades');
+  const nueva={ id:uid(), tema:document.getElementById('d-tema').value.trim(), grado:document.getElementById('d-grado').value,
+    materia:pl?pl.materia:'', planeadorId:pl?pl.id:'', barreras:barrerasMarcadas('d-barreras'),
+    texto, autor, fecha:hoyISO(), creado:Date.now() };
+  acts.push(nueva); lsSave('inclusion_actividades',acts,[nueva]);
+  toast('Actividad guardada');
+});
+
+document.getElementById('btn-imprimir-act').addEventListener('click',()=>{
+  imprimirTexto('Actividad DUA — '+document.getElementById('d-tema').value, document.getElementById('d-texto').value);
+});
+
+function imprimirTexto(titulo, cuerpo){
+  document.getElementById('print-area').innerHTML=`
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>${esc(titulo)}</div></div></div>
+    <div class="p-box">${esc(cuerpo)}</div>
+    <p style="font-size:8.5pt;color:#555">Elaborado por ${esc(autor)} · ${new Date().toLocaleDateString('es-CO')} · Sistema Loma Verde</p>`;
+  window.print();
+}
+
+// ═══════════ PESTAÑA ACTIVIDADES ═══════════
+function renderActs(){
+  const cont=document.getElementById('acts-lista');
+  const acts=lsRead('inclusion_actividades').filter(a=>!a._eliminado).sort((a,b)=>(b.creado||0)-(a.creado||0));
+  if(!acts.length){ cont.innerHTML='<div class="empty">🎨 Aún no hay actividades guardadas.<br>Genéralas en la pestaña <b>Planear con DUA</b>.</div>'; return; }
+  cont.innerHTML=acts.map(a=>`<div class="item">
+    <div style="flex:1;min-width:200px"><strong>${esc(a.tema||'(sin tema)')}</strong><br>
+      <span class="badge">${esc(a.grado||'')}</span> <span style="font-size:.78rem;color:var(--muted)">${esc(a.materia||'')} · ${fmtF(a.fecha)} · ${esc(a.autor||'')}</span></div>
+    <button class="btn sm" onclick="verAct('${a.id}')">Ver / Editar</button>
+    <button class="btn sm sec" onclick="printAct('${a.id}')">🖨️</button>
+    <button class="btn sm bad" onclick="delAct('${a.id}')">🗑️</button></div>`).join('');
+}
+window.verAct=id=>{
+  const a=lsRead('inclusion_actividades').find(x=>x.id===id); if(!a) return;
+  document.querySelector('[data-tab="dua"]').click();
+  document.getElementById('d-tema').value=a.tema||'';
+  if(a.grado) document.getElementById('d-grado').value=a.grado;
+  pintarBarreras('d-barreras', a.barreras||[]);
+  document.getElementById('d-texto').value=a.texto||'';
+  document.getElementById('d-resultado').classList.remove('hide');
+  scrollTo(0,0);
+};
+window.printAct=id=>{ const a=lsRead('inclusion_actividades').find(x=>x.id===id); if(a) imprimirTexto('Actividad DUA — '+(a.tema||''), a.texto||''); };
+window.delAct=id=>{
+  if(!confirm('¿Enviar esta actividad a la papelera?')) return;
+  let acts=lsRead('inclusion_actividades');
+  const a=acts.find(x=>x.id===id); if(!a) return;
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_inclusion_actividades',{...a,_eliminado:true});
+  acts=acts.filter(x=>x.id!==id); lsSave('inclusion_actividades',acts,[]);
+  renderActs(); toast('Enviada a la papelera');
+};
+
+// ═══════════ PESTAÑA PIAR ═══════════
+document.getElementById('a1-categoria').innerHTML=CATEGORIAS_PIAR.map(c=>`<option>${c}</option>`).join('');
+let piarSel=null;
+
+function todosEstudiantes(){
+  const cursos=lsRead('cursos'); const cmap={}; cursos.forEach(c=>cmap[c.id]=c);
+  const vistos={}, out=[];
+  lsRead('estudiantes').forEach(e=>{
+    const k=String(e.nombre||'').toLowerCase();
+    if(vistos[k]) return; vistos[k]=1;
+    const c=cmap[e.cursoId];
+    out.push({id:e.id,nombre:e.nombre,curso:c?((c.grado||'')+(c.grupo?'-'+c.grupo:'')):''});
+  });
+  return out.sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+}
+function renderListaPiar(){
+  const q=String(document.getElementById('p-buscar').value||'').toLowerCase();
+  const piars=lsRead('piar').filter(p=>!p._eliminado);
+  const cont=document.getElementById('p-lista');
+  let ests=todosEstudiantes();
+  const conPiar=new Set(piars.map(p=>String(p.estNombre||'').toLowerCase()));
+  if(q.length>=2) ests=ests.filter(e=>String(e.nombre).toLowerCase().includes(q));
+  else ests=ests.filter(e=>conPiar.has(String(e.nombre).toLowerCase())); // sin búsqueda: solo los que ya tienen PIAR
+  if(!ests.length){ cont.innerHTML='<div class="empty">'+(q.length>=2?'Sin resultados.':'📋 Aún no hay estudiantes con PIAR.<br>Busca arriba el nombre del estudiante para crear el primero.')+'</div>'; return; }
+  cont.innerHTML=ests.map(e=>{
+    const tiene=conPiar.has(String(e.nombre).toLowerCase());
+    return `<div class="item"><div style="flex:1"><strong>${esc(e.nombre)}</strong> <span style="font-size:.78rem;color:var(--muted)">${esc(e.curso)}</span></div>
+      ${tiene?'<span class="badge" style="background:#dcfce7;color:#166534">PIAR activo</span>':''}
+      <button class="btn sm" onclick="abrirPiar('${esc(e.id)}')">${tiene?'Abrir':'➕ Crear PIAR'}</button></div>`;
+  }).join('');
+}
+document.getElementById('p-buscar').addEventListener('input',renderListaPiar);
+
+window.abrirPiar=function(estId){
+  const e=todosEstudiantes().find(x=>x.id===estId); if(!e) return;
+  let piars=lsRead('piar');
+  piarSel=piars.find(p=>!p._eliminado && String(p.estNombre||'').toLowerCase()===String(e.nombre).toLowerCase());
+  if(!piarSel){
+    piarSel={id:uid(), estId:e.id, estNombre:e.nombre, curso:e.curso, anio:new Date().getFullYear(),
+      anexo1:{}, barreras:[], ajustes:[], seguimientos:[], creado:Date.now(), autor};
+    piars.push(piarSel); lsSave('piar',piars,[piarSel]);
+  }
+  document.getElementById('p-detalle').classList.remove('hide');
+  document.getElementById('p-titulo').textContent='📋 PIAR — '+e.nombre+' ('+(piarSel.curso||e.curso||'')+') · '+piarSel.anio;
+  const a1=piarSel.anexo1||{};
+  document.getElementById('a1-categoria').value=a1.categoria||CATEGORIAS_PIAR[0];
+  document.getElementById('a1-diag').value=a1.diag||'No / en proceso';
+  document.getElementById('a1-fortalezas').value=a1.fortalezas||'';
+  document.getElementById('a1-apoyos').value=a1.apoyos||'';
+  document.getElementById('a1-familia').value=a1.familia||'';
+  document.getElementById('a1-expectativas').value=a1.expectativas||'';
+  pintarBarreras('p-barreras', piarSel.barreras||[]);
+  document.getElementById('aj-texto').value='';
+  renderAjustes(); renderSeguimientos();
+  document.getElementById('p-detalle').scrollIntoView({behavior:'smooth'});
+};
+
+function guardarPiar(){
+  if(!piarSel) return;
+  piarSel.anexo1={
+    categoria:document.getElementById('a1-categoria').value,
+    diag:document.getElementById('a1-diag').value,
+    fortalezas:document.getElementById('a1-fortalezas').value.trim(),
+    apoyos:document.getElementById('a1-apoyos').value.trim(),
+    familia:document.getElementById('a1-familia').value.trim(),
+    expectativas:document.getElementById('a1-expectativas').value.trim(),
+  };
+  piarSel.barreras=barrerasMarcadas('p-barreras');
+  const piars=lsRead('piar').map(p=>p.id===piarSel.id?piarSel:p);
+  lsSave('piar',piars,[piarSel]);
+}
+// autoguardar al salir de cualquier campo del anexo 1 o cambiar barreras
+['a1-categoria','a1-diag','a1-fortalezas','a1-apoyos','a1-familia','a1-expectativas'].forEach(id=>{
+  document.getElementById(id).addEventListener('change',()=>{ guardarPiar(); toast('PIAR guardado'); });
+});
+document.getElementById('p-barreras').addEventListener('change',()=>{ guardarPiar(); });
+
+document.getElementById('btn-sugerir-ajustes').addEventListener('click',()=>{
+  if(!piarSel) return;
+  guardarPiar();
+  const ids=piarSel.barreras||[];
+  if(!ids.length){ toast('Marca primero las barreras del estudiante.'); return; }
+  const aj=ajustesDe(ids);
+  const est=estrategias(ids);
+  const L=['AJUSTES RAZONABLES SUGERIDOS (edítalos según el estudiante):',''];
+  aj.forEach(a=>L.push('• '+a));
+  L.push('');
+  L.push('Apoyos DUA recomendados:');
+  Object.entries(est).forEach(([pr,items])=>{ items.forEach(x=>L.push(`• [${pr}] ${x.t}: ${x.e}.`)); });
+  document.getElementById('aj-texto').value=L.join('\n');
+});
+
+document.getElementById('btn-actividad-piar').addEventListener('click',()=>{
+  if(!piarSel) return;
+  guardarPiar();
+  // saltar a la pestaña DUA con las barreras del estudiante precargadas
+  document.querySelector('[data-tab="dua"]').click();
+  pintarBarreras('d-barreras', piarSel.barreras||[]);
+  toast('Barreras de '+piarSel.estNombre+' precargadas — elige el planeador y genera.');
+  scrollTo(0,0);
+});
+
+document.getElementById('btn-guardar-ajuste').addEventListener('click',()=>{
+  if(!piarSel) return;
+  const texto=document.getElementById('aj-texto').value.trim();
+  if(!texto){ toast('No hay ajustes para guardar.'); return; }
+  piarSel.ajustes=piarSel.ajustes||[];
+  piarSel.ajustes.push({ id:uid(), area:document.getElementById('aj-area').value.trim()||'General',
+    periodo:document.getElementById('aj-periodo').value,
+    objetivo:document.getElementById('aj-objetivo').value.trim(), texto, fecha:hoyISO(), autor });
+  guardarPiar(); renderAjustes();
+  document.getElementById('aj-texto').value=''; document.getElementById('aj-objetivo').value='';
+  toast('Ajustes del periodo guardados');
+});
+
+function renderAjustes(){
+  const cont=document.getElementById('aj-guardados');
+  const list=(piarSel&&piarSel.ajustes)||[];
+  cont.innerHTML=list.length?list.slice().reverse().map(a=>`<div class="item" style="align-items:flex-start">
+    <div style="flex:1"><strong>${esc(a.area)}</strong> · <span class="badge">${esc(a.periodo)}</span>
+      <span style="font-size:.75rem;color:var(--muted)"> ${fmtF(a.fecha)} · ${esc(a.autor||'')}</span>
+      ${a.objetivo?`<div style="font-size:.83rem;margin-top:4px"><b>Objetivo:</b> ${esc(a.objetivo)}</div>`:''}
+      <div style="font-size:.83rem;white-space:pre-wrap;margin-top:4px">${esc(a.texto)}</div></div>
+    <button class="btn sm bad" onclick="delAjuste('${a.id}')">🗑️</button></div>`).join(''):'<p class="desc">Sin ajustes guardados todavía.</p>';
+}
+window.delAjuste=id=>{
+  if(!piarSel||!confirm('¿Eliminar estos ajustes?')) return;
+  piarSel.ajustes=(piarSel.ajustes||[]).filter(a=>a.id!==id);
+  guardarPiar(); renderAjustes();
+};
+
+document.getElementById('btn-seg').addEventListener('click',()=>{
+  if(!piarSel) return;
+  const t=document.getElementById('seg-texto').value.trim();
+  if(!t){ toast('Escribe el seguimiento.'); return; }
+  piarSel.seguimientos=piarSel.seguimientos||[];
+  piarSel.seguimientos.push({fecha:hoyISO(),texto:t,autor});
+  guardarPiar(); renderSeguimientos();
+  document.getElementById('seg-texto').value='';
+});
+function renderSeguimientos(){
+  const cont=document.getElementById('seg-lista');
+  const list=(piarSel&&piarSel.seguimientos)||[];
+  cont.innerHTML=list.length?list.slice().reverse().map(s=>
+    `<div class="seg"><span style="font-size:.72rem;color:var(--muted)">${fmtF(s.fecha)} · ${esc(s.autor||'')}</span><br>${esc(s.texto)}</div>`).join(''):'<p class="desc">Sin seguimientos.</p>';
+}
+
+// ── impresión PIAR ──
+document.getElementById('btn-print-piar').addEventListener('click',()=>{
+  if(!piarSel) return; guardarPiar();
+  const a1=piarSel.anexo1||{};
+  const barr=(piarSel.barreras||[]).map(id=>{const b=BARRERAS.find(x=>x.id===id);return b?b:null;}).filter(Boolean);
+  document.getElementById('print-area').innerHTML=`
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1>
+      <div>PLAN INDIVIDUAL DE AJUSTES RAZONABLES — PIAR (Decreto 1421 de 2017) · Año ${piarSel.anio}</div></div></div>
+    <h2>Anexo 1 · Información general del estudiante</h2>
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(piarSel.estNombre)}</td><th style="width:14%">Grupo</th><td>${esc(piarSel.curso||'')}</td></tr>
+      <tr><th>Categoría / diagnóstico</th><td>${esc(a1.categoria||'')}</td><th>Soporte médico</th><td>${esc(a1.diag||'')}</td></tr>
+      <tr><th>Fortalezas e intereses</th><td colspan="3">${esc(a1.fortalezas||'')}</td></tr>
+      <tr><th>Requiere apoyo en</th><td colspan="3">${esc(a1.apoyos||'')}</td></tr>
+      <tr><th>Entorno familiar y salud</th><td colspan="3">${esc(a1.familia||'')}</td></tr>
+      <tr><th>Expectativas</th><td colspan="3">${esc(a1.expectativas||'')}</td></tr>
+    </table>
+    <h2>Anexo 2 · Barreras identificadas para el aprendizaje y la participación</h2>
+    <table><tr><th style="width:30%">Categoría</th><th>Barrera</th></tr>
+      ${barr.length?barr.map(b=>`<tr><td>${esc(b.cat)}</td><td>${esc(b.t)}</td></tr>`).join(''):'<tr><td colspan="2">Sin barreras registradas.</td></tr>'}
+    </table>
+    <h2>Anexo 2 · Ajustes razonables y apoyos por área</h2>
+    ${(piarSel.ajustes||[]).length?(piarSel.ajustes||[]).map(a=>`
+      <div class="p-box"><b>${esc(a.area)} — ${esc(a.periodo)}</b> (${fmtF(a.fecha)} · ${esc(a.autor||'')})
+${a.objetivo?'Objetivo: '+esc(a.objetivo):''}
+${esc(a.texto)}</div>`).join(''):'<p>Sin ajustes registrados.</p>'}
+    <h2>Seguimiento</h2>
+    ${(piarSel.seguimientos||[]).length?(piarSel.seguimientos||[]).map(s=>`<div class="p-box">${fmtF(s.fecha)} · ${esc(s.autor||'')}
+${esc(s.texto)}</div>`).join(''):'<p>Sin seguimientos.</p>'}
+    <div class="firmas"><div>Docente</div><div>Docente de apoyo / Orientación</div><div>Acudiente</div></div>`;
+  window.print();
+});
+
+document.getElementById('btn-print-acta').addEventListener('click',()=>{
+  if(!piarSel) return; guardarPiar();
+  document.getElementById('print-area').innerHTML=`
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1>
+      <div>PIAR — ANEXO 3 · ACTA DE ACUERDOS (Decreto 1421 de 2017) · Año ${piarSel.anio}</div></div></div>
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(piarSel.estNombre)}</td><th style="width:14%">Grupo</th><td>${esc(piarSel.curso||'')}</td></tr>
+      <tr><th>Fecha</th><td colspan="3">${new Date().toLocaleDateString('es-CO')}</td></tr>
+    </table>
+    <h2>Compromisos de la institución educativa</h2><div class="p-box" style="min-height:70px"></div>
+    <h2>Compromisos de la familia</h2><div class="p-box" style="min-height:70px"></div>
+    <h2>Compromisos del estudiante</h2><div class="p-box" style="min-height:70px"></div>
+    <p style="font-size:9pt">Los ajustes acordados se revisarán al cierre de cada periodo académico y al finalizar el año escolar, según el artículo 2.3.3.5.2.3.5 del Decreto 1421 de 2017.</p>
+    <div class="firmas"><div>Rector(a) / Coordinación</div><div>Docente director(a) de grupo</div><div>Acudiente</div><div>Estudiante</div></div>`;
+  window.print();
+});
+</script>
+</body>
+</html>
