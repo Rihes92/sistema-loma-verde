@@ -219,7 +219,22 @@ function construirBoletines(grupoKey, periodo){
     // consolidar materias duplicadas (mismo nombre en varios cursos)
     const vist={},filasU=[];
     filas.forEach(f=>{ if(!vist[f.materia]){vist[f.materia]=1;filasU.push(f);} });
-    return {nombre:est.nombre, filas:filasU, prom:cont?suma/cont:0,
+    // observación automática generada desde los datos (editable a futuro)
+    const prom=cont?suma/cont:0;
+    const bajas=filasU.filter(f=>f.def>0&&f.def<CFG.scale.passing).map(f=>f.materia);
+    const inasTot=filasU.reduce((a,f)=>a+(f.inas||0),0);
+    const obsEst=lsRead('observador').filter(o=>!o._eliminado&&normN(o.estNombre)===normN(est.nombre));
+    const recon=obsEst.filter(o=>o.tipo==='Reconocimiento').length;
+    const frases=[];
+    if(prom>=CFG.scale.superior) frases.push('Desempeño superior: felicitaciones por su excelente proceso académico.');
+    else if(prom>=CFG.scale.alto) frases.push('Buen desempeño general durante el periodo.');
+    else if(prom>=CFG.scale.passing) frases.push('Desempeño básico: alcanza los logros, con oportunidad de avanzar más.');
+    else if(prom>0) frases.push('Desempeño bajo en el periodo: requiere plan de acompañamiento y compromiso familiar.');
+    if(bajas.length) frases.push('Debe reforzar: '+bajas.join(', ')+'.');
+    if(inasTot>=6) frases.push('Presenta '+inasTot+' inasistencias acumuladas: la asistencia constante es clave para su proceso.');
+    if(recon) frases.push('⭐ Recibió '+recon+' reconocimiento(s) en el periodo.');
+    return {nombre:est.nombre, filas:filasU, prom,
+      observacion:frases.join(' '),
       grupo:grupo?grupo.grado+' - '+(grupo.grupo||'único'):grupoKey, dirigente, cfg:c};
   });
 }
@@ -237,6 +252,7 @@ function htmlBoletin(b, periodo){
       <tr><th>Asignatura</th><th class="c" style="width:14%">Valoración</th><th class="c" style="width:16%">Desempeño</th><th class="c" style="width:14%">Inasistencias</th></tr>
       ${b.filas.map(f=>`<tr><td>${esc(f.materia)}</td><td class="c">${f.def?f.def.toFixed(1):'—'}</td><td class="c">${esc(f.des)}</td><td class="c">${f.inas||0}</td></tr>`).join('')}
     </table>
+    ${b.observacion?`<table><tr><th style="width:20%">Observaciones</th><td>${esc(b.observacion)}</td></tr></table>`:''}
     ${b.cfg.mensaje?`<p style="font-size:9pt;margin-top:6px;font-style:italic">${esc(b.cfg.mensaje)}</p>`:''}
     <div class="firmas">
       <div>${esc(b.cfg.rector||'Rector(a)')}<br>Rectoría</div>

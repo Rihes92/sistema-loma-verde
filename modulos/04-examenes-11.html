@@ -771,7 +771,12 @@ function enviarACalificaciones(){
 }
 function saveResult(){
   const r=computeNota();
-  const res={id:uid(),examId:PR.exam.id,examTitulo:PR.exam.titulo,grado:PR.exam.grado,periodo:PR.exam.periodo||'',asignatura:PR.exam.asignatura||'Ciencias Sociales',estudiante:PR.estudiante||'(sin nombre)',grupo:PR.grupo||'',nota:+r.nota.toFixed(1),correct:r.correct,totalClosed:r.totalClosed,totalOpen:r.totalOpen,graded:r.graded,fecha:Date.now()};
+  const res={id:uid(),examId:PR.exam.id,examTitulo:PR.exam.titulo,grado:PR.exam.grado,periodo:PR.exam.periodo||'',asignatura:PR.exam.asignatura||'Ciencias Sociales',estudiante:PR.estudiante||'(sin nombre)',grupo:PR.grupo||'',nota:+r.nota.toFixed(1),correct:r.correct,totalClosed:r.totalClosed,totalOpen:r.totalOpen,graded:r.graded,fecha:Date.now(),
+    detalle:PR.exam.items.filter(i=>i.tipo!=='abierta').map(it=>{
+      const a=PR.answers[it.id];
+      const ok=it.tipo==='multiple'?(a!==null&&+a===it.correcta):(a!==null&&((a==='V')===it.correcta));
+      return {evidencia:it.evidencia||'', ok:!!ok};
+    })};
   const all=lsRead('resultados');all.push(res);lsWrite('resultados',all);
   toast('Resultado guardado'+(r.graded<r.totalOpen?' (faltan abiertas por calificar)':''));
 }
