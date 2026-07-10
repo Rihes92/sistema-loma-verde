@@ -57,6 +57,7 @@ const LV_SYNC = (() => {
     'lv_observador':     { tabla: 'lv_observador',     id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_piar':           { tabla: 'lv_piar',           id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_inclusion_actividades': { tabla: 'lv_inclusion_actividades', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_boletines':      { tabla: 'lv_boletines',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Utilidades ───────────────────────────────────────────────

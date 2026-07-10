@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Boletines — Sistema Loma Verde</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../sync.js"></script>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  main{max-width:1050px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  button.btn.ok{background:var(--ok)}
+  button.btn:hover{filter:brightness(1.07)}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .hide{display:none!important}
+  .bloqueo{background:#fef2f2;border:2px solid #fca5a5;border-radius:12px;padding:16px}
+  .bloqueo h3{color:#991b1b;margin-bottom:8px}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700;background:#fee2e2;color:#991b1b;margin:2px}
+  .prev{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+  #print-area{display:none}
+  @media print{
+    body>*{display:none!important}
+    #print-area{display:block!important;font-size:10.5pt;color:#000}
+    .boletin{page-break-after:always}
+    .boletin:last-child{page-break-after:auto}
+    .boletin .p-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid #1e3a8a;padding-bottom:8px;margin-bottom:10px}
+    .boletin .p-head img{width:58px;height:58px;object-fit:contain}
+    .boletin h1{font-size:13pt;color:#1e3a8a;margin:0}
+    .boletin table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:8px 0}
+    .boletin th,.boletin td{border:1px solid #666;padding:5px 7px;text-align:left}
+    .boletin th{background:#e8eef9}
+    .boletin td.c,.boletin th.c{text-align:center}
+    .boletin .firmas{display:flex;gap:40px;margin-top:50px}
+    .boletin .firmas div{flex:1;border-top:1px solid #000;text-align:center;font-size:9pt;padding-top:4px}
+  }
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <h1>📄 Boletines</h1>
+  <span class="pill">I.E. San José de Loma Verde</span>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<main>
+  <div class="card" id="sin-acceso" style="display:none">
+    <h2>Acceso restringido</h2>
+    <p class="desc">Los boletines son para <b>coordinación</b> (configuración y generación) y <b>directores de grupo</b> (revisión e impresión de su grupo). Si diriges un grupo, pide a Coordinación que lo registre en tu ficha (campo "Dirige").</p>
+  </div>
+
+  <!-- Config: solo coordinación -->
+  <div class="card hide" id="card-cfg">
+    <h2>⚙️ Configuración institucional <span style="font-weight:400;font-size:.78rem;color:var(--muted)">(solo coordinación)</span></h2>
+    <div class="row">
+      <label class="fld">Periodo del boletín
+        <select id="c-periodo"><option value="1">Primer periodo</option><option value="2">Segundo periodo</option><option value="3">Tercer periodo</option></select></label>
+      <label class="fld">Regla del observador: mínimo de anotaciones por estudiante
+        <select id="c-regla"><option value="0">Sin regla (no exigir)</option><option value="1" selected>Al menos 1 anotación en el año</option><option value="2">Al menos 2 anotaciones en el año</option></select></label>
+      <label class="fld">Nombre del rector(a)
+        <input id="c-rector" placeholder="Nombre para la firma"></label>
+    </div>
+    <label class="fld" style="margin-top:10px">Mensaje institucional (aparece al pie de cada boletín)
+      <textarea id="c-mensaje" rows="2" placeholder="Ej: La educación es tarea de todos. Gracias por acompañar el proceso de su acudido."></textarea></label>
+    <button class="btn ok" style="margin-top:10px" id="btn-cfg">💾 Guardar configuración</button>
+  </div>
+
+  <div class="card" id="card-gen" style="display:none">
+    <h2>Generar boletines</h2>
+    <div class="row">
+      <label class="fld">Grupo<select id="sel-grupo"></select></label>
+      <label class="fld" id="wrap-periodo-vista">Periodo<select id="v-periodo"><option value="1">Primer periodo</option><option value="2">Segundo periodo</option><option value="3">Tercer periodo</option></select></label>
+    </div>
+    <div id="gate" style="margin-top:14px"></div>
+    <div id="lista" style="margin-top:6px"></div>
+  </div>
+</main>
+
+<div id="toast"></div>
+<div id="print-area"></div>
+
+<script>
+const LS='lv_';
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||[]; }catch(_){ return []; } }
+function lsObj(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||{}; }catch(_){ return {}; } }
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
+const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const esAdmin=!!(login&&login.esAdmin);
+const IE='Institución Educativa San José de Loma Verde';
+const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};
+
+// ── escala y pesos reales del módulo de Calificaciones ──
+let CFG={scale:{min:1,max:5,passing:3.0,alto:4.0,superior:4.6},weights:{cognitivo:60,acumulativo:25,auto:5,co:5,hetero:5}};
+(function(){ const c=lsRead('config').find?lsRead('config').find(x=>x&&x.id==='grading'):null; if(c) CFG=Object.assign(CFG,c); })();
+function defin(cal){
+  if(!cal) return 0;
+  const v=(cal.cognitivas||[]).filter(n=>typeof n==='number'&&n>0);
+  const cog=v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
+  const w=CFG.weights;
+  const acu=cal.acumulativo||0,au=cal.auto||0,co=cal.co||0,he=cal.hetero||0;
+  if(!cog&&!acu&&!au&&!co&&!he) return 0;
+  return Math.min(CFG.scale.max,Math.max(CFG.scale.min,(cog*w.cognitivo+acu*w.acumulativo+au*w.auto+co*w.co+he*w.hetero)/100));
+}
+function desemp(d){
+  const s=CFG.scale;
+  if(d<=0) return '—';
+  if(d>=s.superior) return 'Superior';
+  if(d>=s.alto) return 'Alto';
+  if(d>=s.passing) return 'Básico';
+  return 'Bajo';
+}
+
+// ── configuración institucional (sincronizada) ──
+function cfgBol(){
+  const r=lsRead('boletines').find(x=>x&&x.id==='cfg');
+  return r||{id:'cfg',periodo:'1',regla:1,rector:'',mensaje:''};
+}
+function guardarCfg(c){
+  let arr=lsRead('boletines').filter(x=>x&&x.id!=='cfg');
+  arr.push(c);
+  try{ localStorage.setItem(LS+'boletines', JSON.stringify(arr)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_boletines', c);
+}
+
+// ── permisos y grupos ──
+function gruposDirigidos(){
+  const cursos=lsRead('cursos');
+  if(esAdmin) return cursos;
+  const d=lsRead('docentes').find(x=>x.id===(login&&login.docenteId));
+  if(!d||!d.dirige) return [];
+  const tokens=String(d.dirige).split(',').map(t=>{const [g,gr]=t.trim().split('-');return {grado:norm(g),grupo:norm(gr||'')};});
+  return cursos.filter(c=>tokens.some(t=>t.grado===norm(c.grado)&&(!t.grupo||!norm(c.grupo)||t.grupo===norm(c.grupo))));
+}
+function gruposUnicos(){
+  const v={},out=[];
+  gruposDirigidos().forEach(c=>{const k=norm(c.grado)+'-'+norm(c.grupo);
+    if(!v[k]){v[k]=1;out.push({key:k,grado:c.grado,grupo:c.grupo});}});
+  return out.sort((a,b)=>a.key.localeCompare(b.key,undefined,{numeric:true}));
+}
+
+function datosGrupo(grupoKey){
+  const cursos=lsRead('cursos').filter(c=>norm(c.grado)+'-'+norm(c.grupo)===grupoKey);
+  const cursoIds=cursos.map(c=>c.id);
+  const materiaDe={}; cursos.forEach(c=>{ materiaDe[c.id]=c.materia||c.area||'Materia'; });
+  const estMap={};
+  lsRead('estudiantes').forEach(e=>{
+    if(!cursoIds.includes(e.cursoId)) return;
+    const k=normN(e.nombre);
+    if(!estMap[k]) estMap[k]={nombre:e.nombre, ids:[]};
+    estMap[k].ids.push(e.id);
+  });
+  return {cursos, cursoIds, materiaDe, estudiantes:Object.values(estMap).sort((a,b)=>a.nombre.localeCompare(b.nombre))};
+}
+
+// ── regla del observador ──
+function faltantesObservador(grupoKey){
+  const c=cfgBol();
+  const minimo=+c.regla||0;
+  if(!minimo) return [];
+  const {estudiantes}=datosGrupo(grupoKey);
+  const obs=lsRead('observador').filter(o=>!o._eliminado);
+  const anio=new Date().getFullYear();
+  return estudiantes.filter(e=>{
+    const n=obs.filter(o=>normN(o.estNombre)===normN(e.nombre)
+      && new Date(o.creado||0).getFullYear()===anio).length;
+    return n<minimo;
+  }).map(e=>e.nombre);
+}
+
+// ── construir boletines del grupo ──
+function construirBoletines(grupoKey, periodo){
+  const {cursos, materiaDe, estudiantes}=datosGrupo(grupoKey);
+  const notas=lsRead('calificaciones');
+  const c=cfgBol();
+  const grupo=gruposUnicos().find(g=>g.key===grupoKey);
+  const dirigente=(lsRead('docentes').find(d=>{
+    if(!d.dirige) return false;
+    return String(d.dirige).split(',').some(t=>{const [g,gr]=t.trim().split('-');
+      return norm(g)===norm(grupoKey.split('-')[0])&&(!gr||norm(gr)===norm(grupoKey.split('-')[1]||''));});
+  })||{}).nombre||'';
+
+  return estudiantes.map(est=>{
+    const filas=[];
+    let suma=0,cont=0;
+    cursos.forEach(cur=>{
+      const cal=notas.find(n=>n.cursoId===cur.id && String(n.periodo)===String(periodo) && est.ids.includes(n.estId));
+      const d=defin(cal);
+      const inas=cal?(cal.inas||0):0;
+      if(d>0){suma+=d;cont++;}
+      filas.push({materia:materiaDe[cur.id], def:d, des:desemp(d), inas});
+    });
+    // consolidar materias duplicadas (mismo nombre en varios cursos)
+    const vist={},filasU=[];
+    filas.forEach(f=>{ if(!vist[f.materia]){vist[f.materia]=1;filasU.push(f);} });
+    return {nombre:est.nombre, filas:filasU, prom:cont?suma/cont:0,
+      grupo:grupo?grupo.grado+' - '+(grupo.grupo||'único'):grupoKey, dirigente, cfg:c};
+  });
+}
+
+function htmlBoletin(b, periodo){
+  return `<div class="boletin">
+    <div class="p-head"><img src="../Logo/logo.jpg" alt="">
+      <div><h1>${esc(IE)}</h1><div>BOLETÍN DE CALIFICACIONES · ${esc(PERNOM[periodo]||periodo)} · Año ${new Date().getFullYear()}</div></div></div>
+    <table><tr>
+      <th style="width:20%">Estudiante</th><td>${esc(b.nombre)}</td>
+      <th style="width:12%">Grupo</th><td style="width:16%">${esc(b.grupo)}</td></tr>
+      <tr><th>Director(a) de grupo</th><td>${esc(b.dirigente||'—')}</td><th>Promedio</th><td><b>${b.prom?b.prom.toFixed(1):'—'}</b> (${esc(desemp(b.prom))})</td></tr>
+    </table>
+    <table>
+      <tr><th>Asignatura</th><th class="c" style="width:14%">Valoración</th><th class="c" style="width:16%">Desempeño</th><th class="c" style="width:14%">Inasistencias</th></tr>
+      ${b.filas.map(f=>`<tr><td>${esc(f.materia)}</td><td class="c">${f.def?f.def.toFixed(1):'—'}</td><td class="c">${esc(f.des)}</td><td class="c">${f.inas||0}</td></tr>`).join('')}
+    </table>
+    ${b.cfg.mensaje?`<p style="font-size:9pt;margin-top:6px;font-style:italic">${esc(b.cfg.mensaje)}</p>`:''}
+    <div class="firmas">
+      <div>${esc(b.cfg.rector||'Rector(a)')}<br>Rectoría</div>
+      <div>${esc(b.dirigente||'')}<br>Director(a) de grupo</div>
+      <div>Acudiente</div>
+    </div>
+  </div>`;
+}
+
+// ── UI ──
+let grupoSel=null;
+
+function renderGate(){
+  const gate=document.getElementById('gate');
+  const lista=document.getElementById('lista');
+  const periodo=document.getElementById('v-periodo').value;
+  if(!grupoSel){ gate.innerHTML=''; lista.innerHTML='<div class="empty">Selecciona un grupo.</div>'; return; }
+  const faltan=faltantesObservador(grupoSel);
+  const c=cfgBol();
+
+  if(faltan.length){
+    gate.innerHTML=`<div class="bloqueo">
+      <h3>⛔ Boletines bloqueados para este grupo</h3>
+      <p style="font-size:.88rem;margin-bottom:8px">La institución exige el observador al día (mínimo ${c.regla} anotación(es) por estudiante en el año) antes de generar boletines. Faltan <b>${faltan.length}</b> estudiante(s):</p>
+      ${faltan.map(n=>`<span class="badge">${esc(n)}</span>`).join('')}
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" onclick="location.href='10-observador.html'">📔 Ir al observador a completarlos</button>
+        ${esAdmin?`<button class="btn sec" onclick="renderLista(true)">Generar de todas formas (solo coordinación)</button>`:''}
+      </div></div>`;
+    lista.innerHTML='';
+    return;
+  }
+  gate.innerHTML=c.regla>0?`<p class="desc" style="color:#166534">✅ Observadores al día: todos los estudiantes cumplen la regla.</p>`:'';
+  renderLista(false);
+}
+
+window.renderLista=function(forzado){
+  const lista=document.getElementById('lista');
+  const periodo=document.getElementById('v-periodo').value;
+  const bols=construirBoletines(grupoSel, periodo);
+  if(!bols.length){ lista.innerHTML='<div class="empty">📚 Este grupo no tiene estudiantes registrados en Calificaciones.</div>'; return; }
+  const sinNotas=bols.filter(b=>!b.prom).length;
+  lista.innerHTML=`
+    ${forzado?'<p class="desc" style="color:#92400e">⚠️ Generado por coordinación con observadores pendientes.</p>':''}
+    ${sinNotas?`<p class="desc" style="color:#92400e">⚠️ ${sinNotas} estudiante(s) aún sin notas en el ${PERNOM[periodo].toLowerCase()}.</p>`:''}
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <button class="btn ok" onclick="imprimirTodos()">🖨️ Imprimir TODOS (${bols.length})</button>
+    </div>
+    ${bols.map((b,i)=>`<div class="prev">
+      <div style="flex:1;min-width:180px"><strong>${esc(b.nombre)}</strong>
+        <span style="font-size:.78rem;color:var(--muted)"> · promedio ${b.prom?b.prom.toFixed(1):'—'} (${esc(desemp(b.prom))})</span></div>
+      <button class="btn sec" onclick="imprimirUno(${i})">🖨️ Boletín</button>
+    </div>`).join('')}`;
+  window._bols=bols; window._per=periodo;
+};
+
+window.imprimirUno=function(i){
+  document.getElementById('print-area').innerHTML=htmlBoletin(window._bols[i], window._per);
+  window.print();
+};
+window.imprimirTodos=function(){
+  document.getElementById('print-area').innerHTML=window._bols.map(b=>htmlBoletin(b, window._per)).join('');
+  window.print();
+};
+
+// ── arranque ──
+function init(){
+  const grupos=gruposUnicos();
+  const esDirector=grupos.length>0;
+  if(!esAdmin && !esDirector){ document.getElementById('sin-acceso').style.display='block'; return; }
+  document.getElementById('card-gen').style.display='block';
+
+  if(esAdmin){
+    document.getElementById('card-cfg').classList.remove('hide');
+    const c=cfgBol();
+    document.getElementById('c-periodo').value=c.periodo||'1';
+    document.getElementById('c-regla').value=String(c.regla??1);
+    document.getElementById('c-rector').value=c.rector||'';
+    document.getElementById('c-mensaje').value=c.mensaje||'';
+  }
+
+  const sel=document.getElementById('sel-grupo');
+  sel.innerHTML=grupos.map(g=>`<option value="${esc(g.key)}">${esc(g.grado)} - ${esc(g.grupo||'único')}</option>`).join('');
+  if(!grupoSel&&grupos.length) grupoSel=grupos[0].key;
+  if(grupoSel) sel.value=grupoSel;
+  sel.onchange=()=>{ grupoSel=sel.value; renderGate(); };
+  document.getElementById('v-periodo').value=cfgBol().periodo||'1';
+  document.getElementById('v-periodo').onchange=()=>renderGate();
+  if(grupoSel) renderGate();
+}
+document.getElementById('btn-cfg').addEventListener('click',()=>{
+  guardarCfg({id:'cfg',
+    periodo:document.getElementById('c-periodo').value,
+    regla:+document.getElementById('c-regla').value,
+    rector:document.getElementById('c-rector').value.trim(),
+    mensaje:document.getElementById('c-mensaje').value.trim(),
+    actualizadoPor:(login&&login.nombre)||'', creado:Date.now()});
+  toast('Configuración guardada para toda la institución');
+  document.getElementById('v-periodo').value=document.getElementById('c-periodo').value;
+  renderGate();
+});
+init();
+setTimeout(init,2500);
+</script>
+</body>
+</html>
