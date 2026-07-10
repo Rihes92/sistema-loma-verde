@@ -677,7 +677,9 @@ document.getElementById('search-input').addEventListener('input',function(){
     if(!lista.length){ out.innerHTML='<div style="color:var(--muted);font-size:.85rem;padding:6px 2px">Sin resultados. Los estudiantes se crean en el módulo de Calificaciones.</div>'; return; }
 
     out.innerHTML=lista.map(e=>{
-      const acu=acudientes.find(a=>normB(a.estudiante)===normB(e.nombre));
+      const acu=acudientes.find(a=>Array.isArray(a.hijos)
+        ? a.hijos.some(h=>normB(h.estudiante)===normB(e.nombre))
+        : normB(a.estudiante)===normB(e.nombre));
       const nObs=obs.filter(o=>!o._eliminado && normB(o.estNombre)===normB(e.nombre)).length;
       return `<div style="border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <div style="flex:1;min-width:180px">

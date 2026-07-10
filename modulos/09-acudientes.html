@@ -61,7 +61,7 @@
 <main>
   <div class="card">
     <h2>Registrar acudiente</h2>
-    <p class="desc">Esta base de datos es compartida: cualquier docente puede alimentarla y todos ven la misma información, sin importar la materia. Útil para citaciones, comunicados y contacto con las familias.</p>
+    <p class="desc">Base compartida entre todos los docentes. Cada acudiente es <b>un solo registro</b>: si registras un teléfono que ya existe, la app te ofrece vincularle el nuevo estudiante en vez de duplicar a la persona.</p>
     <div class="row">
       <label class="fld">Grado<input id="a-grado" placeholder="Ej: 6°"></label>
       <label class="fld">Grupo/Curso<input id="a-grupo" placeholder="Ej: 601"></label>
@@ -119,9 +119,10 @@ function telWa(t){
   return n;
 }
 function waMsg(a){
+  const hijos=(a.hijos&&a.hijos.length)?a.hijos:(a.estudiante?[{estudiante:a.estudiante,grado:a.grado,grupo:a.grupo}]:[]);
+  const txt=hijos.map(h=>`${h.estudiante||''}${h.grado?' ('+h.grado+(h.grupo?'-'+h.grupo:'')+')':''}`).join(', ');
   return encodeURIComponent(
-    `Buenos días. Le escribimos de la I.E. San José de Loma Verde respecto a su acudido(a) ${a.estudiante||''}`+
-    `${a.grado?' ('+a.grado+(a.grupo?'-'+a.grupo:'')+')':''}. `);
+    `Buenos días. Le escribimos de la I.E. San José de Loma Verde respecto a su${hijos.length>1?'s acudidos':' acudido(a)'} ${txt}. `);
 }
 
 function quienEsta(){
@@ -135,69 +136,133 @@ function quienEsta(){
 let acudientes = lsRead('acudientes');
 let editId = null;
 
+// ── Migración: registros viejos (uno por estudiante) → una persona con hijos[] ──
+//  Agrupa por teléfono normalizado; sin teléfono, por nombre del acudiente.
+//  Idempotente: solo toca registros que aún no tengan hijos[].
+function migrarAcudientes(){
+  const viejos = acudientes.filter(a=>!Array.isArray(a.hijos));
+  if(!viejos.length) return;
+  const clave = a => telWa(a.telefono) || ('nom:'+String(a.nombreAcudiente||'').trim().toLowerCase());
+  const grupos = {};
+  viejos.forEach(a=>{ const k=clave(a); (grupos[k]=grupos[k]||[]).push(a); });
+  const nuevos=[], borrar=[];
+  Object.values(grupos).forEach(g=>{
+    const base=g[0];
+    const persona={ id:base.id, nombreAcudiente:base.nombreAcudiente, parentesco:base.parentesco||'',
+      telefono:base.telefono||'', email:base.email||'',
+      notas:[...new Set(g.map(x=>x.notas).filter(Boolean))].join(' · '),
+      hijos:g.map(x=>({estudiante:x.estudiante||'',grado:x.grado||'',grupo:x.grupo||''})).filter(h=>h.estudiante),
+      registradoPor:base.registradoPor||quienEsta(), creado:base.creado||Date.now() };
+    nuevos.push(persona);
+    g.slice(1).forEach(x=>borrar.push(x.id));
+  });
+  acudientes = acudientes.filter(a=>Array.isArray(a.hijos)).concat(nuevos);
+  try{ localStorage.setItem(LS+'acudientes', JSON.stringify(acudientes)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined'){
+    nuevos.forEach(n=>LV_SYNC.marcarCambio('lv_acudientes', n));
+    borrar.forEach(id=>LV_SYNC.marcarCambio('lv_acudientes', {id, _eliminado:true}));
+  }
+  if(borrar.length) toast(`Se unificaron ${borrar.length} registro(s) duplicado(s) de acudientes`);
+}
+
+function guardarLista(cambiados){
+  try{ localStorage.setItem(LS+'acudientes', JSON.stringify(acudientes)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined') (cambiados||[]).forEach(r=>{ if(r&&r.id) LV_SYNC.marcarCambio('lv_acudientes', r); });
+}
+
 document.getElementById('btn-acu-save').addEventListener('click', ()=>{
   const estudiante = document.getElementById('a-estudiante').value.trim();
   const nombreAcu = document.getElementById('a-nombre').value.trim();
-  if(!estudiante){ toast('Escribe el nombre del estudiante.'); return; }
+  const telefono = document.getElementById('a-telefono').value.trim();
   if(!nombreAcu){ toast('Escribe el nombre del acudiente.'); return; }
-  const registro = {
-    id: editId || uid(),
+  if(!editId && !estudiante){ toast('Escribe el nombre del estudiante.'); return; }
+
+  const hijoNuevo = estudiante ? { estudiante,
     grado: document.getElementById('a-grado').value.trim(),
-    grupo: document.getElementById('a-grupo').value.trim(),
-    estudiante,
-    nombreAcudiente: nombreAcu,
-    parentesco: document.getElementById('a-parentesco').value,
-    telefono: document.getElementById('a-telefono').value.trim(),
-    email: document.getElementById('a-email').value.trim(),
-    notas: document.getElementById('a-notas').value.trim(),
-    registradoPor: quienEsta(),
-    creado: Date.now()
-  };
-  if(editId){
-    const i = acudientes.findIndex(a=>a.id===editId);
-    if(i>=0) acudientes[i] = {...acudientes[i], ...registro};
-  } else {
-    acudientes.push(registro);
+    grupo: document.getElementById('a-grupo').value.trim() } : null;
+
+  // ¿ya existe la persona? (mismo teléfono, o mismo nombre si no hay teléfono)
+  let persona = editId ? acudientes.find(a=>a.id===editId) : null;
+  if(!persona){
+    persona = acudientes.find(a =>
+      (telefono && telWa(a.telefono) && telWa(a.telefono)===telWa(telefono)) ||
+      (!telefono && String(a.nombreAcudiente||'').trim().toLowerCase()===nombreAcu.toLowerCase())
+    );
+    if(persona && hijoNuevo){
+      const ya = (persona.hijos||[]).some(h=>h.estudiante.toLowerCase()===estudiante.toLowerCase());
+      if(ya){ toast('Ese estudiante ya está vinculado a este acudiente.'); return; }
+      if(!confirm(`${persona.nombreAcudiente} ya está registrado(a)${persona.hijos&&persona.hijos.length?' con: '+persona.hijos.map(h=>h.estudiante).join(', '):''}.\n\n¿Vincularle también a ${estudiante}?`)) return;
+    }
   }
-  lsWrite('acudientes', acudientes);
-  editId = null;
+
+  if(persona){
+    persona.nombreAcudiente = nombreAcu;
+    persona.parentesco = document.getElementById('a-parentesco').value;
+    persona.telefono = telefono;
+    persona.email = document.getElementById('a-email').value.trim();
+    persona.notas = document.getElementById('a-notas').value.trim();
+    persona.hijos = persona.hijos||[];
+    if(hijoNuevo && !persona.hijos.some(h=>h.estudiante.toLowerCase()===estudiante.toLowerCase())) persona.hijos.push(hijoNuevo);
+    guardarLista([persona]);
+    toast(editId?'Acudiente actualizado':'Estudiante vinculado a acudiente existente');
+  } else {
+    const nueva = { id:uid(), nombreAcudiente:nombreAcu,
+      parentesco:document.getElementById('a-parentesco').value,
+      telefono, email:document.getElementById('a-email').value.trim(),
+      notas:document.getElementById('a-notas').value.trim(),
+      hijos:hijoNuevo?[hijoNuevo]:[], registradoPor:quienEsta(), creado:Date.now() };
+    acudientes.push(nueva);
+    guardarLista([nueva]);
+    toast('Acudiente registrado');
+  }
+  editId=null;
   document.getElementById('btn-acu-cancel').classList.add('hide');
   ['a-grado','a-grupo','a-estudiante','a-nombre','a-telefono','a-email','a-notas'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('a-parentesco').value = 'Madre';
-  fillFiltroGrado();
-  renderAcudientes();
-  toast('Acudiente guardado');
+  document.getElementById('a-parentesco').value='Madre';
+  fillFiltroGrado(); renderAcudientes();
 });
+
 document.getElementById('btn-acu-cancel').addEventListener('click', ()=>{
   editId = null;
   document.getElementById('btn-acu-cancel').classList.add('hide');
   ['a-grado','a-grupo','a-estudiante','a-nombre','a-telefono','a-email','a-notas'].forEach(id=>document.getElementById(id).value='');
 });
+
 window.editarAcudiente = id=>{
   const a = acudientes.find(x=>x.id===id); if(!a) return;
   editId = id;
-  document.getElementById('a-grado').value = a.grado||'';
-  document.getElementById('a-grupo').value = a.grupo||'';
-  document.getElementById('a-estudiante').value = a.estudiante||'';
   document.getElementById('a-nombre').value = a.nombreAcudiente||'';
   document.getElementById('a-parentesco').value = a.parentesco||'Madre';
   document.getElementById('a-telefono').value = a.telefono||'';
   document.getElementById('a-email').value = a.email||'';
   document.getElementById('a-notas').value = a.notas||'';
+  ['a-grado','a-grupo','a-estudiante'].forEach(i=>document.getElementById(i).value='');
   document.getElementById('btn-acu-cancel').classList.remove('hide');
+  toast('Editando a '+(a.nombreAcudiente||'')+'. Si llenas el campo Estudiante, se le vincula otro hijo.');
   window.scrollTo(0,0);
 };
+
+window.quitarHijo = (id, idx)=>{
+  const a = acudientes.find(x=>x.id===id); if(!a||!a.hijos) return;
+  const h=a.hijos[idx]; if(!h) return;
+  if(!confirm(`¿Quitar el vínculo con ${h.estudiante}?`)) return;
+  a.hijos.splice(idx,1);
+  guardarLista([a]); renderAcudientes();
+};
+
 window.eliminarAcudiente = id=>{
-  if(!confirm('¿Eliminar este registro de acudiente?')) return;
-  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_acudientes', {id, _eliminado:true});
+  if(!confirm('¿Eliminar este acudiente y todos sus vínculos? Quedará 30 días en la papelera.')) return;
+  if(typeof LV_SYNC!=='undefined'){
+    const _a=acudientes.find(x=>x.id===id);
+    LV_SYNC.marcarCambio('lv_acudientes', Object.assign({},_a||{id},{id, _eliminado:true}));
+  }
   acudientes = acudientes.filter(a=>a.id!==id);
-  lsWrite('acudientes', acudientes);
-  renderAcudientes();
-  toast('Registro eliminado');
+  guardarLista([]); renderAcudientes();
+  toast('Acudiente enviado a la papelera');
 };
 
 function fillFiltroGrado(){
-  const grados = Array.from(new Set(acudientes.map(a=>a.grado).filter(Boolean))).sort();
+  const grados = Array.from(new Set(acudientes.flatMap(a=>(a.hijos||[]).map(h=>h.grado)).filter(Boolean))).sort();
   document.getElementById('a-filtro-grado').innerHTML = '<option value="">Todos</option>'
     + grados.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join('');
 }
@@ -207,33 +272,35 @@ document.getElementById('a-filtro-grado').addEventListener('change', renderAcudi
 function renderAcudientes(){
   const q = (document.getElementById('a-buscar').value||'').toLowerCase();
   const filGrado = document.getElementById('a-filtro-grado').value;
-  let lista = acudientes.slice().sort((a,b)=>(a.grado||'').localeCompare(b.grado||'')||(a.estudiante||'').localeCompare(b.estudiante||''));
-  if(filGrado) lista = lista.filter(a=>a.grado===filGrado);
+  let lista = acudientes.slice().sort((a,b)=>(a.nombreAcudiente||'').localeCompare(b.nombreAcudiente||''));
+  if(filGrado) lista = lista.filter(a=>(a.hijos||[]).some(h=>h.grado===filGrado));
   if(q) lista = lista.filter(a=>
-    (a.estudiante||'').toLowerCase().includes(q) ||
     (a.nombreAcudiente||'').toLowerCase().includes(q) ||
-    (a.grado||'').toLowerCase().includes(q) ||
-    (a.grupo||'').toLowerCase().includes(q)
+    (a.telefono||'').toLowerCase().includes(q) ||
+    (a.hijos||[]).some(h=>(h.estudiante||'').toLowerCase().includes(q)||(h.grado||'').toLowerCase().includes(q))
   );
   const out = document.getElementById('acudientes-out');
-  if(!lista.length){ out.innerHTML = '<div class="empty">Aún no hay acudientes registrados.</div>'; return; }
+  if(!lista.length){ out.innerHTML = '<div class="empty">👪 Aún no hay acudientes registrados.<br>Registra el primero en el formulario de arriba.</div>'; return; }
   out.innerHTML = `<div class="tableScroll"><table><thead><tr>
-    <th>Estudiante</th><th>Grado-Grupo</th><th>Acudiente</th><th>Parentesco</th><th>Teléfono</th><th>Correo</th><th class="c">Acciones</th>
+    <th>Acudiente</th><th>Estudiantes a cargo</th><th>Parentesco</th><th>Teléfono</th><th>Correo</th><th class="c">Acciones</th>
   </tr></thead><tbody>${lista.map(a=>`<tr>
-    <td><strong>${esc(a.estudiante)}</strong>${a.notas?`<div style="color:var(--muted);font-size:.75rem">${esc(a.notas)}</div>`:''}</td>
-    <td>${esc(a.grado||'—')}${a.grupo?'-'+esc(a.grupo):''}</td>
-    <td>${esc(a.nombreAcudiente)}</td>
+    <td><strong>${esc(a.nombreAcudiente)}</strong>${a.notas?`<div style="color:var(--muted);font-size:.75rem">${esc(a.notas)}</div>`:''}</td>
+    <td>${(a.hijos&&a.hijos.length)?a.hijos.map((h,i)=>
+        `<span class="badge" style="margin:2px 3px 2px 0">${esc(h.estudiante)}${h.grado?' · '+esc(h.grado)+(h.grupo?'-'+esc(h.grupo):''):''}
+         <a href="#" onclick="quitarHijo('${a.id}',${i});return false" title="Quitar vínculo" style="color:#991b1b;text-decoration:none;margin-left:3px">✖</a></span>`).join('')
+      :'<span style="color:var(--muted);font-size:.8rem">sin estudiantes</span>'}</td>
     <td>${esc(a.parentesco||'—')}</td>
     <td>${a.telefono?`<a href="https://wa.me/${telWa(a.telefono)}?text=${waMsg(a)}" target="_blank"
         style="color:#16a34a;font-weight:700;text-decoration:none;white-space:nowrap">💬 ${esc(a.telefono)}</a>`:'—'}</td>
     <td>${esc(a.email||'—')}</td>
     <td class="c">
-      <button class="btn sm sec" onclick="editarAcudiente('${a.id}')">✏️</button>
+      <button class="btn sm sec" onclick="editarAcudiente('${a.id}')" title="Editar / vincular otro hijo">✏️</button>
       <button class="btn sm bad" onclick="eliminarAcudiente('${a.id}')">🗑️</button>
     </td>
   </tr>`).join('')}</tbody></table></div>`;
 }
 
+migrarAcudientes();
 fillFiltroGrado();
 renderAcudientes();
 </script>
