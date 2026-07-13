@@ -8,45 +8,97 @@
   :root{
     --primary:#1e3a8a; --primary-dark:#172d6e; --primary-light:#3b82f6;
     --bg:#f1f5f9; --surface:#fff; --text:#1f2937; --muted:#64748b;
-    --border:#e2e8f0; --bad:#dc2626; --radius:14px; --shadow:0 2px 8px rgba(0,0,0,.08);
+    --border:#e2e8f0; --bad:#dc2626; --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 55%,var(--primary-light) 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-  .card{background:var(--surface);border-radius:var(--radius);box-shadow:0 12px 40px rgba(0,0,0,.25);padding:32px 28px;max-width:380px;width:100%}
-  .card h1{font-size:1.25rem;color:var(--primary);text-align:center;margin-bottom:4px}
-  .card p.sub{text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:22px}
-  label{display:block;font-size:.82rem;font-weight:600;color:var(--muted);margin-bottom:6px;margin-top:16px}
-  input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:.95rem;background:#fff;color:var(--text)}
-  input:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.15)}
-  button{width:100%;margin-top:22px;border:0;border-radius:9px;padding:12px;font-size:.95rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff}
-  button:hover{filter:brightness(1.08)}
-  button:disabled{opacity:.6;cursor:wait}
-  .err{color:var(--bad);font-size:.82rem;margin-top:12px;text-align:center;min-height:1.2em}
-  .logo{width:60px;height:60px;display:block;margin:0 auto 14px;border-radius:14px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
-  .nota{font-size:.75rem;color:var(--muted);text-align:center;margin-top:16px;line-height:1.5}
+  html,body{height:100%}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;display:flex;min-height:100vh;background:var(--bg);color:var(--text)}
+
+  /* ── Panel de marca ── */
+  .brand{flex:1.15;background:linear-gradient(150deg,var(--primary-dark) 0%,var(--primary) 55%,var(--primary-light) 130%);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:56px 60px;position:relative;overflow:hidden}
+  .brand::before{content:'';position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.05);top:-140px;right:-120px}
+  .brand::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05);bottom:-110px;left:-90px}
+  .brand-inner{position:relative;z-index:1;max-width:440px;margin:0 auto;text-align:center}
+  .brand img.logo{width:110px;height:110px;border-radius:24px;background:#fff;padding:10px;box-shadow:0 8px 30px rgba(0,0,0,.25);display:block;margin:0 auto 24px}
+  .brand h1{font-size:clamp(2.2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .brand .tag{font-size:1.05rem;line-height:1.55;opacity:.9}
+
+  /* ── Panel del formulario ── */
+  .panel{flex:1;display:flex;align-items:center;justify-content:center;padding:36px 24px}
+  .card{width:100%;max-width:400px}
+  .card .hola{font-size:1.45rem;font-weight:800;color:var(--text);margin-bottom:4px;letter-spacing:-.01em}
+  .card .sub{color:var(--muted);font-size:.9rem;margin-bottom:28px}
+  label{display:block;font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:6px;margin-top:18px}
+  .inp-wrap{position:relative}
+  input{width:100%;padding:12px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:.95rem;background:var(--surface);color:var(--text);transition:border-color .15s,box-shadow .15s}
+  input:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 4px rgba(59,130,246,.13)}
+  .inp-wrap input{padding-right:46px}
+  .ver-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;cursor:pointer;font-size:1.05rem;padding:8px;color:var(--muted);border-radius:8px;line-height:1}
+  .ver-btn:hover{background:#f1f5f9}
+  button[type=submit]{width:100%;margin-top:26px;border:0;border-radius:10px;padding:13px;font-size:.98rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(30,58,138,.3);transition:filter .15s,transform .1s}
+  button[type=submit]:hover{filter:brightness(1.1)}
+  button[type=submit]:active{transform:translateY(1px)}
+  button[type=submit]:disabled{opacity:.6;cursor:wait}
+  .err{color:var(--bad);font-size:.83rem;margin-top:14px;text-align:center;min-height:1.2em;line-height:1.4}
+  .nota{font-size:.78rem;color:var(--muted);text-align:center;margin-top:22px;line-height:1.6}
+  .nota a{color:var(--primary);font-weight:700;text-decoration:none}
+  .nota a:hover{text-decoration:underline}
+  .brand-movil{display:none}
+
+  /* ── Móvil / tableta vertical ── */
+  @media(max-width:880px){
+    body{flex-direction:column}
+    .brand{display:none}
+    .brand-movil{display:flex;flex-direction:column;align-items:center;text-align:center;background:linear-gradient(150deg,var(--primary-dark),var(--primary) 70%,var(--primary-light) 160%);color:#fff;padding:34px 24px 30px}
+    .brand-movil img{width:64px;height:64px;border-radius:16px;background:#fff;padding:6px;box-shadow:0 6px 20px rgba(0,0,0,.25);margin-bottom:12px}
+    .brand-movil h1{font-size:1.7rem;font-weight:800;letter-spacing:-.01em}
+    .brand-movil p{font-size:.82rem;opacity:.88;margin-top:4px;max-width:320px;line-height:1.45}
+    .panel{align-items:flex-start;padding-top:30px}
+  }
 </style>
 <link rel="stylesheet" href="lv-tema.css">
 </head>
 <body>
 
-<div class="card">
-  <img src="Logo/sabie.svg" alt="SABIE" style="width:74px;height:74px;display:block;margin:0 auto 14px;border-radius:16px">
+<!-- Marca (escritorio) -->
+<aside class="brand">
+  <div class="brand-inner">
+    <img class="logo" src="Logo/sabie.svg" alt="SABIE">
+    <h1>SABIE</h1>
+    <p class="tag">Sistema de Aprendizaje, Bienestar e Inclusión Educativa</p>
+  </div>
+</aside>
+
+<!-- Marca (móvil) -->
+<header class="brand-movil">
+  <img src="Logo/sabie.svg" alt="SABIE">
   <h1>SABIE</h1>
-  <p class="sub">Sistema de Aprendizaje, Bienestar e Inclusión Educativa<br>I.E. San José de Loma Verde</p>
+  <p>Sistema de Aprendizaje, Bienestar e Inclusión Educativa</p>
+</header>
 
-  <form id="form-login">
-    <label>Correo institucional</label>
-    <input type="email" id="l-email" required placeholder="tu.correo@ejemplo.com" autocomplete="username" autocapitalize="none">
+<!-- Formulario -->
+<section class="panel">
+  <div class="card">
+    <div class="hola">¡Bienvenido(a)! 👋</div>
+    <p class="sub">Ingresa con tu cuenta para continuar.</p>
 
-    <label>Contraseña</label>
-    <input type="password" id="l-clave" required placeholder="Tu contraseña" autocomplete="current-password">
+    <form id="form-login">
+      <label for="l-email">Correo institucional</label>
+      <input type="email" id="l-email" required placeholder="tu.correo@ejemplo.com" autocomplete="username" autocapitalize="none">
 
-    <button type="submit" id="l-btn">Entrar</button>
-    <div class="err" id="l-error"></div>
-  </form>
+      <label for="l-clave">Contraseña</label>
+      <div class="inp-wrap">
+        <input type="password" id="l-clave" required placeholder="Tu contraseña" autocomplete="current-password">
+        <button type="button" class="ver-btn" id="ver-clave" aria-label="Mostrar contraseña" title="Mostrar contraseña">👁️</button>
+      </div>
 
-  <p class="nota"><a href="recuperar.html" style="color:var(--primary);font-weight:700;text-decoration:none">¿Olvidaste tu contraseña?</a><br>Si tu correo no es real (asignado por la institución), pide a Coordinación que te la restablezca.</p>
-</div>
+      <button type="submit" id="l-btn">Entrar</button>
+      <div class="err" id="l-error" role="alert"></div>
+    </form>
+
+    <p class="nota"><a href="recuperar.html">¿Olvidaste tu contraseña?</a><br>Si tu correo no es real (asignado por la institución), pide a Coordinación que te la restablezca.</p>
+  </div>
+</section>
 
 <script src="auth.js"></script>
 <script src="sync.js"></script>
@@ -67,6 +119,15 @@
 
 // si ya hay sesión, saltar directo al portal
 if (LV_AUTH.haySesion() && localStorage.getItem('lv_login')) location.replace('index.html');
+
+// mostrar / ocultar contraseña
+document.getElementById('ver-clave').addEventListener('click', function(){
+  const inp = document.getElementById('l-clave');
+  const ver = inp.type === 'password';
+  inp.type = ver ? 'text' : 'password';
+  this.textContent = ver ? '🙈' : '👁️';
+  this.setAttribute('aria-label', ver ? 'Ocultar contraseña' : 'Mostrar contraseña');
+});
 
 function lsRead(k){ try{ return JSON.parse(localStorage.getItem(k))||[]; }catch(_){ return []; } }
 

@@ -70,13 +70,15 @@
 </header>
 
 <main>
-  <div class="sec-label">Módulos</div>
+  <div class="sec-label">Módulos de la materia</div>
   <div class="grid" id="grid"></div>
+  <div class="sec-label" id="lbl-inst" style="margin-top:32px">Institucionales y transversales</div>
+  <div class="grid" id="grid-inst"></div>
   <div class="empty-msg" id="empty-msg" style="display:none">No se especificó una materia. Vuelve al <a href="index.html">portal</a> y elige un área.</div>
 </main>
 
 <footer>
-  <strong>SABIE</strong> · I.E. San José de Loma Verde · Todos los datos se guardan localmente en este dispositivo
+  <strong>SABIE</strong> — Sistema de Aprendizaje, Bienestar e Inclusión Educativa
 </footer>
 
 <script>
@@ -92,6 +94,15 @@ const MODULOS = [
   { icon:'👪', clase:'c-com', titulo:'Acudientes', desc:'Base de datos compartida de acudientes por grado, curso y estudiante. La alimenta cualquier docente y todos ven la misma información.', tag:'👪 Contactos', href:'modulos/09-acudientes.html' },
 ];
 
+const MODULOS_INST = [
+  { icon:'📔', clase:'c-plan', titulo:'Observador del Estudiante', desc:'Situaciones Tipo I–III (Ley 1620), reconocimientos y compromisos con seguimiento. Impresión con firmas.', tag:'📔 Convivencia', href:'modulos/10-observador.html' },
+  { icon:'♿', clase:'c-asi', titulo:'Inclusión (DUA · PIAR)', desc:'Planeación DUA y PIAR (Decreto 1421) con motor de barreras y ajustes razonables por estudiante.', tag:'♿ Inclusión', href:'modulos/11-inclusion.html' },
+  { icon:'🧭', clase:'c-cal', titulo:'Mi Grupo (Director)', desc:'Tablero del director de grupo: semáforos por estudiante, tendencias y alerta temprana de deserción.', tag:'🧭 Dirección', href:'modulos/12-director.html' },
+  { icon:'📄', clase:'c-ex3', titulo:'Boletines', desc:'Informes por periodo con observaciones automáticas del observador e impresión por grupo.', tag:'📄 Boletines', href:'modulos/13-boletines.html' },
+  { icon:'📈', clase:'c-ex11', titulo:'Analítica', desc:'Radiografía ICFES por competencia y hoja de vida académica completa de cada estudiante.', tag:'📈 Datos', href:'modulos/14-analitica.html' },
+  { icon:'🧰', clase:'c-com', titulo:'Herramientas pedagógicas', desc:'Test de lectura, cálculo mental, rúbricas, sociograma, tiquete de salida y más — con envío de nota a la planilla.', tag:'🧰 Formativa', href:'modulos/15-herramientas.html' },
+];
+
 const AREAS_ICONOS = {
   'Ciencias Sociales':'🌎','Ciencias Naturales':'🔬','Humanidades':'📖','Matemáticas':'📐',
   'Tecnología e Informática':'💻','Artística y Emprendimiento':'🎨','Religión':'🕊️','Ética':'🤝','Educación Física':'⚽'
@@ -104,6 +115,9 @@ const AREAS_ICONOS = {
 
   if(!area || !materia){
     document.getElementById('grid').style.display='none';
+    document.getElementById('grid-inst').style.display='none';
+    document.getElementById('lbl-inst').style.display='none';
+    document.querySelector('.sec-label').style.display='none';
     document.getElementById('empty-msg').style.display='block';
     return;
   }
@@ -120,6 +134,17 @@ const AREAS_ICONOS = {
   const grid = document.getElementById('grid');
   grid.innerHTML = MODULOS.map(m => `
     <a href="${m.href}?area=${encodeURIComponent(area)}&materia=${encodeURIComponent(materia)}" class="mod-card ${m.clase}">
+      <div class="mod-top">
+        <div class="mod-icon">${m.icon}</div>
+        <div class="mod-title">${m.titulo}</div>
+      </div>
+      <div class="mod-desc">${m.desc}</div>
+      <div class="mod-footer"><span class="mod-tag">${m.tag}</span><span class="mod-arrow">→</span></div>
+    </a>
+  `).join('');
+
+  document.getElementById('grid-inst').innerHTML = MODULOS_INST.map(m => `
+    <a href="${m.href}" class="mod-card ${m.clase}">
       <div class="mod-top">
         <div class="mod-icon">${m.icon}</div>
         <div class="mod-title">${m.titulo}</div>
