@@ -112,7 +112,15 @@ B. ✅ **Importador robusto** (hecho): módulos 02/03/04 validan JSON al importa
    planeador, validación por tipo de pregunta (multiple: 4 opciones + correcta 0-3;
    vf: booleano; abierta: respuesta modelo). Importa las válidas y reporta el resto.
 
-C. 🔄 **Banco de actividades de primaria** (EN CURSO): decisiones tomadas — PDFs curados
+C. ✅ **Banco de actividades de primaria** (código listo, falta subir archivos):
+   módulo `16-actividades.html` creado (filtros grado/categoría/tipo, visor con
+   descarga autenticada de Storage, imprimir/descargar), tabla en MAPA de sync,
+   enlace en sidebar + materia-hub, `migracion_actividades.sql` (bucket privado
+   'actividades' + política lectura autenticados + tabla + catálogo de 647 items).
+   Carpeta `Subir_a_Supabase/` (881 MB, nombres saneados = rutas del catálogo,
+   en .gitignore) lista para arrastrar al bucket. PENDIENTE de Francy: correr el
+   SQL y arrastrar las carpetas al bucket. Videos → YouTube no listado (luego se
+   agregan al catálogo como tipo 'video' con url). Detalle original: decisiones tomadas — PDFs curados
    en Supabase Storage PRIVADO (bucket tras login, meta <1 GB), videos en YouTube no
    listado del colegio, material restante como enlaces OneDrive. Copyright: el material
    de terceros (kits comerciales, papercraft Marvel) es SOLO para uso interno del
