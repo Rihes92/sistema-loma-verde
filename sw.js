@@ -2,7 +2,7 @@
 //  Sistema Loma Verde — Service Worker v4 (Network First)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v41';
+const CACHE = 'loma-verde-v42';
 
 const ARCHIVOS = [
   './',
@@ -42,6 +42,8 @@ const ARCHIVOS = [
   './modulos/herramientas/fisica.html',
   './modulos/herramientas/tiquete.html',
   './Logo/sabie.svg',
+  './Logo/sabie-icono.png',
+  './Logo/sabie-full.jpg',
   './Logo/sabie-192.png',
   './Logo/sabie-512.png',
   './Logo/logo.jpg',

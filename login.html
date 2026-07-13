@@ -19,9 +19,7 @@
   .brand::before{content:'';position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.05);top:-140px;right:-120px}
   .brand::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05);bottom:-110px;left:-90px}
   .brand-inner{position:relative;z-index:1;max-width:440px;margin:0 auto;text-align:center}
-  .brand img.logo{width:110px;height:110px;border-radius:24px;background:#fff;padding:10px;box-shadow:0 8px 30px rgba(0,0,0,.25);display:block;margin:0 auto 24px}
-  .brand h1{font-size:clamp(2.2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
-  .brand .tag{font-size:1.05rem;line-height:1.55;opacity:.9}
+  .brand img.logo-full{width:min(420px,88%);border-radius:28px;box-shadow:0 12px 44px rgba(0,0,0,.35);display:block;margin:0 auto}
 
   /* ── Panel del formulario ── */
   .panel{flex:1;display:flex;align-items:center;justify-content:center;padding:36px 24px}
@@ -50,9 +48,7 @@
     body{flex-direction:column}
     .brand{display:none}
     .brand-movil{display:flex;flex-direction:column;align-items:center;text-align:center;background:linear-gradient(150deg,var(--primary-dark),var(--primary) 70%,var(--primary-light) 160%);color:#fff;padding:34px 24px 30px}
-    .brand-movil img{width:64px;height:64px;border-radius:16px;background:#fff;padding:6px;box-shadow:0 6px 20px rgba(0,0,0,.25);margin-bottom:12px}
-    .brand-movil h1{font-size:1.7rem;font-weight:800;letter-spacing:-.01em}
-    .brand-movil p{font-size:.82rem;opacity:.88;margin-top:4px;max-width:320px;line-height:1.45}
+    .brand-movil img{width:min(230px,60%);border-radius:20px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
     .panel{align-items:flex-start;padding-top:30px}
   }
 </style>
@@ -63,17 +59,13 @@
 <!-- Marca (escritorio) -->
 <aside class="brand">
   <div class="brand-inner">
-    <img class="logo" src="Logo/sabie.svg" alt="SABIE">
-    <h1>SABIE</h1>
-    <p class="tag">Sistema de Aprendizaje, Bienestar e Inclusión Educativa</p>
+    <img class="logo-full" src="Logo/sabie-full.jpg" alt="SABIE — Sistema de Aprendizaje, Bienestar e Inclusión Educativa">
   </div>
 </aside>
 
 <!-- Marca (móvil) -->
 <header class="brand-movil">
-  <img src="Logo/sabie.svg" alt="SABIE">
-  <h1>SABIE</h1>
-  <p>Sistema de Aprendizaje, Bienestar e Inclusión Educativa</p>
+  <img src="Logo/sabie-full.jpg" alt="SABIE — Sistema de Aprendizaje, Bienestar e Inclusión Educativa">
 </header>
 
 <!-- Formulario -->
