@@ -92,7 +92,8 @@ document.getElementById('btnAddPregunta').addEventListener('click',addPregunta);
 let SYSC=null;
 (function(){ const sc=document.getElementById('sysCurso');
   function pintar(){ const cs=LV_HERR.cursos();
-    sc.innerHTML='<option value="">— Curso —</option>'+cs.map(c=>`<option value="${c.id}">${c.grado||''}${c.grupo?'-'+c.grupo:''} · ${c.materia||''}</option>`).join(''); }
+    const escT=v=>String(v??'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+    sc.innerHTML='<option value="">— Curso —</option>'+cs.map(c=>`<option value="${escT(c.id)}">${escT(c.grado||'')}${c.grupo?'-'+escT(c.grupo):''} · ${escT(c.materia||'')}</option>`).join(''); }
   pintar(); setTimeout(pintar,2500); })();
 
 document.getElementById('btnAnalizar').addEventListener('click',()=>{

@@ -34,15 +34,16 @@ const LV_HERR = (() => {
   // Rellena dos <select> (curso y estudiante) y los mantiene ligados.
   function selectorEstudiante(selCursoId, selEstId, onCambio){
     const sc=document.getElementById(selCursoId), se=document.getElementById(selEstId);
+    const escH=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     function pintarCursos(){
       const cs=cursos();
       sc.innerHTML='<option value="">— Elegir curso —</option>'+cs.map(c=>
-        `<option value="${c.id}">${c.grado||''}${c.grupo?'-'+c.grupo:''} · ${c.materia||c.nombre||''}</option>`).join('');
+        `<option value="${escH(c.id)}">${escH(c.grado||'')}${c.grupo?'-'+escH(c.grupo):''} · ${escH(c.materia||c.nombre||'')}</option>`).join('');
     }
     function pintarEsts(){
       const ests=sc.value?estudiantesDe(sc.value):[];
       se.innerHTML='<option value="">— Elegir estudiante —</option>'+ests.map(e=>
-        `<option value="${e.id}">${e.nombre}</option>`).join('');
+        `<option value="${escH(e.id)}">${escH(e.nombre)}</option>`).join('');
     }
     sc.addEventListener('change',()=>{ pintarEsts(); if(onCambio)onCambio(); });
     se.addEventListener('change',()=>{ if(onCambio)onCambio(); });
