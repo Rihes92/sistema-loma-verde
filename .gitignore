@@ -4,3 +4,5 @@
 .fuse_hidden*
 **/.fuse_hidden*
 .test_write
+Banco de actividades/
+*.zip

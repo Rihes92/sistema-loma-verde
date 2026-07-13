@@ -97,3 +97,45 @@ documentos impresos/WhatsApp, que luego será configurable).
 - Borrados lógicos: `_eliminado: true` (papelera 30 días en Coordinación).
 - El nombre del colegio SÍ debe permanecer en: plantillas de comunicados/WhatsApp,
   impresiones de exámenes, boletines, PIAR, observador (documentos oficiales).
+
+## Backlog acordado (jul 2026) — orden de ejecución sugerido
+
+A. **GEMs v2** (hecho): `GEMs/gem_planeador_ciencias_sociales.md` y `GEMs/gem_banco_preguntas.md`
+   reescritos para que Gemini/Claude/GPT devuelvan JSON importable directo (esquema exacto
+   incluido). Corregidos: los .md originales NO especificaban el formato JSON de la app;
+   el ejemplo de planeador traía la clave "banco" DUPLICADA (JSON.parse descarta la primera
+   → las preguntas se perdían al importar); distractores absurdos y respuesta correcta
+   siempre en B en el banco de ejemplo; typos.
+
+B. ✅ **Importador robusto** (hecho): módulos 02/03/04 validan JSON al importar — errores
+   de parseo con detalle, clave "banco" duplicada bloqueada, campos faltantes por
+   planeador, validación por tipo de pregunta (multiple: 4 opciones + correcta 0-3;
+   vf: booleano; abierta: respuesta modelo). Importa las válidas y reporta el resto.
+
+C. 🔄 **Banco de actividades de primaria** (EN CURSO): decisiones tomadas — PDFs curados
+   en Supabase Storage PRIVADO (bucket tras login, meta <1 GB), videos en YouTube no
+   listado del colegio, material restante como enlaces OneDrive. Copyright: el material
+   de terceros (kits comerciales, papercraft Marvel) es SOLO para uso interno del
+   colegio, NUNCA en la versión vendible. `Catalogo_Banco_Actividades.xlsx` generado
+   (916 archivos, 4.2 GB); Francy marca "Incluir SÍ/NO" y luego: subir a Storage +
+   módulo nuevo
+   `16-actividades.html` + tabla `lv_actividades` {id, datos} con metadatos (título, grado,
+   área, tipo: pdf/video/papercraft/interactivo, url, etiquetas). Archivos PDF en Supabase
+   Storage (1 GB gratis; si crece, links a Drive/YouTube en vez de subir). El docente
+   filtra por grado/área/tipo, previsualiza, imprime, y puede anexar la actividad a un
+   planeador. Los PDF del usuario están hoy fuera de la app (pedirle la carpeta).
+
+D. **Generación con IA dentro de la app** (media-alta dificultad): SÍ es viable.
+   Arquitectura: función serverless en Vercel (`/api/generar`) que guarda la API key
+   (Gemini gratis hasta cierto cupo, o Claude/GPT) como variable de entorno — NUNCA la
+   key en el frontend. El módulo Planeador/Banco muestra un formulario (grado, periodo,
+   temática, sesiones) → la función arma el prompt con los GEMs v2 como system prompt →
+   devuelve JSON → la app lo valida (paso B) y lo guarda en lv_planeadores/lv_banco.
+   Solo con internet; mostrar costo/cupo en Coordinación. Los GEMs v2 son ya el prompt.
+
+E. **Arquitectura etapa 2** (alta dificultad, baja urgencia mientras no crezca el uso):
+   filtrado por fila RLS + consultas bajo demanda + IndexedDB (ver roadmap punto 5).
+
+F. Menores: unificar headers visuales de módulos 10-15, respaldos automáticos
+   (Supabase → Backups programados), campos extra de institución (DANE, resolución,
+   escudo) en lv_institucion y membrete de comunicados.

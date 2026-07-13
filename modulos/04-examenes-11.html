@@ -603,14 +603,37 @@ $('#bq-del-all').addEventListener('click',()=>{
   toast(`Preguntas de esta materia eliminadas`);
 });
 $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
-  try{const d=JSON.parse(await f.text());if(d.app!=='loma_verde_banco_preguntas')throw 0;
+  try{
+    const txt=await f.text();
+    let d; try{ d=JSON.parse(txt); }catch(err){ alert('❌ El archivo no es JSON válido.\n\nDetalle técnico: '+err.message+'\n\nSi lo generó una IA, pídele que entregue SOLO el bloque JSON, sin texto adicional.'); e.target.value='';return; }
+    if(d.app!=='loma_verde_banco_preguntas'){ alert('❌ Este archivo no es un banco de preguntas de SABIE (falta "app":"loma_verde_banco_preguntas").'); e.target.value='';return; }
+    const pregs=d.preguntas||[];
+    if(!Array.isArray(pregs)||!pregs.length){ alert('❌ El archivo no contiene preguntas (lista "preguntas" vacía).'); e.target.value='';return; }
+    // validar cada pregunta; se importan las válidas y se reporta el resto
+    const errores=[]; const validas=[];
+    pregs.forEach((p,i)=>{
+      const ref=`P${i+1}${p.id?' ('+p.id+')':''}`;
+      if(!p.enunciado){ errores.push(ref+': sin enunciado'); return; }
+      if(p.tipo==='multiple'){
+        if(!Array.isArray(p.opciones)||p.opciones.length!==4){ errores.push(ref+': debe tener exactamente 4 opciones'); return; }
+        if(!Number.isInteger(p.correcta)||p.correcta<0||p.correcta>3){ errores.push(ref+': "correcta" debe ser 0, 1, 2 o 3 (A=0 … D=3)'); return; }
+      } else if(p.tipo==='vf'){
+        if(typeof p.correcta!=='boolean'){ errores.push(ref+': en V/F "correcta" debe ser true o false'); return; }
+      } else if(p.tipo==='abierta'){
+        if(!p.respuesta){ errores.push(ref+': pregunta abierta sin "respuesta" modelo'); return; }
+      } else { errores.push(ref+': tipo desconocido "'+(p.tipo||'')+'" (usa multiple, vf o abierta)'); return; }
+      validas.push(p);
+    });
+    if(!validas.length){ alert('❌ Ninguna pregunta pasó la validación:\n\n• '+errores.join('\n• ')); e.target.value='';return; }
+    if(errores.length && !confirm(`⚠️ ${errores.length} pregunta(s) tienen errores y NO se importarán:\n\n• ${errores.join('\n• ')}\n\n¿Importar las ${validas.length} válidas?`)){ e.target.value='';return; }
     const all=lsRead('banco');const ids=new Set(all.map(x=>x.id));let n=0;
     const periodoGlobal = (d.origen && d.origen.periodo) || '';
     const materiaActiva=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales';
-    (d.preguntas||[]).forEach(p=>{if(!p.id)p.id=uid();if(!p.periodo && periodoGlobal)p.periodo=periodoGlobal;if(!p.materia)p.materia=materiaActiva;if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
+    validas.forEach(p=>{if(!p.id)p.id=uid();if(!p.periodo && periodoGlobal)p.periodo=periodoGlobal;if(!p.materia)p.materia=materiaActiva;if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
     if(JSON.stringify(all).length>4600000){toast('⚠️ El banco supera el límite de almacenamiento.');return;}
-    lsWrite('banco',all);renderBanco();toast(n+' pregunta(s) importadas');
-  }catch(_){toast('Archivo no válido');}e.target.value='';});
+    lsWrite('banco',all);renderBanco();toast(`✅ ${n} pregunta(s) importadas`+(errores.length?` · ${errores.length} con errores`:''));
+  }catch(err){ alert('❌ Error inesperado al importar: '+(err&&err.message||err)); }
+  e.target.value='';});
 
 // Selector para agregar del banco al examen
 $('#add-from-bank').addEventListener('click',openBankPicker);

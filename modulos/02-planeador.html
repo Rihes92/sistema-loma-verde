@@ -858,12 +858,32 @@ $('#btn-export-all').addEventListener('click',()=>{
   a.download='planeadores_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Respaldo exportado');
 });
 $('#l-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
-  try{const d=JSON.parse(await f.text());if(d.app!=='loma_verde_planeador')throw 0;
-    if(!confirm('¿Agregar los planeadores del respaldo a los actuales?'))return;
+  try{
+    const txt=await f.text();
+    let d; try{ d=JSON.parse(txt); }catch(err){ alert('❌ El archivo no es JSON válido.\n\nDetalle técnico: '+err.message+'\n\nSi lo generó una IA, pídele que entregue SOLO el bloque JSON, sin texto adicional.'); e.target.value='';return; }
+    if(d.app!=='loma_verde_planeador'){ alert('❌ Este archivo no es un respaldo de planeadores de SABIE (falta "app":"loma_verde_planeador").'); e.target.value='';return; }
+    const planes=d.planeadores||[];
+    if(!Array.isArray(planes)||!planes.length){ alert('❌ El archivo no contiene ningún planeador (lista "planeadores" vacía).'); e.target.value='';return; }
+    // clave "banco" duplicada dentro de un mismo planeador: JSON.parse
+    // descarta la primera aparición y las preguntas se PIERDEN en silencio.
+    const nBanco=(txt.match(/"banco"\s*:/g)||[]).length;
+    if(nBanco>planes.length){ alert('❌ El archivo tiene la clave "banco" REPETIDA dentro de un planeador. Las preguntas de la primera aparición se perderían al importar.\n\nCorrige el JSON (deja UNA sola clave "banco" por planeador) y vuelve a intentar.'); e.target.value='';return; }
+    // validación por planeador
+    const problemas=[];
+    planes.forEach((p,i)=>{
+      const falta=['id','grado','periodo'].filter(k=>!p[k]);
+      if(falta.length) problemas.push(`Planeador ${i+1}${p.unidad?' ("'+String(p.unidad).slice(0,40)+'…")':''}: falta ${falta.join(', ')}`);
+    });
+    if(problemas.length){ alert('❌ No se importó. Corrige esto:\n\n• '+problemas.join('\n• ')); e.target.value='';return; }
+    const totalPregs=planes.reduce((a,p)=>a+((p.banco||[]).length),0);
+    if(!confirm(`Se agregarán ${planes.length} planeador(es)${totalPregs?` (+${totalPregs} pregunta(s) en su banco)`:''} a los actuales. ¿Continuar?`))return;
     const all=lsRead('planeadores');const ids=new Set(all.map(p=>p.id));
-    (d.planeadores||[]).forEach(p=>{if(!ids.has(p.id))all.push(p);});
-    lsWrite('planeadores',all);renderLista();toast('Importados');
-  }catch(_){toast('Archivo no válido');}e.target.value='';});
+    let n=0, dup=0;
+    planes.forEach(p=>{ if(ids.has(p.id)){dup++;} else {all.push(p);ids.add(p.id);n++;} });
+    lsWrite('planeadores',all);renderLista();
+    toast(`✅ ${n} importado(s)`+(dup?` · ${dup} omitido(s) por id repetido`:''));
+  }catch(err){ alert('❌ Error inesperado al importar: '+(err&&err.message||err)); }
+  e.target.value='';});
 
 // ---------- Malla ----------
 $('#m-grado').addEventListener('change',renderMalla);
