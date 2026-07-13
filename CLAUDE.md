@@ -72,19 +72,18 @@ documentos impresos/WhatsApp, que luego será configurable).
      dispositivo — filtrado por fila en RLS (docente ve solo lo suyo) + consultas por
      curso bajo demanda + IndexedDB como caché. Requiere refactor por módulo porque hoy
      todos leen localStorage de forma síncrona.
-4. 🔄 **Seguridad** — en curso: `migracion_seguridad_v2.sql` creado (idempotente):
-   RLS + actualizado_en en las 24 tablas (v1 dejaba 6 por fuera), roles en SERVIDOR
+4. ✅ **Seguridad** — completada (jul 2026): `migracion_seguridad_v2.sql` corrido en
+   Supabase y verificado (0 tablas sin RLS): RLS en TODAS las tablas, roles en SERVIDOR
    para lv_docentes/lv_asignaciones/lv_institucion vía `es_coordinacion()` (lv_malla
-   queda abierta a docentes por el Planeador), y consultas de verificación al final.
-   XSS: escapado agregado a herramientas-comun.js y tiquete.html (selectores).
-   Falta: correr la v2 en Supabase y pegar la verificación; luego etapa 2 de
-   arquitectura (filtrado por fila + datos por demanda).
-   (contexto v1: `migracion_seguridad.sql` —
-   OJO: su lista de tablas NO incluye las nuevas lv_observador, lv_piar,
-   lv_inclusion_actividades, lv_boletines, lv_herramientas ni lv_institucion),
-   políticas por rol en servidor (hoy el gate de Coordinación es solo cliente),
-   unificar escapado XSS (~200 usos de innerHTML, solo 6 módulos tienen `esc()`),
-   y ahí mismo la etapa 2 de arquitectura (filtrado por fila + datos por demanda).
+   abierta a docentes por el Planeador). XSS: escapado agregado a herramientas-comun.js
+   y tiquete.html. Además se detectó y corrigió que lv_resultados, lv11_examenes,
+   lv11_resultados y lv11_simulacros_ext NUNCA existieron en Supabase
+   (`migracion_tablas_faltantes.sql` corrido — esos datos ahora sí sincronizan).
+
+5. ⏳ **Arquitectura etapa 2** — (pendiente, hacer con calma y pruebas): filtrado por
+   fila en RLS (cada docente descarga solo lo suyo), consultas por curso bajo demanda,
+   IndexedDB como caché. Requiere refactor por módulo (hoy leen localStorage síncrono).
+   Referencia: migration_multitenant.sql.
 
 ## Convenciones y trampas conocidas
 
