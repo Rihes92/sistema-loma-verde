@@ -6,6 +6,7 @@
 <title>Observador del Estudiante — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_observador','lv_cursos','lv_estudiantes','lv_acudientes','lv_docentes'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{
@@ -499,7 +500,7 @@ function telWa(t){
 }
 function abrirAlertaWhatsApp(o){
   const docentes=lsRead('docentes').filter(d=>d.telefono&&telWa(d.telefono).length>=11);
-  const msg=`🚨 ALERTA ${o.tipo.toUpperCase()} — I.E. San José de Loma Verde\n`+
+  const msg=`🚨 ALERTA ${o.tipo.toUpperCase()} — ${(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde'}\n`+
     `Estudiante: ${o.estNombre} (${o.curso})\n`+
     `Situación: ${o.descripcion.slice(0,200)}\n`+
     `Registrado por: ${o.autor} — ${fmtF(o.fecha)}\n`+
@@ -528,7 +529,7 @@ document.getElementById('btn-imprimir').addEventListener('click', ()=>{
     <div class="p-head">
       <img src="../Logo/logo.jpg" alt="">
       <div>
-        <h1>Institución Educativa San José de Loma Verde</h1>
+        <h1>${(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde'}</h1>
         <div>OBSERVADOR DEL ESTUDIANTE — Año ${new Date().getFullYear()}</div>
       </div>
     </div>

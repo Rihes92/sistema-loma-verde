@@ -83,6 +83,7 @@
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
+<script>window.LV_SYNC_TABLAS=['lv_planeadores','lv_malla','lv_cursos','lv_docentes','lv_asignaciones'];</script>
 <script src="../sync.js"></script>
 <script src="../lib/xlsx.full.min.js"></script>
 <header class="appbar">
@@ -787,7 +788,7 @@ window.verDoc=id=>{
       <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
       <button class="btn sec" onclick="document.getElementById('doc-out').innerHTML=''">Cerrar</button></div>
     <div class="doc">
-      <div class="head"><h1 class="t">Planeador de Clases — I.E. San José de Loma Verde</h1>
+      <div class="head"><h1 class="t">Planeador de Clases — ${(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde'}</h1>
       <table class="enc">
         ${F('Docente',p.docente)}${F('Periodo',p.periodo)}${F('Fecha',p.fecha)}
         ${F('Área',p.area)}${F('Asignatura',p.asignatura)}${F('Temática',p.tema||p.unidad)}

@@ -191,7 +191,7 @@
                   </svg>
                 </div>
                 <div class="carta-inst">
-                  <h3>INSTITUCIÓN EDUCATIVA SAN JOSÉ DE LOMA VERDE</h3>
+                  <h3 id="carta-inst-nombre">INSTITUCIÓN EDUCATIVA SAN JOSÉ DE LOMA VERDE</h3>
                   <p>Resolución N° 1056 · CÓDIGO DANE: 2530010024<br>
                      Sector Rural · Loma Verde, Montería, Córdoba</p>
                 </div>
@@ -289,7 +289,8 @@ const _c01 = cargarCursosDesde01();
 let cursos      = _c01 || lsR('cursos') || lsRas('cursos') || [];
 let estudiantes = (_c01 ? cargarEstudiantesDesde01() : null) || lsR('estudiantes') || lsRas('estudiantes') || {};
 let historial   = lsR('historial')   || [];
-let config      = lsR('config')      || {docente:'Richard Miguel Hernández Sabié', inst:'I.E. San José de Loma Verde', sede:'Sede Principal'};
+let config      = lsR('config')      || {docente:'Richard Miguel Hernández Sabié', inst:(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde', sede:(window.LV_INST&&LV_INST.sede())||'Sede Principal'};
+(function(){ const el=document.getElementById('carta-inst-nombre'); const n=(config&&config.inst)||(window.LV_INST&&LV_INST.nombre()); if(el&&n) el.textContent=String(n).toUpperCase(); })();
 
 let estado = {
   plantilla:   'citacion',
@@ -324,7 +325,7 @@ const PLANTILLAS = {
       <p>Motivo: <strong>${d.motivo}</strong>.</p>
       <p>Esperamos contar con su valiosa asistencia, recordando que la educación es un compromiso compartido.</p><br><br>
       <p>Atentamente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – I.E. San José de Loma Verde</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
   },
   felicitacion:{
     emoji:'🎉', nombre:'Felicitación y reconocimiento',
@@ -344,7 +345,7 @@ const PLANTILLAS = {
       ${d.comentario?`<p style="border-left:3px solid #16a34a;padding:8px 12px;background:#f0fdf4;font-style:italic">"${d.comentario}"</p>`:''}
       <p>Los buenos resultados son fruto del esfuerzo conjunto. Lo animamos a continuar brindando su valioso acompañamiento.</p><br><br>
       <p>Atentamente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – I.E. San José de Loma Verde</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
   },
   mejoramiento:{
     emoji:'📝', nombre:'Plan de mejoramiento',
@@ -364,7 +365,7 @@ const PLANTILLAS = {
       <div style="background:#f9fafb;border:1px solid #e5e7eb;padding:10px 14px;border-radius:8px;white-space:pre-wrap;font-size:10pt;margin:10px 0">${d.actividades||''}</div>
       <p>Fecha máxima de entrega: <strong>${fmtF(d.fecha_entrega)}</strong>. Solicitamos acompañar al estudiante en la preparación de estas actividades.</p><br><br>
       <p>Atentamente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – I.E. San José de Loma Verde</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
   },
   circular:{
     emoji:'🏫', nombre:'Circular general / informativa',
@@ -383,7 +384,7 @@ const PLANTILLAS = {
       <div style="white-space:pre-wrap;margin:10px 0">${d.contenido||''}</div>
       <p>Agradecemos su apoyo, colaboración y corresponsabilidad en los proyectos formativos de nuestra comunidad rural.</p><br><br>
       <p>Cordialmente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – I.E. San José de Loma Verde</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
   }
 };
 
@@ -541,7 +542,7 @@ function getDatos(){
     curso:cursoObj?`${cursoObj.nombre}${cursoObj.grado?' – '+cursoObj.grado:''}`:'______',
     sede: config.sede||'Principal',
     doc:  config.docente||'Docente',
-    inst: config.inst||'I.E. San José de Loma Verde',
+    inst: config.inst||(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde',
     acudiente:document.getElementById('inp-acudiente').value||'______',
     telefono: document.getElementById('inp-telefono').value||'',
     ...estado.campos
@@ -758,6 +759,7 @@ function elimEst(id){
 // ── ARRANQUE ──────────────────────────────────────────────────
 init();
 </script>
+<script>window.LV_SYNC_TABLAS=['lv_com_historial','lv_cursos','lv_estudiantes','lv_acudientes','lv_docentes'];</script>
 <script src="../sync.js"></script>
 </body>
 </html>

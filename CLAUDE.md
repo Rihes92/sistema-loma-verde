@@ -55,13 +55,29 @@ documentos impresos/WhatsApp, que luego será configurable).
    incompleto, títulos unificados "— SABIE", nombre institucional fuera de la UI.
 2. ✅ **Visual** — login pantalla dividida (solo logo+nombre+significado, centrado),
    portal con sidebar. Paleta azul se mantiene.
-3. ⏳ **Arquitectura** — (siguiente) dejar de espejar TODA la base en localStorage
-   (límite 5 MB, privacidad Ley 1581): consultas por curso/módulo bajo demanda con
-   IndexedDB como caché offline; branding configurable por institución (tabla
-   `instituciones`); unificar CSS duplicado; una sola fuente para URL/KEY de Supabase.
-4. ⏳ **Seguridad** — verificar/activar RLS (`migracion_seguridad.sql`), políticas por rol
-   en servidor (hoy el gate de Coordinación es solo cliente), unificar escapado XSS
-   (~200 usos de innerHTML, solo 6 módulos tienen helper `esc()`).
+3. ✅ **Arquitectura (etapa 1)** — hecho:
+   - URL/KEY de Supabase en UNA fuente: `auth.js` (LV_AUTH); `sync.js` la referencia.
+   - **Branding configurable:** tabla `lv_institucion` (correr `migracion_instituciones.sql`
+     en Supabase), helper `LV_INST` en auth.js (nombre/corto/sede con fallback al nombre
+     actual), se edita en Coordinación → Resumen → Institución. Los documentos impresos,
+     WhatsApp y exámenes exportados (viaja en `DATA.inst`) ya lo usan.
+   - **Sync por demanda:** cada módulo declara `window.LV_SYNC_TABLAS=[...]` antes de
+     sync.js → descarga/polling solo tocan esas tablas (+lv_institucion siempre).
+     El portal, coordinación y login sincronizan todo (sin declaración). Las subidas
+     nunca se filtran. Si un módulo lee una tabla no declarada, el dato llega igual al
+     pasar por el portal; solo agregar la clave a su lista si necesita frescura en vivo.
+   - CSS duplicado: se evaluó y se pospuso (solo 12 reglas idénticas entre módulos;
+     riesgo > beneficio). Hacerlo cuando se rediseñen módulos con componentes comunes.
+   - **Pendiente (etapa 2, va junto con seguridad):** dejar de espejar toda la base por
+     dispositivo — filtrado por fila en RLS (docente ve solo lo suyo) + consultas por
+     curso bajo demanda + IndexedDB como caché. Requiere refactor por módulo porque hoy
+     todos leen localStorage de forma síncrona.
+4. ⏳ **Seguridad** — (siguiente) verificar/activar RLS (`migracion_seguridad.sql` —
+   OJO: su lista de tablas NO incluye las nuevas lv_observador, lv_piar,
+   lv_inclusion_actividades, lv_boletines, lv_herramientas ni lv_institucion),
+   políticas por rol en servidor (hoy el gate de Coordinación es solo cliente),
+   unificar escapado XSS (~200 usos de innerHTML, solo 6 módulos tienen `esc()`),
+   y ahí mismo la etapa 2 de arquitectura (filtrado por fila + datos por demanda).
 
 ## Convenciones y trampas conocidas
 

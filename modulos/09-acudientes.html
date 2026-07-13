@@ -7,6 +7,7 @@
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
+<script>window.LV_SYNC_TABLAS=['lv_acudientes','lv_cursos','lv_estudiantes'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{
@@ -122,7 +123,7 @@ function waMsg(a){
   const hijos=(a.hijos&&a.hijos.length)?a.hijos:(a.estudiante?[{estudiante:a.estudiante,grado:a.grado,grupo:a.grupo}]:[]);
   const txt=hijos.map(h=>`${h.estudiante||''}${h.grado?' ('+h.grado+(h.grupo?'-'+h.grupo:'')+')':''}`).join(', ');
   return encodeURIComponent(
-    `Buenos días. Le escribimos de la I.E. San José de Loma Verde respecto a su${hijos.length>1?'s acudidos':' acudido(a)'} ${txt}. `);
+    `Buenos días. Le escribimos de la ${(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde'} respecto a su${hijos.length>1?'s acudidos':' acudido(a)'} ${txt}. `);
 }
 
 function quienEsta(){

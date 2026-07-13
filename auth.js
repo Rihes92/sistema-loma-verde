@@ -139,3 +139,22 @@ const LV_AUTH = (() => {
 
   return { login, logout, exigirSesion, haySesion, getValidToken, refrescar, usuario, docenteId, cambiarPassword, URL, KEY };
 })();
+
+// ═══════════════════════════════════════════════════════════════
+//  LV_INST — Identidad de la institución (branding configurable)
+//  Lee el registro sincronizado desde la tabla `lv_institucion`
+//  (ver migracion_instituciones.sql). Si aún no existe, usa los
+//  valores actuales como respaldo para no romper nada.
+//  Se edita desde Coordinación → Resumen → Institución.
+// ═══════════════════════════════════════════════════════════════
+const LV_INST = {
+  _get() {
+    try {
+      const a = JSON.parse(localStorage.getItem('lv_institucion')) || [];
+      return (Array.isArray(a) ? a.find(x => x && !x._eliminado) : null) || {};
+    } catch (_) { return {}; }
+  },
+  nombre() { return this._get().nombre      || 'Institución Educativa San José de Loma Verde'; },
+  corto()  { return this._get().nombreCorto || 'I.E. San José de Loma Verde'; },
+  sede()   { return this._get().sede        || 'Sede Principal'; }
+};

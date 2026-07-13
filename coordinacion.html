@@ -150,6 +150,16 @@
 
   <section id="tab-resumen" class="hide">
     <div class="card">
+      <h2>🏫 Institución</h2>
+      <p class="desc">Identidad que aparece en documentos impresos, boletines, exámenes y mensajes de WhatsApp. Se guarda en la nube y aplica a todos los dispositivos.</p>
+      <div class="row">
+        <label class="fld">Nombre completo<input id="inst-nombre" placeholder="Institución Educativa ..."></label>
+        <label class="fld">Nombre corto<input id="inst-corto" placeholder="I.E. ..."></label>
+        <label class="fld">Sede<input id="inst-sede" placeholder="Sede Principal"></label>
+        <label class="fld" style="flex:0 0 auto;justify-content:flex-end"><button class="btn ok" id="btn-inst-guardar">💾 Guardar</button></label>
+      </div>
+    </div>
+    <div class="card">
       <h2>Estado del sistema (este dispositivo)</h2>
       <div id="estado-out"><p class="desc">Cargando…</p></div>
       <div style="margin-top:12px">
@@ -738,6 +748,24 @@ function renderResumen(){
 // ---------- arranque ----------
 fillSedeSelects(); fillDocenteSelects(); fillAreaSelect(); fillGradoSelect(); fillMateriaFiltro();
 renderDocentes(); renderAsignaciones();
+
+// ── Institución (branding configurable — tabla lv_institucion) ──
+(function(){
+  const $n=document.getElementById('inst-nombre'), $c=document.getElementById('inst-corto'), $s=document.getElementById('inst-sede');
+  if(!$n) return;
+  function leerInst(){ try{ const a=JSON.parse(localStorage.getItem('lv_institucion'))||[]; return (Array.isArray(a)?a.find(x=>x&&!x._eliminado):null)||null; }catch(_){ return null; } }
+  const r=leerInst()||{};
+  $n.value=r.nombre||'Institución Educativa San José de Loma Verde';
+  $c.value=r.nombreCorto||'I.E. San José de Loma Verde';
+  $s.value=r.sede||'Sede Principal';
+  document.getElementById('btn-inst-guardar').addEventListener('click',()=>{
+    const reg={ id:(leerInst()||{}).id||'principal', nombre:$n.value.trim(), nombreCorto:$c.value.trim()||$n.value.trim(), sede:$s.value.trim(), actualizado_en:new Date().toISOString() };
+    if(!reg.nombre){ toast('Escribe el nombre de la institución'); return; }
+    localStorage.setItem('lv_institucion', JSON.stringify([reg]));
+    if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_institucion', reg);
+    toast('✅ Institución guardada y sincronizada');
+  });
+})();
 </script>
 </body>
 </html>

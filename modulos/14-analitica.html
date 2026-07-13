@@ -6,6 +6,7 @@
 <title>Analítica — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv11_examenes','lv11_resultados','lv_resultados','lv_examenes','lv_calificaciones','lv_cursos','lv_estudiantes','lv_herramientas','lv_as_asistencia','lv_observador'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{
@@ -110,7 +111,7 @@ function lsRead(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||[]; }cat
 function lsObj(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||{}; }catch(_){ return {}; } }
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
-const IE='Institución Educativa San José de Loma Verde';
+const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde';
 const COMPETENCIAS=['Pensamiento social','Interpretación y análisis de perspectivas','Pensamiento reflexivo y sistémico'];
 const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};
 

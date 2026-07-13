@@ -6,6 +6,7 @@
 <title>Boletines — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_boletines','lv_calificaciones','lv_cursos','lv_estudiantes','lv_observador','lv_docentes','lv_asignaciones','lv_as_asistencia'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{
@@ -113,7 +114,7 @@ const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
 const esAdmin=!!(login&&login.esAdmin);
-const IE='Institución Educativa San José de Loma Verde';
+const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde';
 const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};
 
 // ── escala y pesos reales del módulo de Calificaciones ──

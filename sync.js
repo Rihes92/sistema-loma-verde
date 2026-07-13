@@ -16,8 +16,10 @@
 
 const LV_SYNC = (() => {
 
-  const URL  = 'https://loztrkwlttxyfhbkznyu.supabase.co';
-  const KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvenRya3dsdHR4eWZoYmt6bnl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDU5OTQsImV4cCI6MjA5NzAyMTk5NH0.HBBk8NVUVTArqoEsqUWSil3uMIFZfnLFhhlE6M000ao';
+  // URL y KEY viven en UN solo lugar: auth.js (LV_AUTH). auth.js se
+  // carga SIEMPRE antes que este archivo en todas las páginas.
+  const URL  = LV_AUTH.URL;
+  const KEY  = LV_AUTH.KEY;
 
   // ── Cabeceras: token del docente si hay sesión, si no la anon key.
   //  (El fallback a anon key mantiene la app funcionando mientras no
@@ -59,7 +61,21 @@ const LV_SYNC = (() => {
     'lv_inclusion_actividades': { tabla: 'lv_inclusion_actividades', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_boletines':      { tabla: 'lv_boletines',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_herramientas':   { tabla: 'lv_herramientas',   id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_institucion':    { tabla: 'lv_institucion',    id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
+
+  // ── Sincronización por demanda ──────────────────────────────
+  //  Si la página define window.LV_SYNC_TABLAS = ['lv_cursos', ...],
+  //  la descarga y el polling solo tocan esas tablas (más
+  //  lv_institucion, que es diminuta y se necesita en todas).
+  //  Sin declaración (portal, coordinación, login) se sincroniza todo.
+  //  Las SUBIDAS (marcarCambio/subirPendientes) nunca se filtran.
+  function tablasActivas() {
+    const lista = window.LV_SYNC_TABLAS;
+    if (!Array.isArray(lista) || !lista.length) return Object.entries(MAPA);
+    const set = new Set(lista.concat(['lv_institucion']));
+    return Object.entries(MAPA).filter(([k]) => set.has(k));
+  }
 
   // ── Utilidades ───────────────────────────────────────────────
   function online() { return navigator.onLine; }
@@ -234,7 +250,7 @@ const LV_SYNC = (() => {
     console.log('[LV Sync] ⬇️ Descargando datos...');
     const marcas = ultimaDescargaGet();
 
-    for (const [lvKey, cfg] of Object.entries(MAPA)) {
+    for (const [lvKey, cfg] of tablasActivas()) {
       const incremental = cfg.incremental !== false && !forzarCompleta;
       const desde = incremental ? marcas[cfg.tabla] : null;
       const remotos = await bajar(cfg.tabla, desde || null);
@@ -382,7 +398,7 @@ const LV_SYNC = (() => {
 
   // ── Snapshot para detectar si algo cambió tras una descarga ─
   function snapshotLocal() {
-    return Object.keys(MAPA).map(k => localStorage.getItem(k) || '').join('||');
+    return tablasActivas().map(([k]) => localStorage.getItem(k) || '').join('||');
   }
 
   // ── Auto-actualización entre dispositivos ───────────────────
