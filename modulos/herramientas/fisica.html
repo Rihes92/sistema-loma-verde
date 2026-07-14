@@ -75,7 +75,7 @@
 </div>
 <div class="card"><h2>Historial</h2><div id="historial"></div></div>
 </main>
-<div id="toast"></div>
+<div id="toast" role="alert" aria-live="assertive"></div>
 <script>
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}

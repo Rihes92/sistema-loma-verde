@@ -3,6 +3,75 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 5)
+
+- **Auditoría de diseño UI/UX (10 prioridades) + correcciones, sesión punto por punto.**
+  Francy encontró un framework de diseño de terceros (`ui-ux-pro-max`, no instalable en
+  esta sesión de Cowork) con 10 categorías priorizadas; se aplicaron los mismos principios
+  manualmente. Auditoría completa hecha primero (sin tocar código), luego correcciones
+  UNA POR UNA a pedido de Francy ("vamos uno a uno, push al final"). Resultado por punto:
+  1. **Accesibilidad:** `lv-tema.css` → `--muted` (#64748b→#475569), `--ok`
+     (#16a34a→#15803d) y `--warn` (#d97706→#b45309) oscurecidos para pasar 4.5:1 de
+     contraste (antes 3.2-4.3:1). Como `lv-tema.css` es la única fuente de esas variables
+     (se carga al final, gana el cascade), el fix aplica a TODA la app sin tocar módulo
+     por módulo. Se agregó `role="alert" aria-live="assertive"` a los 19 `<div id="toast">`
+     de la app (coordinacion.html + 18 módulos) para que lectores de pantalla anuncien
+     los mensajes.
+  2. **Táctil:** `modulos/05-asistencia.html` le faltaba el reset
+     `input[type=checkbox],input[type=radio]{width:16px;height:16px;...}` que ya tenían
+     coordinacion.html y 17-centros-interes.html — los radios P/F/T/E de la tabla de
+     asistencia diaria quedaban estirados por la regla genérica `input,select{width:100%}`.
+     Corregido con el mismo patrón.
+  3. **Performance:** `login.html` → los dos `<img src="Logo/sabie-full.jpg">` (logo
+     grande, 1024×1024) no tenían `width`/`height`, riesgo de layout shift al cargar —
+     agregado. `Logo/Logo_nuevo.png` (4.9MB) y `Logo/sabie-full.png` (985KB) están
+     huérfanos (no los referencia ningún archivo) — **Francy debe borrarlos a mano**,
+     Claude no tiene permiso de borrado en esa carpeta OneDrive desde esta sesión.
+  4. **Iconografía (piloto, a pedido de Francy):** los 18 íconos del sidebar de
+     `index.html` (menú principal del portal) se reemplazaron de emoji a SVG inline
+     (trazo `currentColor`, sin relleno, 19×19px) — CSS `.sb-link .ic` actualizado para
+     acomodarlos. Quedan ~49 emojis sin tocar en el resto de `index.html` (íconos de
+     materias del dashboard, alertas) y el resto de la app (~300+ emojis) intacta —
+     decisión explícita de Francy de hacer solo un piloto antes de decidir si se
+     generaliza. **Pendiente: que Francy vea el resultado y decida si se hace en el
+     resto de la app.**
+  5. **Layout responsive:** revisado a fondo, NO se tocó nada — ya está bien resuelto
+     (sidebar colapsa a menú deslizante en móvil vía `@media(max-width:920px)`, grillas
+     usan `repeat(auto-fit/auto-fill,minmax(...))` que no necesitan media query, tablas
+     con `.tableScroll` de scroll horizontal + primera columna fija, tabs con
+     `overflow-x:auto`). Único hallazgo: breakpoints inconsistentes entre módulos
+     (600/640/700/760/800/880/920px) para el mismo patrón — cosmético, no se tocó por
+     bajo beneficio/riesgo.
+  6. **Tipografía:** en `index.html` se subieron los 3 textos más pequeños del portal:
+     subtítulo del sidebar (.62rem→.7rem), etiquetas de sección (.66rem→.72rem), contador
+     de materias (.7rem→.75rem). El mismo patrón (texto <12px) se repite en ~20 módulos
+     más (calendarios, badges, celdas de tabla) — NO tocado ahí porque los espacios son
+     más ajustados y no hay forma de verificar visualmente que no se desborde sin
+     renderizar. Pendiente si Francy quiere que se revise módulo por módulo.
+  7. **Animación:** agregado soporte global a `prefers-reduced-motion` en `lv-tema.css`
+     (anula duración de animaciones/transiciones vía `!important` cuando el sistema
+     operativo lo pide) — cubre toda la app de una vez al ser el tema compartido.
+  8. **Formularios:** revisado `login.html` (el más crítico) — ya está bien resuelto
+     (labels visibles, `role="alert"`, estados de carga "Verificando…"/"Cargando tus
+     datos…", validación nativa HTML5 vía `required`). No se tocó nada.
+  9. **Navegación:** hallazgo corregido del audit inicial — la app YA tiene
+     `materia-context.js` (`LV_CTX`), que inyecta dinámicamente un botón "← Atrás" y un
+     pill con la materia activa en el header de cada módulo cuando se entra desde una
+     materia específica (vía `materia-hub.html`). Ya resuelve el problema de "contexto
+     perdido" que se había señalado en el audit. La diferencia sidebar (portal) vs
+     topbar+tabs (módulos) es un patrón "drill-down" intencional, no se tocó.
+  10. **Gráficos/datos:** `modulos/05-asistencia.html` → se agregó la letra (P/F/T/E)
+      visible debajo del ícono en cada encabezado de columna de la tabla de asistencia,
+      para no depender solo del color (accent-color) ni de un `title` que no se ve en
+      celular.
+  SW **v53**. `node --check`-equivalente (extracción de bloques `<script>` + `new
+  Function`) limpio en `index.html` y `modulos/05-asistencia.html`, los dos archivos con
+  cambios de JS/markup no triviales.
+  **PENDIENTE:** push de todo este lote (Francy pidió hacerlo al final, no por punto);
+  que Francy borre `Logo/Logo_nuevo.png` y `Logo/sabie-full.png` a mano; decidir si el
+  piloto de íconos SVG se generaliza a toda la app; decidir si vale la pena revisar
+  texto pequeño y breakpoints módulo por módulo.
+
 ## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026 — sesión 4)
 
 - **Backlog F completado — campos de institución + membrete.** Francy pasó los datos

@@ -26,6 +26,7 @@
   .row>*{flex:1;min-width:160px}
   label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
   input,select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text)}
+  input[type=checkbox],input[type=radio]{appearance:auto;width:16px;height:16px;min-width:16px;flex:0 0 auto;padding:0;margin:0;border:0;background:none}
   input:focus,select:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
   button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
   button.btn.sec{background:#e2e8f0;color:var(--text)}
@@ -199,7 +200,7 @@
   </section>
 </main>
 
-<div id="toast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:10px 20px;border-radius:8px;font-size:.88rem;font-weight:600;display:none;z-index:999;white-space:nowrap"></div>
+<div id="toast" role="alert" aria-live="assertive" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#fff;padding:10px 20px;border-radius:8px;font-size:.88rem;font-weight:600;display:none;z-index:999;white-space:nowrap"></div>
 
 <script>
 // ── PERSISTENCIA localStorage ──────────────────────────────────
@@ -326,7 +327,7 @@ function renderLista(){
     html+=`<span style="color:${k==='P'?'#16a34a':k==='F'?'#dc2626':k==='T'?'#d97706':'#0369a1'}">${v.e} ${v.l}</span>`;
   html+=`</div><div class="tableScroll"><table><thead><tr>
     <th>#</th><th>Estudiante</th>
-    ${Object.entries(LABELS).map(([k,v])=>`<th class="c" title="${v.l}">${v.e}</th>`).join('')}
+    ${Object.entries(LABELS).map(([k,v])=>`<th class="c" title="${v.l}">${v.e}<br><span style="font-size:.7rem;font-weight:700;opacity:.7">${k}</span></th>`).join('')}
   </tr></thead><tbody>`;
 
   ests.forEach((est,i)=>{
