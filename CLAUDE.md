@@ -3,6 +3,20 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 7, arreglo rápido)
+
+- **Fuga de privacidad en Progreso (`01-calificaciones.html`), hallada por Francy tras
+  probar el importador.** Desde la materia "Democracia" veía el progreso de cursos de
+  Ciencias Sociales e incluso de Lengua Castellana (otra docente). Causa: la pestaña
+  Progreso usa una función propia `fillProgresoSelect()` (separada de
+  `fillCursoSelects()`) para llenar el `<select>` de curso, y esa función listaba
+  `cursos` sin filtrar — no usaba `LV_CTX.filtrar(cursos)` como sí hacen `#p-curso`,
+  `#r-curso` y `#n-curso` en la misma pestaña. Bug preexistente, no introducido en
+  esta sesión. Arreglado: ahora `fillProgresoSelect()` aplica el mismo filtro por
+  materia. SW **v55**. `node --check`-equivalente limpio.
+  **PENDIENTE:** push; que Francy confirme desde una cuenta/materia normal que
+  Progreso ya solo muestra sus propios cursos.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 6)
 
 - **Importador de notas + Nivelaciones, en `modulos/01-calificaciones.html`.** Francy

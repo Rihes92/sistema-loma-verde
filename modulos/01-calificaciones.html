@@ -1229,7 +1229,12 @@ window.addEventListener('unhandledrejection',e=>{console.error(e.reason);toast('
 /* ── Helpers ── */
 function fillProgresoSelect(){
   const sel=$('#pr-curso');
-  const opts=cursos.map(c=>`<option value="${c.id}">${esc(c.nombre)} (${esc(c.grado)}${c.grupo?' '+esc(c.grupo):''})</option>`).join('');
+  // Bug real (hallado por Francy jul 2026): esta función listaba TODOS los
+  // cursos del espejo local (de todos los docentes), sin filtrar por materia
+  // como sí hace fillCursoSelects() para #p-curso/#r-curso/#n-curso — por eso
+  // desde una materia se veía el progreso de otras. Mismo filtro que el resto.
+  const cursosVista=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;
+  const opts=cursosVista.map(c=>`<option value="${c.id}">${esc(c.nombre)} (${esc(c.grado)}${c.grupo?' '+esc(c.grupo):''})</option>`).join('');
   sel.innerHTML='<option value="">— Elige un curso —</option>'+opts;
 }
 
