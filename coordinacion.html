@@ -793,7 +793,14 @@ function renderResumen(){
 // líder + docentes (decisión de Francy, jul 14: vive en Coordinación,
 // no dentro del módulo 17). El módulo 17 solo LEE lv_centros para que
 // cada docente vea los suyos y gestione inscripciones/asistencia.
-const LINEAS_CENTRO = ['Arte','Deporte','Música y danza','Oralidad','Lectura y escritura','Medio ambiente','Ciudadanía y convivencia','Ciencia y tecnología','Pensamiento lógico-matemático','Emprendimiento','Bilingüismo','Otra'];
+// Líneas alineadas al Programa de Tutorías para el Aprendizaje y la Formación
+// Integral (PTAFI 3.0, MEN 2025): arte y cultura, deporte y actividad física,
+// ciencia, pensamiento histórico, tecnología e innovación, y la estrategia
+// CRESE (educación ciudadana para la reconciliación, antirracista,
+// socioemocional y para el cambio climático) — ver articles-425213_recurso_14.pdf.
+// Se conservan además líneas propias de Loma Verde (música y danza, oralidad,
+// lectura y escritura, lógico-matemático, emprendimiento, bilingüismo).
+const LINEAS_CENTRO = ['Arte y cultura','Deporte y actividad física','Música y danza','Oralidad','Lectura y escritura','Ciencia','Pensamiento histórico','Tecnología e innovación','Medio ambiente','Ciudadanía y convivencia','CRESE (ciudadana, antirracista, socioemocional, cambio climático)','Pensamiento lógico-matemático','Emprendimiento','Bilingüismo','Otra'];
 let centros = lsRead('centros');
 let centroEditId = null;
 let centroDocentesSel = new Set();
