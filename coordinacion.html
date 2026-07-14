@@ -30,6 +30,12 @@
   label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
   input,select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text)}
   input:focus,select:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  /* La regla genérica de arriba (padding/border/width:100%) también le pegaba a
+     checkboxes y radios, inflándolos a cajas gigantes. Se resetean aparte. */
+  input[type=checkbox],input[type=radio]{appearance:auto;width:16px;height:16px;min-width:16px;flex:0 0 auto;padding:0;margin:0;border:0;background:none}
+  .checklist{max-height:240px;overflow-y:auto;overflow-x:hidden;border:1px solid var(--border);border-radius:8px;padding:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px 14px;align-content:start}
+  .checklist label{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;cursor:pointer;min-width:0}
+  .checklist label span.nom{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
   button.btn.sec{background:#e2e8f0;color:var(--text)}
   button.btn.ok{background:var(--ok)}
@@ -155,10 +161,16 @@
         <label class="fld">Líder (docente)<select id="c-lider"></select></label>
       </div>
       <label class="fld">Descripción<textarea id="c-desc" rows="2" style="width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:9px;font-size:.9rem;resize:vertical;font-family:inherit" placeholder="Objetivo del centro, horario de encuentro, etc. (opcional)"></textarea></label>
+      <div class="row" style="margin-top:12px">
+        <label class="fld">Población objetivo (opcional)<input id="c-poblacion" placeholder="Ej: 12 a 17 años, básica secundaria"></label>
+        <label class="fld">Enlace a la ficha completa (opcional)<input id="c-ficha-url" type="url" placeholder="https://... (Word/PDF en OneDrive, Drive, etc.)"></label>
+      </div>
+      <label class="fld">Objetivo general (opcional)<textarea id="c-objetivo" rows="2" style="width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:9px;font-size:.9rem;resize:vertical;font-family:inherit" placeholder="Ej: Fomentar el desarrollo integral de los estudiantes mediante..."></textarea></label>
+      <p class="desc" style="margin-top:2px">Estos 3 campos son un resumen rápido. Si tienes la ficha PTAFI completa del centro (justificación, metodología, cronograma, recursos...), súbela a OneDrive/Drive y pega aquí el enlace en vez de transcribirla.</p>
       <div style="margin-top:12px">
         <label class="fld" style="margin-bottom:6px">Docentes asignados</label>
         <input id="c-doc-buscar" placeholder="Buscar docente por nombre…" style="margin-bottom:8px">
-        <div id="c-docentes-list" style="max-height:220px;overflow:auto;border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px"></div>
+        <div id="c-docentes-list" class="checklist"></div>
         <p class="desc" id="c-doc-count" style="margin-top:6px">0 docente(s) seleccionado(s)</p>
       </div>
       <div style="margin-top:12px;display:flex;gap:10px">
@@ -274,6 +286,7 @@ function lsWrite(s,arr){
 }
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const safeUrl=u=>/^https?:\/\//i.test(u||'')?u:'#';
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 
 // ---------- catálogos ----------
@@ -825,8 +838,9 @@ function renderDocentesCheckList(filtro){
   const q = (filtro||'').toLowerCase();
   const lista = docentes.filter(d=>!q || (d.nombre||'').toLowerCase().includes(q)).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
   wrap.innerHTML = lista.length ? lista.map(d=>`
-    <label style="display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;cursor:pointer">
-      <input type="checkbox" class="c-doc-chk" value="${d.id}" ${centroDocentesSel.has(d.id)?'checked':''}> ${esc(d.nombre)} <span class="muted" style="font-size:.75rem">(${esc(d.sede||'—')})</span>
+    <label title="${esc(d.nombre)} (${esc(d.sede||'—')})">
+      <input type="checkbox" class="c-doc-chk" value="${d.id}" ${centroDocentesSel.has(d.id)?'checked':''}>
+      <span class="nom">${esc(d.nombre)} <span class="muted" style="font-size:.75rem">(${esc(d.sede||'—')})</span></span>
     </label>`).join('') : '<p class="desc" style="margin:0">Sin docentes que coincidan.</p>';
   wrap.querySelectorAll('.c-doc-chk').forEach(chk=>{
     chk.addEventListener('change', ()=>{
@@ -848,6 +862,9 @@ function limpiarFormCentro(){
   fillLiderSelect();
   document.getElementById('c-lider').value='';
   document.getElementById('c-desc').value='';
+  document.getElementById('c-poblacion').value='';
+  document.getElementById('c-objetivo').value='';
+  document.getElementById('c-ficha-url').value='';
   centroDocentesSel = new Set();
   document.getElementById('c-doc-buscar').value='';
   renderDocentesCheckList('');
@@ -867,6 +884,9 @@ document.getElementById('btn-centro-save').addEventListener('click', ()=>{
     sede: document.getElementById('c-sede').value.trim(),
     cupo: document.getElementById('c-cupo').value ? parseInt(document.getElementById('c-cupo').value,10) : null,
     descripcion: document.getElementById('c-desc').value.trim(),
+    poblacion: document.getElementById('c-poblacion').value.trim(),
+    objetivoGeneral: document.getElementById('c-objetivo').value.trim(),
+    fichaUrl: document.getElementById('c-ficha-url').value.trim(),
     liderId: document.getElementById('c-lider').value || '',
     docentesIds: Array.from(centroDocentesSel),
     creado: previo ? (previo.creado || Date.now()) : Date.now()
@@ -890,6 +910,9 @@ function editarCentro(id){
   document.getElementById('c-sede').value = c.sede||'';
   document.getElementById('c-cupo').value = c.cupo!=null?c.cupo:'';
   document.getElementById('c-desc').value = c.descripcion||'';
+  document.getElementById('c-poblacion').value = c.poblacion||'';
+  document.getElementById('c-objetivo').value = c.objetivoGeneral||'';
+  document.getElementById('c-ficha-url').value = c.fichaUrl||'';
   fillLiderSelect();
   document.getElementById('c-lider').value = c.liderId||'';
   centroDocentesSel = new Set(c.docentesIds||[]);
@@ -924,7 +947,7 @@ function renderCentros(){
   lista.forEach(c=>{
     const lider = docentes.find(d=>d.id===c.liderId);
     html += `<tr>
-      <td><strong>${esc(c.nombre)}</strong>${c.descripcion?`<div class="desc" style="margin:2px 0 0">${esc(c.descripcion)}</div>`:''}</td>
+      <td><strong>${esc(c.nombre)}</strong>${c.descripcion?`<div class="desc" style="margin:2px 0 0">${esc(c.descripcion)}</div>`:''}${c.poblacion?`<div class="desc" style="margin:2px 0 0">👥 ${esc(c.poblacion)}</div>`:''}${c.fichaUrl?`<div style="margin:2px 0 0"><a href="${esc(safeUrl(c.fichaUrl))}" target="_blank" rel="noopener" style="font-size:.78rem;color:var(--primary);font-weight:600">📄 Ver ficha completa</a></div>`:''}</td>
       <td>${esc(c.linea||'—')}</td>
       <td>${esc(c.jornada||'—')}</td>
       <td>${lider?esc(lider.nombre):'<span class="muted">Sin asignar</span>'}</td>

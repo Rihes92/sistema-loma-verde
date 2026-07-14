@@ -30,12 +30,12 @@
   label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
   input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.9rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
   input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
-  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
-  button.btn.sec{background:#e2e8f0;color:var(--text)}
-  button.btn.ok{background:var(--ok)}
-  button.btn.bad{background:var(--bad);color:#fff}
-  button.btn.sm{padding:6px 10px;font-size:.8rem}
-  button.btn:hover{filter:brightness(1.07)}
+  .btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+  .btn.sec{background:#e2e8f0;color:var(--text)}
+  .btn.ok{background:var(--ok)}
+  .btn.bad{background:var(--bad);color:#fff}
+  .btn.sm{padding:6px 10px;font-size:.8rem}
+  .btn:hover{filter:brightness(1.07)}
   button.btn:disabled{opacity:.5;cursor:not-allowed}
   table{width:100%;border-collapse:collapse;font-size:.86rem}
   th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
@@ -51,8 +51,12 @@
   .centro-card h3{font-size:1rem;color:var(--primary)}
   .centro-card .metas{display:flex;gap:6px;flex-wrap:wrap}
   .centro-card .info{font-size:.82rem;color:var(--muted)}
-  .checklist{max-height:280px;overflow:auto;border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px}
-  .checklist label{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;cursor:pointer}
+  /* La regla genérica de arriba (input,select,textarea{width:100%;padding;border})
+     también inflaba checkboxes y radios a cajas gigantes. Se resetean aparte. */
+  input[type=checkbox],input[type=radio]{appearance:auto;width:16px;height:16px;min-width:16px;flex:0 0 auto;padding:0;margin:0;border:0;background:none}
+  .checklist{max-height:280px;overflow-y:auto;overflow-x:hidden;border:1px solid var(--border);border-radius:8px;padding:10px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px 14px;align-content:start}
+  .checklist label{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;cursor:pointer;min-width:0}
+  .checklist label span.nom{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .radio-p{accent-color:#16a34a}
   .radio-f{accent-color:#dc2626}
   .radio-t{accent-color:#d97706}
@@ -202,6 +206,7 @@
 // ═══════════════════════════════════════════════════════════════
 const $ = s => document.querySelector(s);
 const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u||'') ? u : '#';
 const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const norm = v => String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
 function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
@@ -325,8 +330,13 @@ function renderCentros(){
       </div>
       <div class="info">${c.sede?esc(c.sede)+' · ':''}Líder: ${c.liderId?esc(nombreDocente(c.liderId)||'—'):'sin asignar'}</div>
       <div class="info">${(c.docentesIds||[]).length} docente(s) asignado(s) · ${inscritos}${c.cupo?'/'+c.cupo:''} inscrito(s)</div>
+      ${c.poblacion?`<div class="info">👥 ${esc(c.poblacion)}</div>`:''}
       ${c.descripcion?`<div class="info" style="font-style:italic">${esc(c.descripcion)}</div>`:''}
-      <button class="btn sm" style="margin-top:6px" onclick="seleccionarCentro('${c.id}')">Gestionar →</button>
+      ${c.objetivoGeneral?`<div class="info" style="font-style:italic">🎯 ${esc(c.objetivoGeneral)}</div>`:''}
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+        <button class="btn sm" onclick="seleccionarCentro('${c.id}')">Gestionar →</button>
+        ${c.fichaUrl?`<a class="btn sec sm" href="${esc(safeUrl(c.fichaUrl))}" target="_blank" rel="noopener">📄 Ficha completa</a>`:''}
+      </div>
     </div>`;
   }).join('')}</div>`;
 }
@@ -454,7 +464,10 @@ function renderPicker(filtro){
     .sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
   if(!lista.length){ wrap.innerHTML = '<p class="desc" style="margin:0">Sin estudiantes que coincidan (o aún no hay estudiantes sincronizados de Calificaciones).</p>'; return; }
   wrap.innerHTML = lista.slice(0,300).map(e=>`
-    <label><input type="checkbox" class="pk-chk" value="${e.id}" ${pkSel.has(e.id)?'checked':''}> ${esc(e.nombre)} <span class="muted" style="font-size:.75rem">(${esc(e.grado||'—')}${e.grupo?'-'+esc(e.grupo):''})</span></label>`).join('');
+    <label title="${esc(e.nombre)}">
+      <input type="checkbox" class="pk-chk" value="${e.id}" ${pkSel.has(e.id)?'checked':''}>
+      <span class="nom">${esc(e.nombre)} <span class="muted" style="font-size:.75rem">(${esc(e.grado||'—')}${e.grupo?'-'+esc(e.grupo):''})</span></span>
+    </label>`).join('');
   wrap.querySelectorAll('.pk-chk').forEach(chk=>{
     chk.addEventListener('change', ()=>{ if(chk.checked) pkSel.add(chk.value); else pkSel.delete(chk.value); });
   });

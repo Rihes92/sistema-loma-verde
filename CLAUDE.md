@@ -3,7 +3,25 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
-## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026)
+## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026 — sesión 2)
+
+- **Ajustes post-despliegue al módulo Centros de Interés** (Francy ya corrió el SQL e
+  hizo push del código inicial): (1) se corrigió un bug visual real — el checklist de
+  "Docentes asignados" (Coordinación) y el picker de "estudiantes existentes" (módulo 17)
+  se veían rotos porque la regla CSS genérica `input,select{width:100%;padding;border}`
+  también inflaba los checkboxes/radios a cajas gigantes; se resetean aparte
+  (`input[type=checkbox],input[type=radio]{...}`) y las listas pasaron a grid de 2+
+  columnas con texto truncado. (2) Francy subió 2 fichas reales de PTAFI (Ajedrez,
+  SteMedIA) — son documentos de proyecto completos (justificación, objetivos,
+  metodología, cronograma, recursos, evaluación), demasiado grandes para el formulario
+  rápido de "crear centro". Se agregaron 3 campos OPCIONALES a `lv_centros` (sin migración
+  SQL — es JSONB): `poblacion` (texto libre, ej. "12 a 17 años"), `objetivoGeneral`
+  (textarea corto) y `fichaUrl` (link a la ficha completa en OneDrive/Drive, con
+  `safeUrl()` para evitar esquemas raros en el href). Se muestran en la tarjeta del
+  centro (módulo 17) y en la tabla de Coordinación. SW subido a **v49**.
+  PENDIENTE: push de este segundo lote de cambios.
+
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 1)
 
 - **Módulo "Centros de Interés · PTA" — CÓDIGO LISTO, falta desplegar.** Construido según
   `ESPECIFICACION_MODULO_PTA.md` (jul 14): módulo nuevo `modulos/17-centros-interes.html`
@@ -81,7 +99,10 @@ documentos impresos/WhatsApp, que luego será configurable).
   sesión + historial por fecha) y Resumen (% asistencia, exporta CSV). El CRUD completo de
   centros (crear/editar/eliminar + asignar líder y docentes) vive en `coordinacion.html`,
   NO en este módulo (decisión de Francy). Tablas: `lv_centros`, `lv_centros_inscripciones`,
-  `lv_centros_asistencia` (ver `migracion_centros_interes.sql`).
+  `lv_centros_asistencia` (ver `migracion_centros_interes.sql`). `lv_centros` incluye 3
+  campos opcionales (jul 14, sesión 2, sin migración — es JSONB): `poblacion` (texto),
+  `objetivoGeneral` (texto corto) y `fichaUrl` (link a la ficha PTAFI completa en
+  OneDrive/Drive) — resumen rápido de la ficha oficial, en vez de transcribirla entera.
 - `modulos/herramientas/` — 9 herramientas formativas (test lectura, cálculo mental,
   rúbricas, sociograma, etc.) que envían notas a la planilla.
 - `coordinacion.html` — pestañas: Docentes, Asignaciones, **🌟 Centros de Interés** (crear/
