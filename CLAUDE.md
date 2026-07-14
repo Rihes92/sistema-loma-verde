@@ -3,6 +3,23 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026)
+
+- **Etapa 2 (arquitectura) — CONSOLIDADA en punto seguro.** Fase 0 (etiquetado de dueño
+  `_owner`) y Fase 1 (RLS de privacidad en resultados) están DESPLEGADAS y funcionando
+  (SW v45). La **Fase 2 (por curso) queda PAUSADA a propósito**: es grande y frágil por
+  las referencias de curso inconsistentes (ver roadmap punto 5, "COMPLEJIDAD DETECTADA").
+  NO improvisar en caliente; retomarla en sesión dedicada, con groundwork por módulo y
+  pruebas tabla por tabla. Para esa parte pesada de diseño conviene Opus; el groundwork
+  mecánico, Sonnet.
+- **Siguiente trabajo acordado (hacer con Sonnet 5):** (a) los "menores" del backlog F
+  (headers de módulos 10-15, campos de institución DANE/resolución/escudo + membrete);
+  (b) **módulo nuevo PTA / Centros de Interés** — especificación completa en
+  `ESPECIFICACION_MODULO_PTA.md` (léela antes de construir).
+- **Pendiente operativo:** desplegar quedó hecho (Fase 0/1). El botón 🤖 en el módulo
+  **04 (exámenes 11)** sigue sin hacer (replicar del 03) si se quiere.
+
+
 ## Qué es
 
 **SABIE** (Sistema de Aprendizaje, Bienestar e Inclusión Educativa) es la plataforma docente
@@ -101,9 +118,20 @@ documentos impresos/WhatsApp, que luego será configurable).
      y 8 herramientas; se revisa aparte). Correr el SQL DESPUÉS de desplegar Fase 0; los
      registros viejos (_owner NULL) siguen visibles hasta el backfill (pendiente, por
      tabla, con mapeo cuidadoso).
-   · **Fase 2:** tablas por-curso (estudiantes/notas/asistencia/acudientes/boletines/
+   · **Fase 2 (PAUSADA — consolidada jul 14, retomar en sesión dedicada):** tablas por-curso (estudiantes/notas/asistencia/acudientes/boletines/
      observador/piar) con predicado vía `lv_asignaciones`; probar tabla por tabla que
      ningún módulo pierda datos (director de grupo, boletines, analítica).
+     ⚠️ COMPLEJIDAD DETECTADA (jul 14): las referencias de curso NO son homogéneas —
+     asignaciones guardan {docenteId(=lv_docentes.id, por correo), materia, grado, grupo}
+     SIN cursoId; cursos tienen su propio cursoId + (grado,grupo,materia); estudiantes/
+     notas referencian cursoId; PERO observador/piar guardan estId + un TEXTO de curso
+     ("grado - grupo", formato variable, p.ej. grupo||'único"); y hay comodines de acceso
+     total ("Todas las materias", área "Primaria"). Filtrar por curso en RLS exige un
+     puente SECURITY DEFINER `mis_cursos()` (correo→docente→asignaciones→cursos→cursoId,
+     honrando comodines) + normalizar/estampar un cursoId limpio en observador/piar/etc.
+     desde la app (groundwork estilo Fase 0, pero NO se puede hacer central en sync.js
+     porque el cursoId no está en el registro — requiere edición por módulo). Por eso
+     Fase 2 = su propio trabajo planificado con pruebas, NO improvisar en caliente.
    · **Fase 3 (opcional, la más grande):** IndexedDB + consultas por demanda para los
      catálogos grandes que son COMPARTIDOS y hoy se espejan a cada equipo (lv_actividades
      ~647 ítems, estudiantes ~800). Requiere refactor async por módulo. Solo si aprieta.
