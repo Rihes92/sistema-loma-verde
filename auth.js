@@ -158,3 +158,18 @@ const LV_INST = {
   corto()  { return this._get().nombreCorto || 'I.E. San José de Loma Verde'; },
   sede()   { return this._get().sede        || 'Sede Principal'; }
 };
+
+// ═══════════════════════════════════════════════════════════════
+//  LV_GEMINI — Clave personal de Gemini de CADA docente.
+//  Se guarda SOLO en este dispositivo (localStorage 'lv_gemini_key').
+//  NO está en el MAPA de sync.js, así que NUNCA viaja a Supabase ni a
+//  otros dispositivos: es privada y local. La usa el botón
+//  "Generar con IA" (se envía a /api/generar en el header X-Gemini-Key).
+// ═══════════════════════════════════════════════════════════════
+const LV_GEMINI = {
+  KEY: 'lv_gemini_key',
+  get()   { try { return (localStorage.getItem(this.KEY) || '').trim(); } catch (_) { return ''; } },
+  set(v)  { try { localStorage.setItem(this.KEY, String(v || '').trim()); } catch (_) {} },
+  clear() { try { localStorage.removeItem(this.KEY); } catch (_) {} },
+  tiene() { return !!this.get(); }
+};

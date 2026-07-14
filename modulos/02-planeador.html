@@ -95,6 +95,7 @@
 
 <nav class="tabs" id="tabs">
   <button data-tab="nuevo" class="active">Nuevo / Editar</button>
+  <button data-tab="ia">🤖 Generar con IA</button>
   <button data-tab="lista">Mis planeadores</button>
   <button data-tab="banco">Banco de imágenes</button>
   <button data-tab="malla">Consultar malla</button>
@@ -224,6 +225,34 @@
       <button class="btn ok" id="btn-save">💾 Guardar planeador</button>
       <button class="btn sec" id="btn-clear">Limpiar</button>
       <span id="edit-flag" class="hint" style="align-self:center"></span>
+    </div>
+  </section>
+
+  <!-- ───────── GENERAR CON IA ───────── -->
+  <section id="tab-ia" class="hide">
+    <div class="card no-print">
+      <h2>🤖 Generar planeador con IA</h2>
+      <p class="desc">Elige el grado, el periodo y el eje de la malla; la IA redacta un planeador completo listo para revisar y editar. Necesita conexión a internet y puede tardar hasta un minuto.</p>
+      <div class="row" style="align-items:flex-end">
+        <label class="fld">🔑 Tu clave de Gemini<input id="ia-key" type="password" autocomplete="off" placeholder="Pega tu clave AIza… (una sola vez en este equipo)"></label>
+        <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn sec" id="ia-key-save" type="button">Guardar clave</button></label>
+        <span id="ia-key-state" class="hint" style="align-self:center"></span>
+      </div>
+      <div class="row">
+        <label class="fld">Grado<select id="ia-grado"></select></label>
+        <label class="fld">Periodo<select id="ia-periodo"><option>Primer Periodo</option><option>Segundo Periodo</option><option>Tercer Periodo</option></select></label>
+        <label class="fld">Eje de la malla<select id="ia-eje"><option value="">— Elige grado y periodo —</option></select></label>
+      </div>
+      <div class="row">
+        <label class="fld">Temática (si no eliges un eje)<input id="ia-tema" placeholder="Ej: El conflicto armado en Colombia"></label>
+        <label class="fld">N° de sesiones<input id="ia-sesiones" placeholder="Ej: 2"></label>
+      </div>
+      <label class="fld">Indicaciones adicionales (opcional)<textarea id="ia-notas" placeholder="Ej: enfatiza el trabajo cartográfico; incluye un estudio de caso sobre migración."></textarea></label>
+      <div class="row" style="align-items:center;gap:12px">
+        <button class="btn ok" id="ia-gen" type="button">🤖 Generar planeador</button>
+        <span id="ia-status" class="hint" style="align-self:center"></span>
+      </div>
+      <p class="desc" style="margin-top:10px">El planeador generado se guarda en <b>Mis planeadores</b>. Revísalo siempre antes de usarlo: la IA puede equivocarse.</p>
     </div>
   </section>
 
@@ -571,13 +600,14 @@ function fillGrados(){
   $('#f-grado').innerHTML='<option value="">— Selecciona —</option>'+GRADOS.map(g=>`<option value="${g}">${g} (${GLBL[g]})</option>`).join('');
   const all='<option value="">Todos</option>'+GRADOS.map(g=>`<option value="${g}">${g} (${GLBL[g]})</option>`).join('');
   $('#l-grado').innerHTML=all; $('#m-grado').innerHTML=all;
+  $('#ia-grado').innerHTML='<option value="">— Selecciona —</option>'+GRADOS.map(g=>`<option value="${g}">${g} (${GLBL[g]})</option>`).join('');
 }
 
 // ---------- Tabs ----------
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-  ['nuevo','lista','malla','banco'].forEach(x=>$('#tab-'+x).classList.toggle('hide',x!==b.dataset.tab));
-  if(b.dataset.tab==='lista')renderLista(); if(b.dataset.tab==='malla')renderMalla(); if(b.dataset.tab==='banco')renderBank();
+  ['nuevo','ia','lista','malla','banco'].forEach(x=>$('#tab-'+x).classList.toggle('hide',x!==b.dataset.tab));
+  if(b.dataset.tab==='lista')renderLista(); if(b.dataset.tab==='malla')renderMalla(); if(b.dataset.tab==='banco')renderBank(); if(b.dataset.tab==='ia'){iaRefreshEjes();iaKeyRender();}
 });
 
 // ---------- Eje / autocarga ----------
@@ -857,33 +887,99 @@ $('#btn-export-all').addEventListener('click',()=>{
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'}));
   a.download='planeadores_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Respaldo exportado');
 });
+// ── Validación + guardado compartidos (importador de archivo Y "Generar con IA") ──
+function validarImportPlaneadores(d, txtCrudo){
+  if(!d || d.app!=='loma_verde_planeador') return {ok:false, error:'El contenido no es un respaldo de planeadores de SABIE (falta "app":"loma_verde_planeador").'};
+  const planes=d.planeadores||[];
+  if(!Array.isArray(planes)||!planes.length) return {ok:false, error:'No contiene ningún planeador (lista "planeadores" vacía).'};
+  // clave "banco" duplicada: JSON.parse descarta la primera aparición (solo aplica
+  // al texto crudo de un archivo; en la respuesta de la IA ya viene parseado).
+  if(txtCrudo){
+    const nBanco=(txtCrudo.match(/"banco"\s*:/g)||[]).length;
+    if(nBanco>planes.length) return {ok:false, error:'La clave "banco" está REPETIDA dentro de un planeador; las preguntas de la primera aparición se perderían. Deja UNA sola clave "banco" por planeador.'};
+  }
+  const problemas=[];
+  planes.forEach((p,i)=>{
+    const falta=['id','grado','periodo'].filter(k=>!p[k]);
+    if(falta.length) problemas.push(`Planeador ${i+1}${p.unidad?' ("'+String(p.unidad).slice(0,40)+'…")':''}: falta ${falta.join(', ')}`);
+  });
+  if(problemas.length) return {ok:false, error:problemas.join('\n• ')};
+  const totalPregs=planes.reduce((a,p)=>a+((p.banco||[]).length),0);
+  return {ok:true, planes, totalPregs};
+}
+function guardarPlaneadores(planes){
+  const all=lsRead('planeadores');const ids=new Set(all.map(p=>p.id));
+  let n=0, dup=0;
+  planes.forEach(p=>{ if(ids.has(p.id)){dup++;} else {all.push(p);ids.add(p.id);n++;} });
+  lsWrite('planeadores',all);
+  return {n, dup};
+}
 $('#l-import').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;
   try{
     const txt=await f.text();
     let d; try{ d=JSON.parse(txt); }catch(err){ alert('❌ El archivo no es JSON válido.\n\nDetalle técnico: '+err.message+'\n\nSi lo generó una IA, pídele que entregue SOLO el bloque JSON, sin texto adicional.'); e.target.value='';return; }
-    if(d.app!=='loma_verde_planeador'){ alert('❌ Este archivo no es un respaldo de planeadores de SABIE (falta "app":"loma_verde_planeador").'); e.target.value='';return; }
-    const planes=d.planeadores||[];
-    if(!Array.isArray(planes)||!planes.length){ alert('❌ El archivo no contiene ningún planeador (lista "planeadores" vacía).'); e.target.value='';return; }
-    // clave "banco" duplicada dentro de un mismo planeador: JSON.parse
-    // descarta la primera aparición y las preguntas se PIERDEN en silencio.
-    const nBanco=(txt.match(/"banco"\s*:/g)||[]).length;
-    if(nBanco>planes.length){ alert('❌ El archivo tiene la clave "banco" REPETIDA dentro de un planeador. Las preguntas de la primera aparición se perderían al importar.\n\nCorrige el JSON (deja UNA sola clave "banco" por planeador) y vuelve a intentar.'); e.target.value='';return; }
-    // validación por planeador
-    const problemas=[];
-    planes.forEach((p,i)=>{
-      const falta=['id','grado','periodo'].filter(k=>!p[k]);
-      if(falta.length) problemas.push(`Planeador ${i+1}${p.unidad?' ("'+String(p.unidad).slice(0,40)+'…")':''}: falta ${falta.join(', ')}`);
-    });
-    if(problemas.length){ alert('❌ No se importó. Corrige esto:\n\n• '+problemas.join('\n• ')); e.target.value='';return; }
-    const totalPregs=planes.reduce((a,p)=>a+((p.banco||[]).length),0);
-    if(!confirm(`Se agregarán ${planes.length} planeador(es)${totalPregs?` (+${totalPregs} pregunta(s) en su banco)`:''} a los actuales. ¿Continuar?`))return;
-    const all=lsRead('planeadores');const ids=new Set(all.map(p=>p.id));
-    let n=0, dup=0;
-    planes.forEach(p=>{ if(ids.has(p.id)){dup++;} else {all.push(p);ids.add(p.id);n++;} });
-    lsWrite('planeadores',all);renderLista();
-    toast(`✅ ${n} importado(s)`+(dup?` · ${dup} omitido(s) por id repetido`:''));
+    const v=validarImportPlaneadores(d,txt);
+    if(!v.ok){ alert('❌ No se importó. Corrige esto:\n\n• '+v.error); e.target.value='';return; }
+    if(!confirm(`Se agregarán ${v.planes.length} planeador(es)${v.totalPregs?` (+${v.totalPregs} pregunta(s) en su banco)`:''} a los actuales. ¿Continuar?`)){ e.target.value='';return; }
+    const res=guardarPlaneadores(v.planes);renderLista();
+    toast(`✅ ${res.n} importado(s)`+(res.dup?` · ${res.dup} omitido(s) por id repetido`:''));
   }catch(err){ alert('❌ Error inesperado al importar: '+(err&&err.message||err)); }
   e.target.value='';});
+
+// ── Generar con IA ──────────────────────────────────────────────
+function iaKeyRender(){
+  const has=(typeof LV_GEMINI!=='undefined')&&LV_GEMINI.tiene();
+  const st=$('#ia-key-state'); if(!st)return;
+  st.textContent=has?'✓ Clave guardada en este equipo (toca Guardar con el campo vacío para quitarla)':'⚠️ Aún no has guardado tu clave de Gemini';
+  st.style.color=has?'#059669':'var(--muted)';
+  if(has)$('#ia-key').placeholder='•••• clave guardada ••••';
+}
+$('#ia-key-save')&&$('#ia-key-save').addEventListener('click',()=>{
+  const v=$('#ia-key').value.trim();
+  if(!v){ if(LV_GEMINI.tiene()){LV_GEMINI.clear();toast('Clave eliminada de este equipo');} else {toast('Pega tu clave primero');} $('#ia-key').value=''; iaKeyRender(); return; }
+  LV_GEMINI.set(v); $('#ia-key').value=''; toast('✓ Clave guardada'); iaKeyRender();
+});
+try{ iaKeyRender(); }catch(_){}
+function iaRefreshEjes(){
+  refreshMalla();
+  const g=$('#ia-grado').value, p=$('#ia-periodo').value;
+  const items=(g&&p)?MALLA.filter(m=>m.grado===g&&m.periodo===p):[];
+  $('#ia-eje').innerHTML='<option value="">'+(items.length?'— Elige un eje (opcional) —':'(sin ejes; escribe una temática)')+'</option>'+items.map(m=>`<option value="${MALLA.indexOf(m)}">${esc(m.eje)}</option>`).join('');
+}
+$('#ia-grado').addEventListener('change',iaRefreshEjes);
+$('#ia-periodo').addEventListener('change',iaRefreshEjes);
+$('#ia-gen').addEventListener('click',async ()=>{
+  const gk=(typeof LV_GEMINI!=='undefined')?LV_GEMINI.get():'';
+  if(!gk){ toast('Primero guarda tu clave de Gemini'); $('#ia-key').focus(); return; }
+  const g=$('#ia-grado').value, p=$('#ia-periodo').value;
+  if(!g){toast('Elige el grado');return;}
+  const ejeIdx=$('#ia-eje').value;
+  let ejeNombre='', contexto='';
+  if(ejeIdx!==''){ const m=MALLA[+ejeIdx]; if(m){ ejeNombre=m.eje;
+    contexto=['Contenidos: '+htmlToText(m.temas),'Estándar/DBA: '+htmlToText(m.ebcDba),'Competencias: '+htmlToText(m.competencia),'Evidencias: '+htmlToText(m.evidencias)].join('\n'); } }
+  const tema = ejeNombre || $('#ia-tema').value.trim();
+  if(!tema){toast('Elige un eje o escribe una temática');return;}
+  let _lg=null; try{ _lg=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+  const datos={ grado:g, periodo:p, eje:tema,
+    asignatura:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||$('#f-asignatura').value||'Ciencias Sociales',
+    docente:(_lg&&_lg.nombre)||$('#f-docente').value||'',
+    sesiones:$('#ia-sesiones').value.trim(), contexto, notas:$('#ia-notas').value.trim() };
+  const btn=$('#ia-gen'), st=$('#ia-status');
+  btn.disabled=true; st.textContent='⏳ Generando… esto puede tardar hasta un minuto.';
+  try{
+    const token = (typeof LV_AUTH!=='undefined') ? await LV_AUTH.getValidToken() : null;
+    const r=await fetch('/api/generar',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(token||''),'X-Gemini-Key':gk},body:JSON.stringify({tipo:'planeador',datos})});
+    const out=await r.json().catch(()=>null);
+    if(!r.ok || !out || out.error){ st.textContent=''; alert('❌ '+((out&&out.error)||('Error '+r.status+' al generar.'))); return; }
+    const v=validarImportPlaneadores(out.data,'');
+    if(!v.ok){ st.textContent=''; alert('❌ La IA devolvió un planeador con problemas:\n\n• '+v.error+'\n\nIntenta generar de nuevo.'); return; }
+    const res=guardarPlaneadores(v.planes);
+    st.textContent='';
+    toast(`✅ ${res.n} planeador(es) generado(s)`+(res.dup?` · ${res.dup} ya existía(n)`:''));
+    document.querySelector('[data-tab="lista"]').click();
+  }catch(err){ st.textContent=''; alert('❌ No se pudo generar: '+(err&&err.message||err)+'\n\nRevisa tu conexión a internet e intenta de nuevo.'); }
+  finally{ btn.disabled=false; }
+});
 
 // ---------- Malla ----------
 $('#m-grado').addEventListener('change',renderMalla);

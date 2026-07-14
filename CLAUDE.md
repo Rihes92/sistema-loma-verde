@@ -118,8 +118,8 @@ C. ✅ **Banco de actividades de primaria** (código listo, falta subir archivos
    enlace en sidebar + materia-hub, `migracion_actividades.sql` (bucket privado
    'actividades' + política lectura autenticados + tabla + catálogo de 647 items).
    Carpeta `Subir_a_Supabase/` (881 MB, nombres saneados = rutas del catálogo,
-   en .gitignore) lista para arrastrar al bucket. PENDIENTE de Francy: correr el
-   SQL y arrastrar las carpetas al bucket. Videos → YouTube no listado (luego se
+   en .gitignore) lista para arrastrar al bucket. COMPLETADO (jul 13): SQL corrido y
+   archivos subidos al bucket — el banco está EN PRODUCCIÓN. Puede borrar Subir_a_Supabase/. Videos → YouTube no listado (luego se
    agregan al catálogo como tipo 'video' con url). Detalle original: decisiones tomadas — PDFs curados
    en Supabase Storage PRIVADO (bucket tras login, meta <1 GB), videos en YouTube no
    listado del colegio, material restante como enlaces OneDrive. Copyright: el material
@@ -133,13 +133,29 @@ C. ✅ **Banco de actividades de primaria** (código listo, falta subir archivos
    filtra por grado/área/tipo, previsualiza, imprime, y puede anexar la actividad a un
    planeador. Los PDF del usuario están hoy fuera de la app (pedirle la carpeta).
 
-D. **Generación con IA dentro de la app** (media-alta dificultad): SÍ es viable.
-   Arquitectura: función serverless en Vercel (`/api/generar`) que guarda la API key
-   (Gemini gratis hasta cierto cupo, o Claude/GPT) como variable de entorno — NUNCA la
-   key en el frontend. El módulo Planeador/Banco muestra un formulario (grado, periodo,
-   temática, sesiones) → la función arma el prompt con los GEMs v2 como system prompt →
-   devuelve JSON → la app lo valida (paso B) y lo guarda en lv_planeadores/lv_banco.
-   Solo con internet; mostrar costo/cupo en Coordinación. Los GEMs v2 son ya el prompt.
+D. ✅ **Generación con IA dentro de la app** (código listo, falta la API key):
+   `api/generar.js` (función serverless Vercel, runtime Node). Recibe
+   `{tipo:'planeador'|'banco', datos}`, **verifica el token del docente contra Supabase**
+   (`/auth/v1/user`) antes de gastar cupo, arma el prompt con los **GEMs v2 embebidos**
+   como system prompt y llama a **Gemini `gemini-2.5-flash`** (capa gratuita; configurable
+   con la env `GEMINI_MODEL`). **Modelo de clave: CADA docente aporta la suya** (decisión de Francy, jul 13):
+   NO hay clave compartida ni env `GEMINI_API_KEY`. El docente crea su clave gratis
+   (aistudio.google.com/apikey) y la pega una vez en "🔑 Tu clave de Gemini" dentro de
+   Generar con IA; se guarda en `localStorage` (`lv_gemini_key`, helper `LV_GEMINI` en
+   auth.js — NO está en el MAPA de sync.js, así que nunca viaja a Supabase ni a otros
+   equipos). La función recibe la clave en el header `X-Gemini-Key` (no la guarda ni la
+   loguea). Botón **🤖 Generar con IA**: pestaña nueva en el Planeador (02) y
+   tarjeta en el Banco (03) — formulario (grado/periodo/eje o temática/sesiones o N°
+   preguntas/notas) → POST a `/api/generar` con el token → la respuesta pasa por **el
+   mismo importador** (refactorizado en `validarImportPlaneadores`/`guardarPlaneadores` y
+   `validarPreguntas`/`guardarPreguntas`, reutilizados por importación de archivo y por IA)
+   → se guarda en lv_planeadores/lv_banco. Mensajes de error amables (cuota 429, key
+   inválida 403, JSON malo 502, sin sesión 401). Testeado con fetch simulado (11 casos,
+   happy path + errores). GEM embebido = copia de `GEMs/*.md`; si editas los .md hay que
+   recopiar en `api/generar.js`. Módulo 04 (once) NO se tocó todavía (queda como 03).
+   **PENDIENTE:** solo desplegar el código (git push → Vercel). NO hay paso de env en
+   Vercel. Cada docente pega su propia clave dentro de la app (ver `GUIA_ACTIVAR_IA.md`).
+   Solo con internet.
 
 E. **Arquitectura etapa 2** (alta dificultad, baja urgencia mientras no crezca el uso):
    filtrado por fila RLS + consultas bajo demanda + IndexedDB (ver roadmap punto 5).
@@ -147,3 +163,18 @@ E. **Arquitectura etapa 2** (alta dificultad, baja urgencia mientras no crezca e
 F. Menores: unificar headers visuales de módulos 10-15, respaldos automáticos
    (Supabase → Backups programados), campos extra de institución (DANE, resolución,
    escudo) en lv_institucion y membrete de comunicados.
+
+## Estado al cierre de la sesión (jul 13, 2026)
+Hecho y en producción: fixes, rediseño (login pantalla dividida con logo nuevo
+sabie-full.jpg / portal sidebar), arquitectura etapa 1, seguridad completa,
+GEMs v2, importador robusto, banco de actividades (módulo 16 + bucket subido).
+**Generación con IA (backlog D): CÓDIGO LISTO** — `api/generar.js` + botón 🤖 en
+Planeador (02) y Banco (03), Gemini gemini-2.5-flash, importador reutilizado,
+testeado (12 casos). **Clave POR DOCENTE** (no compartida): header `X-Gemini-Key`,
+guardada en localStorage `lv_gemini_key` (helper `LV_GEMINI` en auth.js, fuera del MAPA
+de sync). SW en **v44**. FALTA para activarla: solo desplegar (git push → Vercel, sin
+env); cada docente pega su clave en la app (`GUIA_ACTIVAR_IA.md`).
+SIGUIENTE PASO ACORDADO: desplegar, luego replicar el botón 🤖 en
+el módulo **04 (exámenes 11)** si se quiere, videos → YouTube no listado (catálogo
+tipo 'video'), arquitectura etapa 2, menores (F). Git: locks de OneDrive impiden
+commits desde Cowork; Francy usa su ritual de Terminal (rm locks + add + commit + push).
