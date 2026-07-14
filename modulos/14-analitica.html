@@ -19,6 +19,7 @@
   body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
   header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
   header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
   header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
   nav.tabs{display:flex;gap:6px;padding:10px 18px;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto}
   nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
@@ -65,8 +66,10 @@
 <body>
 
 <header class="appbar">
+  <img src="../Logo/logo.jpg" alt="Logo" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
   <h1>📈 Analítica</h1>
-  <a href="../index.html" class="portal-btn">← Portal</a>
+  <span class="pill">SABIE</span>
+  <a href="../index.html" title="Volver al portal" class="portal-btn">← Portal</a>
 </header>
 
 <nav class="tabs" id="tabs">

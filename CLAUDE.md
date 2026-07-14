@@ -3,7 +3,46 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
-## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026 — sesión 2)
+## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026 — sesión 3)
+
+- **Fuga de privacidad corregida en el portal (`index.html`).** Francy notó que
+  "Resumen del sistema" y "Actividad reciente" mostraban cursos/notas/asistencia de
+  OTROS docentes. Causa: con la Fase 2 de arquitectura pausada, cada dispositivo
+  espeja TODAS las materias de TODOS los docentes en localStorage, y esas dos
+  secciones leían `lv_cursos`/`lv_calificaciones`/`lv_examenes`/`lv_planeadores`/
+  `lv_as_asistencia` sin filtrar. Arreglo: se extrajo el cálculo de permisos
+  (`PERM` + `permiteMateria()`, arriba del todo del script de `index.html`) que
+  reutiliza el MISMO mecanismo que ya filtraba el menú "Áreas académicas" —
+  `lv_asignaciones` por `docenteId`, con `materia` ya etiquetada en cursos/exámenes/
+  planeadores (no la complejidad de "por curso" de la Fase 2, que sigue pausada).
+  Asistencia (`lv_as_asistencia`/`lv_as_estudiantes`, sin etiqueta de materia) se
+  filtra por pertenencia de `cursoId` a los cursos ya filtrados. `lv_com_historial`
+  (Comunicados) no tiene etiqueta de materia todavía → se omite de "Actividad
+  reciente" para docentes normales (solo Coordinación/accesoTotal la ve), para no
+  arriesgar exponer citaciones de otros cursos. Admin y quienes tienen "Primaria" o
+  "Todas las materias" en sus asignaciones (`accesoTotal`) siguen viendo todo, igual
+  que en el menú. SW **v50**. PENDIENTE: push y probar con una cuenta docente real
+  (no admin) para confirmar que el resumen ya solo muestra lo suyo.
+- **Checklist de "Docentes asignados" (sesión 2): confirmado arreglado** por Francy
+  tras el despliegue — ya no hace falta tocarlo.
+- **Backlog F ("menores") — headers unificados, jul 14 sesión 3.** Los 6 módulos
+  10-15 no tenían el logo `../Logo/logo.jpg` en su `<header class="appbar">` (sí lo
+  tenían 05/16/17); además 14-analítica y 15-herramientas no tenían `<span
+  class="pill">` ni la clase `.pill` en su CSS, y 15 tenía el botón "← Portal" sin
+  `class="portal-btn"` (usaba el selector genérico `header.appbar a`). Se agregó el
+  logo a los 6, el pill "SABIE" a 14/15 (10-13 ya tenían un pill, se dejó su texto
+  tal cual — p.ej. 11 dice "Decreto 1421/2017"), y se corrigió la clase del botón en
+  15. SW **v51**. NO se tocó el orden de `auth.js`/`exigirSesion()` (10-15 y 16 lo
+  cargan en `<head>`; 05 y 17 después de `<body>` — inconsistente entre sí pero
+  funciona en ambos casos; tocar el orden de scripts es justo lo que causó un bug
+  grave antes, así que se dejó igual).
+  **PENDIENTE de backlog F:** campos de institución (DANE, resolución, escudo) +
+  membrete de comunicados — necesita decisiones de Francy (qué campos exactos, si
+  ya tiene el escudo/resolución a mano). Respaldos automáticos de Supabase NO es
+  código de la app — se configura en Supabase → Database → Backups (Point-in-Time
+  Recovery), fuera del alcance de este repo.
+
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 2)
 
 - **Ajustes post-despliegue al módulo Centros de Interés** (Francy ya corrió el SQL e
   hizo push del código inicial): (1) se corrigió un bug visual real — el checklist de

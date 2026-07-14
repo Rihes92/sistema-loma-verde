@@ -338,10 +338,38 @@ function irAMateria(area, materia, e){
   location.href = `materia-hub.html?area=${area}&materia=${materia}`;
 }
 
-// ── Sesión: mostrar quién entró + filtrar materias según sus asignaciones ──
-(function(){
+// ── Permisos del docente: reutilizado por el menú, el resumen y la
+//    actividad reciente. Con Fase 2 de arquitectura pausada, este
+//    dispositivo tiene espejadas TODAS las materias de TODOS los
+//    docentes en localStorage — sin este filtro, el resumen del portal
+//    mostraría cursos, notas y asistencia de compañeros. cursos,
+//    exámenes y planeadores ya llevan una etiqueta `materia` (mismo
+//    mecanismo que ya filtra "Áreas académicas"), así que se reutiliza
+//    aquí en vez de tocar la complejidad de "por curso" (esa sigue
+//    pausada a propósito).
+let PERM = { login:null, esAdmin:false, accesoTotal:false, materiasPermitidas:new Set() };
+(function calcularPermisos(){
   let login;
   try{ login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){ login=null; }
+  if(!login) return;
+  if(login.esAdmin){ PERM = { login, esAdmin:true, accesoTotal:true, materiasPermitidas:null }; return; }
+  let asignaciones=[];
+  try{ asignaciones = JSON.parse(localStorage.getItem('lv_asignaciones')||'[]'); }catch(_){}
+  const misAsig = asignaciones.filter(a=>a.docenteId===login.docenteId);
+  const accesoTotal = misAsig.some(a=>a.area==='Primaria' || a.materia==='Todas las materias');
+  const materiasPermitidas = new Set(misAsig.map(a=>a.materia));
+  PERM = { login, esAdmin:false, accesoTotal, materiasPermitidas };
+})();
+// true si el registro (con campo .materia) es visible para el docente actual
+function permiteMateria(materia){
+  if(PERM.esAdmin||PERM.accesoTotal) return true;
+  return PERM.materiasPermitidas.has(materia);
+}
+
+// ── Sesión: mostrar quién entró + filtrar materias según sus asignaciones ──
+(function(){
+  let login = PERM.login;
+  try{ if(!login) login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){ login=null; }
   if(!login) return; // el candado de arriba ya redirige a login.html
 
   const esc = s => String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -409,13 +437,8 @@ function irAMateria(area, materia, e){
 
   if(login.esAdmin) return; // el administrador ve todo, sin filtrar
 
-  let asignaciones = [];
-  try{ asignaciones = JSON.parse(localStorage.getItem('lv_asignaciones')||'[]'); }catch(_){}
-  const misAsig = asignaciones.filter(a=>a.docenteId===login.docenteId);
-  const accesoTotal = misAsig.some(a=>a.area==='Primaria' || a.materia==='Todas las materias');
-  const materiasPermitidas = new Set(misAsig.map(a=>a.materia));
-
-  if(accesoTotal) return; // dicta primaria o "todas las materias": ve todo
+  const materiasPermitidas = PERM.materiasPermitidas || new Set();
+  if(PERM.accesoTotal) return; // dicta primaria o "todas las materias": ve todo
 
   document.querySelectorAll('.area-card').forEach(card=>{
     const chips = card.querySelectorAll('.materia-chip');
@@ -457,32 +480,55 @@ document.getElementById('search-input').addEventListener('input',function(){
 });
 
 // ── ACTIVIDAD RECIENTE ────────────────────────────────────────
+//  PRIVACIDAD: este dispositivo tiene espejadas TODAS las materias de
+//  TODOS los docentes (Fase 2 de arquitectura sigue pausada), así que
+//  cada tienda se filtra a lo que le corresponde al docente actual
+//  antes de contar/mostrar nada (ver PERM/permiteMateria arriba).
+//  'Comunicados' no lleva etiqueta de materia todavía → se omite para
+//  docentes normales (solo Coordinación/admin la ve) para no arriesgar
+//  mostrar citaciones de otros cursos.
 (function(){
   const wrap=document.getElementById('activity-wrap');
   const dataPill=document.getElementById('pill-datos');
+  const soyAdmin = PERM.esAdmin || PERM.accesoTotal;
+  let misCursoIds=null;
+  function cursoIdsPermitidos(){
+    if(misCursoIds) return misCursoIds;
+    let cursos=[]; try{ cursos=JSON.parse(localStorage.getItem('lv_cursos')||'[]'); }catch(_){}
+    if(!soyAdmin) cursos = cursos.filter(c=>permiteMateria(c.materia));
+    misCursoIds = new Set(cursos.map(c=>c.id));
+    return misCursoIds;
+  }
   const STORES=[
-    {key:'lv_cursos',       label:'Calificaciones',  icon:'📊',link:'modulos/01-calificaciones.html'},
-    {key:'lv_planeadores',  label:'Planeador',        icon:'🗂️',link:'modulos/02-planeador.html'},
-    {key:'lv_examenes',     label:'Exámenes 6°-10°',  icon:'📝',link:'modulos/03-examenes.html'},
-    {key:'lv11_examenes',   label:'Exámenes 11°',     icon:'🎯',link:'modulos/04-examenes-11.html'},
-    {key:'lv_as_asistencia',label:'Asistencia',       icon:'✅',link:'modulos/05-asistencia.html'},
-    {key:'lv_com_historial',label:'Comunicados',      icon:'✉️',link:'modulos/06-comunicados.html'},
+    {key:'lv_cursos',       label:'Calificaciones',  icon:'📊',link:'modulos/01-calificaciones.html', filtro:'materia'},
+    {key:'lv_planeadores',  label:'Planeador',        icon:'🗂️',link:'modulos/02-planeador.html', filtro:'materia'},
+    {key:'lv_examenes',     label:'Exámenes 6°-10°',  icon:'📝',link:'modulos/03-examenes.html', filtro:'materia'},
+    {key:'lv11_examenes',   label:'Exámenes 11°',     icon:'🎯',link:'modulos/04-examenes-11.html', filtro:'materia'},
+    {key:'lv_as_asistencia',label:'Asistencia',       icon:'✅',link:'modulos/05-asistencia.html', filtro:'cursoId'},
+    ...(soyAdmin ? [{key:'lv_com_historial',label:'Comunicados', icon:'✉️',link:'modulos/06-comunicados.html', filtro:'ninguno'}] : []),
   ];
 
   const items=[];let totalReg=0;
   try{
-    STORES.forEach(({key,label,icon,link})=>{
+    STORES.forEach(({key,label,icon,link,filtro})=>{
       const raw=localStorage.getItem(key);
       if(!raw)return;
       const data=JSON.parse(raw);
-      // Aplanar: puede ser array, objeto de arrays, u objeto plano
+      // Aplanar: puede ser array, objeto de arrays (con su llave), u objeto plano
       let flat=[];
       if(Array.isArray(data)) flat=data;
       else if(typeof data==='object'&&data!==null){
-        Object.values(data).forEach(v=>{
-          if(Array.isArray(v)) flat=flat.concat(v);
-          else if(typeof v==='object'&&v!==null) flat.push(v);
+        Object.entries(data).forEach(([k,v])=>{
+          if(Array.isArray(v)) flat=flat.concat(v.map(x=>Object.assign({},x,{_k:k})));
+          else if(typeof v==='object'&&v!==null) flat.push(Object.assign({},v,{_k:k}));
         });
+      }
+      if(!soyAdmin){
+        if(filtro==='materia') flat = flat.filter(x=>permiteMateria(x.materia));
+        else if(filtro==='cursoId'){
+          const ids = cursoIdsPermitidos();
+          flat = flat.filter(x=>ids.has(x.cursoId || String(x._k||'').split('_')[0]));
+        }
       }
       if(!flat.length)return;
       totalReg+=flat.length;
@@ -522,14 +568,28 @@ document.getElementById('search-input').addEventListener('input',function(){
 
 // ══════════════════════════════════════════════════════
 // DASHBOARD — Lee localStorage de todos los módulos
+// PRIVACIDAD: mismo motivo que "Actividad reciente" arriba — este
+// dispositivo espeja TODAS las materias de TODOS los docentes (Fase 2
+// de arquitectura sigue pausada), así que cada fuente se acota a lo
+// del docente actual usando PERM/permiteMateria antes de contar nada.
+// Admin/accesoTotal (Primaria, "Todas las materias") ve todo, igual
+// que en el menú de Áreas académicas.
 // ══════════════════════════════════════════════════════
 (function dashBoard(){
   function safeJSON(key){ try{const r=localStorage.getItem(key);return r?JSON.parse(r):null;}catch(_){return null;} }
+  const soyAdmin = PERM.esAdmin || PERM.accesoTotal;
 
   // ── 1. Calificaciones ─────────────────────────────
-  const cursos01 = safeJSON('lv_cursos')||[];
-  const ests01   = safeJSON('lv_estudiantes')||[];
-  const cals01   = safeJSON('lv_calificaciones')||[];
+  let cursos01 = safeJSON('lv_cursos')||[];
+  if(!soyAdmin) cursos01 = cursos01.filter(c=>permiteMateria(c.materia));
+  const misCursoIds = new Set(cursos01.map(c=>c.id));
+
+  let ests01 = safeJSON('lv_estudiantes')||[];
+  if(!soyAdmin) ests01 = ests01.filter(e=>misCursoIds.has(e.cursoId));
+  const misEstIds = new Set(ests01.map(e=>e.id));
+
+  let cals01 = safeJSON('lv_calificaciones')||[];
+  if(!soyAdmin) cals01 = cals01.filter(c=>misEstIds.has(c.estId));
 
   document.getElementById('dv-cursos').textContent = cursos01.length||'0';
 
@@ -558,13 +618,21 @@ document.getElementById('search-input').addEventListener('input',function(){
   }
 
   // ── 2. Asistencia ─────────────────────────────────
-  const asist05 = safeJSON('lv_as_asistencia')||{};
+  //  lv_as_estudiantes/lv_as_asistencia son la tienda propia del módulo
+  //  05 (claves = cursoId), sin etiqueta de materia — se filtran por
+  //  cursoId perteneciente a misCursoIds (ya filtrados arriba).
   let ests05 = safeJSON('lv_as_estudiantes')||{};
+  if(!soyAdmin) ests05 = Object.fromEntries(Object.entries(ests05).filter(([cId])=>misCursoIds.has(cId)));
   if (Object.keys(ests05).length === 0 && ests01.length > 0) {
     ests01.forEach(e => {
       if (!ests05[e.cursoId]) ests05[e.cursoId] = [];
       ests05[e.cursoId].push({ id: e.id, nombre: e.nombre });
     });
+  }
+  let asist05 = safeJSON('lv_as_asistencia')||{};
+  if(!soyAdmin){
+    const idsAsist = new Set(Object.keys(ests05));
+    asist05 = Object.fromEntries(Object.entries(asist05).filter(([k])=>idsAsist.has(k.split('_')[0])));
   }
   const hoy=new Date().toISOString().split('T')[0];
   const totalEsts05=Object.values(ests05).reduce((a,v)=>a+(Array.isArray(v)?v.length:0),0);
@@ -593,17 +661,27 @@ document.getElementById('search-input').addEventListener('input',function(){
   });
 
   // ── 3. Exámenes ────────────────────────────────────
-  const ex03=(safeJSON('lv_examenes')||[]).length;
-  const ex04=(safeJSON('lv11_examenes')||[]).length;
-  document.getElementById('dv-examenes').textContent=ex03+ex04||'0';
-  const res03=(safeJSON('lv_resultados')||[]).length+(safeJSON('lv11_resultados')||[]).length;
+  let ex03list=safeJSON('lv_examenes')||[];
+  let ex04list=safeJSON('lv11_examenes')||[];
+  if(!soyAdmin){
+    ex03list = ex03list.filter(e=>permiteMateria(e.materia));
+    ex04list = ex04list.filter(e=>permiteMateria(e.materia));
+  }
+  document.getElementById('dv-examenes').textContent=(ex03list.length+ex04list.length)||'0';
+  // resultados: lv_resultados/lv11_resultados no llevan materia propia,
+  // se filtran por examId perteneciente a los exámenes ya filtrados.
+  const misExamIds = new Set([...ex03list, ...ex04list].map(e=>e.id));
+  let res03list=(safeJSON('lv_resultados')||[]).concat(safeJSON('lv11_resultados')||[]);
+  if(!soyAdmin) res03list = res03list.filter(r=>misExamIds.has(r.examId));
+  const res03 = res03list.length;
   if(res03>0){
     document.getElementById('ds-examenes').textContent=`${res03} resultado${res03!==1?'s':''} guardados`;
     document.getElementById('ds-examenes').className='dash-sub ok';
   }
 
   // ── 4. Planeadores ────────────────────────────────
-  const plans=safeJSON('lv_planeadores')||[];
+  let plans=safeJSON('lv_planeadores')||[];
+  if(!soyAdmin) plans = plans.filter(p=>permiteMateria(p.materia));
   document.getElementById('dv-planeador').textContent=plans.length||'0';
   if(plans.length>0){
     const last=plans.sort((a,b)=>(b.actualizado||b.creado||0)-(a.actualizado||a.creado||0))[0];
