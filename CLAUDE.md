@@ -80,10 +80,29 @@ documentos impresos/WhatsApp, que luego será configurable).
    lv11_resultados y lv11_simulacros_ext NUNCA existieron en Supabase
    (`migracion_tablas_faltantes.sql` corrido — esos datos ahora sí sincronizan).
 
-5. ⏳ **Arquitectura etapa 2** — (pendiente, hacer con calma y pruebas): filtrado por
-   fila en RLS (cada docente descarga solo lo suyo), consultas por curso bajo demanda,
-   IndexedDB como caché. Requiere refactor por módulo (hoy leen localStorage síncrono).
-   Referencia: migration_multitenant.sql.
+5. 🔄 **Arquitectura etapa 2** — EN CURSO (objetivo acordado: privacidad + espacio,
+   por fases con pruebas y reversa). Hallazgos clave: (a) sync ya descarga con el token
+   del docente, así que apretar RLS reduce el espejo casi sin tocar sync.js; (b) los
+   registros "propios" NO guardaban dueño (planeadores/exámenes solo el *nombre*, banco
+   solo la *materia*) y el `docenteId` de la app es el id de lv_docentes (por correo),
+   NO el `auth.uid()` de RLS. Plan por fases:
+   · **Fase 0 (HECHA, jul 14):** etiquetado central del dueño. `LV_AUTH.ownerId()` (=auth
+     uid) + estampado de `_owner` en `sync.js/marcarCambio` para todo registro envuelto
+     {id,datos} al subir (idempotente, no toca horario ni lecturas, no roba propiedad si
+     ya hay _owner). Deja base para filtrar por dueño sin cambiar módulos. SW v45.
+   · **Fase 1 (siguiente):** RLS por `_owner` en Supabase, como POLÍTICAS solamente
+     (`using ((datos->>'_owner')::uuid = auth.uid() OR datos->>'_owner' IS NULL OR
+     es_coordinacion())`) → sin cambiar esquema, reversible; empezar por tablas propias
+     (lv_planeadores, lv_banco, lv_examenes, lv11_*, lv_resultados, lv_herramientas).
+     Política de transición con `IS NULL` para NO ocultar lo viejo; backfill gradual.
+   · **Fase 2:** tablas por-curso (estudiantes/notas/asistencia/acudientes/boletines/
+     observador/piar) con predicado vía `lv_asignaciones`; probar tabla por tabla que
+     ningún módulo pierda datos (director de grupo, boletines, analítica).
+   · **Fase 3 (opcional, la más grande):** IndexedDB + consultas por demanda para los
+     catálogos grandes que son COMPARTIDOS y hoy se espejan a cada equipo (lv_actividades
+     ~647 ítems, estudiantes ~800). Requiere refactor async por módulo. Solo si aprieta.
+   Referencia: migration_multitenant.sql (usa docente_id+default; NOSOTROS optamos por
+   _owner en el JSON para que Fase 1 sea solo políticas).
 
 ## Convenciones y trampas conocidas
 
@@ -161,6 +180,7 @@ D. ✅ **Generación con IA dentro de la app** (código listo, falta la API key)
 
 E. **Arquitectura etapa 2** (alta dificultad, baja urgencia mientras no crezca el uso):
    filtrado por fila RLS + consultas bajo demanda + IndexedDB (ver roadmap punto 5).
+   → EN CURSO: Fase 0 hecha (etiquetado de dueño). Ver roadmap punto 5 para el plan por fases.
 
 F. Menores: unificar headers visuales de módulos 10-15, respaldos automáticos
    (Supabase → Backups programados), campos extra de institución (DANE, resolución,
@@ -174,7 +194,8 @@ GEMs v2, importador robusto, banco de actividades (módulo 16 + bucket subido).
 Planeador (02) y Banco (03), Gemini gemini-2.5-flash, importador reutilizado,
 testeado (12 casos). **Clave POR DOCENTE** (no compartida): header `X-Gemini-Key`,
 guardada en localStorage `lv_gemini_key` (helper `LV_GEMINI` en auth.js, fuera del MAPA
-de sync). SW en **v44**. FALTA para activarla: solo desplegar (git push → Vercel, sin
+de sync). **Etapa 2 arrancada: Fase 0 HECHA** (etiquetado de dueño `_owner` central en
+sync.js + `LV_AUTH.ownerId()`; ver roadmap punto 5 para el plan por fases). SW en **v45**. FALTA para activarla: solo desplegar (git push → Vercel, sin
 env); cada docente pega su clave en la app (`GUIA_ACTIVAR_IA.md`).
 SIGUIENTE PASO ACORDADO: desplegar, luego replicar el botón 🤖 en
 el módulo **04 (exámenes 11)** si se quiere, videos → YouTube no listado (catálogo

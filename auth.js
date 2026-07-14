@@ -137,7 +137,11 @@ const LV_AUTH = (() => {
     return true;
   }
 
-  return { login, logout, exigirSesion, haySesion, getValidToken, refrescar, usuario, docenteId, cambiarPassword, URL, KEY };
+  // ownerId(): el auth uid del docente = el valor que usa RLS (auth.uid()).
+  // Es lo mismo que docenteId() aquí, pero con nombre claro para el
+  // etiquetado de dueño de la etapa 2 (NO confundir con lv_login.docenteId,
+  // que es el id de la tabla lv_docentes vinculado por correo).
+  return { login, logout, exigirSesion, haySesion, getValidToken, refrescar, usuario, docenteId, ownerId: docenteId, cambiarPassword, URL, KEY };
 })();
 
 // ═══════════════════════════════════════════════════════════════

@@ -209,7 +209,23 @@ const LV_SYNC = (() => {
     const cfg = MAPA[lvKey];
     if (!cfg) return;
     const uid = Date.now().toString(36) + Math.random().toString(36).slice(2);
-    const datos = cfg.transform ? cfg.transform(registro) : registro;
+    let datos = cfg.transform ? cfg.transform(registro) : registro;
+    // ── Etapa 2 · Fase 0 — Etiquetar al DUEÑO ────────────────────
+    //  Estampa _owner = auth uid del docente dentro del registro, en UN
+    //  solo lugar (aquí pasan TODAS las subidas), sin tocar los módulos.
+    //  · Solo aplica a registros envueltos {id, datos: objeto} (los arrays
+    //    normales); horario y otras estructuras especiales quedan intactas.
+    //  · Idempotente: no re-estampa ni sobrescribe un _owner ya existente
+    //    (así un coordinador que edita un registro ajeno NO se vuelve dueño).
+    //  · No cambia ninguna lectura ni comportamiento; solo agrega un campo
+    //    que servirá para el filtrado por dueño (RLS) y el backfill después.
+    try {
+      const owner = (typeof LV_AUTH !== 'undefined' && LV_AUTH.ownerId) ? LV_AUTH.ownerId() : null;
+      if (owner && datos && datos.datos && typeof datos.datos === 'object'
+          && !Array.isArray(datos.datos) && !datos.datos._owner) {
+        datos = Object.assign({}, datos, { datos: Object.assign({}, datos.datos, { _owner: owner }) });
+      }
+    } catch (_) { /* si algo falla, se sube sin etiqueta: nunca bloquea la subida */ }
     pendientesAdd({ _uid: uid, tabla: cfg.tabla, id: registro[cfg.id], datos: datos });
     if (online() && puedeSincronizar()) subirPendientes();
   }
