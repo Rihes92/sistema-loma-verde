@@ -56,6 +56,19 @@
   .imp-tab.active{background:var(--primary);color:#fff}
   .hint{font-size:.78rem;color:var(--muted);margin-top:6px}
   @media print{nav.tabs,.appbar,.no-print{display:none!important}body{background:#fff}.card{box-shadow:none;border:none}}
+  #acta-print{display:none}
+  @media print{
+    body.printing-acta > *:not(#acta-print){display:none!important}
+    body.printing-acta #acta-print{display:block!important;font-size:10.5pt;color:#000}
+    #acta-print .p-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid #1e3a8a;padding-bottom:8px;margin-bottom:10px}
+    #acta-print .p-head img{width:58px;height:58px;object-fit:contain}
+    #acta-print h1{font-size:13pt;color:#1e3a8a;margin:0}
+    #acta-print table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:8px 0}
+    #acta-print th,#acta-print td{border:1px solid #666;padding:5px 7px;text-align:left}
+    #acta-print th{background:#e8eef9}
+    #acta-print td.c,#acta-print th.c{text-align:center}
+    #acta-print .firma{margin-top:60px;width:280px;border-top:1px solid #000;text-align:center;font-size:9pt;padding-top:4px}
+  }
 
   /* ── Botón ← Portal ─────────────────────────────────────────── */
   header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;transition:background .15s,color .15s;margin-left:auto}
@@ -79,6 +92,7 @@
 <nav class="tabs" id="tabs">
   <button data-tab="cursos" class="active">Cursos</button>
   <button data-tab="planilla">Planilla de Notas</button>
+  <button data-tab="nivelacion">Nivelaciones</button>
   <button data-tab="reportes">Reportes</button>
   <button data-tab="ajustes">Ajustes</button>
   <button data-tab="respaldo">Respaldo</button>
@@ -139,6 +153,10 @@
         </label>
         <label class="fld" style="flex:0 0 auto">
           <span>&nbsp;</span>
+          <button class="btn sec" id="btn-import-notas">⬆️ Importar notas</button>
+        </label>
+        <label class="fld" style="flex:0 0 auto">
+          <span>&nbsp;</span>
           <button class="btn sec sm no-print" onclick="window.print()">🖨️ Imprimir</button>
         </label>
       </div>
@@ -146,6 +164,32 @@
     </div>
     <div class="card">
       <div class="tableScroll" id="planilla-wrap"></div>
+    </div>
+  </section>
+
+  <!-- ───────── NIVELACIÓN ───────── -->
+  <section id="tab-nivelacion" class="hide">
+    <div class="card no-print">
+      <div class="row" style="align-items:flex-end">
+        <label class="fld">Curso
+          <select id="n-curso"></select>
+        </label>
+        <label class="fld">Periodo
+          <select id="n-periodo">
+            <option value="1">Primer Periodo</option>
+            <option value="2">Segundo Periodo</option>
+            <option value="3">Tercer Periodo</option>
+          </select>
+        </label>
+        <label class="fld" style="flex:0 0 auto">
+          <span>&nbsp;</span>
+          <button class="btn sec sm" id="btn-acta-nivelacion">🖨️ Imprimir acta</button>
+        </label>
+      </div>
+      <p class="hint">Aparecen automáticamente los estudiantes con definitiva por debajo de la nota mínima aprobatoria (ver Ajustes). Si la nota de nivelación que registres es mayor a la definitiva, la reemplaza en Reportes, Progreso, boletines y analítica; si no es mayor, se conserva la definitiva original.</p>
+    </div>
+    <div class="card">
+      <div class="tableScroll" id="nivelacion-wrap"></div>
     </div>
   </section>
 
@@ -285,7 +329,29 @@
   </div>
 </div>
 
+<!-- Modal: importar notas del periodo -->
+<div id="modal-import-notas" class="modal-bg hide">
+  <div class="modal" style="max-width:680px">
+    <h2 style="margin-top:0;color:var(--primary)">Importar notas del periodo</h2>
+    <p class="hint" id="impn-target"></p>
+    <label class="btn sec" style="display:inline-block;cursor:pointer;text-align:center">📂 Elegir archivo .xlsx / .xlsm / .csv
+      <input type="file" id="impn-file" accept=".csv,.xlsx,.xlsm,.xls" class="hide">
+    </label>
+    <p class="hint">Detecto automáticamente la columna de estudiantes (ESTUDIANTES / Nombres), las notas N1, N2… las de Acumulativo, Autoevaluación, Cooevaluación, Heteroevaluación e Inasistencias — igual que en tu planilla de seguimiento. Los estudiantes que no coincidan por nombre con nadie del curso se crean automáticamente.</p>
+    <div id="impn-filename" class="hint"></div>
+    <div id="impn-preview" class="hide" style="margin-top:12px">
+      <p style="font-weight:600;font-size:.85rem;margin:0 0 6px">Vista previa: <span id="impn-count">0</span> estudiantes (<span id="impn-new">0</span> nuevos)</p>
+      <div style="max-height:220px;overflow:auto;border:1px solid var(--border);border-radius:8px;font-size:.82rem" id="impn-list"></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button class="btn sec" id="impn-cancel">Cancelar</button>
+      <button class="btn ok" id="impn-confirm" disabled>Importar notas</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+<div id="acta-print"></div>
 
 <script src="../lib/xlsx.full.min.js"></script>
 <script>
@@ -393,6 +459,19 @@ function desempeno(def){
   return {k:'Bajo',cls:'b-baj'};
 }
 
+// ── Nivelación: si hay nota de nivelación y es MAYOR a la definitiva, la
+//    reemplaza; si no, se conserva la definitiva original. Se usa en todas
+//    partes donde se muestra/usa la definitiva "oficial" del periodo.
+function defFinal(cal){
+  const def=calcDefinitiva(cal);
+  if(cal&&typeof cal.nivelacion==='number'&&cal.nivelacion>0&&cal.nivelacion>def) return cal.nivelacion;
+  return def;
+}
+function estaNivelado(cal){
+  const def=calcDefinitiva(cal);
+  return !!(cal&&typeof cal.nivelacion==='number'&&cal.nivelacion>0&&cal.nivelacion>def);
+}
+
 // ── Alerta automática de bajo rendimiento (≥50% de notas reprobadas) ──
 //  Cuenta cuántas de las notas YA registradas en el periodo (cognitivas
 //  con valor, acumulativo, auto, co, hetero) están por debajo de la nota
@@ -444,6 +523,14 @@ async function generarAlertaAuto(cursoId, estId){
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Normaliza nombres para emparejar (sin tildes, minúsculas, espacios simples) — usado por el importador de notas.
+const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+// Línea de membrete (NIT/DANE/ICFES/resolución) para el acta de nivelación impresa.
+function membreteLinea(){
+  if(typeof LV_INST==='undefined') return '';
+  const p=[LV_INST.resolucion()?('Resolución '+LV_INST.resolucion()):'', 'NIT '+LV_INST.nit(), 'DANE '+LV_INST.dane(), 'Código ICFES '+LV_INST.icfes()].filter(Boolean).join(' · ');
+  return `<div style="font-size:7.5pt;color:#555">${esc(p)}</div>`;
+}
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 const calKey=(cursoId,periodo,estId)=>`${cursoId}|${periodo}|${estId}`;
 
@@ -473,8 +560,9 @@ $('#tabs').addEventListener('click',e=>{
   document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
   const t=b.dataset.tab;
-  ['cursos','planilla','reportes','ajustes','respaldo','progreso'].forEach(x=>$('#tab-'+x).classList.toggle('hide',x!==t));
+  ['cursos','planilla','nivelacion','reportes','ajustes','respaldo','progreso'].forEach(x=>$('#tab-'+x).classList.toggle('hide',x!==t));
   if(t==='planilla')renderPlanilla();
+  if(t==='nivelacion')renderNivelacion();
   if(t==='reportes')renderReporte();
   if(t==='cursos')renderCursos();
   if(t==='progreso'){fillProgresoSelect();renderProgreso();}
@@ -520,7 +608,7 @@ window.goPlanilla=id=>{
 function fillCursoSelects(){
   const cursosVista=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;
   const opts=cursosVista.map(c=>`<option value="${c.id}">${esc(c.nombre)} (${esc(c.grado)}${c.grupo?' '+esc(c.grupo):''})</option>`).join('');
-  ['#p-curso','#r-curso','#pr-curso'].forEach(sel=>{const cur=$(sel).value;$(sel).innerHTML=opts;if(cur)$(sel).value=cur;});
+  ['#p-curso','#r-curso','#pr-curso','#n-curso'].forEach(sel=>{const cur=$(sel).value;$(sel).innerHTML=opts;if(cur)$(sel).value=cur;});
 }
 
 // ---- Planilla ----
@@ -547,7 +635,7 @@ async function renderPlanilla(){
   let rows='';
   for(const est of lista){
     const cal=await getCal(cursoId,periodo,est.id);
-    const cog=calcCognitivo(cal.cognitivas), def=calcDefinitiva(cal), d=desempeno(def);
+    const cog=calcCognitivo(cal.cognitivas), def=defFinal(cal), d=desempeno(def);
     const nb=contarNotasBajas(cal);
     const cogInputs=cal.cognitivas.slice(0,slots).map((n,i)=>
       `<td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${n??''}" data-est="${est.id}" data-f="cog" data-i="${i}"></td>`).join('');
@@ -563,7 +651,7 @@ async function renderPlanilla(){
       <td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${cal.auto||''}" data-est="${est.id}" data-f="auto"></td>
       <td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${cal.co||''}" data-est="${est.id}" data-f="co"></td>
       <td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${cal.hetero||''}" data-est="${est.id}" data-f="hetero"></td>
-      <td class="c def" style="color:${def>=CFG.scale.passing?'var(--ok)':'var(--bad)'}">${def?def.toFixed(1):'—'}</td>
+      <td class="c def" style="color:${def>=CFG.scale.passing?'var(--ok)':'var(--bad)'}">${def?def.toFixed(1):'—'}${estaNivelado(cal)?' <span title="Nota reemplazada por nivelación" style="font-size:.68rem;color:var(--primary-light)">(niv)</span>':''}</td>
       <td class="c"><span class="badge ${d.cls}">${d.k}</span></td>
       <td class="c no-print"><button class="btn sm bad" onclick="delEst('${est.id}')">✕</button></td>
     </tr>`;
@@ -587,12 +675,12 @@ async function onGradeInput(e){
   else{cal[inp.dataset.f]=val||0;}
   await dbPut('calificaciones',cal); calMap[cal.id]=cal;
   // recalcular fila sin redibujar todo
-  const tr=inp.closest('tr'); const cog=calcCognitivo(cal.cognitivas), def=calcDefinitiva(cal), d=desempeno(def);
+  const tr=inp.closest('tr'); const cog=calcCognitivo(cal.cognitivas), def=defFinal(cal), d=desempeno(def);
   const tds=tr.querySelectorAll('td');
   // cognitivo col = después de los N inputs
   const slots=CFG.cognitivoSlots;
   tds[slots+1].innerHTML=`<strong>${cog?cog.toFixed(1):'—'}</strong>`;
-  const defTd=tr.querySelector('.def'); defTd.textContent=def?def.toFixed(1):'—';
+  const defTd=tr.querySelector('.def'); defTd.innerHTML=(def?def.toFixed(1):'—')+(estaNivelado(cal)?' <span title="Nota reemplazada por nivelación" style="font-size:.68rem;color:var(--primary-light)">(niv)</span>':'');
   defTd.style.color=def>=CFG.scale.passing?'var(--ok)':'var(--bad)';
   tr.querySelector('.badge').className='badge '+d.cls; tr.querySelector('.badge').textContent=d.k;
 }
@@ -731,6 +819,215 @@ $('#imp-confirm').addEventListener('click',async()=>{
   $('#modal-import').classList.add('hide'); renderPlanilla();
 });
 
+// ---- Nivelaciones ----
+async function renderNivelacion(){
+  const wrap=$('#nivelacion-wrap'); const cursoId=$('#n-curso').value, periodo=$('#n-periodo').value;
+  if(!cursoId){wrap.innerHTML='<div class="empty">Selecciona un curso.</div>';return;}
+  const lista=estudiantes.filter(e=>e.cursoId===cursoId).sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
+  const filas=[];
+  for(const est of lista){
+    const cal=await getCal(cursoId,periodo,est.id);
+    const defOriginal=calcDefinitiva(cal);
+    if(defOriginal<=0||defOriginal>=CFG.scale.passing)continue; // solo reprobados con nota registrada
+    filas.push({est,cal,defOriginal});
+  }
+  if(!filas.length){wrap.innerHTML='<div class="empty">No hay estudiantes reprobados en este curso y periodo (o aún no hay notas registradas). 🎉</div>';return;}
+  wrap.innerHTML=`<table><thead><tr>
+    <th>Estudiante</th><th class="c">Definitiva original</th><th class="c">Nota de nivelación</th><th class="c">Definitiva final</th><th class="c">Desempeño final</th>
+  </tr></thead><tbody>
+  ${filas.map(({est,cal,defOriginal})=>{
+    const dFinal=defFinal(cal), d=desempeno(dFinal);
+    return `<tr>
+      <td>${esc(est.nombre)}</td>
+      <td class="c" style="color:var(--bad);font-weight:700">${defOriginal.toFixed(1)}</td>
+      <td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${cal.nivelacion??''}" data-est="${est.id}" data-niv="1"></td>
+      <td class="c def" style="color:${dFinal>=CFG.scale.passing?'var(--ok)':'var(--bad)'}">${dFinal.toFixed(1)}</td>
+      <td class="c"><span class="badge ${d.cls}">${d.k}</span></td>
+    </tr>`;
+  }).join('')}
+  </tbody></table>`;
+  wrap.querySelectorAll('input[data-niv]').forEach(inp=>inp.addEventListener('input',onNivelacionInput));
+}
+async function onNivelacionInput(e){
+  const inp=e.target, estId=inp.dataset.est, cursoId=$('#n-curso').value, periodo=$('#n-periodo').value;
+  const cal=await getCal(cursoId,periodo,estId);
+  let val=inp.value===''?null:parseFloat(inp.value);
+  if(val!==null){if(val<1)val=1;if(val>5)val=5;}
+  cal.nivelacion=val;
+  await dbPut('calificaciones',cal); calMap[cal.id]=cal;
+  const tr=inp.closest('tr'); const dFinal=defFinal(cal), d=desempeno(dFinal);
+  const defTd=tr.querySelector('.def'); defTd.textContent=dFinal.toFixed(1);
+  defTd.style.color=dFinal>=CFG.scale.passing?'var(--ok)':'var(--bad)';
+  tr.querySelector('.badge').className='badge '+d.cls; tr.querySelector('.badge').textContent=d.k;
+}
+$('#n-curso').addEventListener('change',renderNivelacion);
+$('#n-periodo').addEventListener('change',renderNivelacion);
+
+// ---- Acta de nivelación impresa ----
+function generarActaNivelacion(){
+  const cursoId=$('#n-curso').value, periodo=$('#n-periodo').value;
+  if(!cursoId)return toast('Elige un curso primero');
+  const curso=cursos.find(c=>c.id===cursoId);
+  const lista=estudiantes.filter(e=>e.cursoId===cursoId).sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
+  const filas=lista.map(est=>{
+    const cal=calMap[calKey(cursoId,periodo,est.id)];
+    if(!cal)return null;
+    const defOriginal=calcDefinitiva(cal);
+    if(defOriginal<=0||defOriginal>=CFG.scale.passing)return null;
+    return {est,cal,defOriginal};
+  }).filter(Boolean);
+  if(!filas.length)return toast('No hay estudiantes reprobados para generar el acta.');
+  const perTxt=['','Primer Periodo','Segundo Periodo','Tercer Periodo'][periodo]||'Periodo '+periodo;
+  const IE=(typeof LV_INST!=='undefined'&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde';
+  const materia=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||curso.materia||'';
+  let docenteNombre='';
+  try{docenteNombre=(JSON.parse(localStorage.getItem('lv_login')||'null')||{}).nombre||'';}catch(_){}
+  const filasHtml=filas.map(({est,cal,defOriginal})=>{
+    const dFinal=defFinal(cal), d=desempeno(dFinal);
+    return `<tr><td>${esc(est.nombre)}</td><td class="c">${cal.nivelacion!=null?(+cal.nivelacion).toFixed(1):'—'}</td>
+      <td class="c">${esc(d.k)}</td><td class="c">${defOriginal.toFixed(1)} → ${dFinal.toFixed(1)}</td></tr>`;
+  }).join('');
+  $('#acta-print').innerHTML=`
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>ACTA DE NIVELACIÓN POR PERIODO</div>${membreteLinea()}</div></div>
+    <table style="margin-bottom:10px"><tr><th>Curso</th><th>Grado</th><th>Grupo</th><th>Periodo</th><th>Fecha</th></tr>
+      <tr><td class="c">${esc(curso.nombre)}</td><td class="c">${esc(curso.grado||'')}</td><td class="c">${esc(curso.grupo||'')}</td><td class="c">${esc(perTxt)}</td><td class="c">${new Date().toLocaleDateString('es-CO')}</td></tr></table>
+    <p><strong>Asignatura:</strong> ${esc(materia)}</p>
+    <table><thead><tr><th>Estudiante</th><th class="c">Nota de nivelación</th><th class="c">Desempeño final</th><th class="c">Definitiva (antes → después)</th></tr></thead>
+    <tbody>${filasHtml}</tbody></table>
+    <div class="firma">${esc(docenteNombre)}<br>DOCENTE</div>`;
+  document.body.classList.add('printing-acta');
+  window.print();
+  setTimeout(()=>document.body.classList.remove('printing-acta'),500);
+}
+$('#btn-acta-nivelacion').addEventListener('click',generarActaNivelacion);
+
+// ---- Importar notas del periodo ----
+let impnRows=[];
+const NCOL_RE=/^n\s*\d+$/i;
+const ACU_RE=/acumulativ/i;
+const AUTO_RE=/autoevaluaci/i;
+const CO_RE=/co+evaluaci/i;
+const HETERO_RE=/heteroevaluaci/i;
+const INAS_RE=/inasistenc/i;
+function parseNotasSheet(rows){
+  const R=rows.map(r=>Array.isArray(r)?r:[r]);
+  for(let r=0;r<R.length;r++){
+    const row=R[r];
+    let nameIdx=-1;
+    for(let c2=0;c2<row.length;c2++){if(NAMECOL_RE.test(cleanName(row[c2]))){nameIdx=c2;break;}}
+    if(nameIdx<0)continue;
+    const nCols=[]; let acuIdx=-1,autoIdx=-1,coIdx=-1,heteroIdx=-1,inasIdx=-1;
+    for(let c2=0;c2<row.length;c2++){
+      const h=cleanName(row[c2]);
+      if(!h||c2===nameIdx)continue;
+      if(NCOL_RE.test(h))nCols.push(c2);
+      else if(ACU_RE.test(h))acuIdx=c2;
+      else if(AUTO_RE.test(h))autoIdx=c2;
+      else if(CO_RE.test(h))coIdx=c2;
+      else if(HETERO_RE.test(h))heteroIdx=c2;
+      else if(INAS_RE.test(h))inasIdx=c2;
+    }
+    const out=[];
+    for(let k=r+1;k<R.length;k++){
+      const dr=R[k]; const nombre=cleanName(dr[nameIdx]);
+      if(!nombre||isNum(nombre)||JUNK_RE.test(nombre))continue;
+      const num=v=>{const n=parseFloat(v);return isFinite(n)?n:null;};
+      out.push({
+        nombre,
+        cognitivas:nCols.map(ci=>num(dr[ci])),
+        acumulativo:acuIdx>=0?num(dr[acuIdx]):null,
+        auto:autoIdx>=0?num(dr[autoIdx]):null,
+        co:coIdx>=0?num(dr[coIdx]):null,
+        hetero:heteroIdx>=0?num(dr[heteroIdx]):null,
+        inas:inasIdx>=0?num(dr[inasIdx]):null,
+      });
+    }
+    if(out.length)return out;
+  }
+  return [];
+}
+$('#btn-import-notas').addEventListener('click',()=>{
+  const cursoId=$('#p-curso').value; if(!cursoId)return toast('Elige un curso primero');
+  const periodo=$('#p-periodo').value;
+  const c=cursos.find(x=>x.id===cursoId);
+  $('#impn-target').textContent=`Curso destino: ${c?c.nombre:''} — ${['','Primer','Segundo','Tercer'][periodo]||'Periodo '+periodo} Periodo`;
+  impnRows=[]; $('#impn-file').value=''; $('#impn-filename').textContent='';
+  $('#impn-preview').classList.add('hide'); $('#impn-confirm').disabled=true;
+  $('#modal-import-notas').classList.remove('hide');
+});
+$('#impn-cancel').addEventListener('click',()=>$('#modal-import-notas').classList.add('hide'));
+$('#impn-file').addEventListener('change',async e=>{
+  const f=e.target.files[0]; if(!f)return;
+  $('#impn-filename').textContent='📄 '+f.name;
+  try{
+    let rows=[];
+    if(/\.(xlsx|xlsm|xls)$/i.test(f.name)){
+      if(typeof XLSX==='undefined'){toast('No se cargó la librería de Excel; usa CSV');return;}
+      const wb=XLSX.read(new Uint8Array(await f.arrayBuffer()),{type:'array'});
+      const ws=wb.Sheets[wb.SheetNames[0]];
+      rows=XLSX.utils.sheet_to_json(ws,{header:1,blankrows:false});
+    }else{
+      const txt=await readTextSmart(f);
+      rows=parseCSV(txt);
+    }
+    showPreviewNotas(parseNotasSheet(rows));
+  }catch(err){console.error(err);toast('No se pudo leer el archivo');}
+});
+function showPreviewNotas(parsed){
+  const cursoId=$('#p-curso').value;
+  const lista=estudiantes.filter(e=>e.cursoId===cursoId);
+  impnRows=parsed.map(row=>{
+    const k=normN(row.nombre);
+    const match=lista.find(e=>normN(e.nombre)===k);
+    return Object.assign({},row,{estId:match?match.id:null});
+  });
+  const nuevos=impnRows.filter(r=>!r.estId).length;
+  $('#impn-count').textContent=impnRows.length;
+  $('#impn-new').textContent=nuevos;
+  if(!impnRows.length){
+    $('#impn-list').innerHTML='<div class="empty" style="padding:14px">No detecté una columna de estudiantes con notas. Verifica que el archivo tenga encabezados como "ESTUDIANTES", "N1", "N2"… "Acumulativo", etc.</div>';
+    $('#impn-confirm').disabled=true;
+  }else{
+    $('#impn-list').innerHTML=`<table><thead><tr><th>Estudiante</th><th class="c">Notas</th><th class="c">Estado</th></tr></thead><tbody>
+      ${impnRows.map(r=>{
+        const notasTxt=r.cognitivas.filter(n=>n!=null).map(n=>n.toFixed(1)).join(', ')||'—';
+        return `<tr><td>${esc(r.nombre)}</td><td class="c" style="font-size:.78rem">${esc(notasTxt)}</td>
+          <td class="c">${r.estId?'<span class="muted" style="font-size:.78rem">Existente</span>':'<span style="color:var(--ok);font-weight:600;font-size:.78rem">Nuevo — se creará</span>'}</td></tr>`;
+      }).join('')}
+    </tbody></table>`;
+    $('#impn-confirm').disabled=false;
+  }
+  $('#impn-preview').classList.remove('hide');
+}
+$('#impn-confirm').addEventListener('click',async()=>{
+  const cursoId=$('#p-curso').value, periodo=$('#p-periodo').value;
+  if(!cursoId||!impnRows.length)return;
+  let creados=0,actualizados=0;
+  for(const r of impnRows){
+    let estId=r.estId;
+    if(!estId){
+      const est={id:uid(),cursoId,nombre:r.nombre,creado:Date.now()};
+      await dbPut('estudiantes',est); estudiantes.push(est);
+      estId=est.id; creados++;
+    }
+    const cal=await getCal(cursoId,periodo,estId);
+    if(r.cognitivas.some(n=>n!=null)){
+      while(cal.cognitivas.length<r.cognitivas.length)cal.cognitivas.push(null);
+      r.cognitivas.forEach((n,i)=>{if(n!=null)cal.cognitivas[i]=Math.min(5,Math.max(1,n));});
+    }
+    if(r.acumulativo!=null)cal.acumulativo=Math.min(5,Math.max(1,r.acumulativo));
+    if(r.auto!=null)cal.auto=Math.min(5,Math.max(1,r.auto));
+    if(r.co!=null)cal.co=Math.min(5,Math.max(1,r.co));
+    if(r.hetero!=null)cal.hetero=Math.min(5,Math.max(1,r.hetero));
+    if(r.inas!=null)cal.inas=r.inas;
+    await dbPut('calificaciones',cal); calMap[cal.id]=cal;
+    actualizados++;
+  }
+  toast(`${actualizados} estudiante(s) con notas importadas${creados?` (${creados} nuevos)`:''}`);
+  $('#modal-import-notas').classList.add('hide');
+  renderPlanilla();
+});
+
 // ---- Reportes ----
 $('#r-curso').addEventListener('change',renderReporte);
 $('#r-periodo').addEventListener('change',renderReporte);
@@ -740,7 +1037,7 @@ function statsFor(cursoId,periodo){
   const detalle=[];
   lista.forEach(est=>{
     const cal=calMap[calKey(cursoId,periodo,est.id)];
-    const def=cal?calcDefinitiva(cal):0; if(def<=0)return;
+    const def=cal?defFinal(cal):0; if(def<=0)return;
     n++; suma+=def; const d=desempeno(def); dist[d.k]++;
     if(def>=CFG.scale.passing)aprob++;
     if(!best||def>best.def)best={n:est.nombre,def};
@@ -873,7 +1170,7 @@ $('#btn-export-csv').addEventListener('click',()=>{
     estudiantes.filter(e=>e.cursoId===c.id).forEach(est=>{
       for(let p=1;p<=4;p++){
         const cal=calMap[calKey(c.id,String(p),est.id)]; if(!cal)continue;
-        const def=calcDefinitiva(cal); if(def<=0)continue;
+        const def=defFinal(cal); if(def<=0)continue;
         rows.push([c.nombre,c.grado,c.grupo||'',(['','Primer','Segundo','Tercer'][p]||'P'+p),est.nombre,
           calcCognitivo(cal.cognitivas).toFixed(1),cal.acumulativo||0,cal.auto||0,cal.co||0,cal.hetero||0,
           def.toFixed(1),desempeno(def).k]);
@@ -968,7 +1265,7 @@ async function renderProgreso(){
     notas[est.id]={};
     for(const p of periodos){
       const cal=await getCal(cursoId,p,est.id);
-      notas[est.id][p]=calcDefinitiva(cal);
+      notas[est.id][p]=defFinal(cal);
     }
   }
 

@@ -3,6 +3,73 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 6)
+
+- **Importador de notas + Nivelaciones, en `modulos/01-calificaciones.html`.** Francy
+  pidió poder subir las notas del periodo 1 desde su planilla real (Excel de
+  seguimiento: columnas Cód, ESTUDIANTES, N1..N6, Acumulativo 25%, Autoevaluación 5%,
+  Cooevaluación 5%, Heteroevaluación 5%, Inasistencias — adjuntó
+  `Seguimiento_903_CIENCIAS_SOCIALES.xlsx` como ejemplo real) y un sistema de
+  nivelaciones: estudiantes reprobados (definitiva < nota mínima) se listan
+  automáticamente, el docente les mete una nota de nivelación, y esa nota
+  **reemplaza la definitiva SOLO SI es mayor** (si no, se conserva la definitiva
+  original) — se confirmó con Francy vía preguntas: crear automáticamente a los
+  estudiantes que no coincidan por nombre, y sí generar el acta imprimible (adjuntó
+  `Ciencias sociales 9-3.pdf` como ejemplo de "Acta de Nivelación" de otro sistema,
+  gestionescolar.co, usada de referencia de formato).
+  - **Pestaña "Nivelaciones" nueva** (`#tab-nivelacion`): curso + periodo, lista solo
+    a los reprobados (`calcDefinitiva(cal) < CFG.scale.passing`) con un input de nota
+    de nivelación. Guarda en el mismo registro de `lv_calificaciones` como
+    `cal.nivelacion` — **campo nuevo, sin migración SQL** (sync.js ya sincroniza el
+    objeto `cal` completo como JSON opaco vía `transform:(r)=>({id:r.id,datos:r})`,
+    así que cualquier campo nuevo viaja solo).
+  - **`defFinal(cal)`** = `cal.nivelacion` si existe y es mayor que
+    `calcDefinitiva(cal)`; si no, la definitiva normal. Reemplaza a `calcDefinitiva`
+    en TODOS los lugares donde se muestra/usa la nota "oficial" del periodo dentro de
+    01-calificaciones.html: Planilla (con etiqueta "(niv)" junto a la nota
+    reemplazada), Reportes (`statsFor`), Progreso, exportación a CSV/Excel.
+  - **Mismo criterio replicado en los otros 3 módulos que duplican el cálculo de
+    definitiva** (convención del proyecto: sin JS compartido) — sus funciones
+    `defin(cal)` en `12-director.html`, `13-boletines.html` y `14-analitica.html`
+    ahora también miran `cal.nivelacion` antes de devolver la definitiva, para que
+    boletines, "mi grupo" y analítica queden consistentes con la nivelación sin
+    tocar cada módulo por separado en el futuro.
+  - **Acta de Nivelación imprimible**: botón "🖨️ Imprimir acta" en la pestaña
+    Nivelaciones. Genera un documento con membrete institucional (logo + `LV_INST` +
+    `membreteLinea()`, mismo patrón que boletines/comunicados), curso/grado/grupo/
+    periodo/fecha, tabla de reprobados con su nota de nivelación y definitiva
+    antes→después, y firma del docente (`lv_login.nombre`). Usa un contenedor
+    `#acta-print` oculto que solo se muestra en `@media print` cuando
+    `document.body` tiene la clase `printing-acta` (mismo patrón aislado que usa
+    `13-boletines.html` con `#print-area`, no interfiere con el `window.print()` que
+    ya usaba la pestaña Reportes). **No incluye número de acta secuencial** (el PDF
+    de referencia traía "ACTA No. 1173" de gestionescolar.co, un sistema externo —
+    no hay una fuente de verdad para numerar actas dentro de SABIE todavía; si
+    Francy lo necesita, es un desarrollo aparte).
+  - **Importador de notas** (botón "⬆️ Importar notas" junto al de "Importar lista"
+    en la pestaña Planilla, mismo curso+periodo ya seleccionados en los selects de
+    arriba): sube un .xlsx/.xlsm/.csv, detecta la fila de encabezados buscando la
+    columna de nombres (reutiliza `NAMECOL_RE` del importador de listados existente)
+    y clasifica el resto de columnas por regex — `N\d+` → notas cognitivas
+    (posicional, no depende de `CFG.cognitivoSlots`), `acumulativ`, `autoevaluaci`,
+    `co+evaluaci` (cubre "Coevaluación" y "Cooevaluación"), `heteroevaluaci`,
+    `inasistenc`. Las columnas ya calculadas de la planilla externa (Cognitivo 60%,
+    DEFINITIVA 100%, Escala, Observación, Cód) se ignoran a propósito — la app
+    recalcula todo con su propio motor (`calcDefinitiva`), no se copian valores
+    derivados. Empareja estudiantes por nombre normalizado (`normN`: minúsculas,
+    sin tildes, espacios colapsados) contra el curso ya seleccionado; el que no
+    coincide con nadie **se crea automáticamente** (decisión confirmada por Francy),
+    la vista previa marca cuáles son "Existente" vs "Nuevo — se creará" antes de
+    confirmar.
+  SW **v54**. `node --check`-equivalente limpio en los 4 archivos tocados
+  (01-calificaciones, 12-director, 13-boletines, 14-analitica); balance de
+  `<div>`/`<section>` verificado en 01-calificaciones (archivo grande, edición por
+  reemplazos de texto exactos, no reescritura completa).
+  **PENDIENTE:** push (Francy lo hace con su ritual de Terminal); que Francy pruebe
+  el importador con su planilla real de otro curso/materia y confirme que las
+  columnas se detectan bien; decidir si vale la pena un número de acta secuencial
+  más adelante.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 5)
 
 - **Auditoría de diseño UI/UX (10 prioridades) + correcciones, sesión punto por punto.**

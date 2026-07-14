@@ -210,7 +210,10 @@ function defin(cal){
   const cog=v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
   const acu=cal.acumulativo||0,au=cal.auto||0,co=cal.co||0,he=cal.hetero||0;
   if(!cog&&!acu&&!au&&!co&&!he) return 0;
-  return (cog*W.cognitivo+acu*W.acumulativo+au*W.auto+co*W.co+he*W.hetero)/100;
+  let def=(cog*W.cognitivo+acu*W.acumulativo+au*W.auto+co*W.co+he*W.hetero)/100;
+  // Nivelación: si hay nota de nivelación y es mayor a la definitiva, la reemplaza (ver módulo Calificaciones).
+  if(typeof cal.nivelacion==='number'&&cal.nivelacion>0&&cal.nivelacion>def) def=cal.nivelacion;
+  return def;
 }
 function todosEstudiantes(){
   const cursos=lsRead('cursos'); const cmap={}; cursos.forEach(c=>cmap[c.id]=c);

@@ -135,7 +135,10 @@ function defin(cal){
   const w=CFG.weights;
   const acu=cal.acumulativo||0,au=cal.auto||0,co=cal.co||0,he=cal.hetero||0;
   if(!cog&&!acu&&!au&&!co&&!he) return 0;
-  return Math.min(CFG.scale.max,Math.max(CFG.scale.min,(cog*w.cognitivo+acu*w.acumulativo+au*w.auto+co*w.co+he*w.hetero)/100));
+  let def=Math.min(CFG.scale.max,Math.max(CFG.scale.min,(cog*w.cognitivo+acu*w.acumulativo+au*w.auto+co*w.co+he*w.hetero)/100));
+  // Nivelación: si hay nota de nivelación y es mayor a la definitiva, la reemplaza (ver módulo Calificaciones).
+  if(typeof cal.nivelacion==='number'&&cal.nivelacion>0&&cal.nivelacion>def) def=cal.nivelacion;
+  return def;
 }
 function desemp(d){
   const s=CFG.scale;
