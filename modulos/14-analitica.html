@@ -113,6 +113,13 @@ const LS='lv_';
 function lsRead(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||[]; }catch(_){ return []; } }
 function lsObj(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||{}; }catch(_){ return {}; } }
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Línea de membrete (NIT/DANE/ICFES/resolución) para documentos impresos —
+// datos configurables en Coordinación → Resumen → Institución (backlog F).
+function membreteLinea(){
+  if(typeof LV_INST==='undefined') return '';
+  const p=[LV_INST.resolucion()?('Resolución '+LV_INST.resolucion()):'', 'NIT '+LV_INST.nit(), 'DANE '+LV_INST.dane(), 'Código ICFES '+LV_INST.icfes()].filter(Boolean).join(' · ');
+  return `<div style="font-size:8pt;color:#555">${esc(p)}</div>`;
+}
 const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
 const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde';
 const COMPETENCIAS=['Pensamiento social','Interpretación y análisis de perspectivas','Pensamiento reflexivo y sistémico'];
@@ -312,7 +319,7 @@ window.imprimirPerfil=function(clave){
   const fmt=x=>x?x.toFixed(1):'—';
   document.getElementById('print-area').innerHTML=`
     <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1>
-      <div>HOJA DE VIDA ACADÉMICA · Año ${new Date().getFullYear()}</div></div></div>
+      <div>HOJA DE VIDA ACADÉMICA · Año ${new Date().getFullYear()}</div>${membreteLinea()}</div></div>
     <table><tr><th style="width:20%">Estudiante</th><td>${esc(d.est.nombre)}</td><th style="width:14%">Grupo(s)</th><td>${esc(d.gruposEst)}</td></tr></table>
     <h2>Notas por materia y periodo</h2>
     <table><tr><th>Materia</th>${d.periodos.map(p=>`<th>${PERNOM[p]||'P'+p}</th>`).join('')}</tr>

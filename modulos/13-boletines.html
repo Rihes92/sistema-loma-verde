@@ -110,6 +110,13 @@ const LS='lv_';
 function lsRead(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||[]; }catch(_){ return []; } }
 function lsObj(k){ try{ return JSON.parse(localStorage.getItem(LS+k))||{}; }catch(_){ return {}; } }
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Línea de membrete (NIT/DANE/ICFES/resolución) para documentos impresos —
+// datos configurables en Coordinación → Resumen → Institución (backlog F).
+function membreteLinea(){
+  if(typeof LV_INST==='undefined') return '';
+  const p=[LV_INST.resolucion()?('Resolución '+LV_INST.resolucion()):'', 'NIT '+LV_INST.nit(), 'DANE '+LV_INST.dane(), 'Código ICFES '+LV_INST.icfes()].filter(Boolean).join(' · ');
+  return `<div style="font-size:7.5pt;color:#555">${esc(p)}</div>`;
+}
 const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
 const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
@@ -244,7 +251,7 @@ function construirBoletines(grupoKey, periodo){
 function htmlBoletin(b, periodo){
   return `<div class="boletin">
     <div class="p-head"><img src="../Logo/logo.jpg" alt="">
-      <div><h1>${esc(IE)}</h1><div>BOLETÍN DE CALIFICACIONES · ${esc(PERNOM[periodo]||periodo)} · Año ${new Date().getFullYear()}</div></div></div>
+      <div><h1>${esc(IE)}</h1><div>BOLETÍN DE CALIFICACIONES · ${esc(PERNOM[periodo]||periodo)} · Año ${new Date().getFullYear()}</div>${membreteLinea()}</div></div>
     <table><tr>
       <th style="width:20%">Estudiante</th><td>${esc(b.nombre)}</td>
       <th style="width:12%">Grupo</th><td style="width:16%">${esc(b.grupo)}</td></tr>

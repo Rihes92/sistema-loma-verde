@@ -206,8 +206,20 @@
         <label class="fld">Nombre completo<input id="inst-nombre" placeholder="Institución Educativa ..."></label>
         <label class="fld">Nombre corto<input id="inst-corto" placeholder="I.E. ..."></label>
         <label class="fld">Sede<input id="inst-sede" placeholder="Sede Principal"></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="fld">NIT<input id="inst-nit" placeholder="900.129.463-7"></label>
+        <label class="fld">Código DANE<input id="inst-dane" placeholder="223001002405"></label>
+        <label class="fld">Código ICFES<input id="inst-icfes" placeholder="156950"></label>
+        <label class="fld">Resolución de aprobación<input id="inst-resolucion" placeholder="Ej: Resolución N° ..."></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="fld">Secretaría de Educación<input id="inst-secretaria" placeholder="Secretaría de Educación Municipal de ..."></label>
+        <label class="fld">Ciudad / municipio<input id="inst-ciudad" placeholder="Montería – Córdoba"></label>
+        <label class="fld">Correo institucional<input id="inst-correo" type="email" placeholder="correo@sem...gov.co"></label>
         <label class="fld" style="flex:0 0 auto;justify-content:flex-end"><button class="btn ok" id="btn-inst-guardar">💾 Guardar</button></label>
       </div>
+      <p class="desc" style="margin-top:8px">El escudo/logo que aparece en documentos impresos es el archivo <code>Logo/logo.jpg</code> del repositorio (para cambiarlo, reemplaza ese archivo).</p>
     </div>
     <div class="card">
       <h2>Estado del sistema (este dispositivo)</h2>
@@ -971,16 +983,36 @@ renderDocentes(); renderAsignaciones();
 fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
 
 // ── Institución (branding configurable — tabla lv_institucion) ──
+//  jul 2026: se agregaron NIT/DANE/ICFES/resolución/secretaría/ciudad/correo
+//  (backlog F). El escudo sigue siendo el archivo Logo/logo.jpg del repo —
+//  no hay subida de imagen todavía, se cambia reemplazando ese archivo.
 (function(){
   const $n=document.getElementById('inst-nombre'), $c=document.getElementById('inst-corto'), $s=document.getElementById('inst-sede');
   if(!$n) return;
+  const $nit=document.getElementById('inst-nit'), $dane=document.getElementById('inst-dane'),
+        $icfes=document.getElementById('inst-icfes'), $res=document.getElementById('inst-resolucion'),
+        $sec=document.getElementById('inst-secretaria'), $ciu=document.getElementById('inst-ciudad'),
+        $cor=document.getElementById('inst-correo');
   function leerInst(){ try{ const a=JSON.parse(localStorage.getItem('lv_institucion'))||[]; return (Array.isArray(a)?a.find(x=>x&&!x._eliminado):null)||null; }catch(_){ return null; } }
   const r=leerInst()||{};
   $n.value=r.nombre||'Institución Educativa San José de Loma Verde';
   $c.value=r.nombreCorto||'I.E. San José de Loma Verde';
   $s.value=r.sede||'Sede Principal';
+  $nit.value=r.nit||(typeof LV_INST!=='undefined'?LV_INST.nit():'');
+  $dane.value=r.dane||(typeof LV_INST!=='undefined'?LV_INST.dane():'');
+  $icfes.value=r.icfes||(typeof LV_INST!=='undefined'?LV_INST.icfes():'');
+  $res.value=r.resolucion||'';
+  $sec.value=r.secretaria||(typeof LV_INST!=='undefined'?LV_INST.secretaria():'');
+  $ciu.value=r.ciudad||(typeof LV_INST!=='undefined'?LV_INST.ciudad():'');
+  $cor.value=r.correo||(typeof LV_INST!=='undefined'?LV_INST.correo():'');
   document.getElementById('btn-inst-guardar').addEventListener('click',()=>{
-    const reg={ id:(leerInst()||{}).id||'principal', nombre:$n.value.trim(), nombreCorto:$c.value.trim()||$n.value.trim(), sede:$s.value.trim(), actualizado_en:new Date().toISOString() };
+    const reg={
+      id:(leerInst()||{}).id||'principal',
+      nombre:$n.value.trim(), nombreCorto:$c.value.trim()||$n.value.trim(), sede:$s.value.trim(),
+      nit:$nit.value.trim(), dane:$dane.value.trim(), icfes:$icfes.value.trim(), resolucion:$res.value.trim(),
+      secretaria:$sec.value.trim(), ciudad:$ciu.value.trim(), correo:$cor.value.trim(),
+      actualizado_en:new Date().toISOString()
+    };
     if(!reg.nombre){ toast('Escribe el nombre de la institución'); return; }
     localStorage.setItem('lv_institucion', JSON.stringify([reg]));
     if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_institucion', reg);

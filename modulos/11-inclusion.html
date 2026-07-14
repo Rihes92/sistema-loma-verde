@@ -211,6 +211,13 @@ function lsSave(k,arr,cambiados){
 }
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// Línea de membrete (NIT/DANE/ICFES/resolución) para documentos impresos —
+// datos configurables en Coordinación → Resumen → Institución (backlog F).
+function membreteLinea(){
+  if(typeof LV_INST==='undefined') return '';
+  const p=[LV_INST.resolucion()?('Resolución '+LV_INST.resolucion()):'', 'NIT '+LV_INST.nit(), 'DANE '+LV_INST.dane(), 'Código ICFES '+LV_INST.icfes()].filter(Boolean).join(' · ');
+  return `<div style="font-size:8pt;color:#555">${esc(p)}</div>`;
+}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 const hoyISO=()=>new Date().toISOString().slice(0,10);
 const fmtF=f=>{ if(!f) return '—'; const d=new Date(String(f).slice(0,10)+'T12:00:00'); return d.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}); };
@@ -358,7 +365,7 @@ document.getElementById('btn-imprimir-act').addEventListener('click',()=>{
 
 function imprimirTexto(titulo, cuerpo){
   document.getElementById('print-area').innerHTML=`
-    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>${esc(titulo)}</div></div></div>
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>${esc(titulo)}</div>${membreteLinea()}</div></div>
     <div class="p-box">${esc(cuerpo)}</div>
     <p style="font-size:8.5pt;color:#555">Elaborado por ${esc(autor)} · ${new Date().toLocaleDateString('es-CO')} · SABIE</p>`;
   window.print();
@@ -550,7 +557,7 @@ document.getElementById('btn-print-piar').addEventListener('click',()=>{
   const barr=(piarSel.barreras||[]).map(id=>{const b=BARRERAS.find(x=>x.id===id);return b?b:null;}).filter(Boolean);
   document.getElementById('print-area').innerHTML=`
     <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1>
-      <div>PLAN INDIVIDUAL DE AJUSTES RAZONABLES — PIAR (Decreto 1421 de 2017) · Año ${piarSel.anio}</div></div></div>
+      <div>PLAN INDIVIDUAL DE AJUSTES RAZONABLES — PIAR (Decreto 1421 de 2017) · Año ${piarSel.anio}</div>${membreteLinea()}</div></div>
     <h2>Anexo 1 · Información general del estudiante</h2>
     <table>
       <tr><th style="width:22%">Estudiante</th><td>${esc(piarSel.estNombre)}</td><th style="width:14%">Grupo</th><td>${esc(piarSel.curso||'')}</td></tr>
@@ -580,7 +587,7 @@ document.getElementById('btn-print-acta').addEventListener('click',()=>{
   if(!piarSel) return; guardarPiar();
   document.getElementById('print-area').innerHTML=`
     <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1>
-      <div>PIAR — ANEXO 3 · ACTA DE ACUERDOS (Decreto 1421 de 2017) · Año ${piarSel.anio}</div></div></div>
+      <div>PIAR — ANEXO 3 · ACTA DE ACUERDOS (Decreto 1421 de 2017) · Año ${piarSel.anio}</div>${membreteLinea()}</div></div>
     <table>
       <tr><th style="width:22%">Estudiante</th><td>${esc(piarSel.estNombre)}</td><th style="width:14%">Grupo</th><td>${esc(piarSel.curso||'')}</td></tr>
       <tr><th>Fecha</th><td colspan="3">${new Date().toLocaleDateString('es-CO')}</td></tr>

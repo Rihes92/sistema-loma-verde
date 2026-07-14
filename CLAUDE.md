@@ -3,7 +3,43 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
-## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026 — sesión 3)
+## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026 — sesión 4)
+
+- **Backlog F completado — campos de institución + membrete.** Francy pasó los datos
+  reales (NIT 900.129.463-7, DANE 223001002405, Código ICFES 156950, Secretaría de
+  Educación Municipal de Montería, Montería – Córdoba, correo
+  iesanjosedelomaverde@semmonteria.gov.co) y una foto del membrete oficial que usa
+  la institución. Cambios:
+  - `auth.js` → `LV_INST` gana `nit()`, `dane()`, `icfes()`, `correo()`,
+    `secretaria()`, `ciudad()`, `resolucion()` (con los valores reales como
+    respaldo si `lv_institucion` está vacío). El escudo sigue siendo
+    `Logo/logo.jpg` (ya coincide con el escudo real de la institución — se
+    confirmó comparando con los íconos PWA existentes); no hay subida de imagen,
+    se reemplaza el archivo si cambia.
+  - `coordinacion.html` → tarjeta Institución: 3 inputs nuevos (NIT, DANE, ICFES,
+    resolución, secretaría, ciudad, correo) que se guardan en `lv_institucion`.
+    **`resolucion` quedó vacío** (no aparecía en el membrete que envió Francy —
+    pendiente que ella la escriba si aplica).
+  - `modulos/06-comunicados.html` → el membrete de la carta oficial tenía un
+    **bug real**: mostraba un SVG placeholder "LV" y un código DANE
+    **equivocado** (2530010024, hardcodeado) en vez del real. Se reemplazó por
+    `Logo/logo.jpg` + una línea dinámica con NIT/DANE/ICFES/resolución +
+    secretaría/ciudad, leída de `LV_INST`.
+  - `modulos/10-observador.html`, `11-inclusion.html` (3 lugares: texto genérico,
+    PIAR anexo 1, PIAR acta anexo 3), `13-boletines.html`, `14-analitica.html` →
+    se agregó una función `membreteLinea()` (duplicada por archivo, patrón ya
+    usado en el proyecto de no compartir JS entre módulos) que imprime NIT/DANE/
+    Código ICFES/Resolución debajo del título en el encabezado de impresión
+    (`.p-head`), leyendo de `LV_INST`.
+  - SW **v52**. `node --check` limpio en los 7 archivos con `<script>` inline
+    tocados.
+  **PENDIENTE:** push; y que Francy confirme/complete el número de Resolución de
+  aprobación (no vino en la foto del membrete que envió).
+- **Respaldos automáticos de Supabase** (parte de backlog F) siguen SIN hacer —
+  no es código de este repo, se configura en Supabase → Database → Backups
+  (Point-in-Time Recovery).
+
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 3)
 
 - **Fuga de privacidad corregida en el portal (`index.html`).** Francy notó que
   "Resumen del sistema" y "Actividad reciente" mostraban cursos/notas/asistencia de

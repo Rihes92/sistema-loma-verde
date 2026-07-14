@@ -160,7 +160,17 @@ const LV_INST = {
   },
   nombre() { return this._get().nombre      || 'Institución Educativa San José de Loma Verde'; },
   corto()  { return this._get().nombreCorto || 'I.E. San José de Loma Verde'; },
-  sede()   { return this._get().sede        || 'Sede Principal'; }
+  sede()   { return this._get().sede        || 'Sede Principal'; },
+  // Campos oficiales del membrete (jul 2026, tomados del membrete real que
+  // usa la institución). Editables en Coordinación → Resumen → Institución;
+  // estos son solo el respaldo mientras no se guarde nada distinto.
+  nit()        { return this._get().nit        || '900.129.463-7'; },
+  dane()       { return this._get().dane       || '223001002405'; },
+  icfes()      { return this._get().icfes      || '156950'; },
+  correo()     { return this._get().correo     || 'iesanjosedelomaverde@semmonteria.gov.co'; },
+  secretaria() { return this._get().secretaria || 'Secretaría de Educación Municipal de Montería'; },
+  ciudad()     { return this._get().ciudad     || 'Montería – Córdoba'; },
+  resolucion() { return this._get().resolucion || ''; }
 };
 
 // ═══════════════════════════════════════════════════════════════

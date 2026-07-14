@@ -184,16 +184,10 @@
           <div id="prev-carta" class="hide">
             <div class="carta-wrap" id="carta-imprimible">
               <div class="carta-header">
-                <div class="carta-logo-wrap">
-                  <svg viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" style="width:54px;height:54px;border-radius:8px;border:2px solid #000;flex-shrink:0">
-                    <rect width="54" height="54" fill="#1e3a8a"/>
-                    <text x="27" y="32" text-anchor="middle" fill="#fff" font-family="Georgia,serif" font-size="18" font-weight="bold">LV</text>
-                  </svg>
-                </div>
+                <img src="../Logo/logo.jpg" alt="Escudo" class="carta-logo">
                 <div class="carta-inst">
                   <h3 id="carta-inst-nombre">INSTITUCIÓN EDUCATIVA SAN JOSÉ DE LOMA VERDE</h3>
-                  <p>Resolución N° 1056 · CÓDIGO DANE: 2530010024<br>
-                     Sector Rural · Loma Verde, Montería, Córdoba</p>
+                  <p id="carta-inst-datos"></p>
                 </div>
               </div>
               <div id="carta-contenido"></div>
@@ -291,6 +285,16 @@ let estudiantes = (_c01 ? cargarEstudiantesDesde01() : null) || lsR('estudiantes
 let historial   = lsR('historial')   || [];
 let config      = lsR('config')      || {docente:'Richard Miguel Hernández Sabié', inst:(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde', sede:(window.LV_INST&&LV_INST.sede())||'Sede Principal'};
 (function(){ const el=document.getElementById('carta-inst-nombre'); const n=(config&&config.inst)||(window.LV_INST&&LV_INST.nombre()); if(el&&n) el.textContent=String(n).toUpperCase(); })();
+// Datos oficiales del membrete (NIT/DANE/ICFES/resolución/correo/ciudad),
+// configurables en Coordinación → Resumen → Institución (backlog F, jul 2026).
+(function(){
+  const el=document.getElementById('carta-inst-datos');
+  if(!el||typeof LV_INST==='undefined') return;
+  const nit=LV_INST.nit(), dane=LV_INST.dane(), icfes=LV_INST.icfes(), res=LV_INST.resolucion();
+  const linea1=[res?('Resolución '+res):'', nit?('NIT '+nit):'', dane?('DANE '+dane):'', icfes?('Código ICFES '+icfes):''].filter(Boolean).join(' · ');
+  const linea2=[LV_INST.secretaria(), LV_INST.ciudad()].filter(Boolean).join(' · ');
+  el.innerHTML = [esc(linea1), esc(linea2)].filter(Boolean).join('<br>');
+})();
 
 let estado = {
   plantilla:   'citacion',
