@@ -77,6 +77,7 @@
 <nav class="tabs" id="tabs">
   <button class="active" data-tab="docentes">👩‍🏫 Docentes</button>
   <button data-tab="asignaciones">📋 Asignaciones</button>
+  <button data-tab="centros">🌟 Centros de Interés</button>
   <button data-tab="resumen">📊 Resumen</button>
   <button data-tab="papelera">🗑️ Papelera</button>
 </nav>
@@ -135,6 +136,43 @@
         <label class="fld">Filtrar por materia<select id="a-filtro-materia"><option value="">Todas</option></select></label>
       </div>
       <div id="asignaciones-out"></div>
+    </div>
+  </section>
+
+  <!-- ───────── CENTROS DE INTERÉS ───────── -->
+  <section id="tab-centros" class="hide">
+    <div class="card">
+      <h2 id="c-form-titulo">Nuevo centro de interés</h2>
+      <p class="desc">Registra los centros (jornada única / complementaria) y asigna su líder y los docentes que acompañan. Cada docente verá SOLO los centros donde sea líder o esté asignado.</p>
+      <div class="row">
+        <label class="fld">Nombre<input id="c-nombre" placeholder="Ej: Fútbol, Robótica, Danzas"></label>
+        <label class="fld">Línea<select id="c-linea"></select></label>
+        <label class="fld">Jornada<select id="c-jornada"><option>Complementaria</option><option>Mañana</option><option>Tarde</option><option>Única</option></select></label>
+      </div>
+      <div class="row">
+        <label class="fld">Sede<input id="c-sede" placeholder="Sede Principal"></label>
+        <label class="fld">Cupo (opcional)<input id="c-cupo" type="number" min="0" placeholder="Ej: 30"></label>
+        <label class="fld">Líder (docente)<select id="c-lider"></select></label>
+      </div>
+      <label class="fld">Descripción<textarea id="c-desc" rows="2" style="width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:9px;font-size:.9rem;resize:vertical;font-family:inherit" placeholder="Objetivo del centro, horario de encuentro, etc. (opcional)"></textarea></label>
+      <div style="margin-top:12px">
+        <label class="fld" style="margin-bottom:6px">Docentes asignados</label>
+        <input id="c-doc-buscar" placeholder="Buscar docente por nombre…" style="margin-bottom:8px">
+        <div id="c-docentes-list" style="max-height:220px;overflow:auto;border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px"></div>
+        <p class="desc" id="c-doc-count" style="margin-top:6px">0 docente(s) seleccionado(s)</p>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <button class="btn ok" id="btn-centro-save">💾 Guardar centro</button>
+        <button class="btn sec hide" id="btn-centro-cancel">Cancelar edición</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Centros registrados</h2>
+      <div class="row" style="margin-bottom:10px">
+        <label class="fld">Buscar<input id="c-buscar" placeholder="Nombre o línea…"></label>
+        <label class="fld">Línea<select id="c-filtro-linea"><option value="">Todas</option></select></label>
+      </div>
+      <div id="centros-out"></div>
     </div>
   </section>
 
@@ -325,9 +363,11 @@ document.getElementById('tabs').addEventListener('click', e=>{
   const t=b.dataset.tab;
   document.getElementById('tab-docentes').classList.toggle('hide', t!=='docentes');
   document.getElementById('tab-asignaciones').classList.toggle('hide', t!=='asignaciones');
+  document.getElementById('tab-centros').classList.toggle('hide', t!=='centros');
   document.getElementById('tab-resumen').classList.toggle('hide', t!=='resumen');
   document.getElementById('tab-papelera').classList.toggle('hide', t!=='papelera');
   if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); }
+  if (t==='centros') { fillLineaSelects(); fillLiderSelect(); renderDocentesCheckList(document.getElementById('c-doc-buscar').value); renderCentros(); }
   if (t==='resumen') { renderResumen(); renderEstado(); }
   if (t==='papelera') { renderPapelera(); }
 });
@@ -417,6 +457,9 @@ const PAPELERA_TABLAS = [
   { tabla:'lv_piar',         nombre:'PIAR' },
   { tabla:'lv_inclusion_actividades', nombre:'Actividades DUA' },
   { tabla:'lv_herramientas', nombre:'Herramientas (resultados y rúbricas)' },
+  { tabla:'lv_centros',      nombre:'Centros de Interés' },
+  { tabla:'lv_centros_inscripciones', nombre:'Inscripciones a Centros de Interés' },
+  { tabla:'lv_centros_asistencia',    nombre:'Asistencia de Centros de Interés' },
 ];
 const PAPELERA_DIAS = 30;
 
@@ -745,9 +788,157 @@ function renderResumen(){
   }).join('')}</tbody></table></div>`;
 }
 
+// ---------- Centros de Interés ----------
+// Único lugar donde se crean/editan/eliminan centros y se asigna
+// líder + docentes (decisión de Francy, jul 14: vive en Coordinación,
+// no dentro del módulo 17). El módulo 17 solo LEE lv_centros para que
+// cada docente vea los suyos y gestione inscripciones/asistencia.
+const LINEAS_CENTRO = ['Arte','Deporte','Música y danza','Oralidad','Lectura y escritura','Medio ambiente','Ciudadanía y convivencia','Ciencia y tecnología','Pensamiento lógico-matemático','Emprendimiento','Bilingüismo','Otra'];
+let centros = lsRead('centros');
+let centroEditId = null;
+let centroDocentesSel = new Set();
+
+function fillLineaSelects(){
+  document.getElementById('c-linea').innerHTML = LINEAS_CENTRO.map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join('');
+  const fl = document.getElementById('c-filtro-linea');
+  const cur = fl.value;
+  fl.innerHTML = '<option value="">Todas</option>' + [...new Set(centros.map(c=>c.linea).filter(Boolean))].sort().map(l=>`<option value="${esc(l)}">${esc(l)}</option>`).join('');
+  fl.value = cur;
+}
+
+function fillLiderSelect(){
+  const sel = document.getElementById('c-lider');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">— Sin asignar —</option>' + docentes.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')).map(d=>`<option value="${d.id}">${esc(d.nombre)}</option>`).join('');
+  sel.value = cur;
+}
+
+function renderDocentesCheckList(filtro){
+  const wrap = document.getElementById('c-docentes-list');
+  const q = (filtro||'').toLowerCase();
+  const lista = docentes.filter(d=>!q || (d.nombre||'').toLowerCase().includes(q)).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  wrap.innerHTML = lista.length ? lista.map(d=>`
+    <label style="display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;cursor:pointer">
+      <input type="checkbox" class="c-doc-chk" value="${d.id}" ${centroDocentesSel.has(d.id)?'checked':''}> ${esc(d.nombre)} <span class="muted" style="font-size:.75rem">(${esc(d.sede||'—')})</span>
+    </label>`).join('') : '<p class="desc" style="margin:0">Sin docentes que coincidan.</p>';
+  wrap.querySelectorAll('.c-doc-chk').forEach(chk=>{
+    chk.addEventListener('change', ()=>{
+      if(chk.checked) centroDocentesSel.add(chk.value); else centroDocentesSel.delete(chk.value);
+      document.getElementById('c-doc-count').textContent = centroDocentesSel.size+' docente(s) seleccionado(s)';
+    });
+  });
+}
+document.getElementById('c-doc-buscar').addEventListener('input', e=>renderDocentesCheckList(e.target.value));
+
+function limpiarFormCentro(){
+  centroEditId = null;
+  document.getElementById('c-form-titulo').textContent = 'Nuevo centro de interés';
+  document.getElementById('c-nombre').value='';
+  fillLineaSelects();
+  document.getElementById('c-jornada').value='Complementaria';
+  document.getElementById('c-sede').value = (typeof LV_INST!=='undefined' ? LV_INST.sede() : '');
+  document.getElementById('c-cupo').value='';
+  fillLiderSelect();
+  document.getElementById('c-lider').value='';
+  document.getElementById('c-desc').value='';
+  centroDocentesSel = new Set();
+  document.getElementById('c-doc-buscar').value='';
+  renderDocentesCheckList('');
+  document.getElementById('c-doc-count').textContent='0 docente(s) seleccionado(s)';
+  document.getElementById('btn-centro-cancel').classList.add('hide');
+}
+
+document.getElementById('btn-centro-save').addEventListener('click', ()=>{
+  const nombre = document.getElementById('c-nombre').value.trim();
+  if(!nombre){ toast('Escribe el nombre del centro.'); return; }
+  const previo = centroEditId ? centros.find(x=>x.id===centroEditId) : null;
+  const c = {
+    id: centroEditId || uid(),
+    nombre,
+    linea: document.getElementById('c-linea').value,
+    jornada: document.getElementById('c-jornada').value,
+    sede: document.getElementById('c-sede').value.trim(),
+    cupo: document.getElementById('c-cupo').value ? parseInt(document.getElementById('c-cupo').value,10) : null,
+    descripcion: document.getElementById('c-desc').value.trim(),
+    liderId: document.getElementById('c-lider').value || '',
+    docentesIds: Array.from(centroDocentesSel),
+    creado: previo ? (previo.creado || Date.now()) : Date.now()
+  };
+  centros = centroEditId ? centros.map(x=>x.id===centroEditId?c:x) : centros.concat([c]);
+  lsWrite('centros', centros);
+  limpiarFormCentro();
+  renderCentros();
+  toast('Centro guardado ✓');
+});
+document.getElementById('btn-centro-cancel').addEventListener('click', limpiarFormCentro);
+
+function editarCentro(id){
+  const c = centros.find(x=>x.id===id); if(!c) return;
+  centroEditId = id;
+  document.getElementById('c-form-titulo').textContent = 'Editar centro';
+  document.getElementById('c-nombre').value = c.nombre||'';
+  fillLineaSelects();
+  document.getElementById('c-linea').value = c.linea||LINEAS_CENTRO[0];
+  document.getElementById('c-jornada').value = c.jornada||'Complementaria';
+  document.getElementById('c-sede').value = c.sede||'';
+  document.getElementById('c-cupo').value = c.cupo!=null?c.cupo:'';
+  document.getElementById('c-desc').value = c.descripcion||'';
+  fillLiderSelect();
+  document.getElementById('c-lider').value = c.liderId||'';
+  centroDocentesSel = new Set(c.docentesIds||[]);
+  document.getElementById('c-doc-buscar').value='';
+  renderDocentesCheckList('');
+  document.getElementById('c-doc-count').textContent = centroDocentesSel.size+' docente(s) seleccionado(s)';
+  document.getElementById('btn-centro-cancel').classList.remove('hide');
+  document.getElementById('tab-centros').scrollIntoView({behavior:'smooth'});
+}
+window.editarCentro = editarCentro;
+
+function eliminarCentro(id){
+  if(!confirm('¿Eliminar este centro? Las inscripciones y la asistencia ya registradas NO se borran (quedan huérfanas).')) return;
+  const c = centros.find(x=>x.id===id);
+  centros = centros.filter(x=>x.id!==id);
+  lsWrite('centros', centros);
+  if (typeof LV_SYNC!=='undefined' && c) LV_SYNC.marcarCambio('lv_centros', Object.assign({}, c, {id, _eliminado:true}));
+  fillLineaSelects();
+  renderCentros();
+  toast('Centro eliminado.');
+}
+window.eliminarCentro = eliminarCentro;
+
+function renderCentros(){
+  const wrap = document.getElementById('centros-out');
+  const q = (document.getElementById('c-buscar').value||'').toLowerCase();
+  const fl = document.getElementById('c-filtro-linea').value;
+  let lista = centros.filter(c=>(!fl||c.linea===fl) && (!q || ((c.nombre||'')+' '+(c.linea||'')).toLowerCase().includes(q)));
+  if(!lista.length){ wrap.innerHTML = '<div class="empty">Sin centros registrados.</div>'; return; }
+  lista = lista.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  let html = `<div class="tableScroll"><table><thead><tr><th>Nombre</th><th>Línea</th><th>Jornada</th><th>Líder</th><th class="c">Docentes</th><th class="c">Cupo</th><th></th></tr></thead><tbody>`;
+  lista.forEach(c=>{
+    const lider = docentes.find(d=>d.id===c.liderId);
+    html += `<tr>
+      <td><strong>${esc(c.nombre)}</strong>${c.descripcion?`<div class="desc" style="margin:2px 0 0">${esc(c.descripcion)}</div>`:''}</td>
+      <td>${esc(c.linea||'—')}</td>
+      <td>${esc(c.jornada||'—')}</td>
+      <td>${lider?esc(lider.nombre):'<span class="muted">Sin asignar</span>'}</td>
+      <td class="c">${(c.docentesIds||[]).length}</td>
+      <td class="c">${c.cupo!=null?c.cupo:'—'}</td>
+      <td style="white-space:nowrap">
+        <button class="btn sec sm" onclick="editarCentro('${c.id}')">✏️ Editar</button>
+        <button class="btn sm bad" onclick="eliminarCentro('${c.id}')">✕</button>
+      </td>
+    </tr>`;
+  });
+  html += `</tbody></table></div>`;
+  wrap.innerHTML = html;
+}
+document.getElementById('c-buscar').addEventListener('input', renderCentros);
+document.getElementById('c-filtro-linea').addEventListener('change', renderCentros);
+
 // ---------- arranque ----------
 fillSedeSelects(); fillDocenteSelects(); fillAreaSelect(); fillGradoSelect(); fillMateriaFiltro();
 renderDocentes(); renderAsignaciones();
+fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
 
 // ── Institución (branding configurable — tabla lv_institucion) ──
 (function(){

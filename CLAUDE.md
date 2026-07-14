@@ -5,19 +5,34 @@
 
 ## ▶ POR DÓNDE RETOMAR (último estado: jul 14, 2026)
 
+- **Módulo "Centros de Interés · PTA" — CÓDIGO LISTO, falta desplegar.** Construido según
+  `ESPECIFICACION_MODULO_PTA.md` (jul 14): módulo nuevo `modulos/17-centros-interes.html`
+  (pestañas Centros / Estudiantes / Asistencia / Resumen) + pestaña nueva **🌟 Centros de
+  Interés** en `coordinacion.html` (ahí vive TODO el CRUD de centros: crear/editar/eliminar,
+  asignar líder y docentes — decisión de Francy, jul 14: NO dentro del módulo 17). El
+  módulo 17 solo LEE `lv_centros` y filtra "mis centros" (líder o asignado, comparando
+  `login.docenteId` — NO `auth.uid()`); gestiona inscripciones (import Excel / lista
+  masiva / selector de estudiantes existentes) y asistencia (P/F/T/E por sesión) de esos
+  centros. Rótulo en la UI: **"Centros de Interés · PTA"** (decisión de Francy). 3 tablas
+  nuevas en el MAPA de `sync.js`: `lv_centros`, `lv_centros_inscripciones`,
+  `lv_centros_asistencia` (ver detalle en "Estructura" y "Backlog" más abajo). SQL listo
+  en `migracion_centros_interes.sql` (RLS: lv_centros solo-lectura para todos + escritura
+  solo `es_coordinacion()`; las otras 2 con el patrón `solo_autenticados` de siempre).
+  Enlace agregado en sidebar (`index.html`, grupo Institución) y en `materia-hub.html`
+  (institucionales). SW subido a **v46**. `node --check` limpio en los 4 archivos tocados.
+  **PENDIENTE:** correr `migracion_centros_interes.sql` en Supabase y desplegar
+  (git push → Vercel). Nada de esto se ha probado en producción todavía.
 - **Etapa 2 (arquitectura) — CONSOLIDADA en punto seguro.** Fase 0 (etiquetado de dueño
-  `_owner`) y Fase 1 (RLS de privacidad en resultados) están DESPLEGADAS y funcionando
-  (SW v45). La **Fase 2 (por curso) queda PAUSADA a propósito**: es grande y frágil por
+  `_owner`) y Fase 1 (RLS de privacidad en resultados) están DESPLEGADAS y funcionando.
+  La **Fase 2 (por curso) queda PAUSADA a propósito**: es grande y frágil por
   las referencias de curso inconsistentes (ver roadmap punto 5, "COMPLEJIDAD DETECTADA").
   NO improvisar en caliente; retomarla en sesión dedicada, con groundwork por módulo y
   pruebas tabla por tabla. Para esa parte pesada de diseño conviene Opus; el groundwork
   mecánico, Sonnet.
-- **Siguiente trabajo acordado (hacer con Sonnet 5):** (a) los "menores" del backlog F
-  (headers de módulos 10-15, campos de institución DANE/resolución/escudo + membrete);
-  (b) **módulo nuevo PTA / Centros de Interés** — especificación completa en
-  `ESPECIFICACION_MODULO_PTA.md` (léela antes de construir).
-- **Pendiente operativo:** desplegar quedó hecho (Fase 0/1). El botón 🤖 en el módulo
-  **04 (exámenes 11)** sigue sin hacer (replicar del 03) si se quiere.
+- **Siguiente trabajo acordado (hacer con Sonnet 5):** los "menores" del backlog F
+  (headers de módulos 10-15, campos de institución DANE/resolución/escudo + membrete).
+- **Pendiente operativo:** desplegar el módulo de Centros de Interés (ver arriba). El botón
+  🤖 en el módulo **04 (exámenes 11)** sigue sin hacer (replicar del 03) si se quiere.
 
 
 ## Qué es
@@ -53,18 +68,28 @@ documentos impresos/WhatsApp, que luego será configurable).
   Herramientas), topbar con saludo/fecha, secciones: Para hoy → Buscador de estudiantes →
   Áreas académicas (acordeón filtrado por asignaciones del docente) → Resumen → Alertas →
   Actividad. Coordinación solo visible para admin.
-- `materia-hub.html` — al elegir área+materia muestra los 15 módulos en dos secciones:
-  "de la materia" (01-09, reciben `?area=&materia=`) e "institucionales" (10-15).
+- `materia-hub.html` — al elegir área+materia muestra los módulos en dos secciones:
+  "de la materia" (01-09, reciben `?area=&materia=`) e "institucionales" (10-17).
 - `modulos/01..15` — calificaciones, planeador, exámenes 6-10, simulacros 11 (ICFES),
   asistencia, comunicados, horario, eventos, acudientes, observador (Ley 1620), inclusión
   (DUA/PIAR Decreto 1421), director de grupo, boletines, analítica, herramientas.
+- `modulos/16-actividades.html` — Banco de Actividades (fichas/cuadernos de primaria en
+  Supabase Storage, visor con descarga autenticada).
+- `modulos/17-centros-interes.html` — **Centros de Interés · PTA** (jul 2026): pestañas
+  Centros (solo lectura — "mis centros" según líder/asignado), Estudiantes (inscripciones:
+  manual, lista masiva, import Excel, o desde `lv_estudiantes`), Asistencia (P/F/T/E por
+  sesión + historial por fecha) y Resumen (% asistencia, exporta CSV). El CRUD completo de
+  centros (crear/editar/eliminar + asignar líder y docentes) vive en `coordinacion.html`,
+  NO en este módulo (decisión de Francy). Tablas: `lv_centros`, `lv_centros_inscripciones`,
+  `lv_centros_asistencia` (ver `migracion_centros_interes.sql`).
 - `modulos/herramientas/` — 9 herramientas formativas (test lectura, cálculo mental,
   rúbricas, sociograma, etc.) que envían notas a la planilla.
-- `coordinacion.html` — gestión de docentes, asignaciones, malla, papelera (solo admin).
+- `coordinacion.html` — pestañas: Docentes, Asignaciones, **🌟 Centros de Interés** (crear/
+  editar/eliminar centros, asignar líder + docentes), Resumen, Papelera (solo admin).
 - `materia-context.js` (LV_CTX) — contexto área/materia por URL/sessionStorage; incluye
   migración de registros viejos sin materia (se etiquetan 'Sociales').
-- SQL en raíz: `migracion_seguridad.sql` (RLS — verificar si ya se corrió),
-  `migration_multitenant.sql`, otros parciales.
+- SQL en raíz: `migracion_seguridad_v2.sql` (RLS activo, corrido), `migracion_centros_interes.sql`
+  (Centros de Interés — pendiente de correr), `migration_multitenant.sql`, otros parciales.
 
 ## Roadmap acordado (en orden)
 
@@ -220,18 +245,33 @@ F. Menores: unificar headers visuales de módulos 10-15, respaldos automáticos
    (Supabase → Backups programados), campos extra de institución (DANE, resolución,
    escudo) en lv_institucion y membrete de comunicados.
 
-## Estado al cierre de la sesión (jul 13, 2026)
-Hecho y en producción: fixes, rediseño (login pantalla dividida con logo nuevo
-sabie-full.jpg / portal sidebar), arquitectura etapa 1, seguridad completa,
-GEMs v2, importador robusto, banco de actividades (módulo 16 + bucket subido).
-**Generación con IA (backlog D): CÓDIGO LISTO** — `api/generar.js` + botón 🤖 en
-Planeador (02) y Banco (03), Gemini gemini-2.5-flash, importador reutilizado,
-testeado (12 casos). **Clave POR DOCENTE** (no compartida): header `X-Gemini-Key`,
-guardada en localStorage `lv_gemini_key` (helper `LV_GEMINI` en auth.js, fuera del MAPA
-de sync). **Etapa 2 arrancada: Fase 0 HECHA** (etiquetado de dueño `_owner` central en
-sync.js + `LV_AUTH.ownerId()`; ver roadmap punto 5 para el plan por fases). SW en **v45**. FALTA para activarla: solo desplegar (git push → Vercel, sin
-env); cada docente pega su clave en la app (`GUIA_ACTIVAR_IA.md`).
-SIGUIENTE PASO ACORDADO: desplegar, luego replicar el botón 🤖 en
+G. ✅ **Módulo "Centros de Interés · PTA"** (código listo, jul 14): ver especificación
+   completa en `ESPECIFICACION_MODULO_PTA.md`. Construido: `modulos/17-centros-interes.html`
+   (Centros/Estudiantes/Asistencia/Resumen) + pestaña **🌟 Centros de Interés** en
+   `coordinacion.html` (CRUD completo de centros + asignación de líder/docentes — decisión
+   de Francy: NO dentro del módulo 17). 3 tablas nuevas en el MAPA de sync.js: `lv_centros`,
+   `lv_centros_inscripciones`, `lv_centros_asistencia`. SQL en `migracion_centros_interes.sql`
+   (pendiente de correr en Supabase). Enlaces en sidebar y materia-hub. SW **v46**.
+   PENDIENTE: correr el SQL y desplegar.
+
+## Estado al cierre de la sesión (jul 14, 2026)
+Hecho y en producción (sesiones previas): fixes, rediseño (login pantalla dividida con logo
+nuevo sabie-full.jpg / portal sidebar), arquitectura etapa 1, seguridad completa, GEMs v2,
+importador robusto, banco de actividades (módulo 16 + bucket subido), generación con IA
+(backlog D, código listo — `api/generar.js` + botón 🤖 en Planeador/Banco, clave POR
+DOCENTE vía `lv_gemini_key`), etapa 2 · Fase 0 y Fase 1 (etiquetado `_owner` + RLS de
+privacidad en resultados) DESPLEGADAS.
+
+**Esta sesión (jul 14): módulo "Centros de Interés · PTA" — CÓDIGO LISTO, sin desplegar**
+(ver punto G del backlog y "POR DÓNDE RETOMAR" arriba). Archivos nuevos/tocados:
+`modulos/17-centros-interes.html` (nuevo), `coordinacion.html` (pestaña 🌟 Centros de
+Interés), `sync.js` (3 tablas en MAPA), `index.html` (enlace sidebar), `materia-hub.html`
+(enlace institucional), `sw.js` (v46), `migracion_centros_interes.sql` (nuevo, sin correr).
+`node --check` limpio en los 4 archivos con `<script>` inline tocados.
+
+SIGUIENTE PASO ACORDADO: correr `migracion_centros_interes.sql` en Supabase, desplegar
+(git push → Vercel), probar el módulo con datos reales. Después: replicar el botón 🤖 en
 el módulo **04 (exámenes 11)** si se quiere, videos → YouTube no listado (catálogo
-tipo 'video'), arquitectura etapa 2, menores (F). Git: locks de OneDrive impiden
-commits desde Cowork; Francy usa su ritual de Terminal (rm locks + add + commit + push).
+tipo 'video'), arquitectura etapa 2 · Fase 2 (pausada a propósito), menores (backlog F).
+Git: locks de OneDrive impiden commits desde Cowork; Francy usa su ritual de Terminal
+(rm locks + add + commit + push).

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Centros de Interés · PTA — SABIE</title>
+<style>
+  :root{
+    --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
+    --ok:#16a34a; --bad:#dc2626; --warn:#d97706; --info:#0369a1;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+  nav.tabs{display:flex;gap:4px;background:var(--surface);padding:6px;overflow-x:auto;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+  nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button.active{background:var(--primary);color:#fff}
+  main{max-width:1200px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 14px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:6px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:160px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.9rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  button.btn.ok{background:var(--ok)}
+  button.btn.bad{background:var(--bad);color:#fff}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  button.btn:disabled{opacity:.5;cursor:not-allowed}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;font-weight:700;color:var(--primary);position:sticky;top:0}
+  td.c,th.c{text-align:center}
+  .tableScroll{overflow-x:auto}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.72rem;font-weight:700;background:#dbeafe;color:#1e3a8a}
+  .muted{color:var(--muted)}
+  .empty{text-align:center;padding:40px;color:var(--muted)}
+  .hide{display:none!important}
+  .grid-centros{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .centro-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:8px}
+  .centro-card h3{font-size:1rem;color:var(--primary)}
+  .centro-card .metas{display:flex;gap:6px;flex-wrap:wrap}
+  .centro-card .info{font-size:.82rem;color:var(--muted)}
+  .checklist{max-height:280px;overflow:auto;border:1px solid var(--border);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px}
+  .checklist label{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:500;cursor:pointer}
+  .radio-p{accent-color:#16a34a}
+  .radio-f{accent-color:#dc2626}
+  .radio-t{accent-color:#d97706}
+  .radio-e{accent-color:#0369a1}
+  .leyenda{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .leyenda span{font-size:.8rem;font-weight:600;display:inline-flex;align-items:center;gap:4px}
+  .b-ok{background:#dcfce7;color:#166534}
+  .b-warn{background:#fef9c3;color:#854d0e}
+  .b-bad{background:#fee2e2;color:#991b1b}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+  @media print{nav.tabs,.appbar,.no-print{display:none!important}body{background:#fff}.card{box-shadow:none;border:none}}
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../lib/xlsx.full.min.js"></script>
+
+<header class="appbar">
+  <img src="../Logo/logo.jpg" alt="Logo" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
+  <h1>🌟 Centros de Interés · PTA</h1>
+  <span class="pill">SABIE</span>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="centros">🌟 Centros</button>
+  <button data-tab="estudiantes">👥 Estudiantes</button>
+  <button data-tab="asistencia">📋 Asistencia</button>
+  <button data-tab="resumen">📊 Resumen</button>
+</nav>
+
+<main>
+  <div class="card" id="barra-centro" style="display:none">
+    <label class="fld" style="max-width:420px">
+      Centro activo
+      <select id="sel-centro-activo"></select>
+    </label>
+  </div>
+
+  <!-- ── CENTROS ── -->
+  <section id="tab-centros">
+    <div class="card" id="admin-aviso" style="display:none;background:#eff6ff;border-color:#93c3fd">
+      <p class="desc" style="margin:0;color:#1e3a8a">👑 Ves TODOS los centros (rol de Coordinación). Para crear, editar o eliminar centros, y asignar líder o docentes, ve a <a href="../coordinacion.html" style="color:#1e3a8a;font-weight:700">Coordinación → 🌟 Centros de Interés</a>.</p>
+    </div>
+    <div class="card">
+      <h2>Mis centros</h2>
+      <p class="desc">Aquí aparecen los centros donde eres líder o estás asignado como docente. La creación de centros y la asignación de líder/docentes las gestiona Coordinación.</p>
+      <div id="grid-centros"><div class="empty">Cargando…</div></div>
+    </div>
+  </section>
+
+  <!-- ── ESTUDIANTES / LISTA ── -->
+  <section id="tab-estudiantes" class="hide">
+    <div id="est-sin-centro" class="card"><div class="empty">Elige un centro arriba para gestionar su lista de inscritos.</div></div>
+    <div id="est-con-centro" class="hide">
+      <div class="card">
+        <h2>Agregar estudiantes — <span id="est-centro-nombre"></span></h2>
+        <div class="row">
+          <label class="fld">Nombre<input id="e-nombre" placeholder="Apellidos, Nombres"></label>
+          <label class="fld">Documento (opcional)<input id="e-documento" placeholder="Ej: 1002345678"></label>
+          <label class="fld">Grado<input id="e-grado" placeholder="Ej: 4°"></label>
+          <label class="fld">Grupo<input id="e-grupo" placeholder="Ej: 401"></label>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn ok sm" id="btn-e-agregar">+ Agregar estudiante</button>
+          <label class="btn sec sm" style="cursor:pointer">⬆️ Importar Excel<input type="file" id="e-import" accept=".xlsx,.xls" class="hide"></label>
+          <button class="btn sec sm" id="btn-desde-existentes">👥 Agregar desde estudiantes existentes</button>
+        </div>
+        <p class="desc" style="margin-top:8px">Plantilla del Excel: columnas <b>Nombre</b> (obligatoria), Documento, Grado, Grupo.</p>
+        <div style="margin-top:10px">
+          <textarea id="e-masiva" rows="4" placeholder="Pega una lista de nombres (uno por línea) para cargar masivamente…"></textarea>
+          <button class="btn sec sm" style="margin-top:6px" id="btn-e-masiva">📋 Cargar lista</button>
+        </div>
+      </div>
+      <div class="card" id="picker-existentes" style="display:none">
+        <h2>Elegir de estudiantes existentes</h2>
+        <input id="pk-buscar" placeholder="Buscar por nombre, grado o grupo…" style="margin-bottom:8px">
+        <div class="checklist" id="pk-list"></div>
+        <div style="margin-top:10px;display:flex;gap:10px">
+          <button class="btn ok sm" id="btn-pk-agregar">+ Agregar seleccionados</button>
+          <button class="btn sec sm" id="btn-pk-cerrar">Cerrar</button>
+        </div>
+      </div>
+      <div class="card" style="padding:0">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <h2 style="margin:0">Inscritos</h2>
+          <span class="badge" id="est-conteo"></span>
+        </div>
+        <div id="est-lista"><div class="empty">Sin estudiantes inscritos aún.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ASISTENCIA ── -->
+  <section id="tab-asistencia" class="hide">
+    <div id="asi-sin-centro" class="card"><div class="empty">Elige un centro arriba para registrar asistencia.</div></div>
+    <div id="asi-con-centro" class="hide">
+      <div class="card">
+        <div class="row" style="align-items:flex-end">
+          <label class="fld" style="max-width:200px">
+            Fecha
+            <input type="date" id="a-fecha">
+          </label>
+          <div style="display:flex;gap:8px;align-items:flex-end;padding-bottom:1px">
+            <button class="btn sec sm" id="btn-a-todos">✅ Todos presentes</button>
+            <button class="btn ok sm" id="btn-a-guardar">💾 Guardar asistencia</button>
+          </div>
+          <label class="fld" style="max-width:240px">
+            Ver fecha anterior
+            <select id="a-historial"><option value="">— Elegir fecha registrada —</option></select>
+          </label>
+        </div>
+      </div>
+      <div class="card" style="padding:0">
+        <div id="a-lista-wrap"><div class="empty">Sin estudiantes inscritos en este centro.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESUMEN ── -->
+  <section id="tab-resumen" class="hide">
+    <div id="res-sin-centro" class="card"><div class="empty">Elige un centro arriba para ver su resumen de asistencia.</div></div>
+    <div id="res-con-centro" class="hide">
+      <div class="card" style="padding:0">
+        <div style="padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+          <h2 style="margin:0">% de asistencia por estudiante</h2>
+          <button class="btn sm" id="btn-res-csv">⬇ Exportar CSV</button>
+        </div>
+        <div id="res-tabla"><div class="empty">Sin registros de asistencia aún.</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  Centros de Interés · PTA — módulo 17
+//  Lee lv_centros (gestionado SOLO desde Coordinación: creación,
+//  edición, líder y docentes asignados). Este módulo gestiona
+//  inscripciones (lv_centros_inscripciones) y asistencia
+//  (lv_centros_asistencia) de los centros del docente que entra.
+// ═══════════════════════════════════════════════════════════════
+const $ = s => document.querySelector(s);
+const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid = () => Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const norm = v => String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim();
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
+function hoy(){ return new Date().toISOString().split('T')[0]; }
+
+function lsR(k){ try{ return JSON.parse(localStorage.getItem(k))||[]; }catch(_){ return []; } }
+function lsW(k,arr){ try{ localStorage.setItem(k, JSON.stringify(arr)); }catch(_){} }
+// Guarda UN registro (upsert) en el array local + lo marca para subir.
+function guardarUno(key, arr, registro){
+  registro.actualizado = Date.now();
+  const idx = arr.findIndex(x=>x.id===registro.id);
+  if(idx>=0) arr[idx]=registro; else arr.push(registro);
+  lsW(key, arr);
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio(key, registro);
+  return arr;
+}
+function borrarUno(key, arr, id){
+  const item = arr.find(x=>x.id===id);
+  const out = arr.filter(x=>x.id!==id);
+  lsW(key, out);
+  if(typeof LV_SYNC!=='undefined' && item) LV_SYNC.marcarCambio(key, Object.assign({}, item, {id, _eliminado:true}));
+  return out;
+}
+
+// ── Sesión / rol ─────────────────────────────────────────────
+let login = null;
+try{ login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const MI_DOCENTE_ID = login ? login.docenteId : null;
+const SOY_ADMIN = !!(login && login.esAdmin);
+
+// ── Estado / datos ───────────────────────────────────────────
+let CENTROS = [];
+let INSCRIPCIONES = lsR('lv_centros_inscripciones');
+let ASISTENCIAS = lsR('lv_centros_asistencia');
+let ESTUDIANTES = [];   // lv_estudiantes (para "agregar desde existentes")
+let CURSOS = [];        // lv_cursos (para mostrar grado/grupo de esos estudiantes)
+let DOCENTES = [];      // lv_docentes (para mostrar el nombre del líder)
+
+let centroActualId = null;
+
+function cargarDatos(){
+  CENTROS = lsR('lv_centros').filter(c=>c && !c._eliminado);
+  INSCRIPCIONES = lsR('lv_centros_inscripciones').filter(x=>x && !x._eliminado);
+  ASISTENCIAS = lsR('lv_centros_asistencia').filter(x=>x && !x._eliminado);
+  ESTUDIANTES = lsR('lv_estudiantes');
+  CURSOS = lsR('lv_cursos');
+  DOCENTES = lsR('lv_docentes');
+}
+
+function esMiCentro(c){
+  if(SOY_ADMIN) return true;
+  if(!MI_DOCENTE_ID) return false;
+  return c.liderId===MI_DOCENTE_ID || (c.docentesIds||[]).includes(MI_DOCENTE_ID);
+}
+function misCentros(){ return CENTROS.filter(esMiCentro).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')); }
+function centro(id){ return CENTROS.find(c=>c.id===id) || null; }
+function nombreDocente(id){ const d=DOCENTES.find(x=>x.id===id); return d ? d.nombre : ''; }
+
+// ── Selector de centro activo (compartido entre pestañas) ────
+function poblarSelectorCentro(){
+  const sel = $('#sel-centro-activo');
+  const lista = misCentros();
+  sel.innerHTML = '<option value="">— Elegir centro —</option>' + lista.map(c=>`<option value="${c.id}">${esc(c.nombre)}${c.liderId===MI_DOCENTE_ID?' (líder)':''}</option>`).join('');
+  if(centroActualId && lista.some(c=>c.id===centroActualId)) sel.value = centroActualId;
+  else centroActualId = sel.value || null;
+}
+$('#sel-centro-activo').addEventListener('change', ()=>{
+  centroActualId = $('#sel-centro-activo').value || null;
+  renderTabActual();
+});
+function seleccionarCentro(id){
+  centroActualId = id;
+  poblarSelectorCentro();
+  $('#sel-centro-activo').value = id;
+  tab('estudiantes');
+}
+window.seleccionarCentro = seleccionarCentro;
+
+// ── Tabs ──────────────────────────────────────────────────────
+let tabActual = 'centros';
+function tab(t){
+  tabActual = t;
+  ['centros','estudiantes','asistencia','resumen'].forEach(x=>{
+    $('#tab-'+x).classList.toggle('hide', x!==t);
+  });
+  document.querySelectorAll('#tabs button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.tab===t);
+  });
+  $('#barra-centro').style.display = (t==='centros') ? 'none' : 'block';
+  renderTabActual();
+}
+document.getElementById('tabs').addEventListener('click', e=>{
+  const b = e.target.closest('button'); if(!b) return;
+  tab(b.dataset.tab);
+});
+function renderTabActual(){
+  if(tabActual==='centros') renderCentros();
+  if(tabActual==='estudiantes') renderEstudiantesTab();
+  if(tabActual==='asistencia') renderAsistenciaTab();
+  if(tabActual==='resumen') renderResumenTab();
+}
+
+// ── PESTAÑA: Centros ─────────────────────────────────────────
+function renderCentros(){
+  $('#admin-aviso').style.display = SOY_ADMIN ? 'block' : 'none';
+  const lista = misCentros();
+  const wrap = $('#grid-centros');
+  if(!lista.length){
+    wrap.innerHTML = `<div class="empty">${SOY_ADMIN ? 'Aún no hay centros registrados. Créalos en Coordinación → 🌟 Centros de Interés.' : 'Todavía no estás asignado a ningún centro de interés. Pide a Coordinación que te asigne como líder o docente.'}</div>`;
+    return;
+  }
+  wrap.innerHTML = `<div class="grid-centros">${lista.map(c=>{
+    const inscritos = INSCRIPCIONES.filter(i=>i.centroId===c.id).length;
+    const esLider = c.liderId===MI_DOCENTE_ID;
+    return `<div class="centro-card">
+      <h3>${esc(c.nombre)}</h3>
+      <div class="metas">
+        ${c.linea?`<span class="badge">${esc(c.linea)}</span>`:''}
+        ${c.jornada?`<span class="badge">${esc(c.jornada)}</span>`:''}
+        ${esLider?`<span class="badge" style="background:#fef3c7;color:#92400e">👑 Líder</span>`:''}
+      </div>
+      <div class="info">${c.sede?esc(c.sede)+' · ':''}Líder: ${c.liderId?esc(nombreDocente(c.liderId)||'—'):'sin asignar'}</div>
+      <div class="info">${(c.docentesIds||[]).length} docente(s) asignado(s) · ${inscritos}${c.cupo?'/'+c.cupo:''} inscrito(s)</div>
+      ${c.descripcion?`<div class="info" style="font-style:italic">${esc(c.descripcion)}</div>`:''}
+      <button class="btn sm" style="margin-top:6px" onclick="seleccionarCentro('${c.id}')">Gestionar →</button>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ── PESTAÑA: Estudiantes / Lista ─────────────────────────────
+function inscritosDe(centroId){ return INSCRIPCIONES.filter(i=>i.centroId===centroId); }
+
+function renderEstudiantesTab(){
+  poblarSelectorCentro();
+  const c = centroActualId ? centro(centroActualId) : null;
+  $('#est-sin-centro').classList.toggle('hide', !!c);
+  $('#est-con-centro').classList.toggle('hide', !c);
+  if(!c) return;
+  $('#est-centro-nombre').textContent = c.nombre;
+  const lista = inscritosDe(c.id).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  $('#est-conteo').textContent = lista.length + (c.cupo?(' / '+c.cupo):'') + ' inscrito(s)';
+  const wrap = $('#est-lista');
+  if(!lista.length){ wrap.innerHTML = '<div class="empty">Sin estudiantes inscritos aún.</div>'; return; }
+  wrap.innerHTML = `<div class="tableScroll"><table><thead><tr>
+      <th>#</th><th>Nombre</th><th>Documento</th><th>Grado</th><th>Grupo</th><th class="c">Match</th><th></th>
+    </tr></thead><tbody>${lista.map((i,idx)=>`
+      <tr>
+        <td class="c muted">${idx+1}</td>
+        <td>${esc(i.nombre)}</td>
+        <td>${esc(i.documento||'—')}</td>
+        <td>${esc(i.grado||'—')}</td>
+        <td>${esc(i.grupo||'—')}</td>
+        <td class="c">${i.estId?'✅':'<span class="muted">—</span>'}</td>
+        <td><button class="btn bad sm" onclick="quitarInscrito('${i.id}')">✕</button></td>
+      </tr>`).join('')}
+    </tbody></table></div>`;
+}
+
+function emparejarEstudiante(nombre, documento){
+  const nn = norm(nombre);
+  let match = null;
+  if(documento) match = ESTUDIANTES.find(e => e.documento && String(e.documento).trim()===String(documento).trim());
+  if(!match) match = ESTUDIANTES.find(e => norm(e.nombre)===nn);
+  return match ? match.id : '';
+}
+
+function agregarInscrito({nombre, documento, grado, grupo}){
+  nombre = (nombre||'').trim();
+  if(!nombre) return null;
+  const c = centro(centroActualId); if(!c) return null;
+  const reg = {
+    id: uid(), centroId: c.id,
+    estId: emparejarEstudiante(nombre, documento),
+    nombre, documento: (documento||'').trim(),
+    grado: (grado||'').trim(), grupo: (grupo||'').trim(),
+    creado: Date.now()
+  };
+  INSCRIPCIONES = guardarUno('lv_centros_inscripciones', INSCRIPCIONES, reg);
+  return reg;
+}
+
+$('#btn-e-agregar').addEventListener('click', ()=>{
+  const nombre = $('#e-nombre').value.trim();
+  if(!nombre){ toast('Escribe el nombre del estudiante.'); return; }
+  agregarInscrito({ nombre, documento:$('#e-documento').value, grado:$('#e-grado').value, grupo:$('#e-grupo').value });
+  ['#e-nombre','#e-documento','#e-grado','#e-grupo'].forEach(s=>$(s).value='');
+  renderEstudiantesTab();
+  toast('Estudiante agregado ✓');
+});
+
+$('#btn-e-masiva').addEventListener('click', ()=>{
+  const nombres = $('#e-masiva').value.split('\n').map(n=>n.trim()).filter(Boolean);
+  if(!nombres.length){ toast('No hay nombres para cargar.'); return; }
+  nombres.forEach(nombre => agregarInscrito({ nombre }));
+  $('#e-masiva').value = '';
+  renderEstudiantesTab();
+  toast(nombres.length+' estudiante(s) agregado(s) ✓');
+});
+
+function quitarInscrito(id){
+  if(!confirm('¿Quitar este estudiante del centro?')) return;
+  INSCRIPCIONES = borrarUno('lv_centros_inscripciones', INSCRIPCIONES, id);
+  renderEstudiantesTab();
+  toast('Estudiante quitado.');
+}
+window.quitarInscrito = quitarInscrito;
+
+// Importar Excel: columnas Nombre (obligatoria) | Documento | Grado | Grupo
+$('#e-import').addEventListener('change', async e=>{
+  const f = e.target.files[0]; if(!f) return;
+  try{
+    const wb = XLSX.read(new Uint8Array(await f.arrayBuffer()), {type:'array'});
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(ws, {header:1, blankrows:false});
+    let validos = 0, invalidos = 0;
+    rows.forEach((row, i)=>{
+      if(i===0) return; // encabezado
+      const [nombre, documento, grado, grupo] = row;
+      if(!nombre || !String(nombre).trim()){ if(row.some(v=>v!=null && String(v).trim()!=='')) invalidos++; return; }
+      agregarInscrito({ nombre:String(nombre), documento: documento!=null?String(documento):'', grado: grado!=null?String(grado):'', grupo: grupo!=null?String(grupo):'' });
+      validos++;
+    });
+    renderEstudiantesTab();
+    toast(`${validos} estudiante(s) importado(s)${invalidos?` · ${invalidos} fila(s) sin nombre omitida(s)`:''}`);
+  }catch(err){
+    toast('No se pudo leer el archivo. Verifica que tenga columnas Nombre/Documento/Grado/Grupo.');
+  }
+  e.target.value = '';
+});
+
+// Agregar desde estudiantes existentes (lv_estudiantes + lv_cursos)
+let pkSel = new Set();
+$('#btn-desde-existentes').addEventListener('click', ()=>{
+  pkSel = new Set();
+  $('#picker-existentes').style.display = 'block';
+  $('#pk-buscar').value = '';
+  renderPicker('');
+  $('#picker-existentes').scrollIntoView({behavior:'smooth'});
+});
+$('#btn-pk-cerrar').addEventListener('click', ()=>{ $('#picker-existentes').style.display='none'; });
+$('#pk-buscar').addEventListener('input', e=>renderPicker(e.target.value));
+
+function renderPicker(filtro){
+  const q = norm(filtro);
+  const wrap = $('#pk-list');
+  const lista = ESTUDIANTES.map(e=>{
+    const cur = CURSOS.find(c=>c.id===e.cursoId);
+    return { id:e.id, nombre:e.nombre, grado:cur?cur.grado:'', grupo:cur?cur.grupo:'' };
+  }).filter(e=>!q || norm(e.nombre+' '+e.grado+' '+e.grupo).includes(q))
+    .sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  if(!lista.length){ wrap.innerHTML = '<p class="desc" style="margin:0">Sin estudiantes que coincidan (o aún no hay estudiantes sincronizados de Calificaciones).</p>'; return; }
+  wrap.innerHTML = lista.slice(0,300).map(e=>`
+    <label><input type="checkbox" class="pk-chk" value="${e.id}" ${pkSel.has(e.id)?'checked':''}> ${esc(e.nombre)} <span class="muted" style="font-size:.75rem">(${esc(e.grado||'—')}${e.grupo?'-'+esc(e.grupo):''})</span></label>`).join('');
+  wrap.querySelectorAll('.pk-chk').forEach(chk=>{
+    chk.addEventListener('change', ()=>{ if(chk.checked) pkSel.add(chk.value); else pkSel.delete(chk.value); });
+  });
+}
+$('#btn-pk-agregar').addEventListener('click', ()=>{
+  if(!pkSel.size){ toast('Selecciona al menos un estudiante.'); return; }
+  let n = 0;
+  pkSel.forEach(estId=>{
+    const e = ESTUDIANTES.find(x=>x.id===estId); if(!e) return;
+    const cur = CURSOS.find(c=>c.id===e.cursoId);
+    const c = centro(centroActualId); if(!c) return;
+    const reg = { id: uid(), centroId: c.id, estId: e.id, nombre: e.nombre,
+      documento:'', grado: cur?cur.grado:'', grupo: cur?cur.grupo:'', creado: Date.now() };
+    INSCRIPCIONES = guardarUno('lv_centros_inscripciones', INSCRIPCIONES, reg);
+    n++;
+  });
+  pkSel = new Set();
+  $('#picker-existentes').style.display = 'none';
+  renderEstudiantesTab();
+  toast(n+' estudiante(s) agregado(s) ✓');
+});
+
+// ── PESTAÑA: Asistencia ──────────────────────────────────────
+const LABELS_ASIST = {presente:{e:'✅',l:'Presente',c:'radio-p'},ausente:{e:'❌',l:'Ausente',c:'radio-f'},tarde:{e:'⚠️',l:'Tarde',c:'radio-t'},excusa:{e:'🏥',l:'Excusa',c:'radio-e'}};
+
+function asistenciaDe(centroId, fecha){ return ASISTENCIAS.find(a=>a.centroId===centroId && a.fecha===fecha) || null; }
+
+function renderAsistenciaTab(){
+  poblarSelectorCentro();
+  const c = centroActualId ? centro(centroActualId) : null;
+  $('#asi-sin-centro').classList.toggle('hide', !!c);
+  $('#asi-con-centro').classList.toggle('hide', !c);
+  if(!c) return;
+  if(!$('#a-fecha').value) $('#a-fecha').value = hoy();
+  poblarHistorialFechas(c.id);
+  renderListaAsistencia();
+}
+
+function poblarHistorialFechas(centroId){
+  const sel = $('#a-historial');
+  const fechas = ASISTENCIAS.filter(a=>a.centroId===centroId).map(a=>a.fecha).sort().reverse();
+  sel.innerHTML = '<option value="">— Elegir fecha registrada —</option>' + fechas.map(f=>`<option value="${f}">${f}</option>`).join('');
+}
+$('#a-historial').addEventListener('change', ()=>{
+  const f = $('#a-historial').value;
+  if(f){ $('#a-fecha').value = f; renderListaAsistencia(); }
+});
+$('#a-fecha').addEventListener('change', renderListaAsistencia);
+
+function renderListaAsistencia(){
+  const c = centro(centroActualId); if(!c) return;
+  const fecha = $('#a-fecha').value || hoy();
+  const lista = inscritosDe(c.id).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  const wrap = $('#a-lista-wrap');
+  if(!lista.length){ wrap.innerHTML = '<div class="empty">Sin estudiantes inscritos en este centro. Agrégalos en la pestaña Estudiantes.</div>'; return; }
+  const reg = asistenciaDe(c.id, fecha);
+  const estados = (reg && reg.registros) || {};
+  let html = `<div style="padding:14px 18px 0"><div class="leyenda">`;
+  for(const [k,v] of Object.entries(LABELS_ASIST)) html += `<span>${v.e} ${v.l}</span>`;
+  html += `</div></div><div class="tableScroll"><table><thead><tr><th>#</th><th>Estudiante</th>${Object.entries(LABELS_ASIST).map(([k,v])=>`<th class="c" title="${v.l}">${v.e}</th>`).join('')}</tr></thead><tbody>`;
+  lista.forEach((i,idx)=>{
+    const actual = estados[i.id] || 'presente';
+    html += `<tr><td class="c muted">${idx+1}</td><td>${esc(i.nombre)}</td>`;
+    for(const k of Object.keys(LABELS_ASIST)){
+      html += `<td class="c"><input type="radio" name="asi_${i.id}" value="${k}" class="${LABELS_ASIST[k].c}" ${actual===k?'checked':''}></td>`;
+    }
+    html += `</tr>`;
+  });
+  html += `</tbody></table></div>`;
+  wrap.innerHTML = html;
+}
+
+$('#btn-a-todos').addEventListener('click', ()=>{
+  document.querySelectorAll('input[type=radio][value="presente"]').forEach(r=>r.checked=true);
+});
+
+$('#btn-a-guardar').addEventListener('click', ()=>{
+  const c = centro(centroActualId); if(!c) return;
+  const fecha = $('#a-fecha').value || hoy();
+  const lista = inscritosDe(c.id);
+  if(!lista.length){ toast('No hay estudiantes inscritos.'); return; }
+  const registros = {};
+  lista.forEach(i=>{
+    const r = document.querySelector(`input[name="asi_${i.id}"]:checked`);
+    registros[i.id] = r ? r.value : 'presente';
+  });
+  const id = c.id + '_' + fecha;
+  const reg = { id, centroId: c.id, fecha, registradoPor: MI_DOCENTE_ID, registros };
+  ASISTENCIAS = guardarUno('lv_centros_asistencia', ASISTENCIAS, reg);
+  poblarHistorialFechas(c.id);
+  toast('Asistencia guardada ✓');
+});
+
+// ── PESTAÑA: Resumen ─────────────────────────────────────────
+function renderResumenTab(){
+  poblarSelectorCentro();
+  const c = centroActualId ? centro(centroActualId) : null;
+  $('#res-sin-centro').classList.toggle('hide', !!c);
+  $('#res-con-centro').classList.toggle('hide', !c);
+  if(!c) return;
+  const lista = inscritosDe(c.id).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  const regs = ASISTENCIAS.filter(a=>a.centroId===c.id);
+  const wrap = $('#res-tabla');
+  if(!lista.length){ wrap.innerHTML = '<div class="empty">Sin estudiantes inscritos.</div>'; return; }
+  if(!regs.length){ wrap.innerHTML = '<div class="empty">Sin registros de asistencia aún.</div>'; return; }
+  const datos = lista.map(i=>{
+    const cont = {presente:0,ausente:0,tarde:0,excusa:0};
+    regs.forEach(r=>{ const e=(r.registros||{})[i.id]||'presente'; if(cont[e]!==undefined) cont[e]++; });
+    const total = cont.presente+cont.ausente+cont.tarde+cont.excusa;
+    const pct = total>0 ? Math.round((cont.presente/total)*100) : 100;
+    return { nombre:i.nombre, ...cont, total, pct };
+  });
+  let html = `<div class="tableScroll"><table><thead><tr><th>#</th><th>Estudiante</th>
+    <th class="c">✅</th><th class="c">❌</th><th class="c">⚠️</th><th class="c">🏥</th>
+    <th class="c">Sesiones</th><th class="c">% Asistencia</th></tr></thead><tbody>`;
+  datos.forEach((d,i)=>{
+    const cls = d.pct>=90?'b-ok':d.pct>=75?'b-warn':'b-bad';
+    html += `<tr><td class="c muted">${i+1}</td><td>${esc(d.nombre)}</td>
+      <td class="c" style="color:#16a34a;font-weight:700">${d.presente}</td>
+      <td class="c" style="color:#dc2626;font-weight:700">${d.ausente}</td>
+      <td class="c" style="color:#d97706;font-weight:700">${d.tarde}</td>
+      <td class="c" style="color:#0369a1;font-weight:700">${d.excusa}</td>
+      <td class="c">${d.total}</td>
+      <td class="c"><span class="badge ${cls}">${d.pct}%</span></td></tr>`;
+  });
+  html += `</tbody></table></div>`;
+  wrap.innerHTML = html;
+  window._resumenDatos = { centro:c, datos };
+}
+
+$('#btn-res-csv').addEventListener('click', ()=>{
+  const r = window._resumenDatos;
+  if(!r || !r.datos || !r.datos.length){ toast('No hay datos para exportar.'); return; }
+  const cabecera = ['#','Estudiante','Presente','Ausente','Tarde','Excusa','Sesiones','% Asistencia'];
+  const filas = r.datos.map((d,i)=>[i+1,d.nombre,d.presente,d.ausente,d.tarde,d.excusa,d.total,d.pct+'%']);
+  const csv = [cabecera,...filas].map(row=>row.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `Asistencia_${(r.centro.nombre||'Centro').replace(/\s/g,'_')}_${new Date().getFullYear()}.csv`;
+  a.click();
+  toast('CSV exportado ✓');
+});
+
+// ── Arranque ──────────────────────────────────────────────────
+cargarDatos();
+poblarSelectorCentro();
+tab('centros');
+
+// Si los datos llegan después (primera sincronización tras iniciar sesión),
+// refrescar automáticamente unas cuantas veces.
+let _intentos = 0;
+const _espera = setInterval(()=>{
+  const antes = CENTROS.length + INSCRIPCIONES.length;
+  cargarDatos();
+  const despues = CENTROS.length + INSCRIPCIONES.length;
+  if(despues !== antes){ poblarSelectorCentro(); renderTabActual(); }
+  if(++_intentos > 20) clearInterval(_espera);
+}, 1500);
+</script>
+
+<script>window.LV_SYNC_TABLAS=['lv_centros','lv_centros_inscripciones','lv_centros_asistencia','lv_estudiantes','lv_cursos','lv_docentes'];</script>
+<script src="../sync.js"></script>
+</body>
+</html>
