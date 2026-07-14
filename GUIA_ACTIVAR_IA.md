@@ -77,7 +77,9 @@ La app muestra mensajes claros:
 - La clave del docente se guarda en `localStorage` (`lv_gemini_key`) mediante el
   helper `LV_GEMINI` en `auth.js`. **No está en el MAPA de `sync.js`**, por eso nunca
   se sincroniza a Supabase ni a otros dispositivos.
-- Modelo por defecto: `gemini-2.5-flash` (configurable con la env `GEMINI_MODEL`).
+- Modelo: se **descubre automáticamente** (la función lista los modelos flash
+  gratuitos que admite la clave del docente y elige el mejor), porque Google retira
+  nombres de modelos con frecuencia. Se puede forzar uno con la env `GEMINI_MODEL`.
 - Usa los **GEMs v2** como *system prompt* (embebidos en `api/generar.js`, copiados
   de `GEMs/*.md`; si editas los `.md`, recópialos dentro de `api/generar.js`).
 - La respuesta pasa por **el mismo importador** (validación de esquema) antes de

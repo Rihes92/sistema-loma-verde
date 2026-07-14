@@ -137,8 +137,10 @@ D. ✅ **Generación con IA dentro de la app** (código listo, falta la API key)
    `api/generar.js` (función serverless Vercel, runtime Node). Recibe
    `{tipo:'planeador'|'banco', datos}`, **verifica el token del docente contra Supabase**
    (`/auth/v1/user`) antes de gastar cupo, arma el prompt con los **GEMs v2 embebidos**
-   como system prompt y llama a **Gemini `gemini-2.5-flash`** (capa gratuita; configurable
-   con la env `GEMINI_MODEL`). **Modelo de clave: CADA docente aporta la suya** (decisión de Francy, jul 13):
+   como system prompt y llama a **Gemini** eligiendo el modelo AUTOMÁTICAMENTE (lista los
+   modelos flash gratuitos disponibles para la clave del docente y toma el mejor —
+   `gemini-2.5-flash` fue restringido para claves nuevas jul 2026; por eso no se fija
+   un nombre; se puede forzar con la env `GEMINI_MODEL`). **Modelo de clave: CADA docente aporta la suya** (decisión de Francy, jul 13):
    NO hay clave compartida ni env `GEMINI_API_KEY`. El docente crea su clave gratis
    (aistudio.google.com/apikey) y la pega una vez en "🔑 Tu clave de Gemini" dentro de
    Generar con IA; se guarda en `localStorage` (`lv_gemini_key`, helper `LV_GEMINI` en
