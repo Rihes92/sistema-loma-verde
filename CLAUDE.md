@@ -3,6 +3,42 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 9, botón "← Atrás" genérico)
+
+- **Francy notó que en los módulos de materia (01-09) solo aparecía "← Portal", sin
+  "← Atrás".** Causa: `materia-context.js` (LV_CTX) ya pintaba un botón "← Atrás" hacia
+  `materia-hub.html`, pero SOLO cuando había contexto de materia en la URL/sessionStorage
+  (es decir, si entrabas por "Áreas académicas" → materia-hub → módulo). Si entrabas por
+  el enlace directo del sidebar del portal (que no pasa `?area=&materia=`), `LV_CTX.materia`
+  quedaba `null` y `pintarPill()` no hacía nada. Arreglo en `materia-context.js`
+  (`pintarPill()`): cuando NO hay contexto de materia, ahora se agrega un botón "← Atrás"
+  genérico que usa `history.back()` (solo si `history.length>1`, para no mostrarlo en una
+  pestaña recién abierta sin nada a dónde volver) — funciona sin importar de dónde vino
+  (portal, materia-hub, u otro módulo). Cuando SÍ hay contexto de materia, se mantiene el
+  comportamiento anterior sin cambios (botón "← Atrás" hacia materia-hub + pill de materia).
+  Cubre los módulos 01-09 (los únicos que cargan `materia-context.js`); los institucionales
+  10-17 no tienen concepto de "materia" así que se dejaron con solo "← Portal", que sigue
+  siendo lo correcto ahí. SW **v57**. `node --check` limpio.
+  **PENDIENTE:** push; que Francy confirme que el botón "← Atrás" aparece ahora también
+  entrando por el sidebar directo.
+
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 8, ajuste de íconos)
+
+- **Íconos SVG del sidebar del portal, con color propio.** Francy probó el piloto de
+  íconos SVG (sesión 5, punto 4 del audit) y no le gustó que quedaran todos blancos
+  (`stroke="currentColor"` heredando el color de texto del sidebar) — con los emojis
+  cada módulo se distinguía por color de un vistazo, y el SVG monocromático perdió esa
+  señal visual. Opciones planteadas: volver a emoji, color por grupo/sección, o color
+  propio por ícono — Francy eligió **color propio por ícono**. Arreglo: cada
+  `<span class="ic">` del sidebar (18 en total) ahora lleva `style="color:#hex"` con
+  un color distinto (paleta pastel/vibrante tipo Tailwind-400, verificada con ≥3:1 de
+  contraste contra el degradado azul del sidebar `--primary`/`--primary-dark`); el SVG
+  interno sigue usando `stroke="currentColor"` así que toma ese color del `<span>` que
+  lo envuelve, sin afectar el color del texto del link (que sigue blanco, fuera del
+  span). SW **v56**. `node --check`-equivalente limpio en `index.html`.
+  **PENDIENTE:** push; que Francy confirme que el resultado le gusta antes de decidir
+  si se generaliza el patrón (SVG + color propio) al resto de la app.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 7, arreglo rápido)
 
 - **Fuga de privacidad en Progreso (`01-calificaciones.html`), hallada por Francy tras

@@ -97,10 +97,28 @@ const LV_CTX = (() => {
   }
 
   function pintarPill() {
-    if (!materia) return; // sin contexto: no se muestra nada (modo clásico)
     const header = document.querySelector('header.appbar');
     if (!header) return;
     const portalBtn = header.querySelector('a.portal-btn');
+
+    if (!materia) {
+      // Sin contexto de materia (se entró por el enlace directo del sidebar,
+      // no por "Áreas académicas" → materia-hub): igual se agrega un botón
+      // "← Atrás" genérico que usa el historial del navegador, para no
+      // depender de haber pasado por una materia específica. Solo se muestra
+      // si hay algo real a dónde volver (no en una pestaña recién abierta).
+      if (window.history.length > 1) {
+        const atrasGenerico = document.createElement('a');
+        atrasGenerico.href = 'javascript:void(0)';
+        atrasGenerico.className = 'portal-btn';
+        atrasGenerico.title = 'Volver a la página anterior';
+        atrasGenerico.style.cssText = 'margin-left:0;order:-1';
+        atrasGenerico.innerHTML = '← Atrás';
+        atrasGenerico.onclick = () => history.back();
+        header.insertBefore(atrasGenerico, header.firstChild);
+      }
+      return;
+    }
 
     // Botón "Atrás": vuelve a la página de módulos de esta materia
     // (materia-hub.html), sin pasar por el portal general. Así se puede
