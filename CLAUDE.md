@@ -90,11 +90,17 @@ documentos impresos/WhatsApp, que luego será configurable).
      uid) + estampado de `_owner` en `sync.js/marcarCambio` para todo registro envuelto
      {id,datos} al subir (idempotente, no toca horario ni lecturas, no roba propiedad si
      ya hay _owner). Deja base para filtrar por dueño sin cambiar módulos. SW v45.
-   · **Fase 1 (siguiente):** RLS por `_owner` en Supabase, como POLÍTICAS solamente
-     (`using ((datos->>'_owner')::uuid = auth.uid() OR datos->>'_owner' IS NULL OR
-     es_coordinacion())`) → sin cambiar esquema, reversible; empezar por tablas propias
-     (lv_planeadores, lv_banco, lv_examenes, lv11_*, lv_resultados, lv_herramientas).
-     Política de transición con `IS NULL` para NO ocultar lo viejo; backfill gradual.
+   · **Fase 1 (SQL LISTO, jul 14 — `migracion_etapa2_fase1.sql`):** RLS por `_owner`
+     como POLÍTICAS solamente (transición `using (datos->>'_owner' = auth.uid()::text
+     OR datos->>'_owner' IS NULL OR es_coordinacion())`, sin cambiar esquema, reversible,
+     con ROLLBACK incluido). DECISIONES de Francy (jul 14): planeadores = VISIBLES entre
+     docentes y exámenes = compartidos (materiales de enseñanza) → NO se restringen;
+     banco = compartido por materia → va a Fase 2 (predicado por asignación); resultados
+     de desempeño = PRIVADOS → Fase 1 cubre solo `lv_resultados`, `lv11_resultados`,
+     `lv11_simulacros_ext`. `lv_herramientas` se dejó FUERA (alimenta la planilla mod.01
+     y 8 herramientas; se revisa aparte). Correr el SQL DESPUÉS de desplegar Fase 0; los
+     registros viejos (_owner NULL) siguen visibles hasta el backfill (pendiente, por
+     tabla, con mapeo cuidadoso).
    · **Fase 2:** tablas por-curso (estudiantes/notas/asistencia/acudientes/boletines/
      observador/piar) con predicado vía `lv_asignaciones`; probar tabla por tabla que
      ningún módulo pierda datos (director de grupo, boletines, analítica).
