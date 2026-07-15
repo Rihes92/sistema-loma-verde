@@ -3,6 +3,40 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 14, offline falló EN CAMPO — SW v5 transaccional)
+
+- **El offline volvió a fallar para Francy y varios docentes (Safari, Chrome y
+  app del Dock)** pese a v62/v63 desplegados (verificado: producción sin
+  redirecciones). AUDITORÍA: la falla letal estaba en el CICLO DE VIDA del SW,
+  no en el fetch: (a) instalar una versión nueva descargaba los ~50 archivos y
+  los fallos individuales se tragaban en silencio; skipWaiting corría IGUAL y
+  el activate BORRABA la caché buena anterior → con wifi débil el dispositivo
+  quedaba con caché vacía/agujereada e invisible al usuario. Con 11 versiones
+  en 2 días (v53→v63), cada push re-descargaba todo en cada dispositivo:
+  bastaba un corte para "quedar sin offline". (b) cache.put con streams
+  (Response(resp.body)) — Safari a veces lo rechaza. (c) network-first para
+  TODO = lento con señal débil. (d) cero visibilidad del estado.
+- **Reescritura completa: sw.js v5 (CACHE loma-verde-v64), archivo nuevo:**
+  precache TRANSACCIONAL (nunca borra cachés viejas hasta que la nueva esté
+  100% completa; mientras tanto sirven de respaldo — buscarEnCache busca en
+  TODAS), rescate de archivos desde cachés viejas sin red, AUTO-REPARACIÓN
+  (completarPrecache en activate + cada navegación máx. 1/10min + a pedido),
+  todo guardado como blob status-200 limpio (Safari-proof), recursos =
+  cache-first con refresco en 2º plano, navegaciones = red-first 3.5s →
+  alias → portal, canal postMessage {tipo:'estado'|'completar'}.
+- **Visibilidad nueva:** indicador en la sidebar del portal («✅ Listo para
+  trabajar sin internet» / «⏳ Preparando X/50…» que se auto-repara) +
+  página `diagnostico.html` (SW, versión, archivos X/50 + faltantes, sesión,
+  datos locales, espacio; botón Reparar ahora) enlazada desde el pie del
+  login y del portal. login.html ahora también registra el SW.
+- PENDIENTE: push; protocolo de prueba con docentes: con internet abrir el
+  portal → esperar el ✅ verde en la sidebar (o abrir diagnostico.html y ver
+  «COMPLETO») → recién ahí probar sin internet. Si algo falla: captura de
+  diagnostico.html — ya no estamos a ciegas.
+- Pregunta de Francy sobre .exe/.dmg respondida: Electron/Tauri posible pero
+  no recomendado aún (peso, firma de Apple, actualizaciones manuales en 50
+  equipos); la PWA robusta + indicador es el camino; reevaluar si persiste.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 13b, mensaje offline del login)
 
 - **Francy probó offline SIN sesión iniciada** → el login cacheado cargó bien

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico — SABIE</title>
+<style>
+  :root{--primary:#1e3a8a;--ok:#16a34a;--bad:#dc2626;--warn:#b45309;--muted:#475569;--border:#e2e8f0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:#f1f5f9;color:#1f2937;padding:18px;line-height:1.5}
+  .wrap{max-width:640px;margin:0 auto}
+  h1{font-size:1.2rem;color:var(--primary);margin-bottom:4px}
+  .sub{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+  .fila{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem;flex-wrap:wrap}
+  .fila:last-child{border-bottom:0}
+  .v{font-weight:700}
+  .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+  button{border:0;border-radius:9px;padding:11px 16px;font-size:.9rem;font-weight:700;cursor:pointer;background:var(--primary);color:#fff;width:100%;margin-top:6px}
+  button.sec{background:#e2e8f0;color:#1f2937}
+  .faltan{font-size:.75rem;color:var(--bad);margin-top:6px;word-break:break-all}
+  a{color:var(--primary)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🩺 Diagnóstico de SABIE</h1>
+  <p class="sub">Esta página muestra si tu dispositivo está listo para trabajar sin internet. Si algo sale en rojo, toca "Reparar ahora" con internet activo y espera a que todo quede en verde.</p>
+
+  <div class="card">
+    <div class="fila"><span>Conexión a internet ahora</span><span class="v" id="d-online">…</span></div>
+    <div class="fila"><span>Aplicación offline instalada (service worker)</span><span class="v" id="d-sw">…</span></div>
+    <div class="fila"><span>Versión</span><span class="v" id="d-version">…</span></div>
+    <div class="fila"><span>Archivos de la app guardados</span><span class="v" id="d-archivos">…</span></div>
+    <div class="fila"><span>Sesión iniciada en este dispositivo</span><span class="v" id="d-sesion">…</span></div>
+    <div class="fila"><span>Datos locales (notas, cursos…)</span><span class="v" id="d-datos">…</span></div>
+    <div class="fila"><span>Espacio local usado</span><span class="v" id="d-espacio">…</span></div>
+    <div id="d-faltan" class="faltan"></div>
+  </div>
+
+  <button id="btn-reparar">🔧 Reparar ahora (necesita internet)</button>
+  <button class="sec" id="btn-recargar" onclick="location.reload()">🔄 Volver a revisar</button>
+  <p class="sub" style="margin-top:14px;text-align:center"><a href="index.html">← Volver al portal</a></p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+function pon(id, txt, cls){ const el=$(id); el.textContent=txt; el.className='v '+(cls||''); }
+
+// conexión
+pon('d-online', navigator.onLine?'Sí ✓':'No (sin internet)', navigator.onLine?'ok':'warn');
+
+// sesión y datos locales (no requiere red)
+(function(){
+  let ses=null, login=null;
+  try{ ses=JSON.parse(localStorage.getItem('lv_auth_session')||'null'); }catch(_){}
+  try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+  if(ses&&ses.access_token&&login) pon('d-sesion','Sí — '+(login.nombre||'docente')+' ✓','ok');
+  else pon('d-sesion','No — sin internet NO podrás entrar','bad');
+  let claves=0,bytes=0;
+  try{ for(let i=0;i<localStorage.length;i++){ const k=localStorage.key(i); if(k.startsWith('lv')){claves++; bytes+=(localStorage.getItem(k)||'').length*2;} } }catch(_){}
+  pon('d-datos', claves+' tablas locales', claves>3?'ok':'warn');
+  pon('d-espacio', (bytes/1048576).toFixed(1)+' MB de ~5 MB', bytes>4*1048576?'bad':'ok');
+})();
+
+// service worker + precache
+async function revisarSW(){
+  if(!('serviceWorker' in navigator)){ pon('d-sw','No soportado en este navegador','bad'); return; }
+  const reg=await navigator.serviceWorker.getRegistration();
+  if(!reg||!reg.active){ pon('d-sw','No instalada aún — abre el portal con internet y recarga dos veces','bad'); return; }
+  pon('d-sw','Sí ✓','ok');
+  const mc=new MessageChannel();
+  const timeout=setTimeout(()=>{ pon('d-archivos','No responde — recarga la página','warn'); },4000);
+  mc.port1.onmessage=ev=>{
+    clearTimeout(timeout);
+    const d=ev.data||{};
+    pon('d-version',(d.version||'?').replace('loma-verde-',''),'');
+    const completo=d.listos>=d.total;
+    pon('d-archivos', d.listos+' de '+d.total+(completo?' ✓ COMPLETO':' — INCOMPLETO'), completo?'ok':'bad');
+    $('d-faltan').textContent = completo?'':'Faltan: '+(d.faltan||[]).join(', ');
+  };
+  reg.active.postMessage({tipo:'estado'},[mc.port2]);
+}
+revisarSW();
+
+$('btn-reparar').onclick=async()=>{
+  if(!navigator.onLine){ alert('Necesitas internet para reparar. Conéctate e inténtalo de nuevo.'); return; }
+  const reg=await navigator.serviceWorker.getRegistration();
+  if(reg&&reg.active){ reg.active.postMessage({tipo:'completar'}); $('btn-reparar').textContent='⏳ Reparando… espera 30 segundos y toca "Volver a revisar"'; }
+  else { navigator.serviceWorker.register('./sw.js'); $('btn-reparar').textContent='⏳ Instalando… espera 30 segundos y toca "Volver a revisar"'; }
+};
+</script>
+</body>
+</html>

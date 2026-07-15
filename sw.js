@@ -1,14 +1,32 @@
 // ═══════════════════════════════════════════════════════════════
-//  Sistema Loma Verde — Service Worker v4 (Network First)
+//  SABIE — Service Worker v5 (transaccional y auto-reparable)
+//
+//  Principios (aprendidos de las fallas v36-v63):
+//  1. NUNCA borrar la caché anterior hasta que la nueva esté COMPLETA
+//     (antes: una instalación a medias por wifi débil activaba igual
+//     y destruía la caché buena → dispositivos sin modo offline).
+//  2. Todo se guarda como blob con status 200 limpio (Safari rechaza
+//     respuestas marcadas como redirigidas o basadas en streams).
+//  3. Auto-reparación: al activar, en cada navegación (máx. 1 vez
+//     cada 10 min) y a pedido, se completan los archivos faltantes —
+//     primero rescatándolos de cachés viejas (gratis), luego de red.
+//  4. Recursos: caché primero (instantáneo offline) con refresco en
+//     segundo plano. Navegaciones: red primero (3.5 s) → caché →
+//     portal. Las versiones nuevas llegan porque sw.js es no-cache
+//     y el navegador lo re-lee en cada visita.
+//  5. La página puede preguntar el estado (postMessage 'estado') →
+//     indicador "Listo para trabajar sin internet" en el portal y
+//     página diagnostico.html.
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v63';
+const CACHE = 'loma-verde-v64';
 
 const ARCHIVOS = [
   './',
   './index.html',
   './login.html',
   './recuperar.html',
+  './diagnostico.html',
   './auth.js',
   './sync.js',
   './lv-tema.css',
@@ -56,107 +74,192 @@ const ARCHIVOS = [
   './lib/chart.umd.js',
 ];
 
-self.addEventListener('install', e => {
-  // Se guarda archivo por archivo (no con addAll) para que si UNO falla
-  // (ej. se renombró o hay un problema de red puntual) no se pierda el
-  // precache de TODOS los demás — addAll es todo-o-nada y eso dejaba la
-  // app sin nada guardado para el modo sin conexión si un solo archivo
-  // fallaba al momento de instalar.
-  e.waitUntil(
-    caches.open(CACHE).then(async cache => {
-      await Promise.all(ARCHIVOS.map(async archivo => {
-        try {
-          let resp = await fetch(archivo, { cache: 'no-cache' });
-          // Igual que en el handler de fetch: si la respuesta siguió una
-          // redirección (cleanUrls viejo de Vercel, normalización de dominio),
-          // reconstruirla ANTES de guardarla — Safari rechaza servir desde
-          // caché una respuesta marcada como redirigida.
-          if (resp && resp.redirected) {
-            resp = new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers: resp.headers });
-          }
-          if (resp && resp.ok) await cache.put(archivo, resp);
-        } catch (_) { /* si un archivo falla, seguimos con los demás */ }
-      }));
-      return self.skipWaiting();
-    })
-  );
-});
+// ── Utilidades ──────────────────────────────────────────────────
 
-self.addEventListener('activate', e => {
-  e.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(
-        keys.filter(k => k !== CACHE).map(k => caches.delete(k))
-      ))
-      .then(() => self.clients.claim())
-  );
-});
+// Respuesta "limpia": cuerpo como blob, status 200, sin bandera
+// redirected — el único formato que TODOS los navegadores aceptan
+// guardar y servir desde caché (Safari incluido).
+async function respuestaLimpia(resp) {
+  const cuerpo = await resp.blob();
+  const headers = new Headers();
+  const ct = resp.headers.get('Content-Type');
+  if (ct) headers.set('Content-Type', ct);
+  return new Response(cuerpo, { status: 200, headers });
+}
 
-// navigator.onLine no es confiable (puede decir "conectado" aunque no haya
-// internet real). Por eso la estrategia network-first tiene un límite de
-// tiempo: si la red no responde rápido, se usa la caché de inmediato en
-// vez de dejar la página esperando indefinidamente.
 function fetchConTimeout(request, ms) {
   const controlador = new AbortController();
   const id = setTimeout(() => controlador.abort(), ms);
   return fetch(request, { signal: controlador.signal }).finally(() => clearTimeout(id));
 }
 
-// Sin conexión, la URL pedida puede no coincidir letra a letra con la clave
-// guardada: el cleanUrls viejo de Vercel dejó URLs sin extensión en el
-// historial/marcadores ("/login" en vez de "/login.html"). Se intenta la
-// coincidencia exacta y luego los alias equivalentes; si es una navegación
-// y nada coincide, se entrega el portal en vez de una pantalla en blanco.
+function absoluta(ruta) {
+  return new URL(ruta, self.registration.scope).href;
+}
+
+// ── Precarga transaccional y auto-reparable ─────────────────────
+
+let _completando = null;
+function completarPrecache() {
+  if (_completando) return _completando;
+  _completando = (async () => {
+    const cache = await caches.open(CACHE);
+    let listos = 0; const faltan = [];
+    for (const archivo of ARCHIVOS) {
+      if (await cache.match(archivo)) { listos++; continue; }
+      // 1) rescatar de cualquier caché anterior (instantáneo, sin red);
+      //    se reconstruye como respuesta limpia por si la entrada vieja
+      //    estaba envenenada (redirected de la época de cleanUrls).
+      try {
+        const viejo = await caches.match(absoluta(archivo));
+        if (viejo && viejo.ok) {
+          await cache.put(archivo, await respuestaLimpia(viejo.clone()));
+          listos++; continue;
+        }
+      } catch (_) {}
+      // 2) red
+      try {
+        const r = await fetch(archivo, { cache: 'no-cache' });
+        if (r && r.ok) { await cache.put(archivo, await respuestaLimpia(r)); listos++; continue; }
+      } catch (_) {}
+      faltan.push(archivo);
+    }
+    return { listos, faltan };
+  })().finally(() => { _completando = null; });
+  return _completando;
+}
+
+async function estadoPrecache() {
+  const cache = await caches.open(CACHE);
+  let listos = 0; const faltan = [];
+  for (const archivo of ARCHIVOS) {
+    if (await cache.match(archivo)) listos++; else faltan.push(archivo);
+  }
+  return { version: CACHE, total: ARCHIVOS.length, listos, faltan };
+}
+
+// mantenimiento oportunista: máximo una vez cada 10 minutos
+let _ultimoMantenimiento = 0;
+function mantenimiento() {
+  const t = Date.now();
+  if (t - _ultimoMantenimiento < 10 * 60 * 1000) return;
+  _ultimoMantenimiento = t;
+  completarPrecache();
+}
+
+// ── Instalación / activación ────────────────────────────────────
+
+self.addEventListener('install', e => {
+  e.waitUntil(completarPrecache().then(() => self.skipWaiting()));
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil((async () => {
+    // Solo se eliminan las cachés viejas cuando la nueva está COMPLETA.
+    // Si quedó a medias (wifi débil), las viejas siguen sirviendo como
+    // respaldo (buscarEnCache busca en todas) y la reparación continúa.
+    const { faltan } = await estadoPrecache();
+    if (!faltan.length) {
+      const keys = await caches.keys();
+      await Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)));
+    } else {
+      completarPrecache(); // seguir intentando en segundo plano
+    }
+    await self.clients.claim();
+  })());
+});
+
+// ── Búsqueda en caché con alias (en TODAS las cachés) ───────────
+
 async function buscarEnCache(request) {
-  const exacto = await caches.match(request);
+  const exacto = await caches.match(request, { ignoreSearch: true });
   if (exacto) return exacto;
-  const url = new URL(request.url);
-  let ruta = url.pathname;
+  let url; try { url = new URL(request.url); } catch (_) { return Response.error(); }
+  const ruta = url.pathname;
   const candidatos = [];
   if (ruta.endsWith('/')) candidatos.push(ruta + 'index.html');
   else if (ruta.endsWith('.html')) candidatos.push(ruta.slice(0, -5));
   else if (!/\.[a-z0-9]+$/i.test(ruta)) { candidatos.push(ruta + '.html'); candidatos.push(ruta + '/index.html'); }
   for (const c of candidatos) {
-    const hit = await caches.match(new URL(c, url.origin).href);
+    const hit = await caches.match(new URL(c, url.origin).href, { ignoreSearch: true });
     if (hit) return hit;
   }
   if (request.mode === 'navigate') {
-    const portal = await caches.match('./index.html');
+    const portal = await caches.match(absoluta('./index.html'));
     if (portal) return portal;
   }
   return Response.error();
 }
 
-self.addEventListener('fetch', e => {
-  if (e.request.url.includes('supabase.co')) return;
-  if (e.request.method !== 'GET') return;
+// ── Estrategias de red ──────────────────────────────────────────
 
-  // Estrategia: Network First (con límite de tiempo), cae a caché si falla o tarda
-  e.respondWith(
-    fetchConTimeout(e.request, 4000)
-      .then(resp => {
-        // Safari/WebKit rechaza con "Response served by service worker has
-        // redirections" si la respuesta que se entrega en respondWith() viene
-        // marcada como redirigida (resp.redirected === true), algo que pasa
-        // cuando la petición de red terminó siguiendo una redirección interna
-        // (p. ej. normalización de dominio en Vercel). Chrome/Firefox lo toleran,
-        // Safari no — y esto es justo lo que rompía la app instalada en el Dock
-        // al reabrirla sin conexión. Arreglo: si viene redirigida, se reconstruye
-        // como una respuesta "limpia" (misma info, pero redirected:false) antes
-        // de devolverla o guardarla en caché.
-        if (resp && resp.redirected) {
-          resp = new Response(resp.body, {
-            status: resp.status,
-            statusText: resp.statusText,
-            headers: resp.headers
-          });
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  let u; try { u = new URL(e.request.url); } catch (_) { return; }
+  if (u.origin !== self.location.origin) return;   // supabase, youtube, etc.
+  if (u.pathname.endsWith('/sw.js')) return;        // lo gestiona el navegador
+
+  if (e.request.mode === 'navigate') {
+    // PÁGINAS: red primero (para recibir versiones nuevas), caché si falla.
+    e.respondWith((async () => {
+      try {
+        const resp = await fetchConTimeout(e.request, 3500);
+        if (resp && resp.ok) {
+          const limpia = await respuestaLimpia(resp);
+          const cache = await caches.open(CACHE);
+          cache.put(e.request, limpia.clone()).catch(() => {});
+          mantenimiento();
+          return limpia;
         }
-        if (resp && resp.status === 200) {
-          const respClone = resp.clone();
-          caches.open(CACHE).then(cache => cache.put(e.request, respClone));
-        }
-        return resp;
-      })
-      .catch(() => buscarEnCache(e.request))
-  );
+        const enCache = await buscarEnCache(e.request);
+        return (enCache && enCache.type !== 'error') ? enCache : resp;
+      } catch (_) {
+        return buscarEnCache(e.request);
+      }
+    })());
+    return;
+  }
+
+  // RECURSOS (js/css/imágenes): caché primero — instantáneo y a prueba
+  // de cortes — con refresco silencioso en segundo plano.
+  e.respondWith((async () => {
+    const enCache = await buscarEnCache(e.request);
+    if (enCache && enCache.type !== 'error') {
+      (async () => {
+        try {
+          const r = await fetch(e.request);
+          if (r && r.ok) {
+            const cache = await caches.open(CACHE);
+            await cache.put(e.request, await respuestaLimpia(r));
+          }
+        } catch (_) {}
+      })();
+      return enCache;
+    }
+    try {
+      const r = await fetchConTimeout(e.request, 8000);
+      if (r && r.ok) {
+        const limpia = await respuestaLimpia(r);
+        const cache = await caches.open(CACHE);
+        cache.put(e.request, limpia.clone()).catch(() => {});
+        return limpia;
+      }
+      return r || Response.error();
+    } catch (_) { return Response.error(); }
+  })());
+});
+
+// ── Canal de estado (indicador del portal + diagnostico.html) ───
+
+self.addEventListener('message', e => {
+  const d = e.data || {};
+  if (d.tipo === 'estado') {
+    e.waitUntil((async () => {
+      const est = await estadoPrecache();
+      const puerto = e.ports && e.ports[0];
+      if (puerto) puerto.postMessage(est);
+    })());
+  } else if (d.tipo === 'completar') {
+    e.waitUntil(completarPrecache());
+  }
 });

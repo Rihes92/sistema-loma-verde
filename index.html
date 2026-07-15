@@ -196,6 +196,7 @@
     <a class="sb-link" href="modulos/16-actividades.html"><span class="ic" style="color:#818cf8"><svg viewBox="0 0 20 20" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.2"/><circle cx="7.3" cy="8.3" r="1.1" fill="currentColor" stroke="none"/><circle cx="10.8" cy="6.6" r="1.1" fill="currentColor" stroke="none"/><circle cx="13.2" cy="9.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>Banco de actividades</a>
   </nav>
 
+  <div id="sw-estado" style="margin:10px 16px 0;font-size:.72rem;color:rgba(255,255,255,.85);line-height:1.4"></div>
   <div class="sb-sync">
     <button onclick="this.textContent='⏳ Sincronizando...';(async()=>{await LV_SYNC.subirPendientes();await LV_SYNC.descargarTodo();this.textContent='✅ Sincronizado';setTimeout(()=>location.reload(),600)})()">🔄 Sincronizar ahora</button>
   </div>
@@ -283,7 +284,7 @@
   </main>
 
   <footer>
-    <strong>SABIE</strong> — Sistema de Aprendizaje, Bienestar e Inclusión Educativa
+    <strong>SABIE</strong> — Sistema de Aprendizaje, Bienestar e Inclusión Educativa · <a href="diagnostico.html" style="color:inherit">🩺 Diagnóstico</a>
   </footer>
 
 </div><!-- /content -->
@@ -768,7 +769,31 @@ document.getElementById('search-input').addEventListener('input',function(){
 })();
 </script>
 
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js")}</script>
+<script>
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("./sw.js");
+  // Indicador visible: ¿este dispositivo ya puede trabajar sin internet?
+  (async function estadoOffline(reintento){
+    const el=document.getElementById('sw-estado'); if(!el) return;
+    try{
+      const reg=await navigator.serviceWorker.getRegistration();
+      const sw=reg&&(reg.active||reg.waiting||reg.installing);
+      if(!sw||!reg.active){ el.innerHTML='⏳ Preparando el modo sin internet…'; if((reintento||0)<30) setTimeout(()=>estadoOffline((reintento||0)+1), 4000); return; }
+      const mc=new MessageChannel();
+      mc.port1.onmessage=ev=>{
+        const d=ev.data||{};
+        if(d.listos>=d.total){ el.innerHTML='✅ Listo para trabajar <b>sin internet</b>'; }
+        else{
+          el.innerHTML='⏳ Preparando modo sin internet: '+d.listos+'/'+d.total+' archivos…';
+          if(navigator.onLine) reg.active.postMessage({tipo:'completar'});
+          if((reintento||0)<30) setTimeout(()=>estadoOffline((reintento||0)+1), 6000);
+        }
+      };
+      reg.active.postMessage({tipo:'estado'},[mc.port2]);
+    }catch(_){}
+  })(0);
+}
+</script>
 <script src="auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="sync.js"></script>
