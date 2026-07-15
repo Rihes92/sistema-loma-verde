@@ -3,6 +3,16 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 17, integración Banco de Actividades ↔ Planeador)
+
+- **Nueva funcionalidad en `02-planeador.html`:** Se añadió el botón **"🏦 Importar del Banco"** en la sección "Secuencia didáctica" (Etapa de estructuración), encima del campo "Talleres / actividades de estructuración". Al pulsarlo:
+  1. Se abre un modal que lee `localStorage.lv_actividades` (catálogo institucional sincronizado desde Supabase en el módulo `16-actividades.html`).
+  2. Permite buscar y filtrar por texto y por grado.
+  3. Al elegir un ítem, inserta su título y tipo como texto referenciado en el campo de "Talleres".
+- **Aclaración de arquitectura:** El planeador ya tenía previamente el botón "📷 Del banco" (que lee imágenes propias del docente desde IndexedDB) para agregar miniaturas reales a la sección de Anexos. El nuevo botón es COMPLEMENTARIO y lee del banco institucional de actividades/PDFs.
+- **No requiere IA:** Todo es lógica JavaScript pura, sin costos ni APIs.
+- **Pendiente:** CLAUDE.md y push.
+
 ## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 16, mejoras de UX en navegación y dashboard)
 
 - **Mejoras de Baja y Media Complejidad implementadas a petición de Francy:**

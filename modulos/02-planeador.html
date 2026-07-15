@@ -181,7 +181,11 @@
       <div id="bloques-box"></div>
       <button class="btn sec sm" id="btn-add-bloque" type="button">+ Bloque de dictado</button>
 
-      <label class="fld" style="margin-top:14px">Talleres / actividades de estructuración<textarea id="f-talleres"></textarea></label>
+      <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:flex-end">
+        <label class="fld" style="margin:0; flex:1">Talleres / actividades de estructuración</label>
+        <button class="btn sec sm" id="btn-import-act" type="button" style="margin-bottom:4px">🏦 Importar del Banco</button>
+      </div>
+      <textarea id="f-talleres" style="width:100%"></textarea>
 
       <h3>Etapa de transferencia y valoración del aprendizaje</h3>
       <label class="fld">Actividades de transferencia (casos, debate, proyecto, simulacro ICFES…)<textarea id="f-transfer" style="min-height:90px"></textarea></label>
@@ -344,6 +348,21 @@
     </div>
     <p class="hint" id="mb-info"></p>
     <div class="thumbs" id="mb-grid"></div>
+  </div>
+</div>
+
+<!-- Modal: importar de lv_actividades -->
+<div id="modal-actividades" class="hide" style="position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;z-index:70;padding:16px">
+  <div style="background:#fff;border-radius:14px;padding:20px;max-width:760px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <h2 style="margin:0;color:var(--primary)">Importar del Banco de Actividades</h2>
+      <button class="btn sec sm" id="mact-close">Cerrar</button>
+    </div>
+    <div class="row">
+      <label class="fld" style="flex:1">Buscar<input id="mact-q" placeholder="Buscar actividad..." autocomplete="off"></label>
+      <label class="fld" style="flex:0 0 auto">Grado<select id="mact-grado"><option value="">Todos los grados</option></select></label>
+    </div>
+    <div id="mact-grid" style="display:flex;flex-direction:column;gap:10px;overflow-y:auto;padding-right:4px;flex:1"></div>
   </div>
 </div>
 
@@ -1167,6 +1186,62 @@ function openPicker(){
   $('#mb-grid').querySelectorAll('.thumb').forEach(t=>t.onclick=()=>{const a=bankImgs.find(x=>x.id===t.dataset.id);if(!a)return;anexos.push({id:uid(),data:a.data,cap:a.tema||''});renderAnexos();t.style.outline='3px solid var(--ok)';toast('Añadida a Anexos');});
   $('#modal-banco').classList.remove('hide');
 }
+
+// ── BANCO DE ACTIVIDADES (Supabase lv_actividades) ──
+let dbActividades = [];
+function openActividadesPicker() {
+  try { dbActividades = (JSON.parse(localStorage.getItem('lv_actividades'))||[]).filter(a=>a&&!a._eliminado); } catch(_) { dbActividades = []; }
+  const ORDEN_GRADO=['Prejardín','Jardín','Transición','Transición/1°','Preescolar','Preescolar a 2°','Preescolar a 3°','1°','2°','3°','4°','5°','6°','2° a 5°','3° a 5°','4° a 6°','Primaria','Todos'];
+  const gs=[...new Set(dbActividades.map(a=>a.grado).filter(Boolean))].sort((a,b)=>ORDEN_GRADO.indexOf(a)-ORDEN_GRADO.indexOf(b));
+  $('#mact-grado').innerHTML='<option value="">Todos los grados</option>'+gs.map(g=>`<option value="${esc(g)}">${esc(g)}</option>`).join('');
+  
+  const currG = $('#f-grado').value;
+  if(currG && gs.includes(currG)) $('#mact-grado').value = currG;
+
+  renderActividades();
+  $('#modal-actividades').classList.remove('hide');
+}
+
+function renderActividades() {
+  const norm=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const q = norm($('#mact-q').value.trim());
+  const fg = $('#mact-grado').value;
+  const lista = dbActividades.filter(a => 
+    (!fg || a.grado === fg) && (!q || norm(a.titulo+' '+(a.sub||'')).includes(q))
+  );
+
+  const ICO = {pdf:'📄',imagen:'🖼️'};
+  $('#mact-grid').innerHTML = lista.length ? lista.slice(0, 100).map(a => `
+    <div class="act-row" data-id="${a.id}" style="padding:10px; border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; gap:10px; cursor:pointer; background:#f8fafc; transition:background 0.15s">
+      <div style="font-size:1.5rem">${ICO[a.tipo]||'📎'}</div>
+      <div style="flex:1">
+        <div style="font-weight:700; color:var(--primary); font-size:1rem">${esc(a.titulo)}</div>
+        ${a.sub ? `<div style="font-size:0.8rem; color:var(--muted)">${esc(a.sub)}</div>` : ''}
+        <div style="font-size:0.7rem; color:var(--muted); margin-top:4px; font-weight:600"><span style="background:#e2e8f0; padding:2px 6px; border-radius:4px; color:#334155">${esc(a.grado||'')}</span> ${esc(a.categoria||'')}</div>
+      </div>
+      <button class="btn ok sm" style="pointer-events:none">Insertar</button>
+    </div>
+  `).join('') : '<div class="hint">No hay actividades en el banco con esos filtros.</div>';
+
+  $('#mact-grid').querySelectorAll('.act-row').forEach(row => {
+    row.onclick = () => {
+      const a = dbActividades.find(x => x.id === row.dataset.id);
+      if(!a) return;
+      const t = $('#f-talleres');
+      const textToInsert = `\n\n📌 Actividad anexada: ${a.titulo}\n${a.sub ? `Detalle: ${a.sub}\n` : ''}(Tipo: ${a.tipo||'documento'})`;
+      t.value = (t.value.trim() + textToInsert).trim();
+      t.style.height = 'auto'; t.style.height = t.scrollHeight + 'px';
+      $('#modal-actividades').classList.add('hide');
+      toast('Actividad importada al planeador');
+    };
+  });
+}
+
+$('#btn-import-act').addEventListener('click', openActividadesPicker);
+$('#mact-close').addEventListener('click', () => $('#modal-actividades').classList.add('hide'));
+$('#modal-actividades').addEventListener('click', e => { if(e.target.id==='modal-actividades') $('#mact-close').click(); });
+$('#mact-q').addEventListener('input', renderActividades);
+$('#mact-grado').addEventListener('change', renderActividades);
 
 // ---------- arranque ----------
 (function(){
