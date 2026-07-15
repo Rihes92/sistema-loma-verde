@@ -534,11 +534,45 @@ function membreteLinea(){
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 const calKey=(cursoId,periodo,estId)=>`${cursoId}|${periodo}|${estId}`;
 
+// ── Permisos: un docente solo debe ver SUS cursos (por materia asignada o
+//   grupo que dirige) — incluso al entrar directo desde la barra lateral
+//   (sin pasar por Áreas académicas, que es cuando SÍ llega el contexto de
+//   materia de LV_CTX). Antes esta pantalla dependía solo de LV_CTX.filtrar(),
+//   que no hace nada sin ese contexto, así que entrando directo se veían
+//   cursos de TODOS los docentes. Mismo criterio ya usado en el portal /
+//   PIAR / Analítica (lv_asignaciones + campo "dirige" de lv_docentes). ──
+let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const esAdmin=!!(login&&login.esAdmin);
+const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
+let PERM_materias=new Set(), PERM_accesoTotal=esAdmin, PERM_gruposDirigidos=new Set();
+if(login&&!esAdmin){
+  try{
+    const asign=lsRead('asignaciones').filter(a=>a.docenteId===login.docenteId);
+    PERM_accesoTotal = asign.some(a=>a.area==='Primaria'||a.materia==='Todas las materias');
+    asign.forEach(a=>{ if(a.materia) PERM_materias.add(a.materia); });
+    const docentes=lsRead('docentes');
+    const d=docentes.find(x=>x.id===login.docenteId);
+    if(d&&d.dirige){
+      String(d.dirige).split(',').forEach(t=>{
+        const [g,gr]=t.trim().split('-');
+        PERM_gruposDirigidos.add(norm(g)+'-'+norm(gr||''));
+      });
+    }
+  }catch(_){}
+}
+function cursoEsMio(c){
+  if(esAdmin||PERM_accesoTotal) return true;
+  if(!c) return false;
+  if(c.materia && PERM_materias.has(c.materia)) return true;
+  if(PERM_gruposDirigidos.has(norm(c.grado)+'-'+norm(c.grupo))) return true;
+  return false;
+}
+
 // ---------- estado en memoria ----------
 let cursos=[], estudiantes=[], calMap={};
 
 async function loadAll(){
-  cursos=await dbAll('cursos');
+  cursos=(await dbAll('cursos')).filter(cursoEsMio);
   estudiantes=await dbAll('estudiantes');
   const cals=await dbAll('calificaciones');
   calMap={}; cals.forEach(c=>calMap[c.id]=c);
