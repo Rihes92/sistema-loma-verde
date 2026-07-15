@@ -168,7 +168,14 @@ document.getElementById('form-login').addEventListener('submit', async e=>{
     }));
     location.href='index.html';
   }catch(err){
-    errBox.textContent = err.message || 'No se pudo iniciar sesión.';
+    // Distinguir "sin internet" de "contraseña incorrecta": la verificación
+    // de contraseña siempre ocurre en el servidor, así que sin conexión no
+    // hay forma de validarla (el modo sin internet funciona DESPUÉS de haber
+    // iniciado sesión una vez en este dispositivo).
+    const esRed = !navigator.onLine || /load failed|failed to fetch|networkerror|abort|timeout|network/i.test(String(err&&err.message||''));
+    errBox.textContent = esRed
+      ? '📵 No hay conexión a internet. Iniciar sesión requiere internet. Si ya habías entrado antes en este dispositivo, la app abre sola sin pedir contraseña; si te la está pidiendo, tu sesión se cerró y necesitas conexión para entrar de nuevo.'
+      : (err.message || 'No se pudo iniciar sesión.');
     btn.disabled=false; btn.textContent='Entrar';
   }
 });

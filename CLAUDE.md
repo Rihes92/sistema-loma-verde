@@ -3,6 +3,20 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 13b, mensaje offline del login)
+
+- **Francy probó offline SIN sesión iniciada** → el login cacheado cargó bien
+  (el SW v62 funciona) pero al pulsar Entrar salió "Load failed" (error crudo
+  del fetch a Supabase). Es comportamiento esperado: verificar contraseña
+  REQUIERE internet; el modo offline aplica a quien ya tiene sesión (entra
+  directo al portal sin pasar por login). Arreglo de UX en `login.html`:
+  el catch ahora distingue error de red (navigator.onLine + regex sobre
+  err.message) y muestra explicación en español («iniciar sesión requiere
+  internet; si ya habías entrado, la app abre sola; si te pide contraseña,
+  tu sesión se cerró»). SW **v63**. Sintaxis OK. PENDIENTE: push + prueba
+  offline CON sesión: online→login→recargar 2 veces→navegar→quitar internet
+  →reabrir (debe abrir el portal directo).
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 13, offline de raíz + rutas + Atrás)
 
 - **Cuatro quejas de Francy atendidas:** (1-2) offline roto y Chrome≠Safari:
