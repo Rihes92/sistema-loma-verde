@@ -278,9 +278,39 @@
     <!-- Alertas automáticas -->
     <div id="alertas-wrap" style="margin-bottom:8px"></div>
 
-    <div class="sec-label">🕓 Actividad reciente</div>
-    <div class="act-card" id="activity-wrap">
-      <div class="act-empty">Sin actividad registrada aún. Abre cualquier módulo para comenzar.</div>
+    <div class="sec-label">🚀 Tu Día en SABIE</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:20px">
+      
+      <!-- Panel de Acciones Pendientes -->
+      <div class="act-card" style="padding:0">
+        <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+          <span style="font-size:1.1rem">📋</span> Tareas y Pendientes
+        </div>
+        <div id="pendientes-wrap" style="padding:10px 0">
+          <div class="act-empty">Todo al día. No hay tareas urgentes.</div>
+        </div>
+      </div>
+
+      <!-- Panel de Rendimiento (Gráfico CSS) -->
+      <div class="act-card" style="padding:0">
+        <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+          <span style="font-size:1.1rem">📈</span> Rendimiento por Curso
+        </div>
+        <div id="chart-wrap" style="padding:16px">
+          <div class="act-empty">Insuficientes datos para mostrar gráficos.</div>
+        </div>
+      </div>
+
+      <!-- Panel de Próximos Eventos -->
+      <div class="act-card" style="padding:0">
+        <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+          <span style="font-size:1.1rem">📅</span> Próximos Eventos
+        </div>
+        <div id="eventos-wrap" style="padding:10px 0">
+          <div class="act-empty">No hay eventos próximos.</div>
+        </div>
+      </div>
+
     </div>
   </main>
 
@@ -482,92 +512,195 @@ document.getElementById('search-input').addEventListener('input',function(){
   document.getElementById('no-results').classList.toggle('show',!!q&&v===0);
 });
 
-// ── ACTIVIDAD RECIENTE ────────────────────────────────────────
-//  PRIVACIDAD: este dispositivo tiene espejadas TODAS las materias de
-//  TODOS los docentes (Fase 2 de arquitectura sigue pausada), así que
-//  cada tienda se filtra a lo que le corresponde al docente actual
-//  antes de contar/mostrar nada (ver PERM/permiteMateria arriba).
-//  'Comunicados' no lleva etiqueta de materia todavía → se omite para
-//  docentes normales (solo Coordinación/admin la ve) para no arriesgar
-//  mostrar citaciones de otros cursos.
+// ── DASHBOARD CENTRAL (Acciones, Rendimiento, Eventos) ──────────────────────
 (function(){
-  const wrap=document.getElementById('activity-wrap');
-  const dataPill=document.getElementById('pill-datos');
   const soyAdmin = PERM.esAdmin || PERM.accesoTotal;
   let misCursoIds=null;
-  function cursoIdsPermitidos(){
+  function getMisCursoIds(){
     if(misCursoIds) return misCursoIds;
     let cursos=[]; try{ cursos=JSON.parse(localStorage.getItem('lv_cursos')||'[]'); }catch(_){}
     if(!soyAdmin) cursos = cursos.filter(c=>permiteMateria(c.materia));
     misCursoIds = new Set(cursos.map(c=>c.id));
     return misCursoIds;
   }
-  const STORES=[
-    {key:'lv_cursos',       label:'Calificaciones',  icon:'📊',link:'modulos/01-calificaciones.html', filtro:'materia'},
-    {key:'lv_planeadores',  label:'Planeador',        icon:'🗂️',link:'modulos/02-planeador.html', filtro:'materia'},
-    {key:'lv_examenes',     label:'Exámenes 6°-10°',  icon:'📝',link:'modulos/03-examenes.html', filtro:'materia'},
-    {key:'lv11_examenes',   label:'Exámenes 11°',     icon:'🎯',link:'modulos/04-examenes-11.html', filtro:'materia'},
-    {key:'lv_as_asistencia',label:'Asistencia',       icon:'✅',link:'modulos/05-asistencia.html', filtro:'cursoId'},
-    ...(soyAdmin ? [{key:'lv_com_historial',label:'Comunicados', icon:'✉️',link:'modulos/06-comunicados.html', filtro:'ninguno'}] : []),
-  ];
+  const safeJSON=k=>{try{const r=localStorage.getItem(k);return r?JSON.parse(r):null;}catch(_){return null;}};
 
-  const items=[];let totalReg=0;
-  try{
-    STORES.forEach(({key,label,icon,link,filtro})=>{
-      const raw=localStorage.getItem(key);
-      if(!raw)return;
-      const data=JSON.parse(raw);
-      // Aplanar: puede ser array, objeto de arrays (con su llave), u objeto plano
-      let flat=[];
-      if(Array.isArray(data)) flat=data;
-      else if(typeof data==='object'&&data!==null){
-        Object.entries(data).forEach(([k,v])=>{
-          if(Array.isArray(v)) flat=flat.concat(v.map(x=>Object.assign({},x,{_k:k})));
-          else if(typeof v==='object'&&v!==null) flat.push(Object.assign({},v,{_k:k}));
-        });
-      }
-      if(!soyAdmin){
-        if(filtro==='materia') flat = flat.filter(x=>permiteMateria(x.materia));
-        else if(filtro==='cursoId'){
-          const ids = cursoIdsPermitidos();
-          flat = flat.filter(x=>ids.has(x.cursoId || String(x._k||'').split('_')[0]));
-        }
-      }
-      if(!flat.length)return;
-      totalReg+=flat.length;
-      // Fecha más reciente
-      let latest=null;
-      flat.forEach(x=>{
-        const d=x.fecha||x.updatedAt||x.createdAt||null;
-        if(d&&(!latest||d>latest))latest=d;
-      });
-      items.push({label,icon,link,count:flat.length,latest});
+  const ests = safeJSON('lv_estudiantes')||[];
+  const cals = safeJSON('lv_calificaciones')||[];
+  const asis = safeJSON('lv_as_asistencia')||{};
+  const evts = safeJSON('lv_eventos')||[];
+  const as_ests = safeJSON('lv_as_estudiantes')||{};
+
+  // --- 1. Tareas y Pendientes ---
+  const pend = [];
+  const ids = getMisCursoIds();
+  // Asistencia pendiente hoy
+  const hoy=new Date().toISOString().split('T')[0];
+  let asisFaltantes = 0;
+  Object.keys(as_ests).forEach(cId => {
+    if(!soyAdmin && !ids.has(cId)) return;
+    if(!Object.keys(asis).some(k => k.startsWith(cId+'_'+hoy))) asisFaltantes++;
+  });
+  if(asisFaltantes>0) pend.push({icon:'⚠️', msg:`Falta registrar la asistencia de hoy en ${asisFaltantes} curso(s).`, link:'modulos/05-asistencia.html', cls:'warn'});
+
+  // Estudiantes en riesgo (< 3.0)
+  let enRiesgo=0;
+  if(cals.length && ests.length){
+    const estsMios = soyAdmin ? ests : ests.filter(e=>ids.has(e.cursoId));
+    const miosIds = new Set(estsMios.map(e=>e.id));
+    const byEst={};
+    cals.forEach(c=>{ if(miosIds.has(c.estId)) { if(!byEst[c.estId]||c.periodo>byEst[c.estId].periodo) byEst[c.estId]=c; } });
+    Object.values(byEst).forEach(cal=>{
+      if (cal.nivelacion && cal.nivelacion >= 3.0) return; // Salvado por nivelación
+      const cogs=(cal.cognitivas||[]).filter(n=>n>0);
+      const cog=cogs.length?cogs.reduce((a,b)=>a+b,0)/cogs.length:0;
+      const def=(cog*60+(cal.acumulativo||0)*20+(cal.auto||0)*10+(cal.co||0)*5+(cal.hetero||0)*5)/100;
+      if(def>0&&def<3.0) enRiesgo++;
     });
-  }catch(_){}
+  }
+  if(enRiesgo>0) pend.push({icon:'🚨', msg:`Tienes ${enRiesgo} estudiante(s) con nota en riesgo (< 3.0).`, link:'modulos/01-calificaciones.html', cls:'bad'});
 
-  // Pill de datos
-  dataPill.textContent = totalReg>0 ? `${totalReg} registros guardados` : 'Sin datos aún';
+  const pendWrap = document.getElementById('pendientes-wrap');
+  if(pend.length > 0) {
+    pendWrap.innerHTML = pend.map(p=>`<div class="act-row" onclick="location.href='${p.link}'" style="border-left:3px solid var(--${p.cls});padding-left:14px"><div class="act-text">${p.icon} <strong>${esc(p.msg)}</strong></div></div>`).join('');
+  } else {
+    pendWrap.innerHTML = '<div class="act-empty">Todo al día. No hay tareas urgentes.</div>';
+  }
 
-  if(!items.length){return;}
-  items.sort((a,b)=>(b.latest||'').localeCompare(a.latest||''));
+  // --- 2. Gráfico de Rendimiento ---
+  // Promedio de notas por curso
+  const chartWrap = document.getElementById('chart-wrap');
+  const cursos = safeJSON('lv_cursos')||[];
+  const misCursos = soyAdmin ? cursos : cursos.filter(c=>permiteMateria(c.materia));
+  if(misCursos.length>0 && cals.length>0) {
+    const promedios = misCursos.map(c => {
+      const estC = ests.filter(e=>e.cursoId===c.id).map(e=>e.id);
+      if(!estC.length) return null;
+      const calsC = cals.filter(cal=>estC.includes(cal.estId));
+      if(!calsC.length) return null;
+      let sum=0, count=0;
+      calsC.forEach(cal => {
+        const cogs=(cal.cognitivas||[]).filter(n=>n>0);
+        const cog=cogs.length?cogs.reduce((a,b)=>a+b,0)/cogs.length:0;
+        let def=(cog*60+(cal.acumulativo||0)*20+(cal.auto||0)*10+(cal.co||0)*5+(cal.hetero||0)*5)/100;
+        if(cal.nivelacion && cal.nivelacion>def) def=cal.nivelacion;
+        if(def>0) { sum+=def; count++; }
+      });
+      if(!count) return null;
+      return {nombre: c.grado+' '+c.grupo, prom: sum/count};
+    }).filter(x=>x).sort((a,b)=>b.prom-a.prom).slice(0,5); // top 5
+    
+    if(promedios.length>0) {
+      chartWrap.innerHTML = promedios.map(p => {
+        const pct = (p.prom/5)*100;
+        const color = p.prom>=4.0 ? 'var(--ok)' : (p.prom>=3.0 ? 'var(--primary-light)' : 'var(--warn)');
+        return `<div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:3px;font-weight:600">
+            <span>${esc(p.nombre)}</span><span>${p.prom.toFixed(1)}</span>
+          </div>
+          <div style="width:100%;height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden">
+            <div style="width:${pct}%;height:100%;background:${color};border-radius:4px"></div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+  }
 
-  const fmt=d=>{
-    if(!d)return '';
-    const dt=new Date(d),now=new Date(),diff=Math.round((now-dt)/60000);
-    if(diff<2)return 'ahora mismo';
-    if(diff<60)return `hace ${diff} min`;
-    if(diff<1440)return `hace ${Math.round(diff/60)}h`;
-    if(diff<10080)return `hace ${Math.round(diff/1440)} días`;
-    return dt.toLocaleDateString('es',{day:'numeric',month:'short'});
-  };
-
-  wrap.innerHTML=items.slice(0,6).map(it=>`
-    <div class="act-row" onclick="location.href='${it.link}'">
-      <div class="act-dot"></div>
-      <div class="act-text">${it.icon} <strong>${it.label}</strong> — ${it.count} registro${it.count!==1?'s':''}</div>
-      <div class="act-time">${fmt(it.latest)}</div>
-    </div>`).join('');
+  // --- 3. Próximos Eventos ---
+  const evWrap = document.getElementById('eventos-wrap');
+  const now = new Date();
+  const proxs = evts.filter(e => {
+    if(!e.fecha) return false;
+    const ed = new Date(e.fecha+'T00:00:00');
+    const diff = (ed-now)/(1000*60*60*24);
+    return diff>=-1 && diff<=15; // De hoy a 15 días
+  }).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha)).slice(0,4);
+  
+  if(proxs.length>0) {
+    evWrap.innerHTML = proxs.map(p => {
+      const dt = new Date(p.fecha+'T12:00:00');
+      const dStr = dt.toLocaleDateString('es',{day:'numeric',month:'short'});
+      return `<div class="act-row" style="padding:10px 14px">
+        <div style="background:#e0e7ff;color:var(--primary-dark);padding:4px 8px;border-radius:6px;font-weight:800;font-size:.75rem;min-width:48px;text-align:center;margin-right:10px">${dStr}</div>
+        <div class="act-text"><strong style="font-size:.85rem">${esc(p.titulo)}</strong></div>
+      </div>`;
+    }).join('');
+  } else {
+    evWrap.innerHTML = '<div class="act-empty">No hay eventos en los próximos 15 días.</div>';
+  }
 })();
+
+// ── NAVEGACIÓN BARRA LATERAL (Smart Modal) ───────────────────────
+function navToModule(e, link) {
+  const href = link.getAttribute('href');
+  if (!href.match(/modulos\/0[1-9]-/) || href.includes('16-') || href.includes('17-')) return;
+  e.preventDefault();
+
+  const isGlobal = PERM.esAdmin || PERM.accesoTotal;
+  const matSet = PERM.materiasPermitidas || new Set();
+  
+  let options = [];
+  if (isGlobal) {
+    AREAS.forEach(a => a.materias.forEach(m => options.push({area: a.nombre, materia: m})));
+  } else {
+    AREAS.forEach(a => {
+      a.materias.forEach(m => {
+        if (matSet.has(m)) options.push({area: a.nombre, materia: m});
+      });
+    });
+  }
+
+  if (options.length === 1) {
+    location.href = href + `?area=${encodeURIComponent(options[0].area)}&materia=${encodeURIComponent(options[0].materia)}`;
+    return;
+  }
+  if (options.length === 0) {
+    location.href = href; 
+    return;
+  }
+
+  if (!document.getElementById('lv-materia-modal')) {
+    const wrap = document.createElement('div');
+    wrap.id = 'lv-materia-modal';
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .2s';
+    wrap.innerHTML = `
+      <div style="background:#fff;border-radius:16px;padding:24px;width:min(90vw,400px);box-shadow:0 20px 40px rgba(0,0,0,.2);transform:scale(0.95);transition:transform .2s" id="lv-materia-card">
+        <h3 style="margin:0 0 4px;color:var(--primary);font-size:1.1rem" id="lv-materia-title">¿A qué materia deseas entrar?</h3>
+        <p style="margin:0 0 16px;color:var(--muted);font-size:.85rem">Selecciona el contexto para abrir el módulo.</p>
+        <div id="lv-materia-list" style="display:flex;flex-direction:column;gap:8px;max-height:60vh;overflow-y:auto;padding-right:4px"></div>
+        <button id="lv-materia-cancel" style="margin-top:16px;width:100%;padding:10px;background:#f1f5f9;color:#334155;border:0;border-radius:8px;font-weight:700;cursor:pointer">Cancelar</button>
+      </div>`;
+    document.body.appendChild(wrap);
+    wrap.querySelector('#lv-materia-cancel').onclick = () => { wrap.style.opacity='0'; setTimeout(()=>wrap.style.display='none', 200); };
+    wrap.onclick = e => { if(e.target===wrap) wrap.querySelector('#lv-materia-cancel').click(); };
+  }
+
+  const modal = document.getElementById('lv-materia-modal');
+  const card = document.getElementById('lv-materia-card');
+  const list = document.getElementById('lv-materia-list');
+  const title = document.getElementById('lv-materia-title');
+
+  const tituloLink = link.textContent.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g,'').trim();
+  title.textContent = `Entrar a ${tituloLink}`;
+  list.innerHTML = options.map(o => `
+    <button class="materia-opt-btn" onclick="location.href='${href}?area=${encodeURIComponent(o.area)}&materia=${encodeURIComponent(o.materia)}'" style="text-align:left;padding:12px 16px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:600;color:var(--primary);font-size:.9rem;transition:all .15s">
+      <span style="display:block;font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:2px">${esc(o.area)}</span>
+      ${esc(o.materia)}
+    </button>
+  `).join('');
+
+  modal.style.display = 'flex';
+  modal.offsetHeight; // force reflow
+  modal.style.opacity = '1';
+  card.style.transform = 'scale(1)';
+}
+
+// Bind clicks on sidebar links (and quick buttons)
+document.querySelectorAll('.sb-link, .quick-btn').forEach(a => {
+  if (a.getAttribute('href') && a.getAttribute('href').startsWith('modulos/')) {
+    a.addEventListener('click', e => navToModule(e, a));
+  }
+});
 
 // ══════════════════════════════════════════════════════
 // DASHBOARD — Lee localStorage de todos los módulos

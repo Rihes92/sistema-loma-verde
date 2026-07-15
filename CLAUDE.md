@@ -3,6 +3,15 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 16, mejoras de UX en navegación y dashboard)
+
+- **Mejoras de Baja y Media Complejidad implementadas a petición de Francy:**
+  - **Limpieza:** Se eliminaron las imágenes huérfanas `Logo/Logo_nuevo.png` y `Logo/sabie-full.png`.
+  - **Generador IA en 11°:** Se replicó el botón generador de preguntas con IA en `04-examenes-11.html`.
+  - **Dashboard Central:** Se sustituyó "Actividad Reciente" en `index.html` por "Tu Día en SABIE", que muestra: tareas pendientes (alertas de asistencia y estudiantes en riesgo), un gráfico CSS con promedios de curso, y los próximos eventos a 15 días.
+  - **Navegación Inteligente (Smart Modal):** Se interceptan los clics del menú lateral en `index.html`. Si el módulo requiere materia (01 al 09) y el docente enseña varias, se lanza un modal solicitando "¿A qué materia deseas entrar?" antes de redirigir con `?materia=X`. Si enseña solo una, navega directo.
+  - *Las mejoras de alta complejidad quedaron pausadas para después.*
+
 ## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 15, UX offline: badge, instalar, dudas de Francy)
 
 - **Dudas de Francy respondidas (dejar claro a los docentes):** (1) La sesión

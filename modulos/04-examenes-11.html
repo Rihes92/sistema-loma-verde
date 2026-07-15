@@ -184,6 +184,27 @@
       </div>
       <div class="hint" id="bq-count"></div>
     </div>
+    <div class="card no-print" style="border:1px solid var(--primary);background:#f8fbff">
+      <h2>🤖 Generar preguntas con IA</h2>
+      <p class="desc">Indica grado, temática y cuántas preguntas quieres; la IA redacta el banco (opción múltiple, V/F y abiertas) listo para revisar. Necesita internet.</p>
+      <div class="row" style="align-items:flex-end">
+        <label class="fld">🔑 Tu clave de Gemini<input id="iaq-key" type="password" autocomplete="off" placeholder="Pega tu clave AIza… (una sola vez en este equipo)"></label>
+        <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span><button class="btn sec" id="iaq-key-save" type="button">Guardar clave</button></label>
+        <span id="iaq-key-state" class="hint" style="align-self:center"></span>
+      </div>
+      <div class="row">
+        <label class="fld">Grado<select id="iaq-grado"></select></label>
+        <label class="fld">Periodo<select id="iaq-periodo"><option>Primer Periodo</option><option>Segundo Periodo</option><option>Tercer Periodo</option></select></label>
+        <label class="fld">N° de preguntas<input id="iaq-cant" type="number" min="1" max="20" value="10"></label>
+      </div>
+      <label class="fld">Temática / unidad a evaluar<input id="iaq-tema" placeholder="Ej: La Constitución de 1991 y los mecanismos de participación"></label>
+      <label class="fld">Indicaciones adicionales (opcional)<textarea id="iaq-notas" placeholder="Ej: incluye una pregunta abierta y dos de verdadero/falso."></textarea></label>
+      <div class="row" style="align-items:center;gap:12px">
+        <button class="btn ok" id="iaq-gen" type="button">🤖 Generar preguntas</button>
+        <span id="iaq-status" class="hint" style="align-self:center"></span>
+      </div>
+      <p class="desc" style="margin-top:8px">Se agregan al banco de la materia activa. Revísalas antes de usarlas: la IA puede equivocarse.</p>
+    </div>
     <div id="bq-list"></div>
   </section>
 
@@ -634,6 +655,67 @@ $('#bq-import').addEventListener('change',async e=>{const f=e.target.files[0];if
     lsWrite('banco',all);renderBanco();toast(`✅ ${n} pregunta(s) importadas`+(errores.length?` · ${errores.length} con errores`:''));
   }catch(err){ alert('❌ Error inesperado al importar: '+(err&&err.message||err)); }
   e.target.value='';});
+
+// ── Generar con IA ──────────────────────────────────────────────
+function iaqKeyRender(){
+  const has=(typeof LV_GEMINI!=='undefined')&&LV_GEMINI.tiene();
+  const st=$('#iaq-key-state'); if(!st)return;
+  st.textContent=has?'✓ Clave guardada en este equipo (Guardar con el campo vacío la quita)':'⚠️ Aún no has guardado tu clave de Gemini';
+  st.style.color=has?'#059669':'var(--muted)';
+  if(has)$('#iaq-key').placeholder='•••• clave guardada ••••';
+}
+$('#iaq-key-save') && $('#iaq-key-save').addEventListener('click',()=>{
+  const val=$('#iaq-key').value.trim();
+  if(val){ if(typeof LV_GEMINI!=='undefined') LV_GEMINI.set(val); toast('Clave de Gemini guardada en este equipo.'); $('#iaq-key').value=''; }
+  else { if(typeof LV_GEMINI!=='undefined') LV_GEMINI.clear(); toast('Clave de Gemini eliminada.'); }
+  iaqKeyRender();
+});
+$('#iaq-gen') && $('#iaq-gen').addEventListener('click',async ()=>{
+  const gk=(typeof LV_GEMINI!=='undefined')?LV_GEMINI.get():'';
+  if(!gk){ toast('Primero guarda tu clave de Gemini'); $('#iaq-key').focus(); return; }
+  const g=$('#iaq-grado').value, per=$('#iaq-periodo').value;
+  const tema=$('#iaq-tema').value.trim();
+  if(!g){toast('Elige el grado');return;}
+  if(!tema){toast('Escribe la temática a evaluar');return;}
+  const cant=parseInt($('#iaq-cant').value,10)||10;
+  let _lg=null; try{ _lg=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+  const datos={ grado:g, periodo:per, tema, cantidad:cant, docente:(_lg&&_lg.nombre)||'', notas:$('#iaq-notas').value.trim() };
+  const btn=$('#iaq-gen'), st=$('#iaq-status');
+  btn.disabled=true; st.textContent='⏳ Generando… puede tardar hasta un minuto.';
+  try{
+    const token=(typeof LV_AUTH!=='undefined') ? await LV_AUTH.getValidToken() : null;
+    const r=await fetch('/api/generar',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+(token||''),'X-Gemini-Key':gk},body:JSON.stringify({tipo:'banco',datos})});
+    const out=await r.json().catch(()=>null);
+    if(!r.ok || !out || out.error){ st.textContent=''; alert('❌ '+((out&&out.error)||('Error '+r.status+' al generar.'))); return; }
+    const d=out.data;
+    if(!d || d.app!=='loma_verde_banco_preguntas' || !Array.isArray(d.preguntas) || !d.preguntas.length){ st.textContent=''; alert('❌ La IA no devolvió un banco de preguntas válido. Intenta de nuevo.'); return; }
+    const errores=[]; const validas=[];
+    d.preguntas.forEach((p,i)=>{
+      const ref=`P${i+1}${p.id?' ('+p.id+')':''}`;
+      if(!p.enunciado){ errores.push(ref+': sin enunciado'); return; }
+      if(p.tipo==='multiple'){
+        if(!Array.isArray(p.opciones)||p.opciones.length!==4){ errores.push(ref+': debe tener exactamente 4 opciones'); return; }
+        if(!Number.isInteger(p.correcta)||p.correcta<0||p.correcta>3){ errores.push(ref+': "correcta" debe ser 0, 1, 2 o 3 (A=0 … D=3)'); return; }
+      } else if(p.tipo==='vf'){
+        if(typeof p.correcta!=='boolean'){ errores.push(ref+': en V/F "correcta" debe ser true o false'); return; }
+      } else if(p.tipo==='abierta'){
+        if(!p.respuesta){ errores.push(ref+': pregunta abierta sin "respuesta" modelo'); return; }
+      } else { errores.push(ref+': tipo desconocido "'+(p.tipo||'')+'" (usa multiple, vf o abierta)'); return; }
+      validas.push(p);
+    });
+    if(!validas.length){ st.textContent=''; alert('❌ Ninguna pregunta generada pasó la validación:\n\n• '+errores.join('\n• ')+'\n\nIntenta generar de nuevo.'); return; }
+    const all=lsRead('banco');const ids=new Set(all.map(x=>x.id));let n=0;
+    const periodoGlobal = (d.origen && d.origen.periodo) || '';
+    const materiaActiva=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales';
+    validas.forEach(p=>{if(!p.id)p.id=uid();if(!p.periodo && periodoGlobal)p.periodo=periodoGlobal;if(!p.materia)p.materia=materiaActiva;if(!ids.has(p.id)){all.push(p);ids.add(p.id);n++;}});
+    if(JSON.stringify(all).length>4600000){ st.textContent=''; toast('⚠️ El banco supera el límite de almacenamiento.'); return; }
+    lsWrite('banco',all);
+    st.textContent='';
+    renderBanco();
+    toast(`✅ ${n} pregunta(s) generadas`+(errores.length?` · ${errores.length} descartadas`:''));
+  }catch(err){ st.textContent=''; alert('❌ No se pudo generar: '+(err&&err.message||err)+'\n\nRevisa tu conexión a internet e intenta de nuevo.'); }
+  finally{ btn.disabled=false; }
+});
 
 // Selector para agregar del banco al examen
 $('#add-from-bank').addEventListener('click',openBankPicker);
