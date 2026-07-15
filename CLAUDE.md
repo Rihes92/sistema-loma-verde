@@ -3,6 +3,24 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 11, arreglo rápido)
+
+- **Logo del login estirado en Safari**, hallado por Francy con captura de pantalla.
+  `login.html` → `.brand img.logo-full{width:min(420px,88%);...}` fijaba solo el ancho;
+  la proporción dependía de que el navegador dedujera el alto a partir de los atributos
+  HTML `width="1024" height="1024"` agregados en la sesión 5 (para evitar layout shift).
+  Esa combinación de `width` vía `min()` + aspect-ratio implícito por atributos no se
+  está respetando bien en Safari — el logo (cuadrado 1024×1024 real, confirmado
+  abriendo el archivo) se veía estirado verticalmente, ocupando casi todo el panel
+  izquierdo. Arreglado fijando la proporción explícitamente en CSS en vez de dejarla
+  implícita: se agregó `height:auto;aspect-ratio:1/1;object-fit:contain` tanto a
+  `.brand img.logo-full` (escritorio) como a `.brand-movil img` (móvil, mismo patrón,
+  arreglado preventivamente aunque no se reportó ahí). SW **v59**. `node --check`
+  limpio (login.html no tiene bloques de script inline afectados por el cambio, solo
+  CSS).
+  **PENDIENTE:** push; que Francy confirme en Safari que el logo ya se ve cuadrado
+  y bien proporcionado.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 10, auditoría funcional completa)
 
 - **Francy pidió una revisión exhaustiva de TODA la app** (no solo diseño, ya
