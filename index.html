@@ -512,6 +512,9 @@ document.getElementById('search-input').addEventListener('input',function(){
   document.getElementById('no-results').classList.toggle('show',!!q&&v===0);
 });
 
+// Helper de escape HTML
+const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
 // ── DASHBOARD CENTRAL (Acciones, Rendimiento, Eventos) ──────────────────────
 (function(){
   const soyAdmin = PERM.esAdmin || PERM.accesoTotal;
