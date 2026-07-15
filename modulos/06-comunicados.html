@@ -579,7 +579,8 @@ function guardarHistorial(){
     curso:d.curso, estudiante:d.est,
     telefono:d.telefono, acudiente:d.acudiente,
     campos:{...estado.campos},
-    wa:p.wa(d)
+    wa:p.wa(d),
+    materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||''
   };
   historial.unshift(reg);
   lsW('historial',historial);
@@ -604,13 +605,21 @@ function imprimirCarta(){
 }
 
 // ── HISTORIAL ────────────────────────────────────────────────
+function historialVisible(){
+  // El array `historial` completo (todas las materias/docentes) NUNCA se
+  // reemplaza por la versión filtrada — solo se filtra para mostrar, así
+  // guardar/eliminar/limpiar siguen operando sobre ids reales sin borrar
+  // por accidente el historial de otro docente.
+  return (typeof LV_CTX!=='undefined') ? LV_CTX.filtrar(historial) : historial;
+}
 function renderHistorial(){
   const wrap=document.getElementById('historial-wrap');
-  if(!historial.length){wrap.innerHTML='<div class="empty">Sin comunicados guardados.</div>';return;}
+  const vista=historialVisible();
+  if(!vista.length){wrap.innerHTML='<div class="empty">Sin comunicados guardados.</div>';return;}
   let html=`<table><thead><tr>
     <th>Fecha</th><th>Tipo</th><th>Curso</th><th>Estudiante</th><th>Acudiente</th><th>Celular</th><th></th>
   </tr></thead><tbody>`;
-  historial.forEach(r=>{
+  vista.forEach(r=>{
     const p=PLANTILLAS[r.tipo]||{badgeClass:'',emoji:'✉️'};
     html+=`<tr>
       <td class="muted" style="font-size:.78rem;white-space:nowrap">${new Date(r.fecha).toLocaleDateString()}</td>
@@ -644,8 +653,15 @@ function eliminarHistorial(id){
 }
 
 function limpiarHistorial(){
-  if(!confirm('¿Limpiar todo el historial?')) return;
-  historial=[];lsW('historial',historial);renderHistorial();toast('Historial limpiado.');
+  // Antes borraba TODO `historial` (de todos los docentes/materias) — ahora
+  // solo limpia lo que este docente puede ver (su materia), igual que Reportes.
+  const vista=historialVisible();
+  if(!vista.length) return;
+  if(!confirm(`¿Limpiar los ${vista.length} comunicado(s) de tu historial? (no afecta el de otras materias)`)) return;
+  const idsFuera=new Set(vista.map(r=>r.id));
+  if(typeof LV_SYNC!=='undefined') vista.forEach(r=>LV_SYNC.marcarCambio('lv_com_historial',Object.assign({},r,{_eliminado:true})));
+  historial=historial.filter(r=>!idsFuera.has(r.id));
+  lsW('historial',historial);renderHistorial();toast('Tu historial fue limpiado.');
 }
 
 // ── CONFIGURACIÓN ────────────────────────────────────────────

@@ -788,14 +788,18 @@ document.getElementById('search-input').addEventListener('input',function(){
     const cursos=leer('lv_cursos'), acudientes=leer('lv_acudientes'), obs=leer('lv_observador');
     const cursoMap={}; cursos.forEach(c=>{ cursoMap[c.id]=c; });
 
-    // agrupar estudiantes por nombre (existen repetidos por materia)
+    // agrupar estudiantes por nombre (existen repetidos por materia) —
+    // solo se agregan los cursos que el docente puede ver (misma materia que
+    // dicta, o admin/acceso total); si el estudiante no tiene NINGÚN curso
+    // permitido, no aparece en absoluto (evita exponer datos de otro docente).
     const porNombre={};
     leer('lv_estudiantes').forEach(e=>{
       if(!normB(e.nombre).includes(q)) return;
+      const c=cursoMap[e.cursoId];
+      if(!c || !permiteMateria(c.materia)) return;
       const k=normB(e.nombre);
       if(!porNombre[k]) porNombre[k]={nombre:e.nombre, cursos:new Set()};
-      const c=cursoMap[e.cursoId];
-      if(c) porNombre[k].cursos.add((c.grado||'')+(c.grupo?'-'+c.grupo:''));
+      porNombre[k].cursos.add((c.grado||'')+(c.grupo?'-'+c.grupo:''));
     });
     const lista=Object.values(porNombre).slice(0,8);
     if(!lista.length){ out.innerHTML='<div style="color:var(--muted);font-size:.85rem;padding:6px 2px">Sin resultados. Los estudiantes se crean en el módulo de Calificaciones.</div>'; return; }
@@ -828,6 +832,14 @@ document.getElementById('search-input').addEventListener('input',function(){
   try{
     const wrap=document.getElementById('alertas-wrap');
     if(!wrap) return;
+    // El Observador (Ley 1620) es de director de grupo + admin únicamente —
+    // si este docente no dirige ningún grupo, no debe ni enterarse de que
+    // hay situaciones Tipo II/III registradas (ni el conteo).
+    if(!PERM.esAdmin){
+      const docentes=JSON.parse(localStorage.getItem('lv_docentes')||'[]');
+      const yo=docentes.find(d=>d.id===(PERM.login&&PERM.login.docenteId));
+      if(!yo||!yo.dirige) return;
+    }
     const hace7=Date.now()-7*24*3600*1000;
     const graves=(JSON.parse(localStorage.getItem('lv_observador')||'[]'))
       .filter(o=>!o._eliminado&&(o.tipo==='Situación Tipo II'||o.tipo==='Situación Tipo III')
@@ -847,9 +859,16 @@ document.getElementById('search-input').addEventListener('input',function(){
     const wrap=document.getElementById('alertas-wrap');
     if(!wrap) return;
     const ests=JSON.parse(localStorage.getItem('lv_estudiantes')||'[]');
+    const cursos=JSON.parse(localStorage.getItem('lv_cursos')||'[]');
+    const cursoMap={}; cursos.forEach(c=>{ cursoMap[c.id]=c; });
     const hoy=new Date(); const clave=String(hoy.getMonth()+1).padStart(2,'0')+'-'+String(hoy.getDate()).padStart(2,'0');
     const vistos={}; const cumple=[];
-    ests.forEach(e=>{ if(e.cumple===clave && !vistos[e.nombre]){ vistos[e.nombre]=1; cumple.push(e.nombre); } });
+    ests.forEach(e=>{
+      if(e.cumple!==clave || vistos[e.nombre]) return;
+      const c=cursoMap[e.cursoId];
+      if(!c || !permiteMateria(c.materia)) return; // solo cumpleaños de mis estudiantes
+      vistos[e.nombre]=1; cumple.push(e.nombre);
+    });
     if(!cumple.length) return;
     const div=document.createElement('div');
     div.style.cssText='background:#fdf4ff;border:1px solid #e9d5ff;color:#7e22ce;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:.88rem;font-weight:600';

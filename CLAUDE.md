@@ -3,6 +3,93 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 10, auditoría funcional completa)
+
+- **Francy pidió una revisión exhaustiva de TODA la app** (no solo diseño, ya
+  cubierto en sesión 5) buscando bugs y fallas reales. Se lanzaron 5 auditorías
+  en paralelo (núcleo académico, asistencia/exámenes, comunicación/seguimiento,
+  administración, infraestructura core). Aparecieron 9 hallazgos **críticos**
+  (fugas de privacidad entre docentes/materias, del mismo tipo ya corregido en
+  sesión 3 pero en más lugares, más un XSS real) — Francy eligió arreglarlos
+  todos hoy mismo. Resumen de cada uno:
+
+  1. **PIAR sin ningún filtro** (`11-inclusion.html`) — cualquier docente veía
+     y editaba el PIAR de cualquier estudiante (diagnóstico médico, entorno
+     familiar). Arreglado: `todosEstudiantes()` ahora filtra por
+     `estudianteEsMio(curso)` — permitido si la materia del curso está en las
+     asignaciones del docente, si dirige ese grado-grupo, o si es admin/acceso
+     total. Se agregó `lv_docentes`+`lv_asignaciones` a `LV_SYNC_TABLAS`.
+  2-3. **Buscador global de estudiantes y alerta de Observador Tipo II/III**
+     (`index.html`) — sin filtrar, exponían curso/acudiente/observador y
+     situaciones de convivencia de cualquier estudiante a cualquier docente.
+     Arreglado con `PERM.permiteMateria()` (el mismo objeto de la sesión 3) en
+     el buscador y en cumpleaños; la alerta de Observador ahora solo se
+     muestra si el docente dirige algún grupo o es admin (mismo criterio que
+     el propio módulo Observador).
+  4. **Analítica → "Perfil del estudiante" sin control de acceso** — a
+     diferencia de Director/Boletines, no tenía gate. Se agregó
+     `esAdmin`/`gruposDirigidos()` (duplicado del patrón de 12-director.html)
+     y un mensaje de "acceso restringido" cuando el docente no dirige ningún
+     grupo.
+  5. **Exámenes — "Presentar" y "Resultados" sin filtrar** (`03-examenes.html`
+     y `04-examenes-11.html`) — y los resultados nunca se etiquetaban con
+     materia. Arreglado: `fillPresentar()`/`renderResultados()` usan
+     `LV_CTX.filtrar()`; `saveResult()` ahora estampa `materia`. En 04 además
+     se etiquetaron y filtraron los Simulacros ICFES externos
+     (`simulacros_ext`) en `renderAnalisis()`, `updateCharts()` y al crear uno.
+  6. **Historial de Comunicados sin filtrar** (`06-comunicados.html`) —
+     exponía nombre/acudiente/teléfono de citaciones de otras materias.
+     Arreglado con `historialVisible()` (usa `LV_CTX.filtrar()` solo para
+     MOSTRAR, nunca para sobrescribir el array completo). De paso se encontró
+     y arregló un bug real de pérdida de datos: "Limpiar historial" borraba
+     el historial de TODOS los docentes; ahora solo borra lo que el docente
+     actual puede ver.
+  7. **Exportar CSV y restaurar respaldo** (`01-calificaciones.html`) — el CSV
+     exportaba notas de todos los cursos/materias; arreglado filtrando por
+     `LV_CTX`. Restaurar un respaldo .json sigue siendo total a propósito
+     (es la función de disaster-recovery), pero la advertencia ahora explica
+     que sobreescribe datos de TODOS los docentes en este dispositivo y en la
+     nube — antes decía solo "reemplazará los datos actuales".
+  8. **Centros de Interés — el filtro de "mi centro" era solo de interfaz**
+     — se podía saltar desde la consola del navegador (`seleccionarCentro(id)`
+     con un id ajeno). Arreglado centralizando el control en la función
+     `centro(id)` (único punto por el que pasan TODAS las pestañas de
+     lectura/escritura), que ahora devuelve `null` si el centro no es del
+     docente. También se agregó filtro de `_eliminado` a `ESTUDIANTES`/
+     `CURSOS`/`DOCENTES` (antes solo `CENTROS` lo tenía). **PENDIENTE real:**
+     el servidor (RLS de `lv_centros_inscripciones`/`lv_centros_asistencia`)
+     sigue siendo `solo_autenticados`, sin restricción por dueño — arreglarlo
+     bien requiere una función puente `auth.uid() → lv_docentes.id` que el
+     proyecto todavía no tiene (es la misma pieza que dejó pausada la Etapa 2
+     · Fase 2 por su complejidad). Se decidió NO improvisarla hoy; queda para
+     una sesión dedicada con pruebas contra la base real.
+  9. **XSS real en `herramientas/test-lectura.html`** — único módulo de
+     herramientas sin función `esc()`; insertaba nombre de estudiante/docente
+     en `innerHTML` sin escapar. Arreglado: se agregó `esc()` y se aplicó en
+     `pintarReporte()` y `pintarHistorial()`.
+
+  SW **v58**. `node --check`-equivalente limpio en los 9 archivos tocados
+  (11-inclusion, index, 14-analitica, 03-examenes, 04-examenes-11,
+  06-comunicados, 01-calificaciones, 17-centros-interes,
+  herramientas/test-lectura.html).
+
+  **Hallazgos NO críticos de la auditoría, sin tocar hoy** (quedan para
+  después, ver detalle completo en la conversación si hace falta): 12-director
+  y 14-analitica usan pesos/escala de nota fijos en vez de leer Ajustes reales;
+  Observador cruza anotaciones entre estudiantes homónimos de cursos distintos
+  por su fallback de emparejamiento por nombre; Horario no aísla celdas por
+  docente (solo por materia); banco de imágenes del Planeador visible entre
+  materias en equipo compartido; algunos `innerHTML` sin `esc()` en el preview
+  de WhatsApp/Carta de Comunicados; importador de notas pisa silenciosamente
+  nombres duplicados del Excel; condición de carrera si SABIE está abierto en
+  dos pestañas a la vez; bug menor de `shortName()` en 04-examenes-11 que
+  nunca abrevia nombres en el podio (doble backslash en el regex).
+
+  **PENDIENTE:** push; que Francy pruebe con una cuenta docente normal (no
+  admin) que PIAR/buscador/Analítica/Exámenes/Comunicados ya solo muestran lo
+  suyo, y que el director de grupo correspondiente SÍ sigue viendo lo que debe
+  ver (Observador, Perfil del estudiante).
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 9, botón "← Atrás" genérico)
 
 - **Francy notó que en los módulos de materia (01-09) solo aparecía "← Portal", sin

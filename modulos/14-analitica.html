@@ -6,7 +6,7 @@
 <title>Analítica — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script>window.LV_SYNC_TABLAS=['lv11_examenes','lv11_resultados','lv_resultados','lv_examenes','lv_calificaciones','lv_cursos','lv_estudiantes','lv_herramientas','lv_as_asistencia','lv_observador'];</script>
+<script>window.LV_SYNC_TABLAS=['lv11_examenes','lv11_resultados','lv_resultados','lv_examenes','lv_calificaciones','lv_cursos','lv_estudiantes','lv_herramientas','lv_as_asistencia','lv_observador','lv_docentes'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{
@@ -122,6 +122,23 @@ function membreteLinea(){
 }
 const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
 const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde';
+
+// ── Permisos: "Perfil del estudiante" es una hoja de vida completa (notas de
+//   TODAS las materias, asistencia, observador, PIAR, acudiente) — pensada
+//   para el director de grupo (empalme) o admin, NO para cualquier docente.
+//   Mismo criterio que ya usa 12-director.html.
+const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
+let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const esAdmin=!!(login&&login.esAdmin);
+function gruposDirigidos(){
+  const cursos=lsRead('cursos');
+  if(esAdmin) return cursos;
+  const docentes=lsRead('docentes');
+  const d=docentes.find(x=>x.id===(login&&login.docenteId));
+  if(!d||!d.dirige) return [];
+  const tokens=String(d.dirige).split(',').map(t=>{const [g,gr]=t.trim().split('-');return {grado:norm(g),grupo:norm(gr||'')};});
+  return cursos.filter(c=>tokens.some(t=>t.grado===norm(c.grado)&&(!t.grupo||!norm(c.grupo)||t.grupo===norm(c.grupo))));
+}
 const COMPETENCIAS=['Pensamiento social','Interpretación y análisis de perspectivas','Pensamiento reflexivo y sistémico'];
 const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};
 
@@ -130,7 +147,18 @@ document.getElementById('tabs').addEventListener('click',e=>{
   document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
   b.classList.add('active');
   ['icfes','perfil'].forEach(t=>document.getElementById('tab-'+t).classList.toggle('hide',b.dataset.tab!==t));
+  if(b.dataset.tab==='perfil') actualizarAccesoPerfil();
 });
+function actualizarAccesoPerfil(){
+  const buscar=document.getElementById('pf-buscar'), lista=document.getElementById('pf-lista');
+  if(!esAdmin && !gruposDirigidos().length){
+    buscar.disabled=true; buscar.placeholder='Solo disponible para el director del grupo o coordinación';
+    lista.innerHTML='<div class="empty">La hoja de vida académica es de acceso restringido: solo el director de grupo (o coordinación) puede consultarla. Si diriges un grupo, pide a Coordinación que lo registre en tu ficha (campo "Dirige").</div>';
+  } else {
+    buscar.disabled=false; buscar.placeholder='Escribe el nombre del estudiante…';
+    lista.innerHTML='';
+  }
+}
 
 // ═════════ RADIOGRAFÍA ICFES ═════════
 function datosICFES(){
@@ -216,9 +244,11 @@ function defin(cal){
   return def;
 }
 function todosEstudiantes(){
+  const cursosPermitidos=new Set(gruposDirigidos().map(c=>c.id));
   const cursos=lsRead('cursos'); const cmap={}; cursos.forEach(c=>cmap[c.id]=c);
   const vistos={}, out=[];
   lsRead('estudiantes').forEach(e=>{
+    if(!cursosPermitidos.has(e.cursoId)) return; // solo estudiantes de mi(s) grupo(s) dirigido(s), o admin
     const k=normN(e.nombre);
     if(!vistos[k]){ vistos[k]={nombre:e.nombre, ids:[], cursos:[]}; out.push(vistos[k]); }
     vistos[k].ids.push(e.id);

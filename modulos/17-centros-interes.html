@@ -251,9 +251,9 @@ function cargarDatos(){
   CENTROS = lsR('lv_centros').filter(c=>c && !c._eliminado);
   INSCRIPCIONES = lsR('lv_centros_inscripciones').filter(x=>x && !x._eliminado);
   ASISTENCIAS = lsR('lv_centros_asistencia').filter(x=>x && !x._eliminado);
-  ESTUDIANTES = lsR('lv_estudiantes');
-  CURSOS = lsR('lv_cursos');
-  DOCENTES = lsR('lv_docentes');
+  ESTUDIANTES = lsR('lv_estudiantes').filter(e=>e && !e._eliminado);
+  CURSOS = lsR('lv_cursos').filter(c=>c && !c._eliminado);
+  DOCENTES = lsR('lv_docentes').filter(d=>d && !d._eliminado);
 }
 
 function esMiCentro(c){
@@ -262,7 +262,15 @@ function esMiCentro(c){
   return c.liderId===MI_DOCENTE_ID || (c.docentesIds||[]).includes(MI_DOCENTE_ID);
 }
 function misCentros(){ return CENTROS.filter(esMiCentro).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')); }
-function centro(id){ return CENTROS.find(c=>c.id===id) || null; }
+// Único punto de lectura de un centro por id — TODAS las pestañas (Estudiantes,
+// Asistencia, Resumen) y la inscripción pasan por aquí, así que basta filtrar
+// acá para que ninguna pueda mostrar/editar un centro ajeno (antes el filtro
+// de esMiCentro() solo se aplicaba al selector, pero un id ajeno igual
+// funcionaba si se forzaba por consola con seleccionarCentro()).
+function centro(id){
+  const c = CENTROS.find(c=>c.id===id) || null;
+  return (c && esMiCentro(c)) ? c : null;
+}
 function nombreDocente(id){ const d=DOCENTES.find(x=>x.id===id); return d ? d.nombre : ''; }
 
 // ── Selector de centro activo (compartido entre pestañas) ────

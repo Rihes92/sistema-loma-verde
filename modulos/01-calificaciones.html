@@ -1153,7 +1153,7 @@ $('#file-import').addEventListener('change',async e=>{
   try{
     const data=JSON.parse(await f.text());
     if(data.app!=='loma_verde')throw 0;
-    if(!confirm('Esto reemplazará los datos actuales con el respaldo. ¿Continuar?'))return;
+    if(!confirm('⚠️ Esto reemplaza TODOS los cursos, estudiantes y notas de este dispositivo (de todas las materias, no solo la tuya) con lo que haya en el archivo, y esos cambios se vuelven a subir y sobrescriben lo que esté en la nube ahora mismo. Solo úsalo para recuperar un respaldo tuyo reciente, no en un equipo compartido con otros docentes. ¿Continuar?'))return;
     for(const s of STORES)await dbClear(s);
     for(const c of data.cursos||[])await dbPut('cursos',c);
     for(const es of data.estudiantes||[])await dbPut('estudiantes',es);
@@ -1166,7 +1166,8 @@ $('#file-import').addEventListener('change',async e=>{
 });
 $('#btn-export-csv').addEventListener('click',()=>{
   let rows=[['Curso','Grado','Grupo','Periodo','Estudiante','Cognitivo','Acumulativo','Auto','Co','Hetero','Definitiva','Desempeno']];
-  cursos.forEach(c=>{
+  const cursosExport=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;
+  cursosExport.forEach(c=>{
     estudiantes.filter(e=>e.cursoId===c.id).forEach(est=>{
       for(let p=1;p<=4;p++){
         const cal=calMap[calKey(c.id,String(p),est.id)]; if(!cal)continue;

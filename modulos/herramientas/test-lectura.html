@@ -246,6 +246,10 @@ table.hist th{background:var(--azul-claro);color:var(--azul);}
 </main>
 
 <script>
+// Único módulo de herramientas que no tenía esc() — nombre de estudiante/docente
+// se insertaba en innerHTML sin escapar (riesgo real de XSS almacenado, ya que
+// el nombre puede venir de lv_estudiantes, compartido entre todos los docentes).
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 document.getElementById('fechaHoy').textContent = new Date().toLocaleDateString('es-CO', {year:'numeric',month:'long',day:'numeric'});
 document.getElementById('fechaEst').valueAsDate = new Date();
 
@@ -667,9 +671,9 @@ function pintarReporte(){
 
   const html = `
     <div class="grid2">
-      <div><strong>Estudiante:</strong> ${r.nombre}</div>
-      <div><strong>Grado:</strong> ${r.grado}°</div>
-      <div><strong>Docente:</strong> ${r.docente}</div>
+      <div><strong>Estudiante:</strong> ${esc(r.nombre)}</div>
+      <div><strong>Grado:</strong> ${esc(r.grado)}°</div>
+      <div><strong>Docente:</strong> ${esc(r.docente)}</div>
       <div><strong>Fecha:</strong> ${r.fecha} · ${r.periodo}</div>
     </div>
     <div class="reporte-grid" style="grid-template-columns:repeat(3,1fr);">
@@ -762,8 +766,8 @@ function pintarHistorial(){
   const tbody = document.querySelector('#tablaHistorial tbody');
   tbody.innerHTML = historial.map(r=>`
     <tr>
-      <td>${r.fecha}</td><td>${r.nombre}</td><td>${r.grado}°</td><td>${r.docente}</td>
-      <td>${r.ppm}</td><td>${r.nivelVeloc}</td><td>${r.nivelCal}</td><td>${r.notaFinal.toFixed(1)}</td>
+      <td>${esc(r.fecha)}</td><td>${esc(r.nombre)}</td><td>${esc(r.grado)}°</td><td>${esc(r.docente)}</td>
+      <td>${esc(r.ppm)}</td><td>${esc(r.nivelVeloc)}</td><td>${esc(r.nivelCal)}</td><td>${r.notaFinal.toFixed(1)}</td>
     </tr>`).join('');
 }
 document.getElementById('btnLimpiarHistorial').addEventListener('click', ()=>{

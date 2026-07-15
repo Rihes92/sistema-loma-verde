@@ -663,7 +663,8 @@ $('#mb-add').addEventListener('click',()=>{
 // ============================================================
 const PASS=3.5; let PR=null, prTimer=null;
 function fillPresentar(){
-  const exs=lsRead('examenes');
+  let exs=lsRead('examenes');
+  if(typeof LV_CTX!=='undefined') exs=LV_CTX.filtrar(exs);
   $('#pr-examen').innerHTML='<option value="">— Elige un examen —</option>'+exs.map(x=>`<option value="${x.id}">${esc(x.titulo)} (${esc(x.grado)} ${GLBL[x.grado]||''}, ${(x.items||[]).length} preg.)</option>`).join('');
   $('#rs-examen').innerHTML='<option value="">Todos</option>'+exs.map(x=>`<option value="${x.id}">${esc(x.titulo)}</option>`).join('');
 }
@@ -794,7 +795,8 @@ function enviarACalificaciones(){
 }
 function saveResult(){
   const r=computeNota();
-  const res={id:uid(),examId:PR.exam.id,examTitulo:PR.exam.titulo,grado:PR.exam.grado,periodo:PR.exam.periodo||'',asignatura:PR.exam.asignatura||'Ciencias Sociales',estudiante:PR.estudiante||'(sin nombre)',grupo:PR.grupo||'',nota:+r.nota.toFixed(1),correct:r.correct,totalClosed:r.totalClosed,totalOpen:r.totalOpen,graded:r.graded,fecha:Date.now(),
+  const materia=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||PR.exam.materia||'';
+  const res={id:uid(),examId:PR.exam.id,examTitulo:PR.exam.titulo,grado:PR.exam.grado,periodo:PR.exam.periodo||'',asignatura:PR.exam.asignatura||'Ciencias Sociales',materia,estudiante:PR.estudiante||'(sin nombre)',grupo:PR.grupo||'',nota:+r.nota.toFixed(1),correct:r.correct,totalClosed:r.totalClosed,totalOpen:r.totalOpen,graded:r.graded,fecha:Date.now(),
     detalle:PR.exam.items.filter(i=>i.tipo!=='abierta').map(it=>{
       const a=PR.answers[it.id];
       const ok=it.tipo==='multiple'?(a!==null&&+a===it.correcta):(a!==null&&((a==='V')===it.correcta));
@@ -808,7 +810,9 @@ function restartPresentar(){PR=null;$('#pr-result').innerHTML='';$('#pr-run').cl
 $('#rs-examen').addEventListener('change',renderResultados);
 $('#rs-export').addEventListener('click',()=>{const data={app:'loma_verde_resultados',exportado:new Date().toISOString(),resultados:lsRead('resultados')};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'}));a.download='resultados_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Respaldo exportado');});
 function renderResultados(){
-  let all=lsRead('resultados');const fe=$('#rs-examen').value;if(fe)all=all.filter(r=>r.examId===fe);
+  let all=lsRead('resultados');
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
+  const fe=$('#rs-examen').value;if(fe)all=all.filter(r=>r.examId===fe);
   all.sort((a,b)=>b.fecha-a.fecha);
   $('#rs-list').innerHTML=all.length?`<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:.86rem">
     <thead><tr><th style="text-align:left;padding:7px;background:#f0fdfa;color:var(--primary)">Estudiante</th><th style="padding:7px;background:#f0fdfa;color:var(--primary)">Grupo</th><th style="padding:7px;background:#f0fdfa;color:var(--primary);text-align:left">Examen</th><th style="padding:7px;background:#f0fdfa;color:var(--primary)">Nota</th><th style="background:#f0fdfa"></th></tr></thead><tbody>
@@ -825,7 +829,9 @@ let anChartRadar=null;
 
 function renderAnalisis(){
   if(!$('#an-fecha').value) $('#an-fecha').value = new Date().toISOString().split('T')[0];
-  const sims = lsRead('simulacros_ext').sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+  let sims = lsRead('simulacros_ext');
+  if(typeof LV_CTX!=='undefined') sims=LV_CTX.filtrar(sims);
+  sims = sims.sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
   
   const sel = $('#an-student-sel');
   const prevSel = sel.value;
@@ -975,7 +981,9 @@ function createPodio(titulo, resultados, areaKey, color) {
 
 function updateCharts(){
   if(typeof Chart === 'undefined') return;
-  const allSims = lsRead('simulacros_ext').sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+  let allSims = lsRead('simulacros_ext');
+  if(typeof LV_CTX!=='undefined') allSims=LV_CTX.filtrar(allSims);
+  allSims = allSims.sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
   let activeSimIds = JSON.parse(sessionStorage.getItem('lv11_active_sims') || '[]');
   const sims = allSims.filter(s => activeSimIds.includes(s.id));
   
@@ -1188,7 +1196,8 @@ $('#an-load').addEventListener('click', ()=>{
       
       if(!resultados.length) throw new Error('No se encontraron estudiantes con datos.');
       
-      const obj = { id: Date.now().toString(36), nombre: nom, fecha: fec, resultados };
+      const materiaSim=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'';
+      const obj = { id: Date.now().toString(36), nombre: nom, fecha: fec, resultados, materia: materiaSim };
       const all = lsRead('simulacros_ext');
       all.push(obj);
       lsWrite('simulacros_ext', all);
