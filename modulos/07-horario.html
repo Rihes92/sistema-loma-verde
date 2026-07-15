@@ -196,7 +196,29 @@ const LS_KEY='lv_horario';
 // Si el módulo se abre sin pasar por un área/materia (acceso clásico),
 // se usa el bucket '_global', que conserva el horario original de
 // cuando la app solo era de Ciencias Sociales.
-function ctxMateria(){ return (typeof LV_CTX!=='undefined' && LV_CTX.materia) ? LV_CTX.materia : '_global'; }
+// Vista UNIFICADA (jul 14): el horario de un docente es UNO solo — su semana.
+// Antes, entrar por la barra lateral mostraba el bucket '_global' y entrar por
+// un área/materia mostraba el bucket de esa materia: dos horarios distintos
+// según la ruta. Ahora la grilla FUSIONA todos los buckets de las materias del
+// docente (según lv_asignaciones) más '_global', y cada celda recuerda su
+// bucket de origen (_mk) para editarse/borrarse donde vive. Las celdas nuevas
+// se guardan en la materia del contexto, o en la primera materia asignada.
+function misMaterias(){
+  try{
+    const login=JSON.parse(localStorage.getItem('lv_login')||'null');
+    const asig=JSON.parse(localStorage.getItem('lv_asignaciones')||'[]');
+    if(!login) return [];
+    const mias=asig.filter(a=>a.docenteId===login.docenteId);
+    if(login.esAdmin || mias.some(a=>a.area==='Primaria'||a.materia==='Todas las materias'))
+      return Object.keys(ALL_DATA).filter(k=>k!=='_global');
+    return [...new Set(mias.map(a=>a.materia).filter(Boolean))];
+  }catch(_){ return []; }
+}
+function ctxMateria(){
+  if(typeof LV_CTX!=='undefined' && LV_CTX.materia) return LV_CTX.materia;
+  const ms=misMaterias();
+  return ms[0]||'_global';
+}
 function lsR(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'{}')}catch(_){return{}}}
 function lsW(d){
   // Solo guarda localmente. NO reencola todas las celdas en Supabase
@@ -206,13 +228,27 @@ function lsW(d){
   // desde guardarCelda()/eliminarCelda() en el momento en que cambia.
   try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(_){}
 }
-function marcarCeldaSync(di,bi,r){
+function marcarCeldaSync(di,bi,r,mk){
   if(typeof LV_SYNC==='undefined')return;
-  const mk=ctxMateria();
+  mk=mk||ctxMateria();
   LV_SYNC.marcarCambio('lv_horario',{id:mk+'_'+di+'_'+bi,dia:di,hora:bi,materia:r.asig||'',curso:(r.grado||'')+'°-'+(r.grupo||''),aula:r.nota||'',ctx_materia:mk==='_global'?'':mk});
 }
 let ALL_DATA=lsR();
-function gridData(){ const mk=ctxMateria(); if(!ALL_DATA[mk])ALL_DATA[mk]={}; return ALL_DATA[mk]; }
+function gridData(){
+  // fusión: '_global' primero, luego las materias del docente (estas ganan)
+  const buckets=['_global', ...misMaterias()];
+  const m={};
+  buckets.forEach(mk=>{
+    const b=ALL_DATA[mk]; if(!b) return;
+    Object.keys(b).forEach(di=>{
+      Object.keys(b[di]||{}).forEach(bi=>{
+        if(!m[di]) m[di]={};
+        m[di][bi]={...b[di][bi], _mk:mk};
+      });
+    });
+  });
+  return m;
+}
 
 /* ── Render ── */
 function renderGrilla(){
@@ -306,23 +342,27 @@ function abrirModal(di,bi,slot,val){
 function cerrarModal(){document.getElementById('modal-ed').classList.add('hide');_di=null;_bi=null;}
 function guardarCelda(){
   if(_di===null)return;
-  const g=gridData();
-  if(!g[_di])g[_di]={};
+  const existente=(gridData()[_di]||{})[_bi];
+  const mk=(existente&&existente._mk)||ctxMateria();
+  if(!ALL_DATA[mk])ALL_DATA[mk]={};
+  if(!ALL_DATA[mk][_di])ALL_DATA[mk][_di]={};
   const r={
     asig:document.getElementById('ed-asig').value,
     grado:document.getElementById('ed-grado').value,
     grupo:document.getElementById('ed-grupo').value,
     nota:document.getElementById('ed-nota').value.trim(),
   };
-  g[_di][_bi]=r;
+  ALL_DATA[mk][_di][_bi]=r;
   lsW(ALL_DATA);
-  marcarCeldaSync(_di,_bi,r);
+  marcarCeldaSync(_di,_bi,r,mk);
   cerrarModal();renderGrilla();
 }
 function eliminarCelda(di,bi){
-  const g=gridData();
+  const celda=(gridData()[di]||{})[bi];
+  const mk=(celda&&celda._mk)||ctxMateria();
+  const g=ALL_DATA[mk]||{};
   if(g[di]&&g[di][bi]&&typeof LV_SYNC!=='undefined'){
-    const _id=ctxMateria()+'_'+di+'_'+bi;
+    const _id=mk+'_'+di+'_'+bi;
     // Borrado real en Supabase (no solo marcar _eliminado): así, si
     // reutilizas la misma celda para otra clase después, no queda una
     // marca vieja que la vuelva a borrar al sincronizar.
@@ -332,8 +372,15 @@ function eliminarCelda(di,bi){
   lsW(ALL_DATA);renderGrilla();
 }
 function limpiarTodo(){
-  if(!confirm('¿Borrar todo el horario de esta materia?'))return;
-  ALL_DATA[ctxMateria()]={};lsW(ALL_DATA);renderGrilla();
+  if(!confirm('¿Borrar TODO tu horario (todas tus materias)? Esta acción también lo borra de la nube.'))return;
+  ['_global',...misMaterias()].forEach(mk=>{
+    const b=ALL_DATA[mk]; if(!b) return;
+    Object.keys(b).forEach(di=>Object.keys(b[di]||{}).forEach(bi=>{
+      if(typeof LV_SYNC!=='undefined') LV_SYNC.eliminarRegistro('horario', mk+'_'+di+'_'+bi);
+    }));
+    ALL_DATA[mk]={};
+  });
+  lsW(ALL_DATA);renderGrilla();
 }
 
 function ajustarGrupos(grado, grupoActual){

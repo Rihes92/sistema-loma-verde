@@ -2,7 +2,7 @@
 //  Sistema Loma Verde — Service Worker v4 (Network First)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v61';
+const CACHE = 'loma-verde-v62';
 
 const ARCHIVOS = [
   './',
@@ -66,7 +66,14 @@ self.addEventListener('install', e => {
     caches.open(CACHE).then(async cache => {
       await Promise.all(ARCHIVOS.map(async archivo => {
         try {
-          const resp = await fetch(archivo, { cache: 'no-cache' });
+          let resp = await fetch(archivo, { cache: 'no-cache' });
+          // Igual que en el handler de fetch: si la respuesta siguió una
+          // redirección (cleanUrls viejo de Vercel, normalización de dominio),
+          // reconstruirla ANTES de guardarla — Safari rechaza servir desde
+          // caché una respuesta marcada como redirigida.
+          if (resp && resp.redirected) {
+            resp = new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers: resp.headers });
+          }
           if (resp && resp.ok) await cache.put(archivo, resp);
         } catch (_) { /* si un archivo falla, seguimos con los demás */ }
       }));
@@ -93,6 +100,31 @@ function fetchConTimeout(request, ms) {
   const controlador = new AbortController();
   const id = setTimeout(() => controlador.abort(), ms);
   return fetch(request, { signal: controlador.signal }).finally(() => clearTimeout(id));
+}
+
+// Sin conexión, la URL pedida puede no coincidir letra a letra con la clave
+// guardada: el cleanUrls viejo de Vercel dejó URLs sin extensión en el
+// historial/marcadores ("/login" en vez de "/login.html"). Se intenta la
+// coincidencia exacta y luego los alias equivalentes; si es una navegación
+// y nada coincide, se entrega el portal en vez de una pantalla en blanco.
+async function buscarEnCache(request) {
+  const exacto = await caches.match(request);
+  if (exacto) return exacto;
+  const url = new URL(request.url);
+  let ruta = url.pathname;
+  const candidatos = [];
+  if (ruta.endsWith('/')) candidatos.push(ruta + 'index.html');
+  else if (ruta.endsWith('.html')) candidatos.push(ruta.slice(0, -5));
+  else if (!/\.[a-z0-9]+$/i.test(ruta)) { candidatos.push(ruta + '.html'); candidatos.push(ruta + '/index.html'); }
+  for (const c of candidatos) {
+    const hit = await caches.match(new URL(c, url.origin).href);
+    if (hit) return hit;
+  }
+  if (request.mode === 'navigate') {
+    const portal = await caches.match('./index.html');
+    if (portal) return portal;
+  }
+  return Response.error();
 }
 
 self.addEventListener('fetch', e => {
@@ -125,8 +157,6 @@ self.addEventListener('fetch', e => {
         }
         return resp;
       })
-      .catch(() => {
-        return caches.match(e.request).then(cached => cached || Response.error());
-      })
+      .catch(() => buscarEnCache(e.request))
   );
 });

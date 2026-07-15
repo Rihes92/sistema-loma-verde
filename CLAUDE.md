@@ -3,6 +3,32 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 13, offline de raíz + rutas + Atrás)
+
+- **Cuatro quejas de Francy atendidas:** (1-2) offline roto y Chrome≠Safari:
+  causa raíz encontrada — `cleanUrls:true` en vercel.json redirigía cada .html
+  a URL sin extensión: el SW guardaba con una clave y el navegador pedía otra
+  (offline = nada coincidía), y el precache guardaba respuestas `redirected`
+  que Safari rechaza (la sesión 12 lo limpió solo en el fetch handler, no en
+  install). Arreglo triple: `cleanUrls:false` (mata las redirecciones),
+  limpieza de `redirected` también en el precache, y `buscarEnCache()` con
+  alias (/login ↔ /login.html ↔ /carpeta/) + fallback al portal en
+  navegaciones. (3) rutas inconsistentes: 07-horario ahora FUSIONA los buckets
+  de todas las materias del docente (+_global) en una sola vista con `_mk` por
+  celda para editar/borrar en su bucket de origen; celdas nuevas van a la
+  materia del contexto o a la primera asignada; "limpiar todo" borra todos sus
+  buckets también en la nube. (01-calificaciones ya se había arreglado en
+  commit 1aa4eb1.) (4) botón "← Atrás" agregado a los headers de 10-17 y
+  coordinacion.html (history.back con fallback al portal). SW **v62**.
+  Sintaxis verificada. PENDIENTE: push; que Francy pruebe offline así:
+  con internet abrir la app, iniciar sesión, RECARGAR DOS VECES (para que el
+  SW nuevo tome control), navegar 2-3 módulos, luego quitar internet y
+  reabrir. En el Dock de Safari: eliminar la app del Dock y volverla a
+  agregar DESPUÉS del push (sesión aislada). Chrome y Safari mostrarán lo
+  mismo una vez ambos recarguen el SW v62 y sincronicen con la misma cuenta.
+  ⚠️ Conocido (etapa 2): lv_horario sigue compartido entre docentes de la
+  misma materia (colisión posible) — requiere claves por docente.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 12, app no funcionaba sin internet)
 
 - **Francy probó "Agregar al Dock" en Safari/Mac para usar SABIE sin internet y
