@@ -231,6 +231,7 @@ const LV_SYNC = (() => {
     } catch (_) { /* si algo falla, se sube sin etiqueta: nunca bloquea la subida */ }
     pendientesAdd({ _uid: uid, tabla: cfg.tabla, id: registro[cfg.id], datos: datos });
     if (online() && puedeSincronizar()) subirPendientes();
+    else mostrarBadge(true);
   }
 
   // ── Subir todos los cambios pendientes (por lotes por tabla) ─
@@ -261,6 +262,7 @@ const LV_SYNC = (() => {
         console.log(`[LV Sync] ✅ ${subidos.length} cambio(s) sincronizado(s)`);
         mostrarBadge(false);
       }
+      if (pendientesGet().length) mostrarBadge(true);
     } finally { _subiendo = false; }
   }
 
@@ -393,24 +395,37 @@ const LV_SYNC = (() => {
       badge = document.createElement('div');
       badge.id = 'lv-sync-badge';
       badge.style.cssText = `
-        position:fixed;bottom:16px;left:16px;z-index:999;
+        position:fixed;bottom:16px;left:16px;z-index:999;max-width:88vw;
         padding:6px 14px;border-radius:999px;font-size:.75rem;font-weight:700;
         box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer;transition:opacity .3s;
       `;
-      badge.onclick = () => subirPendientes();
+      badge.onclick = async () => {
+        const n = pendientesGet().length;
+        if (!n) return;
+        if (!online()) {
+          badge.textContent = '📵 Sin internet — tus ' + n + ' cambio(s) están guardados en este equipo y se subirán SOLOS al conectarte';
+          return;
+        }
+        badge.textContent = '⏳ Subiendo ' + n + ' cambio(s)…';
+        await subirPendientes();
+        mostrarBadge(pendientesGet().length > 0);
+      };
       document.body.appendChild(badge);
     }
-    if (pendiente) {
+    const n = pendientesGet().length;
+    if (pendiente && n) {
       badge.style.background = '#fef3c7';
       badge.style.color = '#92400e';
       badge.style.border = '1px solid #fcd34d';
-      badge.textContent = '⏳ Cambios pendientes — toca para sincronizar';
+      badge.textContent = online()
+        ? ('⏳ ' + n + ' cambio(s) sin subir — toca para subirlos ahora')
+        : ('📵 ' + n + ' cambio(s) guardados aquí — se subirán solos al volver el internet');
       badge.style.opacity = '1';
     } else {
       badge.style.background = '#d1fae5';
       badge.style.color = '#065f46';
       badge.style.border = '1px solid #6ee7b7';
-      badge.textContent = '✅ Sincronizado';
+      badge.textContent = '✅ Todo sincronizado';
       badge.style.opacity = '1';
       setTimeout(() => { badge.style.opacity = '0'; }, 3000);
     }

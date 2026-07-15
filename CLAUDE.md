@@ -3,6 +3,43 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 15, UX offline: badge, instalar, dudas de Francy)
+
+- **Dudas de Francy respondidas (dejar claro a los docentes):** (1) La sesión
+  se inicia UNA sola vez con internet en cada dispositivo/navegador; sobrevive
+  a apagar el computador (localStorage persiste). NO hay que entrar cada día
+  desde la casa: mañana en el colegio sin internet la app abre directo al
+  portal. Solo se pierde si el docente CIERRA SESIÓN, borra datos del
+  navegador, o (Safari normal) pasa +7 días sin usarla (ITP purga storage —
+  la app instalada/PWA no sufre esto). (2) diagnostico.html NO requiere
+  cerrar sesión: está enlazada también en el pie del PORTAL (además del
+  login) y abrirla no toca la sesión; el ✅ de la sidebar es el indicador
+  principal post-login.
+- **Badge de cambios pendientes rediseñado (sync.js):** ahora muestra CONTEO
+  («⏳ 5 cambio(s) sin subir — toca para subirlos» con internet / «📵 5
+  cambio(s) guardados aquí — se subirán solos al volver el internet» sin él),
+  aparece al instante al guardar offline (marcarCambio → mostrarBadge(true)),
+  da retroalimentación al tocarlo (explica si no hay internet; muestra
+  "Subiendo N…" y el restante) y tras cada intento de subida refleja lo que
+  queda. Es la "barra de progreso" pedida por Francy en versión ligera:
+  el número baja a medida que sube. Si quiere barra visual completa, hacerla
+  después sobre esta misma base (pendientesGet().length).
+- **Botón "⬇️ Instalar SABIE en este equipo"** (verde, sidebar del portal):
+  aparece cuando el navegador dispara beforeinstallprompt (Chrome/Edge en
+  Mac/Windows/Android). Safari NO lo soporta → ahí sigue siendo Archivo →
+  Agregar al Dock (documentar a docentes). Se oculta al instalar.
+- SW **v65** (solo versión; el v5 transaccional quedó igual). Sintaxis OK
+  (sync.js, index.html). PENDIENTE: push.
+- **NOTA DE CONTINUIDAD:** Francy está cerca de su límite semanal de tokens y
+  puede continuar en otra herramienta (p. ej. Antigravity). TODO el contexto
+  vive en este archivo. Convenciones críticas para cualquier asistente:
+  scripts con src NUNCA llevan código inline; subir versión de CACHE en
+  sw.js en cada despliegue; editar por reemplazo exacto de texto (archivos
+  grandes); validar sintaxis extrayendo <script> con node --check; los
+  commits desde Cowork fallan por locks de OneDrive → Francy corre en
+  Terminal: rm -f .git/*.lock .git/objects/maintenance.lock && git add -A &&
+  git commit && git push. Deploy = push a main (Vercel auto).
+
 ## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 14, offline falló EN CAMPO — SW v5 transaccional)
 
 - **El offline volvió a fallar para Francy y varios docentes (Safari, Chrome y

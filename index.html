@@ -198,6 +198,7 @@
 
   <div id="sw-estado" style="margin:10px 16px 0;font-size:.72rem;color:rgba(255,255,255,.85);line-height:1.4"></div>
   <div class="sb-sync">
+    <button id="btn-instalar" style="display:none;margin-bottom:8px;background:#16a34a;border-color:#15803d">⬇️ Instalar SABIE en este equipo</button>
     <button onclick="this.textContent='⏳ Sincronizando...';(async()=>{await LV_SYNC.subirPendientes();await LV_SYNC.descargarTodo();this.textContent='✅ Sincronizado';setTimeout(()=>location.reload(),600)})()">🔄 Sincronizar ahora</button>
   </div>
   <div class="sb-user" id="login-info"></div>
@@ -792,6 +793,21 @@ if("serviceWorker" in navigator){
       reg.active.postMessage({tipo:'estado'},[mc.port2]);
     }catch(_){}
   })(0);
+
+  // Instalación como app de escritorio (Chrome/Edge): el navegador avisa
+  // cuando la app es instalable y mostramos el botón verde en la sidebar.
+  var _promInstalar=null;
+  window.addEventListener('beforeinstallprompt', function(ev){
+    ev.preventDefault(); _promInstalar=ev;
+    var b=document.getElementById('btn-instalar'); if(b) b.style.display='';
+  });
+  var _bi=document.getElementById('btn-instalar');
+  if(_bi) _bi.addEventListener('click', function(){
+    if(!_promInstalar) return;
+    _promInstalar.prompt();
+    _promInstalar.userChoice.then(function(r){ if(r&&r.outcome==='accepted'){ _bi.style.display='none'; } });
+  });
+  window.addEventListener('appinstalled', function(){ var b=document.getElementById('btn-instalar'); if(b) b.style.display='none'; });
 }
 </script>
 <script src="auth.js"></script>
