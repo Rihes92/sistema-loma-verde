@@ -3,6 +3,35 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 12, app no funcionaba sin internet)
+
+- **Francy probó "Agregar al Dock" en Safari/Mac para usar SABIE sin internet y
+  falló en dos rondas.** Primer error: página en blanco genérica al abrir offline
+  recién agregada — diagnosticado como comportamiento esperado de una app de Dock
+  de Safari (contexto de almacenamiento/sesión totalmente aislado de Safari normal,
+  según la propia documentación de Apple: no comparte cookies/caché/sesión). Se le
+  indicó "cebarla" primero con internet: abrirla, iniciar sesión ahí mismo, esperar
+  a que sincronice, entrar a varios módulos, y solo ENTONCES probar sin internet.
+  Segundo error, tras seguir esos pasos: `"Response served by service worker has
+  redirections" (WebKitInternal:0)` al cargar `sanjosedelomaverde.com/`. Este sí
+  era un bug real de `sw.js`. **Causa:** Safari/WebKit es más estricto que Chrome/
+  Firefox — si el Service Worker devuelve en `respondWith()` una respuesta que
+  vino de una petición que internamente siguió una redirección (`resp.redirected
+  === true`, típico de normalización de dominio en Vercel), Safari la rechaza de
+  plano en vez de servirla. Esto pasaba justo en la navegación principal (`/`) al
+  reabrir la app ya con el Service Worker activo — coincide exactamente con "cargó
+  bien la primera vez, falló al cerrar y reabrir offline". **Arreglo** en el
+  `fetch` handler de `sw.js`: si `resp.redirected` es true, se reconstruye con
+  `new Response(resp.body,{status,statusText,headers})` (limpia la bandera
+  `redirected`) ANTES de devolverla y ANTES de guardarla en caché — así ni la
+  respuesta en vivo ni la que se sirve luego desde caché quedan marcadas como
+  redirigida. No toca la lógica de red-primero-caché-después, solo intercepta el
+  caso puntual que rompía Safari. SW **v60**. `node --check sw.js` limpio.
+  **PENDIENTE:** push; que Francy vuelva a agregar SABIE al Dock (o simplemente
+  cierre y reabra la que ya tiene — el Service Worker se actualiza solo al
+  detectar el cambio de versión de caché) y confirme que ahora sí carga sin
+  internet después de haberla usado una vez conectada.
+
 ## ▶ POR DÓNDE RETOMAR (jul 14, 2026 — sesión 11, arreglo rápido)
 
 - **Logo del login estirado en Safari**, hallado por Francy con captura de pantalla.

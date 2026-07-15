@@ -2,7 +2,7 @@
 //  Sistema Loma Verde — Service Worker v4 (Network First)
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v59';
+const CACHE = 'loma-verde-v60';
 
 const ARCHIVOS = [
   './',
@@ -103,6 +103,22 @@ self.addEventListener('fetch', e => {
   e.respondWith(
     fetchConTimeout(e.request, 4000)
       .then(resp => {
+        // Safari/WebKit rechaza con "Response served by service worker has
+        // redirections" si la respuesta que se entrega en respondWith() viene
+        // marcada como redirigida (resp.redirected === true), algo que pasa
+        // cuando la petición de red terminó siguiendo una redirección interna
+        // (p. ej. normalización de dominio en Vercel). Chrome/Firefox lo toleran,
+        // Safari no — y esto es justo lo que rompía la app instalada en el Dock
+        // al reabrirla sin conexión. Arreglo: si viene redirigida, se reconstruye
+        // como una respuesta "limpia" (misma info, pero redirected:false) antes
+        // de devolverla o guardarla en caché.
+        if (resp && resp.redirected) {
+          resp = new Response(resp.body, {
+            status: resp.status,
+            statusText: resp.statusText,
+            headers: resp.headers
+          });
+        }
         if (resp && resp.status === 200) {
           const respClone = resp.clone();
           caches.open(CACHE).then(cache => cache.put(e.request, respClone));
