@@ -25,6 +25,14 @@
   coordinación le sale «N solicitudes esperando respuesta» y al docente
   «Coordinación respondió» (últimos 7 días). Enlace en sidebar (Institución)
   y materia-hub. SW **v66**. Sintaxis OK en todos los tocados.
+  **Ajuste posterior (misma sesión):** Francy adjuntó el formato oficial
+  FA_006/FSP001 → el módulo quedó calcado: tipos oficiales (EPS cita/urgencias,
+  salud, incapacidad, calamidad, licencia, capacitación, traslado, otro),
+  campo CÉDULA (se recuerda en el equipo, clave lv_perm_cedula), decisión
+  «¿descuenta salario?» al aprobar (p.descuenta), e impresión con membrete
+  completo (LV_INST nit/dane/icfes/correo), código FSP001, casillas SÍ/NO de
+  descuento y firmas: funcionario, coordinador de convivencia y V°B° Rector(e).
+  Imprimible en cualquier estado menos cancelado. SW **v67**.
 - PENDIENTE: push + correr migracion_permisos.sql. Ideas futuras del módulo
   (anotadas, no hechas): adjuntar soporte (foto incapacidad) cuando haya
   patrón de Storage por docente; aviso WhatsApp a coordinación (patrón wa.me
