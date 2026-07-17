@@ -928,8 +928,19 @@ function validarImportPlaneadores(d, txtCrudo){
 }
 function guardarPlaneadores(planes){
   const all=lsRead('planeadores');const ids=new Set(all.map(p=>p.id));
+  // Etiquetar SIEMPRE con la materia/área activa (si el JSON no la trae).
+  // Sin esto, la migración de datos viejos los marcaba como 'Sociales' y el
+  // planeador importado en otra materia aparecía en Ciencias Sociales.
+  const materiaActiva=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales';
+  const areaActiva=(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'';
   let n=0, dup=0;
-  planes.forEach(p=>{ if(ids.has(p.id)){dup++;} else {all.push(p);ids.add(p.id);n++;} });
+  planes.forEach(p=>{
+    if(ids.has(p.id)){dup++; return;}
+    if(!p.materia) p.materia=materiaActiva;
+    if(!p.area&&areaActiva) p.area=areaActiva;
+    all.push(p);ids.add(p.id);n++;
+    if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_planeadores', p);
+  });
   lsWrite('planeadores',all);
   return {n, dup};
 }

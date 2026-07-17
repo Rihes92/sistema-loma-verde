@@ -1,0 +1,190 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-15T16:33:44-05:00",
+  "planeadores": [
+    {
+      "id": "plan-dem-10-p2-eje3-jep-007",
+      "creado": "2026-07-15T16:33:44-05:00",
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "07",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-15",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto",
+      "unidad": "Eje 3: DIH — Protección a personas y bienes. Conflicto colombiano",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* identifica las personas y bienes protegidos por el DIH y describe las prohibiciones absolutas de los Convenios de Ginebra.\n* explica el papel de la JEP en el posconflicto colombiano y su relación con los principios de verdad, justicia y reparación.\nSaber-hacer:\n* el estudiante establece relaciones entre las distintas dimensiones (jurídica, política, humanitaria, social) del conflicto colombiano al analizar casos reales de violación del DIH.\n* el estudiante analiza los efectos en distintas dimensiones que tendría una intervención de la JEP frente a la impunidad.\nSer:\n* manifiesta indignación pacífica frente al sufrimiento de grupos o naciones involucradas en confrontaciones violentas y asume compromisos con la no violencia.",
+      "competencias": "Pensamiento reflexivo y sistémico\nEBC — Convivencia y paz",
+      "contenidos": "* ¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.\n* Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja).\n* Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.\n* El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia.\n* Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano.\n* Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto.",
+      "objetivo": "Analizar la estructura, naturaleza y funciones de la Jurisdicción Especial para la Paz (JEP) dentro del marco de la justicia transicional colombiana, comprendiendo su papel fundamental en la búsqueda de la verdad, la reparación integral a las víctimas de infracciones al DIH y la garantía de no repetición en el territorio nacional.",
+      "pregunta": "¿Por qué el modelo de justicia restaurativa de la JEP es esencial para la reconciliación nacional en un país golpeado por décadas de conflicto, y qué impacto tiene el esclarecimiento de la verdad sobre los crímenes del conflicto en la reparación moral de las familias rurales cordobesas?",
+      "explora": "Actividad de sensibilización: iniciar el encuentro preguntando a los estudiantes qué entienden por 'justicia' en un contexto donde el daño causado (como la pérdida de un ser querido o de la tierra) es irreparable. Se abrirá un debate corto para diferenciar el castigo retributivo (cárcel tradicional) de la justicia restaurativa (aporte a la verdad y reparación).",
+      "glosario": [
+        {"t": "Justicia transicional", "d": "mecanismos judiciales y extrajudiciales creados para procesar graves violaciones a los derechos humanos en periodos de posconflicto"},
+        {"t": "JEP", "d": "componente judicial del Sistema Integral de Verdad, Justicia, Reparación y No Repetición, creado para investigar y sancionar los delitos más graves"},
+        {"t": "Justicia restaurativa", "d": "modelo judicial que prioriza la reparación del daño a las víctimas y la reconstrucción de las relaciones sociales sobre el simple castigo punitivo"},
+        {"t": "Verdad procesal", "d": "esclarecimiento de los hechos mediante pruebas y testimonios contrastados ante un tribunal judicial"},
+        {"t": "Macrocaso", "d": "metodología de la JEP que agrupa miles de hechos delictivos similares para identificar patrones de criminalidad y máximos responsables"},
+        {"t": "Sanción propia", "d": "medidas restrictivas de libertad que no son cárcel ordinaria, enfocadas en la restauración del daño y el aporte a la verdad"},
+        {"t": "Víctima", "d": "persona o grupo que ha sufrido un daño directo e injusto como consecuencia de graves violaciones a los derechos humanos"},
+        {"t": "No repetición", "d": "garantías estatales que buscan eliminar los factores que permitieron la ocurrencia de los crímenes"},
+        {"t": "Acreditación", "d": "proceso mediante el cual el tribunal reconoce formalmente a una persona como víctima en un caso específico"},
+        {"t": "Sistema Integral", "d": "conjunto de mecanismos que busca dar satisfacción a los derechos de las víctimas bajo estándares de verdad, justicia, reparación y no repetición"}
+      ],
+      "bloques": [
+        {
+          "tit": "Fundamentos de la justicia transicional",
+          "txt": "Explicación magistral sobre por qué los conflictos armados prolongados requieren de una justicia especial. Se diferenciará entre la justicia penal ordinaria y la justicia transicional, resaltando que esta última prioriza la verdad que el país necesita para no repetir su historia.",
+          "pausa": "¿por qué no es suficiente que los victimarios vayan simplemente a la cárcel?",
+          "resp": "porque la cárcel no revela la verdad sobre el paradero de los desaparecidos ni ayuda a reconstruir el tejido social fracturado por décadas de violencia."
+        },
+        {
+          "tit": "Estructura y funcionamiento de la JEP",
+          "txt": "Análisis de las salas y secciones que componen la JEP, explicando cómo los macrocasos permiten identificar a los máximos responsables de crímenes atroces como el secuestro, el reclutamiento de menores y los 'falsos positivos'.",
+          "pausa": "¿cómo garantiza la JEP que los responsables realmente aporten verdad?",
+          "resp": "a través de un régimen de condicionalidad: si el responsable no aporta verdad plena, exhaustiva y detallada, pierde los beneficios y es remitido a la justicia ordinaria."
+        },
+        {
+          "tit": "Justicia restaurativa y reparación",
+          "txt": "Discusión sobre el enfoque reparador de la JEP. Se mostrará cómo el sistema busca que los comparecientes realicen acciones directas (limpieza de minas, construcción de escuelas, reconocimiento público) para reparar el daño causado a las comunidades.",
+          "pausa": "¿qué papel tienen las víctimas dentro del proceso de la JEP?",
+          "resp": "un papel central: las víctimas tienen derecho a participar, ser escuchadas, controvertir las versiones de los victimarios y recibir reparación integral."
+        }
+      ],
+      "talleres": "1. lectura analítica de la estructura del Sistema Integral de Verdad, Justicia, Reparación y No Repetición. \n2. debate dirigido en clase sobre los beneficios y críticas que ha recibido la JEP en su proceso de juzgamiento. \n3. diseño de un mapa conceptual grupal que relacione los cuatro pilares del sistema (verdad, justicia, reparación, no repetición) con el impacto local en el departamento de Córdoba.",
+      "transfer": "Redacción de una carta pública, de carácter ficticio pero fundamentada, dirigida a un hipotético tribunal de paz, redactada desde la voz de una comunidad rural que exige verdad sobre un caso concreto de violación al DIH ocurrido en su territorio. El texto debe argumentar por qué la verdad es la base de su futura tranquilidad.",
+      "clave": "El texto debe denotar un profundo respeto por la dignidad de las víctimas y una clara comprensión de que el aporte de verdad del victimario es la condición necesaria para obtener cualquier beneficio jurídico dentro de la jurisdicción.",
+      "evaluacion": "Rúbrica de evaluación sumativa y formativa:\n1. dominio conceptual (40%): explica correctamente qué es la JEP y en qué se diferencia de la justicia ordinaria.\n2. pensamiento crítico (30%): analiza las tensiones entre paz y justicia en el contexto de la justicia transicional.\n3. redacción y ortotipografía (30%): aplica rigurosamente la regla innegociable de no usar mayúscula inicial tras dos puntos y mantiene la jerarquía de títulos.",
+      "recursos": "Tablero, marcadores, cuadernos, copias impresas de esquemas sobre la JEP y resúmenes del Acuerdo de Paz (material adaptado para la presencialidad sin internet).",
+      "referencias": "Estándares básicos de competencias y Derechos básicos de aprendizaje (EBC y DBA):\n* comprendo que el derecho internacional humanitario es un conjunto de normas que busca limitar los efectos de los conflictos armados y proteger a las personas que no participan directamente en las hostilidades.\n* expreso empatía ante grupos o personas cuyos derechos han sido vulnerados y propongo acciones solidarias.\n* DBA 2 (G10): evalúa las causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia.\n\nBibliografía especializada:\n- Uprimny Yepes, R. (2018). La JEP y la justicia transicional en Colombia. Bogotá: Dejusticia.\n- Jurisdicción Especial para la Paz. (2022). Guía de participación para víctimas ante la JEP. Bogotá: JEP.",
+      "dua": "Se facilitará el uso de infografías visuales que simplifiquen la estructura compleja de la JEP. Los estudiantes con mayores habilidades orales liderarán los debates, mientras que quienes prefieran el trabajo escrito realizarán los mapas conceptuales y las cartas de exigencia de verdad, garantizando que todos participen según sus fortalezas.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "La JEP es el tribunal encargado de administrar justicia en el marco de la justicia transicional colombiana",
+        "El régimen de condicionalidad exige aporte de verdad plena para acceder a beneficios jurídicos",
+        "Los macrocasos permiten identificar patrones sistemáticos de criminalidad y a los máximos responsables",
+        "La justicia restaurativa prioriza la reparación integral de las víctimas sobre el castigo punitivo",
+        "La verdad es un derecho inalienable y una garantía fundamental para la no repetición"
+      ],
+      "errores": [
+        "Creer que la JEP es un tribunal para impunidad: es falso, busca sancionar a los máximos responsables con penas restaurativas severas",
+        "Pensar que la JEP reemplaza a toda la justicia colombiana: es falso, solo se encarga de los delitos más graves cometidos en el marco del conflicto",
+        "Imaginar que la justicia restaurativa es equivalente a la ausencia de castigo: es un error, impone sanciones propias que restringen libertades y exigen trabajo restaurativo",
+        "Desconocer que la participación de las víctimas es el pilar central de todo el sistema: es un error grave, sin la participación de las víctimas, el sistema pierde su legitimidad"
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué significa el concepto de 'régimen de condicionalidad' dentro del funcionamiento de la Jurisdicción Especial para la Paz?",
+          "a": "Es la obligación estricta de los comparecientes de aportar verdad plena, exhaustiva y detallada sobre los crímenes cometidos; si el responsable miente u oculta información, pierde automáticamente los beneficios jurídicos otorgados por el tribunal.",
+          "verdadero": true,
+          "justificacion": "El compromiso con la verdad es la piedra angular del sistema, sin el cual no es posible avanzar hacia la justicia restaurativa ni la reparación de las víctimas.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La JEP es un tribunal que busca aplicar penas de cárcel ordinaria idénticas a las que dictaría cualquier juzgado penal del país contra cualquier delincuente común.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La JEP aplica sanciones propias de la justicia transicional, las cuales son restaurativas y tienen como objetivo principal reparar el daño causado a la comunidad y a las víctimas.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué la metodología de los 'macrocasos' es más efectiva que investigar hechos aislados para combatir la impunidad en Colombia?",
+          "a": "Porque permite visualizar los patrones de macrocriminalidad y las directrices jerárquicas que ordenaron los crímenes, permitiendo identificar y sancionar a los máximos responsables de políticas sistemáticas de guerra.",
+          "verdadero": true,
+          "justificacion": "Investigar caso por caso sería inabarcable e ineficiente, permitiendo que quienes dieron las órdenes permanezcan impunes en la sombra.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las víctimas no tienen ningún papel ni derecho de participación dentro de las etapas procesales de la Jurisdicción Especial para la Paz.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las víctimas son el centro del sistema; tienen derecho a ser acreditadas, a participar en las audiencias, a presentar pruebas y a controvertir las versiones de los victimarios.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la diferencia fundamental entre la justicia penal ordinaria y la justicia restaurativa aplicada en el posconflicto?",
+          "a": "La justicia ordinaria se centra en el castigo punitivo y el encierro del culpable. La justicia restaurativa busca, además de sancionar, reparar integralmente el daño a la víctima y reconstruir el tejido social mediante acciones directas del responsable.",
+          "verdadero": true,
+          "justificacion": "En un país que ha vivido un conflicto fratricida, la reconstrucción social tiene un valor superior a la simple privación de libertad individual.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El derecho a la verdad es considerado una de las garantías fundamentales para que las atrocidades del pasado no se vuelvan a repetir.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Conocer la historia real y reconocer las responsabilidades colectivas es esencial para que la sociedad, como conjunto, rechace la violencia y construya una cultura de paz.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Mencione dos ejemplos de sanciones propias de la justicia transicional que puede dictar la JEP en lugar de la cárcel ordinaria.",
+          "a": "1) la participación en programas de limpieza de minas antipersonal en zonas rurales. 2) la construcción o reparación de infraestructuras educativas y centros de salud destruidos por el conflicto.",
+          "verdadero": true,
+          "justificacion": "Estas acciones reparan directamente el daño causado a la población civil, devolviendo valor social al territorio en lugar de solo apartar al victimario del entorno.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La JEP tiene la facultad de juzgar delitos comunes ocurridos después de la firma del Acuerdo de Paz, como el hurto en tiendas de barrio.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La competencia de la JEP es limitada y específica: solo conoce los crímenes más graves y representativos cometidos en el marco y con ocasión del conflicto armado antes de diciembre de 2016.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué significa el principio de 'no repetición' como garantía dentro del Sistema Integral de Verdad, Justicia, Reparación y No Repetición?",
+          "a": "Significa que el Estado debe realizar reformas institucionales y sociales profundas para eliminar las causas que permitieron que el conflicto armado escalara, asegurando que los crímenes del pasado no tengan cabida en el futuro democrático del país.",
+          "verdadero": true,
+          "justificacion": "La paz no es solo la ausencia de guerra, sino la construcción de un sistema donde la violencia ya no sea el método para resolver diferencias.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La JEP es el único tribunal internacional creado para juzgar crímenes de guerra en América Latina.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La JEP es un tribunal nacional (colombiano) de carácter excepcional y transicional; no es un tribunal internacional, aunque opera bajo estándares internacionales de derechos humanos.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Conversar con la familia o vecinos sobre la importancia de la verdad en la convivencia diaria. Reflexionar y escribir en el cuaderno: si un conflicto entre vecinos se soluciona ocultando la verdad o si, por el contrario, reconocer los errores y pedir perdón es la única forma de que la paz perdure. Escribir un pequeño compromiso personal sobre cómo contribuir a la verdad en el colegio.",
+      "fundamentacion": "# LA JURISDICCIÓN ESPECIAL PARA LA PAZ (JEP) Y LA JUSTICIA TRANSICIONAL EN COLOMBIA\n\n## Naturaleza y necesidad de una justicia especial\nTras décadas de un conflicto armado asimétrico y degradante, Colombia enfrentó el reto de diseñar un sistema judicial que pudiera procesar la magnitud de las atrocidades cometidas contra la población civil sin perpetuar el ciclo de violencia mediante una venganza punitiva ineficaz. La Jurisdicción Especial para la Paz (JEP) nació precisamente como el componente judicial del Sistema Integral de Verdad, Justicia, Reparación y No Repetición, bajo la premisa de que la justicia penal ordinaria, diseñada para delitos comunes, resultaba insuficiente frente a los crímenes de guerra y los delitos de lesa humanidad de carácter sistemático.\n\nLa JEP no es un tribunal de impunidad; es un tribunal de justicia restaurativa. A diferencia del sistema punitivo tradicional, cuyo objetivo es exclusivamente el encierro del victimario, el enfoque transicional prioriza el derecho de las víctimas a conocer la verdad sobre el paradero de sus seres queridos, la forma en que fueron victimizadas y las razones estratégicas que ordenaron sus sufrimientos. La justicia transicional busca, ante todo, sanar las heridas sociales que la guerra dejó en los territorios agrarios, exigiendo a los comparecientes un aporte de verdad plena como condición mínima para acceder a cualquier beneficio.\n\n## Estructura operativa y el concepto de macrocaso\nLa JEP está organizada en salas y secciones especializadas que le permiten abordar la complejidad del conflicto mediante la metodología de los macrocasos. Esta innovación técnica es fundamental para combatir la impunidad histórica. En lugar de procesar miles de casos aislados —lo cual llevaría siglos y generaría sentencias inconexas—, la JEP agrupa hechos similares (por ejemplo, el secuestro, el reclutamiento ilícito de menores, las ejecuciones extrajudiciales) para identificar patrones de criminalidad, directrices de mando y a los máximos responsables de las políticas que causaron la victimización.\n\nEste modelo permite que los testimonios de los comparecientes sean contrastados con las denuncias de las víctimas y la información de la Comisión de la Verdad, permitiendo que la justicia se concentre en la responsabilidad de quienes dieron las órdenes desde las cúpulas, y no solamente en quienes apretaron el gatillo en el campo de batalla. La efectividad de este enfoque radica en la reconstrucción del relato histórico que el país requiere para comprender la magnitud de la tragedia vivida.\n\n## Régimen de condicionalidad y justicia restaurativa\nEl pilar que sostiene la legitimidad de la JEP es el régimen de condicionalidad. Todo actor armado que se someta al tribunal tiene la obligación ineludible de aportar una verdad exhaustiva y detallada. El tribunal ha sido enfático: aquel compareciente que oculte hechos, que mienta o que se niegue a colaborar con la justicia, pierde automáticamente los beneficios otorgados y es remitido inmediatamente a la justicia penal ordinaria para enfrentar procesos bajo las reglas tradicionales.\n\nLa justicia restaurativa, por su parte, se manifiesta en las sanciones propias de la JEP. Estas sanciones no son penas de cárcel en el sentido estricto; son medidas que restringen la libertad y obligan al responsable a realizar labores concretas de reparación directa. Entre estas labores se encuentran, por ejemplo, la remoción de minas antipersonal en veredas, la construcción o restauración de infraestructuras comunitarias (escuelas, puestos de salud) y la realización de actos públicos de reconocimiento de responsabilidad y perdón frente a las comunidades. Esta modalidad judicial reconoce que la restauración del tejido social y el apoyo directo a las víctimas tienen un valor social incalculable frente al simple castigo punitivo.\n\n## El papel central de las víctimas en el sistema\nSi algo diferencia a la JEP de cualquier otro tribunal en la historia nacional, es la centralidad de las víctimas. El sistema otorga a las víctimas el derecho real de participar activamente en cada etapa del proceso: pueden ser acreditadas, tienen voz propia ante los magistrados, pueden presentar pruebas, contrainterrogar a los victimarios y, sobre todo, tienen el derecho de ser reparadas integralmente.\n\nLa reparación integral no se limita a indemnizaciones económicas, las cuales resultan a veces insuficientes ante tragedias como la desaparición forzada. La reparación es, en esencia, dignificar la memoria de los caídos, devolver la voz a los sobrevivientes y construir garantías de no repetición que aseguren que los hechos horrorosos del pasado no vuelvan a ocurrir jamás. En el contexto de Córdoba y Montería, la JEP se ha convertido en una pieza fundamental para que las comunidades rurales puedan, finalmente, obtener respuestas, sanar sus heridas y fortalecer una democracia donde el debate político y social prevalezca por siempre sobre el estruendo de las armas.",
+      "lineatiempo": "2016: firma del Acuerdo Final de Paz con las FARC-EP, el cual establece los pilares para el Sistema Integral de Verdad, Justicia, Reparación y No Repetición.\n2017: creación formal de la Jurisdicción Especial para la Paz (JEP) mediante el Acto Legislativo 01 de 2017.\n2018: instalación oficial de los magistrados de la JEP y puesta en marcha de las salas de reconocimiento de verdad y responsabilidad.\n2019: apertura de los primeros macrocasos por parte de la JEP para abordar de manera sistemática los crímenes de guerra cometidos en el marco del conflicto.\n2022: publicación y entrega del Informe Final de la Comisión de la Verdad, documento histórico que sirve como insumo fundamental para las investigaciones judiciales del tribunal de paz."
+    }
+  ]
+}

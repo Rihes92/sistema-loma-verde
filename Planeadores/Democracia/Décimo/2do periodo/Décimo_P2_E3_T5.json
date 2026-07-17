@@ -1,0 +1,190 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-15T16:31:57-05:00",
+  "planeadores": [
+    {
+      "id": "plan-dem-10-p2-eje3-crimenes-006",
+      "creado": "2026-07-15T16:31:57-05:00",
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "06",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-15",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano",
+      "unidad": "Eje 3: DIH — Protección a personas y bienes. Conflicto colombiano",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* identifica las personas y bienes protegidos por el DIH y describe las prohibiciones absolutas de los Convenios de Ginebra.\n* explica el papel de la JEP en el posconflicto colombiano y su relación con los principios de verdad, justicia y reparación.\nSaber-hacer:\n* establece relaciones entre las distintas dimensiones (jurídica, política, humanitaria, social) del conflicto colombiano al analizar casos reales de violación del DIH.\n* analiza los efectos en distintas dimensiones que tendría una intervención de la JEP frente a la impunidad.\nSer:\n* manifiesta indignación pacífica frente al sufrimiento de grupos o naciones involucradas en confrontaciones violentas y asume compromisos con la no violencia.",
+      "competencias": "Pensamiento reflexivo y sistémico\nEBC — Convivencia y paz",
+      "contenidos": "* ¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.\n* Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja).\n* Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.\n* El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia.\n* Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano.\n* Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto.",
+      "objetivo": "Comprender la gravedad de crímenes como la desaparición forzada, el desplazamiento interno y el secuestro en el marco del conflicto armado colombiano, analizando sus efectos devastadores en el tejido social y rural de Córdoba, con el fin de promover la empatía y la exigencia ciudadana de garantías de no repetición.",
+      "pregunta": "¿De qué manera la desaparición forzada, el desplazamiento interno y el secuestro transformaron las dinámicas de vida en las comunidades campesinas de Montería y Córdoba, y por qué es fundamental el derecho a la verdad para sanar estas heridas históricas?",
+      "explora": "Actividad de reflexión inicial: se pedirá a los estudiantes que imaginen qué sucedería si, de un momento a otro, una familia vecina de Loma Verde tuviera que abandonar su parcela, animales y pertenencias sin poder avisar a nadie. Se promoverá un diálogo respetuoso y empático en el aula formulando la siguiente inquietud: ¿qué sentimientos genera en una comunidad la incertidumbre permanente de no saber el paradero o la suerte de un ser querido?",
+      "glosario": [
+        {"t": "Desaparición forzada", "d": "ocultamiento sistemático y negación de información sobre el paradero de una persona privada de la libertad, lo cual somete a sus familiares a una tortura psicológica prolongada"},
+        {"t": "Desplazamiento forzado interno", "d": "huida obligada de individuos o comunidades de su territorio de origen para proteger su vida frente al conflicto, sin cruzar fronteras internacionales"},
+        {"t": "Secuestro", "d": "retención ilícita de una persona, utilizada frecuentemente como táctica de guerra para extorsionar económicamente o ejercer presión política sobre el Estado"},
+        {"t": "Crimen de lesa humanidad", "d": "ataque generalizado o sistemático dirigido contra cualquier población civil, con conocimiento y planificación de dicho ataque"},
+        {"t": "Tejido social", "d": "red de relaciones, solidaridad, confianza y tradiciones que une a los miembros de una comunidad campesina o urbana"},
+        {"t": "Desarraigo", "d": "pérdida profunda del vínculo emocional, cultural y productivo que una persona mantiene con su tierra y sus raíces a causa de la violencia"},
+        {"t": "Derecho a la verdad", "d": "garantía inalienable que tienen las víctimas y la sociedad de conocer plenamente los motivos, circunstancias y responsables de los crímenes padecidos"},
+        {"t": "Justicia transicional", "d": "modelo de justicia excepcional diseñado para juzgar atrocidades masivas y facilitar la transición de un país desde la guerra hacia la paz"},
+        {"t": "Restitución de tierras", "d": "proceso legal mediante el cual el Estado busca devolver los predios usurpados o abandonados a las familias campesinas víctimas del conflicto"},
+        {"t": "Garantías de no repetición", "d": "transformaciones sociales e institucionales orientadas a asegurar que las violaciones de derechos no vuelvan a ocurrir jamás"}
+      ],
+      "bloques": [
+        {
+          "tit": "El desarraigo del desplazamiento interno",
+          "txt": "Análisis profundo sobre cómo el abandono forzado de la tierra desestructuró la economía campesina y las prácticas culturales en la región. Se explicará que el desplazamiento no es una simple migración voluntaria, sino un crimen que arranca a las personas de su sustento vital.",
+          "pausa": "¿qué consecuencias directas sufre la soberanía alimentaria de una región cuando sus campesinos son obligados a desplazarse?",
+          "resp": "se abandonan los cultivos de pancoger, disminuye drásticamente la producción local de alimentos y las familias desplazadas quedan expuestas a la pobreza extrema en los cinturones urbanos."
+        },
+        {
+          "tit": "La crueldad del secuestro y la toma de rehenes",
+          "txt": "Estudio de las dinámicas del secuestro como infracción grave al derecho internacional humanitario. Se abordará cómo esta práctica mercantiliza la vida humana, violando el principio de humanidad y generando terror generalizado en la población civil.",
+          "pausa": "¿por qué el DIH prohíbe sin excepciones que un actor armado utilice el secuestro para financiar sus tropas?",
+          "resp": "porque reduce la dignidad inalienable del ser humano a la condición de mercancía, utilizando el dolor ajeno como un instrumento de guerra."
+        },
+        {
+          "tit": "La desaparición forzada y la incertidumbre",
+          "txt": "Reflexión sobre el daño inconmensurable que provoca la desaparición forzada en el núcleo familiar y comunitario. Se debatirá por qué este crimen es considerado continuado en el tiempo, ya que la vulneración no cesa hasta que se halla la verdad sobre el paradero de la víctima.",
+          "pausa": "¿cuál es la diferencia principal entre un homicidio ordinario y el crimen de desaparición forzada?",
+          "resp": "el homicidio permite a la familia realizar un duelo y sepultar a su ser querido, mientras que la desaparición mantiene a los familiares en un estado constante de tortura, esperanza e incertidumbre ante la falta de un cuerpo y de respuestas."
+        }
+      ],
+      "talleres": "1. lectura guiada y análisis de casos testimoniales anónimos (extraídos de los informes oficiales del Centro Nacional de Memoria Histórica). \n2. construcción en parejas de un mapa de empatía, donde los estudiantes deben identificar las necesidades, temores y esperanzas de una familia campesina cordobesa víctima del desplazamiento forzado. \n3. redacción individual en el cuaderno de un ensayo argumentativo que defienda el derecho irrenunciable a la verdad frente a los crímenes de desaparición forzada.",
+      "transfer": "Organización de un círculo de la palabra en el aula donde, a través de relatos construidos colectivamente, los estudiantes simularán ser líderes comunitarios de una vereda ficticia. Su tarea será redactar un pacto de convivencia comunitaria que establezca formas pacíficas y solidarias de acoger a las familias desplazadas que llegan a su territorio buscando refugio, promoviendo el respeto y la integración social.",
+      "clave": "El pacto de convivencia debe evidenciar una comprensión real de la vulnerabilidad del desplazado, evitando cualquier tipo de estigmatización. Las estrategias propuestas por los jóvenes deben reflejar empatía, ofreciendo apoyo moral y destacando la importancia de mantener unida a la comunidad para resistir los embates de la violencia de manera no violenta.",
+      "evaluacion": "Rúbrica de evaluación sumativa y formativa:\n1. argumentación y rigor (40%): diferencia claramente las implicaciones del secuestro, la desaparición forzada y el desplazamiento interno, apoyándose en conceptos del DIH.\n2. pensamiento reflexivo y empatía (30%): relaciona el impacto de estos crímenes con las dinámicas de la región cordobesa y propone soluciones solidarias.\n3. ortotipografía y redacción (30%): cumple estrictamente con el mandato innegociable de no usar mayúscula inicial después de los dos puntos y aplica correctamente la jerarquía de títulos en el cuaderno.",
+      "recursos": "Tablero acrílico, marcadores, cuadernos de los estudiantes, papel periódico para los mapas de empatía, y resúmenes impresos de testimonios del Centro Nacional de Memoria Histórica (adaptados para el contexto del aula sin conexión).",
+      "referencias": "Estándares básicos de competencias y Derechos básicos de aprendizaje (EBC y DBA):\n* comprendo que el derecho internacional humanitario es un conjunto de normas que busca limitar los efectos de los conflictos armados y proteger a las personas que no participan directamente en las hostilidades.\n* expreso empatía ante grupos o personas cuyos derechos han sido vulnerados y propongo acciones solidarias.\n* DBA 2 (G10): evalúa las causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia.\n\nBibliografía especializada:\n- Centro Nacional de Memoria Histórica. (2016). Hasta encontrarlos: el drama de la desaparición forzada en Colombia. Bogotá: CNMH.\n- Centro Nacional de Memoria Histórica. (2015). Una nación desplazada: informe nacional del desplazamiento forzado en Colombia. Bogotá: CNMH.",
+      "dua": "Se garantizará un abordaje sumamente cuidadoso y desprovisto de detalles morbosos para evitar la revictimización en el aula rural. Para los jóvenes con barreras en la lectura extensa, los testimonios se narrarán a viva voz por parte del docente utilizando un tono pausado y respetuoso. La evaluación permitirá la expresión de ideas a través de dibujos simbólicos o de la participación verbal en el círculo de la palabra.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El desplazamiento forzado desgarra el tejido social y destruye la economía campesina tradicional",
+        "El secuestro es una infracción grave que deshumaniza a la víctima, convirtiéndola en una mercancía de guerra",
+        "La desaparición forzada es un crimen de carácter continuado que somete a las familias a una tortura psicológica perenne",
+        "El derecho a la verdad es un requerimiento innegociable para iniciar cualquier proceso de sanación colectiva",
+        "La justicia transicional busca esclarecer estos crímenes para garantizar que la violencia no se repita en el territorio"
+      ],
+      "errores": [
+        "Asumir que las víctimas de desplazamiento migraron a la ciudad porque querían mejorar su situación económica: es un grave error de empatía, el desplazamiento es una huida obligada para no ser asesinado",
+        "Creer que la desaparición forzada es un delito que prescribe rápidamente: falso, al ser un delito continuado y un crimen de lesa humanidad, no prescribe hasta que se halla a la víctima",
+        "Pensar que el secuestro es justificable si el actor armado usa el dinero para financiar causas sociales: es un error de concepto absoluto, el DIH prohíbe la toma de rehenes sin admitir excepción alguna",
+        "Considerar que a las familias desplazadas se les debe tratar con desconfianza o rechazo: es un error ético profundo, las víctimas requieren solidaridad integral frente al desarraigo que sufrieron"
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué la jurisprudencia nacional e internacional clasifica a la desaparición forzada como un crimen de carácter 'continuado'?",
+          "a": "Se clasifica de esta manera porque la vulneración a los derechos fundamentales de la víctima y de su familia no se detiene en el momento del rapto, sino que persiste y se renueva cada día mientras el paradero de la persona siga siendo ocultado y no se establezca la verdad sobre su destino.",
+          "verdadero": true,
+          "justificacion": "A diferencia de un delito instantáneo, el dolor y la violación a la libertad no cesan, impidiendo que los familiares cierren el ciclo de duelo natural.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El desplazamiento forzado interno en Colombia es un fenómeno que afectó de manera exclusiva y mayoritaria a los grandes empresarios de las principales ciudades del país.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las estadísticas históricas demuestran que el desplazamiento forzado afectó de forma abrumadora y desproporcionada a la población campesina, a las comunidades indígenas y a las poblaciones afrodescendientes que habitaban las zonas rurales de la nación.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué impacto directo tiene el desplazamiento forzado masivo sobre la economía y las prácticas culturales de un departamento con vocación agrícola como Córdoba?",
+          "a": "Genera el abandono inmediato de tierras fértiles, detiene la producción de alimentos de pancoger, destruye las redes de trabajo comunitario, aumenta la inseguridad alimentaria y causa la pérdida irreparable de tradiciones culturales vinculadas a la vida campesina.",
+          "verdadero": true,
+          "justificacion": "El desarraigo despoja al campesino de su único medio de producción y lo inserta violentamente en entornos urbanos donde sus saberes agrícolas no le garantizan la subsistencia.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Bajo los estatutos del derecho internacional humanitario, el secuestro de civiles puede considerarse una táctica de guerra legítima si su único fin es exigir un intercambio humanitario por prisioneros de guerra.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La toma de rehenes y el secuestro están prohibidos de forma absoluta, estricta e inderogable en todas las circunstancias por el DIH, pues instrumentalizan la vida humana y constituyen un crimen de guerra atroz.",
+          "enunciado": "Recuerda las prohibiciones absolutas estudiadas en el artículo 3 común de los Convenios de Ginebra.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Explique brevemente en qué consiste el 'derecho a la verdad' y por qué es una demanda central de las familias que han sido víctimas de desaparición forzada.",
+          "a": "El derecho a la verdad es la garantía de conocer íntegramente las causas, los responsables materiales e intelectuales y las circunstancias de tiempo, modo y lugar en que ocurrió el crimen. Para las familias es vital porque es la única vía para encontrar el cuerpo, darle sepultura digna, limpiar el buen nombre de su ser querido y alcanzar algo de paz.",
+          "verdadero": true,
+          "justificacion": "Sin el esclarecimiento de la verdad procesal e histórica, la impunidad se perpetúa y la reconciliación social se vuelve imposible en el posconflicto.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El delito de secuestro solo genera daños económicos temporales al núcleo familiar de la víctima, sin dejar secuelas profundas en el tejido social.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El secuestro genera traumas psicológicos irreversibles en la víctima, desintegra la estabilidad emocional de toda la familia y siembra un ambiente generalizado de terror y desconfianza profunda en la comunidad.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué relación existe entre el fenómeno del desplazamiento forzado en las zonas rurales y los procesos de despojo sistemático de tierras?",
+          "a": "En la historia del conflicto colombiano, el desplazamiento forzado no fue solamente una consecuencia accidental de los combates, sino que frecuentemente se utilizó como una estrategia deliberada de terror y violencia para vaciar los territorios, permitiendo a los actores armados y a terceros despojar y adueñarse ilícitamente de las tierras de los campesinos.",
+          "verdadero": true,
+          "justificacion": "Esta alianza macabra entre violencia y acaparamiento de tierras es uno de los motores históricos que ha prolongado la desigualdad agraria en el país.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La desaparición forzada es un crimen que recae exclusivamente en la persona ausente, sin afectar directamente los derechos ni la salud de sus familiares cercanos.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La jurisprudencia de los derechos humanos reconoce que los familiares son también víctimas directas de tortura psicológica y tratos crueles, debido al prolongado e inmenso sufrimiento que les causa la negación de información sobre su ser querido.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué resulta imperativo que el sistema de justicia transicional en Colombia aborde estos crímenes aplicando un enfoque de reparación integral y no solo castigos de cárcel?",
+          "a": "Porque los daños causados por el desarraigo, el secuestro y la desaparición fracturaron la dignidad y la economía de las comunidades. Un castigo de cárcel no devuelve la tierra ni la paz mental; por ello, la reparación integral busca restaurar derechos, reconstruir proyectos de vida, ofrecer disculpas públicas y garantizar la no repetición.",
+          "verdadero": true,
+          "justificacion": "La justicia transicional entiende que las víctimas deben ser el centro de cualquier acuerdo de paz, priorizando su sanación sobre el simple castigo punitivo.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Una comunidad campesina que acoge pacíficamente a familias desplazadas provenientes de otras veredas está cometiendo un delito y violando las normas del derecho internacional humanitario.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Acoger, proteger y brindar solidaridad a las víctimas del desplazamiento es un acto profundamente humano, ético y legal que reafirma el derecho fundamental a la vida y ayuda a reconstruir el tejido social devastado.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar una charla respetuosa y pausada en casa con los abuelos, padres o mayores de la familia, preguntándoles sobre la historia de la solidaridad en la vereda Loma Verde. Indagar si en décadas pasadas la comunidad tuvo que organizarse para brindar apoyo o techo a personas que llegaban huyendo de la violencia desde otras zonas del departamento, y escribir en el cuaderno una reflexión sobre la importancia de la unión campesina frente a la adversidad.",
+      "fundamentacion": "# IMPACTO DE LOS CRÍMENES DE GUERRA EN LA SOCIEDAD COLOMBIANA\n\n## La desaparición forzada como crimen continuado\nEl conflicto armado no internacional en Colombia dejó cicatrices profundas que trascienden el mero combate entre actores armados. Una de las prácticas más crueles, sistemáticas y devastadoras empleadas durante décadas fue la desaparición forzada. Este crimen atroz se configura cuando agentes del Estado o miembros de grupos armados ilegales privan de la libertad a una persona, seguido de la negativa absoluta a reconocer dicha privación o a proporcionar información veraz sobre su paradero y suerte.\n\nSegún los informes oficiales del Centro Nacional de Memoria Histórica, la desaparición forzada no es un daño colateral: se instauró como una tecnología del terror diseñada para paralizar a las organizaciones sociales, desarticular el liderazgo campesino y sembrar el pánico generalizado. Jurídicamente, se cataloga como un crimen de carácter continuado e imprescriptible. Esto se debe a que la vulneración del derecho no se agota en el momento del rapto; la tortura psicológica se prolonga indefinidamente en el tiempo para los familiares. La madre, el padre o el hijo de un desaparecido viven suspendidos en un limbo angustioso entre la esperanza irracional del retorno y el duelo imposible ante la ausencia de un cuerpo. Este estado perpetuo de zozobra destruye la salud mental y fractura el tejido social de las comunidades afectadas.\n\n## El desplazamiento forzado interno y el abandono del campo\nEn el contexto rural de la región Caribe y de departamentos agrarios como Córdoba, el desplazamiento forzado interno ha sido la herramienta de macrovictimización de mayor escala geográfica y demográfica. El Centro Nacional de Memoria Histórica ha documentado ampliamente que el éxodo masivo de millones de colombianos no obedeció a dinámicas migratorias de desarrollo económico, sino a una expulsión violenta, planificada y coactiva.\n\nEl desarraigo impuesto a la población campesina, indígena y afrodescendiente produjo un colapso en sus modos de vida tradicionales. Al huir de las masacres, los combates inminentes o las amenazas directas, los campesinos perdieron no solo sus parcelas y animales, sino su soberanía alimentaria, su entorno cultural y sus redes de solidaridad comunitaria. Este crimen desató también un fenómeno oscuro: el despojo de tierras. Las zonas vaciadas por el terror fueron rápidamente apropiadas por actores armados, testaferros e intereses económicos paralelos, lo que perpetuó la pobreza y la desigualdad estructural en el agro colombiano.\n\n## El secuestro y la mercantilización de la vida humana\nLa prohibición de la toma de rehenes y del secuestro es absoluta bajo las normas del derecho internacional humanitario y constituye un crimen de guerra incontrovertible. A pesar de este mandato global, el secuestro se convirtió en Colombia en una industria ilícita de financiación bélica y en una brutal herramienta de chantaje político por parte de diversos grupos armados. \n\nEsta práctica reduce a la persona humana, poseedora de una dignidad inalienable, a la indigna categoría de mercancía de cambio o escudo político. El secuestro somete a la víctima a condiciones infrahumanas de cautiverio en las selvas y montañas, vulnerando su salud física y emocional mediante cadenas y aislamiento. De forma paralela, extorsiona a las familias y chantajea a las instituciones del Estado. Las secuelas de este delito perviven por décadas, instaurando una desconfianza perenne y erosionando la libertad fundamental de tránsito y pensamiento de los ciudadanos.\n\n## El derecho inalienable a la verdad y la justicia transicional\nFrente a este vasto panorama de dolor e impunidad histórica, el sistema de justicia transicional en Colombia, encabezado por instituciones como la Jurisdicción Especial para la Paz (JEP) y la Comisión de la Verdad, ha trazado una ruta que sitúa a las víctimas en el centro de la reparación. El abordaje de estos crímenes no puede limitarse a expedir sentencias carcelarias ordinarias, puesto que las sentencias no devuelven la tierra ni señalan el paradero de los ausentes.\n\nEl pilar de esta transición es el derecho inalienable a la verdad. Las familias exigen conocer por qué fueron victimizadas, quiénes dieron las órdenes, qué alianzas permitieron los despojos y, sobre todo en el caso de la desaparición, dónde están los restos de sus seres amados. Es a través del esclarecimiento riguroso de la verdad histórica y procesal que el país intenta sanar sus fracturas más hondas. Solo al reconocer la magnitud de las atrocidades cometidas contra la población civil se pueden asentar unas bases democráticas sólidas que garanticen la no repetición en los territorios rurales, asegurando que futuras generaciones de jóvenes crezcan libres de la amenaza del destierro y el secuestro.",
+      "lineatiempo": "1949: se establecen los Convenios de Ginebra, los cuales prohíben categóricamente la toma de rehenes y los atentados contra la dignidad personal en todo tipo de conflictos armados.\n1997: entra en vigor en Colombia la Ley 387, la cual adopta por primera vez medidas formales para la prevención del desplazamiento forzado y la atención, protección y consolidación y estabilización socioeconómica de los desplazados internos por la violencia.\n2000: promulgación de la Ley 589, que tipifica y sanciona penalmente en el ordenamiento jurídico colombiano la desaparición forzada, el genocidio y el desplazamiento forzado como graves crímenes.\n2011: expedición de la histórica Ley 1448 de Víctimas y Restitución de Tierras, marcando un hito en el reconocimiento oficial del conflicto y creando mecanismos de reparación y retorno para millones de campesinos despojados.\n2016: firma del Acuerdo Final de Paz con las FARC-EP y posterior creación del Sistema Integral de Verdad, Justicia, Reparación y No Repetición, con el firme propósito de procesar a los responsables de secuestros, desapariciones y desplazamientos."
+    }
+  ]
+}

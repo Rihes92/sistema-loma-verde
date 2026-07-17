@@ -3,6 +3,34 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 16, 2026 — sesión 18, fix materia en import + módulo Permisos)
+
+- **Bug corregido (reporte de Francy):** planeadores importados en una materia
+  distinta aparecían en Ciencias Sociales. Causa: `guardarPlaneadores()` (02)
+  no etiquetaba `materia`/`area` al importar y el JSON de los GEMs no trae ese
+  campo → `lvMigrarMateria()` los marcaba 'Sociales'. Además los importados no
+  se subían a la nube (solo lsWrite, sin marcarCambio) — solo viajaban cuando
+  la migración los tocaba. Arreglo: guardarPlaneadores estampa materia/área
+  del contexto activo (fallback 'Sociales' si entra por sidebar) y marca cada
+  plan con LV_SYNC.marcarCambio. IMPORTANTE para docentes: importar estando
+  DENTRO de la materia (Áreas → materia → Planeador), no por la sidebar.
+- **Módulo NUEVO `modulos/18-permisos.html` — Permisos Docentes:** pestañas
+  Solicitar (tipo/fechas/jornada completa o parcial con horas/motivo/quién
+  cubre), Mis solicitudes (estados ⏳✅❌🚫, cancelar pendientes, imprimir
+  formato aprobado con membrete LV_INST + firmas) y Aprobaciones (solo
+  esAdmin: stats —pendientes/aprobados/rechazados/días aprobados en el año—,
+  filtros por estado y docente, aprobar/rechazar con comentario vía prompt).
+  Tabla `lv_permisos` {id, datos} en MAPA de sync; `migracion_permisos.sql`
+  NUEVO (correr en Supabase, idempotente). Alertas en el portal: a
+  coordinación le sale «N solicitudes esperando respuesta» y al docente
+  «Coordinación respondió» (últimos 7 días). Enlace en sidebar (Institución)
+  y materia-hub. SW **v66**. Sintaxis OK en todos los tocados.
+- PENDIENTE: push + correr migracion_permisos.sql. Ideas futuras del módulo
+  (anotadas, no hechas): adjuntar soporte (foto incapacidad) cuando haya
+  patrón de Storage por docente; aviso WhatsApp a coordinación (patrón wa.me
+  ya existe en 06/10); cruce con horario para listar clases afectadas;
+  RLS por dueño para que cada docente solo vea sus permisos (va con etapa 2).
+
 ## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 17, integración Banco de Actividades ↔ Planeador)
 
 - **Nueva funcionalidad en `02-planeador.html`:** Se añadió el botón **"🏦 Importar del Banco"** en la sección "Secuencia didáctica" (Etapa de estructuración), encima del campo "Talleres / actividades de estructuración". Al pulsarlo:

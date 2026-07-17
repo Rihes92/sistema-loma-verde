@@ -19,7 +19,7 @@
 //     página diagnostico.html.
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v65';
+const CACHE = 'loma-verde-v66';
 
 const ARCHIVOS = [
   './',
@@ -51,6 +51,7 @@ const ARCHIVOS = [
   './modulos/15-herramientas.html',
   './modulos/16-actividades.html',
   './modulos/17-centros-interes.html',
+  './modulos/18-permisos.html',
   './modulos/herramientas/herramientas-comun.js',
   './modulos/herramientas/test-lectura.html',
   './modulos/herramientas/calculo-mental.html',

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Permisos Docentes — SABIE</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_permisos','lv_docentes','lv_asignaciones'];</script>
+<script src="../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626;--warn:#b45309;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar img{width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18)}
+  nav.tabs{display:flex;gap:4px;background:var(--surface);padding:6px;overflow-x:auto;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+  nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button.active{background:var(--primary);color:#fff}
+  main{max-width:900px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  input[type=checkbox],input[type=radio]{width:16px;height:16px;min-height:auto}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.sec{background:#e2e8f0;color:var(--text)} button.btn.ok{background:var(--ok)} button.btn.bad{background:var(--bad)}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  .hide{display:none!important}
+  .sol{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:#fff}
+  .sol .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+  .sol .top strong{flex:1;min-width:160px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:700}
+  .b-pen{background:#fef3c7;color:#92400e}.b-apr{background:#dcfce7;color:#166534}.b-rec{background:#fee2e2;color:#991b1b}.b-can{background:#f1f5f9;color:#475569}
+  .meta{font-size:.8rem;color:var(--muted)}
+  .resp{margin-top:8px;font-size:.82rem;background:#f8fafc;border-left:3px solid var(--primary-light);padding:7px 10px;border-radius:0 8px 8px 0}
+  .empty{text-align:center;padding:34px 20px;color:var(--muted);background:#f8fafc;border:1px dashed var(--border);border-radius:12px;font-size:.9rem}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.8rem;color:var(--muted)}
+  .stat b{display:block;font-size:1.3rem;color:var(--primary)}
+  #print-area{display:none}
+  @media print{
+    body>*{display:none!important}
+    #print-area{display:block!important;font-size:12pt;color:#000}
+    .p-head{display:flex;gap:14px;align-items:center;border-bottom:2px solid #1e3a8a;padding-bottom:10px;margin-bottom:16px}
+    .p-head img{width:64px;height:64px;object-fit:contain}
+    .p-head h1{font-size:14pt;color:#1e3a8a;margin:0}
+    .p-tabla{width:100%;border-collapse:collapse;margin:12px 0}
+    .p-tabla th,.p-tabla td{border:1px solid #999;padding:8px 10px;text-align:left;font-size:11pt}
+    .p-tabla th{background:#eef2ff;width:32%}
+    .firmas{display:flex;justify-content:space-around;margin-top:70px;text-align:center;font-size:10pt}
+    .firmas div{border-top:1px solid #000;padding-top:6px;width:38%}
+  }
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <img src="../Logo/logo.jpg" alt="">
+  <h1>🗓️ Permisos Docentes</h1>
+  <span class="pill">SABIE</span>
+  <a href="../index.html" class="portal-btn" style="margin-left:auto" title="Volver a la página anterior" onclick="if(history.length>1){history.back();return false}">← Atrás</a>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="solicitar" class="active">➕ Solicitar</button>
+  <button data-tab="mias">📋 Mis solicitudes</button>
+  <button data-tab="aprobar" id="tab-btn-aprobar" class="hide">✅ Aprobaciones <span id="n-pend"></span></button>
+</nav>
+
+<main>
+  <!-- ── SOLICITAR ── -->
+  <section id="tab-solicitar">
+    <div class="card">
+      <h2>Nueva solicitud de permiso</h2>
+      <div class="row">
+        <label class="fld">Tipo de permiso
+          <select id="s-tipo">
+            <option>Cita médica</option><option>Calamidad doméstica</option>
+            <option>Diligencia personal</option><option>Capacitación / Comisión</option>
+            <option>Compensatorio</option><option>Otro</option>
+          </select>
+        </label>
+        <label class="fld">Desde<input type="date" id="s-ini"></label>
+        <label class="fld">Hasta<input type="date" id="s-fin"></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="fld">Jornada
+          <select id="s-jornada"><option value="completa">Día(s) completo(s)</option><option value="parcial">Parcial (unas horas)</option></select>
+        </label>
+        <label class="fld hide" id="w-hini">Hora inicio<input type="time" id="s-hini"></label>
+        <label class="fld hide" id="w-hfin">Hora fin<input type="time" id="s-hfin"></label>
+      </div>
+      <label class="fld" style="margin-top:10px">Motivo (sé claro y breve)
+        <textarea id="s-motivo" rows="3" placeholder="Ej: cita de medicina especializada en Montería, soporte disponible"></textarea>
+      </label>
+      <label class="fld" style="margin-top:10px">¿Quién podría cubrir tus clases? (opcional)
+        <input id="s-cubre" placeholder="Ej: taller dejado en coordinación / docente X puede acompañar">
+      </label>
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ok" id="btn-enviar">📨 Enviar solicitud</button>
+      </div>
+      <p class="meta" style="margin-top:10px">Tu solicitud le aparecerá a Coordinación apenas haya internet. Recibirás la respuesta aquí mismo, en "Mis solicitudes".</p>
+    </div>
+  </section>
+
+  <!-- ── MIS SOLICITUDES ── -->
+  <section id="tab-mias" class="hide">
+    <div id="mias-list"></div>
+  </section>
+
+  <!-- ── APROBACIONES (coordinación) ── -->
+  <section id="tab-aprobar" class="hide">
+    <div class="stats" id="ap-stats"></div>
+    <div class="row" style="margin-bottom:12px">
+      <label class="fld">Filtrar por estado
+        <select id="f-estado"><option value="">Todos</option><option value="pendiente">Pendientes</option><option value="aprobado">Aprobados</option><option value="rechazado">Rechazados</option><option value="cancelado">Cancelados</option></select>
+      </label>
+      <label class="fld">Buscar docente<input id="f-doc" type="search" placeholder="Nombre del docente…"></label>
+    </div>
+    <div id="ap-list"></div>
+  </section>
+</main>
+
+<div id="toast"></div>
+<div id="print-area"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+function lsR(){try{return (JSON.parse(localStorage.getItem('lv_permisos'))||[]).filter(x=>x&&!x._eliminado);}catch(_){return[];}}
+function lsW(arr){localStorage.setItem('lv_permisos',JSON.stringify(arr));}
+function guardar(reg){
+  const all=lsR().filter(x=>x.id!==reg.id); all.push(reg); lsW(all);
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_permisos',reg);
+}
+let LOGIN=null; try{LOGIN=JSON.parse(localStorage.getItem('lv_login')||'null');}catch(_){}
+const ES_COORD=!!(LOGIN&&LOGIN.esAdmin);
+const HOY=()=>new Date().toISOString().slice(0,10);
+const uid=()=>'perm-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const EST_BADGE={pendiente:'<span class="badge b-pen">⏳ Pendiente</span>',aprobado:'<span class="badge b-apr">✅ Aprobado</span>',rechazado:'<span class="badge b-rec">❌ Rechazado</span>',cancelado:'<span class="badge b-can">🚫 Cancelado</span>'};
+const fmtF=d=>{ if(!d)return ''; const [a,m,dd]=d.split('-'); return dd+'/'+m+'/'+a; };
+function rango(p){ return p.fechaIni===p.fechaFin?fmtF(p.fechaIni):fmtF(p.fechaIni)+' → '+fmtF(p.fechaFin); }
+function dias(p){ try{ return Math.round((new Date(p.fechaFin)-new Date(p.fechaIni))/86400000)+1; }catch(_){ return 1; } }
+
+/* ── tabs ── */
+document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  ['solicitar','mias','aprobar'].forEach(t=>$('#tab-'+t).classList.toggle('hide',t!==b.dataset.tab));
+  render();
+}));
+if(ES_COORD)$('#tab-btn-aprobar').classList.remove('hide');
+
+/* ── solicitar ── */
+$('#s-ini').value=HOY(); $('#s-fin').value=HOY();
+$('#s-ini').addEventListener('change',()=>{ if($('#s-fin').value<$('#s-ini').value)$('#s-fin').value=$('#s-ini').value; });
+$('#s-jornada').addEventListener('change',function(){ const p=this.value==='parcial'; $('#w-hini').classList.toggle('hide',!p); $('#w-hfin').classList.toggle('hide',!p); });
+$('#btn-enviar').addEventListener('click',()=>{
+  const motivo=$('#s-motivo').value.trim();
+  if(!motivo) return toast('Escribe el motivo del permiso');
+  if(!$('#s-ini').value||!$('#s-fin').value) return toast('Indica las fechas');
+  if($('#s-fin').value<$('#s-ini').value) return toast('La fecha final no puede ser antes de la inicial');
+  const jornada=$('#s-jornada').value;
+  const reg={ id:uid(), docenteId:LOGIN&&LOGIN.docenteId, docente:(LOGIN&&LOGIN.nombre)||'Docente',
+    tipo:$('#s-tipo').value, fechaIni:$('#s-ini').value, fechaFin:$('#s-fin').value,
+    jornada, horaIni:jornada==='parcial'?$('#s-hini').value:'', horaFin:jornada==='parcial'?$('#s-hfin').value:'',
+    motivo, cubre:$('#s-cubre').value.trim(), estado:'pendiente', respuesta:'', respondidoPor:'', respondidoEn:'',
+    creado:Date.now() };
+  guardar(reg);
+  $('#s-motivo').value='';$('#s-cubre').value='';
+  toast('📨 Solicitud enviada a Coordinación');
+  document.querySelector('[data-tab="mias"]').click();
+});
+
+/* ── render ── */
+function cardSolicitud(p, esCoord){
+  const horas=p.jornada==='parcial'?` · ${esc(p.horaIni)}–${esc(p.horaFin)}`:'';
+  return `<div class="sol">
+    <div class="top">
+      <strong>${esCoord?('👤 '+esc(p.docente)+' — '):''}${esc(p.tipo)}</strong>
+      ${EST_BADGE[p.estado]||''}
+    </div>
+    <div class="meta">📅 ${rango(p)} (${dias(p)} día${dias(p)>1?'s':''}${horas}) · solicitado ${new Date(p.creado).toLocaleDateString('es')}</div>
+    <div style="font-size:.86rem;margin-top:6px">${esc(p.motivo)}</div>
+    ${p.cubre?`<div class="meta" style="margin-top:4px">🔄 Cobertura sugerida: ${esc(p.cubre)}</div>`:''}
+    ${p.respuesta||p.respondidoPor?`<div class="resp"><b>${p.estado==='aprobado'?'✅':'❌'} Coordinación${p.respondidoPor?' ('+esc(p.respondidoPor)+')':''}:</b> ${esc(p.respuesta||'Sin comentario')} <span class="meta">· ${p.respondidoEn?new Date(p.respondidoEn).toLocaleDateString('es'):''}</span></div>`:''}
+    <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+      ${!esCoord&&p.estado==='pendiente'?`<button class="btn sm sec" onclick="cancelar('${p.id}')">🚫 Cancelar solicitud</button>`:''}
+      ${p.estado==='aprobado'?`<button class="btn sm sec" onclick="imprimir('${p.id}')">🖨️ Imprimir formato</button>`:''}
+      ${esCoord&&p.estado==='pendiente'?`
+        <button class="btn sm ok" onclick="responder('${p.id}','aprobado')">✅ Aprobar</button>
+        <button class="btn sm bad" onclick="responder('${p.id}','rechazado')">❌ Rechazar</button>`:''}
+    </div>
+  </div>`;
+}
+function render(){
+  // mis solicitudes
+  const mias=lsR().filter(p=>p.docenteId===(LOGIN&&LOGIN.docenteId)).sort((a,b)=>b.creado-a.creado);
+  $('#mias-list').innerHTML=mias.length?mias.map(p=>cardSolicitud(p,false)).join(''):'<div class="empty">🗓️ Aún no has solicitado permisos. Crea el primero en la pestaña "Solicitar".</div>';
+  // aprobaciones
+  if(ES_COORD){
+    let todas=lsR().sort((a,b)=>(a.estado==='pendiente'?0:1)-(b.estado==='pendiente'?0:1)||b.creado-a.creado);
+    const fe=$('#f-estado').value, fd=($('#f-doc').value||'').toLowerCase();
+    if(fe) todas=todas.filter(p=>p.estado===fe);
+    if(fd) todas=todas.filter(p=>String(p.docente||'').toLowerCase().includes(fd));
+    $('#ap-list').innerHTML=todas.length?todas.map(p=>cardSolicitud(p,true)).join(''):'<div class="empty">Sin solicitudes con esos filtros.</div>';
+    const all=lsR(); const np=all.filter(p=>p.estado==='pendiente').length;
+    const anio=new Date().getFullYear();
+    const diasAno=all.filter(p=>p.estado==='aprobado'&&String(p.fechaIni||'').startsWith(anio)).reduce((a,p)=>a+dias(p),0);
+    $('#ap-stats').innerHTML=`
+      <div class="stat"><b>${np}</b>Pendientes</div>
+      <div class="stat"><b>${all.filter(p=>p.estado==='aprobado').length}</b>Aprobados</div>
+      <div class="stat"><b>${all.filter(p=>p.estado==='rechazado').length}</b>Rechazados</div>
+      <div class="stat"><b>${diasAno}</b>Días aprobados en ${anio}</div>`;
+    $('#n-pend').textContent=np?('('+np+')'):'';
+  }
+}
+window.cancelar=id=>{
+  const p=lsR().find(x=>x.id===id); if(!p||p.estado!=='pendiente')return;
+  if(!confirm('¿Cancelar esta solicitud?'))return;
+  p.estado='cancelado'; guardar(p); render(); toast('Solicitud cancelada');
+};
+window.responder=(id,estado)=>{
+  const p=lsR().find(x=>x.id===id); if(!p||p.estado!=='pendiente')return;
+  const comentario=prompt(estado==='aprobado'?'Comentario para el docente (opcional):':'Motivo del rechazo (recomendado):','');
+  if(comentario===null) return;
+  p.estado=estado; p.respuesta=comentario.trim(); p.respondidoPor=(LOGIN&&LOGIN.nombre)||'Coordinación'; p.respondidoEn=Date.now();
+  guardar(p); render(); toast(estado==='aprobado'?'✅ Permiso aprobado':'❌ Permiso rechazado');
+};
+window.imprimir=id=>{
+  const p=lsR().find(x=>x.id===id); if(!p)return;
+  const inst=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde';
+  $('#print-area').innerHTML=`
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div>
+      <h1>${esc(inst)}</h1><div>FORMATO DE PERMISO DOCENTE — Año ${new Date().getFullYear()}</div>
+    </div></div>
+    <table class="p-tabla">
+      <tr><th>Docente</th><td>${esc(p.docente)}</td></tr>
+      <tr><th>Tipo de permiso</th><td>${esc(p.tipo)}</td></tr>
+      <tr><th>Fecha(s)</th><td>${rango(p)} (${dias(p)} día${dias(p)>1?'s':''})${p.jornada==='parcial'?' · Jornada parcial: '+esc(p.horaIni)+' a '+esc(p.horaFin):''}</td></tr>
+      <tr><th>Motivo</th><td>${esc(p.motivo)}</td></tr>
+      ${p.cubre?`<tr><th>Cobertura de clases</th><td>${esc(p.cubre)}</td></tr>`:''}
+      <tr><th>Estado</th><td>APROBADO por ${esc(p.respondidoPor||'Coordinación')} el ${p.respondidoEn?new Date(p.respondidoEn).toLocaleDateString('es'):''}</td></tr>
+      ${p.respuesta?`<tr><th>Observación</th><td>${esc(p.respuesta)}</td></tr>`:''}
+    </table>
+    <div class="firmas"><div>Firma del docente</div><div>Coordinación / Rectoría</div></div>`;
+  window.print();
+};
+['#f-estado','#f-doc'].forEach(s=>{const el=$(s); if(el)el.addEventListener('input',render);});
+render();
+// refrescar cuando llegue sincronización nueva
+setInterval(()=>{ if(!document.hidden) render(); }, 20000);
+</script>
+</body>
+</html>
