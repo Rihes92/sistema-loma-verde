@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tabla Periódica Interactiva — SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_herramientas','lv_cursos','lv_estudiantes','lv_calificaciones'];</script>
+<script src="../../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.4}
+  header.appbar{background:var(--primary);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;flex:1}
+  header.appbar a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:1200px;margin:0 auto;padding:14px}
+  .modos{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .modos button{border:1px solid var(--border);background:#fff;border-radius:9px;padding:9px 16px;font-size:.85rem;font-weight:700;cursor:pointer;color:var(--muted)}
+  .modos button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+  #reto-bar{background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:12px;display:none;align-items:center;gap:12px;flex-wrap:wrap;font-size:.95rem}
+  #reto-bar.on{display:flex}
+  #reto-bar b{color:var(--primary)}
+  .tp{display:grid;grid-template-columns:repeat(18,minmax(34px,1fr));gap:3px;min-width:760px}
+  .tpwrap{overflow-x:auto;padding-bottom:8px}
+  .el{aspect-ratio:1;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-weight:700;transition:transform .08s;border:1px solid rgba(0,0,0,.08);user-select:none}
+  .el:hover{transform:scale(1.12);z-index:2;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+  .el .z{font-size:.5rem;font-weight:600;opacity:.7}
+  .el .s{font-size:.8rem}
+  .el.acierto{outline:3px solid #16a34a}
+  .el.fallo{outline:3px solid #dc2626}
+  .hueco{visibility:hidden}
+  .leyenda{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;font-size:.7rem}
+  .leyenda span{display:inline-flex;align-items:center;gap:5px}
+  .leyenda i{width:13px;height:13px;border-radius:4px;display:inline-block}
+  /* categorías */
+  .c-alc{background:#fecaca}.c-alct{background:#fed7aa}.c-tra{background:#fde68a}.c-pos{background:#d9f99d}
+  .c-met{background:#a7f3d0}.c-nom{background:#bae6fd}.c-hal{background:#c7d2fe}.c-gas{background:#e9d5ff}
+  .c-lan{background:#fbcfe8}.c-act{background:#fda4af}
+  #panel{position:fixed;inset:auto 0 0 0;background:#fff;border-top:3px solid var(--primary);box-shadow:0 -8px 30px rgba(0,0,0,.2);padding:16px 20px;transform:translateY(105%);transition:transform .2s;z-index:50;max-height:46vh;overflow:auto}
+  #panel.open{transform:none}
+  #panel .cab{display:flex;gap:14px;align-items:center;margin-bottom:8px}
+  #panel .simbolo{width:64px;height:64px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:1.5rem;border:1px solid rgba(0,0,0,.1)}
+  #panel h2{font-size:1.2rem;color:var(--primary)}
+  #panel .datos{font-size:.85rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  #panel .uso{font-size:.92rem}
+  #panel .cerrar{margin-left:auto;border:0;background:#f1f5f9;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:700}
+  .toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:9px;font-size:.85rem;opacity:0;transition:.25s;z-index:99;pointer-events:none}
+  .toast.show{opacity:1}
+  #fin{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:12px;display:none}
+  #fin.on{display:block}
+  #fin select{padding:8px;border:1px solid #cbd5e1;border-radius:8px;margin:4px 6px 4px 0}
+  #fin .btn{border:0;border-radius:8px;padding:9px 14px;font-weight:700;cursor:pointer;background:var(--primary);color:#fff;margin-top:8px}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>⚗️ Tabla Periódica Interactiva</h1>
+  <a href="../15-herramientas.html">← Herramientas</a>
+  <a href="../../index.html">← Portal</a>
+</header>
+<main>
+  <div class="modos">
+    <button id="m-explorar" class="active">🔍 Explorar</button>
+    <button id="m-reto">🎯 Reto: encuentra el elemento</button>
+  </div>
+  <div id="reto-bar">
+    <span id="reto-preg">…</span>
+    <span style="margin-left:auto">Ronda <b id="reto-n">1</b>/10 · Aciertos <b id="reto-ok">0</b></span>
+  </div>
+  <div class="tpwrap"><div class="tp" id="tabla"></div></div>
+  <div class="leyenda">
+    <span><i class="c-alc"></i>Alcalinos</span><span><i class="c-alct"></i>Alcalinotérreos</span>
+    <span><i class="c-tra"></i>Transición</span><span><i class="c-pos"></i>Postransición</span>
+    <span><i class="c-met"></i>Metaloides</span><span><i class="c-nom"></i>No metales</span>
+    <span><i class="c-hal"></i>Halógenos</span><span><i class="c-gas"></i>Gases nobles</span>
+    <span><i class="c-lan"></i>Lantánidos</span><span><i class="c-act"></i>Actínidos</span>
+  </div>
+  <div id="fin">
+    <h3 id="fin-txt" style="color:var(--primary);margin-bottom:6px"></h3>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px">Si quieres, registra la nota del reto en el sistema:</p>
+    <select id="f-curso"></select><select id="f-est"></select>
+    <select id="f-per"><option value="1">Periodo 1</option><option value="2">Periodo 2</option><option value="3">Periodo 3</option></select>
+    <br><button class="btn" id="f-enviar">📊 Guardar y enviar a la planilla</button>
+    <button class="btn" style="background:#e2e8f0;color:#1f2937" onclick="iniciarReto()">🔁 Otro reto</button>
+  </div>
+</main>
+<div id="panel"><div class="cab"><div class="simbolo" id="p-sim">H</div><div><h2 id="p-nom">…</h2><div class="datos"><span id="p-z"></span><span id="p-masa"></span><span id="p-cat"></span></div></div><button class="cerrar" onclick="document.getElementById('panel').classList.remove('open')">✕</button></div><div class="uso" id="p-uso"></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="herramientas-comun.js"></script>
+<script>
+const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);};
+// [símbolo, nombre, masa, categoría, uso/curiosidad]
+const ELEM=[
+["H","Hidrógeno",1.008,"nom","El más abundante del universo; combustible de las estrellas y del agua (H₂O)."],
+["He","Helio",4.003,"gas","Infla globos y enfría resonancias magnéticas; hace la voz aguda."],
+["Li","Litio",6.94,"alc","Baterías de celulares y carros eléctricos."],
+["Be","Berilio",9.012,"alct","Resortes de precisión y ventanas de rayos X."],
+["B","Boro",10.81,"met","Vidrio resistente (Pyrex) y detergentes bórax."],
+["C","Carbono",12.011,"nom","Base de la vida: desde el grafito del lápiz hasta el diamante."],
+["N","Nitrógeno",14.007,"nom","78% del aire; fertilizantes que alimentan al mundo."],
+["O","Oxígeno",15.999,"nom","Lo respiras: 21% del aire; esencial para la combustión."],
+["F","Flúor",18.998,"hal","Protege tus dientes en la crema dental."],
+["Ne","Neón",20.18,"gas","Letreros luminosos rojos y anaranjados."],
+["Na","Sodio",22.99,"alc","En la sal de cocina (NaCl); reacciona violento con agua."],
+["Mg","Magnesio",24.305,"alct","Arde con luz blanca; en la clorofila de las plantas."],
+["Al","Aluminio",26.982,"pos","Ollas, latas y aviones: liviano y no se oxida fácil."],
+["Si","Silicio",28.085,"met","Chips de computadores y celulares; en la arena."],
+["P","Fósforo",30.974,"nom","Cabezas de fósforos y en el ADN y los huesos."],
+["S","Azufre",32.06,"nom","Olor a huevo podrido; vulcaniza el caucho de llantas."],
+["Cl","Cloro",35.45,"hal","Desinfecta piscinas y el agua potable."],
+["Ar","Argón",39.948,"gas","Dentro de los bombillos para que no se queme el filamento."],
+["K","Potasio",39.098,"alc","En el banano; esencial para músculos y nervios."],
+["Ca","Calcio",40.078,"alct","Huesos, dientes, cal y cemento."],
+["Sc","Escandio",44.956,"tra","Aleaciones ligeras en bicicletas y aviones."],
+["Ti","Titanio",47.867,"tra","Prótesis médicas y relojes: fuerte y liviano."],
+["V","Vanadio",50.942,"tra","Endurece el acero de herramientas."],
+["Cr","Cromo",51.996,"tra","El brillo de los rines y grifos cromados."],
+["Mn","Manganeso",54.938,"tra","Rieles de tren y pilas alcalinas."],
+["Fe","Hierro",55.845,"tra","El metal de la civilización: acero, puentes y tu sangre."],
+["Co","Cobalto",58.933,"tra","Baterías recargables y color azul cobalto."],
+["Ni","Níquel",58.693,"tra","Monedas y acero inoxidable."],
+["Cu","Cobre",63.546,"tra","Cables eléctricos; Colombia lo explota en Córdoba."],
+["Zn","Zinc",65.38,"tra","Protege el hierro (galvanizado) y en bloqueadores solares."],
+["Ga","Galio",69.723,"pos","Se derrite en tu mano (30°C); en LEDs."],
+["Ge","Germanio",72.63,"met","Fibra óptica y visores nocturnos."],
+["As","Arsénico",74.922,"met","Famoso veneno; hoy en semiconductores."],
+["Se","Selenio",78.971,"nom","Fotoceldas y champús anticaspa."],
+["Br","Bromo",79.904,"hal","Líquido rojizo; retardante de llamas."],
+["Kr","Kriptón",83.798,"gas","Flashes fotográficos de alta velocidad."],
+["Rb","Rubidio",85.468,"alc","Relojes atómicos ultraprecisos."],
+["Sr","Estroncio",87.62,"alct","El rojo brillante de los fuegos artificiales."],
+["Y","Itrio",88.906,"tra","Pantallas LED y láseres."],
+["Zr","Circonio",91.224,"tra","Joyas (circonia cúbica) y reactores nucleares."],
+["Nb","Niobio",92.906,"tra","Imanes superconductores de trenes levitantes."],
+["Mo","Molibdeno",95.95,"tra","Aceros de motores; nutriente de plantas."],
+["Tc","Tecnecio",98,"tra","Primer elemento artificial; diagnóstico médico."],
+["Ru","Rutenio",101.07,"tra","Endurece contactos eléctricos."],
+["Rh","Rodio",102.906,"tra","El metal más caro: catalizadores de carros."],
+["Pd","Paladio",106.42,"tra","Convierte gases tóxicos del exosto en inofensivos."],
+["Ag","Plata",107.868,"tra","Joyas, espejos y el mejor conductor eléctrico."],
+["Cd","Cadmio",112.414,"tra","Baterías recargables; tóxico contaminante."],
+["In","Indio",114.818,"pos","Pantallas táctiles de celulares."],
+["Sn","Estaño",118.71,"pos","Soldaduras y el interior de las latas."],
+["Sb","Antimonio",121.76,"met","Retardante de llamas en plásticos."],
+["Te","Telurio",127.6,"met","Paneles solares y DVDs regrabables."],
+["I","Yodo",126.904,"hal","Desinfecta heridas; la sal yodada evita el bocio."],
+["Xe","Xenón",131.293,"gas","Faros de carros de alta gama y anestesia."],
+["Cs","Cesio",132.905,"alc","Define el segundo en los relojes atómicos."],
+["Ba","Bario",137.327,"alct","Contraste para radiografías del estómago."],
+["La","Lantano",138.905,"lan","Lentes de cámaras y baterías híbridas."],
+["Ce","Cerio",140.116,"lan","Piedras de encendedor y pulido de vidrio."],
+["Pr","Praseodimio",140.908,"lan","Imanes potentes y vidrio de soldador."],
+["Nd","Neodimio",144.242,"lan","Los imanes más fuertes: audífonos y motores."],
+["Pm","Prometio",145,"lan","Radiactivo; pinturas luminosas antiguas."],
+["Sm","Samario",150.36,"lan","Imanes que resisten altas temperaturas."],
+["Eu","Europio",151.964,"lan","El rojo de las pantallas y billetes de euro (antifalsificación)."],
+["Gd","Gadolinio",157.25,"lan","Contraste en resonancias magnéticas."],
+["Tb","Terbio",158.925,"lan","El verde de las pantallas."],
+["Dy","Disprosio",162.5,"lan","Imanes de turbinas eólicas."],
+["Ho","Holmio",164.93,"lan","Láseres quirúrgicos."],
+["Er","Erbio",167.259,"lan","Amplifica señales en fibra óptica submarina."],
+["Tm","Tulio",168.934,"lan","Rayos X portátiles."],
+["Yb","Iterbio",173.045,"lan","Relojes atómicos de nueva generación."],
+["Lu","Lutecio",174.967,"lan","Detección de cáncer (PET scan)."],
+["Hf","Hafnio",178.49,"tra","Barras de control de reactores nucleares."],
+["Ta","Tantalio",180.948,"tra","Capacitores de celulares; coltán colombiano."],
+["W","Wolframio",183.84,"tra","El metal que más resiste calor: filamentos y brocas."],
+["Re","Renio",186.207,"tra","Turbinas de aviones de combate."],
+["Os","Osmio",190.23,"tra","El metal más denso que existe."],
+["Ir","Iridio",192.217,"tra","Llegó en el meteorito que extinguió los dinosaurios."],
+["Pt","Platino",195.084,"tra","Joyas finas; Colombia fue gran productor (Chocó)."],
+["Au","Oro",196.967,"tra","Joyas, electrónica y la fiebre que marcó a Colombia."],
+["Hg","Mercurio",200.592,"tra","Único metal líquido; termómetros antiguos; contamina ríos mineros."],
+["Tl","Talio",204.38,"pos","Muy tóxico; detectores infrarrojos."],
+["Pb","Plomo",207.2,"pos","Baterías de carro; bloquea rayos X; tóxico."],
+["Bi","Bismuto",208.98,"pos","Cristales de colores arcoíris; medicina estomacal."],
+["Po","Polonio",209,"pos","Radiactivo; descubierto por Marie Curie."],
+["At","Astato",210,"hal","El elemento natural más raro de la Tierra."],
+["Rn","Radón",222,"gas","Gas radiactivo natural de rocas y sótanos."],
+["Fr","Francio",223,"alc","Vive menos de 22 minutos; extremadamente raro."],
+["Ra","Radio",226,"alct","Brillaba en relojes antiguos; descubierto por los Curie."],
+["Ac","Actinio",227,"act","Brilla azul en la oscuridad; terapias contra el cáncer."],
+["Th","Torio",232.038,"act","Posible combustible nuclear del futuro."],
+["Pa","Protactinio",231.036,"act","Raro y radiactivo; datación de sedimentos marinos."],
+["U","Uranio",238.029,"act","Combustible de centrales nucleares."],
+["Np","Neptunio",237,"act","Primer elemento transuránico."],
+["Pu","Plutonio",244,"act","Energía de sondas espaciales como Voyager."],
+["Am","Americio",243,"act","Dentro de los detectores de humo."],
+["Cm","Curio",247,"act","Honra a Marie y Pierre Curie."],
+["Bk","Berkelio",247,"act","Creado en laboratorio (Berkeley)."],
+["Cf","Californio",251,"act","Busca oro y petróleo con neutrones."],
+["Es","Einstenio",252,"act","Honra a Albert Einstein."],
+["Fm","Fermio",257,"act","Honra a Enrico Fermi."],
+["Md","Mendelevio",258,"act","Honra a Mendeléyev, creador de esta tabla."],
+["No","Nobelio",259,"act","Honra a Alfred Nobel."],
+["Lr","Laurencio",262,"act","Cierra los actínidos."],
+["Rf","Rutherfordio",267,"tra","Sintético; vive segundos."],
+["Db","Dubnio",268,"tra","Sintético; honra al laboratorio de Dubná."],
+["Sg","Seaborgio",269,"tra","Honra a Glenn Seaborg."],
+["Bh","Bohrio",270,"tra","Honra a Niels Bohr."],
+["Hs","Hasio",277,"tra","Sintético; química de átomos individuales."],
+["Mt","Meitnerio",278,"tra","Honra a Lise Meitner."],
+["Ds","Darmstatio",281,"tra","Sintético (Darmstadt, Alemania)."],
+["Rg","Roentgenio",282,"tra","Honra a Röntgen, descubridor de los rayos X."],
+["Cn","Copernicio",285,"tra","Honra a Copérnico."],
+["Nh","Nihonio",286,"pos","Primer elemento descubierto en Asia (Japón)."],
+["Fl","Flerovio",289,"pos","Sintético; vive fracciones de segundo."],
+["Mc","Moscovio",290,"pos","Honra a Moscú."],
+["Lv","Livermorio",293,"pos","Sintético (Livermore, EE.UU.)."],
+["Ts","Teneso",294,"hal","Honra a Tennessee."],
+["Og","Oganesón",294,"gas","El elemento 118: cierra la tabla actual."]];
+const CATN={alc:"Metal alcalino",alct:"Alcalinotérreo",tra:"Metal de transición",pos:"Metal postransición",met:"Metaloide",nom:"No metal",hal:"Halógeno",gas:"Gas noble",lan:"Lantánido",act:"Actínido"};
+// posición (columna) por Z
+function col(z){
+  if(z===1)return 1; if(z===2)return 18;
+  const p=[ [3,2,1],[5,10,13],[11,12,1],[13,18,13],[19,20,1],[21,30,3],[31,36,13],[37,38,1],[39,48,3],[49,54,13],[55,56,1],[72,80,4],[81,86,13],[87,88,1],[104,112,4],[113,118,13] ];
+  for(const [a,b,c] of p){ if(z>=a&&z<=b) return c+(z-a); }
+  if(z>=57&&z<=71) return 3+(z-57); // fila lantánidos
+  if(z>=89&&z<=103) return 3+(z-89);
+  return 1;
+}
+function fila(z){
+  if(z<=2)return 1; if(z<=10)return 2; if(z<=18)return 3; if(z<=36)return 4; if(z<=54)return 5;
+  if(z>=57&&z<=71)return 9; if(z<=86)return 6; if(z>=89&&z<=103)return 10; return z<=88?7:7;
+}
+const tabla=document.getElementById('tabla');
+ELEM.forEach((e,i)=>{
+  const z=i+1;
+  const d=document.createElement('div');
+  d.className='el c-'+e[3];
+  d.style.gridColumn=col(z); d.style.gridRow=fila(z);
+  d.innerHTML=`<span class="z">${z}</span><span class="s">${e[0]}</span>`;
+  d.title=e[1]; d.dataset.z=z;
+  d.addEventListener('click',()=>clicElemento(z,d));
+  tabla.appendChild(d);
+});
+
+let modo='explorar';
+function clicElemento(z,el){
+  if(modo==='reto'){ evaluarReto(z,el); return; }
+  const e=ELEM[z-1];
+  document.getElementById('p-sim').textContent=e[0];
+  document.getElementById('p-sim').className='simbolo c-'+e[3];
+  document.getElementById('p-nom').textContent=z+'. '+e[1];
+  document.getElementById('p-z').textContent='Número atómico: '+z;
+  document.getElementById('p-masa').textContent='Masa: '+e[2];
+  document.getElementById('p-cat').textContent=CATN[e[3]];
+  document.getElementById('p-uso').textContent='💡 '+e[4];
+  document.getElementById('panel').classList.add('open');
+}
+
+/* ── Reto ── */
+let reto=null;
+document.getElementById('m-explorar').onclick=()=>{ modo='explorar'; pintarModo(); };
+document.getElementById('m-reto').onclick=()=>{ modo='reto'; pintarModo(); iniciarReto(); };
+function pintarModo(){
+  document.getElementById('m-explorar').classList.toggle('active',modo==='explorar');
+  document.getElementById('m-reto').classList.toggle('active',modo==='reto');
+  document.getElementById('reto-bar').classList.toggle('on',modo==='reto');
+  if(modo==='explorar') document.getElementById('fin').classList.remove('on');
+}
+window.iniciarReto=function(){
+  const idx=[...Array(ELEM.length).keys()];
+  for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];}
+  reto={rondas:idx.slice(0,10),n:0,ok:0};
+  document.getElementById('fin').classList.remove('on');
+  pintarPregunta();
+};
+function pintarPregunta(){
+  const z=reto.rondas[reto.n]+1, e=ELEM[z-1];
+  const porNombre=Math.random()<0.6;
+  reto.objetivo=z;
+  document.getElementById('reto-preg').innerHTML=porNombre
+    ? '🔎 Encuentra: <b>'+e[1]+'</b>'
+    : '🔎 Encuentra el elemento cuyo uso es: <b>'+e[4]+'</b>';
+  document.getElementById('reto-n').textContent=reto.n+1;
+  document.getElementById('reto-ok').textContent=reto.ok;
+}
+function evaluarReto(z,el){
+  if(!reto) return;
+  if(z===reto.objetivo){ reto.ok++; el.classList.add('acierto'); toast('✅ ¡Correcto! '+ELEM[z-1][1]); }
+  else { el.classList.add('fallo'); toast('❌ Ese es '+ELEM[z-1][1]+'. Era '+ELEM[reto.objetivo-1][1]); }
+  setTimeout(()=>{ document.querySelectorAll('.el').forEach(x=>x.classList.remove('acierto','fallo'));
+    reto.n++;
+    if(reto.n>=10) finReto(); else pintarPregunta();
+  },900);
+}
+let notaReto=0;
+function finReto(){
+  notaReto=Math.max(1,Math.round((1+(reto.ok/10)*4)*10)/10);
+  document.getElementById('fin-txt').textContent=`🏁 Reto terminado: ${reto.ok}/10 aciertos → nota ${notaReto.toFixed(1)}`;
+  document.getElementById('fin').classList.add('on');
+  document.getElementById('reto-ok').textContent=reto.ok;
+}
+const sel=LV_HERR.selectorEstudiante('f-curso','f-est');
+document.getElementById('f-enviar').onclick=()=>{
+  const c=sel.curso(), e=sel.estudiante();
+  if(!c||!e) return toast('Elige curso y estudiante');
+  LV_HERR.guardarResultado({herramienta:'Tabla Periódica',estudiante:e.nombre,estId:e.id,curso:(c.grado||'')+(c.grupo?'-'+c.grupo:''),grado:c.grado,grupo:c.grupo,nota:notaReto,nivel:reto.ok+'/10',detalle:{aciertos:reto.ok}});
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id,estId:e.id,periodo:document.getElementById('f-per').value,nota:notaReto,etiqueta:'Tabla Periódica'});
+  toast(r.msg);
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Colombia Interactiva — SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_herramientas','lv_cursos','lv_estudiantes','lv_calificaciones'];</script>
+<script src="../../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--bg:#f1f5f9;--text:#1f2937;--muted:#475569;--border:#e2e8f0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;flex:1}
+  header.appbar a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:960px;margin:0 auto;padding:16px}
+  .modos{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+  .modos button{border:1px solid var(--border);background:#fff;border-radius:9px;padding:9px 16px;font-size:.85rem;font-weight:700;cursor:pointer;color:var(--muted)}
+  .modos button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .region{margin-bottom:14px}
+  .region h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .region h3::after{content:'';flex:1;height:1px;background:var(--border)}
+  .deptos{display:flex;gap:8px;flex-wrap:wrap}
+  .dep{border:2px solid transparent;border-radius:10px;padding:8px 14px;font-size:.85rem;font-weight:700;cursor:pointer;transition:transform .08s}
+  .dep:hover{transform:translateY(-2px)}
+  .r-car{background:#fef3c7;color:#92400e}.r-and{background:#dcfce7;color:#166534}.r-pac{background:#cffafe;color:#0e7490}
+  .r-ori{background:#fde68a;color:#854d0e}.r-ama{background:#bbf7d0;color:#14532d}.r-ins{background:#e0e7ff;color:#3730a3}
+  #panel{background:#fff;border:1px solid var(--border);border-left:5px solid var(--primary);border-radius:12px;padding:16px;margin-bottom:14px;display:none}
+  #panel.open{display:block}
+  #panel h2{color:var(--primary);font-size:1.1rem;margin-bottom:4px}
+  #panel .meta{font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  /* quiz */
+  #quiz{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px;display:none}
+  #quiz.open{display:block}
+  #quiz .preg{font-size:1.15rem;font-weight:800;color:var(--primary);margin:6px 0 12px}
+  #quiz .ops{display:flex;gap:8px;flex-wrap:wrap}
+  #quiz .ops button{border:2px solid var(--border);background:#fff;border-radius:10px;padding:11px 18px;font-weight:700;cursor:pointer;font-size:.95rem}
+  #quiz .ops button.ok{background:#dcfce7;border-color:#16a34a}
+  #quiz .ops button.mal{background:#fee2e2;border-color:#dc2626}
+  #quiz .marc{font-size:.8rem;color:var(--muted)}
+  select,button.btn{padding:9px 13px;border-radius:9px;font-size:.9rem;font-family:inherit}
+  select{border:1px solid #cbd5e1;background:#fff;margin:3px 6px 3px 0}
+  button.btn{border:0;background:var(--primary);color:#fff;font-weight:700;cursor:pointer}
+  .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:9px;font-size:.85rem;opacity:0;transition:.25s;z-index:99;pointer-events:none}
+  .toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🇨🇴 Colombia Interactiva</h1>
+  <a href="../15-herramientas.html">← Herramientas</a>
+  <a href="../../index.html">← Portal</a>
+</header>
+<main>
+  <div class="modos">
+    <button id="m-exp" class="active">🔍 Explorar departamentos</button>
+    <button id="m-quiz">🎯 Quiz de capitales</button>
+  </div>
+  <div id="panel"></div>
+  <div id="quiz">
+    <div class="marc">Pregunta <b id="q-n">1</b>/10 · ✅ <b id="q-ok">0</b></div>
+    <div class="preg" id="q-preg"></div>
+    <div class="ops" id="q-ops"></div>
+    <div id="q-fin" style="display:none;margin-top:12px">
+      <h3 id="q-fintxt" style="color:var(--primary);margin-bottom:8px"></h3>
+      <select id="f-curso"></select><select id="f-est"></select>
+      <select id="f-per"><option value="1">Periodo 1</option><option value="2">Periodo 2</option><option value="3">Periodo 3</option></select>
+      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" id="f-enviar">📊 Guardar y enviar a la planilla</button>
+        <button class="btn" style="background:#e2e8f0;color:#1f2937" onclick="iniciarQuiz()">🔁 Otro quiz</button>
+      </div>
+    </div>
+  </div>
+  <div id="regiones"></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="herramientas-comun.js"></script>
+<script>
+const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);};
+// [departamento, capital, dato]
+const REGIONES={
+ "Caribe":{cls:"r-car",e:"🏖️",deps:[
+  ["Atlántico","Barranquilla","Puerta de Oro de Colombia; Carnaval de Barranquilla (Patrimonio de la Humanidad)."],
+  ["Bolívar","Cartagena","Ciudad amurallada, Patrimonio de la Humanidad."],
+  ["Cesar","Valledupar","Cuna del vallenato y del Festival de la Leyenda Vallenata."],
+  ["Córdoba","Montería","Nuestro departamento: ganadería, río Sinú y sombrero vueltiao (zenú)."],
+  ["La Guajira","Riohacha","Desierto, cultura wayuu y el Cabo de la Vela."],
+  ["Magdalena","Santa Marta","La ciudad más antigua de Colombia; Sierra Nevada."],
+  ["Sucre","Sincelejo","Sabanas, corralejas y el Golfo de Morrosquillo."],
+  ["San Andrés y Providencia","San Andrés","Mar de siete colores; cultura raizal (región insular)."]]},
+ "Andina":{cls:"r-and",e:"⛰️",deps:[
+  ["Antioquia","Medellín","Ciudad de la eterna primavera; Feria de las Flores."],
+  ["Boyacá","Tunja","Batalla del Puente de Boyacá (1819): la independencia."],
+  ["Caldas","Manizales","Eje cafetero; nevado del Ruiz."],
+  ["Cundinamarca","Bogotá","Rodea a la capital del país (Bogotá D.C., 2.600 m de altura)."],
+  ["Huila","Neiva","Desierto de la Tatacoa y Parque Arqueológico San Agustín."],
+  ["Norte de Santander","Cúcuta","Frontera con Venezuela; Congreso de Cúcuta 1821."],
+  ["Quindío","Armenia","El corazón del Eje Cafetero; Valle de Cocora y palma de cera."],
+  ["Risaralda","Pereira","Café y paisaje cultural cafetero."],
+  ["Santander","Bucaramanga","Cañón del Chicamocha; hormigas culonas."],
+  ["Tolima","Ibagué","Capital musical de Colombia; tamales y lechona."]]},
+ "Pacífica":{cls:"r-pac",e:"🌊",deps:[
+  ["Cauca","Popayán","Ciudad blanca; Semana Santa patrimonio."],
+  ["Chocó","Quibdó","El lugar más lluvioso del mundo; ballenas en Nuquí."],
+  ["Nariño","Pasto","Carnaval de Negros y Blancos; Santuario de Las Lajas."],
+  ["Valle del Cauca","Cali","Capital mundial de la salsa; caña de azúcar."]]},
+ "Orinoquía":{cls:"r-ori",e:"🐎",deps:[
+  ["Arauca","Arauca","Llanos, joropo y petróleo."],
+  ["Casanare","Yopal","Ganadería llanera y amaneceres inmensos."],
+  ["Meta","Villavicencio","La puerta al Llano; Caño Cristales, el río de 5 colores."],
+  ["Vichada","Puerto Carreño","Donde el Orinoco marca la frontera."]]},
+ "Amazonía":{cls:"r-ama",e:"🌳",deps:[
+  ["Amazonas","Leticia","Selva amazónica; frontera con Perú y Brasil."],
+  ["Caquetá","Florencia","Puerta de entrada a la Amazonía."],
+  ["Guainía","Inírida","Cerros de Mavecure y flor de Inírida."],
+  ["Guaviare","San José del Guaviare","Pinturas rupestres de Chiribiquete cerca."],
+  ["Putumayo","Mocoa","Piedemonte amazónico; valle del Sibundoy."],
+  ["Vaupés","Mitú","Selva y culturas indígenas tukano."]]}
+};
+const TODOS=[]; Object.entries(REGIONES).forEach(([reg,r])=>r.deps.forEach(d=>TODOS.push({dep:d[0],cap:d[1],dato:d[2],region:reg,cls:r.cls})));
+
+const cont=document.getElementById('regiones');
+Object.entries(REGIONES).forEach(([nombre,r])=>{
+  const div=document.createElement('div'); div.className='region';
+  div.innerHTML=`<h3>${r.e} Región ${nombre} (${r.deps.length})</h3><div class="deptos">${r.deps.map(d=>`<span class="dep ${r.cls}" data-dep="${d[0]}">${d[0]}</span>`).join('')}</div>`;
+  cont.appendChild(div);
+});
+let modo='exp';
+cont.addEventListener('click',e=>{
+  const el=e.target.closest('.dep'); if(!el)return;
+  const d=TODOS.find(x=>x.dep===el.dataset.dep); if(!d)return;
+  if(modo==='quiz'){ evaluarDep(d,el); return; }
+  const p=document.getElementById('panel');
+  p.innerHTML=`<h2>${d.dep}</h2><div class="meta">🏛️ Capital: <b>${d.cap}</b> · Región ${d.region}</div><div>💡 ${d.dato}</div>`;
+  p.classList.add('open'); scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ── Quiz ── */
+let Q=null, nota=0;
+document.getElementById('m-exp').onclick=()=>{modo='exp';pintarModo();};
+document.getElementById('m-quiz').onclick=()=>{modo='quiz';pintarModo();iniciarQuiz();};
+function pintarModo(){
+  document.getElementById('m-exp').classList.toggle('active',modo==='exp');
+  document.getElementById('m-quiz').classList.toggle('active',modo==='quiz');
+  document.getElementById('quiz').classList.toggle('open',modo==='quiz');
+  document.getElementById('panel').classList.remove('open');
+}
+window.iniciarQuiz=function(){
+  const idx=[...TODOS].sort(()=>Math.random()-.5).slice(0,10);
+  Q={rondas:idx,n:0,ok:0};
+  document.getElementById('q-fin').style.display='none';
+  document.getElementById('q-ops').style.display='flex';
+  pintarPreg();
+};
+function pintarPreg(){
+  const r=Q.rondas[Q.n];
+  Q.tipo=Math.random()<0.5?'cap':'dep';
+  document.getElementById('q-n').textContent=Q.n+1;
+  document.getElementById('q-ok').textContent=Q.ok;
+  if(Q.tipo==='cap'){
+    document.getElementById('q-preg').textContent='¿Cuál es la capital de '+r.dep+'?';
+    const ops=[r.cap,...[...TODOS].filter(x=>x.cap!==r.cap).sort(()=>Math.random()-.5).slice(0,3).map(x=>x.cap)].sort(()=>Math.random()-.5);
+    document.getElementById('q-ops').innerHTML=ops.map(o=>`<button data-v="${o}">${o}</button>`).join('');
+  } else {
+    document.getElementById('q-preg').textContent='En el tablero, toca el departamento cuya capital es '+r.cap;
+    document.getElementById('q-ops').innerHTML='<span style="font-size:.85rem;color:var(--muted)">👇 Búscalo abajo y tócalo</span>';
+  }
+  document.querySelectorAll('#q-ops button').forEach(b=>b.addEventListener('click',()=>{
+    const correcto=b.dataset.v===r.cap;
+    b.classList.add(correcto?'ok':'mal');
+    if(correcto){Q.ok++;toast('✅ ¡Correcto!');}else toast('❌ Era '+r.cap);
+    document.querySelectorAll('#q-ops button').forEach(x=>x.disabled=true);
+    setTimeout(avanzar,1000);
+  }));
+}
+function evaluarDep(d,el){
+  const r=Q.rondas[Q.n];
+  if(Q.tipo!=='dep')return;
+  const correcto=d.dep===r.dep;
+  if(correcto){Q.ok++;toast('✅ ¡Correcto! '+d.dep);}else toast('❌ Ese es '+d.dep+' ('+d.cap+'). Era '+r.dep);
+  setTimeout(avanzar,1100);
+}
+function avanzar(){ Q.n++; if(Q.n>=10) finQuiz(); else pintarPreg(); }
+function finQuiz(){
+  nota=Math.max(1,Math.round((1+(Q.ok/10)*4)*10)/10);
+  document.getElementById('q-preg').textContent='';
+  document.getElementById('q-ops').style.display='none';
+  document.getElementById('q-fin').style.display='block';
+  document.getElementById('q-fintxt').textContent=`🏁 ${Q.ok}/10 aciertos → nota ${nota.toFixed(1)}`;
+  document.getElementById('q-ok').textContent=Q.ok;
+}
+const sel=LV_HERR.selectorEstudiante('f-curso','f-est');
+document.getElementById('f-enviar').onclick=()=>{
+  const c=sel.curso(), e=sel.estudiante();
+  if(!c||!e) return toast('Elige curso y estudiante');
+  LV_HERR.guardarResultado({herramienta:'Colombia Interactiva',estudiante:e.nombre,estId:e.id,curso:(c.grado||'')+(c.grupo?'-'+c.grupo:''),grado:c.grado,grupo:c.grupo,nota,nivel:Q.ok+'/10',detalle:{}});
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id,estId:e.id,periodo:document.getElementById('f-per').value,nota,etiqueta:'Colombia'});
+  toast(r.msg);
+};
+</script>
+</body>
+</html>

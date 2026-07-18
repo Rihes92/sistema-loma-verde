@@ -3,6 +3,34 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 18, 2026 — sesión 19, test de lectura explicado + 4 herramientas interactivas)
+
+- **Test de Lectura auditado a fondo (inquietud de Francy por "2.5 y nivel C"):**
+  FUNCIONA BIEN. Nota = 55% velocidad (PPM vs rangos oficiales por grado, notas
+  Muy lenta 1.7 / Lenta 3.0 / Óptimo 4.0 / Rápido 4.8) + 45% calidad (% palabras
+  correctas: ≥92% D, ≥75% C, ≥50% B, <50% A → notas 4.7/3.5/2.5/1.5). OJO: en la
+  escala MEN/PTA la D es el MEJOR nivel y la A el más bajo. El patrón "2.5 y C"
+  = calidad buena (C=3.5) + velocidad Muy lenta (1.7) → 2.51: leen bien pero muy
+  despacio para el estándar nacional. DECISIÓN de Francy: DEJARLO ASÍ (estándar
+  estricto como línea base). Si luego quiere suavizar: subir notas de velocidad
+  y/o pesos 45/55 — está todo en test-lectura.html (notaVelocidad/notaCalidad).
+- **4 herramientas interactivas NUEVAS** (elección de Francy, todas offline,
+  todas con juego + nota opcional a la planilla vía LV_HERR):
+  `tabla-periodica.html` (118 elementos con usos cotidianos, modo reto),
+  `colombia.html` (32 deptos+Bogotá por regiones, capital y dato al tocar, quiz
+  de capitales bidireccional), `cuerpo-humano.html` (5 sistemas sobre silueta
+  SVG, juego "¿dónde está…?"), `ortografia.html` (aguda/grave/esdrújula,
+  completar b/v-c/s/z-g/j-h, ¿lleva tilde?, 2 niveles). Integradas en
+  15-herramientas.html (sección nueva "Interactivas") y en sw.js. SW **v68**.
+  Sintaxis OK en todas.
+- **Arquitectura etapa 2:** Francy preguntó si arrancamos. RESPUESTA: NO en esta
+  conversación (contexto casi agotado tras semanas de trabajo). Hacerla en
+  SESIÓN NUEVA dedicada diciendo "vamos con arquitectura etapa 2" — el plan
+  completo por fases está en el roadmap punto 5 de este archivo (Fase 0 y 1
+  hechas; falta Fase 2 por-curso, la compleja). Ese refactor NO se improvisa.
+- PENDIENTE: push (commit listo o por hacer), probar las 4 herramientas con
+  estudiantes reales, y (anotado antes) cédula en ficha del docente.
+
 ## ▶ POR DÓNDE RETOMAR (jul 16, 2026 — sesión 18, fix materia en import + módulo Permisos)
 
 - **Bug corregido (reporte de Francy):** planeadores importados en una materia

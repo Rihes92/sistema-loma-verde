@@ -19,7 +19,7 @@
 //     página diagnostico.html.
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v67';
+const CACHE = 'loma-verde-v68';
 
 const ARCHIVOS = [
   './',
@@ -62,6 +62,10 @@ const ARCHIVOS = [
   './modulos/herramientas/sociograma.html',
   './modulos/herramientas/fisica.html',
   './modulos/herramientas/tiquete.html',
+  './modulos/herramientas/tabla-periodica.html',
+  './modulos/herramientas/ortografia.html',
+  './modulos/herramientas/colombia.html',
+  './modulos/herramientas/cuerpo-humano.html',
   './Logo/sabie.svg',
   './Logo/sabie-icono.png',
   './Logo/sabie-full.jpg',

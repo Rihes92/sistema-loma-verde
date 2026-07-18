@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Cuerpo Humano — SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_herramientas','lv_cursos','lv_estudiantes','lv_calificaciones'];</script>
+<script src="../../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--bg:#f1f5f9;--text:#1f2937;--muted:#475569;--border:#e2e8f0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;flex:1}
+  header.appbar a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:900px;margin:0 auto;padding:16px;display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:16px}
+  @media(max-width:700px){main{grid-template-columns:1fr}}
+  .sistemas{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;grid-column:1/-1}
+  .sistemas button{border:1px solid var(--border);background:#fff;border-radius:9px;padding:8px 14px;font-size:.82rem;font-weight:700;cursor:pointer;color:var(--muted)}
+  .sistemas button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .lienzo{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px}
+  svg{width:100%;height:auto;display:block}
+  .organo{cursor:pointer;transition:opacity .1s;stroke:#0f172a22;stroke-width:1}
+  .organo:hover{opacity:.75;stroke:#1e3a8a;stroke-width:2}
+  .organo.acierto{stroke:#16a34a;stroke-width:4}
+  .organo.fallo{stroke:#dc2626;stroke-width:4}
+  #lado .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+  #lado h2{color:var(--primary);font-size:1.05rem;margin-bottom:6px}
+  #lado .fx{font-size:.9rem}
+  .marc{font-size:.8rem;color:var(--muted);margin-bottom:6px}
+  .preg{font-size:1.05rem;font-weight:800;color:var(--primary)}
+  select,button.btn{padding:9px 13px;border-radius:9px;font-size:.9rem;font-family:inherit}
+  select{border:1px solid #cbd5e1;background:#fff;margin:3px 6px 3px 0}
+  button.btn{border:0;background:var(--primary);color:#fff;font-weight:700;cursor:pointer}
+  .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:9px;font-size:.85rem;opacity:0;transition:.25s;z-index:99;pointer-events:none}
+  .toast.show{opacity:1}
+  .hide{display:none!important}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>🫀 El Cuerpo Humano</h1>
+  <a href="../15-herramientas.html">← Herramientas</a>
+  <a href="../../index.html">← Portal</a>
+</header>
+<main>
+  <div class="sistemas" id="sistemas"></div>
+  <div class="lienzo">
+    <svg viewBox="0 0 200 420" id="svg">
+      <!-- silueta -->
+      <path d="M100 8 a22 24 0 1 0 .01 0 M78 55 q-28 8 -30 45 l-6 95 q-1 12 10 12 q9 0 10 -10 l7 -78 l3 0 l-2 100 l-8 170 q-1 14 12 14 q11 0 12 -12 l12 -140 l4 0 l12 140 q1 12 12 12 q13 0 12 -14 l-8 -170 l-2 -100 l3 0 l7 78 q1 10 10 10 q11 0 10 -12 l-6 -95 q-2 -37 -30 -45 z"
+        fill="#fde8d7" stroke="#e2c4ab" stroke-width="2"/>
+      <g id="organos"></g>
+    </svg>
+  </div>
+  <div id="lado">
+    <div class="card" id="modo-card">
+      <button class="btn" id="btn-quiz" style="width:100%">🎯 Jugar: "¿Dónde está…?"</button>
+    </div>
+    <div class="card" id="info"><h2>Toca un órgano</h2><div class="fx" style="color:var(--muted)">Elige un sistema arriba y toca cada parte del cuerpo para conocer su función.</div></div>
+    <div class="card hide" id="quiz">
+      <div class="marc">Ronda <b id="q-n">1</b>/8 · ✅ <b id="q-ok">0</b></div>
+      <div class="preg" id="q-preg"></div>
+      <div id="q-fin" class="hide" style="margin-top:10px">
+        <h3 id="q-fintxt" style="color:var(--primary);margin-bottom:8px"></h3>
+        <select id="f-curso"></select><select id="f-est"></select>
+        <select id="f-per"><option value="1">Periodo 1</option><option value="2">Periodo 2</option><option value="3">Periodo 3</option></select>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" id="f-enviar">📊 Enviar a la planilla</button>
+          <button class="btn" style="background:#e2e8f0;color:#1f2937" id="btn-otra">🔁 Otra ronda</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="herramientas-comun.js"></script>
+<script>
+const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);};
+/* órganos: cx,cy,rx,ry (elipses posicionadas sobre la silueta 200x420) */
+const SISTEMAS={
+ "Digestivo 🍎":{color:"#f59e0b",organos:[
+  ["Boca",100,52,10,6,"Mastica y mezcla el alimento con saliva: aquí empieza la digestión."],
+  ["Esófago",100,86,5,18,"Tubo que lleva el alimento de la boca al estómago."],
+  ["Estómago",90,140,16,12,"Bolsa muscular que tritura el alimento con jugos gástricos."],
+  ["Hígado",115,128,17,10,"La fábrica química: produce bilis y filtra la sangre."],
+  ["Intestino delgado",100,175,22,18,"7 metros enrollados: absorbe los nutrientes."],
+  ["Intestino grueso",100,205,26,12,"Absorbe el agua y forma los desechos."]]},
+ "Respiratorio 🌬️":{color:"#3b82f6",organos:[
+  ["Fosas nasales",100,40,8,5,"Filtran, calientan y humedecen el aire."],
+  ["Tráquea",100,88,5,16,"Conducto de anillos que lleva el aire a los pulmones."],
+  ["Pulmón derecho",82,125,14,24,"Tiene 3 lóbulos; intercambia oxígeno por CO₂."],
+  ["Pulmón izquierdo",118,125,13,24,"Un poco más pequeño: deja espacio al corazón."],
+  ["Diafragma",100,158,26,6,"Músculo que baja y sube para que respires."]]},
+ "Circulatorio 🫀":{color:"#ef4444",organos:[
+  ["Corazón",104,122,12,13,"Bombea ~5 litros de sangre por minuto, unas 100.000 veces al día."],
+  ["Arteria aorta",100,100,6,10,"La autopista principal: saca la sangre oxigenada del corazón."],
+  ["Venas cavas",88,105,5,10,"Devuelven la sangre al corazón."],
+  ["Arteria femoral",88,270,5,25,"Lleva sangre a las piernas."],
+  ["Capilares (manos)",42,205,7,8,"Vasos tan finos que la sangre pasa célula a célula."]]},
+ "Nervioso 🧠":{color:"#8b5cf6",organos:[
+  ["Cerebro",100,26,16,13,"Centro de control: pensar, sentir, recordar, decidir."],
+  ["Cerebelo",100,42,10,5,"Coordina el equilibrio y los movimientos finos."],
+  ["Médula espinal",100,120,4,60,"Autopista de nervios dentro de la columna."],
+  ["Nervio ciático",112,265,4,30,"El nervio más largo: baja por toda la pierna."]]},
+ "Óseo 🦴":{color:"#64748b",organos:[
+  ["Cráneo",100,28,17,15,"Casco de 22 huesos que protege el cerebro."],
+  ["Columna vertebral",100,125,6,55,"33 vértebras que te mantienen erguido."],
+  ["Costillas",100,125,24,22,"Jaula que protege corazón y pulmones."],
+  ["Pelvis",100,195,20,10,"Conecta el tronco con las piernas."],
+  ["Fémur",88,265,6,35,"El hueso más largo y fuerte del cuerpo."],
+  ["Húmero",57,120,5,25,"El hueso del brazo."]]}
+};
+let sistema=Object.keys(SISTEMAS)[0];
+const tabs=document.getElementById('sistemas');
+Object.keys(SISTEMAS).forEach(s=>{
+  const b=document.createElement('button'); b.textContent=s;
+  if(s===sistema)b.classList.add('active');
+  b.onclick=()=>{sistema=s;document.querySelectorAll('.sistemas button').forEach(x=>x.classList.remove('active'));b.classList.add('active');pintar();salirQuiz();};
+  tabs.appendChild(b);
+});
+function pintar(){
+  const g=document.getElementById('organos'); g.innerHTML='';
+  const S=SISTEMAS[sistema];
+  S.organos.forEach((o,i)=>{
+    const el=document.createElementNS('http://www.w3.org/2000/svg','ellipse');
+    el.setAttribute('cx',o[1]);el.setAttribute('cy',o[2]);el.setAttribute('rx',o[3]);el.setAttribute('ry',o[4]);
+    el.setAttribute('fill',S.color);el.setAttribute('fill-opacity','0.75');
+    el.classList.add('organo');el.dataset.i=i;
+    el.addEventListener('click',()=>clicOrgano(i,el));
+    g.appendChild(el);
+  });
+}
+function clicOrgano(i,el){
+  const o=SISTEMAS[sistema].organos[i];
+  if(Q){ evaluar(i,el); return; }
+  document.getElementById('info').innerHTML=`<h2>${o[0]}</h2><div class="fx">${o[5]}</div>`;
+}
+/* quiz */
+let Q=null, nota=0;
+document.getElementById('btn-quiz').onclick=iniciarQuiz;
+document.getElementById('btn-otra').onclick=iniciarQuiz;
+function iniciarQuiz(){
+  const S=SISTEMAS[sistema];
+  const idx=[...Array(S.organos.length).keys()].sort(()=>Math.random()-.5);
+  const rondas=[]; while(rondas.length<8) rondas.push(...idx);
+  Q={rondas:rondas.slice(0,8),n:0,ok:0};
+  document.getElementById('quiz').classList.remove('hide');
+  document.getElementById('info').classList.add('hide');
+  document.getElementById('q-fin').classList.add('hide');
+  preg();
+}
+function salirQuiz(){ Q=null; document.getElementById('quiz').classList.add('hide'); document.getElementById('info').classList.remove('hide'); }
+function preg(){
+  document.getElementById('q-n').textContent=Q.n+1;
+  document.getElementById('q-ok').textContent=Q.ok;
+  document.getElementById('q-preg').textContent='👆 Toca: '+SISTEMAS[sistema].organos[Q.rondas[Q.n]][0];
+}
+function evaluar(i,el){
+  const objetivo=Q.rondas[Q.n];
+  if(i===objetivo){Q.ok++;el.classList.add('acierto');toast('✅ ¡Correcto!');}
+  else{el.classList.add('fallo');toast('❌ Ese es: '+SISTEMAS[sistema].organos[i][0]);}
+  setTimeout(()=>{
+    document.querySelectorAll('.organo').forEach(x=>x.classList.remove('acierto','fallo'));
+    Q.n++;
+    if(Q.n>=8) fin(); else preg();
+  },900);
+}
+function fin(){
+  nota=Math.max(1,Math.round((1+(Q.ok/8)*4)*10)/10);
+  document.getElementById('q-preg').textContent='';
+  document.getElementById('q-fin').classList.remove('hide');
+  document.getElementById('q-fintxt').textContent=`🏁 ${Q.ok}/8 → nota ${nota.toFixed(1)}`;
+  const _q=Q; Q=null; window._ultimo=_q;
+}
+const sel=LV_HERR.selectorEstudiante('f-curso','f-est');
+document.getElementById('f-enviar').onclick=()=>{
+  const c=sel.curso(), e=sel.estudiante();
+  if(!c||!e) return toast('Elige curso y estudiante');
+  const q=window._ultimo||{ok:0};
+  LV_HERR.guardarResultado({herramienta:'Cuerpo Humano',estudiante:e.nombre,estId:e.id,curso:(c.grado||'')+(c.grupo?'-'+c.grupo:''),grado:c.grado,grupo:c.grupo,nota,nivel:q.ok+'/8',detalle:{sistema}});
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id,estId:e.id,periodo:document.getElementById('f-per').value,nota,etiqueta:'Cuerpo Humano'});
+  toast(r.msg);
+};
+pintar();
+</script>
+</body>
+</html>

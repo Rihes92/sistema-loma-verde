@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ortografía y Acentuación — SABIE</title>
+<script src="../../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_herramientas','lv_cursos','lv_estudiantes','lv_calificaciones'];</script>
+<script src="../../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.05rem;flex:1}
+  header.appbar a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.8rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  main{max-width:640px;margin:0 auto;padding:16px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .card h2{color:var(--primary);font-size:1.02rem;margin-bottom:10px}
+  select,button.btn{padding:10px 14px;border-radius:9px;font-size:.92rem;font-family:inherit}
+  select{border:1px solid #cbd5e1;background:#fff;margin:3px 6px 3px 0}
+  button.btn{border:0;background:var(--primary);color:#fff;font-weight:700;cursor:pointer}
+  button.btn.sec{background:#e2e8f0;color:var(--text)}
+  .palabra{font-size:2.2rem;font-weight:800;text-align:center;margin:18px 0;color:var(--primary);letter-spacing:.02em}
+  .opciones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .opciones button{border:2px solid var(--border);background:#fff;border-radius:12px;padding:14px 22px;font-size:1.05rem;font-weight:700;cursor:pointer;min-width:110px;transition:transform .08s}
+  .opciones button:hover{transform:translateY(-2px);border-color:var(--primary)}
+  .opciones button.ok{background:#dcfce7;border-color:#16a34a}
+  .opciones button.mal{background:#fee2e2;border-color:#dc2626}
+  .marcador{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  .expl{text-align:center;font-size:.88rem;min-height:2.2em;color:var(--muted);margin-top:10px}
+  .hide{display:none!important}
+  .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:9px;font-size:.85rem;opacity:0;transition:.25s;z-index:99;pointer-events:none}
+  .toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../../lv-tema.css">
+</head>
+<body>
+<header class="appbar">
+  <h1>✏️ Ortografía y Acentuación</h1>
+  <a href="../15-herramientas.html">← Herramientas</a>
+  <a href="../../index.html">← Portal</a>
+</header>
+<main>
+  <div class="card" id="inicio">
+    <h2>Configurar el juego</h2>
+    <div>
+      <select id="c-modo">
+        <option value="acentos">🎵 Aguda, grave o esdrújula</option>
+        <option value="letras">🔤 Completa la letra (b/v, c/s/z, g/j, h)</option>
+        <option value="tilde">✍️ ¿Lleva tilde o no?</option>
+      </select>
+      <select id="c-nivel"><option value="1">Nivel 1 (3°–5°)</option><option value="2">Nivel 2 (6°–9°)</option></select>
+    </div>
+    <button class="btn" style="margin-top:12px" onclick="iniciar()">▶️ Comenzar (10 palabras)</button>
+  </div>
+
+  <div class="card hide" id="juego">
+    <div class="marcador"><span>Palabra <b id="j-n">1</b>/10</span><span>✅ <b id="j-ok">0</b></span></div>
+    <div class="palabra" id="j-palabra">…</div>
+    <div class="opciones" id="j-ops"></div>
+    <div class="expl" id="j-expl"></div>
+  </div>
+
+  <div class="card hide" id="fin">
+    <h2 id="fin-txt"></h2>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">Registra la nota en el sistema (opcional):</p>
+    <select id="f-curso"></select><select id="f-est"></select>
+    <select id="f-per"><option value="1">Periodo 1</option><option value="2">Periodo 2</option><option value="3">Periodo 3</option></select>
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="f-enviar">📊 Guardar y enviar a la planilla</button>
+      <button class="btn sec" onclick="location.reload()">🔁 Jugar de nuevo</button>
+    </div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="herramientas-comun.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);};
+
+/* ── Bancos de palabras ──
+   acentos: [palabra, tipo]  tipo: A=aguda G=grave E=esdrújula
+   letras:  [palabra con _, letra correcta, distractores, pista]
+   tilde:   [forma correcta, forma incorrecta, explicación]           */
+const ACENTOS={
+1:[["canción","A"],["ratón","A"],["café","A"],["reloj","A"],["papel","A"],["árbol","G"],["lápiz","G"],["mesa","G"],["libro","G"],["azúcar","G"],["pájaro","E"],["música","E"],["médico","E"],["sábado","E"],["número","E"],["corazón","A"],["ventana","G"],["teléfono","E"],["pared","A"],["cámara","E"]],
+2:[["examen","G"],["difícil","G"],["régimen","E"],["colibrí","A"],["carácter","G"],["esdrújula","E"],["compás","A"],["túnel","G"],["oxígeno","E"],["maní","A"],["huésped","G"],["súbito","E"],["ademán","A"],["fértil","G"],["hipérbole","E"],["ojalá","A"],["mármol","G"],["príncipe","E"],["anís","A"],["fósil","G"]]};
+const LETRAS={
+1:[["ca_allo","b","v","caballo"],["_aca","v","b","vaca"],["a_uja","g","j","aguja"],["_ielo","h","∅","hielo"],["ca_eza","b","v","cabeza"],["llu_ia","v","b","lluvia"],["_ueso","h","∅","hueso"],["ca_a","s","z","casa"],["lápi_","z","s","lápiz"],["_apato","z","s","zapato"],["escri_ir","b","v","escribir"],["nue_e","v","b","nueve"],["_ormiga","h","∅","hormiga"],["co_ina","c","s","cocina"],["feli_","z","s","feliz"]],
+2:[["exhi_ir","b","v","exhibir"],["her_ir","v","b","hervir"],["prote_er","g","j","proteger"],["diri_ir","g","j","dirigir"],["tra_ecto","y","ll","trayecto"],["a_undancia","b","v","abundancia"],["_échar","∅","h","echar (sin h)"],["anali_ar","z","s","analizar"],["preci_ión","s","c","precisión"],["exi_encia","g","j","exigencia"],["absor_er","b","v","absorber"],["conmo_ión","c","s","conmoción"],["_ilo","h","∅","hilo"],["cru_e","c","z","cruce"],["tra_e","j","g","traje"]]};
+const TILDE={
+1:[["mamá","mama","Aguda terminada en vocal: lleva tilde"],["árbol","arbol","Grave que NO termina en n, s o vocal: lleva tilde"],["pelota","pelóta","Grave terminada en vocal: NO lleva tilde"],["camión","camion","Aguda terminada en n: lleva tilde"],["ventana","ventána","Grave terminada en vocal: NO lleva"],["música","musica","Esdrújula: SIEMPRE lleva tilde"],["comer","comér","Aguda terminada en r: NO lleva"],["sábado","sabado","Esdrújula: siempre lleva"],["feliz","felíz","Aguda terminada en z: NO lleva"],["lápiz","lapiz","Grave que no termina en n/s/vocal: lleva"],["corazón","corazon","Aguda en n: lleva"],["escuela","escuéla","Grave en vocal: no lleva"]],
+2:[["examen","exámen","Grave terminada en n: NO lleva tilde"],["exámenes","examenes","Esdrújula: siempre lleva"],["fue","fué","Monosílabo: no lleva tilde"],["dio","dió","Monosílabo: no lleva"],["huí","hui","Hiato con í tónica: lleva tilde"],["país","pais","Hiato a-í: lleva tilde"],["construir","construír","ui es diptongo: no lleva"],["carácter","caracter","Grave que no termina en n/s/vocal: lleva"],["fácilmente","facilmente","Adverbio -mente conserva la tilde del adjetivo"],["tenia","tenía","'tenía' (verbo) lleva tilde en el hiato"],["rio","rió","'rió' (pasado de reír) lleva tilde"],["solo","sólo","'solo' ya no lleva tilde (RAE)"]]};
+
+let J=null;
+window.iniciar=function(){
+  const modo=$('c-modo').value, nivel=$('c-nivel').value;
+  let banco;
+  if(modo==='acentos') banco=ACENTOS[nivel].map(x=>({p:x[0],tipo:'acentos',resp:x[1]}));
+  else if(modo==='letras') banco=LETRAS[nivel].map(x=>({p:x[0],tipo:'letras',resp:x[1],dis:x[2],pista:x[3]}));
+  else banco=TILDE[nivel].map(x=>({tipo:'tilde',ok:x[0],mal:x[1],expl:x[2]}));
+  for(let i=banco.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[banco[i],banco[j]]=[banco[j],banco[i]];}
+  J={rondas:banco.slice(0,10),n:0,ok:0,modo};
+  $('inicio').classList.add('hide'); $('juego').classList.remove('hide');
+  pintar();
+};
+function pintar(){
+  const r=J.rondas[J.n];
+  $('j-n').textContent=J.n+1; $('j-ok').textContent=J.ok; $('j-expl').textContent='';
+  const ops=$('j-ops');
+  if(r.tipo==='acentos'){
+    $('j-palabra').textContent=r.p;
+    ops.innerHTML=[['A','Aguda'],['G','Grave'],['E','Esdrújula']].map(o=>`<button data-v="${o[0]}">${o[1]}</button>`).join('');
+  } else if(r.tipo==='letras'){
+    $('j-palabra').textContent=r.p.replace('_','__');
+    const opciones=[r.resp,r.dis].sort(()=>Math.random()-.5);
+    ops.innerHTML=opciones.map(o=>`<button data-v="${o}">${o==='∅'?'(nada)':o}</button>`).join('');
+  } else {
+    const par=[r.ok,r.mal].sort(()=>Math.random()-.5);
+    $('j-palabra').textContent='¿Cuál está bien escrita?';
+    ops.innerHTML=par.map(o=>`<button data-v="${o}">${o}</button>`).join('');
+  }
+  ops.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>responder(b)));
+}
+function responder(btn){
+  const r=J.rondas[J.n];
+  const v=btn.dataset.v;
+  const correcto=r.tipo==='tilde' ? v===r.ok : v===r.resp;
+  btn.classList.add(correcto?'ok':'mal');
+  if(correcto){ J.ok++; $('j-expl').textContent='✅ ¡Correcto!'+(r.expl?' — '+r.expl:'')+(r.pista?' → '+r.pista:''); }
+  else {
+    $('j-expl').textContent='❌ '+(r.tipo==='acentos'?('Era '+({A:'aguda',G:'grave',E:'esdrújula'}[r.resp])):r.tipo==='letras'?('Era: '+r.pista):('Correcta: '+r.ok+' — '+r.expl));
+    $('j-ops').querySelectorAll('button').forEach(b=>{ const vv=b.dataset.v; if(r.tipo==='tilde'?vv===r.ok:vv===r.resp) b.classList.add('ok'); });
+  }
+  $('j-ops').querySelectorAll('button').forEach(b=>b.disabled=true);
+  setTimeout(()=>{ J.n++; if(J.n>=10) fin(); else pintar(); },1400);
+}
+let nota=0;
+function fin(){
+  nota=Math.max(1,Math.round((1+(J.ok/10)*4)*10)/10);
+  $('juego').classList.add('hide'); $('fin').classList.remove('hide');
+  $('fin-txt').textContent=`🏁 ${J.ok}/10 aciertos → nota ${nota.toFixed(1)}`;
+}
+const sel=LV_HERR.selectorEstudiante('f-curso','f-est');
+$('f-enviar').onclick=()=>{
+  const c=sel.curso(), e=sel.estudiante();
+  if(!c||!e) return toast('Elige curso y estudiante');
+  LV_HERR.guardarResultado({herramienta:'Ortografía',estudiante:e.nombre,estId:e.id,curso:(c.grado||'')+(c.grupo?'-'+c.grupo:''),grado:c.grado,grupo:c.grupo,nota,nivel:J.ok+'/10',detalle:{modo:J.modo}});
+  const r=LV_HERR.enviarAPlanilla({cursoId:c.id,estId:e.id,periodo:$('f-per').value,nota,etiqueta:'Ortografía'});
+  toast(r.msg);
+};
+</script>
+</body>
+</html>
