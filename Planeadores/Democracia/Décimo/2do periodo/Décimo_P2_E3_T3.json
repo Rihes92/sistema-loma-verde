@@ -1,0 +1,190 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-15T16:27:52-05:00",
+  "planeadores": [
+    {
+      "id": "plan-dem-10-p2-eje3-prohibiciones-004",
+      "creado": "2026-07-15T16:27:52-05:00",
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "04",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-15",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.",
+      "unidad": "Eje 3: DIH — Protección a personas y bienes. Conflicto colombiano",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* identifica las personas y bienes protegidos por el DIH y describe las prohibiciones absolutas de los Convenios de Ginebra.\n* explica el papel de la JEP en el posconflicto colombiano y su relación con los principios de verdad, justicia y reparación.\nSaber-hacer:\n* el estudiante establece relaciones entre las distintas dimensiones (jurídica, política, humanitaria, social) del conflicto colombiano al analizar casos reales de violación del DIH.\n* el estudiante analiza los efectos en distintas dimensiones que tendría una intervención de la JEP frente a la impunidad.\nSer:\n* manifiesta indignación pacífica frente al sufrimiento de grupos o naciones involucradas en confrontaciones violentas y asume compromisos con la no violencia.",
+      "competencias": "Pensamiento reflexivo y sistémico\nEBC — Convivencia y paz",
+      "contenidos": "* ¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.\n* Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja).\n* Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.\n* El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia.\n* Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano.\n* Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto.",
+      "objetivo": "Analizar con rigor las prohibiciones absolutas consagradas en el derecho internacional humanitario (DIH), evaluando la gravedad de los ataques a civiles, la tortura y la toma de rehenes, con el fin de fomentar un pensamiento crítico frente a las dinámicas históricas del conflicto armado en Colombia y en la región de Córdoba.",
+      "pregunta": "¿De qué manera la violación de las prohibiciones absolutas del derecho internacional humanitario ha profundizado las heridas sociales en nuestro departamento de Córdoba, y por qué es vital que exijamos la erradicación definitiva de prácticas como la tortura y el secuestro?",
+      "explora": "Actividad de lluvia de ideas inicial donde se planteará el interrogante: ¿existen reglas válidas en medio de la barbarie de una guerra? Se pedirá a los estudiantes que, usando su sentido común y ética ciudadana, mencionen qué actos considerarían excesivamente crueles e imperdonables incluso durante un combate directo.",
+      "glosario": [
+        {"t": "Tortura", "d": "acto por el cual se infligen intencionadamente dolores o sufrimientos graves, sean físicos o mentales, a una persona con el fin de obtener información o castigarla"},
+        {"t": "Toma de rehenes", "d": "privación forzada de la libertad de personas, acompañada de la amenaza expresa de matarlas o herirlas para obligar a un tercero a realizar una acción"},
+        {"t": "Armas prohibidas", "d": "medios de combate que causan sufrimientos innecesarios o que tienen efectos indiscriminados, como las minas antipersonal"},
+        {"t": "Ataque indiscriminado", "d": "ofensiva militar que no está dirigida contra un objetivo lícito concreto y que afecta a la población civil y a los combatientes por igual"},
+        {"t": "Crimen de guerra", "d": "infracción grave de los Convenios de Ginebra que atenta directamente contra la vida o la dignidad humana en el marco de un conflicto armado"},
+        {"t": "Sufrimiento innecesario", "d": "daño o dolor causado a un individuo que excede el nivel de fuerza estrictamente necesario para lograr una ventaja militar legítima"},
+        {"t": "Principio de humanidad", "d": "norma fundamental del derecho que exige tratar con absoluto respeto y dignidad a todas las personas que no participan en las hostilidades"},
+        {"t": "Minas antipersonal", "d": "artefactos explosivos enterrados diseñados para detonar ante la proximidad o contacto de una persona, catalogadas como ilegales por su naturaleza incontrolable"},
+        {"t": "Escudos humanos", "d": "utilización intencional, cruel e ilícita de la presencia de la población civil para intentar proteger objetivos militares de ataques enemigos"},
+        {"t": "Principio de limitación", "d": "regla de oro del derecho bélico que establece que el derecho de las partes a elegir los medios de combate no es ilimitado"}
+      ],
+      "bloques": [
+        {
+          "tit": "El límite de la crueldad en el combate",
+          "txt": "Explicación magistral sobre el principio de limitación. Se analizará por qué incluso en la máxima confrontación bélica el derecho a elegir las armas no es infinito, y cómo los ataques dirigidos a la población civil destruyen el núcleo ético de la sociedad.",
+          "pausa": "¿por qué usar civiles como escudos humanos constituye un acto ilícito y cobarde según las leyes humanitarias?",
+          "resp": "porque instrumentaliza la vida de personas inermes e inocentes, exponiéndolas a un riesgo inminente de muerte para obtener una ventaja táctica sobre el adversario."
+        },
+        {
+          "tit": "Armas que no discriminan al enemigo",
+          "txt": "Estudio detallado de los medios de combate prohibidos a nivel mundial. Se hará especial énfasis en el flagelo de las minas antipersonal y cómo estas armas silenciosas han afectado profundamente a los campesinos colombianos que intentan retornar a sus cultivos.",
+          "pausa": "¿qué característica hace que las minas antipersonal estén prohibidas internacionalmente?",
+          "resp": "su total incapacidad para distinguir entre un combatiente que transita por una trocha y un campesino o un niño que se dirige a la escuela."
+        },
+        {
+          "tit": "La tortura y la dignidad innegociable",
+          "txt": "Reflexión profunda sobre las prohibiciones de la tortura y la toma de rehenes. Se argumentará que la dignidad humana es inalterable, y que ninguna justificación estratégica, confesión o ventaja militar permite infligir dolor físico o psicológico extremo a un ser humano.",
+          "pausa": "¿es válido torturar a un prisionero si se sospecha que tiene información para evitar una emboscada?",
+          "resp": "no es válido bajo ninguna circunstancia; la tortura está prohibida de forma absoluta e inderogable en todos los convenios internacionales."
+        }
+      ],
+      "talleres": "1. lectura analítica del artículo 3 común a los Convenios de Ginebra, enfocada en la comprensión de los tratos crueles. \n2. análisis grupal de un caso hipotético (basado en dinámicas reales del nudo del Paramillo) sobre campesinos afectados por artefactos explosivos, identificando qué prohibición fue vulnerada. \n3. redacción individual de un manifiesto corto donde el estudiante argumente, con sus propias palabras, el rechazo a la toma de rehenes como método de negociación política.",
+      "transfer": "Organización de un conversatorio local en grupos de cuatro estudiantes dentro del aula. Cada grupo redactará un relato escrito imaginando la perspectiva y voz de una comunidad rural de Córdoba que decide declarar pacíficamente su vereda como territorio libre de armas prohibidas y secuestro, exigiendo respeto a los actores armados.",
+      "clave": "Los relatos deberán evidenciar una comprensión clara de que el uso de armas prohibidas como las minas altera de manera irreversible la vocación agrícola de la zona. Se espera que los textos apliquen correctamente los conceptos de sufrimiento innecesario y ataque indiscriminado para justificar las peticiones de la comunidad.",
+      "evaluacion": "Rúbrica de evaluación continua:\n1. argumentación teórica (40%): diferencia acertadamente entre una operación militar permitida y un crimen de guerra asociado a prohibiciones absolutas.\n2. contextualización regional (30%): relaciona las prohibiciones del derecho humanitario con las dinámicas de violencia padecidas en el entorno rural cordobés.\n3. ortotipografía y redacción (30%): cumple estrictamente con las reglas gramaticales innegociables, manteniendo la jerarquía de títulos y evitando usar mayúscula inicial después de los dos puntos.",
+      "recursos": "Tablero acrílico, marcadores borrables, cuadernos de la asignatura, fragmentos impresos del artículo 3 común a los Convenios de Ginebra y hojas en blanco para la redacción del manifiesto y los relatos comunitarios.",
+      "referencias": "Estándares básicos de competencias y Derechos básicos de aprendizaje (EBC y DBA):\n* comprendo que el derecho internacional humanitario es un conjunto de normas que busca limitar los efectos de los conflictos armados y proteger a las personas que no participan directamente en las hostilidades.\n* expreso empatía ante grupos o personas cuyos derechos han sido vulnerados y propongo acciones solidarias.\n* DBA 2 (G10): evalúa las causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia.\n\nBibliografía especializada:\n- Sassòli, M., & Bouvier, A. A. (2006). Un derecho en las trincheras. Ginebra: Comité Internacional de la Cruz Roja.\n- Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición. (2022). Hay futuro si hay verdad: informe final. Bogotá: CEV.",
+      "dua": "Se garantizará el uso de organizadores gráficos y esquemas en el tablero que clasifiquen de manera visual y clara las armas convencionales frente a las armas prohibidas de efectos indiscriminados. Para los estudiantes que presenten barreras en la redacción de textos largos, se permitirá presentar su relato de transferencia de forma netamente oral al docente, o mediante el diseño de una secuencia de viñetas ilustrativas que resuma el concepto.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El derecho de las partes en conflicto a elegir los medios y métodos de combate no es ilimitado",
+        "Los ataques dirigidos deliberadamente contra la población civil constituyen crímenes de guerra",
+        "La tortura está prohibida en cualquier circunstancia, sin admitir justificación militar o de inteligencia",
+        "La toma de rehenes y el secuestro atentan directamente contra el principio de humanidad y son prácticas injustificables",
+        "Las armas de efectos indiscriminados, como las minas antipersonal, prolongan la tragedia civil mucho después de terminado el conflicto"
+      ],
+      "errores": [
+        "Asumir que en tiempos de guerra todo nivel de violencia es legítimo para alcanzar la victoria: es un error de concepto grave, el ejercicio de la fuerza bélica está severamente regulado",
+        "Creer que la tortura es aceptable si se emplea únicamente para prevenir un ataque mayor: es falso, el DIH la condena de forma unánime y sin ninguna excepción de seguridad",
+        "Pensar que el uso de población civil como escudos humanos es una simple táctica de defensa: es falso, se tipifica como un crimen internacional que instrumentaliza la vida ajena",
+        "Considerar que las minas antipersonal son buenas herramientas de protección de los campamentos: es erróneo, su uso está vetado por ser un arma completamente ciega que no distingue combatientes de campesinos"
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué el derecho internacional humanitario prohíbe de forma absoluta la toma de rehenes o el secuestro de civiles durante un conflicto armado?",
+          "a": "Porque esta práctica despoja al individuo de su dignidad intrínseca, reduciéndolo a un simple objeto o moneda de cambio para presionar de forma coercitiva a un tercero en busca de beneficios políticos o militares.",
+          "verdadero": true,
+          "justificacion": "El secuestro viola frontalmente las garantías fundamentales de la persona, utilizando el terror como herramienta de negociación extorsiva.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los comandantes militares de cualquier bando poseen un derecho totalmente ilimitado y absoluto para elegir las armas que aseguren la derrota rápida de su adversario.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El principio de limitación consagra claramente que las partes en conflicto no tienen un derecho ilimitado, restringiendo tajantemente el uso de armas y tácticas que causen daños superfluos o sufrimientos innecesarios.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué se entiende en el contexto jurídico internacional por 'armas de efectos indiscriminados' y por qué se consideran ilegales en la guerra moderna?",
+          "a": "Son aquellos medios de combate que, por su diseño o naturaleza, no pueden ser dirigidos exclusivamente a un objetivo militar específico y, en consecuencia, afectan por igual a combatientes y a civiles inocentes presentes en el área.",
+          "verdadero": true,
+          "justificacion": "Su ilegalidad radica en la transgresión directa al principio de distinción, ya que su radio de daño incontrolable anula la protección de la población no beligerante.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La tortura de un prisionero de guerra está avalada legalmente por los tribunales si el capturado se niega a brindar información vital que podría salvar cientos de vidas civiles.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La prohibición de la tortura en el derecho internacional es del orden de 'ius cogens', lo que significa que es absoluta, imperativa e inderogable; no existe ningún escenario táctico o de seguridad nacional que la justifique.",
+          "enunciado": "Analiza las normas perentorias del DIH que protegen a quienes han quedado fuera de combate.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Explique detalladamente cómo impacta el uso de minas antipersonal el desarrollo socioeconómico de las comunidades campesinas en el departamento de Córdoba.",
+          "a": "Las minas antipersonal impiden el desarrollo agrícola porque hacen que las tierras de cultivo sean intransitables; generan zozobra permanente, provocan el desplazamiento forzado al generar terror y dejan secuelas físicas irreversibles en los campesinos que logran sobrevivir a sus detonaciones.",
+          "verdadero": true,
+          "justificacion": "Estas armas silenciosas continúan matando y mutilando mucho tiempo después de que los grupos armados han abandonado la zona, frenando la economía rural.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El ataque deliberado y planificado contra un caserío civil para minar la moral de apoyo de la retaguardia enemiga constituye una táctica lícita bajo las reglas actuales de la guerra.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Atacar a la población civil para propagar el terror o desmoralizar al adversario es una de las infracciones más atroces y tipificadas que existen, siendo un crimen de guerra incontrovertible.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué responsabilidad legal recae directamente sobre un comandante que emite la orden expresa de atacar una zona residencial habitada por población civil?",
+          "a": "El comandante incurre en responsabilidad penal individual ante tribunales nacionales o internacionales por la comisión y ordenamiento de crímenes de guerra, debiendo responder por los daños irreparables infligidos a la humanidad.",
+          "verdadero": true,
+          "justificacion": "El derecho penal internacional establece que no solo quien aprieta el gatillo es responsable, sino también aquel oficial que organiza o consiente ataques sistemáticos contra la inmunidad civil.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Obligar bajo amenaza de muerte a un grupo de civiles a marchar frente a una patrulla para evitar ser emboscados en un camino veredal es una conducta penada por el DIH.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Esta deleznable práctica es conocida jurídicamente como la utilización de escudos humanos, la cual vulnera gravemente los principios de distinción y humanidad al trasladar el riesgo del combatiente a personas protegidas.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es el propósito central del principio de limitación y cómo se relaciona con el concepto de sufrimientos innecesarios en un conflicto?",
+          "a": "El propósito del principio de limitación es dictar que la única finalidad de la guerra debe ser la neutralización militar del enemigo. Por ende, prohíbe el uso de armamento que cause un dolor corporal agónico y excesivo (sufrimiento innecesario) una vez que el combatiente ya ha sido vencido.",
+          "verdadero": true,
+          "justificacion": "El DIH busca humanizar el conflicto, entendiendo que agravar la tortura física o causar heridas letales incurables no aporta una ventaja militar estratégica adicional, sino mera crueldad.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El uso de armamento químico o bacteriológico en un conflicto armado no internacional está permitido exclusivamente si es una maniobra de autodefensa ante la inminente pérdida de un territorio.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El empleo de armas de destrucción masiva, armas químicas y toxicológicas está vetado de manera global y permanente para todos los bandos y en cualquier escenario de conflicto, pues son el ejemplo máximo de armamento indiscriminado.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Conversar, sin la intermediación de dispositivos electrónicos, con los familiares mayores o vecinos de confianza de la vereda Loma Verde sobre sus recuerdos respecto al conflicto armado en la región. Indagar específicamente, de manera muy respetuosa, si en alguna época la presencia de artefactos explosivos sembrados limitó la libertad de transitar hacia los cultivos o hacia la escuela. Redactar los hallazgos en una página del cuaderno, reflexionando sobre cómo se altera la paz comunitaria por la presencia de estas armas.",
+      "fundamentacion": "# LA BARBARIE REGULADA: PROHIBICIONES ABSOLUTAS EN EL DERECHO INTERNACIONAL HUMANITARIO\n\n## El principio de limitación frente a la crudeza de la guerra\nEl pilar sobre el cual descansan los Convenios de Ginebra y la costumbre internacional humanitaria es una paradoja civilizatoria: si bien la guerra representa la máxima falla de la concordia humana, el desarrollo de las hostilidades no puede transformarse en una licencia para la destrucción absoluta. Este concepto se materializa en el principio de limitación, el cual estipula de manera incontrovertible que el derecho de las partes involucradas en un conflicto armado a elegir los medios y métodos de combate no es ilimitado.\n\nEsta directriz normativa surge como rechazo directo a la doctrina de la \"guerra total\". De acuerdo con la Declaración de San Petersburgo de 1868, el único fin legítimo que los Estados o grupos irregulares deben proponerse durante el desarrollo de una guerra es la atenuación de las fuerzas militares del oponente. Por consiguiente, el uso de niveles de fuerza destructiva que superen dicho objetivo estratégico, causando devastación gratuita, constituye un crimen castigado por los tribunales de la comunidad internacional. \n\n## Armas prohibidas y los ataques de efectos indiscriminados\nEn estrecha consonancia con el mandato de limitación, el DIH veda severamente la producción, almacenamiento y empleo de armas que causen sufrimientos corporales innecesarios o que por su naturaleza operativa sean intrínsecamente ciegas. Un arma de efectos indiscriminados es aquella cuya trayectoria táctica no puede ser acotada a un objetivo militar específico; al ser activada, devasta sin consideración todo a su alrededor, aniquilando al infante uniformado y a la madre civil por igual.\n\nLas minas antipersonal y los artefactos explosivos improvisados son el paradigma doloroso de esta categoría. Estos instrumentos de muerte silenciosa están rigurosamente censurados por la Convención de Ottawa (1997). El horror particular de las minas radica en que, a diferencia del fusil que obedece al tiempo de servicio de un combatiente, la mina permanece eternamente activa en el lecho de la tierra, esperando a su víctima muchos años después de que los pactos de paz hayan sido rubricados, mutilando el futuro de generaciones de campesinos.\n\n### El impacto histórico de la guerra indiscriminada en Colombia\nEl contexto rural de departamentos agrícolas como Córdoba ha sido dramáticamente trastocado por el uso sistemático de medios de combate prohibidos durante el conflicto armado no internacional. Cuando los grupos al margen de la ley minaban las trochas y senderos veredales, no solo buscaban resguardar sus retaguardias de la fuerza pública, sino que implantaban un régimen de terror paralizante en las comunidades.\n\nEste actuar ilícito fracturó las lógicas productivas de la economía campesina: las tierras fértiles se convirtieron en campos intransitables, se abandonó la siembra tradicional de pancoger por miedo a la mutilación explosiva y se desencadenó un doloroso fenómeno de confinamiento o desplazamiento forzado. Las minas antipersonal atacaron directamente la vocación de paz del territorio, despojando a la ruralidad de sus medios mínimos de subsistencia y dignidad.\n\n## La toma de rehenes y la condena unánime al secuestro\nOtra de las líneas rojas inquebrantables del derecho humanitario, plasmada con rigor en el artículo 3 común a los cuatro Convenios de Ginebra de 1949, es la prohibición rotunda a la toma de rehenes. Esta práctica aberrante consiste en privar de la libertad a personas —combatientes o civiles— acompañando el cautiverio con la amenaza explícita de ejecutarlos si un tercero (generalmente el Estado o las familias) no obedece ciertas demandas extorsivas, políticas o pecuniarias.\n\nEl secuestro, ampliamente utilizado como arma de financiación y presión por diversos actores en la historia colombiana, ataca el núcleo del principio de humanidad. Deshumaniza a la víctima, reduciendo su existencia vital a una mera mercancía de canje. La jurisprudencia nacional e internacional clasifica el secuestro como una grave infracción y un crimen continuado, pues el dolor de la privación arbitraria y la zozobra de las familias se perpetúan cada segundo que el rehén permanece encadenado en la espesura de la selva.\n\n## La tortura: un abismo moral sin justificación posible\nJunto a la salvaguarda de la vida, el DIH resguarda de manera innegociable la integridad física y mental de quienes han quedado a merced del enemigo (heridos, náufragos o prisioneros de guerra). En este sentido, la prohibición de la tortura y de los tratos crueles, inhumanos o degradantes es absoluta y perentoria (ius cogens). \n\nNo existe en el andamiaje del derecho internacional ningún tipo de atenuante, emergencia nacional o doctrina de seguridad estratégica que brinde legitimidad a la tortura. Los actos orientados a infligir intencionalmente sufrimientos severos, con la meta de extraer confesiones de guerra o de castigar a prisioneros rendidos, degradan a la humanidad en su conjunto. La tortura destroza los límites psíquicos de la víctima y deslegitima irremediablemente a la autoridad o al comandante que consiente su práctica. El mensaje final del derecho humanitario es claro: el cese de las hostilidades no puede lograrse a expensas de sacrificar el respeto sagrado por el cuerpo y el espíritu humano.",
+      "lineatiempo": "1868: la Declaración de San Petersburgo sienta el precedente moderno indicando que el único fin legítimo de la guerra es el debilitamiento del enemigo militar.\n1925: adopción del Protocolo de Ginebra, instrumento pionero que prohíbe el uso de armas químicas y asfixiantes por ser métodos inhumanos.\n1949: redacción y firma del artículo 3 común a los Convenios de Ginebra, la norma de oro que prohíbe la tortura y la toma de rehenes en conflictos de carácter no internacional.\n1977: promulgación del Protocolo Adicional I, el cual consolida las prohibiciones relativas a los ataques indiscriminados y los daños superfluos.\n1997: firma de la Convención de Ottawa, tratado histórico impulsado por la sociedad civil que prohíbe totalmente las minas antipersonal."
+    }
+  ]
+}

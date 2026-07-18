@@ -3,6 +3,54 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 18, 2026 — sesión 20, ARQUITECTURA ETAPA 2 · FASE 2 — código y SQL listos)
+
+- **Fase 2 (por-curso) CONSTRUIDA en sesión dedicada**, como estaba planeado.
+  Auditoría previa confirmó el mapa: estudiantes/notas tienen `cursoId`;
+  asistencia tiene `cursoId` + id `cursoId_fecha`; observador/piar tienen
+  `estId` (curso solo como texto); acudientes solo `hijos[].grado/grupo`;
+  boletines solo guarda `cfg` (compartido → fuera); puente = correo del JWT
+  → lv_docentes.email → docenteId → lv_asignaciones {materia,grado,grupo}
+  + campo `dirige` ("6-601, 7-701") para directores de grupo.
+- **DECISIÓN DE DISEÑO clave (evitó el refactor por módulo temido):** las
+  políticas NO exigen cursoId estampado — resuelven la cadena
+  estId→estudiantes→curso→grado-grupo DENTRO de funciones SECURITY DEFINER
+  (ignoran RLS al consultar). El groundwork en la app quedó mínimo.
+- **`migracion_etapa2_fase2.sql` NUEVO (SIN CORRER):** funciones
+  `lv_norm()`, `lv_mi_docente_id()`, `lv_acceso_total()` (coordinación +
+  comodines Primaria/Todas las materias), `lv_mis_cursos()` (asignación
+  materia+grado+grupo con comodín de grupo vacío, O dirige en cualquier
+  materia — así director de grupo/boletines/analítica no pierden nada),
+  `lv_curso_visible()`, `lv_est_visible()` (cadena por estId, compara por
+  grado-grupo), `lv_acudiente_visible()` (hijos[].grado/grupo),
+  `lv_materia_visible()` (banco por materia). Política `por_curso` en 8
+  tablas: cursos, estudiantes, notas, asistencia, lv_observador, lv_piar,
+  lv_acudientes, lv_banco. TRANSICIONAL (todo lo no-resoluble sigue
+  visible → nadie pierde datos), idempotente, con verificación (2a-2d) y
+  ROLLBACK completo comentado al final. lv_planeadores/lv_examenes/
+  lv11_examenes/lv_boletines/lv_herramientas NO se tocan (decisiones
+  previas).
+- **Groundwork app (refuerzo para backfill futuro, no requerido por la
+  RLS):** 10-observador estampa `cursoId` en anotaciones nuevas
+  (estSel.cursoId); 11-inclusion conserva cursoId en la lista de
+  estudiantes y lo estampa en PIAR nuevos. SW **v69**. Sintaxis OK
+  (node --check en sw.js + bloques script de 10 y 11).
+- **ORDEN DE DESPLIEGUE:** (1) push (ritual de Terminal de Francy);
+  (2) correr `migracion_etapa2_fase2.sql` en Supabase; (3) correr las
+  consultas de VERIFICACIÓN del propio archivo y pegar resultados en el
+  chat; (4) probar con cuenta docente NO admin: ver solo sus cursos/
+  estudiantes/notas/asistencia, banco solo de sus materias, y con el
+  DIRECTOR de grupo: boletines/mi grupo/analitica completos; (5) revisar
+  2c (docentes sin correo en su ficha — no resolverían cursos).
+- **OJO:** la RLS filtra las DESCARGAS nuevas; lo ya espejado en
+  localStorage de cada equipo se queda hasta limpiar datos del navegador
+  o entrar en un equipo nuevo. La reducción del espejo es gradual.
+- **Pendiente después de validar:** backfill de registros sin referencia
+  (2d), RLS por dueño de permisos/centros (anotado en sesiones 16/18),
+  y Fase 3 (IndexedDB) solo si aprieta el espacio.
+- PENDIENTE heredado: probar las 4 herramientas interactivas con
+  estudiantes, cédula en ficha del docente.
+
 ## ▶ POR DÓNDE RETOMAR (jul 18, 2026 — sesión 19, test de lectura explicado + 4 herramientas interactivas)
 
 - **Test de Lectura auditado a fondo (inquietud de Francy por "2.5 y nivel C"):**

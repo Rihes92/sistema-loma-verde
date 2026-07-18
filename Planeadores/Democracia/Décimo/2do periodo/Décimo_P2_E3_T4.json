@@ -1,0 +1,190 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-15T16:30:04-05:00",
+  "planeadores": [
+    {
+      "id": "plan-dem-10-p2-eje3-violaciones-005",
+      "creado": "2026-07-15T16:30:04-05:00",
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "05",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-15",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia",
+      "unidad": "Eje 3: DIH — Protección a personas y bienes. Conflicto colombiano",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* identifica las personas y bienes protegidos por el DIH y describe las prohibiciones absolutas de los Convenios de Ginebra.\n* explica el papel de la JEP en el posconflicto colombiano y su relación con los principios de verdad, justicia y reparación.\nSaber-hacer:\n* el estudiante establece relaciones entre las distintas dimensiones (jurídica, política, humanitaria, social) del conflicto colombiano al analizar casos reales de violación del DIH.\n* el estudiante analiza los efectos en distintas dimensiones que tendría una intervención de la JEP frente a la impunidad.\nSer:\n* manifiesta indignación pacífica frente al sufrimiento de grupos o naciones involucradas en confrontaciones violentas y asume compromisos con la no violencia.",
+      "competencias": "Pensamiento reflexivo y sistémico\nEBC — Convivencia y paz",
+      "contenidos": "* ¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.\n* Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja).\n* Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.\n* El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia.\n* Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano.\n* Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto.",
+      "objetivo": "Analizar las graves violaciones al derecho internacional humanitario (DIH) en el marco del conflicto armado colombiano, identificando sus consecuencias históricas en el departamento de Córdoba y reconociendo los mecanismos institucionales de denuncia para promover la justicia restaurativa y las garantías de no repetición.",
+      "pregunta": "¿De qué forma las sistemáticas violaciones al derecho internacional humanitario transformaron el territorio y la vida comunitaria en las zonas rurales de Montería, y qué mecanismos de denuncia existen en la actualidad para garantizar que estos hechos no permanezcan en la impunidad?",
+      "explora": "Actividad introductoria de cartografía social básica: se dibujará o colgará un mapa de la región cordobesa en el tablero y se invitará a los estudiantes a señalar, sin dar nombres propios ni entrar en detalles sensibles, aquellas subregiones o vías donde la historia oral de sus comunidades recuerda desplazamientos masivos o toma de bienes civiles durante las épocas más agudas de la violencia.",
+      "glosario": [
+        {"t": "Infracción grave al DIH", "d": "violación directa a los Convenios de Ginebra que atenta contra la vida civil y que en el ámbito internacional se tipifica como crimen de guerra"},
+        {"t": "Desplazamiento forzado", "d": "fenómeno que obliga a las personas a abandonar su hogar y sus medios de vida dentro de las fronteras de su propio país debido a la violencia o el terror"},
+        {"t": "Mecanismo de denuncia", "d": "ruta o canal institucional civil, como la Defensoría del Pueblo o las personerías municipales, dispuesto para reportar una vulneración de derechos"},
+        {"t": "Impunidad", "d": "ausencia de investigación, captura y castigo judicial para los responsables de cometer graves delitos y atrocidades en medio del conflicto"},
+        {"t": "Justicia transicional", "d": "conjunto de medidas judiciales y políticas excepcionales creadas para procesar graves violaciones a los derechos y resolver un conflicto armado"},
+        {"t": "Verdad procesal", "d": "narrativa histórica reconstruida por un tribunal mediante el análisis riguroso de pruebas testimoniales y documentales contrastadas"},
+        {"t": "Reparación integral", "d": "medidas estatales que buscan no solo compensar económicamente a las víctimas, sino dignificarlas y restaurar su tejido social fracturado"},
+        {"t": "No repetición", "d": "garantías y transformaciones institucionales y sociales que aseguran que los horrores padecidos no volverán a ocurrir en el territorio"},
+        {"t": "Jurisdicción Especial para la Paz", "d": "tribunal colombiano encargado de administrar justicia transicional y conocer los crímenes más graves cometidos antes del acuerdo de 2016"},
+        {"t": "Victimización", "d": "proceso mediante el cual una persona o comunidad sufre de manera injusta daños físicos, psicológicos o patrimoniales a causa del conflicto armado"}
+      ],
+      "bloques": [
+        {
+          "tit": "El impacto territorial de las infracciones al DIH",
+          "txt": "Análisis del desarrollo del conflicto armado interno, enfocándose en cómo las zonas campesinas de la región Caribe fueron blanco de ataques sistemáticos, donde las partes enfrentadas ignoraron deliberadamente el principio de distinción y arrastraron a los civiles al centro de la guerra.",
+          "pausa": "¿por qué los grupos armados suelen provocar desplazamientos masivos en zonas rurales ricas en recursos?",
+          "resp": "para vaciar el territorio de habitantes incómodos, ejercer control absoluto sobre las rutas estratégicas y apropiarse impunemente de tierras fértiles."
+        },
+        {
+          "tit": "Rutas ciudadanas contra la barbarie",
+          "txt": "Estudio de las opciones históricas de supervivencia de las comunidades y la importancia de los mecanismos civiles de denuncia. Se resalta la función del Ministerio Público, compuesto por la Procuraduría, la Defensoría del Pueblo y las personerías, como primeros garantes de los campesinos ante el Estado.",
+          "pausa": "¿cuál es la principal barrera que enfrenta un campesino para denunciar una infracción al DIH en medio de hostilidades activas?",
+          "resp": "el terror y la amenaza inminente de sufrir represalias letales, lo que instaura un pacto de silencio obligado o ley del miedo en las veredas."
+        },
+        {
+          "tit": "Justicia para acabar con la impunidad",
+          "txt": "Explicación del componente de justicia transicional en el posconflicto colombiano, detallando cómo la JEP recoge los testimonios y denuncias rezagadas de las víctimas para construir macrocasos que permitan identificar los patrones de macrocriminalidad en lugar de casos aislados.",
+          "pausa": "¿es suficiente que un responsable directo del conflicto cumpla una condena en prisión ordinaria para que la comunidad cicatrice sus heridas?",
+          "resp": "no, las víctimas requieren imperativamente conocer la verdad absoluta sobre los hechos y recibir acciones tangibles de reparación que restauren su dignidad."
+        }
+      ],
+      "talleres": "1. lectura analítica de un resumen adaptado sobre un macrocaso de la JEP relacionado con afectaciones territoriales en Colombia. \n2. trabajo cooperativo: los estudiantes, organizados en pequeños grupos, esquematizarán en un papelógrafo la ruta institucional que debe seguir una denuncia civil desde la vereda hasta el nivel nacional (desde el líder comunal, pasando por el personero municipal, hasta la Defensoría). \n3. redacción individual de un corto ensayo reflexivo sobre por qué el silencio obligado perpetúa la guerra.",
+      "transfer": "Desarrollo de un escenario de rol dentro del aula: simularemos una asamblea de una junta de acción comunal campesina. Diferentes estudiantes asumirán el rol de presidente de la junta, vecinos de la vereda, docentes rurales y el personero del municipio de Montería. Deberán dialogar y llegar a un consenso sobre cómo redactarían y entregarían de forma segura una petición urgente a la Defensoría del Pueblo exigiendo respeto por los bienes civiles ante la presunta llegada de actores armados.",
+      "clave": "El ejercicio práctico debe evidenciar que los estudiantes tienen completa claridad sobre el rol mediador de la personería municipal y la Defensoría del Pueblo. Además, sus intervenciones deben demostrar que comprenden que la comunidad unida y organizada en torno al derecho pacífico tiene mayores posibilidades de gestionar su propia protección.",
+      "evaluacion": "Rúbrica de evaluación sumativa y formativa:\n1. apropiación de conceptos (40%): asocia de manera correcta y precisa los fenómenos de violencia regional con las infracciones estipuladas por el DIH y entiende el rol de la JEP.\n2. pensamiento sistémico (30%): identifica con claridad las rutas de denuncia cívica y analiza su importancia fundamental para detener la espiral de impunidad.\n3. aplicación ortotipográfica (30%): cumple estrictamente la directriz innegociable de no usar mayúscula inicial después de los dos puntos (salvo en nombres propios) y aplica correctamente la jerarquía de títulos en todos sus textos escritos.",
+      "recursos": "Tablero acrílico, marcadores borrables, papelógrafos, cuaderno de la asignatura y extractos impresos de informes de la Comisión de la Verdad o resúmenes de prensa escrita sobre fallos de justicia restaurativa en Córdoba (material adaptado para lectura en frío).",
+      "referencias": "Estándares básicos de competencias y Derechos básicos de aprendizaje (EBC y DBA):\n* comprendo que el derecho internacional humanitario es un conjunto de normas que busca limitar los efectos de los conflictos armados y proteger a las personas que no participan directamente en las hostilidades.\n* expreso empatía ante grupos o personas cuyos derechos han sido vulnerados y propongo acciones solidarias.\n* DBA 2 (G10): evalúa las causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia.\n\nBibliografía especializada:\n- Uprimny Yepes, R. (2006). Justicia transicional y resolución de conflictos en Colombia. Bogotá: Ediciones Dejusticia.\n- Defensoría del Pueblo de Colombia. (2020). Dinámicas del conflicto armado y su impacto en la población civil. Bogotá: Imprenta Nacional.",
+      "dua": "Se garantizará un ambiente libre de tensiones para abordar estos temas que pueden tocar fibras sensibles en el ámbito rural. Para los estudiantes que presenten barreras severas en lectoescritura, el análisis de los casos del DIH se realizará de manera netamente verbal mediante narraciones y sociodramas; la asamblea comunal será el espacio principal para que demuestren sus competencias argumentativas y ciudadanas de forma oral y empática.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El conflicto colombiano ha estado caracterizado por sistemáticas y graves violaciones al derecho internacional humanitario",
+        "El desplazamiento forzado es un crimen de guerra que ha reconfigurado dramáticamente la ruralidad en el país",
+        "El silencio de las comunidades no es complicidad, sino una estrategia dolorosa de supervivencia impuesta por el terror",
+        "Las personerías y la Defensoría del Pueblo son las instancias primarias de denuncia y amparo civil",
+        "La JEP es el máximo organismo actual encargado de agrupar estos hechos en macrocasos para combatir la impunidad histórica"
+      ],
+      "errores": [
+        "Asumir que un campesino desplazado abandonó sus tierras por simple voluntad o búsqueda de mejores oportunidades: es falso, el desplazamiento es una expulsión coactiva y violenta",
+        "Creer que los crímenes del conflicto armado prescriben rápidamente como los delitos comunes: es un error, las graves infracciones al DIH y los crímenes de lesa humanidad son imprescriptibles",
+        "Pensar que la única función de la justicia en el posconflicto es encerrar a los culpables: es inexacto, la justicia restaurativa prioriza la verdad, la dignificación y la reparación integral de los territorios",
+        "Considerar que las denuncias de violaciones al DIH deben hacerse en guarniciones militares: es un riesgo procedimental, las denuncias civiles deben canalizarse preferiblemente a través del Ministerio Público (personerías, Defensoría)"
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuáles son las funciones constitucionales básicas que cumple un personero municipal frente a las presuntas violaciones del derecho internacional humanitario en su territorio?",
+          "a": "El personero municipal actúa como el representante directo del Ministerio Público a nivel local, teniendo la función indelegable de recibir las declaraciones de las víctimas, orientarlas jurídicamente, promover y proteger los derechos humanos y elevar las alertas tempranas ante la Defensoría del Pueblo y el gobierno central.",
+          "verdadero": true,
+          "justificacion": "Las personerías son, en la inmensa mayoría de los municipios apartados, el primer y único eslabón civil e institucional al que tienen acceso los campesinos vulnerados.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las constantes infracciones al derecho internacional humanitario registradas en Colombia afectaron de manera equitativa e igualitaria a las zonas urbanas de las capitales y a las zonas rurales campesinas.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las estadísticas históricas y los tribunales de paz han evidenciado abrumadoramente que el peso de la guerra, el desplazamiento forzado y las masacres recayeron de forma desproporcionada sobre los hombros de las poblaciones campesinas, indígenas y afrodescendientes en la ruralidad.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué la impunidad judicial prolonga el ciclo de violencia de los conflictos armados en lugar de detenerlo?",
+          "a": "Porque cuando los autores materiales e intelectuales de atrocidades no enfrentan ninguna consecuencia penal, social ni moral, se normaliza la barbarie, se destruye la confianza ciudadana en el Estado de Derecho y se fomenta la aparición de nuevos grupos armados bajo la lógica de la venganza privada.",
+          "verdadero": true,
+          "justificacion": "La falta absoluta de castigo o de búsqueda de la verdad socava los cimientos de la democracia, enviando el terrible mensaje de que el uso de la fuerza armada ilícita es rentable y seguro.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Una de las características innovadoras de la Jurisdicción Especial para la Paz (JEP) es investigar las violaciones al DIH agrupándolas en grandes macrocasos para identificar patrones sistemáticos de criminalidad.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Dada la inmensa cantidad de víctimas en el país, investigar caso por caso sería inoperante; por ello, la JEP organiza las investigaciones en macrocasos (como el secuestro, los falsos positivos o el reclutamiento) para sancionar a los máximos responsables y develar las políticas de guerra.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué diferencia sustancial existe entre una política de castigo penal ordinario y el enfoque de justicia restaurativa aplicado por el sistema de justicia transicional en Colombia?",
+          "a": "El sistema penal ordinario se centra casi exclusivamente en aplicar una pena privativa de la libertad al infractor como castigo. En contraste, la justicia restaurativa se centra en la víctima: exige al responsable aportar verdad plena y exhaustiva sobre los hechos, pedir perdón público y ejecutar obras o acciones directas para reparar el daño causado en las comunidades.",
+          "verdadero": true,
+          "justificacion": "El enfoque restaurativo entiende que, tras un conflicto fratricida, la reconstrucción del tejido social roto es tan o más importante que la simple reclusión carcelaria de los perpetradores.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Para que un campesino o ciudadano sea reconocido formalmente como víctima del conflicto armado y reciba reparación estatal, es un requisito innegociable que identifique con nombre y apellido al comandante del grupo armado que vulneró sus derechos.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Las leyes de víctimas y restitución de tierras en Colombia establecen que la acreditación de una víctima no depende de que esta logre identificar penalmente a su agresor individual, comprendiendo que en medio del conflicto reina la confusión y el anonimato de los victimarios.",
+          "enunciado": "Analiza las garantías legales que el Estado ofrece a las personas que huyen del terror sin conocer a sus victimarios.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "Mencione dos ejemplos específicos de garantías de no repetición que el Estado debe promover en zonas históricamente golpeadas por el conflicto armado en la región Caribe.",
+          "a": "1) la presencia integral e ininterrumpida de instituciones civiles, escuelas y hospitales, y no solo de la fuerza pública. 2) el esclarecimiento de la verdad histórica mediante cátedras de memoria en los colegios, de forma que las nuevas generaciones rechacen categóricamente el uso de la violencia armada.",
+          "verdadero": true,
+          "justificacion": "Las garantías de no repetición no son promesas vacías; exigen profundas transformaciones sociales, educativas e institucionales que eliminen los factores estructurales que le dieron origen y gasolina a la guerra.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El desplazamiento forzado es considerado por la jurisprudencia internacional como un crimen continuado y una infracción gravísima a las disposiciones del DIH.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Es un crimen continuado porque la vulneración sistemática de los derechos de la persona persiste día tras día, año tras año, mientras no se le garantice un retorno seguro y digno a sus tierras originales.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué rol fundamental ejerce el Sistema de Alertas Tempranas (SAT) de la Defensoría del Pueblo frente a las potenciales violaciones del derecho internacional humanitario?",
+          "a": "El SAT tiene la vital labor preventiva de monitorear los riesgos inminentes de vulneración en los territorios, emitir informes detallados de advertencia y exigir a las autoridades gubernamentales y de seguridad que tomen acciones anticipadas y urgentes para proteger la vida de la población civil y evitar masacres o desplazamientos.",
+          "verdadero": true,
+          "justificacion": "Este mecanismo fue diseñado para que el Estado actúe antes de que ocurran las tragedias, transformando la denuncia comunitaria en una herramienta preventiva y no solamente reactiva.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Las instituciones educativas rurales carecen de facultades y no deben ser utilizadas en ningún escenario como lugares de protección o como centros de reunión para tramitar denuncias sociales.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Históricamente, y en ausencia del Estado central, las escuelas y los docentes rurales se han consolidado como los grandes referentes de la mediación comunitaria, siendo la escuela el principal centro de convergencia pacífica y protección simbólica del tejido social campesino.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Dialogar tranquilamente en casa con los abuelos, tíos o vecinos mayores de la vereda Loma Verde acerca de la importancia histórica de la personería municipal. Indagar, sin realizar preguntas imprudentes sobre hechos recientes o que revictimicen, si en décadas pasadas la comunidad confiaba en esta figura institucional para tramitar quejas o buscar mediación frente a las problemáticas sociales, y anotar un pequeño párrafo reflexivo en el cuaderno.",
+      "fundamentacion": "# EL DERECHO INTERNACIONAL HUMANITARIO Y SU INCIDENCIA EN EL CONFLICTO ARMADO COLOMBIANO\n\n## Un territorio cruzado por las infracciones bélicas\nEl conflicto armado no internacional que ha desangrado a Colombia por más de seis décadas constituye uno de los capítulos más complejos en la historia reciente de América Latina. A diferencia de un enfrentamiento convencional entre dos ejércitos regulares demarcados por fronteras y trincheras estáticas, la guerra colombiana se desarrolló de forma asimétrica, insertándose de manera letal en la cotidianidad de los territorios agrarios. En este trágico escenario, las normas del derecho internacional humanitario (DIH), cuyo espíritu es limitar el sufrimiento humano, fueron desconocidas de manera sistemática y deliberada por todas las partes involucradas en las hostilidades.\n\nEl principio de distinción, núcleo central de los Convenios de Ginebra que obliga a salvaguardar la inmunidad de quienes no combaten, fue la primera baja del conflicto. Las zonas rurales de la región Caribe y, de forma particular, el departamento de Córdoba, se transformaron en corredores estratégicos para las economías ilícitas y el control territorial. Como resultado, la población campesina, indígena y afrodescendiente dejó de ser un simple espectador de los enfrentamientos y pasó a convertirse en el objetivo militar de las estrategias de terror empleadas para someter las voluntades civiles.\n\n## El catálogo del dolor: crímenes de guerra y victimización\nLas violaciones al DIH en el país no se manifestaron como simples accidentes de guerra o daños incidentales; en innumerables casos, constituyeron patrones de macrocriminalidad ejecutados con frialdad logística. El desplazamiento forzado interno es, quizá, la herida demográfica más evidente. Comunidades enteras fueron coaccionadas para abandonar sus parcelas de subsistencia y migrar a los cinturones de pobreza urbana. Este crimen continuado representa una violación flagrante al artículo 17 del Protocolo Adicional II, el cual prohíbe el desplazamiento de civiles por razones vinculadas al conflicto, a menos que así lo exija su propia seguridad.\n\nDe igual modo, delitos inhumanos como la desaparición forzada, el secuestro (toma de rehenes con fines extorsivos o políticos), el reclutamiento ilícito de menores y la siembra de artefactos explosivos indiscriminados formaron parte de los manuales operativos de diversos actores armados. Estas acciones aniquilaron la base del Estado Social de Derecho en la ruralidad, quebrando el contrato social e instaurando una ley del miedo que acalló durante años la voz democrática de las víctimas.\n\n## El silencio obligado y los mecanismos cívicos de denuncia\nEn medio del fuego cruzado, la capacidad de los ciudadanos para denunciar estos atropellos fue castrada por la coacción de las armas. Denunciar a un actor armado que ostenta el poder territorial hegemónico equivalía a firmar una sentencia de muerte o destierro. A pesar de estas barreras asfixiantes, el andamiaje institucional del Estado y las resistencias organizadas del campesinado crearon vías de supervivencia.\n\nEn este aspecto, el Ministerio Público emergió como un faro de institucionalidad. Las personerías municipales, a menudo siendo la única cara amable del Estado en la Colombia profunda, junto a la Defensoría del Pueblo, asumieron la titánica y peligrosa tarea de documentar silenciosamente las violaciones, proteger a los líderes sociales y emitir informes preventivos a través de herramientas vitales como el Sistema de Alertas Tempranas (SAT). Aprender y fortalecer estas rutas de denuncia en el marco de la asignatura de Democracia resulta indispensable para empoderar a los jóvenes rurales en la exigibilidad de sus derechos constitucionales.\n\n## Justicia transicional y la Jurisdicción Especial para la Paz\nEl cese de las hostilidades firmado con el grupo insurgente de las FARC-EP en 2016 marcó un punto de inflexión radical. Sin embargo, para consolidar la paz no bastaba con el desarme físico; se requería enfrentar el fantasma de la impunidad histórica. El sistema ordinario de justicia, abrumado por las cifras y diseñado para investigar delitos comunes, resultaba inoperante para procesar décadas de atrocidades masivas.\n\nComo solución, nació la Jurisdicción Especial para la Paz (JEP). Este tribunal transicional no persigue la venganza retributiva, sino que implementa un modelo de justicia restaurativa. En lugar de atomizar las investigaciones, la JEP agrupa miles de incidentes violentos en macrocasos temáticos o territoriales, lo que permite develar cuáles fueron las directrices sistemáticas de mando y sancionar a los máximos responsables de crímenes internacionales.\n\nEl propósito superior de la JEP, complementado con la labor de la Comisión de la Verdad, es otorgar a las víctimas un espacio central para narrar su dolor, exigir la verdad procesal plena y asegurar reparaciones integrales. Solo al descorrer el velo de lo ocurrido y someter las graves violaciones del DIH al escrutinio ético y judicial de la nación, se pueden instaurar sólidas garantías de no repetición, cimentando así un futuro donde la escuela y la parcela campesina jamás vuelvan a ser moneda de cambio en la guerra.",
+      "lineatiempo": "1949: aprobación universal de los cuatro Convenios de Ginebra que estructuran la defensa humanitaria y sientan las bases para el respeto en tiempos de hostilidad bélica.\n1977: Colombia ratifica los Protocolos Adicionales, obligándose internacionalmente a humanizar el conflicto armado interno.\n1991: promulgación de la nueva Constitución Política, la cual eleva a rango constitucional el respeto a los derechos humanos y la prevalencia del DIH (bloque de constitucionalidad).\n2011: expedición de la histórica Ley de Víctimas y Restitución de Tierras (Ley 1448), reconociendo por primera vez y de forma oficial el conflicto armado y a las víctimas de la guerra.\n2016: firma definitiva del Acuerdo de Paz en La Habana, dando origen a la creación de la Jurisdicción Especial para la Paz (JEP) para combatir la impunidad.\n2022: entrega del Informe Final por parte de la Comisión de la Verdad, documento histórico que expone las inmensas vulneraciones padecidas por las comunidades rurales de Colombia."
+    }
+  ]
+}

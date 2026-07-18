@@ -446,7 +446,7 @@ function todosEstudiantes(){
     if(!estudianteEsMio(c)) return; // solo mis materias / mi grupo dirigido / admin
     const k=String(e.nombre||'').toLowerCase();
     if(vistos[k]) return; vistos[k]=1;
-    out.push({id:e.id,nombre:e.nombre,curso:c?((c.grado||'')+(c.grupo?'-'+c.grupo:'')):''});
+    out.push({id:e.id,cursoId:e.cursoId||'',nombre:e.nombre,curso:c?((c.grado||'')+(c.grupo?'-'+c.grupo:'')):''});
   });
   return out.sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
 }
@@ -473,7 +473,7 @@ window.abrirPiar=function(estId){
   let piars=lsRead('piar');
   piarSel=piars.find(p=>!p._eliminado && String(p.estNombre||'').toLowerCase()===String(e.nombre).toLowerCase());
   if(!piarSel){
-    piarSel={id:uid(), estId:e.id, estNombre:e.nombre, curso:e.curso, anio:new Date().getFullYear(),
+    piarSel={id:uid(), estId:e.id, cursoId:e.cursoId||'', estNombre:e.nombre, curso:e.curso, anio:new Date().getFullYear(),
       anexo1:{}, barreras:[], ajustes:[], seguimientos:[], creado:Date.now(), autor};
     piars.push(piarSel); lsSave('piar',piars,[piarSel]);
   }

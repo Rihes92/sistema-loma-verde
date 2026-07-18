@@ -448,6 +448,7 @@ document.getElementById('btn-guardar').addEventListener('click', ()=>{
   const grupos=gruposUnicos().find(g=>g.key===grupoSel);
   const nueva={
     id:uid(), estId:estSel.id, estNombre:estSel.nombre,
+    cursoId: (estSel&&estSel.cursoId)||'',
     curso: grupos ? (grupos.grado+' - '+(grupos.grupo||'único')) : '',
     tipo:document.getElementById('n-tipo').value,
     fecha:document.getElementById('n-fecha').value||hoyISO(),

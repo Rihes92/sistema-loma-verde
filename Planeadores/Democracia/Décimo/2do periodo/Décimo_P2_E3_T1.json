@@ -1,0 +1,190 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-15T16:21:45-05:00",
+  "planeadores": [
+    {
+      "id": "plan-dem-10-p2-eje3-dih-001",
+      "creado": "2026-07-15T16:21:45-05:00",
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "02",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-15",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.",
+      "unidad": "Eje 3: DIH — Protección a personas y bienes. Conflicto colombiano",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* identifica las personas y bienes protegidos por el DIH y describe las prohibiciones absolutas de los Convenios de Ginebra.\n* explica el papel de la JEP en el posconflicto colombiano y su relación con los principios de verdad, justicia y reparación.\nSaber-hacer:\n* el estudiante establece relaciones entre las distintas dimensiones (jurídica, política, humanitaria, social) del conflicto colombiano al analizar casos reales de violación del DIH.\n* el estudiante analiza los efectos en distintas dimensiones que tendría una intervención de la JEP frente a la impunidad.\nSer:\n* manifiesta indignación pacífica frente al sufrimiento de grupos o naciones involucradas en confrontaciones violentas y asume compromisos con la no violencia.",
+      "competencias": "Pensamiento reflexivo y sistémico\nEBC — Convivencia y paz",
+      "contenidos": "* ¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.\n* Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja).\n* Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.\n* El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia.\n* Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano.\n* Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto.",
+      "objetivo": "Comprender los principios de protección del derecho internacional humanitario (DIH) frente a la población civil, heridos, enfermos y bienes protegidos, analizando críticamente su aplicación y las violaciones ocurridas en el marco del conflicto armado colombiano, para generar conciencia sobre el impacto histórico en las comunidades rurales de Córdoba.",
+      "pregunta": "¿De qué manera el cumplimiento estricto del derecho internacional humanitario habría mitigado el impacto del conflicto armado en las zonas rurales de Montería y el departamento de Córdoba, y por qué es crucial que la sociedad exija el respeto a la misión médica y humanitaria?",
+      "explora": "Actividad inicial y diálogo de saberes: se pedirá a los estudiantes que relaten historias o anécdotas comunitarias que hayan escuchado de sus abuelos o mayores en Loma Verde sobre épocas de conflicto, indagando específicamente sobre la siguiente cuestión: ¿qué lugares o personas creían ellos que debían ser intocables y respetados a toda costa durante los enfrentamientos armados?",
+      "glosario": [
+        {"t": "Derecho Internacional Humanitario (DIH)", "d": "conjunto de normas que por razones humanitarias trata de limitar los efectos de los conflictos armados, protegiendo a quienes no participan en las hostilidades"},
+        {"t": "Población civil", "d": "personas que no toman parte directa en las hostilidades y que por tanto gozan de protección general contra los peligros derivados de operaciones militares"},
+        {"t": "Bienes protegidos", "d": "infraestructuras indispensables para la supervivencia de la población civil, como hospitales, escuelas y lugares de culto, que no pueden ser objetivo militar"},
+        {"t": "Misión médica", "d": "personal, instalaciones y medios de transporte destinados a fines médicos, protegidos por el DIH para garantizar la atención a heridos y enfermos"},
+        {"t": "Conflicto armado no internacional", "d": "enfrentamientos armados prolongados que ocurren en el territorio de un Estado entre las fuerzas armadas gubernamentales y grupos armados organizados, o entre tales grupos"},
+        {"t": "Jurisdicción Especial para la Paz (JEP)", "d": "componente de justicia del Sistema Integral de Verdad, Justicia, Reparación y No Repetición creado en Colombia para investigar y sancionar los delitos más graves del conflicto"},
+        {"t": "Principio de distinción", "d": "regla fundamental del DIH que obliga a las partes en conflicto a distinguir en todo momento entre combatientes y población civil"},
+        {"t": "Desaparición forzada", "d": "crimen continuado que consiste en la privación de la libertad de una persona cometida por agentes del Estado o por personas que actúan con su apoyo, seguida de la negativa a reconocer dicha privación"},
+        {"t": "Desplazamiento interno", "d": "situación de personas forzadas a huir de su hogar para escapar de los efectos del conflicto armado, perdiendo sus medios de subsistencia sin cruzar fronteras internacionales"},
+        {"t": "Principio de proporcionalidad", "d": "norma que prohíbe los ataques cuando se prevea que causarán incidentalmente muertos o heridos entre la población civil que sean excesivos en relación con la ventaja militar obtenida"}
+      ],
+      "bloques": [
+        {
+          "tit": "Personas y bienes bajo el escudo del DIH",
+          "txt": "Exposición magistral y participativa sobre el principio de distinción, el cual representa el núcleo central del DIH. Se explicará cómo esta norma obliga a separar a los combatientes de los no combatientes en toda circunstancia. Se detallará de forma exhaustiva la protección absoluta que recae sobre la población civil, el personal médico y los bienes esenciales para la comunidad.",
+          "pausa": "¿por qué una escuela rural o un puesto de salud comunal nunca debe ser utilizado como campamento por ningún actor armado, por más inofensivo que parezca el momento?",
+          "resp": "porque al ocuparlo, el actor armado convierte un bien civil protegido en un objetivo militar directo, poniendo en riesgo inminente de bombardeo o ataque a la población civil y violando gravemente el DIH."
+        },
+        {
+          "tit": "Crímenes y prohibiciones absolutas",
+          "txt": "Análisis profundo de las conductas atroces que el DIH prohíbe de forma terminante y sin excepción alguna, tales como la tortura, la toma de rehenes y los ataques indiscriminados que afectan a civiles de manera injustificada. Se relacionarán estas prohibiciones con las dinámicas de desplazamiento forzado interno que han sufrido las zonas campesinas.",
+          "pausa": "¿qué diferencia existe entre un daño incidental proporcionado y un ataque indiscriminado durante una operación militar?",
+          "resp": "el daño incidental ocurre de manera residual al atacar un objetivo militar legítimo intentando minimizar bajas civiles, mientras que el ataque indiscriminado no distingue en lo absoluto y destruye a civiles y combatientes por igual."
+        },
+        {
+          "tit": "El DIH en Colombia y la JEP",
+          "txt": "Revisión histórica del contexto regional para entender cómo el conflicto armado colombiano ha estado marcado por constantes y dolorosas infracciones al DIH, tales como la desaparición forzada. Se explicará el rol de la Jurisdicción Especial para la Paz como mecanismo de justicia transicional que busca esclarecer estos crímenes de guerra.",
+          "pausa": "¿cuál es el objetivo primordial de la JEP frente a las comunidades rurales que han sido víctimas de graves infracciones al DIH?",
+          "resp": "garantizar los derechos inalienables de las víctimas a conocer la verdad, acceder a la justicia, lograr la reparación de los daños y asegurar la no repetición de los crímenes sufridos."
+        }
+      ],
+      "talleres": "1. Lectura compartida en voz alta dentro del aula sobre las infracciones al DIH, utilizando recortes de periódicos o relatos impresos de casos históricos nacionales. \n2. Trabajo en grupos pequeños para analizar un caso hipotético de toma de un centro de salud rural en una vereda, identificando las normas infringidas y los actores vulnerados. \n3. Creación colaborativa de un cartel rústico (usando hojas de bloc, cartón y colores) que promueva el respeto absoluto a la misión médica en la comunidad de Loma Verde, el cual será exhibido en la cartelera del colegio.",
+      "transfer": "Dialogar, sin usar dispositivos electrónicos (teléfonos o grabadoras), tomando apuntes manuales en el cuaderno, con un adulto de la familia o vecino de la vereda sobre la importancia histórica del puesto de salud y la escuela local. La reflexión debe girar en torno a cómo la comunidad civil ha tenido que exigir de manera pacífica la protección de estos espacios frente a cualquier actor externo.",
+      "clave": "El estudiante debe lograr plasmar en su informe que la escuela y el puesto de salud son pilares indiscutibles de la supervivencia comunitaria. Las respuestas deben evidenciar un nivel de análisis crítico donde se entienda que la comunidad exige que estos espacios queden fuera del conflicto, aplicando empíricamente y desde el sentido común el principio de distinción del DIH.",
+      "evaluacion": "Rúbrica de evaluación sumativa y formativa:\n1. apropiación conceptual (40%): diferencia claramente entre el alcance temporal del DIH y los DDHH, e identifica de forma correcta a las personas protegidas.\n2. análisis de contexto (30%): relaciona adecuadamente las normas del DIH con la historia del conflicto en su región cordobesa.\n3. redacción y ortotipografía (30%): aplica rigurosamente el uso de mayúsculas y minúsculas (recordando la regla innegociable de que después de dos puntos no se escribe con mayúscula inicial, salvo nombres propios), y muestra un texto con cohesión y coherencia.",
+      "recursos": "Tablero acrílico, tizas o marcadores de colores, pliegos de cartulina, los cuadernos de apuntes de los estudiantes y copias impresas en papel de fragmentos pedagógicos de los Convenios de Ginebra y de casos de la JEP (adaptados para el trabajo presencial sin necesidad de conectividad a internet).",
+      "referencias": "Estándares básicos de competencias y Derechos básicos de aprendizaje (EBC y DBA):\n* comprendo que el derecho internacional humanitario es un conjunto de normas que busca limitar los efectos de los conflictos armados y proteger a las personas que no participan directamente en las hostilidades.\n* expreso empatía ante grupos o personas cuyos derechos han sido vulnerados y propongo acciones solidarias.\n* DBA 2 (G10): evalúa las causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia y su incidencia en los ámbitos social, político, económico y cultural.\n\nBibliografía académica complementaria para la planeación docente:\n- Kalshoven, F., & Zegveld, L. (2001). Restricciones en la conducción de la guerra: introducción al Derecho Internacional Humanitario. Ginebra: Comité Internacional de la Cruz Roja (CICR).\n- Uprimny Yepes, R. (2006). Justicia transicional y resolución de conflictos en Colombia. Bogotá: Ediciones Dejusticia.",
+      "dua": "Para asegurar la plena comprensión de los conceptos en nuestro entorno netamente rural, se utilizarán analogías basadas en la dinámica agrícola: explicar el principio de distinción delimitando zonas de cultivo (población civil productiva) y zonas de entresaca (zonas de combate). Asimismo, se fomentará fuertemente la participación oral y el debate presencial para aquellos estudiantes que presenten dificultades específicas en la lectoescritura, permitiendo que sus evaluaciones sumativas se realicen mediante conversatorios dirigidos.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "El DIH protege de manera integral a quienes no participan directamente en las hostilidades",
+        "El principio de distinción es la base fundamental y el corazón de todas las normas de la guerra",
+        "Las instituciones educativas, los hospitales y las iglesias son bienes protegidos e intocables",
+        "Prácticas como la tortura sistemática, la desaparición forzada y la toma de rehenes están absolutamente prohibidas sin excepción",
+        "La JEP es el máximo mecanismo de justicia transicional en Colombia encargado de investigar las graves infracciones al DIH"
+      ],
+      "errores": [
+        "Creer que el DIH y los derechos humanos son exactamente el mismo cuerpo normativo: falso, el DIH aplica exclusivamente en situaciones de conflicto armado activo, mientras que los DDHH aplican en todo momento (tanto en tiempos de paz como de guerra)",
+        "Pensar que en la guerra todo se vale y no hay reglas: falso, el DIH establece límites estrictos a los métodos y medios de combate para evitar el sufrimiento innecesario de las personas",
+        "Asumir que un civil pierde su protección del DIH por el simple hecho de simpatizar ideológicamente con un bando: falso, el civil solo pierde su estatus de protección si participa de manera directa y activa en las hostilidades",
+        "Desconocer que los heridos enemigos tienen todo el derecho a recibir atención médica urgente: falso, el personal de la misión médica debe atender a todos los heridos sin distinción alguna, guiado exclusivamente por el principio de humanidad"
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la función principal del principio de distinción dentro del marco legal del derecho internacional humanitario?",
+          "a": "Su función primordial es obligar a las partes involucradas en el conflicto a diferenciar en todo momento entre combatientes y población civil, garantizando de esta forma que las operaciones militares se dirijan única y exclusivamente contra objetivos militares y jamás contra la población.",
+          "verdadero": true,
+          "justificacion": "El principio de distinción busca ser el escudo protector de los civiles frente a los peligros inminentes de las hostilidades armadas, siendo esta la piedra angular de los Convenios de Ginebra.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El personal médico y humanitario puede ser atacado legítimamente si se encuentra prestando atención de primeros auxilios a combatientes enemigos heridos.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El personal médico goza de una protección especial y absoluta bajo las normas del DIH; su única misión es salvar vidas, por lo que atender a heridos de cualquier bando en disputa jamás los convierte en un objetivo militar válido.",
+          "enunciado": "Analiza detenidamente la situación hipotética a la luz del principio de humanidad del DIH.",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué elementos estructurales se consideran un bien protegido según el DIH y qué ejemplos concretos pueden encontrarse en una comunidad rural campesina como Loma Verde?",
+          "a": "Son aquellas infraestructuras o instalaciones indispensables para la supervivencia, la salud y el bienestar cultural de la población civil, tales como la escuela rural, el puesto de salud veredal, los acueductos comunitarios y la capilla del pueblo.",
+          "verdadero": true,
+          "justificacion": "Estos bienes están blindados y no pueden ser objeto de ataques ni ser ocupados con fines estratégicos, ya que su destrucción o deterioro compromete directamente la vida y el futuro de la población no combatiente.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La toma de rehenes civiles y la práctica de la tortura son acciones que el derecho internacional humanitario prohíbe de manera absoluta y sin que exista ninguna excepción o justificación militar posible.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Estas conductas extremas constituyen graves crímenes de guerra y son infracciones mayores a los Convenios de Ginebra, pues atentan de forma directa contra la dignidad humana y socavan los principios mínimos de humanidad.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué diferencia sustancial y temporal existe entre los Derechos Humanos (DDHH) y el Derecho Internacional Humanitario (DIH) respecto a su momento de aplicación?",
+          "a": "La principal diferencia radica en que los derechos humanos son aplicables y exigibles en todo momento, tanto en tiempos de paz absoluta como de guerra, mientras que el DIH fue diseñado y promulgado para aplicarse única y exclusivamente durante situaciones declaradas de conflicto armado.",
+          "verdadero": true,
+          "justificacion": "El DIH actúa como un régimen jurídico especial de emergencia extrema que entra en vigor cuando se rompe la paz social, brindando un marco normativo realista y adaptado a las crueles realidades de la guerra.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El desplazamiento forzado interno es un fenómeno exclusivo de las dinámicas sociales urbanas modernas y, por lo tanto, no se considera una infracción al derecho internacional humanitario.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El desplazamiento forzado interno es una de las más graves violaciones al DIH y en Colombia ha afectado mayoritariamente a las poblaciones rurales, campesinas, afrodescendientes e indígenas, obligándolas a huir y perder sus medios de vida por cuenta de la violencia.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué papel fundamental debe cumplir la Jurisdicción Especial para la Paz (JEP) en el actual contexto del posconflicto colombiano respecto a las infracciones al DIH?",
+          "a": "El rol central de la JEP es investigar a fondo, esclarecer y sancionar las más graves violaciones a los derechos humanos y las infracciones severas al DIH que fueron cometidas por los distintos actores durante el conflicto armado, con el fin de garantizar la justicia transicional.",
+          "verdadero": true,
+          "justificacion": "La JEP es el tribunal transicional creado para procesar a los actores involucrados, buscando restaurar el tejido social fragmentado y asegurar que estos crímenes atroces no vuelvan a repetirse en el futuro de la nación.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Un combatiente enemigo que ha depuesto formalmente las armas, se ha rendido o ha quedado totalmente fuera de combate debido a sus heridas, recobra inmediatamente un estatus de persona protegida bajo las reglas del DIH.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "El sagrado principio de humanidad del DIH establece sin lugar a dudas que las personas que han quedado fuera de combate (hors de combat) ya no participan en las hostilidades bélicas y, por ende, deben ser tratadas con absoluta dignidad, respetando su vida y garantizando su pronta atención médica.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Por qué el delito de la desaparición forzada es considerado un crimen especialmente atroz y devastador en el contexto histórico del conflicto armado colombiano?",
+          "a": "Es considerado especialmente atroz porque se trata de un crimen continuado en el tiempo que no solo vulnera gravemente los derechos a la libertad y la vida de la víctima directa, sino que también somete a sus familiares a un estado de tortura psicológica permanente al negarles el conocimiento sobre la verdad, el paradero y el destino final de su ser querido.",
+          "verdadero": true,
+          "justificacion": "La profunda incertidumbre y la cruel falta de duelo causan que la desaparición forzada genere un impacto destructivo a largo plazo en la salud mental de las comunidades, violando múltiples preceptos del DIH.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El uso de cualquier tipo de arma novedosa o tradicional está plenamente permitido en los conflictos armados contemporáneos, siempre y cuando asegure de manera rápida la victoria militar definitiva sobre el adversario.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "El DIH prohíbe de manera estricta y tajante el uso de armas que causen daños superfluos, sufrimiento innecesario o que tengan efectos altamente indiscriminados, tales como las minas antipersonal, limitando así los medios para hacer la guerra.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar un recorrido analítico por los alrededores de la institución educativa o en la zona central de la vereda, identificando de manera presencial al menos tres espacios o construcciones que, según los criterios estudiados del DIH, calificarían indiscutiblemente como bienes civiles protegidos (ejemplo: una fuente pública de agua comunal, la placa deportiva, la escuela). Anotar en el cuaderno de la asignatura sus nombres específicos y redactar un párrafo reflexivo sobre las graves consecuencias que traería para el bienestar de la comunidad de Loma Verde la destrucción deliberada de dichos espacios.",
+      "fundamentacion": "# FUNDAMENTACIÓN TEÓRICA DEL DERECHO INTERNACIONAL HUMANITARIO Y SU APLICACIÓN EN COLOMBIA\n\n## Origen y propósito del derecho internacional humanitario\nEl derecho internacional humanitario (DIH) es un conjunto de normas y disposiciones de origen internacional que, sustentado en firmes y arraigadas razones humanitarias, tiene como propósito fundamental limitar los crueles efectos devastadores de los conflictos armados. A diferencia de los derechos humanos, cuya aplicación normativa es universal, inalienable y constante en cualquier etapa de la vida de un Estado, el DIH es un régimen jurídico estrictamente de excepción: se activa única y exclusivamente cuando estalla de facto un conflicto armado, ya sea de carácter internacional o no internacional, operando en el terreno como una gran barrera de contención frente a la barbarie absoluta de la guerra.\n\nSu premisa filosófica y jurídica básica reconoce una cruda realidad de la historia humana: aunque el inicio de la guerra representa de por sí un rotundo fracaso de la diplomacia y el diálogo civilizado, una vez que el conflicto ha estallado, no todo está permitido en el campo de batalla. Existen límites inquebrantables e innegociables respecto a los métodos de combate y a los medios bélicos que los bandos enfrentados pueden emplear para someter al enemigo. El pilar fundamental de estas limitaciones internacionales es la preservación intacta de la dignidad humana en medio de la hostilidad más extrema, protegiendo de manera categórica a aquellos individuos que no participan activamente en las confrontaciones militares o que ya han dejado de hacerlo por diversas circunstancias.\n\n## El principio de distinción y la protección a las personas\nEl núcleo duro, el corazón y la regla de oro irremplazable de los Convenios de Ginebra es el llamado principio de distinción. Este principio impone a todas las partes combatientes en un conflicto el deber irrenunciable y permanente de distinguir, en absolutamente todas las circunstancias, entre quienes son combatientes y quienes conforman de manera pasiva la población civil. Según este principio rector, solamente los combatientes plenamente identificados y los objetivos netamente militares pueden ser blanco legítimo de un ataque armado.\n\nLa población civil en su totalidad goza de inmunidad y protección general bajo la normativa internacional. Esta categoría demográfica abarca a todas aquellas personas que no toman parte directa en las hostilidades: familias campesinas, niños, niñas, docentes de escuela, pequeños comerciantes y líderes comunitarios de las veredas. Atacar de manera deliberada y planificada a los civiles o lanzar ataques con métodos indiscriminados (donde por la naturaleza del armamento no se puede diferenciar el objetivo militar legítimo de la población civil circundante) constituye una gravísima infracción al DIH y se tipifica ante los tribunales internacionales como un atroz crimen de guerra.\n\nAsimismo, el derecho internacional reconoce y exige un estatus de protección especial y redoblada para grupos de individuos específicos, debido a su situación de extrema vulnerabilidad o a su función esencial para preservar la vida en tiempos de crisis social:\n- heridos y enfermos de cualquier bando armado: deben ser recogidos del campo, protegidos y asistidos médicamente con la mayor prontitud posible, sin importar su afiliación ideológica.\n- prisioneros de guerra y combatientes capturados: quienes han depuesto voluntariamente las armas o han quedado fuera de combate no pueden ser ejecutados sumariamente, torturados ni sometidos bajo ninguna excusa a tratos degradantes o inhumanos.\n- personal médico, religioso y humanitario de rescate: su función exclusiva y vital es aliviar el sufrimiento ajeno en la zona de fuego, por lo que gozan de inviolabilidad para el cumplimiento efectivo de sus loables labores.\n\n## La inmunidad de los bienes indispensables para la supervivencia comunitaria\nLa protección que otorga el DIH no se limita exclusivamente a las personas físicas de carne y hueso, sino que se extiende imperativamente a su entorno vital y estructural. El concepto legal de bienes protegidos abarca de manera integral todas aquellas infraestructuras civiles que resultan ser indispensables para la supervivencia física, cultural, educativa y espiritual de las comunidades afectadas por el fuego cruzado.\n\nEsto incluye de manera categórica bienes inmuebles de vital importancia, tales como: hospitales regionales, puestos de salud veredales, clínicas, escuelas primarias, instituciones educativas públicas, represas de agua, instalaciones de suministro de agua potable e iglesias o lugares de culto. Estas edificaciones no pueden ser bombardeadas bajo ninguna justificación estratégica, no pueden ser destruidas como método de castigo, ni pueden ser ocupadas militarmente por ningún actor o grupo armado. Si un actor partícipe del conflicto decide utilizar una escuela rural como trinchera de combate, incurre en una de las violaciones internacionales más repudiables: el uso de infraestructura netamente civil para sacar una ventaja militar. Este acto ilícito expone a las comunidades locales al fuego enemigo y anula trágicamente la protección jurídica inherente de la que gozaba el bien.\n\n## Prohibiciones absolutas y el impacto devastador del conflicto en Colombia\nLos diversos Convenios de Ginebra y sus Protocolos Adicionales establecen para el mundo entero un amplio catálogo de prohibiciones absolutas que no admiten bajo ninguna óptica la justificación de la necesidad militar. Entre estas prohibiciones universales destacan: la práctica de la tortura física y psicológica, la toma extorsiva de rehenes, el uso cobarde de civiles como escudos humanos, el reclutamiento forzado y sistemático de menores de edad para la guerra, los actos de terrorismo diseñados para sembrar pánico masivo y la violencia sexual utilizada como arma de guerra.\n\nTristemente, el prolongado y complejo conflicto armado colombiano ha sido durante décadas el escenario de sistemáticas violaciones a estas normas de protección humanitaria. En los vastos territorios rurales y apartados como el departamento de Córdoba, las reiteradas infracciones al DIH han dejado cicatrices generacionales muy profundas y dolorosas. Delitos atroces como la desaparición forzada (que somete vilmente a los familiares a una especie de tortura prolongada por el ocultamiento sistemático del paradero real de las víctimas) y el desplazamiento forzado masivo interno, han desgarrado por completo el tejido social de miles de comunidades campesinas e indígenas. Estas comunidades vulnerables se vieron obligadas violentamente a abandonar sus parcelas de tierra, sus precarios medios de subsistencia, sus animales y todos sus proyectos de vida familiares para poder salvaguardar su integridad física frente al inminente avance del conflicto.\n\n## La justicia transicional y el rol histórico de la JEP\nAnte la magnitud sin precedentes y la constante sistematicidad de estas violaciones en el contexto histórico colombiano, el Estado y la sociedad en su conjunto enfrentaron el reto colosal de garantizar procesos de justicia verdadera sin tener que prolongar indefinidamente el derramamiento de sangre en los campos. Es en este preciso marco político y social de justicia transicional que surge tras los acuerdos de paz la Jurisdicción Especial para la Paz (JEP).\n\nEste tribunal de paz fue diseñado institucionalmente, no como un ente ciego de venganza punitiva, sino como un mecanismo de altísimo nivel enfocado plenamente en el esclarecimiento riguroso de la verdad procesal y la adjudicación real de responsabilidades directas frente a los crímenes más graves y representativos cometidos durante las hostilidades, muchísimas de las cuales son graves infracciones comprobadas al DIH. Su propósito final y supremo es lograr materializar en la práctica el derecho inalienable de las víctimas a la verdad integral, administrar un tipo de justicia restaurativa, propiciar espacios para reparar los daños profundos causados en las comunidades y, finalmente, sentar unas bases jurídicas y sociales muy sólidas para intentar garantizar la no repetición de estos hechos lamentables en el futuro democrático de la nación.",
+      "lineatiempo": "1859: la Batalla de Solferino en Europa genera una gran masacre de soldados que inspira el urgente nacimiento del movimiento humanitario moderno y la posterior fundación de la Cruz Roja.\n1864: se firma formalmente el primer Convenio de Ginebra con el noble propósito de mejorar la suerte y la atención médica de los militares heridos en los ejércitos en campaña.\n1949: aprobación histórica de los cuatro Convenios de Ginebra por parte de la comunidad internacional, consolidando la base jurídica contemporánea del DIH tras los horrores evidenciados durante la Segunda Guerra Mundial.\n1977: adopción diplomática de los Protocolos Adicionales I y II, instrumentos netamente enfocados en mejorar la protección directa de las víctimas civiles tanto en los conflictos internacionales como en los complejos conflictos de carácter no internacional.\n2016: firma oficial del Acuerdo Final de Paz en Colombia, hito político e histórico que dio origen a la creación de la Jurisdicción Especial para la Paz (JEP) para juzgar las infracciones cometidas contra el DIH."
+    }
+  ]
+}

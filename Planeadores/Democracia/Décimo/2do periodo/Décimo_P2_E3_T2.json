@@ -1,0 +1,190 @@
+{
+  "app": "loma_verde_planeador",
+  "exportado": "2026-07-15T16:25:53-05:00",
+  "planeadores": [
+    {
+      "id": "plan-dem-10-p2-eje3-bienes-002",
+      "creado": "2026-07-15T16:25:53-05:00",
+      "grado": "Décimo",
+      "periodo": "Segundo periodo",
+      "ejeIdx": "3",
+      "docente": "Richard Miguel Hernández Sabié",
+      "numero": "03",
+      "grupos": "01 – 02 – 03",
+      "fecha": "2026-07-15",
+      "area": "Competencias Ciudadanas",
+      "asignatura": "Democracia y Paz",
+      "tema": "Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja)",
+      "unidad": "Eje 3: derecho internacional humanitario — protección a personas y bienes. Conflicto colombiano",
+      "sesiones": "2",
+      "duracion": "55 min",
+      "evidencias": "Saber:\n* identifica las personas y bienes protegidos por el DIH y describe las prohibiciones absolutas de los Convenios de Ginebra.\n* explica el papel de la JEP en el posconflicto colombiano y su relación con los principios de verdad, justicia y reparación.\nSaber-hacer:\n* el estudiante establece relaciones entre las distintas dimensiones (jurídica, política, humanitaria, social) del conflicto colombiano al analizar casos reales de violación del DIH.\n* el estudiante analiza los efectos en distintas dimensiones que tendría una intervención de la JEP frente a la impunidad.\nSer:\n* manifiesta indignación pacífica frente al sufrimiento de grupos o naciones involucradas en confrontaciones violentas y asume compromisos con la no violencia.",
+      "competencias": "Pensamiento reflexivo y sistémico\nEBC — Convivencia y paz",
+      "contenidos": "* ¿A quién protege el DIH? Población civil, heridos y enfermos, prisioneros de guerra, personal médico y humanitario.\n* Bienes protegidos: hospitales, escuelas, lugares de culto, emblemas (Cruz Roja, Media Luna Roja).\n* Prohibiciones absolutas del DIH: ataques a civiles, tortura, uso de armas prohibidas, toma de rehenes.\n* El DIH en el conflicto armado colombiano: casos de violaciones y mecanismos de denuncia.\n* Desaparición forzada, desplazamiento interno y secuestro como crímenes en el contexto colombiano.\n* Jurisdicción Especial para la Paz (JEP): estructura y función en el posconflicto.",
+      "objetivo": "Comprender la importancia jurídica y humanitaria de los bienes protegidos por el derecho internacional humanitario (DIH), identificando el estatus especial de hospitales, escuelas, lugares de culto y los emblemas de la Cruz Roja y la Media Luna Roja, para analizar críticamente el impacto de su vulneración en el marco del conflicto armado colombiano y en el contexto rural de Montería y Córdoba.",
+      "pregunta": "¿Por qué la protección internacional de bienes civiles como escuelas y hospitales resulta indispensable para la supervivencia de las comunidades rurales en Córdoba, y de qué manera la vulneración de estos espacios altera profundamente la estructura social y el ejercicio de los derechos de los jóvenes?",
+      "explora": "Diálogo guiado a partir de una situación hipotética donde se presenta a los estudiantes un escenario donde el puesto de salud o la escuela de la vereda Loma Verde es ocupada temporalmente por personas ajenas a la comunidad para resguardarse. Se les plantea una pregunta problematizadora acerca de si creen que este lugar perdería su protección y qué consecuencias traería para las familias de la zona.",
+      "glosario": [
+        {"t": "Bienes protegidos", "d": "infraestructuras e instalaciones de carácter civil que no forman parte de las acciones militares y deben ser respetadas."},
+        {"t": "Emblema de protección", "d": "signos visibles como la Cruz Roja que identifican al personal y los bienes médicos que no pueden ser atacados."},
+        {"t": "Misión médica", "d": "conjunto de bienes, instalaciones y profesionales destinados exclusivamente a la atención de heridos y enfermos."},
+        {"t": "Principio de distinción", "d": "obligación de las partes en conflicto de diferenciar entre objetivos militares y bienes civiles."},
+        {"t": "Bienes culturales", "d": "lugares de culto, monumentos y centros educativos que representan la identidad y el saber de una comunidad."},
+        {"t": "Objetivo militar", "d": "bienes que por su naturaleza, ubicación, finalidad o utilización contribuyen eficazmente a la acción militar."},
+        {"t": "Infracción grave", "d": "violación flagrante de las normas del derecho internacional humanitario considerada como crimen de guerra."},
+        {"t": "Perfidia", "d": "acto de mala fe donde se simula gozar de la protección del DIH, como usar un emblema médico para atacar al enemigo."},
+        {"t": "Daño incidental", "d": "afectación colateral e involuntaria causada a bienes civiles durante un ataque dirigido a un objetivo militar."},
+        {"t": "Justicia transicional", "d": "mecanismos judiciales y políticos adoptados para procesar violaciones masivas de derechos en periodos de posconflicto."}
+      ],
+      "bloques": [
+        {
+          "tit": "La escuela y el hospital como espacios sagrados",
+          "txt": "Estudio detallado del estatus de protección que el DIH confiere a los bienes indispensables para la población civil. Se analiza de qué manera las escuelas y los centros asistenciales de salud están blindados legalmente por los Convenios de Ginebra para evitar que el conflicto destruya las condiciones mínimas de vida de las comunidades campesinas.",
+          "pausa": "¿qué ocurre con la protección de una escuela si se guardan armas en su interior de forma secreta?",
+          "resp": "el bien civil pierde temporalmente su inmunidad y se convierte en un objetivo militar legítimo, exponiendo a toda la comunidad a un grave peligro."
+        },
+        {
+          "tit": "Lugares de culto y símbolos de protección",
+          "txt": "Análisis de la importancia de los lugares de culto y del uso riguroso de los emblemas internacionales como la Cruz Roja y la Media Luna Roja. Se explica cómo estos signos actúan como un escudo invisible que exige neutralidad y respeto absoluto por parte de todos los actores armados que operan en el territorio.",
+          "pausa": "¿por qué es un delito grave pintar el símbolo de la Cruz Roja en un vehículo militar de transporte de tropas?",
+          "resp": "porque constituye un acto de perfidia, el cual usa un emblema de paz para engañar al oponente y obtener una ventaja militar ilícita."
+        },
+        {
+          "tit": "El impacto de las infracciones en el contexto colombiano",
+          "txt": "Reflexión crítica sobre los casos históricos de afectación a bienes civiles en las zonas rurales del departamento de Córdoba. Se examina cómo la destrucción de escuelas y la afectación de puestos de salud rurales generaron barreras históricas de acceso a la educación y provocaron el abandono forzado de los territorios.",
+          "pausa": "¿qué tribunal actual investiga la destrucción sistemática de bienes civiles durante el conflicto armado en Colombia?",
+          "resp": "la Jurisdicción Especial para la Paz, la cual se encarga de esclarecer las graves infracciones al DIH y garantizar la reparación integral de las víctimas."
+        }
+      ],
+      "talleres": "1. Lectura analítica de fragmentos seleccionados del Protocolo Adicional II de los Convenios de Ginebra relativos a los bienes civiles. \n2. Elaboración en parejas de un esquema visual donde se clasifiquen los bienes protegidos y se describan las funciones de los emblemas médicos. \n3. Estudio presencial de un caso práctico local sobre la vulneración de una escuela rural y discusión grupal en torno a sus efectos sociales.",
+      "transfer": "Desarrollo de una propuesta de señalización o cartilla rústica ilustrada en el cuaderno donde los estudiantes diseñen una campaña de respeto a la misión médica y escolar en la vereda Loma Verde de Montería. Deberán conversar con líderes de su entorno familiar para recoger testimonios verbales sobre cómo se ha vivido la protección comunitaria de estos espacios.",
+      "clave": "La propuesta debe fundamentar que los centros educativos y de salud son bienes neutrales que dinamizan los derechos comunitarios. El diseño debe resaltar visualmente los emblemas de protección y argumentar con solidez que la afectación de un hospital rural paraliza el bienestar de toda la población campesina de la región.",
+      "evaluacion": "Evaluación cualitativa y cuantitativa mediante rúbrica y criterios: 1. comprensión teórica (40%): identifica con precisión los bienes protegidos y explica la función de los emblemas. 2. análisis crítico sistémico (30%): conecta la destrucción de infraestructuras civiles con los efectos sociales en las comunidades rurales de Córdoba. 3. redacción y aspectos ortotipográficos (30%): evalúa el rigor en el uso de las reglas gramaticales, asegurando la jerarquía de títulos y el uso estricto de minúsculas después de los dos puntos.",
+      "recursos": "Tablero, marcadores de colores, cuadernos individuales de los estudiantes, fragmentos impresos de las normas de Ginebra y ejemplos de casos reales documentados por la JEP en el departamento de Córdoba.",
+      "referencias": "Estándares básicos de competencias y Derechos básicos de aprendizaje (EBC y DBA):\n* Comprendo que el Derecho Internacional Humanitario es un conjunto de normas que busca limitar los efectos de los conflictos armados y proteger a las personas que no participan directamente en las hostilidades.\n* Expreso empatía ante grupos o personas cuyos derechos han sido vulnerados y propongo acciones solidarias.\n* DBA 2 (G10): Evalúa las causas y consecuencias de la violencia en la segunda mitad del siglo XX en Colombia.\n\nBibliografía especializada que incluye a:\n- Comité Internacional de la Cruz Roja. (2010). Los Convenios de Ginebra del 12 de agosto de 1949. Ginebra: CICR.\n- Swinarski, C. (1988). Introducción al Derecho Internacional Humanitario. San José: Instituto Interamericano de Derechos Humanos.",
+      "dua": "Para favorecer la inclusión, se presentará el contenido mediante diagramas táctiles o dibujos analógicos sencillos de la pirámide de protección de bienes civiles. Se permitirá que los estudiantes expresen sus análisis y reflexiones de manera oral en los debates presenciales si presentan dificultades de escritura, y se estructurará el trabajo cooperativo asignando roles claros según las habilidades individuales de los jóvenes de la zona rural.",
+      "observaciones": "",
+      "obsjefe": "",
+      "firmajefe": "",
+      "anexos": [],
+      "sintesis": [
+        "Los hospitales y escuelas son bienes de carácter netamente civil y gozan de protección absoluta bajo el DIH",
+        "El principio de distinción prohíbe de forma taxativa convertir infraestructuras comunitarias en objetivos militares",
+        "Los emblemas de la Cruz Roja y la Media Luna Roja son símbolos de neutralidad y rescate humanitario",
+        "El uso indebido o engañoso de los signos de protección médica se cataloga como un delito de perfidia",
+        "La Jurisdicción Especial para la Paz investiga las afectaciones a bienes protegidos en el territorio nacional"
+      ],
+      "errores": [
+        "Creer que un hospital puede ser atacado si atiende de urgencia a combatientes heridos: es un error grave, la atención médica humanitaria es neutral y obligatoria",
+        "Pensar que las iglesias pierden su estatus civil de forma permanente si la población se refugia en ellas: falso, el refugio de civiles desarmados no altera la protección",
+        "Asumir que los emblemas de la Cruz Roja pueden usarse en cualquier vehículo para evitar trancones o controles: es falso, constituye una infracción normativa severa",
+        "Imaginar que el DIH solo protege los bienes estatales y olvida las propiedades privadas de los campesinos: error, toda infraestructura civil está amparada"
+      ],
+      "banco": [
+        {
+          "tipo": "abierta",
+          "q": "¿Qué consecuencias jurídicas acarrea el uso de un hospital civil como centro de operaciones por parte de un grupo armado combatiente?",
+          "a": "El bien pierde de forma inmediata su inmunidad protectora y se transforma en un objetivo militar legítimo, lo que representa una gravísima infracción que pone en riesgo la vida de los pacientes.",
+          "verdadero": true,
+          "justificacion": "El principio de distinción indica que si un bien civil se utiliza para realizar actos perjudiciales para el enemigo, pierde su amparo legal de manera temporal.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Un centro educativo rural conserva intacto su blindaje y protección especial aunque un bando militar decida almacenar municiones en uno de sus salones de clase.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "Al albergar material bélico, el espacio adquiere una utilidad militar directa, lo que rompe el principio de distinción y suspende la protección civil del lugar.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿En qué consiste el delito internacional de perfidia relacionado con el uso de los emblemas de la Cruz Roja?",
+          "a": "Consiste en simular una condición protegida o neutral mediante el uso de símbolos humanitarios con el propósito deliberado de engañar al adversario para atacarlo o capturarlo.",
+          "verdadero": true,
+          "justificacion": "La perfidia traiciona la buena fe del oponente y desgasta la confianza colectiva en los símbolos que protegen a los heridos y al personal de salud.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "Los lugares de culto religioso se consideran bienes civiles protegidos y su destrucción intencional en un conflicto armado es catalogada como un crimen de guerra.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Las normas del DIH prohíben de forma absoluta los actos de hostilidad dirigidos contra monumentos históricos u obras de arte que constituyen el patrimonio cultural o espiritual.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cómo afecta la destrucción de los puestos de salud y acueductos veredales el tejido social de las poblaciones campesinas en Córdoba?",
+          "a": "Genera una crisis humanitaria profunda que paraliza la subsistencia básica, incrementa la mortalidad por causas prevenibles y detona phenomena trágicos como el desplazamiento forzado interno.",
+          "verdadero": true,
+          "justificacion": "La infraestructura básica rural sostiene la permanencia del campesinado en sus tierras, por lo que su destrucción sistemática deshace las redes de vida comunitaria.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El personal médico de la Cruz Roja tiene la obligación legal de solicitar la autorización escrita de los comandantes militares antes de socorrer a heridos del bando contrario.",
+          "a": "Falso",
+          "verdadero": false,
+          "justificacion": "La labor humanitaria es completamente autónoma e imparcial; el personal médico debe atender de forma prioritaria a cualquier ser humano herido basándose solo en criterios clínicos.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Qué entidad judicial autónoma tiene la función actual en Colombia de investigar de manera prioritaria los ataques cometidos contra escuelas rurales durante las hostilidades pasadas?",
+          "a": "La Jurisdicción Especial para la Paz es la corporación encargada de conocer, juzgar y sancionar los crímenes de guerra cometidos en el marco del conflicto armado interno.",
+          "verdadero": true,
+          "justificacion": "La JEP opera dentro del marco de la justicia transicional con el fin primordial de develar los patrones de violencia que afectaron las estructuras sociales campesinas.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "La Media Luna Roja posee exactamente el mismo estatus jurídico, valor de protección y respeto internacional que el símbolo tradicional de la Cruz Roja.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "Ambos son emblemas reconocidos universalmente por los Convenios de Ginebra para identificar los servicios médicos de socorro y garantizar la neutralidad operativa en distintas regiones del planeta.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "abierta",
+          "q": "¿Cuál es la diferencia conceptual básica entre un bien civil y un objetivo militar según el principio de distinción del DIH?",
+          "a": "El bien civil es toda infraestructura que sirve a las necesidades de la población, mientras que el objetivo militar es aquel que por su naturaleza aporta una ventaja bélica real al enemigo.",
+          "verdadero": true,
+          "justificacion": "La delimitación clara entre ambas categorías evita que la población civil sufra las consecuencias directas de los ataques armados planeados por los combatientes.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        },
+        {
+          "tipo": "fv",
+          "q": "El derecho internacional humanitario prohíbe de forma tajante e irreversible los ataques indiscriminados que causen daños colaterales a escuelas, siempre que estos daños superen la ventaja militar proyectada.",
+          "a": "Verdadero",
+          "verdadero": true,
+          "justificacion": "El principio de proporcionalidad prohíbe los bombardeos u operaciones donde se prevea que los daños incidentales a las estructuras civiles sean excesivos respecto al beneficio militar directo.",
+          "enunciado": "",
+          "opciones": {},
+          "correcta": ""
+        }
+      ],
+      "tarea": "Realizar un ejercicio de observación directa en la vereda donde residen, localizando e identificando de forma escrita en sus cuadernos de apuntes un espacio comunitario que consideren indispensable para la vida diaria (por ejemplo: el pozo de agua veredal, la cooperativa, la escuela o la cancha comunal). Redactar un análisis escrito sin necesidad de conectividad virtual, explicando cómo el respeto a dicho lugar garantiza la paz de las familias.",
+      "fundamentacion": "# LA PROTECCIÓN ABSOLUTA DE LOS BIENES CIVILES EN EL DERECHO INTERNACIONAL HUMANITARIO\n\n## Definición y alcance del concepto de bienes protegidos\nEl derecho internacional humanitario establece una premisa fundamental: la guerra tiene límites. El núcleo de estos límites se halla en el principio de distinción, el cual exige separar las dinámicas de combate de los elementos estructurales que sostienen la vida de las personas no combatientes. Los Convenios de Ginebra clasifican estos espacios en cuatro grandes categorías: centros médicos, instituciones educativas, lugares de culto y zonas residenciales. Estas estructuras están cobijadas por un régimen de inmunidad absoluta que prohíbe su destrucción, saqueo o instrumentalización táctica por parte de los ejércitos o grupos armados insurgentes.\n\nLa relevancia de los bienes protegidos radica en que actúan como redes de seguridad para la dignidad comunitaria. Cuando un territorio experimenta las dinámicas de un conflicto armado, la permanencia de la infraestructura civil asegura que el tejido social no se disuelva por completo, ofreciendo certezas mínimas de alimentación, salud y educación.\n\n## Escuelas y hospitales como pilares de la supervivencia humana\nLas escuelas y los centros asistenciales de salud reciben un trato preferencial en los Protocolos Adicionales de 1977. Un hospital es un espacio neutral donde el único criterio válido es el alivio del sufrimiento corporal. El DIH determina que estas edificaciones no pierden su protección si atienden a combatientes heridos, ya que el acto médico carece de filiación ideológica y responde al mandato humanitario de compasión.\n\nPor su parte, las escuelas representan el porvenir de las comunidades locales. El amparo normativo busca impedir que las aulas se conviertan en trincheras o fortines militares. La jurisprudencia internacional ha enfatizado que la ocupación militar de una escuela constituye una de las infracciones más lesivas, pues transforma un entorno de aprendizaje en un blanco de ataque legítimo, vulnerando de forma simultánea el derecho a la educación y a la integridad física de los jóvenes.\n\n## Los emblemas de neutralidad y el delito de perfidia\nPara visibilizar el estatus de protección en el teatro de operaciones, el derecho internacional reconoce signos de identificación universal: la Cruz Roja, la Media Luna Roja y el Cristal Rojo. Estos símbolos plasmados sobre techos, banderas o vehículos comunican a los combatientes que dichas estructuras o unidades de transporte no forman parte de las hostilidades y deben ser respetadas.\n\nEl uso indebido de estos emblemas erosiona la confianza del sistema humanitario y configura el crimen de perfidia. La perfidia se presenta cuando un actor armado simula una condición de neutralidad protegida para engañar al oponente y perpetrar un ataque sorpresivo. Utilizar una ambulancia marcada con la Cruz Roja para movilizar armamento o tropas en una zona rural es un ejemplo claro de este delito, el cual despoja de legitimidad al símbolo y pone en riesgo a las verdaderas misiones sanitarias.\n\n## El contexto del conflicto armado en el departamento de Córdoba\nLa geografía de Córdoba y sus zonas rurales han padecido históricamente los efectos nocivos del irrespeto a los bienes civiles protegidos. En diversas veredas, la infraestructura escolar y los puestos de salud comunitarios fueron instrumentalizados o destruidos de forma sistemática durante los enfrentamientos de las últimas décadas. Este fenómeno causó un impacto multidimensional: interrupción del calendario escolar, deserción masiva y pérdida de liderazgos locales.\n\nEl desmantelamiento de estas estructuras rurales no solo representó una pérdida material, sino que actuó como un detonante directo del desplazamiento forzado interno. Las familias campesinas, al notar que los entornos escolares de sus hijos o los centros de atención médica básica eran vulnerados, se vieron forzadas a abandonar sus parcelas de tierra para buscar refugio en los centros urbanos, fracturando la producción agrícola tradicional y la identidad cultural de la región.\n\n## La respuesta judicial y la restauración a través de la JEP\nFrente a estos patrones de macrovictimización, la Jurisdicción Especial para la Paz ha asumido la tarea de investigar los ataques sistemáticos dirigidos contra la infraestructura civil en Colombia. A través de sus diferentes líneas de investigación, este tribunal busca determinar la responsabilidad de los comparecientes en la destrucción de escuelas y hospitales veredales, entendiendo que estas acciones constituyeron infracciones graves al DIH.\n\nLa JEP promueve un enfoque de justicia restaurativa, donde las sanciones no solo castigan al infractor, sino que exigen acciones concretas de reconstrucción del entorno afectado. Para las comunidades rurales cordobesas, este proceso judicial representa una oportunidad histórica de conocer la verdad procesal, dignificar la memoria de los territorios y exigir la restauración de las escuelas y centros comunitarios como espacios sagrados de paz y convivencia ciudadana.",
+      "lineatiempo": "1949: firma de los cuatro Convenios de Ginebra que consolidan el marco contemporáneo de amparo humanitario.\n1977: adopción de los Protocolos Adicionales I y II que extienden formalmente las garantías de distinción a los bienes civiles.\n1999: ratificación del Protocolo de la Haya para la protección de los bienes culturales y religiosos en caso de guerra.\n2005: aprobación del Protocolo Adicional III que introduce el Cristal Rojo como tercer emblema oficial de protección neutral.\n2016: acuerdo de paz en Colombia e inicio de los macrocasos de la JEP que investigan la destrucción de la infraestructura veredal."
+    }
+  ]
+}
