@@ -100,8 +100,9 @@
         <label class="fld">Jornada<select id="d-jornada"><option>Única</option><option>Mañana</option><option>Tarde</option></select></label>
         <label class="fld">Correo (opcional)<input id="d-email" type="email" placeholder="docente@correo.com"></label>
         <label class="fld">Teléfono / WhatsApp<input id="d-telefono" placeholder="Ej: 300 123 4567"></label>
-        <label class="fld">Dirige grupo(s) — rol director<input id="d-dirige" placeholder="Ej: 6-601, 7-701 (vacío = no es director)"></label>
+        <label class="fld">Dirige grupo(s) — rol director<input id="d-dirige" placeholder="Ej: 9-3, 1-1 JUA (vacío = no es director)"></label>
       </div>
+      <div id="d-dirige-lista" class="desc" style="margin-top:6px"></div>
       <p class="desc" style="margin-top:6px">El acceso al portal ahora es con usuario y contraseña reales (Supabase). Para habilitar a un docente: registra aquí su <b>correo</b> y crea su usuario con ese mismo correo en Supabase → Authentication → Users.</p>
       <div style="margin-top:12px;display:flex;gap:10px">
         <button class="btn ok" id="btn-docente-save">💾 Guardar docente</button>
@@ -143,6 +144,12 @@
         <label class="fld">Filtrar por materia<select id="a-filtro-materia"><option value="">Todas</option></select></label>
       </div>
       <div id="asignaciones-out"></div>
+    </div>
+
+    <div class="card">
+      <h2>🏫 Cursos y sedes</h2>
+      <p class="desc">Cada curso creado en la app (desde Calificaciones) puede vincularse a una sede. En primaria, la sede aparece junto al grupo (ej. <b>3-1 CRI</b>) para distinguir el mismo grado entre sedes.</p>
+      <div class="tableScroll" id="cs-tabla"><p class="desc">Cargando…</p></div>
     </div>
   </section>
 
@@ -218,6 +225,7 @@
         <label class="fld">Secretaría de Educación<input id="inst-secretaria" placeholder="Secretaría de Educación Municipal de ..."></label>
         <label class="fld">Ciudad / municipio<input id="inst-ciudad" placeholder="Montería – Córdoba"></label>
         <label class="fld">Correo institucional<input id="inst-correo" type="email" placeholder="correo@sem...gov.co"></label>
+        <label class="fld">Sedes (separadas por coma)<input id="inst-sedes" placeholder="Principal, El Oyeto, ..."></label>
         <label class="fld" style="flex:0 0 auto;justify-content:flex-end"><button class="btn ok" id="btn-inst-guardar">💾 Guardar</button></label>
       </div>
       <p class="desc" style="margin-top:8px">El escudo/logo que aparece en documentos impresos es el archivo <code>Logo/logo.jpg</code> del repositorio (para cambiarlo, reemplaza ese archivo).</p>
@@ -392,7 +400,7 @@ document.getElementById('tabs').addEventListener('click', e=>{
   document.getElementById('tab-centros').classList.toggle('hide', t!=='centros');
   document.getElementById('tab-resumen').classList.toggle('hide', t!=='resumen');
   document.getElementById('tab-papelera').classList.toggle('hide', t!=='papelera');
-  if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); }
+  if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); renderCursosSedes(); }
   if (t==='centros') { fillLineaSelects(); fillLiderSelect(); renderDocentesCheckList(document.getElementById('c-doc-buscar').value); renderCentros(); }
   if (t==='resumen') { renderResumen(); renderEstado(); }
   if (t==='papelera') { renderPapelera(); }
@@ -586,6 +594,66 @@ function fillSedeSelects(){
   document.getElementById('d-sede').innerHTML = opts;
   document.getElementById('d-filtro-sede').innerHTML = '<option value="">Todas</option>'+opts;
 }
+
+// ── Dirección de grupo: checklist de grupos con cursos creados ──
+//  (jul 2026, unificación de cursos) Marca/desmarca grupos conocidos y el
+//  campo de texto se arma solo en formato canónico ("9-3", "1-1 JUA").
+//  El texto sigue mandando: tokens manuales (grupos aún sin cursos, o
+//  formatos viejos "9-903") se conservan y se entienden igual.
+function gruposConocidos(){
+  if(typeof LV_CURSO==='undefined') return [];
+  const vistos={}, out=[];
+  lsRead('cursos').filter(c=>c&&!c._eliminado).forEach(c=>{
+    const et=LV_CURSO.etiqueta(c); if(!et||vistos[et]) return; vistos[et]=1;
+    out.push({et, grado:c.grado, grupo:c.grupo, sede:c.sede||''});
+  });
+  return out.sort((a,b)=>a.et.localeCompare(b.et,undefined,{numeric:true}));
+}
+function dirigeLista(){
+  const cont=document.getElementById('d-dirige-lista'); if(!cont) return;
+  const grupos=gruposConocidos();
+  if(!grupos.length){ cont.innerHTML=''; return; }
+  const val=document.getElementById('d-dirige').value;
+  cont.innerHTML='<b>Grupos con cursos creados</b> — marca los que dirige: '+grupos.map(g=>
+    `<label style="display:inline-flex;align-items:center;gap:4px;margin:2px 10px 2px 0;cursor:pointer">
+      <input type="checkbox" data-et="${esc(g.et)}" ${LV_CURSO.dirigeCurso(val,g)?'checked':''}> ${esc(g.et)}</label>`).join('');
+  cont.querySelectorAll('input[type=checkbox]').forEach(ch=>{
+    ch.onchange=()=>{
+      const inp=document.getElementById('d-dirige');
+      const g=grupos.find(x=>x.et===ch.dataset.et); if(!g) return;
+      let toks=String(inp.value||'').split(',').map(t=>t.trim()).filter(Boolean);
+      if(ch.checked){ if(!LV_CURSO.dirigeCurso(inp.value,g)) toks.push(g.et); }
+      else toks=toks.filter(t=>!LV_CURSO.dirigeCurso(t,g));
+      inp.value=toks.join(', ');
+    };
+  });
+}
+
+// ── Cursos y sedes (pestaña Asignaciones) ──
+function renderCursosSedes(){
+  const cont=document.getElementById('cs-tabla'); if(!cont) return;
+  const cursos=lsRead('cursos').filter(c=>c&&!c._eliminado)
+    .sort((a,b)=>String(a.grado).localeCompare(String(b.grado),undefined,{numeric:true})
+      ||String(a.grupo).localeCompare(String(b.grupo),undefined,{numeric:true})
+      ||String(a.materia||'').localeCompare(String(b.materia||'')));
+  if(!cursos.length){ cont.innerHTML='<p class="desc">Aún no hay cursos creados (se crean desde Calificaciones dentro de cada materia).</p>'; return; }
+  const opts=sel=>['<option value="">— sin sede —</option>'].concat(
+    SEDES.map(x=>`<option value="${esc(x)}"${x===sel?' selected':''}>${esc(x)}</option>`)).join('');
+  cont.innerHTML='<table><thead><tr><th>Curso</th><th>Grado</th><th>Grupo</th><th>Materia</th><th>Sede</th></tr></thead><tbody>'+
+    cursos.map(c=>`<tr>
+      <td><b>${esc((typeof LV_CURSO!=='undefined'&&LV_CURSO.etiqueta(c))||c.nombre||'')}</b></td>
+      <td>${esc(c.grado||'')}</td><td>${esc(c.grupo||'')}</td><td>${esc(c.materia||'')}</td>
+      <td><select data-cs="${esc(c.id)}">${opts(c.sede||'')}</select></td></tr>`).join('')+'</tbody></table>';
+  cont.querySelectorAll('select[data-cs]').forEach(sel=>{
+    sel.onchange=()=>{
+      const arr=lsRead('cursos'); const c=arr.find(x=>x.id===sel.dataset.cs); if(!c) return;
+      c.sede=sel.value;
+      try{ localStorage.setItem(LS+'cursos', JSON.stringify(arr)); }catch(_){}
+      if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_cursos', c);
+      toast('Sede guardada'); dirigeLista();
+    };
+  });
+}
 document.getElementById('btn-docente-save').addEventListener('click', ()=>{
   const nombre = document.getElementById('d-nombre').value.trim();
   if(!nombre){ toast('Escribe el nombre del docente.'); return; }
@@ -609,6 +677,7 @@ document.getElementById('btn-docente-save').addEventListener('click', ()=>{
   docenteEditId = null;
   document.getElementById('btn-docente-cancel').classList.add('hide');
   ['d-nombre','d-email','d-telefono','d-dirige'].forEach(id=>document.getElementById(id).value='');
+  dirigeLista();
   renderDocentes(); fillDocenteSelects();
   toast('Docente guardado');
 });
@@ -616,6 +685,7 @@ document.getElementById('btn-docente-cancel').addEventListener('click', ()=>{
   docenteEditId = null;
   document.getElementById('btn-docente-cancel').classList.add('hide');
   ['d-nombre','d-email','d-telefono','d-dirige'].forEach(id=>document.getElementById(id).value='');
+  dirigeLista();
 });
 window.editarDocente = id=>{
   const d = docentes.find(x=>x.id===id); if(!d) return;
@@ -626,6 +696,7 @@ window.editarDocente = id=>{
   document.getElementById('d-email').value = d.email||'';
   document.getElementById('d-telefono').value = d.telefono||'';
   document.getElementById('d-dirige').value = d.dirige||'';
+  dirigeLista();
   document.getElementById('btn-docente-cancel').classList.remove('hide');
   window.scrollTo(0,0);
 };
@@ -980,6 +1051,8 @@ document.getElementById('c-filtro-linea').addEventListener('change', renderCentr
 
 // ---------- arranque ----------
 fillSedeSelects(); fillDocenteSelects(); fillAreaSelect(); fillGradoSelect(); fillMateriaFiltro();
+dirigeLista();
+document.getElementById('d-dirige').addEventListener('input', dirigeLista);
 renderDocentes(); renderAsignaciones();
 fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
 
@@ -993,7 +1066,8 @@ fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
   const $nit=document.getElementById('inst-nit'), $dane=document.getElementById('inst-dane'),
         $icfes=document.getElementById('inst-icfes'), $res=document.getElementById('inst-resolucion'),
         $sec=document.getElementById('inst-secretaria'), $ciu=document.getElementById('inst-ciudad'),
-        $cor=document.getElementById('inst-correo');
+        $cor=document.getElementById('inst-correo'),
+        $sed=document.getElementById('inst-sedes');
   function leerInst(){ try{ const a=JSON.parse(localStorage.getItem('lv_institucion'))||[]; return (Array.isArray(a)?a.find(x=>x&&!x._eliminado):null)||null; }catch(_){ return null; } }
   const r=leerInst()||{};
   $n.value=r.nombre||'Institución Educativa San José de Loma Verde';
@@ -1006,12 +1080,14 @@ fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
   $sec.value=r.secretaria||(typeof LV_INST!=='undefined'?LV_INST.secretaria():'');
   $ciu.value=r.ciudad||(typeof LV_INST!=='undefined'?LV_INST.ciudad():'');
   $cor.value=r.correo||(typeof LV_INST!=='undefined'?LV_INST.correo():'');
+  $sed.value=r.sedes||SEDES.join(', ');
   document.getElementById('btn-inst-guardar').addEventListener('click',()=>{
     const reg={
       id:(leerInst()||{}).id||'principal',
       nombre:$n.value.trim(), nombreCorto:$c.value.trim()||$n.value.trim(), sede:$s.value.trim(),
       nit:$nit.value.trim(), dane:$dane.value.trim(), icfes:$icfes.value.trim(), resolucion:$res.value.trim(),
       secretaria:$sec.value.trim(), ciudad:$ciu.value.trim(), correo:$cor.value.trim(),
+      sedes:$sed.value.trim(),
       actualizado_en:new Date().toISOString()
     };
     if(!reg.nombre){ toast('Escribe el nombre de la institución'); return; }

@@ -3,6 +3,57 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 19, 2026 — sesión 21, canonización de cursos/sedes + fix director de grupo)
+
+- **Verificación Fase 2 completada:** política `por_curso` activa en las 8
+  tablas (2a OK). 2c mostró 35 docentes sin correo en su ficha — normal:
+  solo ~4 tienen cuenta real; al dar de alta a cada docente hay que
+  registrar su correo en Coordinación (ya era requisito del login).
+- **BUG del director de grupo DIAGNOSTICADO Y CORREGIDO:** los cursos
+  guardan grado "Noveno (9°)" y grupo "3", pero las direcciones dicen
+  "9-903" → ni el módulo 12 ni la RLS coincidían (bug PREEXISTENTE en la
+  app, heredado por la Fase 2). Solución (elección de Francy): CANONIZAR
+  comparaciones sin renombrar datos + sede como campo propio.
+- **`LV_CURSO` NUEVO en auth.js** (se carga en todas las páginas):
+  gradoCanon ("Noveno (9°)"→9), grupoCanon ("903" con grado 9→3, "1101"
+  con 11→1), key, sedeCode ("Cristo Es Mi Luz"→CRI), esPrimaria,
+  etiqueta (bach. "9-3"; primaria con sede "3-1 CRI"), dirigeTokens y
+  dirigeCurso (acepta formatos viejos "9-903" y nuevos "9-3"/"1-1 JUA";
+  la sede solo se exige si el token Y el curso la tienen). Testeado con
+  node con los casos reales del diagnóstico — todos pasan.
+- **7 puntos de comparación de `dirige` migrados a LV_CURSO.dirigeCurso:**
+  01 (PERM_dirige), 10, 11 (PERM_dirige), 12, 13 (gruposDirigidos +
+  nombre del dirigente en el boletín), 14. index.html:1019 solo chequea
+  truthy → sin cambio.
+- **Coordinación:** (1) checklist "Grupos con cursos creados" bajo el
+  campo Dirige (marca/desmarca y el texto se arma solo en canónico; los
+  tokens manuales se conservan — sirve para grupos de primaria aún sin
+  cursos); (2) tarjeta "🏫 Cursos y sedes" en pestaña Asignaciones
+  (select de sede por curso → marcarCambio lv_cursos); (3) campo "Sedes"
+  en Institución → lv_institucion.sedes (LV_INST.sedes() en auth.js con
+  las 7 sedes reales de respaldo).
+- **01-calificaciones:** el formulario de curso ganó grados de PRIMARIA
+  (Prejardín…Quinto) y select de Sede (catálogo LV_INST.sedes()); el
+  curso nuevo estampa `sede`.
+- **`migracion_etapa2_fase2b.sql` NUEVO (SIN CORRER):** lv_grado_canon,
+  lv_grupo_canon, lv_sede_code + REEMPLAZA lv_mis_cursos, lv_est_visible
+  y lv_acudiente_visible con comparación canónica y sede opcional. Las
+  políticas por_curso NO se tocan (usan las mismas funciones). Al final
+  trae una verificación de canonizadores (esperado: 9/3 · 11/1 · 10/3 ·
+  6/1 · prejardin/2 · 0/1). Reversible re-corriendo la sección 0 de
+  fase2.
+- SW **v70**. Sintaxis OK (auth.js, sw.js y los 7 HTML tocados).
+- **fase2b CORRIDA en Supabase (jul 19):** verificación de canonizadores
+  EXACTA a lo esperado (9/3 · 11/1 · 10/3 · 6/1 · prejardin/2 · 0/1).
+- **PENDIENTE:** push (el primer intento falló: zsh aborta con
+  `no matches found: .git/*.lock` si no hay locks — usar (N)) + probar: (a) cuenta del director
+  (ej. Shirley 9-903) debe ver Dirección de grupo/boletines/analítica de
+  su 9-3; (b) checklist de dirige en Coordinación; (c) asignar sedes a
+  cursos de primaria cuando existan. DECISIÓN PENDIENTE de Francy:
+  migrar o no los textos viejos de dirige a canónico (hoy no hace falta,
+  la canonización los entiende) y unificar la ETIQUETA visible de cursos
+  en toda la app con LV_CURSO.etiqueta() (por módulo, gradual).
+
 ## ▶ POR DÓNDE RETOMAR (jul 18, 2026 — sesión 20, ARQUITECTURA ETAPA 2 · FASE 2 — código y SQL listos)
 
 - **Fase 2 (por-curso) CONSTRUIDA en sesión dedicada**, como estaba planeado.
@@ -35,13 +86,14 @@
   (estSel.cursoId); 11-inclusion conserva cursoId en la lista de
   estudiantes y lo estampa en PIAR nuevos. SW **v69**. Sintaxis OK
   (node --check en sw.js + bloques script de 10 y 11).
-- **ORDEN DE DESPLIEGUE:** (1) push (ritual de Terminal de Francy);
-  (2) correr `migracion_etapa2_fase2.sql` en Supabase; (3) correr las
-  consultas de VERIFICACIÓN del propio archivo y pegar resultados en el
-  chat; (4) probar con cuenta docente NO admin: ver solo sus cursos/
-  estudiantes/notas/asistencia, banco solo de sus materias, y con el
-  DIRECTOR de grupo: boletines/mi grupo/analitica completos; (5) revisar
-  2c (docentes sin correo en su ficha — no resolverían cursos).
+- **DESPLIEGUE (jul 19):** push HECHO (commit 2b190fa en origin/main) y
+  `migracion_etapa2_fase2.sql` CORRIDO en Supabase. Verificación 2d:
+  observador sin estId 0 · piar sin estId 0 · notas sin cursoId 0 ·
+  estudiantes sin cursoId 94 (transicional: visibles a todos; backfill
+  después) · banco sin materia 290 (se auto-etiquetan 'Sociales' vía
+  lvMigrarMateria al pasar por los equipos y subir). FALTA: resultados
+  2a/2b/2c (sobre todo 2c, docentes sin correo) y la prueba con cuenta
+  docente NO admin + director de grupo (boletines/mi grupo/analitica).
 - **OJO:** la RLS filtra las DESCARGAS nuevas; lo ya espejado en
   localStorage de cada equipo se queda hasta limpiar datos del navegador
   o entrar en un equipo nuevo. La reducción del espejo es gradual.
@@ -168,8 +220,8 @@
   sw.js en cada despliegue; editar por reemplazo exacto de texto (archivos
   grandes); validar sintaxis extrayendo <script> con node --check; los
   commits desde Cowork fallan por locks de OneDrive → Francy corre en
-  Terminal: rm -f .git/*.lock .git/objects/maintenance.lock && git add -A &&
-  git commit && git push. Deploy = push a main (Vercel auto).
+  Terminal: rm -f .git/*.lock(N) .git/objects/maintenance.lock(N) && git add
+  -A && git commit && git push (el (N) evita que zsh aborte si no hay locks). Deploy = push a main (Vercel auto).
 
 ## ▶ POR DÓNDE RETOMAR (jul 15, 2026 — sesión 14, offline falló EN CAMPO — SW v5 transaccional)
 

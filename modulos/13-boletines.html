@@ -168,8 +168,7 @@ function gruposDirigidos(){
   if(esAdmin) return cursos;
   const d=lsRead('docentes').find(x=>x.id===(login&&login.docenteId));
   if(!d||!d.dirige) return [];
-  const tokens=String(d.dirige).split(',').map(t=>{const [g,gr]=t.trim().split('-');return {grado:norm(g),grupo:norm(gr||'')};});
-  return cursos.filter(c=>tokens.some(t=>t.grado===norm(c.grado)&&(!t.grupo||!norm(c.grupo)||t.grupo===norm(c.grupo))));
+  return cursos.filter(c=>typeof LV_CURSO!=='undefined'&&LV_CURSO.dirigeCurso(d.dirige,c));
 }
 function gruposUnicos(){
   const v={},out=[];
@@ -213,11 +212,8 @@ function construirBoletines(grupoKey, periodo){
   const notas=lsRead('calificaciones');
   const c=cfgBol();
   const grupo=gruposUnicos().find(g=>g.key===grupoKey);
-  const dirigente=(lsRead('docentes').find(d=>{
-    if(!d.dirige) return false;
-    return String(d.dirige).split(',').some(t=>{const [g,gr]=t.trim().split('-');
-      return norm(g)===norm(grupoKey.split('-')[0])&&(!gr||norm(gr)===norm(grupoKey.split('-')[1]||''));});
-  })||{}).nombre||'';
+  const dirigente=(lsRead('docentes').find(d=>d.dirige&&grupo&&typeof LV_CURSO!=='undefined'
+    &&LV_CURSO.dirigeCurso(d.dirige,{grado:grupo.grado,grupo:grupo.grupo}))||{}).nombre||'';
 
   return estudiantes.map(est=>{
     const filas=[];

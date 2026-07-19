@@ -112,10 +112,16 @@
           <select id="c-grado">
             <option>Sexto (6°)</option><option>Séptimo (7°)</option><option>Octavo (8°)</option>
             <option>Noveno (9°)</option><option>Décimo (10°)</option><option>Undécimo (11°)</option>
+            <option>Prejardín</option><option>Jardín</option><option>Transición (0°)</option>
+            <option>Primero (1°)</option><option>Segundo (2°)</option><option>Tercero (3°)</option>
+            <option>Cuarto (4°)</option><option>Quinto (5°)</option>
           </select>
         </label>
         <label class="fld">Grupo
-          <input id="c-grupo" placeholder="Ej: 01, 02, A...">
+          <input id="c-grupo" placeholder="Ej: 1, 2, 3...">
+        </label>
+        <label class="fld">Sede
+          <select id="c-sede"><option value="">— sin sede —</option></select>
         </label>
         <label class="fld" style="flex:0 0 auto;justify-content:flex-end">
           <button class="btn ok" id="btn-add-curso">+ Crear curso</button>
@@ -544,7 +550,7 @@ const calKey=(cursoId,periodo,estId)=>`${cursoId}|${periodo}|${estId}`;
 let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
 const esAdmin=!!(login&&login.esAdmin);
 const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
-let PERM_materias=new Set(), PERM_accesoTotal=esAdmin, PERM_gruposDirigidos=new Set();
+let PERM_materias=new Set(), PERM_accesoTotal=esAdmin, PERM_gruposDirigidos=new Set(), PERM_dirige='';
 if(login&&!esAdmin){
   try{
     const asign=lsRead('asignaciones').filter(a=>a.docenteId===login.docenteId);
@@ -552,19 +558,14 @@ if(login&&!esAdmin){
     asign.forEach(a=>{ if(a.materia) PERM_materias.add(a.materia); });
     const docentes=lsRead('docentes');
     const d=docentes.find(x=>x.id===login.docenteId);
-    if(d&&d.dirige){
-      String(d.dirige).split(',').forEach(t=>{
-        const [g,gr]=t.trim().split('-');
-        PERM_gruposDirigidos.add(norm(g)+'-'+norm(gr||''));
-      });
-    }
+    if(d&&d.dirige){ PERM_dirige=String(d.dirige); }
   }catch(_){}
 }
 function cursoEsMio(c){
   if(esAdmin||PERM_accesoTotal) return true;
   if(!c) return false;
   if(c.materia && PERM_materias.has(c.materia)) return true;
-  if(PERM_gruposDirigidos.has(norm(c.grado)+'-'+norm(c.grupo))) return true;
+  if(PERM_dirige&&typeof LV_CURSO!=='undefined'&&LV_CURSO.dirigeCurso(PERM_dirige,c)) return true;
   return false;
 }
 
@@ -606,11 +607,18 @@ $('#tabs').addEventListener('click',e=>{
 $('#btn-add-curso').addEventListener('click',async()=>{
   const nombre=$('#c-nombre').value.trim();
   if(!nombre)return toast('Escribe el nombre del curso');
-  const curso={id:uid(),nombre,grado:$('#c-grado').value,grupo:$('#c-grupo').value.trim(),area:(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'Ciencias Sociales',materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',creado:Date.now()};
+  const curso={id:uid(),nombre,grado:$('#c-grado').value,grupo:$('#c-grupo').value.trim(),sede:($('#c-sede')&&$('#c-sede').value)||'',area:(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'Ciencias Sociales',materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',creado:Date.now()};
   await dbPut('cursos',curso); cursos.push(curso);
   $('#c-nombre').value='';$('#c-grupo').value='';
   toast('Curso creado'); renderCursos(); fillCursoSelects();
 });
+// Sedes del catálogo institucional (Coordinación → Resumen → Institución)
+(function(){
+  const sel=$('#c-sede');
+  if(sel&&typeof LV_INST!=='undefined'&&LV_INST.sedes){
+    sel.innerHTML='<option value="">— sin sede —</option>'+LV_INST.sedes().map(x=>`<option>${x}</option>`).join('');
+  }
+})();
 function renderCursos(){
   const el=$('#cursos-list');
   const cursosVista=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;

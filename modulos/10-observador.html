@@ -223,13 +223,7 @@ function gruposDirigidos(){
   const docentes = lsRead('docentes');
   const d = docentes.find(x=>x.id===(login&&login.docenteId));
   if(!d || !d.dirige) return [];
-  const tokens = String(d.dirige).split(',').map(t=>{
-    const [g,gr] = t.trim().split('-');
-    return { grado:norm(g), grupo:norm(gr||'') };
-  });
-  return cursos.filter(c => tokens.some(t =>
-    t.grado===norm(c.grado) && (!t.grupo || !norm(c.grupo) || t.grupo===norm(c.grupo))
-  ));
+  return cursos.filter(c => typeof LV_CURSO!=='undefined' && LV_CURSO.dirigeCurso(d.dirige, c));
 }
 
 // deduplicar cursos por grado-grupo (existen por materia)

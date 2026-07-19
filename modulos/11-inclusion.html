@@ -232,7 +232,7 @@ const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José d
 //   que ya usa el Observador (campo "dirige") y el portal (asignaciones). ──
 const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
 const esAdmin=!!(login&&login.esAdmin);
-let PERM_materias=new Set(), PERM_accesoTotal=esAdmin, PERM_gruposDirigidos=new Set();
+let PERM_materias=new Set(), PERM_accesoTotal=esAdmin, PERM_gruposDirigidos=new Set(), PERM_dirige='';
 if(login&&!esAdmin){
   try{
     const asign=lsRead('asignaciones').filter(a=>a.docenteId===login.docenteId);
@@ -240,19 +240,14 @@ if(login&&!esAdmin){
     asign.forEach(a=>{ if(a.materia) PERM_materias.add(a.materia); });
     const docentes=lsRead('docentes');
     const d=docentes.find(x=>x.id===login.docenteId);
-    if(d&&d.dirige){
-      String(d.dirige).split(',').forEach(t=>{
-        const [g,gr]=t.trim().split('-');
-        PERM_gruposDirigidos.add(norm(g)+'-'+norm(gr||''));
-      });
-    }
+    if(d&&d.dirige){ PERM_dirige=String(d.dirige); }
   }catch(_){}
 }
 function estudianteEsMio(cursoObj){
   if(esAdmin||PERM_accesoTotal) return true;
   if(!cursoObj) return false;
   if(cursoObj.materia && PERM_materias.has(cursoObj.materia)) return true;
-  if(PERM_gruposDirigidos.has(norm(cursoObj.grado)+'-'+norm(cursoObj.grupo))) return true;
+  if(PERM_dirige&&typeof LV_CURSO!=='undefined'&&LV_CURSO.dirigeCurso(PERM_dirige,cursoObj)) return true;
   return false;
 }
 

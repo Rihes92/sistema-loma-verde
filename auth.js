@@ -170,7 +170,88 @@ const LV_INST = {
   correo()     { return this._get().correo     || 'iesanjosedelomaverde@semmonteria.gov.co'; },
   secretaria() { return this._get().secretaria || 'Secretaría de Educación Municipal de Montería'; },
   ciudad()     { return this._get().ciudad     || 'Montería – Córdoba'; },
-  resolucion() { return this._get().resolucion || ''; }
+  resolucion() { return this._get().resolucion || ''; },
+  // Catálogo de sedes (jul 2026, unificación de cursos): texto separado
+  // por comas editable en Coordinación → Resumen → Institución.
+  sedes() {
+    return String(this._get().sedes || 'Principal, Juana Julia 1, Juana Julia 2, Cristo Es Mi Luz, El Oyeto, Fronteras de Córdoba, María Auxiliadora')
+      .split(',').map(s => s.trim()).filter(Boolean);
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+//  LV_CURSO — Canonización de grado / grupo / sede (jul 2026).
+//  Problema que resuelve: el mismo curso vive escrito de formas
+//  distintas ("Noveno (9°)" vs "9"; grupo "903" vs "3"; dirige
+//  "9-903"). Estas funciones llevan todo a una forma canónica para
+//  COMPARAR, sin renombrar los datos guardados.
+//  · gradoCanon('Noveno (9°)') → '9' · gradoCanon('Prejardin') → 'prejardin'
+//  · grupoCanon('9','903') → '3' · grupoCanon('11','1101') → '1'
+//  · key(c.grado,c.grupo) → '9-3' (etiqueta canónica corta)
+//  · sedeCode('Cristo Es Mi Luz') → 'CRI'
+//  · etiqueta(curso) → '9-3' (bachillerato) / '3-1 CRI' (primaria con sede)
+//  · dirigeCurso(d.dirige, curso) → true si el texto "dirige" cubre el
+//    curso (acepta formatos viejos "9-903" y nuevos "9-3" / "1-1 JUA").
+//  El espejo SQL vive en migracion_etapa2_fase2b.sql (RLS).
+// ═══════════════════════════════════════════════════════════════
+const LV_CURSO = {
+  _limpia(t) {
+    return String(t ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[°\s]/g, '').toLowerCase();
+  },
+  gradoCanon(t) {
+    const s = String(t ?? '').trim();
+    const par = s.match(/\((\d+)/);          // "Noveno (9°)" → 9
+    if (par) return String(parseInt(par[1], 10));
+    const num = s.match(/^(\d+)/);           // "9", "9°", "06" → 9 / 6
+    if (num) return String(parseInt(num[1], 10));
+    return this._limpia(s);                  // "Prejardin", "Jardín" → texto limpio
+  },
+  grupoCanon(grado, grupo) {
+    let g = this._limpia(grupo);
+    if (!/^\d+$/.test(g)) return g;          // no numérico ("único") → tal cual
+    const gc = this.gradoCanon(grado);
+    // formato largo "903"/"1101": quitar el prefijo del grado
+    if (/^\d+$/.test(gc) && g.length > gc.length && g.indexOf(gc) === 0) g = g.slice(gc.length);
+    g = g.replace(/^0+/, '');
+    return g === '' ? '0' : g;
+  },
+  key(grado, grupo) { return this.gradoCanon(grado) + '-' + this.grupoCanon(grado, grupo); },
+  sedeCode(s) {
+    const t = String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z]/g, '');
+    return t.slice(0, 3).toUpperCase();
+  },
+  esPrimaria(grado) {
+    const g = this.gradoCanon(grado);
+    return ['prejardin', 'jardin', 'transicion', '0', '1', '2', '3', '4', '5'].indexOf(g) !== -1;
+  },
+  etiqueta(curso) {
+    if (!curso) return '';
+    const k = this.key(curso.grado, curso.grupo);
+    const sc = curso.sede ? this.sedeCode(curso.sede) : '';
+    return (sc && this.esPrimaria(curso.grado)) ? k + ' ' + sc : k;
+  },
+  dirigeTokens(str) {
+    return String(str || '').split(',').map(t => t.trim()).filter(Boolean).map(t => {
+      const partes = t.split(/\s+/);         // "1-1 JUA" → ["1-1","JUA"]
+      const gg = partes[0];
+      const i = gg.indexOf('-');
+      const grado = i < 0 ? gg : gg.slice(0, i);
+      const grupo = i < 0 ? '' : gg.slice(i + 1);
+      return { grado: this.gradoCanon(grado), grupo: this.grupoCanon(grado, grupo),
+               sede: this.sedeCode(partes[1] || '') };
+    });
+  },
+  dirigeCurso(str, curso) {
+    if (!str || !curso) return false;
+    const cg = this.gradoCanon(curso.grado);
+    const cu = this.grupoCanon(curso.grado, curso.grupo);
+    const cs = curso.sede ? this.sedeCode(curso.sede) : '';
+    return this.dirigeTokens(str).some(t =>
+      t.grado === cg &&
+      (!t.grupo || !cu || t.grupo === cu) &&
+      (!t.sede || !cs || t.sede === cs));
+  }
 };
 
 // ═══════════════════════════════════════════════════════════════
