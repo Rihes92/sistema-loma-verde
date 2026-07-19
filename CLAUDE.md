@@ -3,6 +3,57 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 19, 2026 — sesión 22, Panel de Coordinación en index.html)
+
+- **Construido el "Panel de Coordinación" acordado en la sesión 18** (reemplaza
+  "Tu Día en SABIE" cuando `PERM.esAdmin`, los docentes normales siguen viendo
+  su dashboard personal sin cambios). 4 tarjetas, mismo estilo `act-card` de
+  siempre: (1) **Permisos pendientes** (`lv_permisos` estado pendiente, borde
+  rojo — es la única urgencia real, alguien espera respuesta); (2) **Notas del
+  periodo sin cargar** (cruza `lv_cursos`+`lv_asignaciones`+`lv_calificaciones`,
+  "periodo actual" inferido igual que 12-director.html: el que tenga más
+  registros con datos); (3) **Directores sin anotaciones en Observador en 30
+  días** (campo `dirige` de cada docente cruzado con `lv_observador` vía
+  estudiante→curso, usando `LV_CURSO.dirigeCurso` — el mismo canonizador del
+  fix de la sesión 21, para NO repetir ese bug aquí); (4) **Eventos de la
+  semana** (`lv_eventos`, 7 días en vez de los 15 del dashboard docente).
+- **DECISIÓN clave (confirmada con Francy, evita "desinformación"):** las
+  tarjetas 2 y 3 SOLO consideran docentes con correo registrado (cuenta
+  activa). Hoy son ~4 de ~50; listar también a los sin cuenta habría llenado
+  el panel de "pendientes" que nadie puede resolver todavía (no es su culpa,
+  no pueden ni iniciar sesión) — puro ruido, no señal. El panel muestra una
+  nota informativa fija arriba de las tarjetas ("X de Y docentes tienen
+  cuenta activa…") para que quede clara esa cobertura y no se lea como que
+  "solo hay 4 docentes en el colegio". Colores con intención: rojo (`--bad`)
+  solo en permisos (urgencia humana real); azul (`--primary-light`) en notas
+  y observador (mide adopción, no negligencia — evita el tono acusatorio).
+  Umbral de Observador elegido por Francy: 30 días de silencio (no "todo el
+  año"), a sabiendas de que con tan pocas cuentas activas la lista igual sale
+  corta y manejable.
+- **Atribución de "notas sin cargar" a un docente:** por curso, busca en
+  `lv_asignaciones` una fila cuyo grado-grupo coincida (canónico, `LV_CURSO.key`)
+  y cuya materia sea la del curso o el comodín "Todas las materias" — si no
+  hay estudiantes matriculados en el curso, o no hay asignación, o el docente
+  asignado no tiene cuenta activa, el curso se omite (no se le atribuye a
+  nadie sin evidencia clara).
+  **Nota técnica de orden de scripts (por si se retoma):** `renderPanelCoordinacion()`
+  quedó definida y se invoca en el ÚLTIMO `<script>` de `index.html` (después
+  de `auth.js`/`sync.js`), no en el bloque del dashboard docente de más arriba
+  — porque necesita `LV_CURSO`, que vive en `auth.js` y ese carga después. El
+  IIFE del dashboard docente ahora hace `if(PERM.esAdmin) return;` al inicio
+  para no pintar nada en las tarjetas que el panel de coordinación va a
+  reemplazar.
+  SW **v71**. `node --check` limpio en los 6 bloques `<script>` de `index.html`.
+- **PENDIENTE:** push; que Francy entre con la cuenta de Coordinación y
+  confirme que el panel se ve bien y que los números cuadran con la realidad
+  (sobre todo el periodo activo inferido y la atribución de cursos a
+  docentes). Ideas para después, no hechas hoy: enlace directo a cada
+  permiso/curso puntual (hoy todo enlaza al módulo, no al registro exacto);
+  quitar del todo la tarjeta de notas si algún periodo aún no tiene ninguna
+  actividad en el colegio (hoy se muestra vacío, no se oculta); mover el
+  umbral de 30 días y el filtro de cuenta activa a algo configurable si la
+  cobertura de cuentas cambia mucho.
+
 ## ▶ POR DÓNDE RETOMAR (jul 19, 2026 — sesión 21, canonización de cursos/sedes + fix director de grupo)
 
 - **Verificación Fase 2 completada:** política `por_curso` activa en las 8
@@ -100,6 +151,17 @@
 - **Pendiente después de validar:** backfill de registros sin referencia
   (2d), RLS por dueño de permisos/centros (anotado en sesiones 16/18),
   y Fase 3 (IndexedDB) solo si aprieta el espacio.
+- **ACORDADO PARA SESIÓN NUEVA — "Panel de Coordinación"** (Francy dice
+  «vamos con el panel de coordinación»): en index.html, cuando entra
+  admin/coordinación, reemplazar "Tu Día en SABIE" por un panel con:
+  (1) permisos pendientes por revisar (lv_permisos estado pendiente,
+  elevar la alerta existente a tarjeta con detalle); (2) docentes sin
+  notas del periodo actual (asignaciones → cursos con LV_CURSO →
+  lv_calificaciones); (3) directores de grupo sin anotaciones recientes
+  en observador (dirige → estudiantes → lv_observador); (4) eventos de
+  los próximos 7 días (lv_eventos). ADVERTENCIA dada: con ~4 cuentas
+  reales, las listas de "no han cargado" saldrán largas (miden
+  adopción). El resumen del sistema de arriba se conserva.
 - PENDIENTE heredado: probar las 4 herramientas interactivas con
   estudiantes, cédula en ficha del docente.
 

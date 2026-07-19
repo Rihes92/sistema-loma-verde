@@ -279,9 +279,10 @@
     <!-- Alertas automáticas -->
     <div id="alertas-wrap" style="margin-bottom:8px"></div>
 
-    <div class="sec-label">🚀 Tu Día en SABIE</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:20px">
-      
+    <div class="sec-label" id="sec-dia-titulo">🚀 Tu Día en SABIE</div>
+    <div id="dia-nota" style="display:none;font-size:.78rem;color:var(--muted);margin:-6px 0 14px;line-height:1.4"></div>
+    <div id="dia-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:20px">
+
       <!-- Panel de Acciones Pendientes -->
       <div class="act-card" style="padding:0">
         <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
@@ -517,7 +518,12 @@ document.getElementById('search-input').addEventListener('input',function(){
 const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 // ── DASHBOARD CENTRAL (Acciones, Rendimiento, Eventos) ──────────────────────
+// Nota: para admin/Coordinación esta sección se reemplaza más abajo por el
+// "Panel de Coordinación" (renderPanelCoordinacion, al final del archivo,
+// después de auth.js para poder usar LV_CURSO); aquí simplemente no se pinta
+// el dashboard personal del docente.
 (function(){
+  if(PERM.esAdmin) return;
   const soyAdmin = PERM.esAdmin || PERM.accesoTotal;
   let misCursoIds=null;
   function getMisCursoIds(){
@@ -1086,6 +1092,197 @@ if("serviceWorker" in navigator){
     wrap.prepend(div);
   }catch(_){}
 })();
+
+// ═══ Panel de Coordinación (solo admin/Coordinación) ═══════════════════════
+// Reemplaza "Tu Día en SABIE" por 4 tarjetas de síntesis: permisos
+// pendientes, notas del periodo sin cargar, directores de grupo sin
+// anotaciones recientes en el Observador, y eventos de la semana. Va
+// DESPUÉS de auth.js (script anterior) porque usa LV_CURSO para comparar
+// grado/grupo de forma canónica — el mismo mecanismo del fix de "dirige"
+// de la sesión 21, para no repetir ese bug aquí. Decisiones (jul 19,
+// confirmadas con Francy): las tarjetas de notas y observador SOLO
+// consideran docentes con correo registrado (cuenta activa) — de lo
+// contrario listarían a los 35+ docentes sin cuenta que no pueden usar el
+// sistema todavía, generando ruido en vez de información útil. El umbral
+// de "silencio" en el Observador es de 30 días.
+(function(){
+  if(!PERM.esAdmin) return;
+  try{ renderPanelCoordinacion(); }
+  catch(err){ console.warn('Panel de Coordinación:', err); }
+})();
+
+function renderPanelCoordinacion(){
+  const titulo = document.getElementById('sec-dia-titulo');
+  const nota   = document.getElementById('dia-nota');
+  const grid   = document.getElementById('dia-grid');
+  if(!grid) return;
+  if(titulo) titulo.textContent = '🧭 Panel de Coordinación';
+
+  const safeJSON = k => { try{ const r=localStorage.getItem(k); return r?JSON.parse(r):null; }catch(_){ return null; } };
+  const vivos = arr => (arr||[]).filter(x=>x && !x._eliminado);
+  const escPC = s => String(s??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  const docentes      = vivos(safeJSON('lv_docentes'));
+  const asignaciones   = vivos(safeJSON('lv_asignaciones'));
+  const cursos         = vivos(safeJSON('lv_cursos'));
+  const estudiantes    = vivos(safeJSON('lv_estudiantes'));
+  const cals           = safeJSON('lv_calificaciones') || [];
+  const observador      = vivos(safeJSON('lv_observador'));
+  const permisos        = vivos(safeJSON('lv_permisos'));
+  const eventos         = vivos(safeJSON('lv_eventos'));
+
+  const conCuenta = docentes.filter(d => d && String(d.email||'').trim());
+
+  if(nota){
+    nota.style.display = '';
+    nota.innerHTML = `ℹ️ ${conCuenta.length} de ${docentes.length} docentes tienen cuenta activa (correo registrado) hoy. `
+      + `Las tarjetas de "Notas" y "Observador" solo pueden reflejar a quienes ya pueden iniciar sesión — la cobertura crecerá a medida que se registren más correos en Coordinación.`;
+  }
+
+  // ---------- 1) Permisos pendientes ----------
+  const pendPermisos = permisos.filter(p=>p.estado==='pendiente').sort((a,b)=>(a.creado||0)-(b.creado||0));
+  const fmtFPC = f => { try{ return new Date(f+'T12:00:00').toLocaleDateString('es',{day:'numeric',month:'short'}); }catch(_){ return f||''; } };
+  let htmlPermisos;
+  if(pendPermisos.length){
+    htmlPermisos = pendPermisos.slice(0,6).map(p=>{
+      const rango = p.fechaIni===p.fechaFin ? fmtFPC(p.fechaIni) : `${fmtFPC(p.fechaIni)} → ${fmtFPC(p.fechaFin)}`;
+      return `<div class="act-row" onclick="location.href='modulos/18-permisos.html'" style="border-left:3px solid var(--bad);padding-left:14px">
+        <div class="act-text">🗓️ <strong>${escPC(p.docente)}</strong> — ${escPC(p.tipo)} <span style="color:var(--muted)">(${rango})</span></div>
+      </div>`;
+    }).join('');
+    if(pendPermisos.length>6) htmlPermisos += `<div class="act-row" onclick="location.href='modulos/18-permisos.html'" style="justify-content:center;color:var(--primary);font-weight:700">Ver los ${pendPermisos.length} pendientes →</div>`;
+  } else {
+    htmlPermisos = '<div class="act-empty">✅ No hay permisos esperando respuesta.</div>';
+  }
+
+  // ---------- 2) Notas del periodo sin cargar ----------
+  const tieneDatos = c => (c.cognitivas||[]).some(n=>n>0) || (c.acumulativo||0)>0 || (c.auto||0)>0 || (c.co||0)>0 || (c.hetero||0)>0;
+  const cuentaPer = {};
+  cals.forEach(c=>{ if(tieneDatos(c)) cuentaPer[c.periodo] = (cuentaPer[c.periodo]||0)+1; });
+  const periodosConDatos = Object.keys(cuentaPer);
+  const perActual = periodosConDatos.length ? periodosConDatos.sort((a,b)=>cuentaPer[b]-cuentaPer[a])[0] : null;
+  const PERNOM_PC = {'1':'primer periodo','2':'segundo periodo','3':'tercer periodo'};
+
+  let htmlNotas;
+  if(!perActual){
+    htmlNotas = '<div class="act-empty">Aún no hay notas registradas en el sistema para calcular el periodo activo.</div>';
+  } else {
+    const estPorCurso = {};
+    estudiantes.forEach(e=>{ (estPorCurso[e.cursoId]=estPorCurso[e.cursoId]||[]).push(e.id); });
+    const pendPorDocente = {};
+    cursos.forEach(curso=>{
+      const estIds = estPorCurso[curso.id]||[];
+      if(!estIds.length) return; // sin estudiantes matriculados: nada que calificar todavía
+      const asig = asignaciones.find(a => LV_CURSO.key(a.grado,a.grupo)===LV_CURSO.key(curso.grado,curso.grupo)
+        && (a.materia===curso.materia || a.materia==='Todas las materias'));
+      if(!asig) return; // sin docente asignado: no se le puede atribuir a nadie
+      const doc = conCuenta.find(d=>d.id===asig.docenteId);
+      if(!doc) return; // el docente asignado no tiene cuenta activa todavía
+      const idsSet = new Set(estIds);
+      const hayNotas = cals.some(c=>idsSet.has(c.estId) && String(c.periodo)===String(perActual) && tieneDatos(c));
+      if(!hayNotas) (pendPorDocente[doc.nombre] = pendPorDocente[doc.nombre]||[]).push(`${LV_CURSO.etiqueta(curso)} · ${curso.materia}`);
+    });
+    const nombres = Object.keys(pendPorDocente);
+    if(!nombres.length){
+      htmlNotas = `<div class="act-empty">✅ Todos los docentes con cuenta activa ya registraron notas del ${PERNOM_PC[perActual]||'periodo '+perActual}.</div>`;
+    } else {
+      htmlNotas = nombres.slice(0,6).map(n=>{
+        const cursosP = pendPorDocente[n];
+        return `<div class="act-row" onclick="location.href='modulos/01-calificaciones.html'" style="border-left:3px solid var(--primary-light);padding-left:14px">
+          <div class="act-text">📊 <strong>${escPC(n)}</strong> — falta el ${PERNOM_PC[perActual]||'periodo '+perActual} en ${cursosP.length} curso(s) <span style="color:var(--muted)">(${escPC(cursosP.slice(0,3).join(', '))}${cursosP.length>3?'…':''})</span></div>
+        </div>`;
+      }).join('');
+      if(nombres.length>6) htmlNotas += `<div class="act-row" style="justify-content:center;color:var(--muted);font-size:.8rem">y ${nombres.length-6} docente(s) más…</div>`;
+    }
+  }
+
+  // ---------- 3) Directores de grupo sin anotaciones en Observador (30 días) ----------
+  const estById = {}; estudiantes.forEach(e=>{ estById[e.id]=e; });
+  const cursoById = {}; cursos.forEach(c=>{ cursoById[c.id]=c; });
+  const directores = conCuenta.filter(d=>String(d.dirige||'').trim());
+  const ahoraMs = Date.now();
+  const fechaObs = o => { if(o.fecha){ const t=new Date(o.fecha+'T12:00:00').getTime(); if(!isNaN(t)) return t; } return o.creado||0; };
+
+  let htmlObs;
+  if(!directores.length){
+    htmlObs = '<div class="act-empty">Ningún docente con cuenta activa tiene grupo a cargo registrado.</div>';
+  } else {
+    const silenciosos = [];
+    directores.forEach(d=>{
+      let ultima = 0;
+      observador.forEach(o=>{
+        const est = estById[o.estId]; if(!est) return;
+        const curso = cursoById[est.cursoId]; if(!curso) return;
+        if(!LV_CURSO.dirigeCurso(d.dirige, curso)) return;
+        const f = fechaObs(o);
+        if(f>ultima) ultima=f;
+      });
+      const dias = ultima ? Math.floor((ahoraMs-ultima)/86400000) : null;
+      if(dias===null || dias>30) silenciosos.push({nombre:d.nombre, grupos:d.dirige, dias});
+    });
+    if(!silenciosos.length){
+      htmlObs = '<div class="act-empty">✅ Todos los directores de grupo con cuenta activa tienen anotaciones recientes.</div>';
+    } else {
+      htmlObs = silenciosos.map(s=>{
+        const txt = s.dias===null ? 'sin anotaciones registradas' : `sin anotaciones hace ${s.dias} días`;
+        return `<div class="act-row" onclick="location.href='modulos/10-observador.html'" style="border-left:3px solid var(--primary-light);padding-left:14px">
+          <div class="act-text">📓 <strong>${escPC(s.nombre)}</strong> (${escPC(s.grupos)}) — ${txt}</div>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // ---------- 4) Eventos de la semana (próximos 7 días) ----------
+  const now = new Date();
+  const prox7 = eventos.filter(e=>{
+    if(!e.fecha) return false;
+    const diff = (new Date(e.fecha+'T00:00:00')-now)/86400000;
+    return diff>=-1 && diff<=7;
+  }).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
+
+  let htmlEv;
+  if(prox7.length){
+    htmlEv = prox7.map(p=>{
+      const dStr = new Date(p.fecha+'T12:00:00').toLocaleDateString('es',{day:'numeric',month:'short'});
+      return `<div class="act-row" style="padding:10px 14px">
+        <div style="background:#e0e7ff;color:var(--primary-dark);padding:4px 8px;border-radius:6px;font-weight:800;font-size:.75rem;min-width:48px;text-align:center;margin-right:10px">${dStr}</div>
+        <div class="act-text"><strong style="font-size:.85rem">${escPC(p.titulo)}</strong></div>
+      </div>`;
+    }).join('');
+  } else {
+    htmlEv = '<div class="act-empty">No hay eventos en los próximos 7 días.</div>';
+  }
+
+  grid.innerHTML = `
+    <div class="act-card" style="padding:0">
+      <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+        <span style="font-size:1.1rem">🗓️</span> Permisos pendientes${pendPermisos.length?` <span style="margin-left:auto;background:var(--bad);color:#fff;border-radius:999px;padding:1px 9px;font-size:.72rem">${pendPermisos.length}</span>`:''}
+      </div>
+      <div style="padding:10px 0">${htmlPermisos}</div>
+    </div>
+
+    <div class="act-card" style="padding:0">
+      <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+        <span style="font-size:1.1rem">📊</span> Notas del periodo sin cargar
+      </div>
+      <div style="padding:10px 0">${htmlNotas}</div>
+    </div>
+
+    <div class="act-card" style="padding:0">
+      <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+        <span style="font-size:1.1rem">📓</span> Directores sin anotaciones (30 días)
+      </div>
+      <div style="padding:10px 0">${htmlObs}</div>
+    </div>
+
+    <div class="act-card" style="padding:0">
+      <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+        <span style="font-size:1.1rem">📅</span> Eventos de la semana
+      </div>
+      <div style="padding:10px 0">${htmlEv}</div>
+    </div>
+  `;
+}
 </script>
 </body>
 </html>
