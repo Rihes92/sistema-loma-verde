@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Examen Final de Periodo — SABIE</title>
+<style>
+  :root{
+    --primary:#0f766e; --primary-light:#14b8a6; --accent:#0d9488; --bg:#f1f5f9; --surface:#fff;
+    --text:#1f2937; --muted:#64748b; --border:#e2e8f0; --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.16);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;transition:background .15s,color .15s;margin-left:auto}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
+  main{max-width:1000px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
+  .card h2{margin:0 0 4px;font-size:1.05rem;color:var(--primary)}
+  .card .desc{font-size:.8rem;color:var(--muted);margin:0 0 14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:140px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:10px}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input[type=checkbox],input[type=radio]{width:16px;height:16px;flex:0 0 auto;padding:0;margin:0}
+  textarea{resize:vertical;min-height:56px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(20,184,166,.14)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.sec{background:#e2e8f0;color:var(--text)} button.btn.ok{background:var(--ok)} button.btn.bad{background:var(--bad)}
+  button.btn.sm{padding:6px 10px;font-size:.8rem} button.btn:hover{filter:brightness(1.06)}
+  button.btn:disabled{opacity:.5;cursor:not-allowed}
+  .muted{color:var(--muted)} .hint{font-size:.78rem;color:var(--muted);margin-top:4px}
+  .empty{text-align:center;padding:40px;color:var(--muted)}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700;background:#ccfbf1;color:#115e59}
+  .toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:11px 20px;border-radius:10px;font-size:.86rem;opacity:0;transition:.3s;z-index:50;max-width:90%}
+  .toast.show{opacity:1}
+  .hide{display:none!important}
+
+  /* Pasos del asistente */
+  .pasos{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .paso-chip{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:600;color:var(--muted)}
+  .paso-chip .n{width:20px;height:20px;border-radius:50%;background:#e2e8f0;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800}
+  .paso-chip.on{border-color:var(--primary);color:var(--primary);background:#f0fdfa}
+  .paso-chip.on .n{background:var(--primary);color:#fff}
+  .paso-chip.done .n{background:var(--ok);color:#fff}
+
+  /* Ejes y temáticas */
+  .eje-box{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:#fcfefe}
+  .eje-head{display:flex;gap:9px;align-items:flex-start;font-weight:700;font-size:.9rem;color:var(--primary);cursor:pointer}
+  .temas-list{margin:10px 0 0 26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px 14px}
+  .temas-list label{display:flex;gap:8px;align-items:flex-start;font-size:.84rem;font-weight:500;cursor:pointer;min-width:0}
+  .ref-box{background:#f0fdfa;border:1px solid #99f6e4;border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;font-size:.82rem;white-space:pre-wrap;margin-top:8px}
+  .resumen-sel{background:#f0fdfa;border:1px solid #99f6e4;border-radius:8px;padding:10px 12px;font-size:.84rem;margin-bottom:12px}
+
+  /* Revisión de preguntas */
+  .q-item{border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px;background:#fcfefe}
+  .q-item .top{display:flex;gap:10px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+  .q-item .num{font-weight:800;color:var(--primary)}
+  .op-line{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+  .op-line input[type=text]{flex:1}
+  .aviso{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:10px 12px;font-size:.83rem;color:#92400e;margin-bottom:12px}
+
+  /* Documento imprimible */
+  .exam-doc{color:#1f2937;font-family:'Segoe UI',Arial,sans-serif}
+  .exam-doc .membrete{display:flex;align-items:center;gap:12px;border-bottom:2px solid #0f766e;padding-bottom:8px;margin-bottom:10px}
+  .exam-doc .membrete img{width:64px;height:64px;object-fit:contain}
+  .exam-doc .membrete .txt{flex:1;text-align:center}
+  .exam-doc h1{font-size:15px;text-transform:uppercase;margin:0 0 2px;color:#0f766e;font-weight:800}
+  .exam-doc .mline{font-size:9.5px;color:#475569;line-height:1.45}
+  .exam-doc .sub{text-align:center;color:#334155;margin:8px 0 12px;font-weight:700;font-size:13px;text-transform:uppercase}
+  .exam-doc table.meta{width:100%;border-collapse:collapse;margin-bottom:12px}
+  .exam-doc table.meta th,.exam-doc table.meta td{border:1px solid #94a3b8;padding:6px;font-size:.82rem;text-align:left}
+  .exam-doc table.meta th{background:#e8f4f2;color:#0f766e;width:96px}
+  .exam-doc .instr{font-size:.83rem;background:#f0fdfa;border:1px solid #99f6e4;border-radius:6px;padding:8px 10px;margin-bottom:14px}
+  .exam-doc .secc{font-size:.86rem;font-weight:800;color:#0f766e;text-transform:uppercase;border-bottom:1px solid #99f6e4;margin:16px 0 10px;padding-bottom:3px}
+  .exam-doc .q{margin-bottom:14px;page-break-inside:avoid}
+  .exam-doc .qn{font-weight:800;color:#0f766e;margin-right:4px}
+  .exam-doc .pts{float:right;font-size:.76rem;color:#64748b;font-weight:600}
+  .exam-doc .ctx{display:block;white-space:pre-wrap;font-size:.86rem;background:#f8fafc;border-left:3px solid #cbd5e1;padding:7px 10px;margin:5px 0;border-radius:0 5px 5px 0}
+  .exam-doc .enu{font-weight:600;margin:6px 0;font-size:.9rem}
+  .exam-doc ol.opts{margin:4px 0 0 0;padding-left:22px} .exam-doc ol.opts li{margin-bottom:3px;font-size:.88rem}
+  .exam-doc .opts{font-size:.88rem} .exam-doc .lines{font-size:.88rem;color:#475569;line-height:2.1}
+  .exam-doc .cor{color:#15803d;font-weight:700}
+  .exam-doc table.clave{width:100%;border-collapse:collapse;margin-top:10px}
+  .exam-doc table.clave th,.exam-doc table.clave td{border:1px solid #94a3b8;padding:5px 7px;font-size:.82rem;text-align:left}
+  .exam-doc table.clave th{background:#e8f4f2;color:#0f766e}
+  .exam-doc .firma{margin-top:36px;display:flex;gap:40px;font-size:.8rem;text-align:center}
+  .exam-doc .firma>div{flex:1;border-top:1px solid #475569;padding-top:5px}
+  .hr-grid{column-count:2;column-gap:28px;margin-top:8px}
+  .hr-item{break-inside:avoid;padding:5px 0;font-size:.92rem}
+  .hr-n{font-weight:700;display:inline-block;width:30px}
+  .bub{display:inline-block;width:25px;height:25px;line-height:22px;text-align:center;border:1.6px solid #444;border-radius:50%;margin-right:5px;font-size:.78rem;font-weight:700}
+  @media print{.appbar,.no-print,.pasos{display:none!important}body{background:#fff}.card{box-shadow:none;border:none;padding:0;margin:0}main{padding:0;max-width:100%}}
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script src="../materia-context.js"></script>
+<script>window.LV_SYNC_TABLAS=['lv_examenes','lv_malla','lv_banco','lv_cursos','lv_docentes','lv_asignaciones'];</script>
+<script src="../sync.js"></script>
+</head>
+<body>
+<header class="appbar">
+  <img src="../Logo/logo.jpg" alt="Logo" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
+  <h1>🎓 Examen Final de Periodo</h1>
+  <span class="pill">SABIE</span>
+  <a class="portal-btn" href="../index.html">🏠 Portal</a>
+</header>
+
+<main>
+
+<div class="pasos no-print" id="pasos">
+  <div class="paso-chip on" data-p="1"><span class="n">1</span> Datos</div>
+  <div class="paso-chip" data-p="2"><span class="n">2</span> Temáticas</div>
+  <div class="paso-chip" data-p="3"><span class="n">3</span> Preguntas</div>
+  <div class="paso-chip" data-p="4"><span class="n">4</span> Revisar y generar</div>
+</div>
+
+<div id="sin-malla" class="card hide">
+  <h2>Esta materia todavía no tiene malla cargada</h2>
+  <p class="desc">El examen final se arma a partir de la malla curricular: de ahí salen los ejes y las temáticas que puedes seleccionar.</p>
+  <p style="font-size:.88rem">No encontré temas de malla para <strong id="sm-materia">esta materia</strong>. Cárgala primero en <strong>Planeador → Malla curricular</strong> (puedes capturarla o importarla) y vuelve aquí.</p>
+  <div style="margin-top:12px"><a class="btn" style="text-decoration:none;display:inline-block" href="02-planeador.html" id="sm-link">Ir al Planeador</a></div>
+</div>
+
+<!-- ═══ PASO 1: DATOS ═══ -->
+<section id="p1" class="card">
+  <h2>1. Datos del examen</h2>
+  <p class="desc">La malla que se usa es la de la materia con la que entraste. El grado y el periodo definen qué ejes te aparecen en el paso siguiente.</p>
+  <div class="row">
+    <label class="fld">Grado<select id="f-grado"></select></label>
+    <label class="fld">Periodo<select id="f-periodo"></select></label>
+    <label class="fld">Tiempo (minutos)<input id="f-tiempo" type="number" min="10" value="90"></label>
+  </div>
+  <div class="row">
+    <label class="fld">Título del examen<input id="f-titulo" placeholder="Ej: Examen final — Tercer Periodo"></label>
+    <label class="fld">Asignatura<input id="f-asignatura" placeholder="Nombre de la asignatura"></label>
+  </div>
+  <div class="row">
+    <label class="fld">Docente<input id="f-docente" placeholder="Nombre del docente"></label>
+  </div>
+  <label class="fld">Instrucciones para el estudiante<textarea id="f-instr">Lee con atención cada pregunta antes de responder. En las preguntas de selección múltiple marca una sola opción. En las de falso o verdadero encierra tu respuesta. En las preguntas abiertas argumenta con letra clara. No se permite el uso de celular ni material de apoyo.</textarea></label>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn" id="b-a2">Continuar a temáticas →</button>
+  </div>
+</section>
+
+<!-- ═══ PASO 2: TEMÁTICAS ═══ -->
+<section id="p2" class="card hide">
+  <h2>2. Ejes y temáticas a evaluar</h2>
+  <p class="desc">Marca un eje completo o solo las temáticas puntuales que quieres incluir. Un examen final normalmente cubre varios ejes del periodo.</p>
+  <div id="ejes-box"></div>
+  <div class="hint" id="sel-count" style="margin-bottom:12px"></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn sec" id="b-v1">← Atrás</button>
+    <button class="btn" id="b-a3">Continuar a preguntas →</button>
+  </div>
+</section>
+
+<!-- ═══ PASO 3: CANTIDADES ═══ -->
+<section id="p3" class="card hide">
+  <h2>3. Estructura del examen</h2>
+  <p class="desc">Cuántas preguntas de cada tipo y cuánto vale cada una. El total se convierte a la escala de 1.0 a 5.0 al calificar.</p>
+  <div id="res-temas" class="resumen-sel"></div>
+  <div class="row">
+    <label class="fld">Selección múltiple (única respuesta)<input id="n-mult" type="number" min="0" max="40" value="15"></label>
+    <label class="fld">Puntos c/u<input id="pt-mult" type="number" min="0" step="0.5" value="1"></label>
+  </div>
+  <div class="row">
+    <label class="fld">Falso / Verdadero<input id="n-vf" type="number" min="0" max="30" value="5"></label>
+    <label class="fld">Puntos c/u<input id="pt-vf" type="number" min="0" step="0.5" value="1"></label>
+  </div>
+  <div class="row">
+    <label class="fld">Preguntas abiertas<input id="n-ab" type="number" min="0" max="15" value="3"></label>
+    <label class="fld">Puntos c/u<input id="pt-ab" type="number" min="0" step="0.5" value="3"></label>
+  </div>
+  <div class="resumen-sel" id="res-estructura"></div>
+  <label class="fld">Indicaciones adicionales para la IA (opcional)<textarea id="f-notas" placeholder="Ej: incluye una pregunta con una tabla de datos; que las abiertas pidan argumentar con ejemplos del municipio."></textarea></label>
+
+  <div class="card" style="border:1px solid var(--primary);background:#f8fbff;margin-bottom:12px">
+    <h2 style="font-size:.95rem">🔑 Tu clave de Gemini</h2>
+    <p class="desc">La clave es tuya y se guarda solo en este equipo. Créala gratis en aistudio.google.com/apikey.</p>
+    <div class="row">
+      <label class="fld">Clave<input id="ia-key" type="password" placeholder="Pega aquí tu clave"></label>
+      <div style="flex:0 0 auto;display:flex;align-items:flex-end;padding-bottom:10px"><button class="btn sec sm" id="ia-key-save">Guardar</button></div>
+    </div>
+    <div class="hint" id="ia-key-state"></div>
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn sec" id="b-v2">← Atrás</button>
+    <button class="btn ok" id="b-generar">🤖 Generar preguntas con IA</button>
+  </div>
+  <div class="hint" id="ia-status" style="margin-top:8px"></div>
+</section>
+
+<!-- ═══ PASO 4: REVISIÓN ═══ -->
+<section id="p4" class="card hide">
+  <h2>4. Revisa las preguntas antes de imprimir</h2>
+  <div class="aviso">⚠️ Las preguntas las redactó la inteligencia artificial. <strong>Revísalas una por una</strong> antes de aplicar el examen: puede equivocarse en datos, en la respuesta marcada como correcta o en la redacción. Puedes editar cualquier texto aquí mismo.</div>
+  <div id="q-box"></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+    <button class="btn sec" id="b-v3">← Cambiar estructura</button>
+    <button class="btn ok" id="b-guardar">💾 Guardar examen</button>
+  </div>
+</section>
+
+<!-- ═══ EXÁMENES GUARDADOS ═══ -->
+<section id="p-lista" class="card">
+  <h2>Exámenes finales guardados</h2>
+  <p class="desc">Se guardan junto a los demás exámenes de la materia. Desde aquí imprimes los tres documentos.</p>
+  <div id="lista-box"></div>
+</section>
+
+<div id="doc-out"></div>
+
+</main>
+<div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   EXAMEN FINAL DE PERIODO — SABIE (módulo 19)
+
+   Qué hace: arma un examen final a partir de la MALLA de la materia
+   activa (lv_malla filtrada por LV_CTX, igual que el Planeador — el
+   módulo 03 tiene una copia congelada de la malla de Sociales dentro
+   del archivo, por eso ahí los ejes salen mal en otras materias).
+
+   Flujo: datos → ejes/temáticas (casillas armadas con los <li> del
+   campo "temas") → cantidades por tipo → IA → REVISIÓN OBLIGATORIA →
+   guardar. El examen se guarda en lv_examenes con esFinal:true, así
+   aparece también en el módulo 03 y hereda su edición y su formato.
+
+   Imprime tres documentos: examen, hoja de respuestas del estudiante
+   y clave de calificación del docente (con puntajes y conversión a la
+   escala 1.0–5.0).
+   ═══════════════════════════════════════════════════════════════ */
+
+const LS='lv_'; let _mem={}; let PERSIST=true;
+const clone=o=>JSON.parse(JSON.stringify(o));
+function _ls(){try{const t=LS+'_t';localStorage.setItem(t,'1');localStorage.removeItem(t);return localStorage;}catch(_){PERSIST=false;return null;}}
+function lsRead(s){const x=_ls();if(x){try{return JSON.parse(x.getItem(LS+s)||'[]');}catch(_){}}return _mem[s]?clone(_mem[s]):[];}
+function lsWrite(s,a){
+  const previos={};
+  let base=Array.isArray(_mem[s])?_mem[s]:null;
+  if(!base){ const x0=_ls(); if(x0){ try{ base=JSON.parse(x0.getItem(LS+s)||'[]'); }catch(_){ base=[]; } } else base=[]; }
+  base.forEach(function(r){ if(r&&r.id) previos[r.id]=JSON.stringify(r); });
+  _mem[s]=clone(a);
+  const x=_ls();
+  if(x){ try{ x.setItem(LS+s,JSON.stringify(a)); }catch(e){ PERSIST=false; if(typeof LV_SYNC!=='undefined'&&LV_SYNC.revisarEspacio)LV_SYNC.revisarEspacio(); return false; } }
+  if(typeof LV_SYNC!=='undefined'&&Array.isArray(a)){
+    a.forEach(function(r){ if(r&&r.id&&previos[r.id]!==JSON.stringify(r)) LV_SYNC.marcarCambio('lv_'+s,r); });
+  }
+  return true;
+}
+
+const $=s=>document.querySelector(s);
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+function htmlToText(h){return String(h||'').replace(/<li>/gi,'• ').replace(/<\/li>/gi,'\n').replace(/<br\s*\/?>/gi,'\n').replace(/<\/p>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&nbsp;/g,' ').replace(/\n{3,}/g,'\n\n').trim();}
+
+const GRADOS=['Sexto','Séptimo','Octavo','Noveno','Décimo','Undécimo'];
+const GLBL={Sexto:'6°','Séptimo':'7°',Octavo:'8°',Noveno:'9°','Décimo':'10°','Undécimo':'11°'};
+const PERIODOS=['Primer Periodo','Segundo Periodo','Tercer Periodo'];
+const TIPO_LBL={multiple:'Selección múltiple',vf:'Falso / Verdadero',abierta:'Abierta'};
+
+const MATERIA=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'';
+
+// Malla de ESTA materia (no una copia congelada dentro del archivo).
+let MALLA=[];
+function refreshMalla(){
+  const base=lsRead('malla');
+  MALLA=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(base):base;
+}
+
+// Desglosa el campo "temas" en temáticas sueltas, para poder marcarlas una
+// por una. Acepta las dos formas en que puede venir: <ul><li> (malla semilla
+// y mallas importadas del Excel oficial) o líneas con viñeta "* / • / -"
+// separadas por <br> (importaciones anteriores).
+function temasDe(m){
+  const raw=String(m&&m.temas||'');
+  const lis=raw.match(/<li[^>]*>([\s\S]*?)<\/li>/gi);
+  let arr;
+  if(lis&&lis.length){ arr=lis.map(x=>htmlToText(x)); }
+  else { arr=htmlToText(raw).split('\n'); }
+  return arr
+    .map(t=>String(t).replace(/^[•*\-–\s]+/,'').trim())
+    .filter(Boolean)
+    // La "pregunta problematizadora" abre casi todos los ejes de las mallas
+    // oficiales, pero es el encuadre pedagógico del eje, NO una temática
+    // evaluable: se muestra aparte, en el recuadro de referencia del eje.
+    .filter(t=>!/^pregunta\s+problematizadora/i.test(t));
+}
+// Devuelve la pregunta problematizadora del eje, si la malla la trae.
+function preguntaDe(m){
+  const txt=htmlToText(String(m&&m.temas||''));
+  const hit=txt.split('\n').map(s=>s.replace(/^[•*\-–\s]+/,'').trim())
+    .find(s=>/^pregunta\s+problematizadora/i.test(s));
+  return hit ? hit.replace(/^pregunta\s+problematizadora\s*:?\s*/i,'').trim() : '';
+}
+
+let ESTADO={ejes:[],temas:[],preguntas:[],datos:{}};
+
+/* ═══ Navegación de pasos ═══ */
+function irPaso(n){
+  ['p1','p2','p3','p4'].forEach((id,i)=>$('#'+id).classList.toggle('hide',(i+1)!==n));
+  document.querySelectorAll('.paso-chip').forEach(c=>{
+    const p=+c.dataset.p;
+    c.classList.toggle('on',p===n);
+    c.classList.toggle('done',p<n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ═══ Paso 1 ═══ */
+function initPaso1(){
+  $('#f-grado').innerHTML=GRADOS.map(g=>`<option value="${g}">${g} (${GLBL[g]})</option>`).join('');
+  $('#f-periodo').innerHTML=PERIODOS.map(p=>`<option value="${p}">${p}</option>`).join('');
+  $('#f-periodo').value='Tercer Periodo';
+  if(MATERIA) $('#f-asignatura').value=MATERIA;
+  let lg=null; try{ lg=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+  if(lg&&lg.nombre) $('#f-docente').value=lg.nombre;
+  const sincroTitulo=()=>{ $('#f-titulo').value='Examen final — '+$('#f-periodo').value; };
+  sincroTitulo();
+  $('#f-periodo').addEventListener('change',sincroTitulo);
+}
+
+$('#b-a2').addEventListener('click',()=>{
+  refreshMalla();
+  const g=$('#f-grado').value, p=$('#f-periodo').value;
+  const items=MALLA.filter(m=>m.grado===g&&m.periodo===p);
+  if(!items.length){
+    toast('La malla de esta materia no tiene ejes para '+g+' · '+p);
+    return;
+  }
+  pintarEjes(items);
+  irPaso(2);
+});
+
+/* ═══ Paso 2: ejes y temáticas ═══ */
+function pintarEjes(items){
+  $('#ejes-box').innerHTML=items.map((m,i)=>{
+    const temas=temasDe(m);
+    const preg=preguntaDe(m);
+    const ref=[preg?'Pregunta problematizadora del eje:\n'+preg:'',
+               m.ebcDba?'EBC / DBA:\n'+htmlToText(m.ebcDba):'',
+               m.competencia?'Competencias:\n'+htmlToText(m.competencia):'',
+               m.evidencias?'Evidencias:\n'+htmlToText(m.evidencias):''].filter(Boolean).join('\n\n');
+    return `<div class="eje-box" data-eje="${i}">
+      <label class="eje-head"><input type="checkbox" class="chk-eje" data-eje="${i}"> <span>${esc(m.eje||'(eje sin título)')}</span></label>
+      <div class="temas-list">${temas.length?temas.map((t,j)=>
+        `<label><input type="checkbox" class="chk-tema" data-eje="${i}" data-tema="${j}" value="${esc(t)}"> <span>${esc(t)}</span></label>`
+      ).join(''):'<span class="hint">Este eje no tiene temáticas desglosadas en la malla.</span>'}</div>
+      ${ref?`<div class="ref-box">${esc(ref)}</div>`:''}
+    </div>`;
+  }).join('');
+  ESTADO.mallaItems=items;
+
+  $('#ejes-box').querySelectorAll('.chk-eje').forEach(c=>{
+    c.addEventListener('change',()=>{
+      $('#ejes-box').querySelectorAll(`.chk-tema[data-eje="${c.dataset.eje}"]`).forEach(t=>{t.checked=c.checked;});
+      contarSeleccion();
+    });
+  });
+  $('#ejes-box').querySelectorAll('.chk-tema').forEach(c=>c.addEventListener('change',()=>{
+    const e=c.dataset.eje;
+    const hermanos=[...$('#ejes-box').querySelectorAll(`.chk-tema[data-eje="${e}"]`)];
+    const cab=$(`#ejes-box .chk-eje[data-eje="${e}"]`);
+    if(cab) cab.checked=hermanos.length>0&&hermanos.every(h=>h.checked);
+    contarSeleccion();
+  }));
+  contarSeleccion();
+}
+function contarSeleccion(){
+  const n=$('#ejes-box').querySelectorAll('.chk-tema:checked').length;
+  const e=$('#ejes-box').querySelectorAll('.chk-eje:checked').length;
+  $('#sel-count').textContent=n?`${n} temática(s) seleccionada(s)`+(e?` · ${e} eje(s) completo(s)`:''):'Aún no has marcado ninguna temática.';
+}
+function leerSeleccion(){
+  const temas=[...$('#ejes-box').querySelectorAll('.chk-tema:checked')].map(c=>c.value);
+  const ejesIdx=new Set([...$('#ejes-box').querySelectorAll('.chk-tema:checked')].map(c=>c.dataset.eje));
+  const ejes=[...ejesIdx].map(i=>(ESTADO.mallaItems[+i]||{}).eje).filter(Boolean);
+  return {temas,ejes,idx:[...ejesIdx].map(Number)};
+}
+
+$('#b-v1').addEventListener('click',()=>irPaso(1));
+$('#b-a3').addEventListener('click',()=>{
+  const s=leerSeleccion();
+  if(!s.temas.length){ toast('Marca al menos una temática para el examen.'); return; }
+  ESTADO.temas=s.temas; ESTADO.ejes=s.ejes; ESTADO.idx=s.idx;
+  $('#res-temas').innerHTML=`<strong>${s.temas.length} temática(s)</strong> de ${s.ejes.length} eje(s): `+
+    s.temas.map(t=>esc(t)).join(' · ');
+  calcEstructura();
+  irPaso(3);
+});
+
+/* ═══ Paso 3: estructura ═══ */
+function calcEstructura(){
+  const nm=+$('#n-mult').value||0, nv=+$('#n-vf').value||0, na=+$('#n-ab').value||0;
+  const pm=+$('#pt-mult').value||0, pv=+$('#pt-vf').value||0, pa=+$('#pt-ab').value||0;
+  const total=nm+nv+na;
+  const puntos=nm*pm+nv*pv+na*pa;
+  $('#res-estructura').innerHTML=`<strong>${total} pregunta(s)</strong> · puntaje máximo <strong>${Math.round(puntos*100)/100}</strong> puntos`+
+    (total>30?' <span style="color:#b45309">— un examen de más de 30 preguntas suele ser muy largo para una sola sesión.</span>':'');
+  return {nm,nv,na,pm,pv,pa,total,puntos};
+}
+['n-mult','n-vf','n-ab','pt-mult','pt-vf','pt-ab'].forEach(id=>{
+  const el=$('#'+id); if(el) el.addEventListener('input',calcEstructura);
+});
+$('#b-v2').addEventListener('click',()=>irPaso(2));
+
+/* ═══ Clave de Gemini ═══ */
+function iaKeyRender(){
+  const has=(typeof LV_GEMINI!=='undefined')&&LV_GEMINI.tiene();
+  const st=$('#ia-key-state'); if(!st) return;
+  st.textContent=has?'✓ Clave guardada en este equipo (Guardar con el campo vacío la quita)':'⚠️ Aún no has guardado tu clave de Gemini';
+  st.style.color=has?'#059669':'var(--muted)';
+  if(has)$('#ia-key').placeholder='•••• clave guardada ••••';
+}
+$('#ia-key-save').addEventListener('click',()=>{
+  const v=$('#ia-key').value.trim();
+  if(!v){
+    if(typeof LV_GEMINI!=='undefined'&&LV_GEMINI.tiene()){LV_GEMINI.clear();toast('Clave eliminada de este equipo');}
+    else toast('Pega tu clave primero');
+    $('#ia-key').value=''; iaKeyRender(); return;
+  }
+  LV_GEMINI.set(v); $('#ia-key').value=''; toast('✓ Clave guardada'); iaKeyRender();
+});
+
+/* ═══ Validación (mismo criterio que el módulo 03) ═══ */
+function validarPreguntas(pregs){
+  const errores=[]; const validas=[];
+  (pregs||[]).forEach((p,i)=>{
+    const ref=`P${i+1}`;
+    if(!p.enunciado){ errores.push(ref+': sin enunciado'); return; }
+    if(p.tipo==='multiple'){
+      if(!Array.isArray(p.opciones)||p.opciones.length!==4){ errores.push(ref+': debe tener exactamente 4 opciones'); return; }
+      if(!Number.isInteger(p.correcta)||p.correcta<0||p.correcta>3){ errores.push(ref+': "correcta" debe ser 0 a 3'); return; }
+    } else if(p.tipo==='vf'){
+      if(typeof p.correcta!=='boolean'){ errores.push(ref+': en V/F "correcta" debe ser true o false'); return; }
+    } else if(p.tipo==='abierta'){
+      if(!p.respuesta){ errores.push(ref+': pregunta abierta sin respuesta modelo'); return; }
+    } else { errores.push(ref+': tipo desconocido "'+(p.tipo||'')+'"'); return; }
+    validas.push(p);
+  });
+  return {validas,errores};
+}
+
+/* ═══ Generar con IA ═══ */
+$('#b-generar').addEventListener('click',async ()=>{
+  const gk=(typeof LV_GEMINI!=='undefined')?LV_GEMINI.get():'';
+  if(!gk){ toast('Primero guarda tu clave de Gemini'); $('#ia-key').focus(); return; }
+  const e=calcEstructura();
+  if(!e.total){ toast('Pide al menos una pregunta.'); return; }
+
+  const items=(ESTADO.idx||[]).map(i=>ESTADO.mallaItems[i]).filter(Boolean);
+  const contexto=items.map(m=>[
+    'Eje: '+(m.eje||''),
+    m.ebcDba?'EBC/DBA: '+htmlToText(m.ebcDba):'',
+    m.competencia?'Competencias: '+htmlToText(m.competencia):'',
+    m.evidencias?'Evidencias: '+htmlToText(m.evidencias):''
+  ].filter(Boolean).join('\n')).join('\n\n');
+
+  const datos={
+    asignatura:$('#f-asignatura').value.trim()||MATERIA,
+    grado:$('#f-grado').value, periodo:$('#f-periodo').value,
+    docente:$('#f-docente').value.trim(),
+    ejes:ESTADO.ejes, temas:ESTADO.temas,
+    nMultiple:e.nm, nVF:e.nv, nAbierta:e.na,
+    contexto, notas:$('#f-notas').value.trim()
+  };
+
+  const btn=$('#b-generar'), st=$('#ia-status');
+  btn.disabled=true; st.textContent='⏳ Generando '+e.total+' preguntas… puede tardar hasta un minuto. No cierres esta página.';
+  try{
+    const token=(typeof LV_AUTH!=='undefined')?await LV_AUTH.getValidToken():null;
+    const r=await fetch('/api/generar',{method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+(token||''),'X-Gemini-Key':gk},
+      body:JSON.stringify({tipo:'examen_final',datos})});
+    const out=await r.json().catch(()=>null);
+    if(!r.ok||!out||out.error){ st.textContent=''; alert('❌ '+((out&&out.error)||('Error '+r.status+' al generar.'))); return; }
+    const d=out.data;
+    if(!d||!Array.isArray(d.preguntas)||!d.preguntas.length){ st.textContent=''; alert('❌ La IA no devolvió preguntas válidas. Intenta de nuevo.'); return; }
+    const {validas,errores}=validarPreguntas(d.preguntas);
+    if(!validas.length){ st.textContent=''; alert('❌ Ninguna pregunta pasó la validación:\n\n• '+errores.join('\n• ')); return; }
+    validas.forEach(p=>{ if(!p.id)p.id=uid(); });
+    ESTADO.preguntas=validas;
+    st.textContent='';
+    const falt=[];
+    ['multiple','vf','abierta'].forEach(t=>{
+      const pedidas=t==='multiple'?e.nm:t==='vf'?e.nv:e.na;
+      const hay=validas.filter(p=>p.tipo===t).length;
+      if(hay!==pedidas) falt.push(`${TIPO_LBL[t]}: pediste ${pedidas}, llegaron ${hay}`);
+    });
+    pintarPreguntas(falt,errores);
+    irPaso(4);
+  }catch(err){ st.textContent=''; alert('❌ No se pudo generar: '+(err&&err.message||err)+'\n\nRevisa tu conexión a internet.'); }
+  finally{ btn.disabled=false; }
+});
+
+/* ═══ Paso 4: revisión editable ═══ */
+function pintarPreguntas(faltantes,errores){
+  const avisos=[];
+  if(faltantes&&faltantes.length) avisos.push('<div class="aviso">📋 La IA no respetó exactamente las cantidades pedidas:<br>• '+faltantes.map(esc).join('<br>• ')+'<br><br>Puedes agregar o quitar preguntas a mano, o volver atrás y generar de nuevo.</div>');
+  if(errores&&errores.length) avisos.push('<div class="aviso">Se descartaron '+errores.length+' pregunta(s) mal formadas.</div>');
+
+  const body=ESTADO.preguntas.map((p,i)=>{
+    let campos='';
+    if(p.tipo==='multiple'){
+      campos=(p.opciones||[]).map((o,k)=>
+        `<div class="op-line"><input type="radio" name="cor-${p.id}" value="${k}" ${p.correcta===k?'checked':''}>
+         <input type="text" class="i-op" data-q="${p.id}" data-k="${k}" value="${esc(o)}"></div>`).join('');
+      campos+='<div class="hint">Marca el círculo de la opción correcta.</div>';
+    } else if(p.tipo==='vf'){
+      campos=`<div class="op-line">
+        <label style="display:flex;gap:6px;align-items:center;font-size:.85rem"><input type="radio" name="cor-${p.id}" value="V" ${p.correcta?'checked':''}> Verdadero</label>
+        <label style="display:flex;gap:6px;align-items:center;font-size:.85rem;margin-left:14px"><input type="radio" name="cor-${p.id}" value="F" ${!p.correcta?'checked':''}> Falso</label></div>`;
+    } else {
+      campos=`<label class="fld">Respuesta modelo (para calificar)<textarea class="i-resp" data-q="${p.id}">${esc(p.respuesta||'')}</textarea></label>`;
+    }
+    return `<div class="q-item" data-q="${p.id}">
+      <div class="top"><span class="num">${i+1}.</span><span class="badge">${TIPO_LBL[p.tipo]||p.tipo}</span>
+        ${p.tema?`<span class="hint" style="margin:0">${esc(p.tema)}</span>`:''}
+        <button class="btn bad sm" style="margin-left:auto" data-del="${p.id}">✕ Quitar</button></div>
+      <label class="fld">Texto de contexto (opcional)<textarea class="i-ctx" data-q="${p.id}">${esc(p.contexto||'')}</textarea></label>
+      <label class="fld">Enunciado<textarea class="i-enu" data-q="${p.id}">${esc(p.enunciado||'')}</textarea></label>
+      ${campos}
+      <label class="fld" style="margin-top:8px">Justificación / retroalimentación (opcional)<textarea class="i-just" data-q="${p.id}">${esc(p.justificacion||'')}</textarea></label>
+    </div>`;
+  }).join('');
+
+  $('#q-box').innerHTML=avisos.join('')+(body||'<div class="empty">No hay preguntas.</div>');
+
+  $('#q-box').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{
+    if(!confirm('¿Quitar esta pregunta del examen?')) return;
+    recogerEdiciones();
+    ESTADO.preguntas=ESTADO.preguntas.filter(x=>x.id!==b.dataset.del);
+    pintarPreguntas();
+  }));
+}
+function recogerEdiciones(){
+  ESTADO.preguntas.forEach(p=>{
+    const box=$(`#q-box .q-item[data-q="${p.id}"]`); if(!box) return;
+    const ctx=box.querySelector('.i-ctx'), enu=box.querySelector('.i-enu'), just=box.querySelector('.i-just');
+    if(ctx) p.contexto=ctx.value.trim();
+    if(enu) p.enunciado=enu.value.trim();
+    if(just) p.justificacion=just.value.trim();
+    if(p.tipo==='multiple'){
+      p.opciones=[...box.querySelectorAll('.i-op')].map(i=>i.value.trim());
+      const c=box.querySelector(`input[name="cor-${p.id}"]:checked`);
+      if(c) p.correcta=+c.value;
+    } else if(p.tipo==='vf'){
+      const c=box.querySelector(`input[name="cor-${p.id}"]:checked`);
+      if(c) p.correcta=(c.value==='V');
+    } else {
+      const r=box.querySelector('.i-resp'); if(r) p.respuesta=r.value.trim();
+    }
+  });
+}
+$('#b-v3').addEventListener('click',()=>{ recogerEdiciones(); irPaso(3); });
+
+/* ═══ Guardar ═══ */
+$('#b-guardar').addEventListener('click',()=>{
+  recogerEdiciones();
+  if(!ESTADO.preguntas.length){ toast('El examen no tiene preguntas.'); return; }
+  const vac=ESTADO.preguntas.filter(p=>!p.enunciado);
+  if(vac.length){ toast('Hay '+vac.length+' pregunta(s) sin enunciado.'); return; }
+  const e=calcEstructura();
+  const reg={
+    id:uid(), esFinal:true,
+    materia:MATERIA||undefined,
+    titulo:$('#f-titulo').value.trim()||'Examen final',
+    asignatura:$('#f-asignatura').value.trim()||MATERIA,
+    grado:$('#f-grado').value, periodo:$('#f-periodo').value,
+    docente:$('#f-docente').value.trim(), tiempo:+$('#f-tiempo').value||90,
+    instrucciones:$('#f-instr').value.trim(),
+    ejes:ESTADO.ejes, temas:ESTADO.temas,
+    puntos:{multiple:e.pm,vf:e.pv,abierta:e.pa},
+    items:ESTADO.preguntas,
+    creado:Date.now(), actualizado:Date.now()
+  };
+  const all=lsRead('examenes'); all.push(reg);
+  lsWrite('examenes',all);
+  toast('✅ Examen guardado');
+  renderLista();
+  irPaso(1);
+  $('#p-lista').scrollIntoView({behavior:'smooth'});
+});
+
+/* ═══ Lista de exámenes finales ═══ */
+function finalesGuardados(){
+  let all=lsRead('examenes').filter(x=>x&&x.esFinal&&!x._eliminado);
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
+  return all.sort((a,b)=>(b.creado||0)-(a.creado||0));
+}
+function renderLista(){
+  const list=finalesGuardados();
+  $('#lista-box').innerHTML=list.length?list.map(x=>{
+    const nm=(x.items||[]).filter(i=>i.tipo==='multiple').length;
+    const nv=(x.items||[]).filter(i=>i.tipo==='vf').length;
+    const na=(x.items||[]).filter(i=>i.tipo==='abierta').length;
+    return `<div class="q-item">
+      <div class="top"><strong>${esc(x.titulo)}</strong>
+        <span class="badge">${esc(x.grado)} ${GLBL[x.grado]||''}</span>
+        <span class="hint" style="margin:0">${esc(x.periodo||'')} · ${nm} selección · ${nv} V/F · ${na} abiertas · ⏱️ ${x.tiempo} min</span></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn sm" onclick="verExamen('${x.id}')">📄 Examen</button>
+        <button class="btn sm sec" onclick="verHoja('${x.id}')">🗎 Hoja de respuestas</button>
+        <button class="btn sm ok" onclick="verClave('${x.id}')">🔑 Clave del docente</button>
+        <button class="btn sm bad" onclick="borrarExamen('${x.id}')">Eliminar</button>
+      </div></div>`;
+  }).join(''):'<div class="empty">Todavía no has guardado ningún examen final en esta materia.</div>';
+}
+window.borrarExamen=id=>{
+  if(!confirm('¿Eliminar este examen final?')) return;
+  const r=lsRead('examenes').find(x=>x.id===id);
+  if(r&&typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_examenes',Object.assign({},r,{_eliminado:true}));
+  lsWrite('examenes',lsRead('examenes').filter(x=>x.id!==id));
+  renderLista(); toast('Eliminado');
+};
+
+/* ═══ Documentos imprimibles ═══ */
+function membrete(){
+  const I=(window.LV_INST||null);
+  const nom=I?I.nombre():'Institución Educativa San José de Loma Verde';
+  const linea=I?['NIT '+I.nit(),'DANE '+I.dane(),'Código ICFES '+I.icfes()].filter(Boolean).join(' · '):'';
+  const l2=I?[I.secretaria(),I.ciudad()].filter(Boolean).join(' · '):'';
+  return `<div class="membrete">
+    <img src="../Logo/logo.jpg" alt="">
+    <div class="txt"><h1>${esc(nom)}</h1>
+      <div class="mline">${esc(linea)}</div>
+      <div class="mline">${esc(l2)}</div></div>
+    <img src="../Logo/logo.jpg" alt="" style="visibility:hidden">
+  </div>`;
+}
+function cerrarDoc(){ $('#doc-out').innerHTML=''; }
+window.cerrarDoc=cerrarDoc;
+function abrirDoc(html){
+  $('#doc-out').innerHTML=`<div class="card"><div class="no-print" style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+      <button class="btn sec" onclick="cerrarDoc()">Cerrar</button></div>
+    <div class="exam-doc">${html}</div></div>`;
+  $('#doc-out').scrollIntoView({behavior:'smooth'});
+}
+function metaTabla(x){
+  return `<table class="meta">
+    <tr><th>Estudiante</th><td colspan="3">______________________________________________</td></tr>
+    <tr><th>Grado</th><td>${esc(x.grado||'')} ${GLBL[x.grado]||''}</td><th>Grupo</th><td>________</td></tr>
+    <tr><th>Docente</th><td>${esc(x.docente||'')}</td><th>Fecha</th><td>____________</td></tr>
+    <tr><th>Periodo</th><td>${esc(x.periodo||'')}</td><th>Tiempo</th><td>${x.tiempo||'-'} min</td></tr>
+  </table>`;
+}
+function ptsDe(x,it){ const p=x.puntos||{}; return (it.tipo==='multiple'?p.multiple:it.tipo==='vf'?p.vf:p.abierta)||0; }
+function totalPuntos(x){ return (x.items||[]).reduce((s,it)=>s+ptsDe(x,it),0); }
+
+window.verExamen=id=>{
+  const x=finalesGuardados().find(e=>e.id===id); if(!x) return;
+  const grupos=[['multiple','Primera parte — selección múltiple con única respuesta'],
+                ['vf','Segunda parte — falso o verdadero'],
+                ['abierta','Tercera parte — preguntas abiertas']];
+  let n=0, body='';
+  grupos.forEach(([t,tit])=>{
+    const items=(x.items||[]).filter(i=>i.tipo===t);
+    if(!items.length) return;
+    body+=`<div class="secc">${tit}</div>`;
+    body+=items.map(it=>{
+      n++;
+      let opts='';
+      if(it.tipo==='multiple') opts='<ol type="A" class="opts">'+(it.opciones||[]).filter(o=>o).map(o=>`<li>${esc(o)}</li>`).join('')+'</ol>';
+      else if(it.tipo==='vf') opts='<div class="opts">Verdadero ______&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;Falso ______</div>';
+      else opts='<div class="lines">______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________</div>';
+      return `<div class="q"><span class="pts">(${ptsDe(x,it)} pts)</span>
+        <div><span class="qn">${n}.</span>${it.contexto?`<span class="ctx">${esc(it.contexto)}</span>`:''}</div>
+        <div class="enu">${esc(it.enunciado)}</div>${opts}</div>`;
+    }).join('');
+  });
+  abrirDoc(membrete()
+    +`<p class="sub">${esc(x.titulo||'Examen final')} — ${esc(x.asignatura||'')}</p>`
+    +metaTabla(x)
+    +(x.instrucciones?`<p class="instr"><strong>Instrucciones:</strong> ${esc(x.instrucciones)}</p>`:'')
+    +`<p class="instr" style="background:#fff;border-color:#cbd5e1"><strong>Valoración:</strong> este examen tiene ${(x.items||[]).length} preguntas para un total de ${totalPuntos(x)} puntos.</p>`
+    +(body||'<p class="muted">Este examen no tiene preguntas.</p>'));
+};
+
+window.verHoja=id=>{
+  const x=finalesGuardados().find(e=>e.id===id); if(!x) return;
+  const cerradas=(x.items||[]).filter(i=>i.tipo!=='abierta');
+  const abiertas=(x.items||[]).filter(i=>i.tipo==='abierta');
+  let n=0;
+  const grid=(x.items||[]).map(it=>{
+    n++;
+    if(it.tipo==='abierta') return '';
+    const cell=it.tipo==='vf'
+      ? '<span class="bub">V</span><span class="bub">F</span>'
+      : '<span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span>';
+    return `<div class="hr-item"><span class="hr-n">${n}.</span>${cell}</div>`;
+  }).join('');
+  let nAb=cerradas.length;
+  const lineasAbiertas=abiertas.map(()=>{
+    nAb++;
+    return `<div class="q"><div class="enu">${nAb}.</div><div class="lines">______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________</div></div>`;
+  }).join('');
+  abrirDoc(membrete()
+    +`<p class="sub">Hoja de respuestas — ${esc(x.titulo||'')}</p>`
+    +metaTabla(x)
+    +'<p class="instr">Rellena completamente el círculo de la opción elegida. Usa lápiz o lapicero negro. Si te equivocas, tacha con una X y marca la opción correcta al lado.</p>'
+    +(grid?`<div class="secc">Preguntas de selección y falso/verdadero</div><div class="hr-grid">${grid}</div>`:'')
+    +(lineasAbiertas?`<div class="secc" style="margin-top:20px">Preguntas abiertas</div>${lineasAbiertas}`:''));
+};
+
+window.verClave=id=>{
+  const x=finalesGuardados().find(e=>e.id===id); if(!x) return;
+  let n=0;
+  const filas=(x.items||[]).map(it=>{
+    n++;
+    let resp;
+    if(it.tipo==='multiple') resp='<strong>'+('ABCD'[it.correcta]||'?')+'</strong> — '+esc((it.opciones||[])[it.correcta]||'');
+    else if(it.tipo==='vf') resp='<strong>'+(it.correcta?'Verdadero':'Falso')+'</strong>';
+    else resp=esc(it.respuesta||'(sin respuesta modelo)');
+    return `<tr><td style="width:34px;text-align:center"><strong>${n}</strong></td>
+      <td style="width:88px">${TIPO_LBL[it.tipo]||it.tipo}</td>
+      <td>${resp}${it.justificacion?`<div style="font-size:.78rem;color:#64748b;margin-top:3px">${esc(it.justificacion)}</div>`:''}</td>
+      <td style="width:52px;text-align:center">${ptsDe(x,it)}</td></tr>`;
+  }).join('');
+  const tot=totalPuntos(x);
+  const escala=[5,4,3.5,3,2].map(nota=>{
+    const req=Math.round((nota/5)*tot*10)/10;
+    return `<tr><td style="text-align:center">${nota.toFixed(1)}</td><td style="text-align:center">${req} pts</td></tr>`;
+  }).join('');
+  abrirDoc(membrete()
+    +`<p class="sub">Clave de calificación — uso exclusivo del docente</p>`
+    +`<table class="meta">
+        <tr><th>Examen</th><td>${esc(x.titulo||'')}</td><th>Grado</th><td>${esc(x.grado||'')} ${GLBL[x.grado]||''}</td></tr>
+        <tr><th>Asignatura</th><td>${esc(x.asignatura||'')}</td><th>Periodo</th><td>${esc(x.periodo||'')}</td></tr>
+        <tr><th>Docente</th><td>${esc(x.docente||'')}</td><th>Total</th><td>${tot} puntos</td></tr>
+      </table>`
+    +`<div class="secc">Respuestas correctas</div>`
+    +`<table class="clave"><thead><tr><th>N°</th><th>Tipo</th><th>Respuesta correcta</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table>`
+    +`<div class="secc" style="margin-top:18px">Conversión a la escala institucional</div>`
+    +`<table class="clave" style="max-width:280px"><thead><tr><th style="text-align:center">Nota</th><th style="text-align:center">Puntos necesarios</th></tr></thead><tbody>${escala}</tbody></table>`
+    +`<p class="hint" style="margin-top:8px">Nota = (puntos obtenidos ÷ ${tot}) × 5.0, redondeada a un decimal. Las preguntas abiertas admiten puntaje parcial a criterio del docente.</p>`
+    +`<div class="firma"><div>Firma del docente</div><div>Revisó — Coordinación académica</div></div>`);
+};
+
+/* ═══ Arranque ═══ */
+(function(){
+  initPaso1();
+  refreshMalla();
+  if(!MALLA.length){
+    $('#sin-malla').classList.remove('hide');
+    $('#sm-materia').textContent=MATERIA||'esta materia';
+    ['p1','p2','p3','p4'].forEach(id=>$('#'+id).classList.add('hide'));
+    $('#pasos').classList.add('hide');
+  }
+  iaKeyRender();
+  renderLista();
+  if(!PERSIST) document.querySelector('main').insertAdjacentHTML('afterbegin',
+    '<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este navegador bloquea el almacenamiento. Abre SABIE en Chrome o Edge.</p></div>');
+  // La malla puede llegar de Supabase después del arranque.
+  setTimeout(()=>{ refreshMalla(); if(MALLA.length&&!$('#sin-malla').classList.contains('hide')){ location.reload(); } renderLista(); },3000);
+})();
+</script>
+</body>
+</html>

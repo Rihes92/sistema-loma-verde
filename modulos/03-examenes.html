@@ -284,26 +284,18 @@ function lsWrite(s,a){
   return true;
 }
 
-const MALLA = [
-  {grado:"Sexto",periodo:"Primer Periodo",eje:"Sujeto, sociedad y civilización: la Tierra como geosistema vivo",temas:"<ul><li>El origen del universo: teorías científicas y mitológicas.</li><li>Estructura del sistema solar y la Tierra como planeta vivo.</li><li>Capas de la Tierra y geodinámica interna.</li><li>Fenómenos climáticos y gestión del riesgo.</li></ul>",ebcDba:"<strong>EBC:</strong> reconozco características de la Tierra que la hacen un planeta vivo.<br><br><strong>DBA 1:</strong> teorías sobre el origen del universo.<br><strong>DBA 2:</strong> la Tierra en transformación.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> interpreta teorías científicas.<br><strong>Ser:</strong> muestra interés científico y preventivo."},
-  {grado:"Sexto",periodo:"Primer Periodo",eje:"Relaciones con la historia y las culturas: el proceso de hominización",temas:"<ul><li>Evolución de los homínidos (género Homo).</li><li>Desarrollo tecnológico: Edad de Piedra y Metales.</li><li>Modos de producción primitivos.</li></ul>",ebcDba:"<strong>EBC:</strong> establezco relaciones entre estas culturas y sus épocas.<br><br><strong>DBA 3:</strong> proceso de hominización y desarrollo tecnológico.",competencia:"<ul><li>Pensamiento social.</li><li>Interpretación y análisis de perspectivas.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> clasifica fuentes primarias y secundarias.<br><strong>Ser:</strong> valora el trabajo cooperativo ancestral."},
-  {grado:"Sexto",periodo:"Segundo Periodo",eje:"Sociedades hidráulicas y revolución agrícola",temas:"<ul><li>Sedentarización y revolución agrícola.</li><li>Civilizaciones del viejo mundo (Nilo, Tigris, Éufrates).</li><li>Invenciones: canales de riego, escritura.</li></ul>",ebcDba:"<strong>EBC:</strong> describo características de la organización social o económica en algunas culturas.<br><br><strong>DBA 4:</strong> surgimiento de las primeras ciudades.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> ubica en mapas históricos los entornos fluviales.<br><strong>Ser:</strong> emite opiniones sobre la ingeniería antigua."},
-  {grado:"Sexto",periodo:"Segundo Periodo",eje:"Modelos políticos antiguos y legitimación del poder",temas:"<ul><li>Formas de gobierno: tiranía, aristocracia, monarquía.</li><li>Democracia ateniense frente a imperios.</li><li>Justificación del poder (divino y militar).</li></ul>",ebcDba:"<strong>EBC:</strong> identifico las ideas que legitimaban el sistema político.<br><br><strong>DBA 6:</strong> formas de gobierno en la antigüedad.",competencia:"<ul><li>Interpretación y análisis de perspectivas.</li><li>Pensamiento social.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> compara la democracia ateniense y la colombiana.<br><strong>Ser:</strong> asume una postura reflexiva ante la restricción de derechos."},
-  {grado:"Sexto",periodo:"Tercer Periodo",eje:"El esplendor prehispánico y sus legados tecnológicos",temas:"<ul><li>Mayas, Aztecas e Incas.</li><li>Familias lingüísticas: Chibcha, Caribe y Arawak.</li><li>Redes de canales hidráulicos Zenú.</li></ul>",ebcDba:"<strong>EBC:</strong> comparo legados culturales de diferentes grupos.<br><br><strong>DBA 5:</strong> legados de las sociedades americanas prehispánicas.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> sitúa cartográficamente los imperios prehispánicos.<br><strong>Ser:</strong> manifiesta respeto por la herencia cultural indígena."},
-  {grado:"Sexto",periodo:"Tercer Periodo",eje:"Ciudadanía activa, inclusión y amparo constitucional",temas:"<ul><li>El concepto evolutivo de ciudadanía.</li><li>Derechos fundamentales e igualdad.</li><li>Rechazo a la exclusión.</li></ul>",ebcDba:"<strong>EBC:</strong> asumo una posición crítica frente a la discriminación.<br><br><strong>DBA 7:</strong> mediación ciudadana.<br><strong>DBA 8:</strong> inaceptabilidad de la discriminación.",competencia:"<ul><li>Interpretación y análisis de perspectivas.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> argumenta derechos basados en la Constitución.<br><strong>Ser:</strong> utiliza lenguaje inclusivo."},
-  {grado:"Séptimo",periodo:"Primer Periodo",eje:"Evolución de la representación espacial y herramientas técnicas",temas:"<ul><li>Visión del espacio en el medioevo.</li><li>Avances técnicos: brújula, telescopio, teledetección.</li></ul>",ebcDba:"<strong>EBC:</strong> utilizo coordenadas, convenciones y escalas.<br><br><strong>DBA 1:</strong> cambios en representaciones del mundo.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> compara planisferios medievales con satelitales.<br><strong>Ser:</strong> reconoce el mapa como construcción subjetiva."},
-  {grado:"Séptimo",periodo:"Segundo Periodo",eje:"Instituciones Clásicas: El legado de Roma",temas:"<ul><li>Imperio romano como sistema político y jurídico.</li><li>Infraestructura y derecho romano.</li></ul>",ebcDba:"<strong>EBC:</strong> describo características de organización política.<br><br><strong>DBA 3:</strong> influencia del imperio romano en occidente.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> describe el legado institucional de Roma.<br><strong>Ser:</strong> valora el desarrollo normativo."},
-  {grado:"Séptimo",periodo:"Tercer Periodo",eje:"Renacimiento, expansión transatlántica y orden colonial",temas:"<ul><li>El pensamiento moderno y Reforma protestante.</li><li>Conquista y colonización de América.</li></ul>",ebcDba:"<strong>EBC:</strong> comparo características de la organización colonial.<br><br><strong>DBA 5:</strong> Renacimiento.<br><strong>DBA 6:</strong> conquista europea.",competencia:"<ul><li>Pensamiento social.</li><li>Interpretación y análisis de perspectivas.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> interpreta mapas temáticos coloniales.<br><strong>Ser:</strong> reivindica la diversidad étnica."},
-  {grado:"Octavo",periodo:"Primer Periodo",eje:"Geopolítica de la cooperación internacional",temas:"<ul><li>Estado nacional y orden global.</li><li>Alianzas (Unión Europea, Mercosur, OTAN).</li></ul>",ebcDba:"<strong>EBC:</strong> analizo cómo diferentes culturas producen y distribuyen recursos.<br><br><strong>DBA 1:</strong> procesos de cooperación económica y política.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> caracteriza objetivos de bloques de integración.<br><strong>Ser:</strong> valora la diplomacia internacional."},
-  {grado:"Octavo",periodo:"Segundo Periodo",eje:"Consolidación del capitalismo y revoluciones",temas:"<ul><li>Transición a la sociedad industrial.</li><li>Modelos: capitalismo, socialismo, economía mixta.</li></ul>",ebcDba:"<strong>EBC:</strong> comparo organizaciones económicas.<br><br><strong>DBA 3:</strong> cambios por el surgimiento del capitalismo.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> compara sistemas económicos contemporáneos.<br><strong>Ser:</strong> analiza brechas de desarrollo."},
-  {grado:"Octavo",periodo:"Tercer Periodo",eje:"Revoluciones liberales y rupturas coloniales",temas:"<ul><li>Legado de la Revolución Francesa.</li><li>Independencias americanas.</li></ul>",ebcDba:"<strong>EBC:</strong> establezco relaciones entre culturas y épocas.<br><br><strong>DBA 5:</strong> procesos de independencia de las colonias americanas.",competencia:"<ul><li>Pensamiento social.</li><li>Interpretación y análisis de perspectivas.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> explica la incidencia de la Ilustración.<br><strong>Ser:</strong> reconoce la cimentación de libertades civiles."},
-  {grado:"Noveno",periodo:"Primer Periodo",eje:"Preservación ambiental de geosistemas y recursos hídricos",temas:"<ul><li>Geosistemas estratégicos: selvas, páramos.</li><li>Deforestación e impacto en fuentes hídricas.</li></ul>",ebcDba:"<strong>EBC:</strong> describo características físicas de ecosistemas.<br><br><strong>DBA 1:</strong> situación ambiental de geosistemas colombianos.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> ubica geosistemas biodiversos.<br><strong>Ser:</strong> asume posición crítica frente al deterioro ambiental."},
-  {grado:"Noveno",periodo:"Segundo Periodo",eje:"Estructuras económicas e historia de las crisis",temas:"<ul><li>Modelos macroeconómicos republicanos.</li><li>Crisis: UPAC, café, petróleo.</li></ul>",ebcDba:"<strong>EBC:</strong> explico políticas que orientaron la economía.<br><br><strong>DBA 3:</strong> crisis económicas en la Colombia contemporánea.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> plantea hipótesis de futuros económicos.<br><strong>Ser:</strong> reconoce el valor de la solidaridad tributaria."},
-  {grado:"Noveno",periodo:"Tercer Periodo",eje:"Garantías constitucionales, género y participación",temas:"<ul><li>Tipologías de derechos (Const. 1991).</li><li>Derechos de la mujer e igualdad.</li></ul>",ebcDba:"<strong>EBC:</strong> comparo mecanismos de participación.<br><br><strong>DBA 5:</strong> deber de protección de derechos.<br><strong>DBA 6:</strong> papel histórico de las mujeres.",competencia:"<ul><li>Pensamiento social.</li><li>Interpretación y análisis de perspectivas.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> justifica el uso del voto, plebiscito, tutela.<br><strong>Ser:</strong> propone alternativas para mitigar violencia de género."},
-  {grado:"Décimo",periodo:"Primer Periodo",eje:"Conflictos socioambientales y seguridad hídrica",temas:"<ul><li>Gobernanza del recurso hídrico.</li><li>Impacto de la minería legal e ilegal.</li></ul>",ebcDba:"<strong>EBC:</strong> analizo factores que ponen en riesgo el derecho a la alimentación sana.<br><br><strong>DBA 1:</strong> conflictos territoriales por degradación ambiental.",competencia:"<ul><li>Pensamiento social.</li><li>Pensamiento reflexivo y sistémico.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> explica tensiones por el acceso al agua.<br><strong>Ser:</strong> fundamenta argumentos en informes oficiales."},
-  {grado:"Décimo",periodo:"Segundo Periodo",eje:"Historia del conflicto armado e incidencia sociocultural",temas:"<ul><li>Violencia en la segunda mitad del siglo XX.</li><li>Tipologías de la violencia (directa, estructural, cultural).</li></ul>",ebcDba:"<strong>EBC:</strong> analizo el periodo conocido como 'la Violencia'.<br><br><strong>DBA 2:</strong> causas y consecuencias de la violencia en el siglo XX.",competencia:"<ul><li>Pensamiento social.</li><li>Interpretación y análisis de perspectivas.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> compara los diferentes tipos de violencia.<br><strong>Ser:</strong> propone estrategias pacíficas de negociación."},
-  {grado:"Décimo",periodo:"Tercer Periodo",eje:"Conflictos bélicos globales y transformaciones",temas:"<ul><li>Primera y Segunda Guerra Mundial.</li><li>Reconfiguración geopolítica (Aliados vs Eje).</li></ul>",ebcDba:"<strong>EBC:</strong> analizo hechos históricos mundiales del siglo XX.<br><br><strong>DBA 5:</strong> conflictos bélicos contemporáneos.",competencia:"<ul><li>Pensamiento reflexivo y sistémico.</li><li>Interpretación y análisis de perspectivas.</li></ul>",evidencias:"<strong>Saber-hacer:</strong> interpreta mapas geopolíticos históricos.<br><strong>Ser:</strong> defiende la solución pacífica de las controversias."}
-];
+// Malla activa: se LEE de lv_malla y se filtra por la materia del contexto,
+// igual que en el Planeador y en el módulo 19. Antes aquí vivía una copia
+// congelada de la malla de Ciencias Sociales escrita a mano en el archivo:
+// al entrar desde otra materia (Competencias Ciudadanas, Filosofía…) el
+// módulo ofrecía los ejes de Sociales. Ahora cada materia ve la suya, y si
+// no tiene malla cargada el selector queda vacío (en vez de mostrar la
+// equivocada). La malla se carga en Planeador → Malla curricular.
+let MALLA = [];
+function refreshMalla(){
+  const base = lsRead('malla');
+  MALLA = (typeof LV_CTX!=='undefined') ? LV_CTX.filtrar(base) : base;
+}
 const GRADOS=['Sexto','Séptimo','Octavo','Noveno','Décimo'];
 const GLBL={Sexto:'6°','Séptimo':'7°',Octavo:'8°',Noveno:'9°','Décimo':'10°'};
 const TIPO_LBL={multiple:'Opción múltiple',vf:'Falso / Verdadero',abierta:'Abierta'};
@@ -327,18 +319,34 @@ function fillGrados(){
   $('#e-grado').innerHTML='<option value="">— Grado —</option>'+GRADOS.map(g=>`<option value="${g}">${g} (${GLBL[g]})</option>`).join('');
   $('#l-grado').innerHTML='<option value="">Todos</option>'+GRADOS.map(g=>`<option value="${g}">${g} (${GLBL[g]})</option>`).join('');
 }
+// El valor del <option> es el TEXTO del eje, no su posición en el arreglo:
+// la malla ahora es dinámica (cambia por materia y se puede editar), así que
+// un índice numérico dejaría de apuntar al mismo eje. Los exámenes viejos
+// guardaron un índice; al editarlos simplemente no queda preseleccionado
+// (no se pierde nada más del examen).
 function refreshEjes(){
+  refreshMalla();
   const g=$('#e-grado').value,p=$('#e-periodo').value;
   const items=MALLA.filter(m=>m.grado===g&&m.periodo===p);
-  $('#e-eje').innerHTML='<option value="">'+(items.length?'— Eje —':'(sin ejes)')+'</option>'+items.map(m=>`<option value="${MALLA.indexOf(m)}">${esc(m.eje)}</option>`).join('');
+  const vacio=g?'(esta materia no tiene ejes para ese grado y periodo)':'— Eje —';
+  $('#e-eje').innerHTML='<option value="">'+(items.length?'— Eje —':vacio)+'</option>'+items.map(m=>`<option value="${esc(m.eje)}">${esc(m.eje)}</option>`).join('');
   $('#e-ref').innerHTML='';
+}
+function ejeActual(){
+  const v=$('#e-eje').value;
+  if(!v) return null;
+  return MALLA.find(m=>m.eje===v)||null;
 }
 $('#e-grado').addEventListener('change',refreshEjes);
 $('#e-periodo').addEventListener('change',refreshEjes);
-$('#e-eje').addEventListener('change',()=>{const i=$('#e-eje').value;if(i===''){$('#e-ref').innerHTML='';return;}const m=MALLA[+i];
+$('#e-eje').addEventListener('change',()=>{const m=ejeActual();if(!m){$('#e-ref').innerHTML='';return;}
   $('#e-ref').innerHTML=`<div class="ref-box"><strong>Eje:</strong> ${esc(m.eje)}\n<strong>Evidencias:</strong>\n${esc(htmlToText(m.evidencias))}\n<strong>Competencias:</strong>\n${esc(htmlToText(m.competencia))}</div>`;
   if(!$('#e-titulo').value)$('#e-titulo').value='Evaluación — '+m.eje;
 });
+// auth.js y materia-context.js se cargan DESPUÉS de este script, así que en
+// el primer refreshEjes() todavía no existe LV_CTX y la malla saldría sin
+// filtrar por materia. Se repinta cuando ya cargó todo.
+window.addEventListener('load',()=>{ try{ refreshEjes(); }catch(_){} });
 
 // ---------- Tabs ----------
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
@@ -476,7 +484,9 @@ window.dupEx=id=>{
 window.editEx=id=>{const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;
   document.querySelector('[data-tab="crear"]').click();
   editId=x.id;$('#e-grado').value=x.grado||'';$('#e-periodo').value=x.periodo||'Primer Periodo';refreshEjes();
-  if(x.ejeIdx!==''&&x.ejeIdx!=null){$('#e-eje').value=x.ejeIdx;$('#e-eje').dispatchEvent(new Event('change'));}
+  // ejeIdx ahora guarda el TEXTO del eje. En exámenes viejos era un número
+  // (posición en la malla congelada) que ya no significa nada: se ignora.
+  if(x.ejeIdx!==''&&x.ejeIdx!=null&&isNaN(Number(x.ejeIdx))){$('#e-eje').value=x.ejeIdx;$('#e-eje').dispatchEvent(new Event('change'));}
   $('#e-asignatura').value=x.asignatura||'Ciencias Sociales';$('#e-titulo').value=x.titulo||'';$('#e-docente').value=x.docente||'';$('#e-tiempo').value=x.tiempo||45;$('#e-instr').value=x.instrucciones||'';
   $('#items-box').innerHTML='';for(const k in itemImgs)delete itemImgs[k];
   (x.items||[]).forEach(it=>addItem(it.tipo,it));
@@ -979,7 +989,7 @@ window.genStudent=id=>{
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
-<script>window.LV_SYNC_TABLAS=['lv_examenes','lv_resultados','lv_banco','lv_cursos','lv_estudiantes','lv_calificaciones'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_examenes','lv_resultados','lv_banco','lv_malla','lv_cursos','lv_estudiantes','lv_calificaciones'];</script>
 <script src="../sync.js"></script>
 </body>
 </html>

@@ -3,6 +3,147 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23b, mallas oficiales + fix del módulo 03)
+
+- **CARPETA NUEVA `Mallas/` en la raíz del proyecto.** Francy irá dejando ahí
+  el Excel de la malla de cada asignatura. Hoy están *Malla curricular -
+  Ciencias sociales.xlsx* y *Malla curricular - Competencias ciudadanas.xlsx*.
+  **Este es el FORMATO OFICIAL** para todas las mallas futuras (verificado:
+  los dos archivos son idénticos en estructura, 36 ejes cada uno = 6 grados ×
+  3 periodos × 2 ejes):
+  · Fila 1 = encabezados. Columnas: `Periodo | Eje temático | Temas puntuales /
+    ideas clave | Estándares básicos de competencias y DBA | Competencia /
+    Componente | Evidencias de aprendizaje (ser, hacer, saber-hacer)`.
+  · Filas de **encabezado de grado**: el nombre del grado en MAYÚSCULAS en la
+    columna A (SEXTO, SÉPTIMO, …, UNDÉCIMO) y el resto de columnas vacías;
+    aplica a todas las filas siguientes hasta el próximo encabezado.
+  · Columna A en las filas de datos = número de periodo (1, 2, 3); si va
+    vacía, hereda el periodo de la fila de arriba (van de a dos ejes por
+    periodo).
+  · Las celdas de temas/competencia vienen como viñetas `* texto` separadas
+    por saltos de línea; la primera viñeta de casi todos los ejes es la
+    "Pregunta problematizadora".
+- **El importador que YA existía en el Planeador lee justo ese formato**
+  (Planeador → Malla curricular → importar Excel). No hubo que escribir uno
+  nuevo. IMPORTANTE para Francy: hay que importar **entrando por la materia
+  correcta**, porque el importador etiqueta cada tema con `LV_CTX.materia`.
+- **`nl2list()` NUEVA en 02-planeador.html:** el importador guardaba los temas
+  como `* uno<br>* dos`; ahora convierte las viñetas en `<ul><li>` real (mismo
+  formato que la malla semilla), que es lo que el módulo 19 necesita para
+  desglosar cada temática en su propia casilla. Se aplica a `temas` y
+  `competencia`; `ebcDba` y `evidencias` siguen con `nl2html` (son etiqueta +
+  texto, no listas puras). Si el texto no trae viñetas, cae a nl2html sin
+  romper nada. Probada con node (7 casos: malla real, sin viñetas, una sola
+  viñeta, cabecera antes de las viñetas, continuación de línea, vacío/null,
+  escape de `<`/`&`/`"`).
+- **BUG DEL MÓDULO 03 CORREGIDO** (el hallazgo de la sesión 23): se eliminó la
+  constante `MALLA` hardcodeada (copia congelada de Sociales) y ahora usa
+  `refreshMalla()` = `lsRead('malla')` + `LV_CTX.filtrar`, igual que el
+  Planeador y el módulo 19. Detalles del cambio:
+  · El `value` de cada `<option>` de eje pasó de ser el ÍNDICE en el arreglo
+    al **texto del eje** — con una malla dinámica (cambia por materia y es
+    editable) un índice deja de apuntar al mismo sitio. `ejeIdx` conserva el
+    nombre del campo pero ahora guarda texto; al editar un examen viejo (que
+    guardó un número) simplemente no queda preseleccionado el eje —
+    `isNaN(Number(...))` lo detecta y lo ignora. No se pierde nada más.
+  · `refreshEjes()` llama primero a `refreshMalla()`, y se agregó un
+    `window.addEventListener('load', refreshEjes)` porque en el módulo 03
+    `auth.js`/`materia-context.js` se cargan DESPUÉS del script principal: en
+    el primer render `LV_CTX` todavía no existe y la malla saldría sin filtrar.
+  · Si la materia no tiene ejes para ese grado/periodo, el selector dice
+    "(esta materia no tiene ejes para ese grado y periodo)" en vez de ofrecer
+    los de otra materia.
+  · Se agregó `lv_malla` a `LV_SYNC_TABLAS` del módulo 03.
+- **Módulo 19 ajustado al formato oficial:** `temasDe()` ahora también quita la
+  viñeta `*` (antes solo `•` y `-`) y **excluye la línea de "Pregunta
+  problematizadora"** de las casillas de temáticas — no es una temática
+  evaluable sino el encuadre del eje; se muestra aparte en el recuadro de
+  referencia vía `preguntaDe()`. Probado con node (5 casos: malla importada
+  nueva con `<li>`, importación vieja con `<br>` y `*`, semilla sin pregunta,
+  eje vacío, eje que solo trae la pregunta).
+- SW **v73**. Sintaxis verificada (`node --check` en sw.js y en los bloques
+  inline de 02, 03 y 19; balance de etiquetas del 03 tras borrar la constante).
+- **PENDIENTE:** push (OJO: el push anterior falló porque Francy corrió los
+  comandos desde `~` y no desde la carpeta del proyecto — hay que hacer `cd`
+  primero); que Francy importe las dos mallas entrando por su materia y
+  confirme que el módulo 03 y el 19 muestran los ejes correctos en cada una.
+  Siguen pendientes de la sesión 23: test de lectura en inglés y grados 1° a
+  11° en el de español (ver detalle abajo).
+
+## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23, módulo 19 Examen Final de Periodo)
+
+- **Módulo NUEVO `modulos/19-examen-final.html`** (pedido de Francy): arma un
+  examen final de periodo desde la MALLA de la materia activa, con las
+  preguntas redactadas por Gemini. Asistente de 4 pasos: (1) datos
+  (grado/periodo/título/asignatura/docente/tiempo/instrucciones); (2) **ejes y
+  temáticas** — cada eje de `lv_malla` sale como casilla, y sus temáticas se
+  desglosan una por una parseando los `<li>` del campo `temas` (marcar el eje
+  marca todas sus temáticas; el recuadro muestra EBC/DBA, competencias y
+  evidencias del eje como referencia); (3) cantidades por tipo (selección
+  múltiple / V-F / abiertas) **con puntaje por pregunta** y total calculado en
+  vivo + campo de la clave de Gemini; (4) **revisión editable OBLIGATORIA**
+  antes de guardar (aviso fijo de que la IA puede equivocarse; se puede editar
+  enunciado, contexto, opciones, respuesta correcta, justificación y quitar
+  preguntas). Guarda en `lv_examenes` con `esFinal:true` → el examen también
+  aparece en el módulo 03 y hereda su edición.
+- **HALLAZGO IMPORTANTE (bug preexistente, NO corregido aún):** `03-examenes.html`
+  tiene la malla de Ciencias Sociales **escrita a mano dentro del archivo**
+  (`const MALLA = [...]`, línea ~287), NO la lee de `lv_malla`. Es decir: al
+  entrar al módulo 03 desde otra materia, los ejes que ofrece son los de
+  Sociales. El módulo 19 SÍ lo hace bien (`lsRead('malla')` + `LV_CTX.filtrar`,
+  igual que el Planeador). **Pendiente: migrar el 03 al mismo patrón** — es un
+  cambio pequeño (borrar la constante y usar refreshMalla()), pero toca su
+  `refreshEjes()` y el flujo de `ejeIdx` guardado en exámenes viejos, así que
+  se dejó para su propio momento.
+- **`api/generar.js`: tipo nuevo `examen_final`.** Reusa el mismo GEM y el mismo
+  esquema de salida del banco (`loma_verde_banco_preguntas`), así que el cliente
+  reutiliza `validarPreguntas()` sin cambios. Lo que cambia es
+  `msgExamenFinal()`: pide las cantidades por tipo de forma EXPLÍCITA y
+  verificable ("el arreglo debe traer EXACTAMENTE N elementos… cuenta antes de
+  responder"), lista las temáticas exactas como cerco ("no evalúes nada fuera
+  de esta lista") y pide repartirlas parejo. El banco normal pedía la cantidad
+  en texto libre y el modelo la cumplía a medias. Si aun así no cuadra, el
+  módulo avisa en el paso 4 cuántas llegaron de cada tipo en vez de fallar.
+- **Tres documentos imprimibles** (los tres con membrete completo de `LV_INST`:
+  logo, nombre, NIT/DANE/ICFES, secretaría y ciudad): (a) **examen** dividido en
+  tres partes por tipo de pregunta, con puntaje visible por pregunta y total;
+  (b) **hoja de respuestas del estudiante** (burbujas A-D / V-F en dos columnas
+  + renglones aparte para las abiertas); (c) **clave de calificación del
+  docente** — NUEVA, no existía en el 03: tabla de respuestas correctas con
+  justificación y puntaje, más una tabla de conversión de puntos a la escala
+  1.0–5.0 y espacio de firmas.
+- **`navToModule()` en index.html ampliado a `(0[1-9]|19)`:** el 19 necesita
+  contexto de materia (de ahí sale la malla), así que el modal "¿a qué materia
+  deseas entrar?" ahora también lo intercepta. Sin eso, entrar por la sidebar
+  dejaba `LV_CTX.materia` en null y `filtrar()` devolvía los ejes de TODAS las
+  materias mezclados.
+- Si la materia no tiene malla cargada, el módulo NO muestra el asistente:
+  muestra una tarjeta que lo explica y enlaza al Planeador (evita ofrecer ejes
+  equivocados). Reintenta a los 3 s por si la malla llega de Supabase después.
+- Enlaces en `materia-hub.html` (junto a Exámenes 6°-10°) y en la sidebar de
+  `index.html`. SW **v72** (+ el módulo en el precache). Sintaxis verificada:
+  `node --check` en sw.js y api/generar.js, y en los bloques `<script>` inline
+  de index.html (6), materia-hub.html (2) y 19-examen-final.html (3). Probados
+  con node el parser de temáticas (7 casos: lista real de la malla, `<li>` con
+  atributos, texto plano, `<br>`, vacío, null, entidades HTML) y el cálculo de
+  puntajes/conversión a 5.0.
+- **PENDIENTE:** push; que Francy pruebe el flujo completo con una materia real
+  (necesita su clave de Gemini guardada) y confirme que los ejes que aparecen
+  son los de la materia con la que entró. **Lo acordado y NO hecho todavía en
+  esta sesión (siguen pendientes, en este orden):** (1) **Test de lectura en
+  inglés** — `reading-aloud.html` NO es una versión en inglés del test de
+  español, es otra herramienta mucho más pobre (196 líneas vs 793): no tiene
+  panel de proyección, marcado de palabras con clic, micrófono, cronómetro
+  durante la lectura, reporte diagnóstico ni historial exportable; el docente
+  cuenta las palabras a mano. Hay que portar `test-lectura.html` completo con
+  `lang='en-US'` en el reconocedor, normalizador sin tildes ajustado al inglés
+  y banco de textos/rangos en inglés. (2) **Grados 1° a 11° en el test de
+  español** — hoy solo 1° a 5°. OJO: los rangos oficiales ICFES/PTA solo
+  existen para 3° y 5° (1°, 2° y 4° ya están declarados en el módulo como
+  estimación/interpolación); de 6° a 11° NO hay instrumento oficial colombiano,
+  así que cada grado nuevo debe declarar su fuente en el reporte igual que
+  ahora, y hay que escribir textos nuevos para los seis grados.
+
 ## ▶ POR DÓNDE RETOMAR (jul 19, 2026 — sesión 22, Panel de Coordinación en index.html)
 
 - **Construido el "Panel de Coordinación" acordado en la sesión 18** (reemplaza

@@ -1038,6 +1038,25 @@ window.planearDesde=idx=>{const m=MALLA[idx];document.querySelector('[data-tab="
 // ---------- Malla: agregar / editar / eliminar / importar ----------
 let mallaEditId=null;
 function nl2html(s){return esc(s||'').replace(/\n/g,'<br>');}
+// Las mallas oficiales traen las temáticas como viñetas "* texto" separadas
+// por saltos de línea. Convertirlas en un <ul><li> real (mismo formato de la
+// malla semilla) permite que el módulo 19 desglose cada temática por
+// separado en casillas. Si el texto no viene en viñetas, se deja como estaba.
+function nl2list(s){
+  const t=String(s||'').trim();
+  if(!t) return '';
+  const lineas=t.split('\n').map(x=>x.trim()).filter(Boolean);
+  const vinetas=lineas.filter(x=>/^[*•\-–]\s*/.test(x));
+  if(vinetas.length<2) return nl2html(s);
+  const items=[]; let sueltas=[];
+  lineas.forEach(l=>{
+    if(/^[*•\-–]\s*/.test(l)) items.push(l.replace(/^[*•\-–]\s*/,'').trim());
+    else if(items.length) items[items.length-1]+=' '+l;   // continuación de la viñeta anterior
+    else sueltas.push(l);                                  // texto antes de la primera viñeta
+  });
+  const cab=sueltas.length?nl2html(sueltas.join('\n'))+'':'';
+  return cab+'<ul>'+items.filter(Boolean).map(i=>'<li>'+esc(i)+'</li>').join('')+'</ul>';
+}
 $('#btn-malla-add').addEventListener('click',()=>openMallaForm());
 $('#btn-malla-cancel').addEventListener('click',()=>{$('#malla-form-card').classList.add('hide');mallaEditId=null;});
 function openMallaForm(m){
@@ -1120,8 +1139,8 @@ $('#m-import').addEventListener('change',async e=>{
       nuevos.push({
         id:uid(),materia,grado:gradoActual,periodo:_MALLA_PERIODOS[periodoActual]||_MALLA_PERIODOS[1],
         eje:String(eje).trim(),
-        temas:nl2html(temas),ebcDba:nl2html(ebcDba),
-        competencia:nl2html(competencia),evidencias:nl2html(evidencias),
+        temas:nl2list(temas),ebcDba:nl2html(ebcDba),
+        competencia:nl2list(competencia),evidencias:nl2html(evidencias),
         creado:Date.now()
       });
     });

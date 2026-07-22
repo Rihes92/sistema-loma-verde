@@ -88,6 +88,48 @@ function msgBanco(d) {
   return L.join('\n');
 }
 
+// ── Examen final de periodo (módulo 19) ────────────────────────
+//  Mismo esquema de salida que el banco ("loma_verde_banco_preguntas"),
+//  para que el cliente reutilice validarPreguntas() sin cambios. Lo que
+//  cambia es el mensaje: aquí las cantidades por tipo se piden de forma
+//  EXPLÍCITA y verificable, porque un examen final necesita exactamente
+//  la mezcla que pidió el docente (pedirlo en texto libre, como hace el
+//  banco, el modelo lo cumple solo a medias).
+function msgExamenFinal(d) {
+  const nm = Math.max(0, parseInt(d.nMultiple, 10) || 0);
+  const nv = Math.max(0, parseInt(d.nVF, 10) || 0);
+  const na = Math.max(0, parseInt(d.nAbierta, 10) || 0);
+  const total = nm + nv + na;
+  const L = ['Genera las preguntas de un EXAMEN FINAL DE PERIODO con estos datos:'];
+  if (d.asignatura) L.push('- Asignatura: ' + d.asignatura);
+  if (d.grado)      L.push('- Grado: ' + d.grado);
+  if (d.periodo)    L.push('- Periodo: ' + d.periodo);
+  if (d.docente)    L.push('- Docente: ' + d.docente);
+
+  if (Array.isArray(d.ejes) && d.ejes.length) {
+    L.push('\nEjes temáticos de la malla que cubre el examen:');
+    d.ejes.forEach((e) => L.push('  • ' + e));
+  }
+  if (Array.isArray(d.temas) && d.temas.length) {
+    L.push('\nTEMÁTICAS EXACTAS a evaluar (no evalúes nada fuera de esta lista):');
+    d.temas.forEach((t) => L.push('  • ' + t));
+  }
+
+  L.push('\nCANTIDADES OBLIGATORIAS — el arreglo "preguntas" debe traer EXACTAMENTE ' + total + ' elementos:');
+  L.push('  • ' + nm + ' con "tipo": "multiple"  (4 opciones A-D, "correcta" = índice 0-3)');
+  L.push('  • ' + nv + ' con "tipo": "vf"        ("correcta" = true o false)');
+  L.push('  • ' + na + ' con "tipo": "abierta"   (con "respuesta" modelo y "sugerida": true)');
+  L.push('Cuenta los elementos antes de responder. Si el total no es ' + total + ', corrige antes de entregar.');
+  L.push('Ordena el arreglo por tipo: primero las ' + nm + ' de selección múltiple, luego las ' + nv + ' de falso/verdadero y al final las ' + na + ' abiertas.');
+  L.push('Reparte las temáticas de forma pareja entre las preguntas: un examen final debe cubrir todo el periodo, no repetir un solo tema.');
+  L.push('Varía la posición de la respuesta correcta entre A, B, C y D.');
+
+  if (d.contexto) L.push('\nReferentes de la malla (EBC, DBA, competencias y evidencias — alinea las preguntas con esto):\n' + d.contexto);
+  if (d.notas)    L.push('\nIndicaciones adicionales del docente: ' + d.notas);
+  L.push('\nDevuelve SOLO el bloque JSON del esquema "loma_verde_banco_preguntas", sin texto antes ni después.');
+  return L.join('\n');
+}
+
 // ── Lee el cuerpo de la petición (Vercel a veces ya lo parsea) ──
 async function leerBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
@@ -140,13 +182,17 @@ module.exports = async (req, res) => {
   const body = await leerBody(req);
   const tipo = body && body.tipo;
   const datos = (body && body.datos) || {};
-  if (tipo !== 'planeador' && tipo !== 'banco') {
-    res.status(400).json({ error: 'Tipo inválido. Usa "planeador" o "banco".' });
+  if (tipo !== 'planeador' && tipo !== 'banco' && tipo !== 'examen_final') {
+    res.status(400).json({ error: 'Tipo inválido. Usa "planeador", "banco" o "examen_final".' });
     return;
   }
 
+  // examen_final comparte el GEM (y el esquema de salida) del banco de
+  // preguntas; solo cambia el mensaje del usuario, que fija las cantidades.
   const system  = tipo === 'planeador' ? GEM_PLANEADOR : GEM_BANCO;
-  const userMsg = tipo === 'planeador' ? msgPlaneador(datos) : msgBanco(datos);
+  const userMsg = tipo === 'planeador'   ? msgPlaneador(datos)
+                : tipo === 'examen_final' ? msgExamenFinal(datos)
+                : msgBanco(datos);
 
   // 4) Elegir un modelo disponible para esta clave y llamar a Gemini
   const modelo = await elegirModelo(apiKey);
