@@ -3,6 +3,60 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23c, reenfoque de los módulos de evaluación)
+
+- **Pregunta de Francy:** con el módulo 19 recién hecho, ¿tiene sentido tener
+  además el 03 (6°-10°) y el 04 (simulacros 11°)? DIAGNÓSTICO: el 04 es el 03
+  **duplicado** — mismas 5 pestañas (crear/lista/banco/presentar/resultados),
+  código casi idéntico, +1 pestaña de análisis. Lo único distinto es el marco
+  al que se alinean: malla curricular (03) vs matriz Saber 11 (04). Evidencia
+  del costo: la auditoría de la sesión 10 tuvo que corregir la MISMA fuga de
+  privacidad dos veces, una por archivo, y el botón de IA hubo que replicarlo.
+  El 19 NO es duplicado: es otra puerta de entrada (asistente + IA + impresos)
+  y ya guarda en `lv_examenes`, así que sus exámenes salen en la lista del 03.
+- **DATO CLAVE que dio Francy: los exámenes se resuelven CASI SIEMPRE EN PAPEL.**
+  Eso degrada el motor de examen en línea (cronómetro, autocalificación 85/15)
+  a función secundaria — NO se borra, pero deja de ser el centro — y sube la
+  prioridad de la calidad de lo impreso y de la clave de calificación.
+- **Diagnóstico de fondo: estaban partidos por el eje equivocado** (por GRADO:
+  6°-10° vs 11°) cuando lo que los diferencia es el PROPÓSITO. Por eso un
+  docente de 11° no tenía dónde evaluar su malla y uno de 9° no podía armar
+  ítems tipo ICFES aunque exista Saber 9.
+- **DECISIÓN de Francy: "reenfocar sin fusionar"** (no migrar las tablas
+  `lv11_*`, que tienen datos reales de estudiantes). Hecho en esta sesión:
+  · **03 → "Evaluaciones de aula · 6° a 11°"**: se agregó `Undécimo` a
+    GRADOS/GLBL y un **selector de marco de referencia** (`#e-marco`): malla
+    curricular o matriz Saber 11. Con "icfes" se ocultan los ejes y aparecen
+    competencia/afirmación (`#fila-malla` / `#fila-icfes`), con el recuadro de
+    evidencias del ICFES. `MATRIZ11` se copió del 04 (convención del proyecto:
+    duplicar por archivo, no compartir JS). El examen guarda `marco`,
+    `compIdx` y `afirIdx`; `editEx` restaura según el marco. `refreshMarco()`
+    reemplazó a `refreshEjes()` en el arranque, en el `load` y al limpiar el
+    formulario. Esto es lo que hace VERDADERO el reenfoque: sin ello, renombrar
+    el 04 sería mentira porque se seguiría necesitando para crear ítems ICFES.
+  · **04 → "Preparación Saber 11"**: se reordenaron las pestañas para que abra
+    en **Análisis de simulacros** (su función propia: simulacros externos +
+    desempeño por competencia/afirmación), `tab-crear` pasó a `hide` y
+    `tab-analisis` a visible, y `renderAnalisis()` corre al arrancar. Se agregó
+    una tarjeta fija que explica que las evaluaciones nuevas se crean en
+    Evaluaciones de aula y que las pestañas de creación quedan para editar y
+    presentar lo ya guardado. **NO se borró ninguna pestaña ni ningún dato.**
+  · Nombres actualizados en `index.html` (sidebar), `materia-hub.html` y los
+    headers/títulos de 03 y 04. SW **v74**. Sintaxis verificada (`node --check`
+    en sw.js + bloques inline de 03, 04, index y materia-hub; balance de
+    div/section/label/select en 03 y div/section en 04).
+- **PENDIENTE de este reenfoque (paso 3, acordado y NO hecho):** llevar al 03
+  los tres impresos buenos del 19 — membrete completo de `LV_INST`, puntaje por
+  pregunta y **clave de calificación del docente** (el 03 hoy imprime con un
+  encabezado básico, sin puntajes ni clave). Es lo que más se va a sentir,
+  justamente porque todo se resuelve en papel. Son ~100 líneas copiadas de
+  `19-examen-final.html` (`membrete()`, `verExamen`, `verHoja`, `verClave`).
+- **Destino de largo plazo (NO hacer sin sesión dedicada + respaldo):** dos
+  módulos — un motor único de evaluación 6°-11° y el asistente 19 — fusionando
+  el 04 dentro del 03. Exige migrar `lv11_examenes`, `lv11_resultados`,
+  `lv11_banco` y `lv11_simulacros_ext`. Con el reenfoque ya hecho, el terreno
+  queda listo: el 04 solo conserva análisis + histórico.
+
 ## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23b, mallas oficiales + fix del módulo 03)
 
 - **CARPETA NUEVA `Mallas/` en la raíz del proyecto.** Francy irá dejando ahí

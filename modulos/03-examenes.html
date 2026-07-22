@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Exámenes y Simulacros 6°–10° — SABIE</title>
+<title>Evaluaciones de aula — SABIE</title>
 <style>
   :root{
     --primary:#0f766e; --primary-light:#14b8a6; --accent:#0d9488; --bg:#f1f5f9; --surface:#fff;
@@ -98,7 +98,7 @@
 <body>
 <header class="appbar">
   <img src="../Logo/logo.jpg" alt="Logo LV" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
-  <h1>Exámenes y Simulacros · 6°–10°</h1>
+  <h1>📝 Evaluaciones de aula · 6° a 11°</h1>
   <span class="pill">SABIE</span>
   <a href="../index.html" title="Volver al portal" class="portal-btn">← Portal</a>
 </header>
@@ -115,11 +115,21 @@
   <section id="tab-crear">
     <div class="card">
       <h2>1 · Datos del examen</h2>
-      <p class="desc">Alinea el examen a la <strong>malla curricular</strong>: elige grado, periodo y eje temático para ver las evidencias y competencias de referencia.</p>
+      <p class="desc">Elige a qué <strong>marco de referencia</strong> alineas el examen: la malla curricular de la materia, o la matriz Saber 11 del ICFES para entrenamiento tipo prueba de Estado.</p>
       <div class="row">
+        <label class="fld">Marco de referencia<select id="e-marco">
+            <option value="malla">Malla curricular de la materia</option>
+            <option value="icfes">Matriz Saber 11 (ICFES)</option>
+          </select></label>
         <label class="fld">Grado<select id="e-grado"></select></label>
         <label class="fld">Periodo<select id="e-periodo"><option>Primer Periodo</option><option>Segundo Periodo</option><option>Tercer Periodo</option></select></label>
+      </div>
+      <div class="row" id="fila-malla">
         <label class="fld">Eje temático<select id="e-eje"><option value="">—</option></select></label>
+      </div>
+      <div class="row hide" id="fila-icfes">
+        <label class="fld">Competencia<select id="e-comp"><option value="">— Competencia —</option></select></label>
+        <label class="fld">Afirmación<select id="e-afir"><option value="">— Afirmación —</option></select></label>
       </div>
       <div id="e-ref"></div>
       <div class="row">
@@ -296,8 +306,12 @@ function refreshMalla(){
   const base = lsRead('malla');
   MALLA = (typeof LV_CTX!=='undefined') ? LV_CTX.filtrar(base) : base;
 }
-const GRADOS=['Sexto','Séptimo','Octavo','Noveno','Décimo'];
-const GLBL={Sexto:'6°','Séptimo':'7°',Octavo:'8°',Noveno:'9°','Décimo':'10°'};
+const GRADOS=['Sexto','Séptimo','Octavo','Noveno','Décimo','Undécimo'];
+const GLBL={Sexto:'6°','Séptimo':'7°',Octavo:'8°',Noveno:'9°','Décimo':'10°','Undécimo':'11°'};
+// Matriz de referencia Saber 11 (ICFES). Permite construir ítems tipo prueba
+// de Estado desde CUALQUIER grado, no solo 11°: Saber 9 y el entrenamiento
+// progresivo lo necesitan. Es una copia de la del módulo 04.
+const MATRIZ11 = [{"competencia": "Pensamiento social", "afirmaciones": [{"n": "1", "t": "Comprende modelos conceptuales, sus características y contextos de aplicación.", "evidencias": ["1.1 Identifica y usa conceptos sociales básicos.", "1.2 Conoce el Estado social de derecho y su aplicación en Colombia.", "1.3 Conoce la organización del Estado: ramas del poder y organismos de control.", "1.4 Conoce los mecanismos de participación ciudadana."]}, {"n": "2", "t": "Comprende dimensiones espaciales y temporales de eventos, problemáticas y prácticas sociales.", "evidencias": ["2.1 Localiza en el tiempo y el espacio eventos históricos.", "2.2 Analiza dimensiones históricas de eventos y problemáticas.", "2.3 Relaciona problemáticas con el espacio geográfico."]}]}, {"competencia": "Interpretación y análisis de perspectivas", "afirmaciones": [{"n": "3", "t": "Contextualiza y evalúa usos de fuentes y argumentos.", "evidencias": ["3.1 Inscribe una fuente primaria en su contexto.", "3.2 Evalúa posibilidades y limitaciones de una fuente.", "3.3 Devela prejuicios e intenciones en enunciados o argumentos."]}, {"n": "4", "t": "Comprende perspectivas de distintos actores y grupos sociales.", "evidencias": ["4.1 Reconoce y compara perspectivas de actores y grupos.", "4.2 Reconoce que cosmovisiones e ideologías influyen en argumentos.", "4.3 Relaciona perspectivas en una situación conflictiva con propuestas de solución."]}]}, {"competencia": "Pensamiento reflexivo y sistémico", "afirmaciones": [{"n": "5", "t": "Evalúa usos sociales de las ciencias sociales.", "evidencias": ["5.1 Analiza modelos conceptuales y sus usos en decisiones sociales."]}, {"n": "6", "t": "Comprende que los problemas y soluciones involucran distintas dimensiones y reconoce relaciones entre estas.", "evidencias": ["6.1 Establece relaciones entre dimensiones de una situación problemática.", "6.2 Analiza los efectos en distintas dimensiones de una intervención."]}]}];
 const TIPO_LBL={multiple:'Opción múltiple',vf:'Falso / Verdadero',abierta:'Abierta'};
 
 const $=s=>document.querySelector(s);
@@ -343,10 +357,44 @@ $('#e-eje').addEventListener('change',()=>{const m=ejeActual();if(!m){$('#e-ref'
   $('#e-ref').innerHTML=`<div class="ref-box"><strong>Eje:</strong> ${esc(m.eje)}\n<strong>Evidencias:</strong>\n${esc(htmlToText(m.evidencias))}\n<strong>Competencias:</strong>\n${esc(htmlToText(m.competencia))}</div>`;
   if(!$('#e-titulo').value)$('#e-titulo').value='Evaluación — '+m.eje;
 });
+
+/* ── Marco de referencia: malla curricular o matriz Saber 11 ──────────
+   Antes, alinear a la matriz ICFES solo era posible en el módulo de 11°,
+   que para eso duplicaba entero este módulo. Ahora es una opción aquí, en
+   cualquier grado (Saber 9 y el entrenamiento progresivo también la usan). */
+function marcoActual(){ const s=$('#e-marco'); return s?s.value:'malla'; }
+function refreshMarco(){
+  const icfes = marcoActual()==='icfes';
+  $('#fila-malla').classList.toggle('hide', icfes);
+  $('#fila-icfes').classList.toggle('hide', !icfes);
+  $('#e-ref').innerHTML='';
+  if(icfes){
+    if(!$('#e-comp').dataset.listo){
+      $('#e-comp').innerHTML='<option value="">— Competencia —</option>'+MATRIZ11.map((c,i)=>`<option value="${i}">${esc(c.competencia)}</option>`).join('');
+      $('#e-comp').dataset.listo='1';
+    }
+  } else {
+    refreshEjes();
+  }
+}
+$('#e-marco') && $('#e-marco').addEventListener('change',refreshMarco);
+$('#e-comp') && $('#e-comp').addEventListener('change',()=>{
+  const ci=$('#e-comp').value;
+  $('#e-ref').innerHTML='';
+  $('#e-afir').innerHTML='<option value="">— Afirmación —</option>'+
+    (ci===''?'':MATRIZ11[+ci].afirmaciones.map((a,j)=>`<option value="${j}">${a.n}. ${esc(a.t)}</option>`).join(''));
+});
+$('#e-afir') && $('#e-afir').addEventListener('change',()=>{
+  const ci=$('#e-comp').value, aj=$('#e-afir').value;
+  if(ci===''||aj===''){ $('#e-ref').innerHTML=''; return; }
+  const a=MATRIZ11[+ci].afirmaciones[+aj];
+  $('#e-ref').innerHTML=`<div class="ref-box"><strong>Competencia:</strong> ${esc(MATRIZ11[+ci].competencia)}\n<strong>Afirmación ${a.n}:</strong> ${esc(a.t)}\n<strong>Evidencias:</strong>\n• ${a.evidencias.map(esc).join('\n• ')}</div>`;
+  if(!$('#e-titulo').value)$('#e-titulo').value='Entrenamiento Saber 11 — '+MATRIZ11[+ci].competencia;
+});
 // auth.js y materia-context.js se cargan DESPUÉS de este script, así que en
 // el primer refreshEjes() todavía no existe LV_CTX y la malla saldría sin
 // filtrar por materia. Se repinta cuando ya cargó todo.
-window.addEventListener('load',()=>{ try{ refreshEjes(); }catch(_){} });
+window.addEventListener('load',()=>{ try{ refreshMarco(); }catch(_){} });
 
 // ---------- Tabs ----------
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
@@ -426,6 +474,8 @@ function collect(){
     // de los de otras materias (igual que cursos y planeadores).
     materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',
     grado:$('#e-grado').value,periodo:$('#e-periodo').value,ejeIdx:$('#e-eje').value,
+    // Marco de referencia al que se alineó el examen (malla o matriz ICFES).
+    marco:marcoActual(),compIdx:$('#e-comp')?$('#e-comp').value:'',afirIdx:$('#e-afir')?$('#e-afir').value:'',
     asignatura:$('#e-asignatura').value||'Ciencias Sociales',
     titulo:$('#e-titulo').value.trim(),docente:$('#e-docente').value.trim(),
     tiempo:+$('#e-tiempo').value||45,instrucciones:$('#e-instr').value.trim(),
@@ -446,6 +496,7 @@ $('#btn-save').addEventListener('click',()=>{
 $('#btn-clear').addEventListener('click',()=>{
   editId=null;['e-titulo','e-docente','e-instr'].forEach(id=>$('#'+id).value='');
   $('#e-grado').value='';$('#e-eje').innerHTML='<option value="">—</option>';$('#e-ref').innerHTML='';$('#e-tiempo').value=45;
+  if($('#e-marco')){ $('#e-marco').value='malla'; refreshMarco(); }
   $('#items-box').innerHTML='';for(const k in itemImgs)delete itemImgs[k];renumber();$('#edit-flag').textContent='';toast('Formulario limpio');
 });
 
@@ -483,10 +534,16 @@ window.dupEx=id=>{
 };
 window.editEx=id=>{const x=lsRead('examenes').find(e=>e.id===id);if(!x)return;
   document.querySelector('[data-tab="crear"]').click();
-  editId=x.id;$('#e-grado').value=x.grado||'';$('#e-periodo').value=x.periodo||'Primer Periodo';refreshEjes();
-  // ejeIdx ahora guarda el TEXTO del eje. En exámenes viejos era un número
-  // (posición en la malla congelada) que ya no significa nada: se ignora.
-  if(x.ejeIdx!==''&&x.ejeIdx!=null&&isNaN(Number(x.ejeIdx))){$('#e-eje').value=x.ejeIdx;$('#e-eje').dispatchEvent(new Event('change'));}
+  editId=x.id;$('#e-grado').value=x.grado||'';$('#e-periodo').value=x.periodo||'Primer Periodo';
+  $('#e-marco').value=x.marco||'malla'; refreshMarco();
+  if((x.marco||'malla')==='icfes'){
+    if(x.compIdx!==''&&x.compIdx!=null){$('#e-comp').value=x.compIdx;$('#e-comp').dispatchEvent(new Event('change'));
+      if(x.afirIdx!==''&&x.afirIdx!=null){$('#e-afir').value=x.afirIdx;$('#e-afir').dispatchEvent(new Event('change'));}}
+  } else {
+    // ejeIdx ahora guarda el TEXTO del eje. En exámenes viejos era un número
+    // (posición en la malla congelada) que ya no significa nada: se ignora.
+    if(x.ejeIdx!==''&&x.ejeIdx!=null&&isNaN(Number(x.ejeIdx))){$('#e-eje').value=x.ejeIdx;$('#e-eje').dispatchEvent(new Event('change'));}
+  }
   $('#e-asignatura').value=x.asignatura||'Ciencias Sociales';$('#e-titulo').value=x.titulo||'';$('#e-docente').value=x.docente||'';$('#e-tiempo').value=x.tiempo||45;$('#e-instr').value=x.instrucciones||'';
   $('#items-box').innerHTML='';for(const k in itemImgs)delete itemImgs[k];
   (x.items||[]).forEach(it=>addItem(it.tipo,it));
@@ -982,7 +1039,7 @@ window.genStudent=id=>{
 };
 
 // ---------- arranque ----------
-(function(){fillGrados();refreshEjes();renumber();
+(function(){fillGrados();refreshMarco();renumber();
   if(!PERSIST)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
 })();
 </script>

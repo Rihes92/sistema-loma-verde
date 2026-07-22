@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Exámenes y Simulacros 11° (Saber/ICFES) — SABIE</title>
+<title>Preparación Saber 11 — SABIE</title>
 <style>
   :root{
     --primary:#6d28d9; --primary-light:#8b5cf6; --accent:#7c3aed; --bg:#f1f5f9; --surface:#fff;
@@ -98,22 +98,27 @@
 <body>
 <header class="appbar">
   <img src="../Logo/logo.jpg" alt="Logo LV" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
-  <h1>Exámenes y Simulacros · 11° — Saber ICFES</h1>
+  <h1>Preparación Saber 11 — ICFES</h1>
   <span class="pill">SABIE</span>
   <a href="../index.html" title="Volver al portal" class="portal-btn">← Portal</a>
 </header>
 
 <nav class="tabs" id="tabs">
-  <button data-tab="crear" class="active">Crear / Editar examen</button>
-  <button data-tab="lista">Mis exámenes</button>
-  <button data-tab="banco">Banco de preguntas</button>
-  <button data-tab="presentar">Presentar examen</button>
+  <button data-tab="analisis" class="active">Análisis de simulacros</button>
+  <button data-tab="lista">Simulacros guardados</button>
   <button data-tab="resultados">Resultados</button>
-  <button data-tab="analisis">Análisis Simulacros</button>
+  <button data-tab="presentar">Presentar simulacro</button>
+  <button data-tab="crear">Crear / Editar</button>
+  <button data-tab="banco">Banco de preguntas</button>
 </nav>
 
 <main>
-  <section id="tab-crear">
+  <div class="card no-print" style="border-left:4px solid var(--primary);background:#f8fbff;margin-bottom:14px">
+    <h2 style="margin-bottom:6px">Este módulo es para la preparación Saber 11</h2>
+    <p class="desc" style="margin:0">Su función propia es el <strong>seguimiento de simulacros</strong>: registrar resultados de simulacros externos y analizar el desempeño por competencia y afirmación del ICFES.<br><br>
+    Para <strong>crear una evaluación nueva</strong> — incluidos los ítems tipo Saber 11 — usa <strong>Evaluaciones de aula</strong>, que ya permite alinear a la matriz ICFES desde cualquier grado. Las pestañas de creación de aquí se conservan para editar y presentar los simulacros que ya tenías guardados.</p>
+  </div>
+  <section id="tab-crear" class="hide">
     <div class="card">
       <h2>1 · Datos del examen</h2>
       <p class="desc">Simulacro tipo Saber 11. Alinea el examen a la <strong>Matriz ICFES</strong>: elige competencia y afirmación para ver las evidencias de referencia.</p>
@@ -246,7 +251,7 @@
     <div id="rs-doc"></div>
   </section>
 
-  <section id="tab-analisis" class="hide">
+  <section id="tab-analisis">
     <div class="card">
       <h2>Cargar Resultados de Simulacro (Excel)</h2>
       <p class="desc">Sube el archivo Excel entregado por el evaluador externo. Se procesará la pestaña <strong>GENERAL</strong>.</p>
@@ -1405,6 +1410,8 @@ window.genStudent=id=>{
 
 // ---------- arranque ----------
 (function(){fillGrados();refreshEjes();renumber();
+  // El módulo abre en Análisis de simulacros: es su función propia.
+  try{ renderAnalisis(); }catch(_){}
   if(!PERSIST)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
 })();
 </script>
