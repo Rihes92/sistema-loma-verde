@@ -104,8 +104,9 @@
 <body>
 <header class="appbar">
   <img src="../Logo/logo.jpg" alt="Logo" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
-  <h1>🎓 Examen Final de Periodo</h1>
+  <h1>🎓 Evaluaciones de aula · Asistente de IA</h1>
   <span class="pill">SABIE</span>
+  <a class="portal-btn" id="volver-eval" href="03-examenes.html" style="margin-left:auto">← Evaluaciones de aula</a>
   <a class="portal-btn" href="../index.html">🏠 Portal</a>
 </header>
 
@@ -207,11 +208,11 @@
   </div>
 </section>
 
-<!-- ═══ EXÁMENES GUARDADOS ═══ -->
-<section id="p-lista" class="card">
-  <h2>Exámenes finales guardados</h2>
-  <p class="desc">Se guardan junto a los demás exámenes de la materia. Desde aquí imprimes los tres documentos.</p>
-  <div id="lista-box"></div>
+<!-- ═══ GUARDADO CON ÉXITO ═══ -->
+<section id="p-guardado" class="card hide">
+  <h2>✅ Examen guardado</h2>
+  <p class="desc">Quedó en <strong>Mis exámenes</strong>, dentro de Evaluaciones de aula, junto a los demás exámenes de la materia. Puedes imprimirlo ya mismo o verlo allí.</p>
+  <div id="guardado-box" style="display:flex;gap:8px;flex-wrap:wrap"></div>
 </section>
 
 <div id="doc-out"></div>
@@ -585,42 +586,31 @@ $('#b-guardar').addEventListener('click',()=>{
   const all=lsRead('examenes'); all.push(reg);
   lsWrite('examenes',all);
   toast('✅ Examen guardado');
-  renderLista();
-  irPaso(1);
-  $('#p-lista').scrollIntoView({behavior:'smooth'});
+  // Página hija: ya no mostramos una lista propia (la "casa" de los exámenes
+  // es Evaluaciones de aula). Ofrecemos imprimir el recién guardado y volver.
+  const volverURL='03-examenes.html'+(typeof LV_CTX!=='undefined'&&LV_CTX.materia
+    ?'?area='+encodeURIComponent(LV_CTX.area||'')+'&materia='+encodeURIComponent(LV_CTX.materia):'');
+  $('#guardado-box').innerHTML=
+     `<button class="btn" onclick="verExamen('${reg.id}')">📄 Examen</button>`
+    +`<button class="btn sec" onclick="verHoja('${reg.id}')">🗎 Hoja de respuestas</button>`
+    +`<button class="btn ok" onclick="verClave('${reg.id}')">🔑 Clave del docente</button>`
+    +`<a class="btn sec" href="${volverURL}">Ver en Evaluaciones de aula →</a>`
+    +`<button class="btn sec" onclick="location.reload()">＋ Crear otro</button>`;
+  ['p1','p2','p3','p4'].forEach(id=>$('#'+id).classList.add('hide'));
+  $('#pasos').classList.add('hide');
+  $('#p-guardado').classList.remove('hide');
+  $('#p-guardado').scrollIntoView({behavior:'smooth'});
 });
 
-/* ═══ Lista de exámenes finales ═══ */
+/* ═══ Búsqueda del examen para imprimir ═══
+   Este módulo ya NO muestra una lista propia de exámenes (esa "casa" es
+   Evaluaciones de aula). Solo necesita encontrar el recién guardado para
+   ofrecer sus tres impresos en la pantalla de éxito. */
 function finalesGuardados(){
   let all=lsRead('examenes').filter(x=>x&&x.esFinal&&!x._eliminado);
   if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
   return all.sort((a,b)=>(b.creado||0)-(a.creado||0));
 }
-function renderLista(){
-  const list=finalesGuardados();
-  $('#lista-box').innerHTML=list.length?list.map(x=>{
-    const nm=(x.items||[]).filter(i=>i.tipo==='multiple').length;
-    const nv=(x.items||[]).filter(i=>i.tipo==='vf').length;
-    const na=(x.items||[]).filter(i=>i.tipo==='abierta').length;
-    return `<div class="q-item">
-      <div class="top"><strong>${esc(x.titulo)}</strong>
-        <span class="badge">${esc(x.grado)} ${GLBL[x.grado]||''}</span>
-        <span class="hint" style="margin:0">${esc(x.periodo||'')} · ${nm} selección · ${nv} V/F · ${na} abiertas · ⏱️ ${x.tiempo} min</span></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn sm" onclick="verExamen('${x.id}')">📄 Examen</button>
-        <button class="btn sm sec" onclick="verHoja('${x.id}')">🗎 Hoja de respuestas</button>
-        <button class="btn sm ok" onclick="verClave('${x.id}')">🔑 Clave del docente</button>
-        <button class="btn sm bad" onclick="borrarExamen('${x.id}')">Eliminar</button>
-      </div></div>`;
-  }).join(''):'<div class="empty">Todavía no has guardado ningún examen final en esta materia.</div>';
-}
-window.borrarExamen=id=>{
-  if(!confirm('¿Eliminar este examen final?')) return;
-  const r=lsRead('examenes').find(x=>x.id===id);
-  if(r&&typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_examenes',Object.assign({},r,{_eliminado:true}));
-  lsWrite('examenes',lsRead('examenes').filter(x=>x.id!==id));
-  renderLista(); toast('Eliminado');
-};
 
 /* ═══ Documentos imprimibles ═══ */
 function membrete(){
@@ -756,11 +746,16 @@ window.verClave=id=>{
     $('#pasos').classList.add('hide');
   }
   iaKeyRender();
-  renderLista();
+  // Conservar el contexto de materia al volver a Evaluaciones de aula.
+  if(typeof LV_CTX!=='undefined' && LV_CTX.materia){
+    const q='?area='+encodeURIComponent(LV_CTX.area||'')+'&materia='+encodeURIComponent(LV_CTX.materia);
+    const v=$('#volver-eval'); if(v) v.href='03-examenes.html'+q;
+    const sl=$('#sm-link'); if(sl) sl.href='02-planeador.html'+q;
+  }
   if(!PERSIST) document.querySelector('main').insertAdjacentHTML('afterbegin',
     '<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este navegador bloquea el almacenamiento. Abre SABIE en Chrome o Edge.</p></div>');
   // La malla puede llegar de Supabase después del arranque.
-  setTimeout(()=>{ refreshMalla(); if(MALLA.length&&!$('#sin-malla').classList.contains('hide')){ location.reload(); } renderLista(); },3000);
+  setTimeout(()=>{ refreshMalla(); if(MALLA.length&&!$('#sin-malla').classList.contains('hide')){ location.reload(); } },3000);
 })();
 </script>
 </body>

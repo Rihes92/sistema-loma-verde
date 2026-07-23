@@ -3,6 +3,58 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23d, fusión del asistente IA dentro de Evaluaciones de aula)
+
+- **Duda de Francy:** ¿para qué dos módulos que crean exámenes (el 03 y el 19)?
+  HALLAZGO verificado en código: los dos guardan en la MISMA tabla `lv_examenes`
+  y la lista "Mis exámenes" del 03 ya mostraba los del 19 (no filtra `esFinal`).
+  No son dos productos: son **dos formas de crear** (a mano vs asistente con IA)
+  la misma cosa. DECISIÓN de Francy: **fusionar** — el asistente deja de ser un
+  módulo aparte y pasa a ser una **página hija** de Evaluaciones de aula.
+- **Por qué "página hija" y no fusión de código en un solo archivo:** solo 2 IDs
+  se comparten (`doc-out`, `toast`, y para lo mismo), PERO en el JS hay decenas
+  de nombres repetidos (`esc`, `uid`, `lsRead`, `lsWrite`, `MALLA`, `GRADOS`,
+  `GLBL`, `TIPO_LBL`, `htmlToText`, `validarPreguntas`, `renderLista`…). Pegar el
+  asistente entero en el 03 daría SyntaxError por redeclaración. La página hija
+  logra la fusión desde el punto de vista del usuario (un solo módulo en la
+  barra, un botón dentro que abre el asistente) sin el riesgo de desduplicar
+  350 líneas. NO se migró ninguna tabla (ya comparten `lv_examenes`).
+- **Cambios (SW v75):**
+  · **03 (Evaluaciones de aula):** (a) tarjeta nueva arriba de la pestaña Crear
+    con botón **"🤖 Generar con asistente de IA"** (`#b-asistente`) que abre el
+    19 llevando `?area=&materia=` (lo setea un `load` con `LV_CTX`). (b) Se
+    trajeron los **tres impresos completos** del 19 —membrete `LV_INST`, examen
+    por partes con puntaje, hoja de respuestas y **clave del docente** con
+    conversión a 1.0–5.0— como funciones `verExamenDoc`/`verHojaDoc`/
+    `verClaveDoc` (prefijo `_px*` en los helpers para no chocar con las viejas
+    `verExam`/`hojaResp`, que quedan sin usar). Los botones de "Mis exámenes"
+    ahora llaman a estos. `_pxPuntos()` asume 1 pt por pregunta cerrada y 2 por
+    abierta cuando el examen no trae `puntos` (los creados a mano); los del
+    asistente sí traen `x.puntos`. Badge "Examen final" para los `esFinal`. Se
+    agregó el CSS de membrete/secc/pts/clave/firma al `.exam-doc` del 03.
+  · **19 (ahora "Evaluaciones de aula · Asistente de IA"):** header renombrado,
+    botón "← Evaluaciones de aula" (`#volver-eval`), y **se eliminó su lista
+    propia** de exámenes (era la duplicación). Al guardar, muestra una pantalla
+    de éxito `#p-guardado` con los 3 impresos del recién guardado + "Ver en
+    Evaluaciones de aula →" + "Crear otro". `renderLista`/`borrarExamen` y la
+    sección `p-lista` borradas; `finalesGuardados()` se conserva solo para que
+    los impresos encuentren el examen. Los enlaces de volver conservan el
+    contexto de materia.
+  · Enlace del 19 **quitado de la barra lateral y de materia-hub** (queda
+    accesible solo desde el botón dentro del 03). `navToModule` revertido a
+    `0[1-9]` (el 19 ya no está en la barra). El archivo `19-examen-final.html`
+    sigue en el precache del SW (es una página viva, no un stub).
+- Estado final: **2 módulos de examen** con trabajos claros — Evaluaciones de
+  aula (crear a mano o con IA, 6°-11°, malla o Saber 11, e imprimir bien) y
+  Preparación Saber 11 (seguimiento/análisis de simulacros). Verificado:
+  `node --check` en los bloques inline de 03 (3), 19 (3), index (6) y
+  materia-hub (2) + sw.js; balance div/section en 03 y 19.
+- **PENDIENTE:** push; que Francy pruebe el flujo completo: entrar a la materia
+  → Evaluaciones de aula → botón del asistente → generar → guardar → volver y
+  ver el examen en "Mis exámenes" con sus tres impresos. Siguen pendientes de
+  antes: test de lectura en inglés y grados 1°-11° en el de español. Y, si algún
+  día se quiere, la fusión REAL del 04 dentro del 03 (migrando `lv11_*`).
+
 ## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23c, reenfoque de los módulos de evaluación)
 
 - **Pregunta de Francy:** con el módulo 19 recién hecho, ¿tiene sentido tener

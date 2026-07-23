@@ -87,6 +87,19 @@
   .hr-item{break-inside:avoid;padding:5px 0;font-size:.95rem}
   .hr-n{font-weight:700;display:inline-block;width:30px}
   .bub{display:inline-block;width:26px;height:26px;line-height:23px;text-align:center;border:1.6px solid #444;border-radius:50%;margin-right:6px;font-size:.8rem;font-weight:700}
+  /* Impresos completos (membrete + puntajes + clave), traídos del asistente */
+  .exam-doc .membrete{display:flex;align-items:center;gap:12px;border-bottom:2px solid #0f766e;padding-bottom:8px;margin-bottom:10px}
+  .exam-doc .membrete img{width:64px;height:64px;object-fit:contain}
+  .exam-doc .membrete .txt{flex:1;text-align:center}
+  .exam-doc .membrete h1{font-size:15px;text-transform:uppercase;margin:0 0 2px;color:#0f766e;font-weight:800}
+  .exam-doc .mline{font-size:9.5px;color:#475569;line-height:1.45}
+  .exam-doc .secc{font-size:.86rem;font-weight:800;color:#0f766e;text-transform:uppercase;border-bottom:1px solid #99f6e4;margin:16px 0 10px;padding-bottom:3px}
+  .exam-doc .pts{float:right;font-size:.76rem;color:#64748b;font-weight:600}
+  .exam-doc table.clave{width:100%;border-collapse:collapse;margin-top:10px}
+  .exam-doc table.clave th,.exam-doc table.clave td{border:1px solid #94a3b8;padding:5px 7px;font-size:.82rem;text-align:left}
+  .exam-doc table.clave th{background:#e8f4f2;color:#0f766e}
+  .exam-doc .firma{margin-top:36px;display:flex;gap:40px;font-size:.8rem;text-align:center}
+  .exam-doc .firma>div{flex:1;border-top:1px solid #475569;padding-top:5px}
   @media print{nav.tabs,.appbar,.no-print{display:none!important}body{background:#fff}.card{box-shadow:none;border:none;padding:0;margin:0}main{padding:0;max-width:100%}}
 
   /* ── Botón ← Portal ─────────────────────────────────────────── */
@@ -113,6 +126,11 @@
 
 <main>
   <section id="tab-crear">
+    <div class="card" style="border-left:4px solid var(--primary);background:#f0fdfa">
+      <h2 style="margin-bottom:6px">Dos formas de crear un examen</h2>
+      <p class="desc" style="margin:0 0 12px">Ármalo tú mismo aquí abajo (pregunta por pregunta o desde el banco), o deja que el <strong>asistente con IA</strong> lo redacte desde la malla y solo lo revises. Ambos quedan en <strong>Mis exámenes</strong> con los mismos impresos.</p>
+      <a class="btn ok" id="b-asistente" href="19-examen-final.html">🤖 Generar con asistente de IA</a>
+    </div>
     <div class="card">
       <h2>1 · Datos del examen</h2>
       <p class="desc">Elige a qué <strong>marco de referencia</strong> alineas el examen: la malla curricular de la materia, o la matriz Saber 11 del ICFES para entrenamiento tipo prueba de Estado.</p>
@@ -513,15 +531,143 @@ function renderLista(){
     return `<div class="exam-item"><div><strong>${esc(x.titulo)}</strong><br>
       <span class="badge">${esc(x.grado)} ${GLBL[x.grado]||''}</span>
       <span class="muted" style="font-size:.8rem"> · ${esc(x.periodo||'')} · ${x.items.length} preg. (${cerr} cerradas, ${abi} abiertas) · ⏱️ ${x.tiempo}min</span></div>
+      ${x.esFinal?'<span class="badge" style="background:#ccfbf1;color:#115e59">Examen final</span>':''}
       <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn sm" onclick="verExam('${x.id}')">🖨️ Ver examen</button>
-        <button class="btn sm sec" onclick="hojaResp('${x.id}')">🗎 Hoja de respuestas</button>
-        <button class="btn sm ok" onclick="genStudent('${x.id}')">📤 Para estudiantes (.html)</button>
+        <button class="btn sm" onclick="verExamenDoc('${x.id}')">📄 Examen</button>
+        <button class="btn sm sec" onclick="verHojaDoc('${x.id}')">🗎 Hoja de respuestas</button>
+        <button class="btn sm ok" onclick="verClaveDoc('${x.id}')">🔑 Clave del docente</button>
+        <button class="btn sm sec" onclick="genStudent('${x.id}')">📤 En línea (.html)</button>
         <button class="btn sm sec" onclick="editEx('${x.id}')">Editar</button>
         <button class="btn sm sec" onclick="dupEx('${x.id}')">📋 Duplicar</button>
         <button class="btn sm bad" onclick="delEx('${x.id}')">Eliminar</button></div></div>`;
-  }).join(''):'<div class="empty">No hay exámenes con ese filtro. Crea uno en la otra pestaña.</div>';
+  }).join(''):'<div class="empty">No hay exámenes con ese filtro. Crea uno en la pestaña "Crear / Editar examen" o con el asistente de IA.</div>';
 }
+
+// ── Impresos completos (membrete + puntajes + clave del docente) ──────
+// Traídos del asistente de examen final para que TODO examen de este módulo
+// se imprima igual de bien (antes solo tenían este formato los del 19).
+// Nombres con sufijo "Doc" para no chocar con las funciones viejas del módulo.
+function _pxPuntos(x){
+  // Los exámenes del asistente traen x.puntos por tipo. Los creados a mano no:
+  // se asume 1 punto por pregunta cerrada y 2 por abierta (editable a futuro).
+  return x.puntos || {multiple:1,vf:1,abierta:2};
+}
+function _pxPtsDe(x,it){ const p=_pxPuntos(x); return (it.tipo==='multiple'?p.multiple:it.tipo==='vf'?p.vf:p.abierta)||0; }
+function _pxTotal(x){ return (x.items||[]).reduce((s,it)=>s+_pxPtsDe(x,it),0); }
+function _pxMembrete(){
+  const I=(window.LV_INST||null);
+  const nom=I?I.nombre():'Institución Educativa San José de Loma Verde';
+  const linea=I?['NIT '+I.nit(),'DANE '+I.dane(),'Código ICFES '+I.icfes()].filter(Boolean).join(' · '):'';
+  const l2=I?[I.secretaria(),I.ciudad()].filter(Boolean).join(' · '):'';
+  return `<div class="membrete"><img src="../Logo/logo.jpg" alt="">
+    <div class="txt"><h1>${esc(nom)}</h1><div class="mline">${esc(linea)}</div><div class="mline">${esc(l2)}</div></div>
+    <img src="../Logo/logo.jpg" alt="" style="visibility:hidden"></div>`;
+}
+function _pxAbrir(html){
+  $('#doc-out').innerHTML=`<div class="card"><div class="no-print" style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+      <button class="btn sec" onclick="document.getElementById('doc-out').innerHTML=''">Cerrar</button></div>
+    <div class="exam-doc">${html}</div></div>`;
+  $('#doc-out').scrollIntoView({behavior:'smooth'});
+}
+function _pxMeta(x){
+  return `<table class="meta">
+    <tr><th>Estudiante</th><td colspan="3">______________________________________________</td></tr>
+    <tr><th>Grado</th><td>${esc(x.grado||'')} ${GLBL[x.grado]||''}</td><th>Grupo</th><td>________</td></tr>
+    <tr><th>Docente</th><td>${esc(x.docente||'')}</td><th>Fecha</th><td>____________</td></tr>
+    <tr><th>Periodo</th><td>${esc(x.periodo||'')}</td><th>Tiempo</th><td>${x.tiempo||'-'} min</td></tr>
+  </table>`;
+}
+function _pxExamen(id){ return lsRead('examenes').find(e=>e.id===id); }
+
+window.verExamenDoc=id=>{
+  const x=_pxExamen(id); if(!x) return;
+  const grupos=[['multiple','Primera parte — selección múltiple con única respuesta'],
+                ['vf','Segunda parte — falso o verdadero'],
+                ['abierta','Tercera parte — preguntas abiertas']];
+  let n=0, body='';
+  grupos.forEach(([t,tit])=>{
+    const items=(x.items||[]).filter(i=>i.tipo===t);
+    if(!items.length) return;
+    body+=`<div class="secc">${tit}</div>`;
+    body+=items.map(it=>{
+      n++;
+      let opts='';
+      if(it.tipo==='multiple') opts='<ol type="A" class="opts">'+(it.opciones||[]).filter(o=>o).map(o=>`<li>${esc(o)}</li>`).join('')+'</ol>';
+      else if(it.tipo==='vf') opts='<div class="opts">Verdadero ______&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;Falso ______</div>';
+      else opts='<div class="lines">______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________</div>';
+      return `<div class="q"><span class="pts">(${_pxPtsDe(x,it)} pts)</span>
+        <div><span class="qn">${n}.</span>${it.contexto?`<span class="ctx">${esc(it.contexto)}</span>`:''}</div>
+        <div class="enu">${esc(it.enunciado)}</div>${opts}</div>`;
+    }).join('');
+  });
+  _pxAbrir(_pxMembrete()
+    +`<p class="sub">${esc(x.titulo||'Examen')} — ${esc(x.asignatura||'')}</p>`
+    +_pxMeta(x)
+    +(x.instrucciones?`<p class="instr"><strong>Instrucciones:</strong> ${esc(x.instrucciones)}</p>`:'')
+    +`<p class="instr" style="background:#fff;border-color:#cbd5e1"><strong>Valoración:</strong> este examen tiene ${(x.items||[]).length} preguntas para un total de ${_pxTotal(x)} puntos.</p>`
+    +(body||'<p class="muted">Este examen no tiene preguntas.</p>'));
+};
+
+window.verHojaDoc=id=>{
+  const x=_pxExamen(id); if(!x) return;
+  const cerradas=(x.items||[]).filter(i=>i.tipo!=='abierta');
+  const abiertas=(x.items||[]).filter(i=>i.tipo==='abierta');
+  let n=0;
+  const grid=(x.items||[]).map(it=>{
+    n++;
+    if(it.tipo==='abierta') return '';
+    const cell=it.tipo==='vf'
+      ? '<span class="bub">V</span><span class="bub">F</span>'
+      : '<span class="bub">A</span><span class="bub">B</span><span class="bub">C</span><span class="bub">D</span>';
+    return `<div class="hr-item"><span class="hr-n">${n}.</span>${cell}</div>`;
+  }).join('');
+  let nAb=cerradas.length;
+  const lineasAbiertas=abiertas.map(()=>{
+    nAb++;
+    return `<div class="q"><div class="enu">${nAb}.</div><div class="lines">______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________<br>______________________________________________________________</div></div>`;
+  }).join('');
+  _pxAbrir(_pxMembrete()
+    +`<p class="sub">Hoja de respuestas — ${esc(x.titulo||'')}</p>`
+    +_pxMeta(x)
+    +'<p class="instr">Rellena completamente el círculo de la opción elegida. Usa lápiz o lapicero negro. Si te equivocas, tacha con una X y marca la opción correcta al lado.</p>'
+    +(grid?`<div class="secc">Preguntas de selección y falso/verdadero</div><div class="hr-grid">${grid}</div>`:'')
+    +(lineasAbiertas?`<div class="secc" style="margin-top:20px">Preguntas abiertas</div>${lineasAbiertas}`:''));
+};
+
+window.verClaveDoc=id=>{
+  const x=_pxExamen(id); if(!x) return;
+  let n=0;
+  const filas=(x.items||[]).map(it=>{
+    n++;
+    let resp;
+    if(it.tipo==='multiple') resp='<strong>'+('ABCD'[it.correcta]||'?')+'</strong> — '+esc((it.opciones||[])[it.correcta]||'');
+    else if(it.tipo==='vf') resp='<strong>'+(it.correcta?'Verdadero':'Falso')+'</strong>';
+    else resp=esc(it.respuesta||'(sin respuesta modelo)');
+    return `<tr><td style="width:34px;text-align:center"><strong>${n}</strong></td>
+      <td style="width:88px">${TIPO_LBL[it.tipo]||it.tipo}</td>
+      <td>${resp}${it.justificacion?`<div style="font-size:.78rem;color:#64748b;margin-top:3px">${esc(it.justificacion)}</div>`:''}</td>
+      <td style="width:52px;text-align:center">${_pxPtsDe(x,it)}</td></tr>`;
+  }).join('');
+  const tot=_pxTotal(x);
+  const escala=[5,4,3.5,3,2].map(nota=>{
+    const req=Math.round((nota/5)*tot*10)/10;
+    return `<tr><td style="text-align:center">${nota.toFixed(1)}</td><td style="text-align:center">${req} pts</td></tr>`;
+  }).join('');
+  _pxAbrir(_pxMembrete()
+    +`<p class="sub">Clave de calificación — uso exclusivo del docente</p>`
+    +`<table class="meta">
+        <tr><th>Examen</th><td>${esc(x.titulo||'')}</td><th>Grado</th><td>${esc(x.grado||'')} ${GLBL[x.grado]||''}</td></tr>
+        <tr><th>Asignatura</th><td>${esc(x.asignatura||'')}</td><th>Periodo</th><td>${esc(x.periodo||'')}</td></tr>
+        <tr><th>Docente</th><td>${esc(x.docente||'')}</td><th>Total</th><td>${tot} puntos</td></tr>
+      </table>`
+    +`<div class="secc">Respuestas correctas</div>`
+    +`<table class="clave"><thead><tr><th>N°</th><th>Tipo</th><th>Respuesta correcta</th><th>Pts</th></tr></thead><tbody>${filas}</tbody></table>`
+    +`<div class="secc" style="margin-top:18px">Conversión a la escala institucional</div>`
+    +`<table class="clave" style="max-width:280px"><thead><tr><th style="text-align:center">Nota</th><th style="text-align:center">Puntos necesarios</th></tr></thead><tbody>${escala}</tbody></table>`
+    +`<p class="hint" style="margin-top:8px">Nota = (puntos obtenidos ÷ ${tot}) × 5.0, redondeada a un decimal. Las preguntas abiertas admiten puntaje parcial a criterio del docente.</p>`
+    +`<div class="firma"><div>Firma del docente</div><div>Revisó — Coordinación académica</div></div>`);
+};
 window.dupEx=id=>{
   const orig=lsRead('examenes').find(e=>e.id===id); if(!orig) return;
   const copia=JSON.parse(JSON.stringify(orig));
@@ -1042,6 +1188,14 @@ window.genStudent=id=>{
 (function(){fillGrados();refreshMarco();renumber();
   if(!PERSIST)document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="border-color:var(--warn)"><strong style="color:var(--warn)">⚠️ Guardado no persistente</strong><p class="hint">Este entorno bloquea el almacenamiento; abre en Chrome/Edge o exporta respaldo.</p></div>');
 })();
+// El asistente (página hija) necesita el contexto de materia para leer la
+// malla correcta, así que se lo pasamos en la URL igual que el portal.
+window.addEventListener('load',()=>{
+  const b=$('#b-asistente'); if(!b) return;
+  if(typeof LV_CTX!=='undefined' && LV_CTX.materia){
+    b.href='19-examen-final.html?area='+encodeURIComponent(LV_CTX.area||'')+'&materia='+encodeURIComponent(LV_CTX.materia);
+  }
+});
 </script>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
