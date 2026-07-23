@@ -3,6 +3,48 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23e, Test de lectura en INGLÉS)
+
+- **`reading-aloud.html` reescrito COMPLETO** (era una herramienta pobre de 196
+  líneas: sin panel de proyección, sin micrófono, sin cronómetro corriendo, sin
+  reporte ni historial — el docente contaba a mano). Ahora es una copia del
+  motor de `test-lectura.html` (793 líneas) adaptada al inglés: panel de
+  proyección + pantalla completa, marcado de palabras por clic (pendiente→
+  correcta→incorrecta→omitida), micrófono con reconocimiento **`lang='en-US'`**
+  y auto-reinicio, cronómetro con PPM al minuto 1, reporte diagnóstico (55%
+  velocidad + 45% calidad, escala 1.0–5.0), historial local + export CSV, envío
+  de nota a la planilla vía `LV_HERR` (etiqueta 'Reading Test · Inglés').
+- **Contenido en inglés, UI en español** (el docente es hispanohablante):
+  · `BANCO` de 11 textos propios en inglés, grados **1° a 11°**, dificultad
+    creciente (1° casi palabras sueltas; 11° pensamiento crítico).
+  · `VELOCIDAD` en PPM correctas, grados 1-11. **OJO — decisión de fuente:** NO
+    existe instrumento oficial colombiano de lectura en voz alta en INGLÉS como
+    lengua extranjera (EFL). Los rangos son una GUÍA INTERNA basada en la
+    progresión EFL + normas internacionales de inglés L1 (Hasbrouck & Tindal)
+    ajustadas a la baja. `ESTATUS_FUENTE` lo declara así para TODOS los grados
+    en el reporte (misma honestidad que el test de español con 1°/2°/4°). Son
+    editables: cambiar los números en `VELOCIDAD` si el colegio define criterio.
+  · `RANGO_TEXTO` y `ESTATUS_FUENTE` se **calculan** de `VELOCIDAD` (no se
+    hardcodean) para que nunca se desincronicen de los umbrales.
+  · `DESCRIPCION_CALIDAD` A–D y `generarOrientacion()` reescritas para lectura
+    en inglés (phonics, choral reading, sonidos th/sh, etc.).
+  · Normalizador: el de español ya sirve para inglés (minúsculas, quita signos
+    y apóstrofes → "don't"→"dont", que es lo que devuelve el reconocedor).
+- Enlace en `15-herramientas.html` actualizado (título "Reading Test · Inglés",
+  descripción del motor completo; ya decía "1° a 11°"). SW **v76**. Sintaxis:
+  `node --check` en los 3 bloques inline de reading-aloud + sw.js; verificado
+  con node que BANCO y VELOCIDAD cubren 1-11 y que RANGO/clasificaVelocidad
+  cuadran (G1/G6/G11).
+- **PENDIENTE de esta sesión:** push; que Francy pruebe el reconocimiento de voz
+  en inglés con un estudiante real (Chrome/Edge de escritorio; Safari no soporta
+  SpeechRecognition). **Sigue pendiente (lo último acordado): grados 1° a 11° en
+  el test de ESPAÑOL** (`test-lectura.html`, hoy solo 1°-5°) — hay que escribir
+  textos nuevos 6°-11° y definir rangos con fuente declarada (los oficiales
+  ICFES/PTA solo existen para 3° y 5°; de 6° en adelante no hay instrumento
+  colombiano, igual que en inglés). OJO: la tarjeta del test de español en
+  15-herramientas ya dice "1° a 11°" pero el módulo aún es 1°-5° — se corrige al
+  hacer esa extensión.
+
 ## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23d, fusión del asistente IA dentro de Evaluaciones de aula)
 
 - **Duda de Francy:** ¿para qué dos módulos que crean exámenes (el 03 y el 19)?
