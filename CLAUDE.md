@@ -3,6 +3,35 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23f, Test de español extendido a 1°-11°)
+
+- **`test-lectura.html` (español) extendido de 1°-5° a 1°-11°.** Cambios:
+  · Selector de grado ahora 1° a 11°; subtítulo del header actualizado.
+  · `BANCO`: 6 textos nuevos PROPIOS en español, grados 6°-11°, dificultad
+    creciente (6° el río de la vereda; 11° pensamiento crítico). Los de 1°-5°
+    intactos (5° sigue con su fuente ICFES declarada).
+  · `VELOCIDAD` 6°-11° NUEVOS (PPM): continúan la progresión de 5° hacia el
+    ritmo de lector adulto (~150 PPM). 6°:110/125/135 · 7°:115/130/140 ·
+    8°:120/135/145 · 9°:125/140/150 · 10°:130/145/155 · 11°:135/150/160
+    (umbrales de Muy lenta/Lenta/Óptimo). **Fuente:** de 6° en adelante NO hay
+    instrumento oficial colombiano (los oficiales ICFES/PTA solo cubren 3° y
+    5°), así que son GUÍA INTERNA; editables.
+  · `RANGO_TEXTO` pasó de hardcode a **calcularse de VELOCIDAD** (como en el de
+    inglés), lo que de paso corrigió una inconsistencia vieja de 1 unidad en el
+    grado 3° ("61–84" → "60–84"). `ESTATUS_FUENTE` conserva la declaración
+    exacta de 1°-5° (oficial 3° y 5°, interpolación 4°, estimación 1°/2°) y
+    agrega para 6°-11° "guía interna: no existe instrumento oficial colombiano".
+  · La tarjeta del test de español en `15-herramientas.html` ya decía "1° a
+    11°" — ahora el módulo lo cumple de verdad.
+- SW **v77**. Sintaxis verificada (`node --check` en los 3 bloques inline;
+  BANCO y VELOCIDAD cubren 1-11; rangos calculados G5/G8/G11 cuadran con node).
+- **PENDIENTE:** push; que Francy pruebe unos grados nuevos. Con esto quedan
+  hechos los dos test de lectura (inglés y español, ambos 1°-11°, motor
+  completo). Nota: los dos test declaran honestamente que de 6° a 11° (y en
+  inglés en todos los grados) los rangos son guía interna sin estándar oficial
+  colombiano — si el colegio define criterios propios, se cambian los números
+  en `VELOCIDAD` de cada archivo.
+
 ## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23e, Test de lectura en INGLÉS)
 
 - **`reading-aloud.html` reescrito COMPLETO** (era una herramienta pobre de 196

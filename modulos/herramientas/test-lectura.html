@@ -100,7 +100,7 @@ table.hist th{background:var(--azul-claro);color:var(--azul);}
 <header class="app-header">
   <div>
     <h1>📖 Test de Lectura — Prueba de Seguimiento 2026</h1>
-    <div class="sub">SABIE · Grados 1° a 5° de Primaria</div>
+    <div class="sub">SABIE · Lectura en voz alta · Grados 1° a 11°</div>
   </div>
   <div class="sub" id="fechaHoy"></div>
   <div style="display:flex;gap:8px">
@@ -136,6 +136,12 @@ table.hist th{background:var(--azul-claro);color:var(--azul);}
           <option value="3">3°</option>
           <option value="4">4°</option>
           <option value="5">5°</option>
+          <option value="6">6°</option>
+          <option value="7">7°</option>
+          <option value="8">8°</option>
+          <option value="9">9°</option>
+          <option value="10">10°</option>
+          <option value="11">11°</option>
         </select>
       </div>
       <div><label>Docente evaluador</label><input type="text" id="docenteEst" placeholder="Nombre del docente"></div>
@@ -275,34 +281,79 @@ const BANCO = {
     titulo: "La ardilla",
     texto: "Existen unas 200 especies de ardillas que viven en todo el mundo. La ardilla más pequeña es la ardilla pigmea africana, que mide 13 centímetros; la ardilla gigante hindú mide casi un metro. Los cuatro dientes frontales de las ardillas nunca dejan de crecer, por lo que no se desgastan. Las ardillas viven en árboles, madrigueras o túneles. Su alimentación se basa en frutos secos, hojas, raíces, semillas y otras plantas. También pueden atrapar y comer animales pequeños. Estos mamíferos tienen que estar siempre en guardia, pues para algunos depredadores son exquisitos bocados. Las ardillas voladoras constituyen otro tipo de ardillas. Abren sus patas y se deslizan de árbol en árbol. Estos saltos que les hacen planear en el aire pueden superar los 46 metros.",
     fuente: "Tomado y adaptado de: www.nationalgeographic.es · Instrumento oficial ICFES / Todos a Aprender, grado 5°."
+  }],
+  6: [{
+    titulo: "El río de la vereda",
+    texto: "El río que atraviesa la vereda nace en lo alto de la montaña, donde el aire es frío y la niebla cubre los árboles. A lo largo de su camino, el agua recoge minerales y da vida a cultivos, animales y familias enteras. Sin embargo, cuando las personas arrojan basura o talan los bosques cercanos, el caudal disminuye y el agua se contamina. Cuidar el río no es tarea de unos pocos: es una responsabilidad de toda la comunidad, porque de él depende la vida del campo."
+  }],
+  7: [{
+    titulo: "La voz de los abuelos",
+    texto: "La memoria de un pueblo se guarda en sus historias. Los abuelos recuerdan cómo era la vida antes de que llegara la electricidad, cuando las noches se iluminaban con velas y las familias se reunían a conversar en el patio. Esos relatos, transmitidos de generación en generación, enseñan valores, costumbres y saberes que ningún libro registra. Por eso, escuchar a los mayores es una forma de aprender historia viva. Cuando un anciano muere sin haber contado sus recuerdos, la comunidad pierde una parte irrecuperable de su identidad."
+  }],
+  8: [{
+    titulo: "Del trueque a internet",
+    texto: "El comercio ha unido a los pueblos desde tiempos muy antiguos. Antes de que existiera el dinero, las personas intercambiaban productos: un campesino cambiaba maíz por herramientas, o pescado por telas. Con el paso de los siglos aparecieron las monedas y, más tarde, el papel moneda y las tarjetas. Hoy, gran parte del comercio ocurre a través de internet, y un producto fabricado en un país puede venderse en el otro extremo del mundo en cuestión de días. Sin embargo, este sistema global también genera desigualdades, pues no todos los países participan en las mismas condiciones."
+  }],
+  9: [{
+    titulo: "El desafío del clima",
+    texto: "El cambio climático es uno de los mayores desafíos de nuestra época. El aumento de la temperatura del planeta, causado en gran parte por la actividad humana, altera los ciclos de lluvia, provoca sequías prolongadas e intensifica los fenómenos naturales. Para las comunidades rurales, estos cambios significan cosechas perdidas y menos alimentos. Frente a este panorama, la ciencia propone soluciones, pero también es necesario un cambio en la manera en que producimos y consumimos. La responsabilidad no recae solo en los gobiernos: cada persona, con sus decisiones diarias, puede contribuir a proteger el ambiente."
+  }],
+  10: [{
+    titulo: "Más que votar",
+    texto: "La democracia no se limita a votar cada cierto tiempo. Es, ante todo, una forma de organizar la convivencia en la que todos los ciudadanos tienen voz y los mismos derechos ante la ley. Una democracia sólida exige ciudadanos informados, capaces de analizar la realidad, debatir con respeto y exigir cuentas a quienes gobiernan. Cuando la población se desentiende de los asuntos públicos, el poder tiende a concentrarse en pocas manos. Por eso, la participación activa —en la escuela, en el barrio o en la vereda— es la base que sostiene y fortalece cualquier sistema democrático."
+  }],
+  11: [{
+    titulo: "Pensar con criterio",
+    texto: "Antes de aceptar una información como verdadera, conviene detenerse a examinarla. ¿Cuál es la fuente? ¿Qué evidencia la respalda? ¿A quién beneficia que la creamos? En una época marcada por la abundancia de noticias instantáneas y redes sociales, la capacidad de pensar críticamente se ha vuelto una habilidad indispensable. Quien no la desarrolla queda expuesto a la manipulación y a las verdades a medias. El pensamiento crítico no consiste en desconfiar de todo, sino en evaluar con rigor y mantener la mente abierta a la evidencia. Formar ciudadanos críticos es, quizá, la tarea más urgente de la educación contemporánea."
   }]
 };
 
-/* ===================== RANGOS DE VELOCIDAD POR GRADO (ver Criterios_Test_de_Lectura.docx) =====================
-   3° y 5°: oficiales (ICFES / Programa Todos a Aprender). 4°: interpolación entre 3° y 5° oficiales.
-   1° y 2°: estimación interna provisional (no existe instrumento oficial ICFES/MEN de este tipo para esos grados). */
+/* ===================== RANGOS DE VELOCIDAD POR GRADO (PPM correctas) =====================
+   OJO — fuentes: 3° y 5° son los ÚNICOS rangos oficiales (ICFES / Programa Todos
+   a Aprender). 4° es interpolación entre 3° y 5°. 1° y 2° son estimación interna.
+   De 6° a 11° NO existe instrumento oficial colombiano de lectura en voz alta:
+   los rangos son una GUÍA INTERNA que continúa la progresión de 5° hacia el ritmo
+   de un lector adulto (~150 PPM). `ESTATUS_FUENTE` lo declara así en el reporte
+   para cada grado. Son editables: cambiar los números aquí si el colegio define
+   su propio criterio. */
 const VELOCIDAD = {
   1:[{max:19,n:"Muy lenta"},{max:34,n:"Lenta"},{max:49,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
   2:[{max:34,n:"Muy lenta"},{max:59,n:"Lenta"},{max:74,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
   3:[{max:59,n:"Muy lenta"},{max:84,n:"Lenta"},{max:89,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
   4:[{max:79,n:"Muy lenta"},{max:99,n:"Lenta"},{max:106,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
   5:[{max:99,n:"Muy lenta"},{max:114,n:"Lenta"},{max:124,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  6:[{max:109,n:"Muy lenta"},{max:124,n:"Lenta"},{max:134,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  7:[{max:114,n:"Muy lenta"},{max:129,n:"Lenta"},{max:139,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  8:[{max:119,n:"Muy lenta"},{max:134,n:"Lenta"},{max:144,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  9:[{max:124,n:"Muy lenta"},{max:139,n:"Lenta"},{max:149,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  10:[{max:129,n:"Muy lenta"},{max:144,n:"Lenta"},{max:154,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
+  11:[{max:134,n:"Muy lenta"},{max:149,n:"Lenta"},{max:159,n:"Óptimo"},{max:Infinity,n:"Rápido"}],
 };
 
-/* Textos de apoyo para el reporte: rangos en palabras (ver Criterios_Test_de_Lectura.docx) y estatus de la fuente */
-const RANGO_TEXTO = {
-  1:{"Muy lenta":"menos de 20 PPM","Lenta":"20–34 PPM","Óptimo":"35–49 PPM","Rápido":"más de 49 PPM"},
-  2:{"Muy lenta":"menos de 35 PPM","Lenta":"35–59 PPM","Óptimo":"60–74 PPM","Rápido":"más de 74 PPM"},
-  3:{"Muy lenta":"menos de 60 PPM","Lenta":"61–84 PPM","Óptimo":"85–89 PPM","Rápido":"más de 89 PPM"},
-  4:{"Muy lenta":"menos de 80 PPM","Lenta":"80–99 PPM","Óptimo":"100–106 PPM","Rápido":"más de 106 PPM"},
-  5:{"Muy lenta":"menos de 100 PPM","Lenta":"100–114 PPM","Óptimo":"115–124 PPM","Rápido":"más de 124 PPM"},
-};
+/* Rangos de texto para el reporte: se calculan de VELOCIDAD para que nunca se
+   desincronicen de los umbrales de arriba. */
+const RANGO_TEXTO = {};
+Object.keys(VELOCIDAD).forEach(g=>{
+  const t = VELOCIDAD[g];
+  RANGO_TEXTO[g] = {
+    "Muy lenta":"menos de "+(t[0].max+1)+" PPM",
+    "Lenta":(t[0].max+1)+"–"+t[1].max+" PPM",
+    "Óptimo":(t[1].max+1)+"–"+t[2].max+" PPM",
+    "Rápido":"más de "+t[2].max+" PPM"
+  };
+});
 const ESTATUS_FUENTE = {
   1:"estimación interna, sin instrumento oficial ICFES/MEN para este grado",
   2:"estimación interna, sin instrumento oficial ICFES/MEN para este grado",
   3:"dato oficial ICFES / Programa Todos a Aprender",
   4:"interpolación entre los rangos oficiales de 3° y 5°",
   5:"dato oficial ICFES / Programa Todos a Aprender",
+  6:"guía interna: no existe instrumento oficial colombiano de lectura en voz alta para este grado",
+  7:"guía interna: no existe instrumento oficial colombiano de lectura en voz alta para este grado",
+  8:"guía interna: no existe instrumento oficial colombiano de lectura en voz alta para este grado",
+  9:"guía interna: no existe instrumento oficial colombiano de lectura en voz alta para este grado",
+  10:"guía interna: no existe instrumento oficial colombiano de lectura en voz alta para este grado",
+  11:"guía interna: no existe instrumento oficial colombiano de lectura en voz alta para este grado",
 };
 const DESCRIPCION_CALIDAD = {
   A: "lee lentamente, corta las unidades de sentido largas (palabras y oraciones) y predomina el silabeo. Es un nivel inicial de decodificación.",
