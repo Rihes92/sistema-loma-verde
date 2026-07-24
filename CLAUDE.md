@@ -3,6 +3,75 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 24, AUDITORÍA + fix de la fuga del comodín de primaria)
+
+- **Contexto:** Francy empezó a dar acceso a docentes reales y reportó que los
+  profes nuevos veían las planillas de Sociales que ella cargó. Pidió auditoría,
+  aclaración de roles, aislamiento por docente, y varias mejoras nuevas.
+- **DIAGNÓSTICO (con SQL de solo lectura, `diagnostico_aislamiento.sql`, en la
+  raíz):** el aislamiento `por_curso` YA está activo en las 8 tablas (bloque A).
+  Ningún profe de aula quedó como coordinador/admin (bloque B: único admin =
+  richard.mhsabie@icloud.com). **La fuga era el COMODÍN de primaria:** 4
+  docentes (Danarlys, Daniela, Diana, Luis) con área "Primaria" / materia "Todas
+  las materias" hacían que `lv_acceso_total()` fuera TRUE → veían TODO el
+  colegio, incluido bachillerato. Confirmado con el bloque F (luisherr13: rol
+  docente, comodín true, cursos por asignación 0 → solo veía por el acceso total
+  del comodín).
+- **DECISIÓN de Francy:** acceso total real = solo coordinación/rector; el
+  comodín de primaria pasa a significar "todas las materias de primaria
+  (preescolar–5°) de MI SEDE" (ni bachillerato, ni otras sedes).
+- **`migracion_comodin_primaria_por_sede.sql` (NUEVO, en la raíz):** redefine 3
+  funciones (idempotente, reversible, NO toca políticas ni mueve datos):
+  · `lv_es_primaria(grado)` NUEVA — true si grado es preescolar..5° (maneja
+    "1°".."5°", "5", y preescolar por nombre con/sin tildes vía translate).
+  · `lv_acceso_total()` → ahora = `es_coordinacion()` únicamente (se quitó la
+    rama del comodín).
+  · `lv_mis_cursos()` → se le agregó la rama 3: cursos de primaria cuya sede
+    (`lv_norm`) coincide con la del docente (`lv_docentes.datos->>'sede'`), si el
+    docente tiene el comodín. Ramas 1 (asignación) y 2 (dirige) intactas — el
+    director de grupo sigue viendo su grupo aunque falte la sede en el curso.
+  Trae verificación de solo lectura y ROLLBACK comentado.
+- **Estado al momento de escribir:** Francy corrió las verificaciones. Sedes de
+  los 4 docentes OK (Juana Julia 1 y 2). La verificación 4b dio 0 cursos de
+  primaria de su sede PORQUE aún no existe NINGÚN curso de primaria creado (la
+  consulta de cursos de primaria devolvió 0 filas). O sea: no hay backfill que
+  hacer; cuando los docentes de primaria creen su planilla eligiendo sede, la
+  verán. **PENDIENTE de confirmar:** que Francy haya corrido las secciones 1-3
+  (funciones) y no solo las de lectura — se verifica con
+  `select pg_get_functiondef('public.lv_acceso_total()'::regprocedure)` (debe
+  decir solo `select public.es_coordinacion()`). Luego: los 4 docentes cierran
+  sesión y vuelven a entrar (para soltar lo ya espejado en su navegador) y Luis
+  confirma que ya no ve Sociales de bachillerato. Commit de los 2 .sql nuevos.
+- **AUDITORÍA — hallazgos y acuerdos para próximas sesiones (en orden que eligió
+  Francy: aislamiento primero, ya casi cerrado):**
+  1. **Roles:** hoy coordinación y admin están FUSIONADOS en el código
+     (`login.html`: `esAdmin = rol IN ('admin','coordinador')`) y el rol solo se
+     cambia a mano en la tabla `perfiles` de Supabase (no hay UI). ACORDADO:
+     guardar el `rol` real en la sesión, separar permisos (admin/rector puede
+     editar roles; coordinación no), y crear un **editor de roles solo para
+     admin** dentro de Coordinación que escriba en `perfiles`.
+  2. **Qué ven TODOS los docentes** (decisión de Francy): malla (solo lectura),
+     banco de actividades, calendario de eventos y herramientas formativas. Lo
+     demás (notas, estudiantes, observador) es privado por docente/grupo.
+  3. **Automatización/estructura:** centralizar permisos en un `permisos.js`
+     compartido (hoy cada módulo recalcula PERM y por eso la misma fuga se
+     corrigió varias veces por separado); alta de docentes más automática.
+  4. **Mejora — observación en clase → observador:** en la planilla, botón por
+     estudiante que abra un formulario con los MISMOS tipos del observador
+     (Situación Tipo I/II/III, Académica, Reconocimiento), permita adjuntar FOTO
+     (va a Storage, NO al JSON de sync) y escriba en `lv_observador` con estId +
+     curso + docente + materia. El observador sigue siendo de solo-lectura para
+     el director de grupo, pero cualquier docente puede aportar desde su clase.
+  5. **Módulo NUEVO de matrícula fusionado con acudientes:** registro de
+     estudiantes (documento, fecha nac., sede, grado, grupo…) amarrado a un
+     acudiente, SOLO para coordinación/rector. Reemplaza que los docentes creen
+     estudiantes sueltos en la planilla (btn-add-est / importar lista en el 01).
+     Francy enviará luego la ficha oficial del colegio para ajustarlo.
+  6. **Permisos docentes (matriz acordada):** el docente NO registra estudiantes
+     nuevos ni crea cursos (eso es coordinación/rector); sí carga notas de sus
+     materias/grupos, hace observaciones de clase, y (si es director) ve el
+     observador/boletines/analítica de su grupo.
+
 ## ▶ POR DÓNDE RETOMAR (jul 22, 2026 — sesión 23f, Test de español extendido a 1°-11°)
 
 - **`test-lectura.html` (español) extendido de 1°-5° a 1°-11°.** Cambios:
