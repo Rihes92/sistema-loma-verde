@@ -165,7 +165,11 @@ document.getElementById('form-login').addEventListener('submit', async e=>{
     localStorage.setItem('lv_login', JSON.stringify({
       docenteId: d ? d.id : null,
       nombre: d ? d.nombre : (esAdmin ? 'Administración' : email),
-      esAdmin: esAdmin
+      esAdmin: esAdmin,
+      // Rol real (docente/coordinador/admin). esAdmin agrupa admin+coordinador
+      // para el acceso a Coordinación; rol permite separar lo que SOLO el
+      // admin/rector puede hacer (p. ej. editar roles).
+      rol: rol
     }));
     location.href='index.html';
   }catch(err){

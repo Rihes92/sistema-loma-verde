@@ -3,6 +3,35 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25, Editor de roles admin + separar coordinación de admin)
+
+- **Editor de roles en la app (SW v79):** ahora el admin/rector puede ver y
+  cambiar los roles de todos los usuarios SIN entrar a Supabase.
+  · **`login.html`:** `lv_login` ahora guarda también `rol` (docente/
+    coordinador/admin), no solo `esAdmin`. `esAdmin` sigue agrupando admin+
+    coordinador para el acceso a Coordinación; `rol` permite separar lo que
+    SOLO admin puede hacer. OJO: sesiones viejas no tienen `rol` hasta reentrar.
+  · **`coordinacion.html`:** pestaña nueva **🔑 Roles** (`#tab-roles`), su botón
+    `#tabbtn-roles` arranca oculto y se revela solo si `MI_ROL==='admin'` (se
+    lee de `lv_login.rol` en el gate). Lista los usuarios de `perfiles` vía REST
+    con el token del admin (`renderRoles`), cruza el correo con `lv_docentes`
+    para mostrar el nombre, y un `<select>` por fila cambia el rol con PATCH a
+    `perfiles` (`guardarRol`, con confirm). La propia cuenta del admin sale como
+    "— tu propia cuenta —" (no editable) para no auto-degradarse y quedar sin
+    admin. Coordinación (rol coordinador) entra a Coordinación pero NO ve la
+    pestaña Roles.
+  · **`migracion_editor_roles.sql` (NUEVO, en la raíz):** función `es_admin()`
+    (rol='admin', más estricta que `es_coordinacion()`); política de `perfiles`:
+    lectura = propio o admin; update = solo admin. Idempotente + rollback.
+- **PENDIENTE:** correr `migracion_editor_roles.sql` en Supabase, push, y que
+  Francy **cierre sesión y vuelva a entrar** (para que su `lv_login` tenga
+  `rol:'admin'` y aparezca la pestaña Roles). Luego probar: cambiar a alguien a
+  coordinador, que esa persona reentre y vea Coordinación pero no la pestaña
+  Roles. Con esto queda cubierto el punto 1 de la auditoría (separar coord/admin
+  + editar roles desde la app). Siguen en fila: matrícula+acudientes (punto 3),
+  observación en clase con foto (punto 4), permisos.js central (punto 5), y el
+  "forzar limpieza" central opcional.
+
 ## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 24, AUDITORÍA + fix de la fuga del comodín de primaria)
 
 - **Contexto:** Francy empezó a dar acceso a docentes reales y reportó que los

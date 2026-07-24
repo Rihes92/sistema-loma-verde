@@ -86,6 +86,7 @@
   <button data-tab="asignaciones">📋 Asignaciones</button>
   <button data-tab="centros">🌟 Centros de Interés</button>
   <button data-tab="resumen">📊 Resumen</button>
+  <button data-tab="roles" id="tabbtn-roles" class="hide">🔑 Roles</button>
   <button data-tab="papelera">🗑️ Papelera</button>
 </nav>
 
@@ -197,6 +198,17 @@
   </section>
 
   <!-- ───────── RESUMEN / DASHBOARD ───────── -->
+  <!-- ───────── ROLES (solo admin/rector) ───────── -->
+  <section id="tab-roles" class="hide">
+    <div class="card">
+      <h2>🔑 Roles de usuario</h2>
+      <p class="desc">Solo el <b>administrador / rector</b> puede cambiar roles. <b>Docente</b>: usa la app con su espacio propio. <b>Coordinador</b>: gestiona docentes, asignaciones, matrículas y ve todo lo académico. <b>Admin/rector</b>: además, edita estos roles.</p>
+      <div id="roles-msg" class="desc" style="margin-bottom:10px"></div>
+      <div id="roles-out"><p class="desc">Cargando usuarios…</p></div>
+      <p class="desc" style="margin-top:12px">Nota: el rol se aplica en el servidor. Cada docente lo verá reflejado la próxima vez que inicie sesión.</p>
+    </div>
+  </section>
+
   <!-- ───────── PAPELERA ───────── -->
   <section id="tab-papelera" class="hide">
     <div class="card">
@@ -281,12 +293,16 @@
 //  'admin' o 'coordinador' en la tabla perfiles (se refleja en
 //  lv_login.esAdmin al iniciar sesión).
 // ═══════════════════════════════════════════════════════════════
+let MI_ROL='';  // rol real del usuario (docente/coordinador/admin)
 (function gate(){
   let login=null;
   try{ login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
   if(login && login.esAdmin){
+    MI_ROL = login.rol || '';
     document.getElementById('gate').classList.add('hide');
     document.getElementById('app').classList.remove('hide');
+    // La pestaña Roles es SOLO para admin/rector (no coordinación).
+    if(MI_ROL==='admin'){ const b=document.getElementById('tabbtn-roles'); if(b) b.classList.remove('hide'); }
     return;
   }
   const g=document.getElementById('gate');
@@ -399,10 +415,12 @@ document.getElementById('tabs').addEventListener('click', e=>{
   document.getElementById('tab-asignaciones').classList.toggle('hide', t!=='asignaciones');
   document.getElementById('tab-centros').classList.toggle('hide', t!=='centros');
   document.getElementById('tab-resumen').classList.toggle('hide', t!=='resumen');
+  document.getElementById('tab-roles').classList.toggle('hide', t!=='roles');
   document.getElementById('tab-papelera').classList.toggle('hide', t!=='papelera');
   if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); renderCursosSedes(); }
   if (t==='centros') { fillLineaSelects(); fillLiderSelect(); renderDocentesCheckList(document.getElementById('c-doc-buscar').value); renderCentros(); }
   if (t==='resumen') { renderResumen(); renderEstado(); }
+  if (t==='roles') { renderRoles(); }
   if (t==='papelera') { renderPapelera(); }
 });
 
@@ -1096,6 +1114,80 @@ fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
     toast('✅ Institución guardada y sincronizada');
   });
 })();
+
+// ═══════════════════════════════════════════════════════════════
+//  EDITOR DE ROLES (solo admin/rector)
+//  Lee y escribe la tabla `perfiles` directo por REST con el token
+//  del admin. La política de servidor (migracion_editor_roles.sql)
+//  deja que solo es_admin() vea/edite todos los perfiles.
+// ═══════════════════════════════════════════════════════════════
+const ROL_LBL={docente:'Docente',coordinador:'Coordinador',admin:'Admin / Rector'};
+async function renderRoles(){
+  const out=document.getElementById('roles-out');
+  const msg=document.getElementById('roles-msg');
+  if(MI_ROL!=='admin'){ out.innerHTML='<p class="desc">Solo el administrador/rector puede ver esta sección.</p>'; return; }
+  msg.textContent=''; out.innerHTML='<p class="desc">Cargando usuarios…</p>';
+  let miId=null;
+  try{ const u=LV_AUTH.usuario&&LV_AUTH.usuario(); miId=u&&u.id; }catch(_){}
+  try{
+    const t=await LV_AUTH.getValidToken();
+    const r=await fetch(`${LV_AUTH.URL}/rest/v1/perfiles?select=id,email,rol&order=email.asc`,{
+      headers:{ 'apikey':LV_AUTH.KEY, 'Authorization':'Bearer '+t }});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const filas=await r.json();
+    // Nombre bonito: cruzar el correo con lv_docentes.
+    const docentes=lsRead('docentes');
+    const nomPorMail={};
+    docentes.forEach(d=>{ const e=(d.datos?d.datos.email:d.email||'')||''; if(e) nomPorMail[e.trim().toLowerCase()]=(d.datos?d.datos.nombre:d.nombre)||''; });
+    if(!filas.length){ out.innerHTML='<p class="desc">No hay usuarios registrados todavía.</p>'; return; }
+    // Orden: admin, coordinador, docente
+    const peso={admin:0,coordinador:1,docente:2};
+    filas.sort((a,b)=>(peso[a.rol]??9)-(peso[b.rol]??9) || (a.email||'').localeCompare(b.email||''));
+    out.innerHTML='<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:.88rem">'
+      +'<thead><tr><th style="text-align:left;padding:8px;border-bottom:2px solid var(--border)">Usuario</th>'
+      +'<th style="text-align:left;padding:8px;border-bottom:2px solid var(--border)">Rol actual</th>'
+      +'<th style="text-align:left;padding:8px;border-bottom:2px solid var(--border)">Cambiar a</th></tr></thead><tbody>'
+      +filas.map(f=>{
+        const nom=nomPorMail[(f.email||'').trim().toLowerCase()];
+        const yo = miId && f.id===miId;
+        const sel = yo
+          ? `<span class="desc">— tu propia cuenta —</span>`
+          : `<select data-id="${esc(f.id)}" data-mail="${esc(f.email||'')}" class="rol-sel">
+               ${['docente','coordinador','admin'].map(rv=>`<option value="${rv}" ${f.rol===rv?'selected':''}>${ROL_LBL[rv]}</option>`).join('')}
+             </select>`;
+        return `<tr>
+          <td style="padding:8px;border-bottom:1px solid var(--border)">${esc(nom||'')}<br><span class="desc">${esc(f.email||'(sin correo)')}</span></td>
+          <td style="padding:8px;border-bottom:1px solid var(--border)"><span class="badge">${esc(ROL_LBL[f.rol]||f.rol||'docente')}</span></td>
+          <td style="padding:8px;border-bottom:1px solid var(--border)">${sel}</td></tr>`;
+      }).join('')+'</tbody></table></div>';
+    out.querySelectorAll('.rol-sel').forEach(s=>s.addEventListener('change',()=>guardarRol(s)));
+  }catch(err){
+    out.innerHTML='';
+    msg.style.color='var(--bad)';
+    msg.textContent='No se pudo cargar la lista de usuarios: '+(err&&err.message||err)+'. ¿Corriste migracion_editor_roles.sql en Supabase?';
+  }
+}
+async function guardarRol(sel){
+  const id=sel.dataset.id, mail=sel.dataset.mail, nuevo=sel.value;
+  if(!confirm('¿Cambiar el rol de '+(mail||'este usuario')+' a "'+ROL_LBL[nuevo]+'"?\n\nEl usuario lo verá al iniciar sesión de nuevo.')){
+    renderRoles(); return;
+  }
+  try{
+    const t=await LV_AUTH.getValidToken();
+    const r=await fetch(`${LV_AUTH.URL}/rest/v1/perfiles?id=eq.${encodeURIComponent(id)}`,{
+      method:'PATCH',
+      headers:{ 'apikey':LV_AUTH.KEY, 'Authorization':'Bearer '+t,
+                'Content-Type':'application/json', 'Prefer':'return=minimal' },
+      body:JSON.stringify({ rol:nuevo })
+    });
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    toast('✅ Rol actualizado');
+    renderRoles();
+  }catch(err){
+    toast('No se pudo cambiar el rol: '+(err&&err.message||err));
+    renderRoles();
+  }
+}
 </script>
 </body>
 </html>
