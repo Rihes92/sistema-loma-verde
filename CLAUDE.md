@@ -42,6 +42,26 @@
   decir solo `select public.es_coordinacion()`). Luego: los 4 docentes cierran
   sesión y vuelven a entrar (para soltar lo ya espejado en su navegador) y Luis
   confirma que ya no ve Sociales de bachillerato. Commit de los 2 .sql nuevos.
+- **BOTÓN "🧹 Borrar mis datos de este equipo" (index.html, SW v78):** en el
+  recuadro de usuario de la sidebar del portal, junto a Cambiar contraseña /
+  Cerrar sesión. Necesario porque VERIFICADO en código: `logout()` NO limpia el
+  espejo (solo borra sesión), y `descargarTodo()` es incremental (agrega/
+  actualiza, no borra lo que el server deja de devolver por RLS). Así que la
+  data filtrada antes del fix se queda pegada en el navegador de cada docente
+  hasta limpiarla. El botón: (1) exige internet; (2) sube pendientes
+  (`LV_SYNC.subirPendientes`) para no perder cambios; (3) borra TODAS las claves
+  `lv_*` (espejo + marcador `lv_sync_ultima` + cola `lv_sync_pendientes`),
+  conservando solo `lv_gemini_key`; (4) `LV_AUTH.logout()`. Al volver a entrar,
+  descarga de cero y solo lo permitido. Cada docente lo toca en SU equipo.
+- **Pregunta de Francy: ¿un botón para que el ADMIN borre los datos de un
+  docente remotamente?** Respuesta: directo NO (el navegador no deja alcanzar
+  el localStorage de otro dispositivo). ALTERNATIVA propuesta (NO hecha aún):
+  un "forzar limpieza" — un marcador de época de datos en Supabase
+  (p.ej. lv_institucion.dataEpoch o tabla propia); cada cliente guarda la época
+  que vio; si al abrir (con internet) la época del server es mayor, el cliente
+  se auto-limpia (mismo borrado del botón) y re-descarga. Así el admin dispara
+  una limpieza global sin tocar cada equipo. Queda como opción si Francy quiere
+  control central.
 - **AUDITORÍA — hallazgos y acuerdos para próximas sesiones (en orden que eligió
   Francy: aislamiento primero, ya casi cerrado):**
   1. **Roles:** hoy coordinación y admin están FUSIONADOS en el código

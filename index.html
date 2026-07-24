@@ -424,8 +424,32 @@ function permiteMateria(materia){
   if(infoBox){
     infoBox.innerHTML = `👋 ${esc(nombre)}`
       + `<div style="margin-top:6px"><a href="#" onclick="abrirCambioClave();return false" style="color:inherit;text-decoration:underline">Cambiar contraseña</a>`
-      + ` &nbsp;·&nbsp; <a href="#" onclick="cerrarSesion();return false" style="color:inherit;text-decoration:underline">Cerrar sesión</a></div>`;
+      + ` &nbsp;·&nbsp; <a href="#" onclick="cerrarSesion();return false" style="color:inherit;text-decoration:underline">Cerrar sesión</a></div>`
+      + `<div style="margin-top:6px"><a href="#" onclick="borrarMisDatos();return false" style="color:inherit;text-decoration:underline;opacity:.9">🧹 Borrar mis datos de este equipo</a></div>`;
   }
+  // Limpia el "espejo" de datos guardado en ESTE navegador y cierra sesión.
+  // Sirve para soltar información que se descargó de más antes de un cambio
+  // de permisos: al volver a entrar, la app baja de cero y solo lo permitido.
+  // Sube primero lo pendiente para no perder cambios sin sincronizar.
+  window.borrarMisDatos = async function(){
+    if(!navigator.onLine){
+      alert('Conéctate a internet antes de borrar los datos, para no perder cambios sin subir.');
+      return;
+    }
+    if(!confirm('Esto borra la copia de datos guardada en ESTE equipo y cierra tu sesión.\n\nTus datos en la nube NO se pierden: al volver a entrar se descargan de nuevo, solo lo que te corresponde ver.\n\n¿Continuar?')) return;
+    try{
+      if(typeof LV_SYNC!=='undefined' && LV_SYNC.subirPendientes){ await LV_SYNC.subirPendientes(); }
+    }catch(_){}
+    // Borra el espejo, el marcador de descarga (lv_sync_ultima) y la cola
+    // (lv_sync_pendientes). Conserva la clave personal de Gemini.
+    try{
+      Object.keys(localStorage)
+        .filter(k => k.indexOf('lv_')===0 && k!=='lv_gemini_key')
+        .forEach(k => localStorage.removeItem(k));
+    }catch(_){}
+    if(typeof LV_AUTH!=='undefined') LV_AUTH.logout();
+    else location.href='login.html';
+  };
   window.abrirCambioClave = function(){
     if(document.getElementById('lv-clave-modal')) return;
     const wrap = document.createElement('div');
