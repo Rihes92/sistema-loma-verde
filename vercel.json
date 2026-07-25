@@ -1,6 +1,12 @@
 {
   "cleanUrls": false,
   "trailingSlash": false,
+  "crons": [
+    {
+      "path": "/api/recordatorio-eventos",
+      "schedule": "0 12 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/sw.js",

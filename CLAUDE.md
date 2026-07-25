@@ -2,6 +2,66 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26l): recordatorio por correo de Eventos — CÓDIGO LISTO, requiere pasos manuales de Richard
+
+- **Punto 10 del backlog crudo (segunda mitad):** "2 días antes de un evento, enviar un
+  correo recordatorio a los correos registrados de cada docente." El proyecto no tenía
+  NINGUNA infraestructura de correo — se le señaló esto a Richard antes de construir
+  (mismo patrón del proyecto de no elegir proveedores externos en silencio) y se le
+  preguntó con qué servicio avanzar. **Decisión de Richard: Resend.**
+- **`api/recordatorio-eventos.js` NUEVO** (función serverless de Vercel, sin dependencias
+  npm — como `api/generar.js`, todo con `fetch()` directo, el proyecto no tiene
+  `package.json`). Se ejecuta una vez al día vía **cron de Vercel** (nuevo bloque `crons`
+  en `vercel.json`, `"0 12 * * *"` = 7am hora Bogotá, UTC-5). Reutiliza el MISMO campo
+  `rec` (1/2/3 días antes) y `portal` que ya usa el aviso emergente del portal en
+  `index.html` — mismo criterio de "cuándo avisar" y misma audiencia (TODOS los docentes
+  con correo registrado, sin filtrar por materia/área, igual que ese popup). Por cada
+  evento cuyo aviso cae exactamente hoy, agrupa por docente (un solo correo con todos los
+  eventos del día, no uno por evento) y llama a la API REST de Resend
+  (`POST https://api.resend.com/emails`) con `fetch()`. Marca cada evento avisado con un
+  campo nuevo `recordatorioEnviadoFecha` (sin migración SQL, es JSONB) para no reenviar si
+  el cron corre dos veces el mismo día.
+  **Usa una clave nueva y más sensible: `SUPABASE_SERVICE_ROLE`** (no la `anon` que usa el
+  resto de la app) porque un cron no tiene sesión de ningún docente y necesita saltarse
+  RLS para leer `lv_eventos`/`lv_docentes` y escribir de vuelta — NUNCA debe usarse en el
+  cliente, solo vive como variable de entorno en Vercel.
+- **`vercel.json`** ganó el bloque `"crons"` apuntando a `/api/recordatorio-eventos`.
+  No se tocó `sw.js` (los archivos de `api/` son del servidor, no se cachean ni se
+  precargan — no hace falta subir versión del Service Worker por este cambio).
+  `node --check` limpio en el archivo nuevo; `vercel.json` validado como JSON.
+- **ESTO NO FUNCIONA SOLO CON EL PUSH — a diferencia de todo lo demás en esta sesión,
+  Richard tiene que completar 3 pasos por fuera del código antes de que salga un solo
+  correo real:**
+  1. **Crear cuenta en [resend.com](https://resend.com)** (tiene plan gratis, 100
+     correos/día / 3.000 al mes — de sobra para ~50 docentes).
+  2. **Verificar un dominio propio en resend.com/domains** (agregar los registros DNS que
+     Resend indique, ej. en el dominio del correo institucional). **Mientras no haya un
+     dominio verificado, Resend SOLO deja enviar a la propia cuenta dueña de la clave —
+     a NINGÚN docente más.** Si Richard no tiene un dominio propio a mano todavía, puede
+     probar el flujo primero enviándose correos a sí mismo con el remitente de prueba
+     `onboarding@resend.dev` (ya es el valor por defecto si no se configura `RESEND_FROM`),
+     pero para que le llegue a los docentes reales el dominio verificado es obligatorio.
+  3. **Agregar 3 variables de entorno en Vercel** (Project Settings → Environment
+     Variables del proyecto `sistema-loma-verde`):
+     - `RESEND_API_KEY` — la API key que genera Resend (cuenta institucional, UNA sola
+       clave para todo el colegio — a diferencia de Gemini, que es por docente).
+     - `RESEND_FROM` — remitente verificado, ej. `SABIE <recordatorios@tudominio.com>`
+       (el dominio debe coincidir con el verificado en el paso 2).
+     - `SUPABASE_SERVICE_ROLE` — la clave "service_role" del proyecto de Supabase
+       (Supabase → Project Settings → API → "service_role secret", NO la "anon" que ya
+       usa el resto de la app).
+     Opcional pero recomendado: `CRON_SECRET` (cualquier texto secreto que Richard
+     invente) — si se define, Vercel la manda sola en cada llamada del cron y el archivo
+     la exige, así nadie más puede disparar el envío llamando la URL a mano.
+- **PENDIENTE:** push del código; que Richard cree la cuenta de Resend, verifique dominio,
+  y agregue las 3 (o 4) variables de entorno en Vercel — sin eso el cron corre pero no
+  logra enviar nada (el archivo devuelve un error 500 claro si faltan `RESEND_API_KEY`/
+  `SUPABASE_SERVICE_ROLE`). Con el plan gratis de Vercel (Hobby), el cron corre UNA vez al
+  día con hasta ±59 min de margen — no es instantáneo ni exacto a la hora programada, pero
+  alcanza sobra para un aviso "2 días antes". Una vez verificado que llegan correos de
+  prueba, queda pendiente para otra sesión: el correo de "permiso aprobado" (punto 16,
+  segunda mitad) puede reusar esta misma infraestructura de Resend ya configurada.
+
 ## ▶ BACKLOG CRUDO (jul 25, 2026 — sesión 26, feedback de Richard tras probar todo)
 
 Richard probó el trabajo de las sesiones 25a-25g y dejó una lista larga de observaciones y
