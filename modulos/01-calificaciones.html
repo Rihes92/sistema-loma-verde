@@ -706,8 +706,6 @@ async function renderPlanilla(){
       <td>
         <strong>${esc(est.nombre)}</strong>
         ${(()=>{const p=pctFallas(cursoId,est.id);return p>25?`<span title="⚠️ ${p}% inasistencias — riesgo de pérdida" style="margin-left:6px;background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5;border-radius:999px;font-size:.68rem;font-weight:700;padding:2px 7px;cursor:default">⚠️ ${p}% fallas</span>`:'';})()}
-        ${nb.total>0 && nb.ratio>=0.5?`<button class="btn sm" style="margin-left:6px;background:#dc2626;color:#fff;padding:2px 7px;font-size:.68rem" title="${nb.bajas} de ${nb.total} notas evaluadas están por debajo de ${CFG.scale.passing.toFixed(1)}" onclick="generarAlertaAuto('${cursoId}','${est.id}')">🚨 Alertar</button>`:''}
-        <button class="btn sm sec" style="margin-left:6px;padding:2px 7px;font-size:.68rem" title="Registrar una observación de clase para este estudiante" onclick="abrirObservar('${cursoId}','${est.id}')">📔 Observar</button>
       </td>
       ${cogInputs}
       <td class="c"><strong>${cog?cog.toFixed(1):'—'}</strong></td>
@@ -717,7 +715,11 @@ async function renderPlanilla(){
       <td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${cal.hetero||''}" data-est="${est.id}" data-f="hetero"></td>
       <td class="c def" style="color:${def>=CFG.scale.passing?'var(--ok)':'var(--bad)'}">${def?def.toFixed(1):'—'}${estaNivelado(cal)?' <span title="Nota reemplazada por nivelación" style="font-size:.68rem;color:var(--primary-light)">(niv)</span>':''}</td>
       <td class="c"><span class="badge ${d.cls}">${d.k}</span></td>
-      <td class="c no-print"><button class="btn sm bad" onclick="delEst('${est.id}')">✕</button></td>
+      <td class="c no-print" style="white-space:nowrap">
+        ${nb.total>0 && nb.ratio>=0.5?`<button class="btn sm" style="background:#dc2626;color:#fff;padding:3px 7px;font-size:.8rem" title="🚨 Alertar — ${nb.bajas} de ${nb.total} notas evaluadas están por debajo de ${CFG.scale.passing.toFixed(1)}" onclick="generarAlertaAuto('${cursoId}','${est.id}')">🚨</button>`:''}
+        <button class="btn sm sec" style="padding:3px 7px;font-size:.8rem" title="📔 Observar — registrar una observación de clase para este estudiante" onclick="abrirObservar('${cursoId}','${est.id}')">📔</button>
+        <button class="btn sm bad" title="Eliminar estudiante" onclick="delEst('${est.id}')">✕</button>
+      </td>
     </tr>`;
   }
   const cogTh=Array.from({length:slots},(_,i)=>`<th class="c">N${i+1}</th>`).join('');

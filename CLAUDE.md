@@ -63,6 +63,26 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26h): botones 🚨 Alertar / 📔 Observar reubicados
+
+- **Puntos 4-5 del backlog crudo:** "el botón 📔 Observar no gusta visualmente ni la
+  posición" y "🚨 Alertar tampoco gusta visualmente ni en su posición". Antes vivían
+  pegados al nombre del estudiante en la primera columna de la planilla (`01-calificaciones.html`),
+  como botones de texto completo ("🚨 Alertar", "📔 Observar") compitiendo por espacio con
+  el nombre y el badge de "⚠️ % fallas" — la fila se veía recargada justo donde el docente
+  más necesita leer rápido (el nombre).
+- **Movidos a la columna de Acciones** (la misma donde ya vivía el botón "✕" de eliminar,
+  al final de la fila): ahora son botones SOLO ÍCONO (🚨 / 📔 / ✕), del mismo tamaño y
+  estilo, agrupados donde el docente ya espera encontrar acciones sobre la fila — el
+  nombre del estudiante queda limpio (solo el nombre + el badge de inasistencias). El
+  texto explicativo se conservó en el `title` (tooltip) de cada botón. Sin cambios de
+  comportamiento: mismas condiciones para mostrarse (Alertar solo si ≥50% de notas
+  evaluadas están bajas), mismas funciones `generarAlertaAuto`/`abrirObservar`/`delEst`.
+  SW **v91**. `node --check`-equivalente (4 bloques `<script>`) limpio en
+  `modulos/01-calificaciones.html`.
+- **PENDIENTE:** push; que Richard confirme que la fila se ve más limpia y que los 3
+  botones (🚨/📔/✕) siguen funcionando igual desde la columna de la derecha.
+
 ## ▶ DECISIÓN (jul 25, 2026 — sesión 26g): Analítica (14) se queda — sí cumple función
 
 - **Punto 15 del backlog crudo:** "Analítica: ¿no cumple ninguna función? Pregunta si se
