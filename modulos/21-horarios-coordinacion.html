@@ -95,7 +95,18 @@
       <button class="btn" id="btn-generar-auto">🤖 Generar automáticamente</button>
       <div id="gen-resumen" style="margin-top:14px"></div>
       <div id="gen-conflictos" style="margin-top:10px"></div>
-      <button class="btn ok hide" id="btn-guardar-gen" style="margin-top:14px">💾 Guardar todo como borrador</button>
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ok hide" id="btn-guardar-gen">💾 Guardar todo como borrador</button>
+        <button class="btn sec hide" id="btn-descartar-gen">🗑️ Descartar este reporte</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚠️ Cruces entre docentes</h2>
+      <p class="desc">Este resumen se recalcula solo, en cualquier momento — muestra si dos docentes
+        distintos quedaron con clase al mismo grado-grupo a la misma hora, sea por la generación
+        automática o por una edición manual posterior.</p>
+      <div id="gen-cruces"></div>
     </div>
 
     <div class="card">
@@ -170,9 +181,18 @@ else { $('#app').classList.remove('hide'); }
 
 const DIAS=['Lunes','Martes','Miércoles','Jueves','Viernes'];
 const N_BLOQUES=7;
+const BLOQUE_MIN=60;        // cada hora de clase dura 60 minutos
+const DESCANSO_MIN=20;      // descanso de 20 minutos después de la 4ª hora
+const DESCANSO_TRAS_BLOQUE=4; // índice 0-based del bloque DESPUÉS del cual va el descanso (tras la 4ª hora: bloques 0-3)
 function bloques(diaIdx){
   const h0=(diaIdx===0?8:7)*60;
-  return Array.from({length:N_BLOQUES},(_,i)=>({ini:fmtH(h0+i*50),fin:fmtH(h0+i*50+50)}));
+  const out=[]; let t=h0;
+  for(let i=0;i<N_BLOQUES;i++){
+    if(i===DESCANSO_TRAS_BLOQUE) t+=DESCANSO_MIN;
+    out.push({ini:fmtH(t), fin:fmtH(t+BLOQUE_MIN)});
+    t+=BLOQUE_MIN;
+  }
+  return out;
 }
 function fmtH(m){return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;}
 
@@ -296,6 +316,21 @@ function renderGrilla(){
       cel.addEventListener('click',()=>abrirModal(di,bi,slot,val));
       grid.appendChild(cel);
     });
+
+    // Fila visual del descanso — no es un bloque real, no es clickable.
+    if(bi===DESCANSO_TRAS_BLOQUE-1){
+      const rec=document.createElement('div');
+      rec.style.cssText='background:#fef3c7;border:1px solid #fde68a;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 2px;font-size:.62rem;font-weight:700;color:#92400e';
+      rec.innerHTML='<span>☕</span><span>Descanso</span>';
+      grid.appendChild(rec);
+      DIAS.forEach((_,di)=>{
+        const bls=bloques(di);
+        const desc=document.createElement('div');
+        desc.style.cssText='background:repeating-linear-gradient(45deg,#fef9e7,#fef9e7 6px,#fffbeb 6px,#fffbeb 12px);border:1px dashed #f59e0b;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.66rem;color:#92400e;min-height:24px';
+        desc.textContent=`${bls[DESCANSO_TRAS_BLOQUE-1].fin}–${bls[DESCANSO_TRAS_BLOQUE].ini} (20 min)`;
+        grid.appendChild(desc);
+      });
+    }
   }
 
   renderChoquesOut(choques);
@@ -346,11 +381,11 @@ window.guardarCelda=function(){
     aula:$('#ed-nota').value.trim()
   };
   marcarBorrador();
-  cerrarModal(); renderGrilla();
+  cerrarModal(); renderGrilla(); renderGenResumen();
 };
 window.quitarCeldaDirecto=function(di,bi){
   if(celdas[di]) delete celdas[di][bi];
-  marcarBorrador(); renderGrilla();
+  marcarBorrador(); renderGrilla(); renderGenResumen();
 };
 $('#btn-quitar-celda').addEventListener('click',()=>{
   if(_di===null) return;
@@ -364,6 +399,7 @@ $('#btn-limpiar-borrador').addEventListener('click',()=>{
   if(!confirm('¿Descartar los cambios sin publicar de este docente? Vuelve a lo último publicado.')) return;
   const b=leerBorradores(); delete b[docenteSel]; guardarBorradores(b);
   cargarDocente(docenteSel);
+  renderGenResumen(); // refresca el resumen de cruces globales con el nuevo estado
   toast('Borrador descartado');
 });
 
@@ -379,6 +415,7 @@ $('#btn-publicar').addEventListener('click',()=>{
   const b=leerBorradores(); delete b[docenteSel]; guardarBorradores(b);
   renderEstadoBadge();
   renderListaDocentes();
+  renderGenResumen(); // refresca el resumen de cruces globales con el nuevo estado publicado
   toast('✅ Horario publicado — '+(d?d.nombre:'')+' ya puede verlo en su portal');
 });
 
@@ -609,49 +646,122 @@ function celdasActualesTodas(){
   return out;
 }
 
-let _genResultado=null;
+// ── Reporte de la última generación: PERSISTIDO en localStorage (solo local,
+// como BORRADOR_KEY) para que Richard pueda verlo aunque recargue la página
+// o ya haya guardado el borrador — antes desaparecía al guardar, que era
+// justo la queja: "¿dónde veo el reporte de esas horas que no fueron
+// asignadas?". Ahora se mantiene visible hasta que se descarta a propósito.
+const REPORTE_KEY='lv_horarios_reporte';
+function leerReporte(){ try{ return JSON.parse(localStorage.getItem(REPORTE_KEY))||null; }catch(_){ return null; } }
+function guardarReporte(r){ try{ localStorage.setItem(REPORTE_KEY, JSON.stringify(r)); }catch(_){} }
+function borrarReporte(){ try{ localStorage.removeItem(REPORTE_KEY); }catch(_){} }
+
+let _genNuevas=null;          // celdas recién generadas, pendientes de guardar (en memoria, se pierde al recargar)
+let _reporte=leerReporte();   // {conflictos, avisos, generadoEn, docentesTocados, horasUbicadas} — persiste
+
+// Cruces REALES entre los horarios actuales de todos los docentes (publicado
+// o borrador, el que esté vigente) — se recalcula en vivo cada vez que se
+// pinta el reporte, así detecta tanto los que dejó la generación automática
+// (no debería quedar ninguno, por construcción) como los que introduzca
+// después una edición manual.
+function choquesGlobales(){
+  const docentes=lsRead('docentes');
+  const todas=docentes.map(d=>({docenteId:d.id, nombre:d.nombre, celdas:celdasActualesDe(d.id)}));
+  const choques=[];
+  for(let i=0;i<todas.length;i++){
+    for(let j=i+1;j<todas.length;j++){
+      const a=todas[i], b=todas[j];
+      Object.keys(a.celdas||{}).forEach(di=>{
+        Object.keys(a.celdas[di]||{}).forEach(bi=>{
+          const ca=a.celdas[di][bi]; if(!ca||!ca.grado) return;
+          const cb=((b.celdas[di]||{})[bi]);
+          if(cb && String(cb.grado)===String(ca.grado) && String(cb.grupo||'')===String(ca.grupo||'')){
+            choques.push({di:+di, bi:+bi, grado:ca.grado, grupo:ca.grupo,
+              docente1:a.nombre, docente1Id:a.docenteId, docente2:b.nombre, docente2Id:b.docenteId});
+          }
+        });
+      });
+    }
+  }
+  return choques;
+}
+
+function irAEditar(docenteId){
+  $('#sel-docente').value=docenteId;
+  cargarDocente(docenteId);
+  window.scrollTo(0,0);
+}
+window.irAEditar=irAEditar;
 
 function renderGenResumen(){
-  const cont=$('#gen-resumen'), contC=$('#gen-conflictos');
-  if(!_genResultado){ cont.innerHTML=''; contC.innerHTML=''; $('#btn-guardar-gen').classList.add('hide'); return; }
-  const {nuevas, conflictos, avisos} = _genResultado;
-  const docentesTocados=Object.keys(nuevas).length;
-  let horas=0; Object.values(nuevas).forEach(dias=>Object.values(dias).forEach(b=>horas+=Object.keys(b).length));
-  const horasFaltan=conflictos.reduce((s,c)=>s+c.faltan,0);
-  cont.innerHTML = `<p class="desc" style="color:#166534"><b>✅ ${horas} hora(s) de clase ubicadas</b> en ${docentesTocados} docente(s) — sin cruces de docente ni de grupo, sin tocar nada ya publicado o en borrador.</p>`
-    + (horasFaltan
-        ? `<p class="desc" style="color:#991b1b"><b>⚠️ ${horasFaltan} hora(s)</b> no cupieron sin cruces en la grilla disponible — quedan sin asignar; ajústalas a mano en el editor del docente correspondiente (más abajo).</p>`
-        : `<p class="desc" style="color:#166534">✅ No quedó ninguna hora sin ubicar.</p>`);
-  if(avisos.length){
-    cont.innerHTML += `<details><summary style="cursor:pointer;font-size:.85rem;color:var(--warn);font-weight:600">⚠️ ${avisos.length} inconsistencia(s) en los datos de origen</summary>`
-      + avisos.map(a=>`<div style="font-size:.8rem;color:var(--warn);padding:2px 0">• ${esc(a)}</div>`).join('') + `</details>`;
+  const cont=$('#gen-resumen'), contC=$('#gen-conflictos'), contX=$('#gen-cruces');
+  const docentes=lsRead('docentes');
+
+  if(!_reporte){
+    cont.innerHTML='<p class="desc">Aún no has generado un horario automático. Toca "🤖 Generar automáticamente" para armar el de todo el colegio.</p>';
+    contC.innerHTML='';
+    $('#btn-guardar-gen').classList.add('hide');
+    $('#btn-descartar-gen').classList.add('hide');
+  } else {
+    const {conflictos, avisos, generadoEn, horasUbicadas, docentesTocados} = _reporte;
+    const horasFaltan=conflictos.reduce((s,c)=>s+c.faltan,0);
+    const fecha = generadoEn? new Date(generadoEn).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'}) : '';
+    cont.innerHTML = `<p class="desc" style="color:#166534"><b>✅ ${horasUbicadas} hora(s) de clase ubicadas</b> en ${docentesTocados} docente(s)${fecha?' · generado '+esc(fecha):''} — sin cruces de docente ni de grupo.</p>`
+      + (horasFaltan
+          ? `<p class="desc" style="color:#991b1b"><b>⚠️ ${horasFaltan} hora(s) sin ubicar</b> — no cupieron sin cruces en la grilla disponible. Para completarlas a mano: abre al docente indicado abajo, busca un día/bloque libre (celda a rayas) y asígnale ahí esa materia/grado/grupo desde el modal.</p>`
+          : `<p class="desc" style="color:#166534">✅ No quedó ninguna hora sin ubicar.</p>`);
+    if(_genNuevas){
+      cont.innerHTML += `<p class="desc" style="color:var(--warn)">🟡 Este resultado todavía NO se ha guardado — toca "💾 Guardar todo como borrador" para escribirlo.</p>`;
+    }
+    if(avisos.length){
+      cont.innerHTML += `<details><summary style="cursor:pointer;font-size:.85rem;color:var(--warn);font-weight:600">⚠️ ${avisos.length} inconsistencia(s) en los datos de origen</summary>`
+        + avisos.map(a=>`<div style="font-size:.8rem;color:var(--warn);padding:2px 0">• ${esc(a)}</div>`).join('') + `</details>`;
+    }
+    if(conflictos.length){
+      const porDocente={};
+      conflictos.forEach(c=>{ (porDocente[c.docenteId]=porDocente[c.docenteId]||[]).push(c); });
+      contC.innerHTML = `<details open><summary style="cursor:pointer;font-size:.85rem;color:#991b1b;font-weight:600">📋 Detalle de horas sin ubicar (${conflictos.length})</summary>`
+        + Object.keys(porDocente).map(id=>{
+            const d=docentes.find(x=>x.id===id);
+            return `<div style="font-size:.82rem;padding:5px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b>${esc(d?d.nombre:id)}</b>: `
+              + porDocente[id].map(c=>`${esc(c.materia)} ${esc(c.grado)}-${esc(c.grupo)} (falta${c.faltan>1?'n':''} ${c.faltan}h)`).join(', ')
+              + ` <button class="btn sm sec" onclick="irAEditar('${esc(id)}')">✏️ Editar</button></div>`;
+          }).join('') + `</details>`;
+    } else { contC.innerHTML=''; }
+    $('#btn-guardar-gen').classList.toggle('hide', !_genNuevas);
+    $('#btn-descartar-gen').classList.remove('hide');
   }
-  if(conflictos.length){
-    const porDocente={};
-    conflictos.forEach(c=>{ (porDocente[c.docenteId]=porDocente[c.docenteId]||[]).push(c); });
-    const docentes=lsRead('docentes');
-    contC.innerHTML = `<details open><summary style="cursor:pointer;font-size:.85rem;color:#991b1b;font-weight:600">Detalle de horas sin ubicar (${conflictos.length})</summary>`
-      + Object.keys(porDocente).map(id=>{
-          const d=docentes.find(x=>x.id===id);
-          return `<div style="font-size:.82rem;padding:3px 0"><b>${esc(d?d.nombre:id)}</b>: `
-            + porDocente[id].map(c=>`${esc(c.materia)} ${esc(c.grado)}-${esc(c.grupo)} (falta${c.faltan>1?'n':''} ${c.faltan}h)`).join(', ') + `</div>`;
-        }).join('') + `</details>`;
-  } else { contC.innerHTML=''; }
-  $('#btn-guardar-gen').classList.toggle('hide', docentesTocados===0);
+
+  const cruces = choquesGlobales();
+  if(!cruces.length){
+    contX.innerHTML = '<p class="desc" style="color:#166534">✅ No hay cruces entre los horarios actuales de ningún docente.</p>';
+  } else {
+    contX.innerHTML = `<details open><summary style="cursor:pointer;font-size:.85rem;color:#991b1b;font-weight:600">⚠️ ${cruces.length} cruce(s) detectado(s) entre docentes</summary>`
+      + cruces.map(c=>`<div style="font-size:.82rem;padding:5px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          ${DIAS[c.di]} bloque ${c.bi+1}: <b>${esc(c.grado)}${c.grupo?'-'+esc(c.grupo):''}</b> tiene clase a la vez con
+          <b>${esc(c.docente1)}</b> y <b>${esc(c.docente2)}</b>
+          <button class="btn sm sec" onclick="irAEditar('${esc(c.docente1Id)}')">✏️ ${esc(c.docente1)}</button>
+          <button class="btn sm sec" onclick="irAEditar('${esc(c.docente2Id)}')">✏️ ${esc(c.docente2)}</button>
+        </div>`).join('') + `</details>`;
+  }
 }
 
 $('#btn-generar-auto').addEventListener('click', ()=>{
   const asignaciones = lsRead('asignaciones');
   if(!asignaciones.length){ toast('No hay asignaciones cargadas — impórtalas primero en Coordinación → Asignaciones.'); return; }
   const base = celdasActualesTodas();
-  _genResultado = generarHorariosAuto(asignaciones, base);
+  const {nuevas, conflictos, avisos} = generarHorariosAuto(asignaciones, base);
+  _genNuevas = nuevas;
+  let horas=0; Object.values(nuevas).forEach(dias=>Object.values(dias).forEach(b=>horas+=Object.keys(b).length));
+  _reporte = { conflictos, avisos, generadoEn:Date.now(), docentesTocados:Object.keys(nuevas).length, horasUbicadas:horas };
+  guardarReporte(_reporte);
   renderGenResumen();
   toast('Generación lista — revisa la vista previa antes de guardar.');
 });
 
 $('#btn-guardar-gen').addEventListener('click', ()=>{
-  if(!_genResultado) return;
-  const {nuevas} = _genResultado;
+  if(!_genNuevas){ toast('No hay nada nuevo que guardar — genera primero.'); return; }
+  const nuevas=_genNuevas;
   const docentesTocados=Object.keys(nuevas).length;
   if(!docentesTocados){ toast('No hay nada que guardar.'); return; }
   if(!confirm(`¿Guardar los horarios generados como BORRADOR para ${docentesTocados} docente(s)? No se publica todavía — cada uno se revisa y publica por separado, como siempre.`)) return;
@@ -665,14 +775,22 @@ $('#btn-guardar-gen').addEventListener('click', ()=>{
     borr[docenteId]=merged;
   });
   guardarBorradores(borr);
-  _genResultado=null;
+  _genNuevas=null; // ya se guardó — el reporte de horas sin ubicar/inconsistencias sigue visible
   renderGenResumen();
   renderListaDocentes();
   if(docenteSel) cargarDocente(docenteSel);
   toast(`✅ Guardado como borrador en ${docentesTocados} docente(s) — revísalos y publica uno por uno.`);
 });
 
-if(ES_COORD){ fillSelDocente(); renderListaDocentes(); }
+$('#btn-descartar-gen').addEventListener('click', ()=>{
+  if(!confirm('¿Descartar este reporte? Esto NO borra ningún horario — solo oculta el resumen de la última generación.')) return;
+  _reporte=null; _genNuevas=null;
+  borrarReporte();
+  renderGenResumen();
+  toast('Reporte descartado.');
+});
+
+if(ES_COORD){ fillSelDocente(); renderListaDocentes(); renderGenResumen(); }
 </script>
 </body>
 </html>

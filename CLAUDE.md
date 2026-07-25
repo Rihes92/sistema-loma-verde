@@ -2,6 +2,68 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 30): reporte persistente de conflictos + nuevo modelo de horas (60 min + descanso) — CÓDIGO LISTO, sin desplegar
+
+- **Feedback de Richard tras probar la generación automática (sesión 29):** ya generó y
+  guardó un borrador, pero (1) no encontraba dónde ver el reporte de horas sin ubicar
+  (desaparecía al guardar); (2) pidió un informe de esas horas y de los docentes con
+  cruces; (3) pidió que la grilla refleje el horario real del colegio: 7 horas de clase
+  de 60 minutos, con un descanso de 20 minutos después de la 4ª hora (antes eran 7
+  bloques de 50 minutos seguidos, sin descanso).
+- **Causa real del punto 1:** el resultado de la generación (`_genResultado`) vivía SOLO
+  en una variable de JavaScript en memoria — al guardar como borrador, el código la
+  vaciaba (`_genResultado=null`) para "limpiar la pantalla", borrando de paso el propio
+  reporte que Richard necesitaba seguir consultando. No era un bug de cálculo, era que el
+  reporte nunca se guardaba en ningún lado persistente.
+- **Reporte persistido en `localStorage` (`lv_horarios_reporte`, solo local — como
+  `lv_horarios_borrador`, nunca se sincroniza):** ahora se separan dos cosas que antes
+  eran una sola variable: `_reporte` (conflictos/avisos/fecha/estadísticas — persiste
+  entre recargas de página y NO se borra al guardar) y `_genNuevas` (las celdas recién
+  generadas, en memoria, solo hasta guardarlas). Al entrar al módulo, si hay un reporte
+  guardado de una generación anterior, se muestra de inmediato sin tener que generar de
+  nuevo. Un botón nuevo **"🗑️ Descartar este reporte"** lo limpia a propósito cuando
+  Richard ya resolvió todo (aclarado en el propio botón: no borra ningún horario, solo
+  oculta el resumen).
+- **Detalle de horas sin ubicar mejorado:** cada docente del listado ahora trae un botón
+  **"✏️ Editar"** que abre directo su grilla en el selector de arriba (mismo patrón que ya
+  usaba la tabla "Todos los docentes") — así Richard no tiene que buscar manualmente al
+  docente. También se explica en el propio texto CÓMO completar una hora sin ubicar:
+  abrir al docente, buscar un día/bloque libre (celda a rayas) y asignar ahí la materia/
+  grado/grupo desde el modal ya existente.
+- **Tarjeta nueva "⚠️ Cruces entre docentes"** (siempre visible, se recalcula en vivo, NO
+  depende de haber generado nada): función `choquesGlobales()` compara TODOS los pares de
+  docentes (su horario vigente = borrador si tiene, si no lo publicado — mismo criterio
+  que ya usaba `cargarDocente()`) y reporta si dos docentes distintos quedaron con clase
+  al mismo grado-grupo a la misma hora — con un botón "✏️" por cada uno de los dos para
+  saltar directo a arreglarlo. Por construcción, la generación automática NUNCA debería
+  dejar ninguno (ya se probó así en la sesión 29), así que esta tarjeta sirve sobre todo
+  para detectar cruces introducidos por ediciones manuales posteriores. Se refresca sola
+  después de publicar, descartar un borrador, o editar/quitar una celda a mano.
+- **Nuevo modelo de horas** (`bloques()` en `21-horarios-coordinacion.html` Y en
+  `07-horario.html`, duplicado a propósito en los dos como ya es la convención del
+  proyecto): antes 7 bloques de 50 minutos seguidos; ahora 7 horas de 60 minutos, con un
+  descanso de 20 minutos después de la 4ª hora (bloques 0-3 seguidos, descanso, bloques
+  4-6 seguidos). Lunes sigue empezando a las 8:00 y el resto de días a las 7:00 (eso no
+  cambió). Se agregó una **fila visual de descanso** en la grilla (en ambos módulos,
+  coordinación y "Mi Horario" del docente) — no es un bloque real, no es clickable, solo
+  muestra el rango de hora del descanso para que quede claro en la vista y al imprimir.
+  Verificado con Node que los horarios calculados son correctos (ej. lunes:
+  08:00–09:00, 09:00–10:00, 10:00–11:00, 11:00–12:00, descanso, 12:20–13:20, 13:20–14:20,
+  14:20–15:20).
+- **Verificado con Node** el nuevo `choquesGlobales()` contra un escenario sintético (3
+  docentes, 1 choque real esperado entre 2 de ellos por compartir grado-grupo a la misma
+  hora, 1 docente sin relación) — detectó exactamente ese choque, sin falsos positivos ni
+  negativos.
+- SW **v98**. `node --check` limpio en los 3 bloques `<script>` de
+  `21-horarios-coordinacion.html` y los 3 de `07-horario.html`; balance de
+  `div/table/tr/td/th/label/select/button/details/summary` verificado (36/36, 1/1, 2/2,
+  4/4, 4/4, 6/6, 4/4, 13/13, 3/3, 3/3).
+- **PENDIENTE:** push; que Richard recargue "Horarios (Coordinación)" y confirme que (a)
+  el reporte de la última generación sigue visible tal como lo dejó; (b) la tarjeta de
+  cruces aparece y, si no hay ninguno, dice "sin cruces"; (c) la grilla de cada docente
+  (y "Mi Horario" para una cuenta docente) ahora muestra las horas de 60 minutos con el
+  descanso de 20 minutos marcado después de la 4ª hora.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 29): motor de generación automática de horarios — CÓDIGO LISTO, sin desplegar
 
 - **Punto 3 del pedido original de Richard (sesión 27), el último que quedaba pendiente:**
