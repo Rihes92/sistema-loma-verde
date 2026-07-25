@@ -120,6 +120,7 @@ function membreteLinea(){
 }
 const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
 const normN=v=>String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
+const fmtF=f=>{ if(!f) return '—'; const d=new Date(f+'T12:00:00'); return d.toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'}); };
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
 const esAdmin=!!(login&&login.esAdmin);
@@ -231,6 +232,14 @@ function construirBoletines(grupoKey, periodo){
     const inasTot=filasU.reduce((a,f)=>a+(f.inas||0),0);
     const obsEst=lsRead('observador').filter(o=>!o._eliminado&&normN(o.estNombre)===normN(est.nombre));
     const recon=obsEst.filter(o=>o.tipo==='Reconocimiento').length;
+    // Anotaciones del Observador del año, para imprimirlas dentro del boletín
+    // (backlog crudo sesión 26, punto 12). Mismo criterio anual que ya usa
+    // faltantesObservador() más arriba — el observador no se organiza por
+    // periodo, así que se muestran todas las del año en curso.
+    const anioBol=new Date().getFullYear();
+    const observadorAnotaciones=obsEst
+      .filter(o=>new Date(o.creado||0).getFullYear()===anioBol)
+      .sort((a,b)=>new Date(a.fecha||a.creado||0)-new Date(b.fecha||b.creado||0));
     const frases=[];
     if(prom>=CFG.scale.superior) frases.push('Desempeño superior: felicitaciones por su excelente proceso académico.');
     else if(prom>=CFG.scale.alto) frases.push('Buen desempeño general durante el periodo.');
@@ -240,7 +249,7 @@ function construirBoletines(grupoKey, periodo){
     if(inasTot>=6) frases.push('Presenta '+inasTot+' inasistencias acumuladas: la asistencia constante es clave para su proceso.');
     if(recon) frases.push('⭐ Recibió '+recon+' reconocimiento(s) en el periodo.');
     return {nombre:est.nombre, filas:filasU, prom,
-      observacion:frases.join(' '),
+      observacion:frases.join(' '), observadorAnotaciones,
       grupo:grupo?grupo.grado+' - '+(grupo.grupo||'único'):grupoKey, dirigente, cfg:c};
   });
 }
@@ -259,6 +268,11 @@ function htmlBoletin(b, periodo){
       ${b.filas.map(f=>`<tr><td>${esc(f.materia)}</td><td class="c">${f.def?f.def.toFixed(1):'—'}</td><td class="c">${esc(f.des)}</td><td class="c">${f.inas||0}</td></tr>`).join('')}
     </table>
     ${b.observacion?`<table><tr><th style="width:20%">Observaciones</th><td>${esc(b.observacion)}</td></tr></table>`:''}
+    ${b.observadorAnotaciones&&b.observadorAnotaciones.length?`<table>
+      <tr><th colspan="2" style="background:#eef2ff">📔 Observador del estudiante — ${b.observadorAnotaciones.length} anotación(es) en ${new Date().getFullYear()}</th></tr>
+      ${b.observadorAnotaciones.map(o=>`<tr><td style="width:22%"><b>${esc(o.tipo||'')}</b><br><span style="font-size:8pt">${fmtF(o.fecha)}</span></td>
+        <td>${esc((o.descripcion||'').slice(0,220))}${(o.descripcion||'').length>220?'…':''}${o.compromiso?`<br><i>Compromiso: ${esc(o.compromiso)}</i>`:''}</td></tr>`).join('')}
+    </table>`:''}
     ${b.cfg.mensaje?`<p style="font-size:9pt;margin-top:6px;font-style:italic">${esc(b.cfg.mensaje)}</p>`:''}
     <div class="firmas">
       <div>${esc(b.cfg.rector||'Rector(a)')}<br>Rectoría</div>

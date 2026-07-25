@@ -63,6 +63,35 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26f): anotaciones del Observador ahora imprimen en el boletín
+
+- **Punto 12 del backlog crudo:** "las anotaciones del observador deberían aparecer en el
+  boletín del estudiante". Antes del hoy, `13-boletines.html` SOLO usaba el observador
+  como una COMPUERTA previa (exige mínimo N anotaciones en el año antes de dejar generar
+  boletines) y contaba cuántos "Reconocimiento" tenía cada estudiante para una frase
+  automática ("⭐ Recibió N reconocimiento(s)…") — pero nunca imprimía el contenido real
+  de las anotaciones (Situación Tipo I/II/III, Académica, Visita domiciliaria, etc.).
+- **`construirBoletines()`:** cada estudiante ahora trae `observadorAnotaciones` — sus
+  anotaciones del observador del AÑO en curso (mismo criterio anual que ya usaba
+  `faltantesObservador()`; el observador no se organiza por periodo, así que no tiene
+  sentido cortarlas por periodo 1/2/3), ordenadas por fecha.
+- **`htmlBoletin()`:** si el estudiante tiene anotaciones, se agrega una tabla nueva
+  "📔 Observador del estudiante — N anotación(es) en {año}" con tipo + fecha + descripción
+  (recortada a 220 caracteres para no desbordar la página) + compromiso si lo tiene. Se
+  agregó `fmtF()` a este archivo (no existía; se copió del mismo helper de fecha que ya
+  usa `10-observador.html`).
+- **Decisión de diseño (no se preguntó a Richard, pero se documenta el porqué):** se
+  imprimen TODOS los tipos, incluidas Situación Tipo II/III, no solo reconocimientos. No
+  se consideró una fuga nueva de privacidad porque el boletín de un estudiante ya solo lo
+  ve su propio acudiente, y esas mismas situaciones YA le llegan al acudiente por
+  WhatsApp en el momento en que se registran (`abrirAlertaWhatsApp` en 10-observador.html)
+  — el boletín solo las consolida, no expone nada que la familia no supiera ya.
+  SW **v90**. `node --check`-equivalente (3 bloques `<script>`) limpio; balance de
+  `<div>/<table>/<tr>/<td>/<th>` verificado en `modulos/13-boletines.html`.
+- **PENDIENTE:** push; que Richard genere un boletín de un estudiante con anotaciones
+  reales en el observador y confirme que se ven bien impresas (o en vista previa antes de
+  imprimir) y que la tabla no rompe el salto de página entre boletines.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26e): banco de preguntas consolidado en Evaluaciones
 
 - **Punto 6 del backlog crudo:** "existe una opción en el Planeador (02) y otra en
