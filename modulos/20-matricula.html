@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Matrícula y Acudientes — SABIE</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_matricula','lv_acudientes','lv_institucion'];</script>
+<script src="../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626;--warn:#b45309;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar img{width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18)}
+  nav.tabs{display:flex;gap:4px;background:var(--surface);padding:6px;overflow-x:auto;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+  nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button.active{background:var(--primary);color:#fff}
+  main{max-width:1100px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  input[type=checkbox],input[type=radio]{width:16px;height:16px;min-height:auto}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.sec{background:#e2e8f0;color:var(--text)} button.btn.ok{background:var(--ok)} button.btn.bad{background:var(--bad)}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  .hide{display:none!important}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;font-weight:700;color:var(--primary)}
+  td.c,th.c{text-align:center}
+  .tableScroll{overflow-x:auto}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700}
+  .b-act{background:#dcfce7;color:#166534}.b-ret{background:#f1f5f9;color:#475569}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:.8rem;color:var(--muted);flex:1;min-width:130px}
+  .stat b{display:block;font-size:1.3rem;color:var(--primary)}
+  .acu-match{border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-top:6px;cursor:pointer;font-size:.83rem}
+  .acu-match:hover{background:#eff6ff;border-color:var(--primary-light)}
+  .acu-match.sel{background:#dbeafe;border-color:var(--primary)}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <img src="../Logo/logo.jpg" alt="">
+  <h1>🎓 Matrícula y Acudientes</h1>
+  <span class="pill">SABIE</span>
+  <a href="../index.html" class="portal-btn" style="margin-left:auto" title="Volver a la página anterior" onclick="if(history.length>1){history.back();return false}">← Atrás</a>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<div id="sin-acceso" class="hide">
+  <main>
+    <div class="card empty">
+      🔒 Este módulo es solo para coordinación / rectoría.<br>
+      Si necesitas registrar un estudiante, pídele a coordinación que lo haga aquí.
+    </div>
+  </main>
+</div>
+
+<div id="app" class="hide">
+  <nav class="tabs" id="tabs">
+    <button data-tab="matricula" class="active">📋 Matrícula</button>
+    <button data-tab="resumen">📊 Resumen</button>
+  </nav>
+
+  <main>
+    <!-- ── MATRÍCULA ── -->
+    <section id="tab-matricula">
+      <div class="card">
+        <h2 id="form-titulo">Nuevo estudiante</h2>
+        <p class="desc">Registro oficial del estudiante, amarrado a un acudiente. Esta es una estructura de partida —
+          se ajustará cuando llegue la ficha oficial del colegio.</p>
+        <div class="row">
+          <label class="fld">Tipo de documento
+            <select id="m-tipodoc"><option>RC</option><option>TI</option><option>CC</option><option>CE</option><option>PPT</option><option>Otro</option></select>
+          </label>
+          <label class="fld">N° de documento<input id="m-documento" placeholder="Sin puntos ni espacios"></label>
+          <label class="fld">Fecha de nacimiento<input type="date" id="m-fechanac"></label>
+          <label class="fld">Género
+            <select id="m-genero"><option value="">— sin especificar —</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="Otro">Otro</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label class="fld">Nombres<input id="m-nombres" placeholder="Nombres"></label>
+          <label class="fld">Apellidos<input id="m-apellidos" placeholder="Apellidos"></label>
+        </div>
+        <div class="row">
+          <label class="fld">Sede
+            <select id="m-sede"><option value="">— sin sede —</option></select>
+          </label>
+          <label class="fld">Grado
+            <select id="m-grado">
+              <option>Sexto (6°)</option><option>Séptimo (7°)</option><option>Octavo (8°)</option>
+              <option>Noveno (9°)</option><option>Décimo (10°)</option><option>Undécimo (11°)</option>
+              <option>Prejardín</option><option>Jardín</option><option>Transición (0°)</option>
+              <option>Primero (1°)</option><option>Segundo (2°)</option><option>Tercero (3°)</option>
+              <option>Cuarto (4°)</option><option>Quinto (5°)</option>
+            </select>
+          </label>
+          <label class="fld">Grupo<input id="m-grupo" placeholder="Ej: 1, 2, 3…"></label>
+          <label class="fld">Jornada
+            <select id="m-jornada"><option>Única</option><option>Mañana</option><option>Tarde</option></select>
+          </label>
+        </div>
+        <label class="fld" style="margin-top:2px">Observaciones (opcional)<textarea id="m-obs" rows="2" placeholder="Notas de matrícula…"></textarea></label>
+
+        <h2 style="margin-top:18px">Acudiente</h2>
+        <p class="desc">Busca uno ya registrado o crea uno nuevo. Cada estudiante debe quedar amarrado a un acudiente.</p>
+        <div class="row">
+          <label class="fld">Buscar acudiente existente<input id="m-buscaracu" placeholder="Nombre o teléfono…"></label>
+        </div>
+        <div id="acu-matches"></div>
+        <div id="acu-elegido" class="hide" style="margin-top:8px;background:#eff6ff;border:1px solid var(--primary-light);border-radius:8px;padding:8px 12px;font-size:.85rem"></div>
+        <button class="btn sec sm" id="btn-acu-nuevo" style="margin-top:8px">+ Registrar acudiente nuevo</button>
+        <div id="acu-form-nuevo" class="hide" style="margin-top:10px">
+          <div class="row">
+            <label class="fld">Nombre del acudiente<input id="na-nombre" placeholder="Nombre completo"></label>
+            <label class="fld">Parentesco<select id="na-parentesco">
+              <option>Madre</option><option>Padre</option><option>Abuelo/a</option>
+              <option>Tío/a</option><option>Hermano/a</option><option>Otro</option>
+            </select></label>
+          </div>
+          <div class="row">
+            <label class="fld">Teléfono<input id="na-telefono" placeholder="Ej: 300 123 4567"></label>
+            <label class="fld">Correo (opcional)<input id="na-email" type="email" placeholder="correo@ejemplo.com"></label>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn ok" id="btn-mat-save">💾 Guardar matrícula</button>
+          <button class="btn sec hide" id="btn-mat-cancel">Cancelar edición</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Estudiantes matriculados</h2>
+        <div class="row" style="margin-bottom:10px">
+          <label class="fld">Buscar<input id="f-buscar" placeholder="Nombre, documento…"></label>
+          <label class="fld">Sede<select id="f-sede"><option value="">Todas</option></select></label>
+          <label class="fld">Grado<select id="f-grado"><option value="">Todos</option></select></label>
+          <label class="fld">Estado<select id="f-estado"><option value="activo">Activos</option><option value="retirado">Retirados</option><option value="">Todos</option></select></label>
+        </div>
+        <div id="matricula-out"></div>
+      </div>
+    </section>
+
+    <!-- ── RESUMEN ── -->
+    <section id="tab-resumen" class="hide">
+      <div class="card">
+        <h2>Resumen de matrícula</h2>
+        <div class="stats" id="r-stats"></div>
+        <button class="btn sec sm" id="btn-export-csv">⬇️ Exportar CSV</button>
+      </div>
+      <div class="card">
+        <h2>Por sede</h2>
+        <div id="r-sedes"></div>
+      </div>
+      <div class="card">
+        <h2>Por grado</h2>
+        <div id="r-grados"></div>
+      </div>
+      <div class="card">
+        <h2>⚠️ Estudiantes sin acudiente</h2>
+        <p class="desc">Estudiantes activos que aún no tienen un acudiente vinculado.</p>
+        <div id="r-sinacu"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" role="alert" aria-live="assertive"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+const uid=()=>'mat-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem('lv_'+k))||[]; }catch(_){ return []; } }
+// Solo persiste el espejo local; NO marca cambios (evita resubir de más).
+// El marcado de sync se hace puntual, por registro, en cada mutación real.
+function persistir(k,arr){ try{ localStorage.setItem('lv_'+k, JSON.stringify(arr)); }catch(_){} }
+function guardarUno(k, reg){
+  const all = lsRead(k).filter(x=>x.id!==reg.id);
+  all.push(reg);
+  try{ localStorage.setItem('lv_'+k, JSON.stringify(all)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_'+k, reg);
+  return all;
+}
+
+// ── Permisos: solo coordinación/rector ──────────────────────────
+let LOGIN=null; try{ LOGIN=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+const ES_COORD = !!(LOGIN && LOGIN.esAdmin);
+if(!ES_COORD){ $('#sin-acceso').classList.remove('hide'); }
+else { $('#app').classList.remove('hide'); }
+
+function quienEsta(){ return LOGIN ? (LOGIN.esAdmin?'Administrador':(LOGIN.nombre||'')) : ''; }
+
+// ── Tabs ──────────────────────────────────────────────────────
+document.getElementById('tabs').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-tab]'); if(!b) return;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('main>section').forEach(s=>s.classList.add('hide'));
+  document.getElementById('tab-'+b.dataset.tab).classList.remove('hide');
+  if(b.dataset.tab==='resumen') renderResumen();
+});
+
+// ── WhatsApp ─────────────────────────────────────────────────
+function telWa(t){ let n=String(t||'').replace(/\D/g,''); if(n.length===10 && n.startsWith('3')) n='57'+n; return n; }
+
+let matricula = ES_COORD ? lsRead('matricula') : [];
+let acudientes = ES_COORD ? lsRead('acudientes') : [];
+let editId = null;
+let acuElegidoId = null;
+
+function fillSedes(){
+  const sedes = (typeof LV_INST!=='undefined') ? LV_INST.sedes() : [];
+  const opts = sedes.map(s=>`<option>${esc(s)}</option>`).join('');
+  $('#m-sede').innerHTML = '<option value="">— sin sede —</option>' + opts;
+  $('#f-sede').innerHTML = '<option value="">Todas</option>' + opts;
+}
+function fillGradosFiltro(){
+  const grados = Array.from(new Set(matricula.map(m=>m.grado).filter(Boolean)));
+  $('#f-grado').innerHTML = '<option value="">Todos</option>' + grados.map(g=>`<option>${esc(g)}</option>`).join('');
+}
+
+// ── Buscador de acudiente existente ─────────────────────────────
+$('#m-buscaracu').addEventListener('input', ()=>{
+  const q = $('#m-buscaracu').value.trim().toLowerCase();
+  const out = $('#acu-matches');
+  if(!q || q.length<2){ out.innerHTML=''; return; }
+  const matches = acudientes.filter(a=>
+    (a.nombreAcudiente||'').toLowerCase().includes(q) || (a.telefono||'').includes(q)
+  ).slice(0,8);
+  if(!matches.length){ out.innerHTML = '<p class="desc" style="margin:6px 0 0">Sin coincidencias. Puedes registrar uno nuevo abajo.</p>'; return; }
+  out.innerHTML = matches.map(a=>`<div class="acu-match${a.id===acuElegidoId?' sel':''}" onclick="elegirAcudiente('${a.id}')">
+    <strong>${esc(a.nombreAcudiente)}</strong> · ${esc(a.parentesco||'—')} · ${esc(a.telefono||'sin teléfono')}
+    ${a.hijos&&a.hijos.length?`<div style="color:var(--muted);font-size:.78rem">Ya vinculado a: ${a.hijos.map(h=>esc(h.estudiante)).join(', ')}</div>`:''}
+  </div>`).join('');
+});
+
+window.elegirAcudiente = id=>{
+  acuElegidoId = id;
+  const a = acudientes.find(x=>x.id===id); if(!a) return;
+  $('#acu-elegido').classList.remove('hide');
+  $('#acu-elegido').innerHTML = `👪 Acudiente seleccionado: <strong>${esc(a.nombreAcudiente)}</strong> (${esc(a.parentesco||'—')}, ${esc(a.telefono||'sin teléfono')}) <a href="#" onclick="quitarAcudienteElegido();return false" style="color:#991b1b;margin-left:8px">quitar</a>`;
+  $('#acu-form-nuevo').classList.add('hide');
+  $('#m-buscaracu').value=''; $('#acu-matches').innerHTML='';
+};
+window.quitarAcudienteElegido = ()=>{
+  acuElegidoId = null;
+  $('#acu-elegido').classList.add('hide');
+};
+
+$('#btn-acu-nuevo').addEventListener('click', ()=>{
+  quitarAcudienteElegido();
+  $('#acu-form-nuevo').classList.toggle('hide');
+});
+
+// ── Guardar matrícula ────────────────────────────────────────────
+$('#btn-mat-save').addEventListener('click', ()=>{
+  const nombres = $('#m-nombres').value.trim(), apellidos = $('#m-apellidos').value.trim();
+  if(!nombres || !apellidos){ toast('Escribe nombres y apellidos del estudiante.'); return; }
+  const grado = $('#m-grado').value, grupo = $('#m-grupo').value.trim();
+  const nombreCompleto = `${nombres} ${apellidos}`;
+
+  // Resolver acudiente: el elegido, o crear uno nuevo si se llenó el mini-formulario
+  let acudienteId = acuElegidoId;
+  const naNombre = $('#na-nombre').value.trim();
+  if(!acudienteId && naNombre){
+    const nuevaAcu = {
+      id: uid(), nombreAcudiente: naNombre, parentesco: $('#na-parentesco').value,
+      telefono: $('#na-telefono').value.trim(), email: $('#na-email').value.trim(),
+      notas: '', hijos: [], registradoPor: quienEsta(), creado: Date.now()
+    };
+    acudientes.push(nuevaAcu);
+    acudienteId = nuevaAcu.id;
+    guardarUno('acudientes', nuevaAcu);
+  }
+  if(!acudienteId){
+    if(!confirm('No seleccionaste ni registraste un acudiente. ¿Guardar el estudiante sin acudiente por ahora?')) return;
+  }
+
+  const reg = {
+    id: editId || uid(),
+    tipoDoc: $('#m-tipodoc').value, documento: $('#m-documento').value.trim(),
+    fechaNacimiento: $('#m-fechanac').value, genero: $('#m-genero').value,
+    nombres, apellidos,
+    sede: $('#m-sede').value, grado, grupo, jornada: $('#m-jornada').value,
+    estado: editId ? (matricula.find(m=>m.id===editId)||{}).estado || 'activo' : 'activo',
+    acudienteId: acudienteId || '',
+    observaciones: $('#m-obs').value.trim(),
+    creado: editId ? (matricula.find(m=>m.id===editId)||{}).creado || Date.now() : Date.now(),
+    actualizado: Date.now(), registradoPor: quienEsta()
+  };
+  matricula = matricula.filter(m=>m.id!==reg.id); matricula.push(reg);
+  guardarUno('matricula', reg);
+
+  // Reflejar el vínculo en el acudiente (hijos[]), por compatibilidad con 09-acudientes.html
+  if(acudienteId){
+    const acu = acudientes.find(a=>a.id===acudienteId);
+    if(acu){
+      acu.hijos = acu.hijos || [];
+      const i = acu.hijos.findIndex(h=>h.estId===reg.id);
+      const hijo = { estudiante: nombreCompleto, grado, grupo, estId: reg.id };
+      if(i>=0) acu.hijos[i]=hijo; else acu.hijos.push(hijo);
+      guardarUno('acudientes', acu);
+    }
+  }
+
+  toast(editId?'Matrícula actualizada':'Estudiante matriculado');
+  cancelarEdicion();
+  fillGradosFiltro(); renderMatricula();
+});
+
+function cancelarEdicion(){
+  editId = null; acuElegidoId = null;
+  $('#form-titulo').textContent = 'Nuevo estudiante';
+  $('#btn-mat-cancel').classList.add('hide');
+  $('#acu-elegido').classList.add('hide');
+  $('#acu-form-nuevo').classList.add('hide');
+  ['m-documento','m-fechanac','m-nombres','m-apellidos','m-grupo','m-obs','m-buscaracu','na-nombre','na-telefono','na-email'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
+  $('#m-tipodoc').value='RC'; $('#m-genero').value=''; $('#m-sede').value=''; $('#m-jornada').value='Única';
+  $('#acu-matches').innerHTML='';
+}
+$('#btn-mat-cancel').addEventListener('click', cancelarEdicion);
+
+window.editarMatricula = id=>{
+  const m = matricula.find(x=>x.id===id); if(!m) return;
+  editId = id;
+  $('#form-titulo').textContent = 'Editando: '+m.nombres+' '+m.apellidos;
+  $('#m-tipodoc').value = m.tipoDoc||'RC'; $('#m-documento').value = m.documento||'';
+  $('#m-fechanac').value = m.fechaNacimiento||''; $('#m-genero').value = m.genero||'';
+  $('#m-nombres').value = m.nombres||''; $('#m-apellidos').value = m.apellidos||'';
+  $('#m-sede').value = m.sede||''; $('#m-grado').value = m.grado||'Sexto (6°)';
+  $('#m-grupo').value = m.grupo||''; $('#m-jornada').value = m.jornada||'Única';
+  $('#m-obs').value = m.observaciones||'';
+  if(m.acudienteId) elegirAcudiente(m.acudienteId);
+  $('#btn-mat-cancel').classList.remove('hide');
+  window.scrollTo(0,0);
+};
+
+window.cambiarEstado = (id, nuevo)=>{
+  const m = matricula.find(x=>x.id===id); if(!m) return;
+  m.estado = nuevo; m.actualizado = Date.now();
+  guardarUno('matricula', m);
+  renderMatricula();
+  toast(nuevo==='retirado'?'Estudiante marcado como retirado':'Estudiante reactivado');
+};
+
+window.eliminarMatricula = id=>{
+  if(!confirm('¿Eliminar este registro de matrícula? Quedará 30 días en la papelera.')) return;
+  const m = matricula.find(x=>x.id===id);
+  if(m && typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_matricula', Object.assign({}, m, {_eliminado:true}));
+  matricula = matricula.filter(x=>x.id!==id);
+  persistir('matricula', matricula);
+  // quitar el vínculo del lado del acudiente también
+  if(m && m.acudienteId){
+    const acu = acudientes.find(a=>a.id===m.acudienteId);
+    if(acu && acu.hijos){ acu.hijos = acu.hijos.filter(h=>h.estId!==id); guardarUno('acudientes', acu); }
+  }
+  renderMatricula();
+  toast('Enviado a la papelera');
+};
+
+// ── Lista / filtros ──────────────────────────────────────────────
+['f-buscar','f-sede','f-grado','f-estado'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', renderMatricula);
+  document.getElementById(id).addEventListener('change', renderMatricula);
+});
+
+function renderMatricula(){
+  const q = $('#f-buscar').value.trim().toLowerCase();
+  const fSede = $('#f-sede').value, fGrado = $('#f-grado').value, fEstado = $('#f-estado').value;
+  let lista = matricula.slice().sort((a,b)=>(a.apellidos||'').localeCompare(b.apellidos||'','es'));
+  if(fSede) lista = lista.filter(m=>m.sede===fSede);
+  if(fGrado) lista = lista.filter(m=>m.grado===fGrado);
+  if(fEstado) lista = lista.filter(m=>(m.estado||'activo')===fEstado);
+  if(q) lista = lista.filter(m=>
+    `${m.nombres} ${m.apellidos}`.toLowerCase().includes(q) || (m.documento||'').toLowerCase().includes(q));
+  const out = $('#matricula-out');
+  if(!lista.length){ out.innerHTML = '<div class="empty">🎓 No hay estudiantes que coincidan con el filtro.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Estudiante</th><th>Documento</th><th>Grado-Grupo</th><th>Sede</th><th>Acudiente</th><th class="c">Estado</th><th class="c">Acciones</th>
+  </tr></thead><tbody>${lista.map(m=>{
+    const acu = m.acudienteId ? acudientes.find(a=>a.id===m.acudienteId) : null;
+    return `<tr>
+    <td><strong>${esc(m.apellidos)} ${esc(m.nombres)}</strong></td>
+    <td>${esc(m.tipoDoc||'')} ${esc(m.documento||'—')}</td>
+    <td>${esc(m.grado||'—')}${m.grupo?'-'+esc(m.grupo):''}</td>
+    <td>${esc(m.sede||'—')}</td>
+    <td>${acu?`${esc(acu.nombreAcudiente)}${acu.telefono?` · <a href="https://wa.me/${telWa(acu.telefono)}" target="_blank" style="color:#16a34a;text-decoration:none">💬</a>`:''}`:'<span style="color:var(--bad);font-size:.78rem">sin acudiente</span>'}</td>
+    <td class="c">${(m.estado||'activo')==='activo'?'<span class="badge b-act">Activo</span>':'<span class="badge b-ret">Retirado</span>'}</td>
+    <td class="c" style="white-space:nowrap">
+      <button class="btn sm sec" onclick="editarMatricula('${m.id}')" title="Editar">✏️</button>
+      ${(m.estado||'activo')==='activo'
+        ?`<button class="btn sm sec" onclick="cambiarEstado('${m.id}','retirado')" title="Marcar retirado">🚪</button>`
+        :`<button class="btn sm sec" onclick="cambiarEstado('${m.id}','activo')" title="Reactivar">↩️</button>`}
+      <button class="btn sm bad" onclick="eliminarMatricula('${m.id}')" title="Eliminar">🗑️</button>
+    </td>
+  </tr>`;}).join('')}</tbody></table></div>`;
+}
+
+// ── Resumen ──────────────────────────────────────────────────────
+function renderResumen(){
+  const activos = matricula.filter(m=>(m.estado||'activo')==='activo');
+  $('#r-stats').innerHTML = `
+    <div class="stat"><b>${activos.length}</b>Estudiantes activos</div>
+    <div class="stat"><b>${matricula.length-activos.length}</b>Retirados</div>
+    <div class="stat"><b>${acudientes.length}</b>Acudientes registrados</div>`;
+
+  const porSede = {};
+  activos.forEach(m=>{ const s=m.sede||'— sin sede —'; porSede[s]=(porSede[s]||0)+1; });
+  $('#r-sedes').innerHTML = Object.keys(porSede).length
+    ? Object.entries(porSede).sort((a,b)=>b[1]-a[1]).map(([s,n])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>${esc(s)}</span><strong>${n}</strong></div>`).join('')
+    : '<div class="empty">Sin datos aún.</div>';
+
+  const porGrado = {};
+  activos.forEach(m=>{ const g=m.grado||'— sin grado —'; porGrado[g]=(porGrado[g]||0)+1; });
+  $('#r-grados').innerHTML = Object.keys(porGrado).length
+    ? Object.entries(porGrado).sort((a,b)=>b[1]-a[1]).map(([g,n])=>`<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span>${esc(g)}</span><strong>${n}</strong></div>`).join('')
+    : '<div class="empty">Sin datos aún.</div>';
+
+  const sinAcu = activos.filter(m=>!m.acudienteId);
+  $('#r-sinacu').innerHTML = sinAcu.length
+    ? `<div class="tableScroll"><table><thead><tr><th>Estudiante</th><th>Grado-Grupo</th><th>Sede</th></tr></thead><tbody>${sinAcu.map(m=>`<tr><td>${esc(m.apellidos)} ${esc(m.nombres)}</td><td>${esc(m.grado||'—')}${m.grupo?'-'+esc(m.grupo):''}</td><td>${esc(m.sede||'—')}</td></tr>`).join('')}</tbody></table></div>`
+    : '<div class="empty">✅ Todos los estudiantes activos tienen acudiente.</div>';
+}
+
+$('#btn-export-csv').addEventListener('click', ()=>{
+  const filas = [['Apellidos','Nombres','TipoDoc','Documento','FechaNacimiento','Genero','Sede','Grado','Grupo','Jornada','Estado','Acudiente','TelefonoAcudiente']];
+  matricula.forEach(m=>{
+    const acu = m.acudienteId ? acudientes.find(a=>a.id===m.acudienteId) : null;
+    filas.push([m.apellidos,m.nombres,m.tipoDoc,m.documento,m.fechaNacimiento,m.genero,m.sede,m.grado,m.grupo,m.jornada,m.estado||'activo',acu?acu.nombreAcudiente:'',acu?acu.telefono:'']);
+  });
+  const csv = filas.map(f=>f.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'matricula_sabie.csv'; a.click();
+});
+
+if(ES_COORD){ fillSedes(); fillGradosFiltro(); renderMatricula(); }
+</script>
+</body>
+</html>

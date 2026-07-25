@@ -3,6 +3,83 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25c, módulo NUEVO de Matrícula + Acudientes)
+
+- **`modulos/20-matricula.html` — CÓDIGO LISTO, sin desplegar.** Punto 6 del backlog de la
+  auditoría (sesión 24): registro OFICIAL de estudiantes amarrado a un acudiente, SOLO para
+  coordinación/rector — reemplaza que los docentes creen estudiantes sueltos en la planilla
+  (btn-add-est / importar lista del módulo 01). Richard/Francy pidió avanzar con una
+  **estructura razonable** sin tener aún la ficha oficial del colegio; falta ajustarla
+  cuando la envíe.
+- **Decisión de arquitectura clave:** este módulo NO toca `lv_estudiantes` (el roster
+  por-curso que ya usa 01-calificaciones/05-asistencia, duplicado por materia — cada curso
+  de cada docente tiene su propia lista de "estudiantes"). `lv_matricula` es un registro
+  MAESTRO paralelo, institucional, por estudiante real (no por curso-materia). Conectar
+  ambos mundos (que el roster de un curso se alimente de la matrícula oficial) es un
+  refactor de más riesgo que toca 01-calificaciones — un archivo grande y ya auditado —
+  y se deja pendiente a propósito, siguiendo la misma cautela que la Fase 2 de arquitectura
+  (no improvisar en caliente sobre módulos críticos sin sesión dedicada + pruebas).
+- **Tabla nueva `lv_matricula`** (`migracion_matricula.sql`, SIN CORRER): `{id, tipoDoc,
+  documento, fechaNacimiento, genero, nombres, apellidos, sede, grado, grupo, jornada,
+  estado ('activo'|'retirado'), acudienteId, observaciones, creado, actualizado,
+  registradoPor}`. RLS: a diferencia de `lv_centros`/`lv_permisos` (lectura abierta a
+  docentes), aquí NI LA LECTURA es para todos — contiene documento de identidad y fecha de
+  nacimiento de todo el colegio, así que la política `coordinacion_todo` exige
+  `es_coordinacion()` tanto para leer como para escribir (mismo nivel que
+  `lv_docentes`/`lv_asignaciones`/`lv_institucion`).
+- **Acudientes: reutiliza `lv_acudientes` tal cual existe hoy** (el mismo formato
+  `{nombreAcudiente, parentesco, telefono, email, hijos:[...]}` de `09-acudientes.html`),
+  no una tabla aparte. Al matricular, el docente-coordinador busca un acudiente existente
+  (por nombre/teléfono) o registra uno nuevo desde el mismo formulario; en cualquiera de
+  los dos casos se guarda `acudienteId` en el registro de matrícula Y se agrega/actualiza
+  una entrada en `hijos[]` del acudiente con un campo nuevo `estId` (el id de la matrícula)
+  — retrocompatible: `09-acudientes.html` no se tocó y sigue funcionando igual, simplemente
+  ahora algunos `hijos[]` traen `estId` de más.
+  · Pestaña **Resumen**: activos/retirados/acudientes, conteo por sede y por grado, y una
+    lista de "estudiantes sin acudiente" (alerta de calidad de datos) + exportar CSV.
+  · Retirar un estudiante es un cambio de `estado` (no borra); Eliminar manda a la papelera
+    (`_eliminado:true`, patrón de siempre) y limpia el vínculo del lado del acudiente.
+  · Gate de acceso: todo el módulo (no solo partes, a diferencia de 12-director) exige
+    `login.esAdmin` (admin o coordinador); si no, solo se ve una tarjeta de "acceso
+    restringido". No se agregó a `materia-hub.html` (a diferencia de 17/18, que sí sirven a
+    cualquier docente) — el único enlace vive en el sidebar del portal, oculto para
+    docentes normales, con el mismo patrón que ya usa el link a Coordinación (`nav-coord`).
+  SW **v80** (+ el módulo en el precache). `node --check` limpio en sw.js/sync.js; bloques
+  `<script>` inline de index.html y 20-matricula.html verificados con `new Function`;
+  balance de `<div>/<section>/<table>/<tr>/<td>/<th>/<label>/<select>` verificado en
+  20-matricula.html.
+- **PENDIENTE:** correr `migracion_matricula.sql` en Supabase, push, y que Richard pruebe
+  el flujo completo (matricular con acudiente nuevo, matricular vinculando a uno existente,
+  retirar, eliminar, exportar CSV) y confirme que el resumen cuadra. Cuando llegue la ficha
+  oficial del colegio: ajustar campos exactos (tipos de documento, EPS, IPS, dirección,
+  etc. — hoy son los campos "razonables" que ya mencionó Richard: documento, fecha nac.,
+  sede, grado, grupo). Más adelante, en sesión propia: decidir si/cómo conectar este
+  registro maestro con los rosters por-curso de 01-calificaciones (punto de riesgo alto,
+  no hacer sin planificarlo).
+
+## ▶ ACLARACIÓN (jul 24, 2026 — sesión 25b): Richard y Francy son la misma persona
+
+- Confirmado con el dueño: **Richard Sabié y "Francy Vargas" son la misma persona/cuenta**
+  (correo agresotlomaverde@gmail.com). Todo el historial de sesiones de más abajo, donde se
+  narra "Francy pidió…", "Francy probó…", "que Francy confirme…", se refiere a la MISMA
+  persona con la que se sigue trabajando ahora — no hay dos usuarios distintos ni confusión
+  de roles entre ellos. No se reescribió el historial completo (habría sido un cambio enorme
+  y riesgoso sobre ~1250 líneas de bitácora); basta con leer "Francy" = "Richard" de aquí en
+  adelante. El único admin real en Supabase es `richard.mhsabie@icloud.com` — todos los demás
+  correos en `perfiles` son docentes.
+- Verificado en la misma sesión: el push del **Editor de roles admin (sesión 25, SW v79)**
+  SÍ quedó en producción (commit `cc27596` en `origin/main`, working tree limpio) y
+  `migracion_editor_roles.sql` SÍ se corrió (confirmado con los datos reales de `perfiles`:
+  solo richard.mhsabie@icloud.com tiene rol admin, el resto docente). Prueba del editor de
+  roles (cambiar a alguien a coordinador, reentrar, ver Coordinación sin la pestaña Roles):
+  HECHA por Richard, OK.
+- Verificado también: **`migracion_comodin_primaria_por_sede.sql` (sesión 24) SÍ corrió
+  completa** (no solo las consultas de lectura) — confirmado con
+  `select pg_get_functiondef('public.lv_acceso_total()'::regprocedure)`, que devuelve
+  exactamente `select public.es_coordinacion();` sin la rama del comodín. Queda pendiente
+  que los 4 docentes con comodín de primaria (Danarlys, Daniela, Diana, Luis) cierren sesión
+  y vuelvan a entrar, y que Luis confirme que ya no ve Sociales de bachillerato.
+
 ## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25, Editor de roles admin + separar coordinación de admin)
 
 - **Editor de roles en la app (SW v79):** ahora el admin/rector puede ver y
@@ -1244,7 +1321,11 @@
 
 **SABIE** (Sistema de Aprendizaje, Bienestar e Inclusión Educativa) es la plataforma docente
 de la I.E. San José de Loma Verde (Colombia): ~800 estudiantes, ~50 docentes de primaria y
-bachillerato. Dueño del proyecto: Francy Vargas (agresotlomaverde@gmail.com). Visión a largo
+bachillerato. Dueño del proyecto: Richard Sabié / Francy Vargas — **misma persona/cuenta**
+(correo agresotlomaverde@gmail.com; en el historial de sesiones abajo aparece como "Francy",
+nombre que usaba antes — ver aclaración jul 24, sesión 25b, al inicio de este archivo). El
+admin técnico real en Supabase es richard.mhsabie@icloud.com; es el ÚNICO admin del sistema
+(el resto de correos en `perfiles` son docentes). Visión a largo
 plazo: convertirla en producto vendible a otros colegios (multi-tenant), por eso la marca es
 SABIE y el nombre del colegio se retiró de la interfaz (solo permanece dentro de plantillas de
 documentos impresos/WhatsApp, que luego será configurable).
@@ -1290,6 +1371,16 @@ documentos impresos/WhatsApp, que luego será configurable).
   campos opcionales (jul 14, sesión 2, sin migración — es JSONB): `poblacion` (texto),
   `objetivoGeneral` (texto corto) y `fichaUrl` (link a la ficha PTAFI completa en
   OneDrive/Drive) — resumen rápido de la ficha oficial, en vez de transcribirla entera.
+- `modulos/20-matricula.html` — **Matrícula y Acudientes** (jul 2026, sesión 25c): registro
+  MAESTRO de estudiantes (documento, fecha nac., sede, grado, grupo, estado) amarrado a un
+  acudiente de `lv_acudientes`, SOLO coordinación/rector — estructura de partida, pendiente
+  de ajustar con la ficha oficial del colegio. Pestañas Matrícula (form + lista con
+  filtros) y Resumen (conteos + estudiantes sin acudiente + exportar CSV). Tabla nueva
+  `lv_matricula` (ver `migracion_matricula.sql`, RLS `es_coordinacion()` tanto lectura como
+  escritura). NO alimenta todavía los rosters por-curso de 01-calificaciones/05-asistencia
+  (`lv_estudiantes`, duplicado por materia) — es un registro paralelo; conectarlos es
+  trabajo pendiente de mayor riesgo. Solo enlazado en el sidebar del portal (oculto para
+  docentes normales), no en `materia-hub.html`.
 - `modulos/herramientas/` — 9 herramientas formativas (test lectura, cálculo mental,
   rúbricas, sociograma, etc.) que envían notas a la planilla.
 - `coordinacion.html` — pestañas: Docentes, Asignaciones, **🌟 Centros de Interés** (crear/
