@@ -53,14 +53,29 @@
      Opcional pero recomendado: `CRON_SECRET` (cualquier texto secreto que Richard
      invente) — si se define, Vercel la manda sola en cada llamada del cron y el archivo
      la exige, así nadie más puede disparar el envío llamando la URL a mano.
-- **PENDIENTE:** push del código; que Richard cree la cuenta de Resend, verifique dominio,
-  y agregue las 3 (o 4) variables de entorno en Vercel — sin eso el cron corre pero no
-  logra enviar nada (el archivo devuelve un error 500 claro si faltan `RESEND_API_KEY`/
-  `SUPABASE_SERVICE_ROLE`). Con el plan gratis de Vercel (Hobby), el cron corre UNA vez al
-  día con hasta ±59 min de margen — no es instantáneo ni exacto a la hora programada, pero
-  alcanza sobra para un aviso "2 días antes". Una vez verificado que llegan correos de
-  prueba, queda pendiente para otra sesión: el correo de "permiso aprobado" (punto 16,
-  segunda mitad) puede reusar esta misma infraestructura de Resend ya configurada.
+- **DESPLEGADO Y PROBADO (jul 25, 2026, misma sesión):** Richard completó los 3 pasos
+  manuales (cuenta Resend, dominio `sanjosedelomaverde.com` verificado — lo compró en
+  Vercel, así que Resend lo auto-configuró con un click via "Auto configure" en vez de
+  copiar registros DNS a mano — y las 4 variables de entorno en Vercel). Se encontró y
+  corrigió un bug real antes de que quedara funcionando: el archivo consultaba la tabla
+  `lv_eventos`, pero en Supabase esa tabla en realidad se llama **`eventos`** (sin el
+  prefijo `lv_`) — es una excepción del proyecto (junto con `notas` y `asistencia`, ver
+  `MAPA` en `sync.js` línea ~41-45) donde la clave de localStorage sí lleva el prefijo
+  pero la tabla real en la nube no. Corregido en `api/recordatorio-eventos.js` (commit
+  `58d8aab`). Probado con `curl` directo al endpoint
+  (`GET /api/recordatorio-eventos` con el header `Authorization: Bearer <CRON_SECRET>`):
+  responde `{"ok":true,"enviados":0,"mensaje":"Sin eventos que avisar hoy."}` — confirma
+  que lee Supabase correctamente con `SUPABASE_SERVICE_ROLE`, sin errores. Aún NO se ha
+  probado el envío real de un correo (no hay ningún evento hoy cuyo aviso caiga
+  justo hoy) — para esa prueba final falta crear un evento de prueba en el módulo 08 con
+  fecha de mañana y "1 día antes", y volver a llamar al endpoint (o esperar al cron de
+  las 7am).
+- **PENDIENTE:** probar el envío real de un correo con un evento de prueba (ver arriba).
+  Con el plan gratis de Vercel (Hobby), el cron corre UNA vez al día con hasta ±59 min de
+  margen — no es instantáneo ni exacto a la hora programada, pero alcanza de sobra para un
+  aviso "2 días antes". Queda pendiente para otra sesión: el correo de "permiso aprobado"
+  (punto 16, segunda mitad) puede reusar esta misma infraestructura de Resend ya
+  configurada y verificada.
 
 ## ▶ BACKLOG CRUDO (jul 25, 2026 — sesión 26, feedback de Richard tras probar todo)
 
