@@ -318,13 +318,37 @@ const LV_PERM = {
     if (this.accesoTotal(asignaciones)) return true;
     return this.materiasPermitidas(asignaciones).has(materia);
   },
-  // ¿Es mío este curso? — por asignación de materia O por dirigir el grupo.
+  // ¿Es mío este curso? — por asignación de materia, por el comodín (acotado por
+  // grado/grupo/sede si la asignación los trae — sesión 27, importador de Asignación
+  // Académica), o por dirigir el grupo.
+  // OJO (hallazgo sesión 26k, cerrado en sesión 27): antes, CUALQUIER asignación con
+  // area==='Primaria' o materia==='Todas las materias' daba acceso TOTAL sin mirar el
+  // curso — un docente de primaria veía TODO el colegio. Ahora, si la asignación trae
+  // grado (las nuevas del importador SIEMPRE lo traen), el comodín solo cubre ESE
+  // grado-grupo-sede específico. Las asignaciones viejas sin grado (de antes de esta
+  // sesión, aún no reimportadas) siguen dando acceso total — no se puede acotar lo que
+  // el registro no dice; se corrige solo al reimportar/editar esa asignación.
   cursoEsMio(curso, asignaciones, docentes) {
-    if (this.accesoTotal(asignaciones)) return true;
+    if (this.esAdmin()) return true;
     if (!curso) return false;
-    if (curso.materia && this.materiasPermitidas(asignaciones).has(curso.materia)) return true;
+    const mias = this.misAsignaciones(asignaciones);
+    // "Todas las materias" es el marcador del comodín, no una materia real — si el curso
+    // trae ese valor (típico de primaria) NUNCA debe calzar aquí por simple igualdad de
+    // texto (eso saltaría el acotado por grado/grupo/sede de abajo). Siempre pasa por
+    // _comodinCubreCurso.
+    if (curso.materia && curso.materia !== 'Todas las materias' && mias.some(a => a.materia === curso.materia)) return true;
+    const comodines = mias.filter(a => a.area === 'Primaria' || a.materia === 'Todas las materias');
+    if (comodines.some(a => this._comodinCubreCurso(a, curso))) return true;
     const d = this.miDocente(docentes);
     return !!(d && d.dirige && typeof LV_CURSO !== 'undefined' && LV_CURSO.dirigeCurso(d.dirige, curso));
+  },
+  _comodinCubreCurso(asig, curso) {
+    if (!asig.grado) return true; // comodín viejo sin datos precisos: acceso total (compat.)
+    if (typeof LV_CURSO === 'undefined') return true;
+    if (LV_CURSO.gradoCanon(asig.grado) !== LV_CURSO.gradoCanon(curso.grado)) return false;
+    if (asig.grupo && curso.grupo && LV_CURSO.grupoCanon(asig.grado, asig.grupo) !== LV_CURSO.grupoCanon(curso.grado, curso.grupo)) return false;
+    if (asig.sede && curso.sede && LV_CURSO.sedeCode(asig.sede) !== LV_CURSO.sedeCode(curso.sede)) return false;
+    return true;
   },
   // Cursos que dirijo (o TODOS si soy admin) — Observador/Director/Boletines/Analítica.
   gruposDirigidos(cursos, docentes) {

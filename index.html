@@ -389,23 +389,43 @@ function irAMateria(area, materia, e){
 // también el comentario de la línea ~1119 sobre LV_CURSO). Por eso se deja
 // self-contenido, leyendo localStorage directo — misma lógica que LV_PERM,
 // duplicada a propósito solo aquí por la restricción de orden de carga.
-let PERM = { login:null, esAdmin:false, accesoTotal:false, materiasPermitidas:new Set() };
+let PERM = { login:null, esAdmin:false, accesoTotal:false, materiasPermitidas:new Set(), misAsig:[] };
 (function calcularPermisos(){
   let login;
   try{ login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){ login=null; }
   if(!login) return;
-  if(login.esAdmin){ PERM = { login, esAdmin:true, accesoTotal:true, materiasPermitidas:null }; return; }
+  if(login.esAdmin){ PERM = { login, esAdmin:true, accesoTotal:true, materiasPermitidas:null, misAsig:[] }; return; }
   let asignaciones=[];
   try{ asignaciones = JSON.parse(localStorage.getItem('lv_asignaciones')||'[]'); }catch(_){}
   const misAsig = asignaciones.filter(a=>a.docenteId===login.docenteId);
   const accesoTotal = misAsig.some(a=>a.area==='Primaria' || a.materia==='Todas las materias');
   const materiasPermitidas = new Set(misAsig.map(a=>a.materia));
-  PERM = { login, esAdmin:false, accesoTotal, materiasPermitidas };
+  PERM = { login, esAdmin:false, accesoTotal, materiasPermitidas, misAsig };
 })();
-// true si el registro (con campo .materia) es visible para el docente actual
-function permiteMateria(materia){
-  if(PERM.esAdmin||PERM.accesoTotal) return true;
-  return PERM.materiasPermitidas.has(materia);
+// true si el registro (con campo .materia) es visible para el docente actual.
+// OJO (sesión 27, cierre del hueco de permisos): el comodín ("Todas las materias"/área
+// Primaria) antes daba acceso ciego a TODO — ahora, si se pasa el 2º parámetro (el
+// registro completo, con grado/grupo/sede si los tiene — ej. un curso, examen o
+// planeador), se acota a ese grado-grupo-sede específico usando LV_CURSO (auth.js,
+// mismo criterio que LV_PERM.cursoEsMio). Si no se pasa ese 2º parámetro, o LV_CURSO
+// todavía no cargó, se mantiene el comportamiento anterior (acceso total) — no hay con
+// qué acotar. "Todas las materias" NUNCA calza por simple igualdad de texto contra
+// materiasPermitidas (sería un falso positivo: ese valor es el marcador del comodín,
+// no una materia real).
+function permiteMateria(materia, registro){
+  if(PERM.esAdmin) return true;
+  if(materia && materia!=='Todas las materias' && PERM.materiasPermitidas && PERM.materiasPermitidas.has(materia)) return true;
+  if(!PERM.accesoTotal) return false;
+  if(!registro || !registro.grado || typeof LV_CURSO==='undefined') return true;
+  const comodines = (PERM.misAsig||[]).filter(a=>a.area==='Primaria' || a.materia==='Todas las materias');
+  if(!comodines.length) return true;
+  return comodines.some(a=>{
+    if(!a.grado) return true;
+    if(LV_CURSO.gradoCanon(a.grado)!==LV_CURSO.gradoCanon(registro.grado)) return false;
+    if(a.grupo && registro.grupo && LV_CURSO.grupoCanon(a.grado,a.grupo)!==LV_CURSO.grupoCanon(registro.grado,registro.grupo)) return false;
+    if(a.sede && registro.sede && LV_CURSO.sedeCode(a.sede)!==LV_CURSO.sedeCode(registro.sede)) return false;
+    return true;
+  });
 }
 
 // ── Sesión: mostrar quién entró + filtrar materias según sus asignaciones ──
@@ -564,7 +584,7 @@ const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;'
   function getMisCursoIds(){
     if(misCursoIds) return misCursoIds;
     let cursos=[]; try{ cursos=JSON.parse(localStorage.getItem('lv_cursos')||'[]'); }catch(_){}
-    if(!soyAdmin) cursos = cursos.filter(c=>permiteMateria(c.materia));
+    if(!soyAdmin) cursos = cursos.filter(c=>permiteMateria(c.materia, c));
     misCursoIds = new Set(cursos.map(c=>c.id));
     return misCursoIds;
   }
@@ -616,7 +636,7 @@ const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;'
   // Promedio de notas por curso
   const chartWrap = document.getElementById('chart-wrap');
   const cursos = safeJSON('lv_cursos')||[];
-  const misCursos = soyAdmin ? cursos : cursos.filter(c=>permiteMateria(c.materia));
+  const misCursos = soyAdmin ? cursos : cursos.filter(c=>permiteMateria(c.materia, c));
   if(misCursos.length>0 && cals.length>0) {
     const promedios = misCursos.map(c => {
       const estC = ests.filter(e=>e.cursoId===c.id).map(e=>e.id);
@@ -767,7 +787,7 @@ document.querySelectorAll('.sb-link, .quick-btn').forEach(a => {
 
   // ── 1. Calificaciones ─────────────────────────────
   let cursos01 = safeJSON('lv_cursos')||[];
-  if(!soyAdmin) cursos01 = cursos01.filter(c=>permiteMateria(c.materia));
+  if(!soyAdmin) cursos01 = cursos01.filter(c=>permiteMateria(c.materia, c));
   const misCursoIds = new Set(cursos01.map(c=>c.id));
 
   let ests01 = safeJSON('lv_estudiantes')||[];
@@ -850,8 +870,8 @@ document.querySelectorAll('.sb-link, .quick-btn').forEach(a => {
   let ex03list=safeJSON('lv_examenes')||[];
   let ex04list=safeJSON('lv11_examenes')||[];
   if(!soyAdmin){
-    ex03list = ex03list.filter(e=>permiteMateria(e.materia));
-    ex04list = ex04list.filter(e=>permiteMateria(e.materia));
+    ex03list = ex03list.filter(e=>permiteMateria(e.materia, e));
+    ex04list = ex04list.filter(e=>permiteMateria(e.materia, e));
   }
   document.getElementById('dv-examenes').textContent=(ex03list.length+ex04list.length)||'0';
   // resultados: lv_resultados/lv11_resultados no llevan materia propia,
@@ -867,7 +887,7 @@ document.querySelectorAll('.sb-link, .quick-btn').forEach(a => {
 
   // ── 4. Planeadores ────────────────────────────────
   let plans=safeJSON('lv_planeadores')||[];
-  if(!soyAdmin) plans = plans.filter(p=>permiteMateria(p.materia));
+  if(!soyAdmin) plans = plans.filter(p=>permiteMateria(p.materia, p));
   document.getElementById('dv-planeador').textContent=plans.length||'0';
   if(plans.length>0){
     const last=plans.sort((a,b)=>(b.actualizado||b.creado||0)-(a.actualizado||a.creado||0))[0];
@@ -1020,7 +1040,7 @@ if("serviceWorker" in navigator){
     leer('lv_estudiantes').forEach(e=>{
       if(!normB(e.nombre).includes(q)) return;
       const c=cursoMap[e.cursoId];
-      if(!c || !permiteMateria(c.materia)) return;
+      if(!c || !permiteMateria(c.materia, c)) return;
       const k=normB(e.nombre);
       if(!porNombre[k]) porNombre[k]={nombre:e.nombre, cursos:new Set()};
       porNombre[k].cursos.add((c.grado||'')+(c.grupo?'-'+c.grupo:''));
@@ -1122,7 +1142,7 @@ if("serviceWorker" in navigator){
     ests.forEach(e=>{
       if(e.cumple!==clave || vistos[e.nombre]) return;
       const c=cursoMap[e.cursoId];
-      if(!c || !permiteMateria(c.materia)) return; // solo cumpleaños de mis estudiantes
+      if(!c || !permiteMateria(c.materia, c)) return; // solo cumpleaños de mis estudiantes
       vistos[e.nombre]=1; cumple.push(e.nombre);
     });
     if(!cumple.length) return;

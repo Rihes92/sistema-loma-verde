@@ -2,6 +2,68 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 28): cierre del hueco de permisos del comodín (grado/grupo/sede) — CÓDIGO LISTO, sin desplegar
+
+- **Continuación directa del hallazgo señalado en la sesión 27** (ver ajuste de abajo):
+  Richard pidió explícitamente seguir con esto ("Ya importé. Funciona. Pero esta parte...
+  debe quedar al 100%... Debemos seguir"), confirmado con una pregunta de alcance
+  (multiSelect): sí cerrar el hueco de permisos, sí además diseñar los horarios
+  automáticos, nada más pendiente en Asignaciones/Hoja de Vida.
+- **Investigación previa (antes de tocar código):** el comodín ("Todas las materias"/área
+  Primaria) se evalúa en DOS lugares separados, no uno — `LV_PERM.cursoEsMio()` en
+  `auth.js` (usado por `01-calificaciones.html` y `11-inclusion.html`) y un `PERM`/
+  `permiteMateria()` **duplicado e independiente** dentro de `index.html` (no puede usar
+  LV_PERM porque ese bloque corre ANTES de que `<script src="auth.js">` cargue en el mismo
+  archivo — mismo bug de orden de scripts ya documentado en sesiones anteriores). Los
+  otros ~8 módulos que usan LV_PERM (10,12,13,14,17,18,20) lo usan para `gruposDirigidos`/
+  `esAdmin`, sin relación con este comodín — no había que tocarlos.
+- **`LV_PERM.cursoEsMio()` reescrito en `auth.js`:** antes, CUALQUIER asignación con
+  `area==='Primaria'` o `materia==='Todas las materias'` daba acceso total sin mirar el
+  curso. Ahora, función nueva `_comodinCubreCurso(asig, curso)` compara `grado` (siempre,
+  vía `LV_CURSO.gradoCanon`), `grupo` (si ambos lo traen, vía `grupoCanon`) y `sede` (si
+  ambos la traen, vía `sedeCode`) — el comodín solo cubre ESE grado-grupo-sede específico.
+  **Retrocompatibilidad explícita:** una asignación vieja SIN campo `grado` (de antes de
+  esta sesión, aún no reimportada) sigue dando acceso total — no hay con qué acotar lo que
+  el registro no trae; se corrige sola al reimportar/editar esa asignación.
+- **Bug real encontrado y corregido DURANTE las pruebas (no habría funcionado si no se
+  prueba):** el atajo de "materia igual → acceso" (`curso.materia === asig.materia`)
+  calzaba trivialmente cuando AMBOS valían literalmente `'Todas las materias'` — el
+  comodín se colaba por igualdad de texto, saltándose por completo el acotado nuevo de
+  grado/grupo/sede. Corregido excluyendo `'Todas las materias'` de ese atajo, forzando
+  que ese valor SIEMPRE pase por `_comodinCubreCurso`.
+- **El mismo fix, aplicado a mano en `index.html`** (no puede llamar a `LV_PERM`, ver
+  arriba): `PERM` ahora también guarda `misAsig` (las asignaciones propias del docente).
+  `permiteMateria(materia, registro)` gana un 2º parámetro OPCIONAL — el registro completo
+  (curso/examen/planeador, con `.grado`/`.grupo`/`.sede` si los trae) — y aplica la misma
+  lógica de `_comodinCubreCurso` inline. **Si no se pasa el 2º parámetro, o `LV_CURSO`
+  todavía no cargó, cae al comportamiento anterior (acceso total)** — es un fallback de
+  compatibilidad, no un hueco nuevo: se actualizaron los 8 sitios donde `index.html` llama
+  a `permiteMateria` (buscador de cursos, lista de exámenes 03/04, planeadores, buscador
+  global de estudiantes, cumpleaños) para que TODOS pasen el registro completo como 2º
+  argumento — ninguno quedó usando la forma vieja de 1 argumento.
+- **Verificado con Node contra la lógica real** (no solo `node --check`): harness en
+  `/tmp` que carga el `LV_CURSO` real de `auth.js` y ejecuta 8 escenarios contra
+  `cursoEsMio()` (admin bypass, comodín viejo sin grado = acceso total, comodín nuevo
+  preciso permite su grado/grupo/sede y NIEGA grado/grupo/sede distintos, materia exacta
+  de bachillerato sin cambios, director de grupo sin cambios) — los 8 pasaron. Luego,
+  harness separado para el `permiteMateria` de `index.html` (extraído tal cual del
+  archivo real) con 15 aserciones (mismos escenarios + comportamiento con/sin 2º
+  argumento + múltiples comodines) — las 15 pasaron. Esto atrapó el bug de "Todas las
+  materias por igualdad de texto" antes de darlo por bueno.
+- SW **v96**. `node --check` limpio en `auth.js`, `sw.js` y los 6 bloques `<script>`
+  inline de `index.html`.
+- **PENDIENTE:** push; que Richard confirme con una cuenta docente de primaria real (con
+  asignación ya reimportada, o sea con `grado` presente) que ya SOLO ve su grado-grupo-
+  sede específico en el buscador de estudiantes, Áreas académicas, exámenes y planeadores
+  — y que un director de grupo y un docente de bachillerato normal siguen viendo
+  exactamente lo mismo que antes (esto es un cierre de hueco, no debería cambiar nada para
+  quien no tenga el comodín). Con esto, el punto 2 de la sesión 27 (cerrar el hueco de
+  permisos) queda hecho. **Sigue pendiente el punto 3 original del pedido de Richard:**
+  el motor de generación automática de horarios a partir de la asignación importada — es
+  un problema de programación con restricciones (sin cruces de docente/grupo, horas
+  exactas por semana, cabe en la grilla de 7 bloques × 5 días del módulo 21) y es la
+  siguiente pieza de trabajo, en sesión propia.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 27): Importador de Asignación Académica (Excel) + Hoja de Vida — CÓDIGO LISTO, sin desplegar
 
 - **Pedido de Richard, 3 puntos:** (1) tomar el Excel oficial "V2_1. FORMATO ASIGNACION
@@ -57,21 +119,14 @@
 - **Primaria: SÍ trae grupo+sede exactos** (columna "GRUPO" + "SEDE" del Excel) → cada
   asignación de primaria queda con `area:'Primaria', materia:'Todas las materias',
   grado, grupo, sede` precisos, reemplazando lo que antes era un comodín sin acotar.
-- **⚠️ HALLAZGO IMPORTANTE, NO RESUELTO HOY (avisado, no se improvisó):** Richard aprobó
-  "reemplazar el comodín por asignación precisa", pero investigando se encontró que el
-  comodín vive en DOS sitios distintos: (1) el RLS de Supabase (`lv_acceso_total()`), que
-  YA se corrigió en la sesión 24 (exige coordinación, ya no comodín); (2) **`LV_PERM.
-  accesoTotal()` en `auth.js`, que TODAVÍA trata CUALQUIER asignación con `area==='Primaria'`
-  o `materia==='Todas las materias'` como acceso total SIN mirar grado/grupo/sede** — es
-  el motor de permisos que usan ~10 módulos (index.html, 01, 10, 11, 12, 13, 14, 17, 18,
-  20). Importar datos precisos con este import NO cambia el comportamiento real todavía:
-  un docente de primaria seguirá viendo TODA primaria en el buscador/dashboard, porque
-  `accesoTotal()` no filtra por curso. Cerrar esto de verdad requiere tocar
-  `LV_PERM.cursoEsMio()`/`accesoTotal()` para que, cuando la materia sea "Todas las
-  materias", compare grado+grupo+sede de la asignación contra el curso en cuestión — un
-  cambio con radio de impacto grande (toca la función más compartida del proyecto) que,
-  siguiendo el mismo criterio que pausó la Fase 2 de arquitectura durante meses, se dejó
-  señalado para una sesión propia con pruebas, en vez de mezclarlo con el import de hoy.
+- **⚠️ HALLAZGO IMPORTANTE — RESUELTO en la sesión 28 (ver ajuste más abajo):** Richard
+  aprobó "reemplazar el comodín por asignación precisa", pero investigando se encontró que
+  el comodín vivía en DOS sitios distintos: (1) el RLS de Supabase (`lv_acceso_total()`),
+  YA corregido desde la sesión 24 (exige coordinación, ya no comodín); (2) `LV_PERM.
+  cursoEsMio()` en `auth.js` + el `PERM`/`permiteMateria()` duplicado de `index.html`, que
+  trataban CUALQUIER asignación con `area==='Primaria'` o `materia==='Todas las materias'`
+  como acceso total SIN mirar grado/grupo/sede. Quedó señalado aquí mismo para no mezclarlo
+  con el import — cerrado justo después, en la sesión 28.
 - **Nueva pestaña "🪪 Hoja de Vida" en Coordinación:** lista todos los docentes con
   cédula/título profesional/área de desempeño (se llenan solos con el import; también
   editables a mano, botón ✏️ por fila). Campos nuevos en `lv_docentes` (sin migración
