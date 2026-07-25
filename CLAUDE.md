@@ -2,6 +2,87 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 30c): grupos de bachillerato numerados por sede (Principal/Juana Julia 1) — CÓDIGO LISTO, sin desplegar
+
+- **Pregunta de Richard tras la sesión 30b:** "¿Cómo vamos a resolver lo de los grupos? Es
+  decir, que se sepa si es grupo 1 o 2 o 3." Su especificación exacta: la numeración debe
+  empezar en Sede Principal (si noveno-química tiene 2 grupos en Principal, son 1 y 2; si
+  hay uno más en Juana Julia 1, es el 3 — **numeración continua, sin reiniciar**).
+  Confirmó que **las ÚNICAS sedes con bachillerato (6°-11°) son Principal y Juana Julia 1**
+  — el resto de sedes son solo primaria. Para primaria confirmó que la numeración YA es
+  correcta (independiente por sede: "La Popa" con un grupo de primero es 1-1, sin relación
+  con la numeración de otra sede) — no tocado, ya lo hacía bien el import de sesión 27.
+- **Mi primera propuesta (sede fija por docente, en Hoja de Vida) quedó DESCARTADA por un
+  contraejemplo real de Richard:** "el profesor Richard Miguel Hernández Sabié da Ciencias
+  Sociales en 10-2 en la sede Principal y Ciencias Sociales en 10-3 en la sede Juana Julia
+  1 — ¿cómo se diferencia eso?" — un mismo docente puede cubrir grupos de AMBAS sedes en
+  la MISMA materia-grado. La sede tiene que quedar a nivel de la ASIGNACIÓN (fila
+  materia+grado), no del docente.
+- **Campo nuevo `numGruposJJ1`** en cada asignación de bachillerato (sin migración SQL,
+  JSONB): cuántos de los `numGrupos` totales que esa fila declara son de Juana Julia 1; el
+  resto (`numGrupos - numGruposJJ1`) se asume Principal. Por defecto 0/ausente en TODO lo
+  ya importado (todo cae en Principal hasta que coordinación lo corrija a mano) — el Excel
+  de bachillerato NO trae sede (verificado desde la sesión 27), así que este dato no se
+  puede inferir, solo declarar.
+- **`coordinacion.html` → pestaña Asignaciones:** la columna "Grupos" (bach.) ahora muestra
+  el total declarado + un input pequeño para editar cuántos de esos grupos son de Juana
+  Julia 1 (el resto se ve como "Principal: N"). Esto de paso resuelve la duda de Richard
+  sobre "hay dos columnas que dicen grupo, no sé qué diferencia hay" — no era un bug: una
+  es "Grupo/Sede (primaria)" (el grupo EXACTO, ya viene preciso del Excel) y la otra es
+  "Grupos (bach.)" (solo un CONTEO, el número específico 9-1/9-2 se decide en Horarios) —
+  se renombraron ambos encabezados y se agregó un texto explicativo para que no se
+  confundan. **Con esto también queda resuelta la pregunta de Richard sobre "solo se puede
+  asignar una sola sede al docente":** la sede ya NO se asigna al docente en ningún lado
+  para bachillerato — vive en la asignación (por fila materia+grado), así que un mismo
+  docente puede tener grupos en Principal y en Juana Julia 1 sin ningún conflicto de
+  diseño. El desplegable de sede que se ve junto al nombre del docente en el selector de
+  Asignaciones (`d.sede`) es un dato distinto y sin relación (uso general/primaria); no
+  restringe nada de esto.
+- **`modulos/21-horarios-coordinacion.html` — `SEDES_BACH_ORDEN = ['PRINCIPAL','JUANA JULIA 1']`**
+  (las únicas 2 con bachillerato, en el orden de numeración). El modal de asignar clase
+  (`fillAreaMateria`) ahora ofrece este catálogo corto para áreas de bachillerato (en vez
+  del catálogo completo de 16 sedes que solo aplica a primaria).
+- **`gruposBachPorGradoYSede(asignaciones)` NUEVA** (reemplaza `gruposBachPorGrado`):
+  calcula el total de grupos de CADA sede, por grado, para poder numerar y detectar
+  sobre-cupo. **Bug real encontrado y corregido ANTES de dar esto por bueno** (atrapado
+  con el mismo harness de Node de siempre, contra un escenario sintético calcado del
+  ejemplo de Richard): la primera versión tomaba el MÁXIMO de `numGrupos` de una sola fila
+  para estimar el total del grado — funciona si cada materia+grado tiene un solo docente,
+  pero **91 de las 245 combinaciones materia+grado reales tienen 2 o 3 docentes distintos**
+  compartiendo la misma materia (ej. Matemáticas 9° con 3 profes). Con el máximo de una
+  sola fila, el segundo/tercer docente de una materia compartida perdía grupos en
+  silencio (probado: un docente con 1 grupo Principal + 1 JJ1 solo recibía el JJ1, el
+  Principal se descartaba porque el cursor ya estaba lleno). **Corregido:** ahora se SUMAN
+  los grupos (principal y JJ1 por separado) de todas las asignaciones de la MISMA
+  materia+grado primero, y solo LUEGO se toma el máximo entre materias distintas del mismo
+  grado (para permitir que una materia sin repartir del todo tome el total de otra que sí
+  lo esté). Verificado con Node: el escenario exacto de Richard (2 docentes, Sociales 10°,
+  uno con 2 grupos Principal y otro con 1 Principal + 1 Juana Julia 1) ahora da los 4
+  grupos correctos (1,2,3 Principal + 4 Juana Julia 1), sin perder ninguno.
+- **`construirUnidades()` — reparto continuo entre sedes:** dos cursores independientes
+  (`cursorPrincipal` empieza en 1; `cursorJJ1` empieza en `totalPrincipal+1`, para no
+  reiniciar la cuenta) — un mismo docente puede consumir números de AMBOS cursores en la
+  misma iteración si su fila declara grupos de las dos sedes. Si una asignación pide más
+  grupos de los que hay en total para su sede, queda reportado en `avisos` (no se pierde
+  en silencio, coordinación ve el aviso y corrige el reparto en Asignaciones).
+- **Verificado con Node contra los 284 datos reales** (no solo el escenario sintético):
+  con `numGruposJJ1` ausente en TODAS las asignaciones reales (nadie lo ha declarado
+  todavía — es un campo nuevo), el resultado es 245 unidades de bachillerato, **0
+  choques** materia+grado+grupo+sede entre docentes distintos, **0 avisos**, **0 unidades
+  sin sede**, y **0 en Juana Julia 1** (esperado: todo cae en Principal por defecto hasta
+  que coordinación declare manualmente cuáles son de Juana Julia 1). Corrida completa de
+  `generarHorariosAuto()` contra los datos reales: **17 conflictos** (horas sin ubicar) —
+  exactamente el mismo número que la sesión 29 (98.6% ubicadas), confirmando que el fix no
+  regresionó nada.
+- SW **v100**. `node --check` limpio en los 3 bloques `<script>` de
+  `21-horarios-coordinacion.html` y los 2 de `coordinacion.html`.
+- **PENDIENTE:** push; que Richard entre a Coordinación → Asignaciones y, para el profesor
+  Richard Miguel Hernández Sabié (Ciencias Sociales, 10°), marque cuántos de sus grupos
+  son de Juana Julia 1 (según su ejemplo: 1 de 2) — luego ir a Horarios (Coordinación),
+  tocar "Generar automáticamente" de nuevo, y confirmar que los grupos de bachillerato
+  quedan numerados de forma continua (Principal primero, Juana Julia 1 después) sin
+  reiniciar la cuenta y sin cruces.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 30b): fix crítico — cruces falsos por no distinguir sede en primaria — CÓDIGO LISTO, sin desplegar
 
 - **Reporte de Richard tras revisar la tarjeta de cruces (sesión 30):** "Está marcando

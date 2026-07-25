@@ -843,6 +843,22 @@ window.eliminarAsignacion = id=>{
 };
 document.getElementById('a-filtro-docente').addEventListener('change', renderAsignaciones);
 document.getElementById('a-filtro-materia').addEventListener('change', renderAsignaciones);
+// Solo Principal y Juana Julia 1 tienen bachillerato (6°-11°) — el resto de sedes
+// son exclusivamente primaria (Prejardín-5°). El Excel de bachillerato NO trae
+// sede (verificado contra el archivo real) — coordinación indica aquí cuántos de
+// los grupos totales de cada asignación son de Juana Julia 1; el resto se asume
+// en Principal (por defecto, TODOS los importados quedan en Principal hasta que
+// se corrija). Ver sesión 30c en CLAUDE.md.
+function renderCeldaGruposBach(a){
+  const jj1 = Math.max(0, Number(a.numGruposJJ1)||0);
+  const principal = Math.max(0, (Number(a.numGrupos)||0) - jj1);
+  return `<div style="font-size:.72rem;line-height:1.6">
+    <div><b>${esc(a.numGrupos)}</b> total</div>
+    <div style="color:var(--muted)">Principal: <b>${principal}</b> · JJ1:
+      <input type="number" min="0" max="${esc(a.numGrupos)}" value="${jj1}"
+        style="width:42px;padding:1px 3px;font-size:.72rem" data-jj1-id="${esc(a.id)}"></div>
+  </div>`;
+}
 function renderAsignaciones(){
   const fd = document.getElementById('a-filtro-docente').value;
   const fm = document.getElementById('a-filtro-materia').value;
@@ -852,8 +868,12 @@ function renderAsignaciones(){
   lista.sort((a,b)=>(a.grado||'').localeCompare(b.grado||''));
   const out = document.getElementById('asignaciones-out');
   if(!lista.length){ out.innerHTML = '<div class="empty">Sin asignaciones con este filtro.</div>'; return; }
-  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
-    <th>Docente</th><th>Área</th><th>Materia</th><th>Grado</th><th>Grupo</th><th class="c">Horas</th><th class="c">Grupos</th><th class="c">Acciones</th>
+  out.innerHTML = `<p class="desc">"Grupo/Sede" es el grupo EXACTO de primaria (ya viene preciso del Excel).
+    "Grupos (bach.)" es solo un CONTEO para bachillerato — el número de grupo específico (9-1, 9-2…) se
+    decide al generar/armar el horario; aquí solo indicas cuántos de esos grupos son de Juana Julia 1
+    (el resto se asume en Principal).</p>
+    <div class="tableScroll"><table><thead><tr>
+    <th>Docente</th><th>Área</th><th>Materia</th><th>Grado</th><th>Grupo/Sede (primaria)</th><th class="c">Horas</th><th class="c">Grupos (bach.)</th><th class="c">Acciones</th>
   </tr></thead><tbody>${lista.map(a=>{
     const d = docentes.find(x=>x.id===a.docenteId);
     return `<tr>
@@ -863,10 +883,20 @@ function renderAsignaciones(){
       <td>${esc(a.grado)}</td>
       <td>${esc(a.grupo||'—')}${a.sede?' <span class="desc">'+esc(a.sede)+'</span>':''}</td>
       <td class="c">${a.horas!=null?a.horas:'—'}</td>
-      <td class="c">${a.numGrupos!=null?a.numGrupos:'—'}</td>
+      <td class="c">${a.numGrupos!=null?renderCeldaGruposBach(a):'—'}</td>
       <td class="c"><button class="btn sm bad" onclick="eliminarAsignacion('${a.id}')">🗑️</button></td>
     </tr>`;
   }).join('')}</tbody></table></div>`;
+  out.querySelectorAll('input[data-jj1-id]').forEach(inp=>{
+    inp.addEventListener('change', ()=>{
+      const a = asignaciones.find(x=>x.id===inp.dataset.jj1Id); if(!a) return;
+      a.numGruposJJ1 = Math.max(0, Math.min(Number(a.numGrupos)||0, Number(inp.value)||0));
+      lsWrite('asignaciones', asignaciones);
+      if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_asignaciones', a);
+      renderAsignaciones();
+      toast('Sede de grupos actualizada — recuerda "Generar automáticamente" de nuevo en Horarios si ya habías generado.');
+    });
+  });
 }
 
 // ---------- Importar Asignación Académica desde Excel (formato oficial, 2 hojas) ----------

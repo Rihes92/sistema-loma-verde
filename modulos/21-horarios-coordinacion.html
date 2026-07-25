@@ -154,7 +154,7 @@
       <label class="fld">Grado<select id="ed-grado"></select></label>
       <label class="fld">Grupo<input id="ed-grupo" placeholder="Ej: 1, 2, único…"></label>
     </div>
-    <div class="row hide" id="fila-ed-sede" style="margin-bottom:10px">
+    <div class="row" id="fila-ed-sede" style="margin-bottom:10px">
       <label class="fld">Sede<select id="ed-sede"><option value="">— sin sede —</option></select></label>
     </div>
     <div class="row" style="margin-bottom:4px">
@@ -286,7 +286,10 @@ function renderEstadoBadge(){
 function mismoGrupoReal(a,b){
   if(String(a.grado)!==String(b.grado)) return false;
   if(String(a.grupo||'')!==String(b.grupo||'')) return false;
-  if(a.sede && b.sede && String(a.sede)!==String(b.sede)) return false;
+  // Comparación de sede normalizada (vía LV_CURSO.sedeCode) en vez de igualdad
+  // de texto cruda — evita que un mismatch de mayúsculas/tildes ("Principal"
+  // vs "PRINCIPAL") esconda un cruce real entre dos docentes del mismo grupo.
+  if(a.sede && b.sede && typeof LV_CURSO!=='undefined' && LV_CURSO.sedeCode(a.sede)!==LV_CURSO.sedeCode(b.sede)) return false;
   return true;
 }
 
@@ -388,13 +391,20 @@ let _di=null,_bi=null;
 // Sede solo aplica a Primaria (el Excel de bachillerato no la trae — ver
 // sesión 27). Se muestra/oculta el campo según el área elegida, para no
 // confundir a coordinación con un dato que no aplica en bachillerato.
-function fillAreaMateria(areaNombre, materiaSel){
+// Sede aplica tanto a Primaria (catálogo completo de sedes) como a
+// Bachillerato (SOLO Principal y Juana Julia 1 tienen 6°-11°, confirmado por
+// Richard) — se restringe la lista de opciones según el área para no dejar
+// elegir una sede que no dicta bachillerato por error.
+function fillAreaMateria(areaNombre, materiaSel, sedeSel){
   const area=AREAS.find(a=>a.nombre===areaNombre)||AREAS[1];
   $('#ed-materia').innerHTML=area.materias.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
   if(materiaSel && area.materias.includes(materiaSel)) $('#ed-materia').value=materiaSel;
-  $('#fila-ed-sede').classList.toggle('hide', areaNombre!=='Primaria');
+  const esPrimaria = areaNombre==='Primaria';
+  const sedesDisp = esPrimaria ? (typeof LV_INST!=='undefined'?LV_INST.sedes():[]) : SEDES_BACH_ORDEN;
+  $('#ed-sede').innerHTML='<option value="">— sin sede —</option>'+sedesDisp.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('');
+  if(sedeSel && sedesDisp.includes(sedeSel)) $('#ed-sede').value=sedeSel;
 }
-$('#ed-area').addEventListener('change',()=>fillAreaMateria($('#ed-area').value));
+$('#ed-area').addEventListener('change',()=>fillAreaMateria($('#ed-area').value,'',''));
 
 function abrirModal(di,bi,slot,val){
   _di=di;_bi=bi;
@@ -402,15 +412,10 @@ function abrirModal(di,bi,slot,val){
   if($('#ed-area').options.length===0) $('#ed-area').innerHTML=AREAS.map(a=>`<option>${esc(a.nombre)}</option>`).join('');
   const areaDeMateria = val ? (AREAS.find(a=>a.materias.includes(val.materia))||AREAS[1]).nombre : AREAS[1].nombre;
   $('#ed-area').value=areaDeMateria;
-  fillAreaMateria(areaDeMateria, val?val.materia:'');
+  fillAreaMateria(areaDeMateria, val?val.materia:'', val?val.sede:'');
   if($('#ed-grado').options.length===0) $('#ed-grado').innerHTML=GRADOS.map(g=>`<option>${esc(g)}</option>`).join('');
   $('#ed-grado').value=val?.grado||GRADOS[3];
   $('#ed-grupo').value=val?.grupo||'';
-  if($('#ed-sede').options.length<=1){
-    const sedes=(typeof LV_INST!=='undefined'?LV_INST.sedes():[]);
-    $('#ed-sede').innerHTML='<option value="">— sin sede —</option>'+sedes.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('');
-  }
-  $('#ed-sede').value=val?.sede||'';
   $('#ed-nota').value=val?.aula||'';
   $('#btn-quitar-celda').classList.toggle('hide', !val);
   $('#modal-ed').classList.remove('hide');
@@ -423,12 +428,11 @@ function marcarBorrador(){
 window.guardarCelda=function(){
   if(_di===null) return;
   if(!celdas[_di]) celdas[_di]={};
-  const areaSel=$('#ed-area').value;
   celdas[_di][_bi]={
     materia:$('#ed-materia').value,
     grado:$('#ed-grado').value,
     grupo:$('#ed-grupo').value.trim(),
-    sede: areaSel==='Primaria' ? ($('#ed-sede').value||'') : '',
+    sede: $('#ed-sede').value||'',
     aula:$('#ed-nota').value.trim()
   };
   marcarBorrador();
@@ -523,13 +527,41 @@ $('#sel-docente').addEventListener('change',()=>{
 //  horas/semana, no una fracción.
 // ═══════════════════════════════════════════════════════════════
 const BACH_GRADOS = ['6°','7°','8°','9°','10°','11°'];
+// Únicas sedes con bachillerato (6°-11°) — confirmado por Richard: el resto de
+// sedes son solo primaria. Orden = orden de numeración (Principal primero,
+// Juana Julia 1 sigue la cuenta sin reiniciar — sesión 30c).
+const SEDES_BACH_ORDEN = ['PRINCIPAL','JUANA JULIA 1'];
 
-function gruposBachPorGrado(asignaciones){
-  const max = {};
+// Total de grupos de CADA sede, por grado — el Excel de bachillerato no trae
+// sede (verificado); coordinación indica cuántos de los grupos declarados por
+// cada asignación son de Juana Julia 1 (`numGruposJJ1`, en Coordinación →
+// Asignaciones) — el resto se asume en Principal.
+// OJO (corregido sesión 30c-bis, hallado con Node contra los datos reales):
+// una MISMA materia-grado puede tener VARIOS docentes (ej. Matemáticas 9° con
+// 3 profes distintos, cada uno cubriendo algunos grupos — pasa en 91 de las
+// combinaciones reales) — por eso el total de esa materia-grado es la SUMA de
+// sus asignaciones (principal y JJ1 por separado), NO el máximo de una sola
+// fila. Ya luego, entre MATERIAS distintas del mismo grado, sí se toma el
+// MÁXIMO (alguna materia puede no tener repartidos todos sus grupos todavía).
+function gruposBachPorGradoYSede(asignaciones){
+  const porMateriaGrado = {}; // {materia|grado: {principal,jj1}}
   asignaciones.forEach(a=>{
     if(a.numGrupos!=null && BACH_GRADOS.includes(a.grado)){
-      max[a.grado] = Math.max(max[a.grado]||0, Number(a.numGrupos)||0);
+      const jj1 = Math.max(0, Number(a.numGruposJJ1)||0);
+      const principal = Math.max(0, (Number(a.numGrupos)||0) - jj1);
+      const k=a.materia+'|'+a.grado;
+      porMateriaGrado[k] = porMateriaGrado[k] || {principal:0, jj1:0};
+      porMateriaGrado[k].principal += principal;
+      porMateriaGrado[k].jj1 += jj1;
     }
+  });
+  const max = {}; // {grado: {PRINCIPAL:n, 'JUANA JULIA 1':n}}
+  Object.keys(porMateriaGrado).forEach(k=>{
+    const grado = k.split('|')[1];
+    const v = porMateriaGrado[k];
+    max[grado] = max[grado] || {PRINCIPAL:0, 'JUANA JULIA 1':0};
+    max[grado].PRINCIPAL = Math.max(max[grado].PRINCIPAL, v.principal);
+    max[grado]['JUANA JULIA 1'] = Math.max(max[grado]['JUANA JULIA 1'], v.jj1);
   });
   return max;
 }
@@ -538,10 +570,14 @@ function gruposBachPorGrado(asignaciones){
 // qué materia, en qué grado-grupo(-sede) y cuántas horas/semana.
 function construirUnidades(asignaciones){
   const unidades=[], avisos=[];
-  const gruposBach = gruposBachPorGrado(asignaciones);
+  const gruposPorSede = gruposBachPorGradoYSede(asignaciones);
 
-  // Bachillerato: repartir los números de grupo (1..N) entre los docentes
-  // que dictan la MISMA materia en el MISMO grado, en orden estable.
+  // Bachillerato: reparte los números de grupo entre los docentes que dictan
+  // la MISMA materia en el MISMO grado, en orden estable — PRIMERO los grupos
+  // de Principal (1..N), LUEGO los de Juana Julia 1 continuando la cuenta sin
+  // reiniciar (ej. Principal 1-2, Juana Julia 1 sigue en el 3). Un mismo
+  // docente puede cubrir grupos de AMBAS sedes en la misma materia-grado
+  // (ej. Sociales 10° con 1 grupo en Principal y 1 en Juana Julia 1).
   const buckets={};
   asignaciones.forEach(a=>{
     if(BACH_GRADOS.includes(a.grado) && a.numGrupos!=null){
@@ -551,17 +587,31 @@ function construirUnidades(asignaciones){
   });
   Object.keys(buckets).forEach(k=>{
     const [materia,grado]=k.split('|');
-    const total=gruposBach[grado]||0;
-    let cursor=1;
+    const gs = gruposPorSede[grado] || {PRINCIPAL:0, 'JUANA JULIA 1':0};
+    const totalPrincipal = gs.PRINCIPAL, totalJJ1 = gs['JUANA JULIA 1'];
+    let cursorPrincipal=1, cursorJJ1=totalPrincipal+1;
     buckets[k].slice().sort((a,b)=>String(a.docenteId).localeCompare(String(b.docenteId))).forEach(a=>{
-      const desde=cursor, hasta=Math.min(cursor+(a.numGrupos||0)-1, total);
-      for(let g=desde; g<=hasta; g++){
-        unidades.push({docenteId:a.docenteId, materia, grado, grupo:String(g), sede:null, horas:a.horas||0, tipo:'bach'});
+      const totalReq = Number(a.numGrupos)||0;
+      const jj1Req = Math.max(0, Math.min(totalReq, Number(a.numGruposJJ1)||0));
+      const principalReq = totalReq - jj1Req;
+
+      const pDesde=cursorPrincipal, pHasta=Math.min(cursorPrincipal+principalReq-1, totalPrincipal);
+      for(let g=pDesde; g<=pHasta; g++){
+        unidades.push({docenteId:a.docenteId, materia, grado, grupo:String(g), sede:'PRINCIPAL', horas:a.horas||0, tipo:'bach'});
       }
-      if(cursor+(a.numGrupos||0)-1 > total){
-        avisos.push(`${materia} ${grado}: una asignación declara más grupos de los que existen en total para ese grado (${total}) — revisa el Excel origen.`);
+      if(cursorPrincipal+principalReq-1 > totalPrincipal){
+        avisos.push(`${materia} ${grado} (Principal): una asignación declara más grupos de los que existen en total (${totalPrincipal}) — revisa el reparto de sede en Asignaciones.`);
       }
-      cursor += (a.numGrupos||0);
+      cursorPrincipal += principalReq;
+
+      const jDesde=cursorJJ1, jHasta=Math.min(cursorJJ1+jj1Req-1, totalPrincipal+totalJJ1);
+      for(let g=jDesde; g<=jHasta; g++){
+        unidades.push({docenteId:a.docenteId, materia, grado, grupo:String(g), sede:'JUANA JULIA 1', horas:a.horas||0, tipo:'bach'});
+      }
+      if(cursorJJ1+jj1Req-1 > totalPrincipal+totalJJ1){
+        avisos.push(`${materia} ${grado} (Juana Julia 1): una asignación declara más grupos de los que existen en total (${totalJJ1}) — revisa el reparto de sede en Asignaciones.`);
+      }
+      cursorJJ1 += jj1Req;
     });
   });
 
