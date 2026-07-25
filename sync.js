@@ -453,6 +453,7 @@ const LV_SYNC = (() => {
 
     const antes = snapshotLocal();
     await descargarTodo();
+    verificarEpocaDatos();
     const despues = snapshotLocal();
     if (antes !== despues) {
       console.log('[LV Sync] 🔔 Hay datos nuevos de otro dispositivo');
@@ -503,6 +504,42 @@ const LV_SYNC = (() => {
     if (cambio) lsSet('lv_sync_pendientes', p);
   }
 
+  // ── Forzar limpieza remota (opcional, jul 2026 — sesión 25g) ────
+  // Coordinación puede "empujar" una limpieza del espejo local de TODOS
+  // los equipos sin tocarlos uno por uno, subiendo `lv_institucion.
+  // dataEpoch` (botón en Coordinación → Resumen → Institución). Cada
+  // equipo recuerda la última época que vio (`lv_epoca_vista`); si al
+  // descargar ve una época mayor, se limpia solo — mismo borrado que ya
+  // hace el botón manual "🧹 Borrar mis datos de este equipo" del
+  // portal — y fuerza reingreso, así vuelve a bajar de cero y solo lo
+  // que le corresponde ver. La PRIMERA vez que esto corre en un equipo
+  // NO dispara limpieza: adopta la época actual como punto de partida
+  // (evita expulsar a todo el mundo el día que se despliega esta
+  // función, solo porque nunca habían visto ninguna época).
+  const EPOCA_KEY = 'lv_epoca_vista';
+  function verificarEpocaDatos() {
+    if (typeof LV_INST === 'undefined') return;
+    const servidor = LV_INST.dataEpoch();
+    const vistaRaw = localStorage.getItem(EPOCA_KEY);
+    if (vistaRaw === null) {
+      try { localStorage.setItem(EPOCA_KEY, String(servidor)); } catch (_) {}
+      return;
+    }
+    if (servidor > (Number(vistaRaw) || 0)) limpiarPorEpoca(servidor);
+  }
+  async function limpiarPorEpoca(nuevaEpoca) {
+    try { if (pendientesGet().length) await subirPendientes(); } catch (_) {}
+    try {
+      Object.keys(localStorage)
+        .filter(k => k.indexOf('lv_') === 0 && k !== 'lv_gemini_key' && k !== EPOCA_KEY)
+        .forEach(k => localStorage.removeItem(k));
+      localStorage.setItem(EPOCA_KEY, String(nuevaEpoca));
+    } catch (_) {}
+    alert('Coordinación actualizó los permisos de la app. Vuelve a iniciar sesión para continuar — tus datos en la nube están seguros, esto solo limpia la copia de este equipo.');
+    if (typeof LV_AUTH !== 'undefined') LV_AUTH.logout();
+    else location.href = (location.pathname.includes('/modulos/') ? '../' : '') + 'login.html';
+  }
+
   // ── Inicialización ───────────────────────────────────────────
   async function init() {
     migrarPendientesViejos();
@@ -519,6 +556,7 @@ const LV_SYNC = (() => {
     }
 
     await descargarTodo();
+    verificarEpocaDatos();
 
     window.addEventListener('online', () => {
       console.log('[LV Sync] 🌐 Conexión restaurada — sincronizando...');

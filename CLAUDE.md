@@ -3,6 +3,42 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25g, "forzar limpieza" remota)
+
+- **Punto 9 del backlog de la auditoría (sesión 24) — CÓDIGO LISTO, sin desplegar.**
+  Era la opción marcada como "opcional" en el backlog: hasta hoy, si a un docente se le
+  quitaba un permiso mal dado, su copia local (espejo en `localStorage`) seguía teniendo
+  los datos de más hasta que ÉL MISMO tocara "🧹 Borrar mis datos de este equipo" — el
+  admin no tenía forma de forzar esa limpieza a distancia. Ahora sí.
+- **`LV_INST.dataEpoch()` NUEVO en `auth.js`** — lee `lv_institucion.dataEpoch` (número,
+  sin migración SQL, es JSONB). **`verificarEpocaDatos()` NUEVO en `sync.js`**: compara
+  esa época contra `localStorage.lv_epoca_vista` (la última que este equipo vio). Si la
+  del servidor es MAYOR, corre `limpiarPorEpoca()` — sube pendientes, borra todas las
+  claves `lv_*` del equipo (conservando `lv_gemini_key` y el propio marcador de época),
+  avisa con un `alert()` y cierra sesión (`LV_AUTH.logout()`) — mismo borrado que ya hacía
+  el botón manual del portal (sesión 24), pero disparado automáticamente. Se llama después
+  de `descargarTodo()` tanto en `init()` (al abrir la app) como en `chequearYActualizar()`
+  (el polling de 15s), para que también alcance a alguien que ya tenía la pestaña abierta.
+  **La PRIMERA vez que corre en un equipo NO limpia nada** — adopta la época actual como
+  punto de partida, para no expulsar a todo el colegio el día que esto se despliega solo
+  porque nunca habían visto ninguna época todavía.
+- **Botón en `coordinacion.html`** — tarjeta nueva "🧹 Forzar limpieza remota" en
+  Resumen → Institución, **visible SOLO para `MI_ROL==='admin'`** (ni siquiera
+  coordinación — es una acción más pesada que editar roles, así que se dejó al mismo nivel
+  de exclusividad que la pestaña Roles de la sesión 25). Al tocarlo (con confirm explícito
+  de qué va a pasar), sube `lv_institucion.dataEpoch = Date.now()` reusando el resto del
+  registro de institución (no pisa nombre/NIT/sedes/etc., solo agrega el campo).
+  SW **v84**. `node --check` limpio en auth.js, sync.js y coordinacion.html; balance de
+  `<div>/<section>/<table>/<tr>/<td>/<th>/<label>/<select>` verificado en coordinacion.html.
+- **PENDIENTE:** push, y que Richard pruebe con cuidado (es la función más "grande": afecta
+  a TODOS los docentes a la vez) — idealmente primero en un equipo de prueba: tocar el
+  botón, y en OTRO dispositivo con sesión antigua abrir la app con internet y confirmar que
+  se limpia solo y pide reingresar, sin perder datos en la nube. Con esto quedan cubiertos
+  los 3 puntos "grandes" de la auditoría de la sesión 24 (matrícula+acudientes, observación
+  con foto, permisos centralizados) más este opcional — el backlog original de esa
+  auditoría queda cerrado salvo los dos pendientes de fondo ya señalados en la sesión 25f
+  (mover el bloque PERM de `index.html`, y cerrar el hueco de 03/04/06).
+
 ## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25f, permisos.js central → LV_PERM)
 
 - **Punto 8 del backlog de la auditoría (sesión 24) — CÓDIGO LISTO, sin desplegar.**

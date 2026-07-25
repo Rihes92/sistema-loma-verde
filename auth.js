@@ -171,6 +171,11 @@ const LV_INST = {
   secretaria() { return this._get().secretaria || 'Secretaría de Educación Municipal de Montería'; },
   ciudad()     { return this._get().ciudad     || 'Montería – Córdoba'; },
   resolucion() { return this._get().resolucion || ''; },
+  // Época de datos (jul 2026, sesión 25g — "forzar limpieza" remota).
+  // Coordinación la sube desde su panel; cada equipo la compara contra
+  // la última que vio (sync.js) para saber si debe limpiar su espejo
+  // local. Ver comentario completo en sync.js → verificarEpocaDatos().
+  dataEpoch() { return Number(this._get().dataEpoch) || 0; },
   // Catálogo de sedes (jul 2026, unificación de cursos): texto separado
   // por comas editable en Coordinación → Resumen → Institución.
   // Respaldo (jul 24, sesión 25d): antes traía una lista corta e incluía

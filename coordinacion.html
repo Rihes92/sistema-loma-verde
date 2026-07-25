@@ -242,6 +242,12 @@
       </div>
       <p class="desc" style="margin-top:8px">El escudo/logo que aparece en documentos impresos es el archivo <code>Logo/logo.jpg</code> del repositorio (para cambiarlo, reemplaza ese archivo).</p>
     </div>
+    <div class="card" id="card-forzar-limpieza" style="display:none">
+      <h2>🧹 Forzar limpieza remota</h2>
+      <p class="desc">Borra la copia de datos guardada en el navegador de <b>cada docente</b>, sin tener que tocar equipo por equipo — útil después de corregir un permiso o una fuga de privacidad, para que nadie se quede con datos que ya no debería ver. Al abrir la app con internet, cada equipo se limpia solo y pide iniciar sesión de nuevo. <b>Los datos en la nube (Supabase) no se tocan</b>, solo la copia local de cada dispositivo.</p>
+      <button class="btn bad" id="btn-forzar-limpieza">🧹 Forzar limpieza en todos los equipos</button>
+      <p class="desc" id="forzar-limpieza-info" style="margin-top:8px"></p>
+    </div>
     <div class="card">
       <h2>Estado del sistema (este dispositivo)</h2>
       <div id="estado-out"><p class="desc">Cargando…</p></div>
@@ -301,8 +307,11 @@ let MI_ROL='';  // rol real del usuario (docente/coordinador/admin)
     MI_ROL = login.rol || '';
     document.getElementById('gate').classList.add('hide');
     document.getElementById('app').classList.remove('hide');
-    // La pestaña Roles es SOLO para admin/rector (no coordinación).
-    if(MI_ROL==='admin'){ const b=document.getElementById('tabbtn-roles'); if(b) b.classList.remove('hide'); }
+    // La pestaña Roles y "Forzar limpieza" son SOLO para admin/rector (no coordinación).
+    if(MI_ROL==='admin'){
+      const b=document.getElementById('tabbtn-roles'); if(b) b.classList.remove('hide');
+      const fl=document.getElementById('card-forzar-limpieza'); if(fl) fl.style.display='';
+    }
     return;
   }
   const g=document.getElementById('gate');
@@ -1112,6 +1121,21 @@ fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
     localStorage.setItem('lv_institucion', JSON.stringify([reg]));
     if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_institucion', reg);
     toast('✅ Institución guardada y sincronizada');
+  });
+  // "Forzar limpieza" remota (sesión 25g) — sube una época de datos nueva;
+  // cada equipo la compara contra la última que vio (sync.js) y, si es
+  // mayor, se limpia solo y pide reingreso. Ver LV_INST.dataEpoch() en
+  // auth.js y verificarEpocaDatos() en sync.js.
+  const btnFL=document.getElementById('btn-forzar-limpieza');
+  if(btnFL) btnFL.addEventListener('click', ()=>{
+    if(!confirm('Esto hace que la app CIERRE LA SESIÓN de todos los docentes en sus equipos la próxima vez que la abran con internet, y borra la copia local de datos de cada uno.\n\nSus datos en la nube NO se pierden — al reingresar se descarga de nuevo, solo lo que a cada quien le corresponde ver.\n\n¿Confirmas forzar la limpieza en TODOS los equipos?')) return;
+    const actual=leerInst()||{};
+    const reg=Object.assign({}, actual, { id:actual.id||'principal', dataEpoch:Date.now(), actualizado_en:new Date().toISOString() });
+    localStorage.setItem('lv_institucion', JSON.stringify([reg]));
+    if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_institucion', reg);
+    const info=document.getElementById('forzar-limpieza-info');
+    if(info) info.textContent='✅ Listo — se sube apenas haya internet. Cada equipo se limpiará solo la próxima vez que abra la app conectado.';
+    toast('🧹 Limpieza forzada: se aplicará en cada equipo al abrir la app con internet');
   });
 })();
 
