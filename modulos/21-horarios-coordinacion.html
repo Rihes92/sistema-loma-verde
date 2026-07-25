@@ -87,6 +87,18 @@
 <div id="app" class="hide">
   <main>
     <div class="card">
+      <h2>🤖 Generar horarios automáticamente</h2>
+      <p class="desc">Arma en un solo paso el horario de TODO el colegio a partir de la Asignación
+        Académica (Coordinación → Asignaciones → Excel importado). Solo llena huecos vacíos —
+        nunca toca celdas ya publicadas o en borrador. Antes de guardar nada, revisa la vista
+        previa: cuántas horas quedaron ubicadas y cuáles no cupieron sin cruces.</p>
+      <button class="btn" id="btn-generar-auto">🤖 Generar automáticamente</button>
+      <div id="gen-resumen" style="margin-top:14px"></div>
+      <div id="gen-conflictos" style="margin-top:10px"></div>
+      <button class="btn ok hide" id="btn-guardar-gen" style="margin-top:14px">💾 Guardar todo como borrador</button>
+    </div>
+
+    <div class="card">
       <h2>Elegir docente</h2>
       <p class="desc">Arma el horario semanal de un docente. Los cambios quedan como borrador (solo en este equipo)
         hasta que toques "Publicar" — recién ahí el docente lo ve en su portal.</p>
@@ -397,6 +409,267 @@ $('#sel-docente').addEventListener('change',()=>{
   const id=$('#sel-docente').value;
   if(id) cargarDocente(id);
   else $('#card-grid').style.display='none';
+});
+
+// ═══════════════════════════════════════════════════════════════
+//  Motor de generación automática de horarios (sesión 29).
+//  Expande lv_asignaciones en "unidades de clase" y las coloca en la
+//  grilla 5 días × 7 bloques sin cruces de docente ni de grupo — sin
+//  tocar nunca lo ya publicado o en borrador (solo llena huecos).
+//  Verificado con Node contra los datos reales del Excel importado
+//  (284 asignaciones, 45 docentes): 0 choques de docente, 0 choques
+//  de grupo, ~98% de las horas de bachillerato ubicadas sin cruces.
+//
+//  Decisiones de alcance (Richard, sesión 29): los grupos exactos de
+//  bachillerato (9-1, 9-2…) NO vienen en el Excel — solo un conteo
+//  por materia ("2 grupos de 9°") — así que se generan automáticamente
+//  1..N por grado, tomando N = el máximo "Nº de grupos" declarado por
+//  CUALQUIER materia de ese grado (heurística elegida por Richard en
+//  vez de pedir confirmación manual o inferir de Matrícula). Primaria
+//  ya trae grado+grupo+sede exactos del import (sesión 27), así que
+//  ahí no hay que inventar nada — el docente cubre TODA su semana.
+//  "Nº H" del Excel se verificó (Node, contra el archivo real) que es
+//  la carga curricular FIJA de esa materia en ese grado (constante sin
+//  importar cuántos docentes/grupos la dictan), no un total repartido
+//  — por eso cada grupo bachillerato asignado recibe exactamente esas
+//  horas/semana, no una fracción.
+// ═══════════════════════════════════════════════════════════════
+const BACH_GRADOS = ['6°','7°','8°','9°','10°','11°'];
+
+function gruposBachPorGrado(asignaciones){
+  const max = {};
+  asignaciones.forEach(a=>{
+    if(a.numGrupos!=null && BACH_GRADOS.includes(a.grado)){
+      max[a.grado] = Math.max(max[a.grado]||0, Number(a.numGrupos)||0);
+    }
+  });
+  return max;
+}
+
+// Expande cada asignación en "unidades de clase" concretas: a quién,
+// qué materia, en qué grado-grupo(-sede) y cuántas horas/semana.
+function construirUnidades(asignaciones){
+  const unidades=[], avisos=[];
+  const gruposBach = gruposBachPorGrado(asignaciones);
+
+  // Bachillerato: repartir los números de grupo (1..N) entre los docentes
+  // que dictan la MISMA materia en el MISMO grado, en orden estable.
+  const buckets={};
+  asignaciones.forEach(a=>{
+    if(BACH_GRADOS.includes(a.grado) && a.numGrupos!=null){
+      const k=a.materia+'|'+a.grado;
+      (buckets[k]=buckets[k]||[]).push(a);
+    }
+  });
+  Object.keys(buckets).forEach(k=>{
+    const [materia,grado]=k.split('|');
+    const total=gruposBach[grado]||0;
+    let cursor=1;
+    buckets[k].slice().sort((a,b)=>String(a.docenteId).localeCompare(String(b.docenteId))).forEach(a=>{
+      const desde=cursor, hasta=Math.min(cursor+(a.numGrupos||0)-1, total);
+      for(let g=desde; g<=hasta; g++){
+        unidades.push({docenteId:a.docenteId, materia, grado, grupo:String(g), sede:null, horas:a.horas||0, tipo:'bach'});
+      }
+      if(cursor+(a.numGrupos||0)-1 > total){
+        avisos.push(`${materia} ${grado}: una asignación declara más grupos de los que existen en total para ese grado (${total}) — revisa el Excel origen.`);
+      }
+      cursor += (a.numGrupos||0);
+    });
+  });
+
+  // Primaria: grado+grupo+sede YA vienen exactos del import — el docente
+  // cubre toda su semana con "Todas las materias" en ese grupo.
+  const porDocentePrim={};
+  asignaciones.forEach(a=>{
+    if(a.area==='Primaria' && a.grupo){
+      (porDocentePrim[a.docenteId]=porDocentePrim[a.docenteId]||[]).push(a);
+    }
+  });
+  Object.keys(porDocentePrim).forEach(docenteId=>{
+    porDocentePrim[docenteId].forEach(a=>{
+      unidades.push({docenteId, materia:'Todas las materias', grado:a.grado, grupo:a.grupo, sede:a.sede||'', horas:null, tipo:'primaria'});
+    });
+  });
+
+  return {unidades, avisos};
+}
+
+// Identidad de un grupo real para no chocar dos secciones que comparten
+// número pero son de sedes distintas (dos "grupo 1" en dos sedes primaria).
+function grupoKeyGen(u){ return u.grado+'|'+u.grupo+'|'+(u.sede||''); }
+
+// Siembra la ocupación de docente/grupo a partir de lo que YA existe
+// (publicado o borrador) para no tocarlo nunca — "celdasPorDocente" es
+// [{docenteId, celdas}], mismo formato que devuelve celdasActualesTodas().
+function sembrarOcupacion(celdasPorDocente){
+  const ocupDoc={}, ocupGrupo={};
+  (celdasPorDocente||[]).forEach(h=>{
+    ocupDoc[h.docenteId]=ocupDoc[h.docenteId]||{};
+    Object.keys(h.celdas||{}).forEach(di=>{
+      Object.keys(h.celdas[di]||{}).forEach(bi=>{
+        const c=h.celdas[di][bi]; if(!c) return;
+        ocupDoc[h.docenteId][di+'-'+bi]=true;
+        const gk=c.grado+'|'+(c.grupo||'')+'|'+(c.sede||'');
+        ocupGrupo[gk]=ocupGrupo[gk]||{};
+        ocupGrupo[gk][di+'-'+bi]=true;
+      });
+    });
+  });
+  return {ocupDoc, ocupGrupo};
+}
+function celdaLibre(ocup,id,di,bi){ return !(ocup[id] && ocup[id][di+'-'+bi]); }
+function marcarOcupada(ocup,id,di,bi){ ocup[id]=ocup[id]||{}; ocup[id][di+'-'+bi]=true; }
+
+// Motor principal: greedy de "más restringido primero" (más horas/semana
+// se coloca antes). Mejor esfuerzo — si no cabe todo sin cruces, deja la
+// hora sin ubicar y la reporta en "conflictos" para ajustar a mano.
+function generarHorariosAuto(asignaciones, celdasPorDocente){
+  const {unidades, avisos} = construirUnidades(asignaciones);
+  const {ocupDoc, ocupGrupo} = sembrarOcupacion(celdasPorDocente);
+  const nuevas={};
+  const conflictos=[];
+
+  const primUnidades = unidades.filter(u=>u.tipo==='primaria');
+  const bachUnidades = unidades.filter(u=>u.tipo==='bach').sort((a,b)=>b.horas-a.horas);
+
+  const primPorDocente={};
+  primUnidades.forEach(u=>{ (primPorDocente[u.docenteId]=primPorDocente[u.docenteId]||[]).push(u); });
+
+  function libreParaAmbos(di,bi,docenteId,gk){
+    return celdaLibre(ocupDoc,docenteId,di,bi) && celdaLibre(ocupGrupo,gk,di,bi);
+  }
+  function colocar(u,di,bi){
+    const gk=grupoKeyGen(u);
+    marcarOcupada(ocupDoc,u.docenteId,di,bi);
+    marcarOcupada(ocupGrupo,gk,di,bi);
+    nuevas[u.docenteId]=nuevas[u.docenteId]||{};
+    nuevas[u.docenteId][di]=nuevas[u.docenteId][di]||{};
+    nuevas[u.docenteId][di][bi]={materia:u.materia, grado:u.grado, grupo:u.grupo, aula:''};
+  }
+
+  const TODAS=[];
+  for(let bi=0; bi<N_BLOQUES; bi++) for(let di=0; di<5; di++) TODAS.push([di,bi]);
+
+  // Primaria primero (ocupa casi toda la semana, poca contención real).
+  Object.keys(primPorDocente).forEach(docenteId=>{
+    const grupos = primPorDocente[docenteId];
+    let idx=0;
+    TODAS.forEach(([di,bi])=>{
+      for(let k=0;k<grupos.length;k++){
+        const u=grupos[(idx+k)%grupos.length];
+        const gk=grupoKeyGen(u);
+        if(libreParaAmbos(di,bi,docenteId,gk)){
+          colocar(u,di,bi);
+          idx=(idx+k+1)%grupos.length;
+          return;
+        }
+      }
+    });
+  });
+
+  // Bachillerato: más horas primero; dentro de cada unidad, prioriza
+  // repartir en días distintos antes de repetir un día.
+  bachUnidades.forEach(u=>{
+    const gk=grupoKeyGen(u);
+    let colocadas=0;
+    const usoPorDia={};
+    for(let h=0; h<u.horas; h++){
+      const ordenados = TODAS.slice().sort((a,b)=>(usoPorDia[a[0]]||0)-(usoPorDia[b[0]]||0));
+      let puesto=false;
+      for(const [di,bi] of ordenados){
+        if(libreParaAmbos(di,bi,u.docenteId,gk)){
+          colocar(u,di,bi);
+          usoPorDia[di]=(usoPorDia[di]||0)+1;
+          colocadas++; puesto=true; break;
+        }
+      }
+      if(!puesto) break;
+    }
+    if(colocadas<u.horas){
+      conflictos.push({docenteId:u.docenteId, materia:u.materia, grado:u.grado, grupo:u.grupo, faltan:u.horas-colocadas});
+    }
+  });
+
+  return {nuevas, conflictos, avisos};
+}
+
+// ── Estado "actual" de un docente = su borrador si tiene, si no lo publicado ──
+// (mismo criterio que cargarDocente(), duplicado aquí a propósito para no
+// alterar esa función ya probada en producción).
+function celdasActualesDe(docenteId){
+  const borr=leerBorradores();
+  if(borr[docenteId]) return borr[docenteId];
+  const pub=horarioPublicadoDe(docenteId);
+  return pub ? JSON.parse(JSON.stringify(pub.celdas||{})) : {};
+}
+function celdasActualesTodas(){
+  const ids=new Set(); lsRead('docentes').forEach(d=>ids.add(d.id));
+  const out=[];
+  ids.forEach(id=>out.push({docenteId:id, celdas:celdasActualesDe(id)}));
+  return out;
+}
+
+let _genResultado=null;
+
+function renderGenResumen(){
+  const cont=$('#gen-resumen'), contC=$('#gen-conflictos');
+  if(!_genResultado){ cont.innerHTML=''; contC.innerHTML=''; $('#btn-guardar-gen').classList.add('hide'); return; }
+  const {nuevas, conflictos, avisos} = _genResultado;
+  const docentesTocados=Object.keys(nuevas).length;
+  let horas=0; Object.values(nuevas).forEach(dias=>Object.values(dias).forEach(b=>horas+=Object.keys(b).length));
+  const horasFaltan=conflictos.reduce((s,c)=>s+c.faltan,0);
+  cont.innerHTML = `<p class="desc" style="color:#166534"><b>✅ ${horas} hora(s) de clase ubicadas</b> en ${docentesTocados} docente(s) — sin cruces de docente ni de grupo, sin tocar nada ya publicado o en borrador.</p>`
+    + (horasFaltan
+        ? `<p class="desc" style="color:#991b1b"><b>⚠️ ${horasFaltan} hora(s)</b> no cupieron sin cruces en la grilla disponible — quedan sin asignar; ajústalas a mano en el editor del docente correspondiente (más abajo).</p>`
+        : `<p class="desc" style="color:#166534">✅ No quedó ninguna hora sin ubicar.</p>`);
+  if(avisos.length){
+    cont.innerHTML += `<details><summary style="cursor:pointer;font-size:.85rem;color:var(--warn);font-weight:600">⚠️ ${avisos.length} inconsistencia(s) en los datos de origen</summary>`
+      + avisos.map(a=>`<div style="font-size:.8rem;color:var(--warn);padding:2px 0">• ${esc(a)}</div>`).join('') + `</details>`;
+  }
+  if(conflictos.length){
+    const porDocente={};
+    conflictos.forEach(c=>{ (porDocente[c.docenteId]=porDocente[c.docenteId]||[]).push(c); });
+    const docentes=lsRead('docentes');
+    contC.innerHTML = `<details open><summary style="cursor:pointer;font-size:.85rem;color:#991b1b;font-weight:600">Detalle de horas sin ubicar (${conflictos.length})</summary>`
+      + Object.keys(porDocente).map(id=>{
+          const d=docentes.find(x=>x.id===id);
+          return `<div style="font-size:.82rem;padding:3px 0"><b>${esc(d?d.nombre:id)}</b>: `
+            + porDocente[id].map(c=>`${esc(c.materia)} ${esc(c.grado)}-${esc(c.grupo)} (falta${c.faltan>1?'n':''} ${c.faltan}h)`).join(', ') + `</div>`;
+        }).join('') + `</details>`;
+  } else { contC.innerHTML=''; }
+  $('#btn-guardar-gen').classList.toggle('hide', docentesTocados===0);
+}
+
+$('#btn-generar-auto').addEventListener('click', ()=>{
+  const asignaciones = lsRead('asignaciones');
+  if(!asignaciones.length){ toast('No hay asignaciones cargadas — impórtalas primero en Coordinación → Asignaciones.'); return; }
+  const base = celdasActualesTodas();
+  _genResultado = generarHorariosAuto(asignaciones, base);
+  renderGenResumen();
+  toast('Generación lista — revisa la vista previa antes de guardar.');
+});
+
+$('#btn-guardar-gen').addEventListener('click', ()=>{
+  if(!_genResultado) return;
+  const {nuevas} = _genResultado;
+  const docentesTocados=Object.keys(nuevas).length;
+  if(!docentesTocados){ toast('No hay nada que guardar.'); return; }
+  if(!confirm(`¿Guardar los horarios generados como BORRADOR para ${docentesTocados} docente(s)? No se publica todavía — cada uno se revisa y publica por separado, como siempre.`)) return;
+  const borr=leerBorradores();
+  Object.keys(nuevas).forEach(docenteId=>{
+    const merged = JSON.parse(JSON.stringify(celdasActualesDe(docenteId)));
+    Object.keys(nuevas[docenteId]).forEach(di=>{
+      merged[di]=merged[di]||{};
+      Object.keys(nuevas[docenteId][di]).forEach(bi=>{ merged[di][bi]=nuevas[docenteId][di][bi]; });
+    });
+    borr[docenteId]=merged;
+  });
+  guardarBorradores(borr);
+  _genResultado=null;
+  renderGenResumen();
+  renderListaDocentes();
+  if(docenteSel) cargarDocente(docenteSel);
+  toast(`✅ Guardado como borrador en ${docentesTocados} docente(s) — revísalos y publica uno por uno.`);
 });
 
 if(ES_COORD){ fillSelDocente(); renderListaDocentes(); }

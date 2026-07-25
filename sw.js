@@ -19,7 +19,7 @@
 //     página diagnostico.html.
 // ═══════════════════════════════════════════════════════════════
 
-const CACHE = 'loma-verde-v96';
+const CACHE = 'loma-verde-v97';
 
 const ARCHIVOS = [
   './',

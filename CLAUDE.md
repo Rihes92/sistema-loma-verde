@@ -2,6 +2,83 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 29): motor de generación automática de horarios — CÓDIGO LISTO, sin desplegar
+
+- **Punto 3 del pedido original de Richard (sesión 27), el último que quedaba pendiente:**
+  "A partir de la asignación puedes crear automáticamente los horarios… que los
+  coordinadores solo modifiquen esa asignación y los horarios se puedan crear de manera
+  automática, sin cruces ni errores." Antes de construir se resolvió un problema real de
+  fondo: el Excel de bachillerato NO trae el número de grupo exacto (solo un CONTEO, ej.
+  "2 grupos de 9°" en la columna "Nº G") — no existe en ningún lugar del proyecto un
+  catálogo de "qué grupos tiene cada grado" (`lv_cursos` se crea suelto, materia por
+  materia, cada vez que un docente entra a su planilla). Se le preguntó a Richard 4
+  cosas de alcance (respondidas): (1) generar los números de grupo automáticamente 1..N
+  por grado (N = el máximo "Nº de grupos" declarado por cualquier materia de ese grado),
+  en vez de pedirle confirmación manual o intentar inferir de Matrícula; (2) generar el
+  horario de TODO el colegio de una vez, con vista previa antes de guardar nada; (3) si
+  no cabe todo sin cruces, generar lo mejor posible y marcar lo que falta (no bloquear
+  todo por unas pocas horas sin cupo); (4) respetar lo que ya esté publicado o en
+  borrador — el motor solo llena huecos vacíos, nunca reemplaza.
+- **Verificación empírica ANTES de programar (no se asumió nada):** se confirmó contra el
+  archivo Excel real que la columna "Nº H" (horas) es la carga curricular FIJA de esa
+  materia en ese grado — el mismo valor sin importar cuántos docentes/grupos la dictan
+  (ej. Matemáticas en 9° siempre vale 4 horas/semana, ya sea 1 o 2 grupos) — es decir,
+  cada grupo que cubre un docente recibe esas horas completas, no una fracción repartida.
+  También se confirmó que la carga total por grado (suma de materias únicas) da 34-36
+  horas/semana, MUY cerca del límite real de 35 bloques disponibles (7×5) — esto explica
+  y respalda la decisión de Richard de aceptar "mejor esfuerzo + marcar conflictos" en
+  vez de exigir una solución perfecta.
+- **Motor nuevo en `modulos/21-horarios-coordinacion.html`** (sin tabla ni migración SQL
+  nueva — reutiliza `lv_asignaciones`/`lv_docentes`/`lv_horarios` y el mismo
+  `lv_horarios_borrador` local que ya usaba el editor manual):
+  · `construirUnidades(asignaciones)` — expande cada asignación en "unidades de clase"
+    concretas (quién, qué materia, en qué grado-grupo, cuántas horas/semana). Bachillerato:
+    reparte los números de grupo 1..N entre los docentes que dictan la MISMA materia en
+    el MISMO grado (orden estable por `docenteId`); si la suma de "Nº de grupos"
+    declarados excede el total detectado para ese grado, lo reporta como aviso en vez de
+    fallar en silencio. Primaria: como grado+grupo+sede ya vienen exactos del import
+    (sesión 27), no hay que inventar nada — el docente cubre TODA su semana con "Todas
+    las materias" en ese grupo (si un docente tuviera más de un grado-grupo, se reparte
+    parejo entre ellos).
+  · `generarHorariosAuto(asignaciones, celdasPorDocente)` — greedy "más restringido
+    primero" (las unidades con más horas/semana se colocan antes); dentro de cada unidad,
+    prioriza repartir en días distintos antes de repetir uno. Nunca toca una celda que ya
+    esté ocupada en `celdasPorDocente` (que es el borrador si existe, si no lo publicado
+    — mismo criterio que ya usaba `cargarDocente()`), así que respeta lo decidido a mano
+    por coordinación. Si una hora no cabe en ningún bloque libre sin chocar, queda
+    reportada en `conflictos` en vez de forzarla.
+  · **Tarjeta nueva "🤖 Generar horarios automáticamente"** arriba del selector de
+    docente: botón "Generar automáticamente" corre el motor EN MEMORIA (no escribe nada
+    todavía) y muestra una vista previa — horas ubicadas, docentes afectados, avisos de
+    inconsistencia del Excel origen, y el detalle de qué horas no cupieron (por docente/
+    materia/grado-grupo). Solo al tocar "💾 Guardar todo como borrador" se escribe —
+    fusionando lo generado con lo que cada docente ya tenía (borrador o publicado), nunca
+    sobrescribiendo — en `lv_horarios_borrador` para todos los docentes afectados a la
+    vez. De ahí en adelante, cada docente se revisa y publica UNO POR UNO exactamente
+    igual que hoy (mismo botón "✅ Publicar horario", misma detección de choques ya
+    existente) — el generador automático no se salta ese candado de seguridad.
+- **Verificado con Node contra los datos reales** (no datos sintéticos): se reconstruyeron
+  los 45 docentes/284 asignaciones reales del Excel (mismo parser de la sesión 27) y se
+  corrió el motor EXACTO tal como quedó en el archivo. Resultado: **0 choques de docente,
+  0 choques de grupo** (con sede correctamente distinguida — se detectó y corrigió un
+  falso positivo del PROPIO script de prueba, no del motor, que confundía dos grupos con
+  el mismo número en sedes distintas), **1243 de 1260 horas de bachillerato ubicadas
+  (98.6%)**, 17 horas sin poder ubicar (todas reportadas como conflicto, ninguna se perdió
+  en silencio), y los 44 docentes de primaria terminaron con su semana completa (35
+  celdas). Prueba aparte confirmó que si un docente ya tenía una celda publicada/borrador,
+  el motor la respeta y solo llena las demás.
+- SW **v97**. `node --check` limpio en los 3 bloques `<script>` de
+  `21-horarios-coordinacion.html`; balance de
+  `div/table/tr/td/th/label/select/button` verificado (32/32, 1/1, 2/2, 4/4, 4/4, 6/6,
+  4/4, 9/9).
+- **PENDIENTE:** push; que Richard entre a "Horarios (Coordinación)", importe/confirme
+  que la Asignación Académica esté cargada, toque "🤖 Generar automáticamente", revise la
+  vista previa (sobre todo la lista de horas sin ubicar) y luego "💾 Guardar todo como
+  borrador"; después revisar y publicar unos pocos docentes de prueba (uno de primaria,
+  uno de bachillerato) para confirmar que su horario se ve bien y sin choques. Con esto
+  quedan resueltos los 3 puntos del pedido original de Richard (sesión 27): importar la
+  asignación, la hoja de vida, y ahora la generación automática de horarios.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 28): cierre del hueco de permisos del comodín (grado/grupo/sede) — CÓDIGO LISTO, sin desplegar
 
 - **Continuación directa del hallazgo señalado en la sesión 27** (ver ajuste de abajo):
@@ -2210,7 +2287,12 @@ documentos impresos/WhatsApp, que luego será configurable).
   con detección de choques contra otros horarios ya publicados y publicación explícita
   (los cambios quedan de borrador local hasta publicar). Tabla `lv_horarios` (una fila por
   docente). `modulos/07-horario.html` pasó a ser de solo lectura para cada docente (ya no
-  autoservicio) — ver ajuste de sesión 26k para el detalle completo.
+  autoservicio) — ver ajuste de sesión 26k para el detalle completo. **Generación
+  automática (sesión 29):** tarjeta "🤖 Generar horarios automáticamente" que expande
+  `lv_asignaciones` en unidades de clase y las coloca sin cruces de docente ni de grupo
+  (mejor esfuerzo — marca lo que no cupo), respetando siempre lo ya publicado/borrador;
+  el resultado se guarda como borrador para revisar y publicar docente por docente, igual
+  que el flujo manual — ver ajuste de sesión 29 para el detalle completo.
 - `modulos/herramientas/` — 9 herramientas formativas (test lectura, cálculo mental,
   rúbricas, sociograma, etc.) que envían notas a la planilla.
 - `coordinacion.html` — pestañas: Docentes, Asignaciones, **🌟 Centros de Interés** (crear/
