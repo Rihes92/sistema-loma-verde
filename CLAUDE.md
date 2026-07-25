@@ -1,7 +1,101 @@
 # SABIE — Contexto del proyecto para Claude
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
+
+## ▶ BACKLOG CRUDO (jul 25, 2026 — sesión 26, feedback de Richard tras probar todo)
+
+Richard probó el trabajo de las sesiones 25a-25g y dejó una lista larga de observaciones y
+pedidos nuevos, todos en un solo mensaje. SIN TRIAGE TODAVÍA — se transcribe tal cual para
+no perderla, y se irá marcando/resolviendo por partes en sesiones siguientes (no se abordó
+todo de una, ver el triage y las preguntas que se le hicieron a Richard justo después de
+este bloque, o en la sesión donde se retome cada punto).
+
+1. **Saber 11 (módulo 04):** no debería requerir entrar por una materia — debe ser
+   accesible directo para todos los docentes/coordinación/rector, sin selector de
+   asignatura al entrar.
+2. **Saber 11 (módulo 04) — recorte:** la pestaña crear/editar no cumple función
+   importante; el módulo debería concentrarse en análisis exhaustivo de simulacros y cómo
+   abordar estudiantes sin avance. El banco de preguntas ahí tampoco sirve. Los exámenes de
+   11° deberían estar en el módulo de exámenes 6-11 (el 03), igual que "Presentar
+   simulacro".
+3. **Banco de imágenes (Planeador):** organizar por grado, curso, periodo, eje temático y
+   temática. Duda abierta: ¿guardar en un Drive personal de cada docente en vez de
+   Supabase, para no llenar el almacenamiento? Richard piensa en upgrade de Supabase o
+   Vercel pero no sabe cuál ni si lo del Drive personal es viable — pide sugerencia.
+4. **Botón "📔 Observar" (planilla, 01-calificaciones):** visualmente no gusta y la
+   posición tampoco. Pide sugerencias reales de dónde/cómo ponerlo.
+5. **Botón "Mejoramiento" (pestaña Reportes) y botón "🚨 Alertar" (planilla):** deberían
+   llevar al módulo de Comunicados y AL PARECER NO ESTÁ FUNCIONANDO. Alertar además no
+   gusta visualmente ni en su posición.
+6. **Banco de preguntas duplicado:** existe una opción en el Planeador (02) y otra en
+   Evaluaciones (03). Richard cree que debería quedar solo en Evaluaciones. Pide
+   sugerencia.
+7. **Pestaña "Resultados" (Evaluaciones, 03):** hoy solo muestra resultados de exámenes.
+   ¿Se le puede dar alguna sincronización o función más importante?
+8. **Asistencia:** revisar que la alerta de +25% de inasistencias SÍ esté generando el
+   aviso hacia Comunicados (sospecha de que no está funcionando).
+9. **Horarios (07) — función GRANDE nueva:** desde Coordinación/admin poder crear los
+   horarios de TODOS los docentes (todas las áreas/materias/docentes/grados/grupos),
+   idealmente con una vista previa antes de generar/publicar (¿con ayuda de IA?). Una vez
+   publicado, cada docente ve SU horario ya cargado (no lo arma él); coordinación/rector
+   puede ver el horario de todos.
+10. **Eventos (08):** cualquier docente ve/agrega, pero solo coordinación/rector
+    edita/elimina (revisar si ya es así). Pedido nuevo: 2 días antes de un evento,
+    enviar un correo recordatorio a los correos registrados de cada docente.
+11. **Acudientes (09) vs Matrícula (20):** Richard cree que 09 no debería existir como
+    módulo aparte — al matricular a un estudiante (grado/curso/sede) ya debería quedar
+    con su(s) acudiente(s), alimentando esa base de datos ahí mismo. Solo coordinación/
+    rector deberían tener acceso (hoy 09 está abierto a cualquier docente).
+12. **Observador → Boletines:** las anotaciones del observador deberían aparecer en el
+    boletín del estudiante.
+13. **Boletines (13) — dos plantillas:** bachillerato y primaria como hoy, pero
+    prejardín/jardín/transición debe ser MÁS DESCRIPTIVO — toda la info del estudiante e
+    institucional, más un espacio grande para que el docente describa comportamiento y
+    evolución, quizás con opciones estandarizadas (positivas/negativas) para agilizar,
+    pensado para niños de esas edades.
+14. **Director de grupo (12):** no le gusta cómo se muestra la información hoy. Pide que
+    se vea más organizado y amable visualmente, y que incluya alertas, planes de
+    mejoramiento y anotaciones del observador juntos.
+15. **Analítica (14):** ¿no cumple ninguna función? Pregunta si se podría suprimir.
+16. **Permisos (18):** al aprobar una solicitud, debería llegarle al docente una
+    notificación en su panel general Y un correo. Además: el rol RECTOR (admin) no
+    debería ver la pestaña "Solicitar" — esa pestaña es solo para coordinador y docente
+    (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
+
+## ▶ POR DÓNDE RETOMAR (jul 25, 2026 — sesión 26, bug del botón "📝 Mejoramiento")
+
+- **Investigados los 2 bugs que Richard reportó como prioridad (ver backlog crudo arriba,
+  puntos 5 y 8):**
+  1. **Botón "📝 Mejoramiento" (pestaña Reportes, 01-calificaciones) — BUG REAL,
+     CORREGIDO (sin desplegar):** `generarMejoramiento()` abría Comunicados con
+     `window.open('06-comunicados.html?draft=1','_blank')` — pestaña NUEVA y SIN
+     `area=`/`materia=` en la URL. Un pop-up bloqueado por el navegador (Chrome a veces
+     los bloquea con solo un ícono discreto en la barra de direcciones, fácil de no ver)
+     explica perfecto el reporte de "no está funcionando". Corregido para que use el
+     MISMO patrón que ya usan `generarAlertaAuto()` (01, botón 🚨 Alertar) y
+     `generarCitacionAuto()` (05-asistencia, botón 📩 Citar): `location.href` en la
+     MISMA pestaña + `area=`/`materia=` en la URL. Los otros dos ya estaban bien escritos
+     (mismo patrón, con `location.href`) — si Richard los ve fallar en la práctica, es
+     otra causa (probar de nuevo tras este fix por si compartían algo).
+  2. **Alerta de +25% de inasistencias (05-asistencia) — NO ES UN BUG, es manual por
+     diseño y probablemente Richard no lo sabía:** existe el botón "📩 Citar" en la
+     pestaña **Estadísticas** de Asistencia (no en la planilla diaria), visible SOLO
+     cuando el % de asistencia de un estudiante baja de 75% (bajo la fila del
+     estudiante). No hay ninguna alerta PUSH/automática hoy — el docente tiene que entrar
+     a esa pestaña y verlo. Si Richard esperaba algo proactivo (un aviso sin tener que ir
+     a buscarlo), es un pedido de FEATURE nueva, no un bug — candidato natural: sumarlo al
+     Panel de Coordinación (sesión 22) o a las alertas del dashboard docente, no se hizo
+     hoy porque no estaba claro si eso es lo que Richard quiere o solo confirmar que el
+     botón exista.
+  SW **v85**. `node --check` limpio en 01-calificaciones.html.
+- **PENDIENTE:** push; que Richard pruebe el botón "📝 Mejoramiento" desde Reportes con un
+  estudiante reprobado y confirme que ahora sí abre Comunicados con curso/estudiante
+  pre-llenados. Decidir si la citación por inasistencia (punto 2) se queda como botón
+  manual o pasa a ser una alerta proactiva en el portal — Richard tiene el resto del
+  backlog crudo de la sesión 26 sin triage todavía (ver bloque arriba del todo del
+  archivo), incluida su pregunta sobre reposicionar visualmente los botones 🚨 Alertar y
+  📔 Observar en la planilla, que quedó pendiente de sugerencia concreta.
 
 ## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25g, "forzar limpieza" remota)
 

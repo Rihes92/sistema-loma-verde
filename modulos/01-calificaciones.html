@@ -1221,8 +1221,13 @@ function generarMejoramiento(dataEnc){
       origen:'calificaciones_auto',
     };
     try{localStorage.setItem('lv_com_draft',JSON.stringify(draft));}catch(_){}
-    window.open('06-comunicados.html?draft=1','_blank');
-    toast('Abriendo Comunicados con el plan de mejoramiento pre-llenado…');
+    // Antes abría en pestaña nueva (window.open) sin contexto de materia —
+    // el bloqueador de pop-ups del navegador podía tragárselo en silencio
+    // y Richard lo veía como "no funciona". Mismo patrón que generarAlertaAuto
+    // y 05-asistencia.generarCitacionAuto: misma pestaña + area/materia.
+    const area=(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'';
+    const materia=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'';
+    location.href=`06-comunicados.html?draft=1&area=${encodeURIComponent(area)}&materia=${encodeURIComponent(materia)}`;
   }catch(e){toast('Error: '+e.message);}
 }
 function recomendaciones(s){
