@@ -63,6 +63,34 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26c): pestaña "Solicitar" oculta para el rector en Permisos
+
+- **Punto 16 del backlog crudo (segunda mitad):** "creo que el rol RECTOR (admin) no
+  debería ver la pestaña 'Solicitar' — esa pestaña es solo para coordinador y docente (el
+  rector solo aprueba)". Corregido en `modulos/18-permisos.html`: justo después de
+  `if(ES_COORD)$('#tab-btn-aprobar').classList.remove('hide');` se agregó un bloque que,
+  SOLO si `LOGIN.rol==='admin'` (rector — no coordinador, que sí debe poder solicitar sus
+  propios permisos, por eso se distingue de `ES_COORD`), oculta el botón de pestaña
+  `data-tab="solicitar"` y cambia la pestaña activa por defecto a "✅ Aprobaciones". No
+  hace falta llamar a `render()` de nuevo: ya se llama una sola vez, sin condición, al
+  final del archivo, y pinta tanto "Mis solicitudes" como "Aprobaciones" sin importar cuál
+  pestaña esté visible en ese momento — el cambio de pestaña activa es solo manipulación
+  de clases CSS sobre contenido que ya está pintado.
+- **Primera mitad del punto 16 (notificación al docente cuando se aprueba un permiso):**
+  YA EXISTÍA — verificado en `index.html` (dashboard personal del docente, ~línea
+  1080-1097): tarjeta "🗓️ Coordinación respondió tu(s) permiso(s)…" para solicitudes
+  respondidas en los últimos 7 días. Lo que falta es el CORREO (no hecho, ni hoy ni antes)
+  — requiere decidir e implementar infraestructura nueva (candidato: Supabase Edge
+  Function + un servicio de correo tipo Resend/SendGrid), no es un cambio de código
+  existente. Queda pendiente de decisión con Richard antes de construirlo.
+  SW **v87**. `node --check`-equivalente (3 bloques `<script>`) limpio en
+  `modulos/18-permisos.html`.
+- **PENDIENTE:** push; que Richard entre con la cuenta de rector (rol admin) a Permisos y
+  confirme que ya no ve "Solicitar" y que abre directo en "Aprobaciones" — y que una
+  cuenta de coordinador SÍ sigue viendo las tres pestañas normalmente. Decidir sobre el
+  correo de aprobación de permisos (y el recordatorio de eventos del punto 10, misma
+  infraestructura) antes de seguir con el resto del backlog crudo.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26b): alerta de inasistencia también para admin/coordinación
 
 - **Causa real encontrada del punto 8 del backlog crudo** ("revisar que la alerta de +25%

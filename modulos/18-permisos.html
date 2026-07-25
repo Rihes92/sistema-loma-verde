@@ -166,6 +166,17 @@ document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',
   render();
 }));
 if(ES_COORD)$('#tab-btn-aprobar').classList.remove('hide');
+// El rector (rol admin) solo APRUEBA — "Solicitar" es para coordinador y docente
+// (backlog crudo sesión 26, punto 16). Coordinador SÍ puede solicitar sus propios
+// permisos, por eso se distingue rol==='admin' y no solo ES_COORD.
+if(LOGIN && LOGIN.rol==='admin'){
+  const bSol=document.querySelector('#tabs button[data-tab="solicitar"]');
+  if(bSol) bSol.classList.add('hide');
+  // Si "Solicitar" era la pestaña activa por defecto, saltar a Aprobaciones.
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+  const bApr=$('#tab-btn-aprobar'); if(bApr) bApr.classList.add('active');
+  ['solicitar','mias','aprobar'].forEach(t=>$('#tab-'+t).classList.toggle('hide',t!=='aprobar'));
+}
 
 /* ── solicitar ── */
 $('#s-ini').value=HOY(); $('#s-fin').value=HOY();
