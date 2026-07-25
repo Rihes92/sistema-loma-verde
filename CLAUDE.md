@@ -63,6 +63,45 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26i): Preparación Saber 11 (04) sin selector de materia
+
+- **Punto 1 del backlog crudo:** "Saber 11 (módulo 04) no debería requerir entrar por
+  una materia — debe ser accesible directo para todos los docentes/coordinación/rector,
+  sin selector de asignatura al entrar." Diagnóstico: el módulo NUNCA fue realmente
+  "por materia" en el fondo — su matriz de competencias (`MATRIZ11`) está fija para
+  Ciencias Sociales/Saber 11, `asignatura` siempre vale 'Ciencias Sociales' por defecto
+  en todo el archivo. El selector de materia que aparecía al entrar era solo el modal
+  genérico del portal (`navToModule`, backlog sesión 16), no algo que el propio módulo
+  necesitara.
+- **Corregido en dos lugares:** (1) `index.html` → `navToModule()` ahora EXCLUYE
+  `04-examenes-11.html` de la lista de módulos que interceptan el clic con el modal
+  "¿A qué materia deseas entrar?" (mismo patrón que ya tenían excluidos 16 y 17). El
+  clic en la sidebar ahora abre el 04 directo, sin `?materia=` en la URL. (2)
+  `materia-hub.html` → la tarjeta "Preparación Saber 11" se movió del arreglo `MODULOS`
+  (los "de la materia", que Áreas académicas filtra por asignación) al arreglo
+  `MODULOS_INST` (institucionales, visibles siempre) — así también aparece igual sin
+  importar por qué materia entraste al hub.
+- **No hizo falta tocar `04-examenes-11.html`:** `LV_CTX.filtrar()` (en
+  `materia-context.js`) ya estaba escrito para no filtrar nada cuando no hay contexto de
+  materia (`if (!materia) return lista;`) — así que abrir el módulo sin `?materia=` ya
+  mostraba todo el historial de simulacros sin cambios de código. El header también sigue
+  bien: `materia-context.js` (sesión 9) ya pinta un "← Atrás" genérico con
+  `history.back()` cuando no hay contexto de materia.
+- **Alcance de HOY, a propósito:** esto es solo el punto 1 (acceso directo). El punto 2
+  (recorte: quitar "Crear/Editar" y "Presentar simulacro" del 04 porque ya existen en
+  Evaluaciones de aula) se dejó pendiente — investigado y NO improvisado porque el
+  análisis del 04 lee de tablas separadas (`lv11_resultados`/`lv11_examenes`) que NO se
+  alimentan de lo que se presenta desde el 03 (`lv_resultados`/`lv_examenes`); quitar
+  "Presentar simulacro" del 04 sin conectar ambas fuentes dejaría el "Análisis de
+  simulacros" —que es la función que se quiere que sea el corazón del 04— sin datos
+  nuevos en silencio. Decisión de Richard: dejarlo para una sesión con más tiempo, dado
+  el riesgo de tocar el motor de análisis y/o migrar datos reales de resultados.
+  SW **v92**. `node --check`-equivalente (6+2 bloques `<script>`) limpio en `index.html`
+  y `materia-hub.html`.
+- **PENDIENTE:** push; que Richard confirme que "Preparación Saber 11" abre directo desde
+  la sidebar (sin preguntar materia) y que sigue viendo todos sus simulacros guardados.
+  Decidir cuándo abordar el punto 2 (recorte real, con o sin unificar el análisis).
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26h): botones 🚨 Alertar / 📔 Observar reubicados
 
 - **Puntos 4-5 del backlog crudo:** "el botón 📔 Observar no gusta visualmente ni la

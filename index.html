@@ -675,7 +675,10 @@ const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;'
 // ── NAVEGACIÓN BARRA LATERAL (Smart Modal) ───────────────────────
 function navToModule(e, link) {
   const href = link.getAttribute('href');
-  if (!href.match(/modulos\/0[1-9]-/) || href.includes('16-') || href.includes('17-')) return;
+  // 04 (Preparación Saber 11) queda excluida: no es realmente "por materia" —
+  // su matriz y análisis son fijos de Saber 11/11°, así que debe abrir directo
+  // para cualquier docente/coordinación/rector (backlog crudo sesión 26, punto 1).
+  if (!href.match(/modulos\/0[1-9]-/) || href.includes('04-') || href.includes('16-') || href.includes('17-')) return;
   e.preventDefault();
 
   const isGlobal = PERM.esAdmin || PERM.accesoTotal;
