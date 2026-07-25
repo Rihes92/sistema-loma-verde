@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Horarios · Coordinación — SABIE</title>
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_horarios','lv_docentes','lv_asignaciones'];</script>
+<script src="../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626;--warn:#b45309;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar img{width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18)}
+  main{max-width:1200px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+  .row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.sec{background:#e2e8f0;color:var(--text)} button.btn.ok{background:var(--ok)} button.btn.bad{background:var(--bad)}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  .hide{display:none!important}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;font-weight:700;color:var(--primary)}
+  td.c,th.c{text-align:center}
+  .tableScroll{overflow-x:auto}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700}
+  .b-pub{background:#dcfce7;color:#166534}.b-borrador{background:#fef3c7;color:#92400e}.b-vacio{background:#f1f5f9;color:#475569}
+
+  .horario-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .horario-grid{display:grid;grid-template-columns:80px repeat(5,1fr);gap:3px;min-width:680px;align-items:stretch}
+  .hg-head{background:var(--primary);color:#fff;font-size:.76rem;font-weight:700;text-align:center;padding:8px 4px;border-radius:8px}
+  .hg-hora{background:#f8fafc;border:1px solid var(--border);font-size:.7rem;font-weight:700;color:var(--muted);text-align:center;padding:6px 3px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .hg-hora .h-num{font-size:.95rem;font-weight:800;color:var(--primary)}
+  .hg-celda{border:1px solid var(--border);border-radius:8px;min-height:60px;position:relative;cursor:pointer;overflow:hidden;background:var(--surface)}
+  .hg-celda:hover{box-shadow:0 4px 12px rgba(0,0,0,.12)}
+  .hg-celda.vacia{background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 6px,#fff 6px,#fff 12px)}
+  .hg-celda.vacia:hover{background:#e0e7ff}
+  .hg-celda.choque{outline:2px solid var(--bad)}
+  .celda-inner{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;padding:6px 4px;text-align:center;background:#dbeafe;color:#1e3a8a}
+  .celda-asig{font-size:.7rem;font-weight:800;line-height:1.15}
+  .celda-grado{font-size:.66rem;font-weight:600;opacity:.85}
+  .celda-del{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.15);border:0;border-radius:4px;color:inherit;font-size:.62rem;padding:1px 4px;cursor:pointer;font-weight:700}
+
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+  .modal{background:var(--surface);border-radius:16px;padding:22px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .modal h3{margin:0 0 14px;color:var(--primary);font-size:1rem}
+  .modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <img src="../Logo/logo.jpg" alt="">
+  <h1>🗓️ Horarios · Coordinación</h1>
+  <span class="pill">SABIE</span>
+  <a href="../index.html" class="portal-btn" style="margin-left:auto" title="Volver a la página anterior" onclick="if(history.length>1){history.back();return false}">← Atrás</a>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<div id="sin-acceso" class="hide">
+  <main>
+    <div class="card empty">
+      🔒 Este módulo es solo para coordinación / rectoría.<br>
+      Cada docente ve su propio horario ya publicado desde el módulo "Horario" del portal.
+    </div>
+  </main>
+</div>
+
+<div id="app" class="hide">
+  <main>
+    <div class="card">
+      <h2>Elegir docente</h2>
+      <p class="desc">Arma el horario semanal de un docente. Los cambios quedan como borrador (solo en este equipo)
+        hasta que toques "Publicar" — recién ahí el docente lo ve en su portal.</p>
+      <div class="row">
+        <label class="fld">Docente<select id="sel-docente"></select></label>
+        <div id="estado-badge"></div>
+      </div>
+    </div>
+
+    <div class="card" id="card-grid" style="display:none">
+      <h2>Semana de <span id="tit-docente"></span></h2>
+      <div class="horario-wrap">
+        <div class="horario-grid" id="horario-grid"></div>
+      </div>
+      <div id="choques-out" style="margin-top:12px"></div>
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn ok" id="btn-publicar">✅ Publicar horario</button>
+        <button class="btn sec" id="btn-limpiar-borrador">🗑️ Limpiar borrador</button>
+        <button class="btn sec" onclick="window.print()">🖨️ Imprimir</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>👥 Todos los docentes</h2>
+      <p class="desc">Estado de publicación del horario de cada uno. Toca un nombre para editarlo.</p>
+      <div id="lista-docentes"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Modal celda -->
+<div class="modal-bg hide" id="modal-ed">
+  <div class="modal">
+    <h3 id="modal-titulo">Asignar clase</h3>
+    <div class="row" style="margin-bottom:10px">
+      <label class="fld">Área<select id="ed-area"></select></label>
+    </div>
+    <div class="row" style="margin-bottom:10px">
+      <label class="fld">Materia<select id="ed-materia"></select></label>
+    </div>
+    <div class="row" style="margin-bottom:10px">
+      <label class="fld">Grado<select id="ed-grado"></select></label>
+      <label class="fld">Grupo<input id="ed-grupo" placeholder="Ej: 1, 2, único…"></label>
+    </div>
+    <div class="row" style="margin-bottom:4px">
+      <label class="fld">Aula / nota (opcional)<input id="ed-nota" placeholder="Ej: Salón 12" maxlength="40"></label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn bad sm" id="btn-quitar-celda">Quitar</button>
+      <button class="btn sec" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn ok" onclick="guardarCelda()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="alert" aria-live="assertive"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem('lv_'+k))||[]; }catch(_){ return []; } }
+
+// ── Permisos: solo coordinación/rector (mismo patrón que 20-matricula.html) ──
+const LOGIN=LV_PERM.login();
+const ES_COORD=LV_PERM.esCoordinacion();
+if(!ES_COORD){ $('#sin-acceso').classList.remove('hide'); }
+else { $('#app').classList.remove('hide'); }
+
+const DIAS=['Lunes','Martes','Miércoles','Jueves','Viernes'];
+const N_BLOQUES=7;
+function bloques(diaIdx){
+  const h0=(diaIdx===0?8:7)*60;
+  return Array.from({length:N_BLOQUES},(_,i)=>({ini:fmtH(h0+i*50),fin:fmtH(h0+i*50+50)}));
+}
+function fmtH(m){return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;}
+
+const AREAS=[
+  {nombre:'Primaria',materias:['Todas las materias']},
+  {nombre:'Ciencias Sociales',materias:['Sociales','Competencias Ciudadanas','Filosofía']},
+  {nombre:'Ciencias Naturales',materias:['Biología','Naturales','Química','Física']},
+  {nombre:'Humanidades',materias:['Lengua Castellana','Plan Lector','Inglés']},
+  {nombre:'Matemáticas',materias:['Matemáticas','Geometría','Estadística']},
+  {nombre:'Tecnología e Informática',materias:['Tecnología e Informática']},
+  {nombre:'Artística y Emprendimiento',materias:['Artística y Emprendimiento']},
+  {nombre:'Religión',materias:['Religión']},
+  {nombre:'Ética',materias:['Ética']},
+  {nombre:'Educación Física',materias:['Educación Física']},
+];
+const GRADOS=['Prejardín','Jardín','Transición','1°','2°','3°','4°','5°','6°','7°','8°','9°','10°','11°'];
+
+const BORRADOR_KEY='lv_horarios_borrador'; // solo local — nunca se sincroniza
+
+function leerBorradores(){ try{ return JSON.parse(localStorage.getItem(BORRADOR_KEY))||{}; }catch(_){ return {}; } }
+function guardarBorradores(b){ try{ localStorage.setItem(BORRADOR_KEY, JSON.stringify(b)); }catch(_){} }
+
+let docenteSel=null;   // id del docente que se está editando
+let celdas={};         // {dia:{bloque:{materia,grado,grupo,aula}}} del docente actual (borrador)
+
+function horariosPublicados(){ return lsRead('horarios'); }
+function horarioPublicadoDe(docenteId){ return horariosPublicados().find(h=>h.id===docenteId); }
+
+function cargarDocente(docenteId){
+  docenteSel=docenteId;
+  const borr=leerBorradores();
+  if(borr[docenteId]) celdas=borr[docenteId];
+  else {
+    const pub=horarioPublicadoDe(docenteId);
+    celdas = pub ? JSON.parse(JSON.stringify(pub.celdas||{})) : {};
+  }
+  const d=lsRead('docentes').find(x=>x.id===docenteId);
+  $('#tit-docente').textContent=d?d.nombre:'';
+  $('#card-grid').style.display='block';
+  renderEstadoBadge();
+  renderGrilla();
+}
+
+function renderEstadoBadge(){
+  const borr=leerBorradores();
+  const pub=horarioPublicadoDe(docenteSel);
+  const badge=$('#estado-badge');
+  if(borr[docenteSel]){
+    badge.innerHTML='<span class="badge b-borrador">🟡 Cambios sin publicar</span>';
+  } else if(pub && Object.keys(pub.celdas||{}).length){
+    const f=pub.publicadoEn?new Date(pub.publicadoEn).toLocaleDateString('es-CO'):'';
+    badge.innerHTML=`<span class="badge b-pub">🟢 Publicado${f?' · '+f:''}</span>`;
+  } else {
+    badge.innerHTML='<span class="badge b-vacio">Sin horario</span>';
+  }
+}
+
+// ── Choques: mismo grado-grupo con OTRO docente publicado, en el mismo día/bloque ──
+function detectarChoques(){
+  const otros=horariosPublicados().filter(h=>h.id!==docenteSel);
+  const choques=[]; // {di,bi,con}
+  Object.keys(celdas).forEach(di=>{
+    Object.keys(celdas[di]||{}).forEach(bi=>{
+      const c=celdas[di][bi]; if(!c||!c.grado) return;
+      otros.forEach(h=>{
+        const otra=((h.celdas||{})[di]||{})[bi];
+        if(otra && String(otra.grado)===String(c.grado) && String(otra.grupo||'')===String(c.grupo||'')){
+          choques.push({di:+di,bi:+bi,con:h.docenteNombre||'otro docente',grado:c.grado,grupo:c.grupo});
+        }
+      });
+    });
+  });
+  return choques;
+}
+
+function renderGrilla(){
+  const grid=$('#horario-grid');
+  grid.innerHTML='';
+  const choques=detectarChoques();
+  const esChoque=(di,bi)=>choques.some(ch=>ch.di===di&&ch.bi===bi);
+
+  const corner=document.createElement('div');
+  corner.style.cssText='display:flex;align-items:center;justify-content:center;font-size:.66rem;color:var(--muted);font-weight:700;text-transform:uppercase;padding:6px 2px;border-radius:8px;background:#f8fafc;border:1px solid var(--border)';
+  corner.textContent='Bloque';
+  grid.appendChild(corner);
+
+  DIAS.forEach((dia,di)=>{
+    const bls=bloques(di);
+    const el=document.createElement('div');
+    el.className='hg-head';
+    el.innerHTML=`<div>${dia}</div><div style="font-size:.62rem;opacity:.8;font-weight:400">${bls[0].ini}–${bls[N_BLOQUES-1].fin}</div>`;
+    grid.appendChild(el);
+  });
+
+  for(let bi=0;bi<N_BLOQUES;bi++){
+    const bLun=bloques(0)[bi];
+    const hora=document.createElement('div');
+    hora.className='hg-hora';
+    hora.innerHTML=`<span class="h-num">${bi+1}</span><span>${bLun.ini}</span>`;
+    grid.appendChild(hora);
+
+    DIAS.forEach((_,di)=>{
+      const slot=bloques(di)[bi];
+      const val=((celdas[di]||{})[bi])||null;
+      const cel=document.createElement('div');
+      cel.className='hg-celda '+(val?'':'vacia')+(esChoque(di,bi)?' choque':'');
+      if(val){
+        const inner=document.createElement('div');
+        inner.className='celda-inner';
+        inner.innerHTML=`<span class="celda-asig">${esc(val.materia||'')}</span>
+          <span class="celda-grado">${esc(val.grado||'')}${val.grupo?'-'+esc(val.grupo):''}</span>
+          ${val.aula?`<span style="font-size:.6rem;opacity:.75">${esc(val.aula)}</span>`:''}`;
+        cel.appendChild(inner);
+        const del=document.createElement('button');
+        del.className='celda-del'; del.textContent='✕'; del.title='Quitar';
+        del.onclick=e=>{e.stopPropagation();quitarCeldaDirecto(di,bi);};
+        cel.appendChild(del);
+      } else {
+        cel.title=`${DIAS[di]} · Bloque ${bi+1} (${slot.ini}–${slot.fin})`;
+      }
+      cel.addEventListener('click',()=>abrirModal(di,bi,slot,val));
+      grid.appendChild(cel);
+    });
+  }
+
+  renderChoquesOut(choques);
+}
+
+function renderChoquesOut(choques){
+  const out=$('#choques-out');
+  if(!choques.length){ out.innerHTML='<p class="desc" style="color:#166534">✅ Sin choques detectados con otros horarios ya publicados.</p>'; return; }
+  out.innerHTML=`<div class="desc" style="color:#991b1b;font-weight:600">⚠️ ${choques.length} choque(s) — el mismo grupo ya tiene clase con otro docente a esa hora:</div>`
+    + choques.map(ch=>`<div style="font-size:.82rem;color:#991b1b">• ${DIAS[ch.di]} bloque ${ch.bi+1}: ${esc(ch.grado)}${ch.grupo?'-'+esc(ch.grupo):''} ya tiene clase con <b>${esc(ch.con)}</b></div>`).join('');
+}
+
+// ── Modal ──
+let _di=null,_bi=null;
+function fillAreaMateria(areaNombre, materiaSel){
+  const area=AREAS.find(a=>a.nombre===areaNombre)||AREAS[1];
+  $('#ed-materia').innerHTML=area.materias.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  if(materiaSel && area.materias.includes(materiaSel)) $('#ed-materia').value=materiaSel;
+}
+$('#ed-area').addEventListener('change',()=>fillAreaMateria($('#ed-area').value));
+
+function abrirModal(di,bi,slot,val){
+  _di=di;_bi=bi;
+  $('#modal-titulo').textContent=`${DIAS[di]} · Bloque ${bi+1} (${slot.ini}–${slot.fin})`;
+  if($('#ed-area').options.length===0) $('#ed-area').innerHTML=AREAS.map(a=>`<option>${esc(a.nombre)}</option>`).join('');
+  const areaDeMateria = val ? (AREAS.find(a=>a.materias.includes(val.materia))||AREAS[1]).nombre : AREAS[1].nombre;
+  $('#ed-area').value=areaDeMateria;
+  fillAreaMateria(areaDeMateria, val?val.materia:'');
+  if($('#ed-grado').options.length===0) $('#ed-grado').innerHTML=GRADOS.map(g=>`<option>${esc(g)}</option>`).join('');
+  $('#ed-grado').value=val?.grado||GRADOS[3];
+  $('#ed-grupo').value=val?.grupo||'';
+  $('#ed-nota').value=val?.aula||'';
+  $('#btn-quitar-celda').classList.toggle('hide', !val);
+  $('#modal-ed').classList.remove('hide');
+}
+function cerrarModal(){ $('#modal-ed').classList.add('hide'); _di=null; _bi=null; }
+function marcarBorrador(){
+  const b=leerBorradores(); b[docenteSel]=celdas; guardarBorradores(b);
+  renderEstadoBadge();
+}
+window.guardarCelda=function(){
+  if(_di===null) return;
+  if(!celdas[_di]) celdas[_di]={};
+  celdas[_di][_bi]={
+    materia:$('#ed-materia').value,
+    grado:$('#ed-grado').value,
+    grupo:$('#ed-grupo').value.trim(),
+    aula:$('#ed-nota').value.trim()
+  };
+  marcarBorrador();
+  cerrarModal(); renderGrilla();
+};
+window.quitarCeldaDirecto=function(di,bi){
+  if(celdas[di]) delete celdas[di][bi];
+  marcarBorrador(); renderGrilla();
+};
+$('#btn-quitar-celda').addEventListener('click',()=>{
+  if(_di===null) return;
+  quitarCeldaDirecto(_di,_bi);
+  cerrarModal();
+});
+$('#modal-ed').addEventListener('click',e=>{ if(e.target===$('#modal-ed')) cerrarModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') cerrarModal(); });
+
+$('#btn-limpiar-borrador').addEventListener('click',()=>{
+  if(!confirm('¿Descartar los cambios sin publicar de este docente? Vuelve a lo último publicado.')) return;
+  const b=leerBorradores(); delete b[docenteSel]; guardarBorradores(b);
+  cargarDocente(docenteSel);
+  toast('Borrador descartado');
+});
+
+$('#btn-publicar').addEventListener('click',()=>{
+  const choques=detectarChoques();
+  if(choques.length && !confirm(`Hay ${choques.length} choque(s) de horario con otro(s) docente(s) (ver detalle en rojo). ¿Publicar de todas formas?`)) return;
+  const d=lsRead('docentes').find(x=>x.id===docenteSel);
+  const reg={ id:docenteSel, docenteId:docenteSel, docenteNombre:d?d.nombre:'', celdas,
+    publicadoPor:(LOGIN&&LOGIN.nombre)||'Coordinación', publicadoEn:Date.now() };
+  let arr=lsRead('horarios').filter(h=>h.id!==docenteSel); arr.push(reg);
+  try{ localStorage.setItem('lv_horarios', JSON.stringify(arr)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_horarios', reg);
+  const b=leerBorradores(); delete b[docenteSel]; guardarBorradores(b);
+  renderEstadoBadge();
+  renderListaDocentes();
+  toast('✅ Horario publicado — '+(d?d.nombre:'')+' ya puede verlo en su portal');
+});
+
+// ── Lista de docentes ──
+function renderListaDocentes(){
+  const cont=$('#lista-docentes');
+  const docentes=lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es'));
+  if(!docentes.length){ cont.innerHTML='<div class="empty">No hay docentes registrados aún.</div>'; return; }
+  const borr=leerBorradores();
+  cont.innerHTML=`<div class="tableScroll"><table><thead><tr><th>Docente</th><th class="c">Estado</th><th class="c">Horas</th><th class="c">Acción</th></tr></thead><tbody>
+    ${docentes.map(d=>{
+      const pub=horarioPublicadoDe(d.id);
+      const horas=pub?Object.values(pub.celdas||{}).reduce((a,dia)=>a+Object.keys(dia||{}).length,0):0;
+      let estado='<span class="badge b-vacio">Sin horario</span>';
+      if(borr[d.id]) estado='<span class="badge b-borrador">🟡 Borrador</span>';
+      else if(pub) estado='<span class="badge b-pub">🟢 Publicado</span>';
+      return `<tr><td>${esc(d.nombre)}</td><td class="c">${estado}</td><td class="c">${horas}</td>
+        <td class="c"><button class="btn sm sec" onclick="document.getElementById('sel-docente').value='${esc(d.id)}';cargarDocente('${esc(d.id)}');window.scrollTo(0,0)">✏️ Editar</button></td></tr>`;
+    }).join('')}
+  </tbody></table></div>`;
+}
+
+function fillSelDocente(){
+  const docentes=lsRead('docentes').slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'','es'));
+  $('#sel-docente').innerHTML='<option value="">— Elige un docente —</option>'+docentes.map(d=>`<option value="${esc(d.id)}">${esc(d.nombre)}</option>`).join('');
+}
+$('#sel-docente').addEventListener('change',()=>{
+  const id=$('#sel-docente').value;
+  if(id) cargarDocente(id);
+  else $('#card-grid').style.display='none';
+});
+
+if(ES_COORD){ fillSelDocente(); renderListaDocentes(); }
+</script>
+</body>
+</html>

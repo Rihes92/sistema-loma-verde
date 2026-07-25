@@ -63,6 +63,71 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26k): Horarios armados por Coordinación (módulo nuevo)
+
+- **Punto 9 del backlog crudo — la función "grande" del backlog:** "desde Coordinación/
+  admin poder crear los horarios de TODOS los docentes... con una vista previa antes de
+  generar/publicar. Una vez publicado, cada docente ve SU horario ya cargado (no lo arma
+  él); coordinación/rector puede ver el horario de todos." Antes de construir, se le
+  señaló a Richard un problema real de fondo: `lv_horario` (la tabla vieja) guardaba el
+  horario por **materia**, no por docente — dos profes de la misma materia podían
+  pisarse el horario en la nube sin darse cuenta (bug ya documentado desde sesión 13).
+  Se le preguntó a Richard 3 cosas de alcance (respondidas): (1) el docente deja de poder
+  editar su horario — solo lo VE, coordinación lo arma todo; (2) coordinación arma el
+  horario **por docente** (elige un profe, llena su semana), no por grado-grupo; (3) la
+  generación automática con IA queda **pendiente para otra sesión** — hoy solo editor
+  manual + vista previa con detección de choques.
+- **Tabla nueva `lv_horarios`** (`migracion_horarios.sql`, SIN CORRER; RLS
+  `solo_autenticados`, mismo nivel que la mayoría de tablas del proyecto): un registro
+  por DOCENTE = `{id: docenteId, docenteId, docenteNombre, celdas:{dia:{bloque:
+  {materia,grado,grupo,aula}}}, publicadoPor, publicadoEn}`. La tabla vieja `lv_horario`
+  (por materia) **no se borra ni se toca** — queda como histórico sin uso.
+- **Módulo nuevo `modulos/21-horarios-coordinacion.html`** (gate `ES_COORD`, mismo patrón
+  que Matrícula): selector de docente → grilla semanal (7 bloques × 5 días, mismo diseño
+  visual que tenía el 07 viejo) → clic en una celda abre modal con Área→Materia (catálogo
+  `AREAS` completo de 9 áreas, copiado de `coordinacion.html`, no solo Sociales) + Grado +
+  Grupo + Aula/nota. **Los cambios NO se sincronizan de inmediato** — se guardan como
+  "borrador" SOLO en este equipo (`localStorage.lv_horarios_borrador`, clave a propósito
+  fuera de `LV_SYNC_TABLAS`, nunca viaja a Supabase) hasta que coordinación toca
+  **"✅ Publicar horario"**, que recién ahí escribe el registro real en `lv_horarios` y
+  lo sube — ese es el mecanismo de "vista previa antes de publicar" que pedía Richard.
+  **Detección de choques** (`detectarChoques()`): compara las celdas en edición contra
+  los horarios YA PUBLICADOS de todos los OTROS docentes — si el mismo grado-grupo tiene
+  clase con otro profe a la misma hora, la celda se marca en rojo y aparece el detalle
+  ("Miércoles bloque 3: 9-3 ya tiene clase con Fulanita"); publicar con choques pendientes
+  pide confirmación extra. Tarjeta inferior "👥 Todos los docentes" con badge de estado
+  (🟢 Publicado / 🟡 Borrador sin publicar / gris Sin horario) y acceso directo a editar
+  cualquiera — así resuelve también "coordinación/rector puede ver el horario de todos".
+- **`modulos/07-horario.html` REESCRITO por completo — CAMBIO DE COMPORTAMIENTO real:**
+  antes cualquier docente armaba y editaba su propio horario libremente (por materia,
+  clic en celda → asignar). Ahora es de **SOLO LECTURA**: lee `lv_horarios` buscando el
+  registro cuyo `id` es el `docenteId` de la sesión y solo lo muestra (grilla + stats de
+  horas por materia); si coordinación aún no le ha publicado nada, ve un mensaje claro en
+  vez de una grilla vacía editable. Ya no carga `materia-context.js` (no lo necesita: es
+  UN horario por docente, no por materia). **Richard debe saber esto antes de desplegar:**
+  cualquier horario que un docente ya se había armado a mano con el sistema viejo (tabla
+  `lv_horario`) queda invisible hasta que coordinación lo reconstruya en el módulo nuevo
+  — no hay migración automática de esos datos (mezclar los buckets por-materia de cada
+  docente en un solo horario por-docente de forma automática no es confiable: un mismo
+  bucket de materia podía tener celdas de varios profes distintos).
+- **Enlaces:** `index.html` → el link plano "Horario" de la sidebar (todos los docentes)
+  ahora excluido del modal de materia (`navToModule`, igual que 04) porque ya no es "por
+  materia"; nuevo link "🗓️ Horarios (Coordinación)" (`#nav-horarios`, oculto salvo
+  `login.esAdmin`, junto a Matrícula/Coordinación). `materia-hub.html` → "Mi Horario" se
+  movió de `MODULOS` (por materia) a `MODULOS_INST` (institucionales).
+  SW **v94** (+ el módulo nuevo en el precache). `node --check`-equivalente (6+2+3+3
+  bloques `<script>`) limpio en `index.html`, `materia-hub.html`, `07-horario.html` y
+  `21-horarios-coordinacion.html`; balance de `<div>/<table>/<tr>/<td>/<th>/<label>/
+  <select>` verificado en los dos módulos nuevos/reescritos; `node --check` limpio en
+  `sync.js`.
+- **PENDIENTE:** correr `migracion_horarios.sql` en Supabase; push; que Richard entre
+  como coordinación/rector a "Horarios (Coordinación)", arme el horario de un docente de
+  prueba, confirme que la vista previa marca un choque si le pone el mismo grado-grupo
+  que ya tiene otro docente publicado, publique, y que ESE docente (con su propia cuenta)
+  vea su horario ya cargado y de solo lectura en "Mi Horario". **Generación automática
+  con IA queda pendiente**, a propósito, para una sesión aparte (Richard lo pidió como
+  posible mejora futura, no para hoy).
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26j): Boletín descriptivo para preescolar
 
 - **Punto 13 del backlog crudo:** "Boletines — dos plantillas: bachillerato y primaria
@@ -1912,6 +1977,12 @@ documentos impresos/WhatsApp, que luego será configurable).
   (`lv_estudiantes`, duplicado por materia) — es un registro paralelo; conectarlos es
   trabajo pendiente de mayor riesgo. Solo enlazado en el sidebar del portal (oculto para
   docentes normales), no en `materia-hub.html`.
+- `modulos/21-horarios-coordinacion.html` — **Horarios · Coordinación** (jul 2026, sesión
+  26k): SOLO coordinación/rector arma el horario semanal de cada docente (grilla 7×5),
+  con detección de choques contra otros horarios ya publicados y publicación explícita
+  (los cambios quedan de borrador local hasta publicar). Tabla `lv_horarios` (una fila por
+  docente). `modulos/07-horario.html` pasó a ser de solo lectura para cada docente (ya no
+  autoservicio) — ver ajuste de sesión 26k para el detalle completo.
 - `modulos/herramientas/` — 9 herramientas formativas (test lectura, cálculo mental,
   rúbricas, sociograma, etc.) que envían notas a la planilla.
 - `coordinacion.html` — pestañas: Docentes, Asignaciones, **🌟 Centros de Interés** (crear/

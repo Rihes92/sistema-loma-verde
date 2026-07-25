@@ -3,86 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Horario — SABIE</title>
+<title>Mi Horario — SABIE</title>
+<!-- sesión 26k (backlog crudo, punto 9): este módulo YA NO es autoservicio —
+     ahora es de SOLO LECTURA. Coordinación arma y publica los horarios desde
+     modulos/21-horarios-coordinacion.html (tabla lv_horarios, por docente).
+     La vieja tabla lv_horario (por materia, con riesgo de choque entre
+     docentes) queda sin usar, no se borra. -->
 <style>
   :root{
     --primary:#1e3a8a; --primary-light:#3b82f6; --bg:#f1f5f9; --surface:#fff;
-    --text:#1f2937; --muted:#64748b; --border:#e2e8f0;
-    --ok:#16a34a; --bad:#dc2626; --warn:#d97706;
+    --text:#1f2937; --muted:#475569; --border:#e2e8f0;
+    --ok:#15803d; --bad:#dc2626; --warn:#b45309;
     --radius:12px; --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);
-    --c-soc:#1e3a8a; --c-soc-bg:#dbeafe;
-    --c-dem:#065f46; --c-dem-bg:#d1fae5;
-    --c-fil:#4c1d95; --c-fil-bg:#ede9fe;
-    --c-lib:#92400e; --c-lib-bg:#fef3c7;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
   header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar img{width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0}
   header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
   header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
-  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;transition:background .15s,color .15s;margin-left:auto}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:5px;font-size:.82rem;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px;margin-left:auto}
   header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18);color:#fff}
-  main{max-width:1300px;margin:0 auto;padding:18px}
+  main{max-width:1200px;margin:0 auto;padding:18px}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:18px}
-  .card h2{margin:0 0 14px;font-size:1.05rem;color:var(--primary)}
-  .row{display:flex;gap:12px;flex-wrap:wrap}
-  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted);flex:1;min-width:140px}
-  input,select{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text)}
-  input:focus,select:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
-  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff;display:inline-flex;align-items:center;gap:6px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .empty{text-align:center;padding:40px 20px;color:var(--muted)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
   button.btn.sec{background:#e2e8f0;color:var(--text)}
-  button.btn.ok{background:var(--ok)}
-  button.btn.bad{background:var(--bad)}
-  button.btn.sm{padding:5px 10px;font-size:.78rem}
   button.btn:hover{filter:brightness(1.07)}
-  .hide{display:none!important}
-  .muted{color:var(--muted)}
 
-  /* GRILLA */
   .horario-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .horario-grid{display:grid;grid-template-columns:90px repeat(5,1fr);gap:3px;min-width:680px;align-items:stretch}
   .hg-head{background:var(--primary);color:#fff;font-size:.78rem;font-weight:700;text-align:center;padding:10px 6px;border-radius:8px;display:flex;flex-direction:column;align-items:center;gap:2px}
   .hg-head .dia-fecha{font-size:.68rem;opacity:.75;font-weight:400}
   .hg-hora{background:#f8fafc;border:1px solid var(--border);font-size:.72rem;font-weight:700;color:var(--muted);text-align:center;padding:8px 4px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
   .hg-hora .h-num{font-size:1rem;font-weight:800;color:var(--primary)}
-  .hg-celda{border:1px solid var(--border);border-radius:8px;padding:0;min-height:68px;position:relative;cursor:pointer;transition:transform .1s,box-shadow .1s;overflow:hidden;background:var(--surface)}
-  .hg-celda:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+  .hg-celda{border:1px solid var(--border);border-radius:8px;padding:0;min-height:68px;position:relative;overflow:hidden;background:var(--surface)}
   .hg-celda.vacia{background:repeating-linear-gradient(45deg,#f8fafc,#f8fafc 6px,#fff 6px,#fff 12px)}
-  .hg-celda.vacia:hover{background:#e0e7ff}
-  .celda-inner{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:8px 6px;text-align:center}
+  .celda-inner{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;padding:8px 6px;text-align:center;background:#dbeafe;color:#1e3a8a}
   .celda-asig{font-size:.72rem;font-weight:800;letter-spacing:.01em;line-height:1.2}
   .celda-grado{font-size:.68rem;font-weight:600;opacity:.85}
-  .celda-del{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.15);border:0;border-radius:4px;color:inherit;font-size:.65rem;padding:1px 4px;cursor:pointer;opacity:0;transition:opacity .15s;font-weight:700;line-height:1.4}
-  .hg-celda:hover .celda-del{opacity:1}
-  .asig-soc{background:var(--c-soc-bg);color:var(--c-soc);border-color:var(--c-soc)!important}
-  .asig-dem{background:var(--c-dem-bg);color:var(--c-dem);border-color:var(--c-dem)!important}
-  .asig-fil{background:var(--c-fil-bg);color:var(--c-fil);border-color:var(--c-fil)!important}
-  .asig-lib{background:var(--c-lib-bg);color:var(--c-lib);border-color:var(--c-lib)!important}
 
-  /* LEYENDA */
-  .leyenda{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
-  .leyenda-item{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600}
-  .leyenda-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-
-  /* STATS */
   .stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
   .stat-pill{background:#f1f5f9;border:1px solid var(--border);border-radius:10px;padding:10px 16px;display:flex;flex-direction:column;align-items:center;min-width:110px}
   .stat-pill .sp-n{font-size:1.5rem;font-weight:800;color:var(--primary)}
   .stat-pill .sp-l{font-size:.7rem;color:var(--muted);font-weight:600;text-align:center;margin-top:2px}
 
-  /* MODAL */
-  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
-  .modal{background:var(--surface);border-radius:16px;padding:24px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
-  .modal h3{margin:0 0 16px;color:var(--primary);font-size:1rem}
-  .modal .row{gap:10px;margin-bottom:12px}
-  .modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
-
   @media(max-width:700px){main{padding:10px}}
   @media print{
     header.appbar,.no-print{display:none!important}
     body{background:#fff}.card{box-shadow:none;border:none;padding:0}
-    .hg-celda:hover{transform:none;box-shadow:none}
-    .celda-del{display:none!important}
     .horario-grid{gap:2px}
   }
 </style>
@@ -91,177 +62,61 @@
 <body>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script src="../materia-context.js"></script>
+<script>window.LV_SYNC_TABLAS=['lv_horarios','lv_docentes'];</script>
+<script src="../sync.js"></script>
 
 <header class="appbar">
-  <img src="../Logo/logo.jpg" alt="Logo LV" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
-  <h1>Horario semanal — Loma Verde</h1>
+  <img src="../Logo/logo.jpg" alt="Logo LV">
+  <h1>🗓️ Mi Horario</h1>
   <span class="pill">SABIE</span>
   <a href="../index.html" class="portal-btn">← Portal</a>
 </header>
 
 <main>
-
-  <div class="card no-print">
+  <div class="card no-print" id="card-info" style="display:none">
     <div class="stats-row" id="stats-row"></div>
-    <div class="leyenda">
-      <div class="leyenda-item"><div class="leyenda-dot asig-soc"></div>Ciencias Sociales</div>
-      <div class="leyenda-item"><div class="leyenda-dot asig-dem"></div>Democracia</div>
-      <div class="leyenda-item"><div class="leyenda-dot asig-fil"></div>Filosofía</div>
-      <div class="leyenda-item"><div class="leyenda-dot asig-lib"></div>Libre / Otro</div>
-    </div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn sm sec" onclick="window.print()">🖨️ Imprimir</button>
-      <button class="btn sm bad" onclick="limpiarTodo()">🗑️ Borrar todo</button>
-    </div>
+    <button class="btn sec" onclick="window.print()">🖨️ Imprimir</button>
   </div>
 
-  <p class="muted no-print" style="font-size:.8rem;margin-bottom:10px;padding:0 2px">
-    Clic en cualquier celda para asignar una clase. Los cambios se guardan automáticamente.
-  </p>
+  <div class="card" id="card-vacio" style="display:none">
+    <div class="empty">🗓️ Coordinación todavía no ha publicado tu horario.<br>
+      Cuando lo publique, aparecerá aquí automáticamente.</div>
+  </div>
 
-  <div class="card" style="padding:12px">
+  <div class="card" id="card-grid" style="display:none;padding:12px">
     <div class="horario-wrap">
       <div class="horario-grid" id="horario-grid"></div>
     </div>
   </div>
-
 </main>
 
-<!-- Modal -->
-<div class="modal-bg hide" id="modal-ed">
-  <div class="modal">
-    <h3 id="modal-titulo">Asignar clase</h3>
-    <div class="row">
-      <label class="fld">Asignatura
-        <select id="ed-asig">
-          <option value="soc">Ciencias Sociales</option>
-          <option value="dem">Democracia</option>
-          <option value="fil">Filosofía</option>
-          <option value="lib">Libre / Otro</option>
-        </select>
-      </label>
-    </div>
-    <div class="row">
-      <label class="fld">Grado
-        <select id="ed-grado">
-          <option value="6°">6°</option>
-          <option value="7°">7°</option>
-          <option value="8°">8°</option>
-          <option value="9°" selected>9°</option>
-          <option value="10°">10°</option>
-          <option value="11°">11°</option>
-        </select>
-      </label>
-      <label class="fld">Grupo
-        <select id="ed-grupo">
-          <option value="01">01</option>
-          <option value="02">02</option>
-          <option value="03">03</option>
-        </select>
-      </label>
-    </div>
-    <div class="row">
-      <label class="fld" style="flex:2">Nota (aula, actividad…)
-        <input id="ed-nota" placeholder="Ej: Salón 12" maxlength="40">
-      </label>
-    </div>
-    <div class="modal-footer">
-      <button class="btn sec" onclick="cerrarModal()">Cancelar</button>
-      <button class="btn ok" onclick="guardarCelda()">Guardar</button>
-    </div>
-  </div>
-</div>
-
 <script>
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem('lv_'+k))||[]; }catch(_){ return []; } }
+
 const DIAS=['Lunes','Martes','Miércoles','Jueves','Viernes'];
 const N_BLOQUES=7;
-
-// Genera los 7 bloques de 50 min según el día (lunes = 8:00, resto = 7:00)
 function bloques(diaIdx){
   const h0=(diaIdx===0?8:7)*60;
-  return Array.from({length:N_BLOQUES},(_,i)=>({
-    ini:fmtH(h0+i*50), fin:fmtH(h0+i*50+50)
-  }));
+  return Array.from({length:N_BLOQUES},(_,i)=>({ini:fmtH(h0+i*50),fin:fmtH(h0+i*50+50)}));
 }
 function fmtH(m){return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;}
 
-const ASIG_LABEL={soc:'C. Sociales',dem:'Democracia',fil:'Filosofía',lib:'Libre'};
-const ASIG_CLS  ={soc:'asig-soc',  dem:'asig-dem',  fil:'asig-fil',  lib:'asig-lib'};
-
-/* ── Persistencia ── */
-const LS_KEY='lv_horario';
-// Cada materia tiene su propio sub-horario, totalmente independiente.
-// Estructura: ALL_DATA = { [materia]: { [dia]: { [bloque]: celda } } }.
-// Si el módulo se abre sin pasar por un área/materia (acceso clásico),
-// se usa el bucket '_global', que conserva el horario original de
-// cuando la app solo era de Ciencias Sociales.
-// Vista UNIFICADA (jul 14): el horario de un docente es UNO solo — su semana.
-// Antes, entrar por la barra lateral mostraba el bucket '_global' y entrar por
-// un área/materia mostraba el bucket de esa materia: dos horarios distintos
-// según la ruta. Ahora la grilla FUSIONA todos los buckets de las materias del
-// docente (según lv_asignaciones) más '_global', y cada celda recuerda su
-// bucket de origen (_mk) para editarse/borrarse donde vive. Las celdas nuevas
-// se guardan en la materia del contexto, o en la primera materia asignada.
-function misMaterias(){
-  try{
-    const login=JSON.parse(localStorage.getItem('lv_login')||'null');
-    const asig=JSON.parse(localStorage.getItem('lv_asignaciones')||'[]');
-    if(!login) return [];
-    const mias=asig.filter(a=>a.docenteId===login.docenteId);
-    if(login.esAdmin || mias.some(a=>a.area==='Primaria'||a.materia==='Todas las materias'))
-      return Object.keys(ALL_DATA).filter(k=>k!=='_global');
-    return [...new Set(mias.map(a=>a.materia).filter(Boolean))];
-  }catch(_){ return []; }
-}
-function ctxMateria(){
-  if(typeof LV_CTX!=='undefined' && LV_CTX.materia) return LV_CTX.materia;
-  const ms=misMaterias();
-  return ms[0]||'_global';
-}
-function lsR(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'{}')}catch(_){return{}}}
-function lsW(d){
-  // Solo guarda localmente. NO reencola todas las celdas en Supabase
-  // en cada guardado — eso generaba ráfagas de subidas innecesarias
-  // y aumentaba el riesgo de que se cruzaran con la sincronización
-  // automática. Cada celda se marca para subir individualmente
-  // desde guardarCelda()/eliminarCelda() en el momento en que cambia.
-  try{localStorage.setItem(LS_KEY,JSON.stringify(d));}catch(_){}
-}
-function marcarCeldaSync(di,bi,r,mk){
-  if(typeof LV_SYNC==='undefined')return;
-  mk=mk||ctxMateria();
-  LV_SYNC.marcarCambio('lv_horario',{id:mk+'_'+di+'_'+bi,dia:di,hora:bi,materia:r.asig||'',curso:(r.grado||'')+'°-'+(r.grupo||''),aula:r.nota||'',ctx_materia:mk==='_global'?'':mk});
-}
-let ALL_DATA=lsR();
-function gridData(){
-  // fusión: '_global' primero, luego las materias del docente (estas ganan)
-  const buckets=['_global', ...misMaterias()];
-  const m={};
-  buckets.forEach(mk=>{
-    const b=ALL_DATA[mk]; if(!b) return;
-    Object.keys(b).forEach(di=>{
-      Object.keys(b[di]||{}).forEach(bi=>{
-        if(!m[di]) m[di]={};
-        m[di][bi]={...b[di][bi], _mk:mk};
-      });
-    });
-  });
-  return m;
+function miHorario(){
+  const login=LV_PERM.login();
+  if(!login || !login.docenteId) return null;
+  return lsRead('horarios').find(h=>h.id===login.docenteId) || null;
 }
 
-/* ── Render ── */
-function renderGrilla(){
+function renderGrilla(celdas){
   const grid=document.getElementById('horario-grid');
   grid.innerHTML='';
 
-  // Esquina
   const corner=document.createElement('div');
   corner.style.cssText='display:flex;align-items:center;justify-content:center;font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:6px 2px;border-radius:8px;background:#f8fafc;border:1px solid var(--border)';
   corner.textContent='Bloque';
   grid.appendChild(corner);
 
-  // Cabeceras de días
   DIAS.forEach((dia,di)=>{
     const bls=bloques(di);
     const el=document.createElement('div');
@@ -270,9 +125,7 @@ function renderGrilla(){
     grid.appendChild(el);
   });
 
-  // Filas
   for(let bi=0;bi<N_BLOQUES;bi++){
-    // Celda de hora (muestra horario del lunes para el número de bloque)
     const bLun=bloques(0)[bi];
     const hora=document.createElement('div');
     hora.className='hg-hora';
@@ -280,129 +133,54 @@ function renderGrilla(){
     grid.appendChild(hora);
 
     DIAS.forEach((_,di)=>{
-      const slot=bloques(di)[bi];
-      const val=(gridData()[di]||{})[bi]||null;
+      const val=((celdas[di]||{})[bi])||null;
       const cel=document.createElement('div');
-      cel.className='hg-celda '+(val?ASIG_CLS[val.asig]:'vacia');
-      cel.dataset.di=di; cel.dataset.bi=bi;
-
+      cel.className='hg-celda '+(val?'':'vacia');
       if(val){
         const inner=document.createElement('div');
         inner.className='celda-inner';
-        inner.innerHTML=`<span class="celda-asig">${esc(ASIG_LABEL[val.asig]||val.asig)}</span>
-          <span class="celda-grado">${esc(val.grado)}&ndash;${esc(val.grupo)}</span>
-          ${val.nota?`<span style="font-size:.62rem;opacity:.75">${esc(val.nota)}</span>`:''}`;
+        inner.innerHTML=`<span class="celda-asig">${esc(val.materia||'')}</span>
+          <span class="celda-grado">${esc(val.grado||'')}${val.grupo?'-'+esc(val.grupo):''}</span>
+          ${val.aula?`<span style="font-size:.62rem;opacity:.75">${esc(val.aula)}</span>`:''}`;
         cel.appendChild(inner);
-        const del=document.createElement('button');
-        del.className='celda-del'; del.textContent='✕'; del.title='Quitar';
-        del.onclick=e=>{e.stopPropagation();eliminarCelda(di,bi);};
-        cel.appendChild(del);
-      } else {
-        cel.title=`${DIAS[di]} · Bloque ${bi+1} (${slot.ini}–${slot.fin})`;
       }
-
-      cel.addEventListener('click',()=>abrirModal(di,bi,slot,val));
       grid.appendChild(cel);
     });
   }
-
-  renderStats();
 }
 
-/* ── Stats ── */
-function renderStats(){
-  const c={soc:0,dem:0,fil:0,lib:0}; let total=0;
+function renderStats(celdas){
+  const c={}; let total=0;
   for(let di=0;di<5;di++) for(let bi=0;bi<N_BLOQUES;bi++){
-    const v=(gridData()[di]||{})[bi]; if(v){c[v.asig]=(c[v.asig]||0)+1;total++;}
+    const v=(celdas[di]||{})[bi];
+    if(v){ total++; const m=v.materia||'—'; c[m]=(c[m]||0)+1; }
   }
   const libre=5*N_BLOQUES-total;
   document.getElementById('stats-row').innerHTML=`
     <div class="stat-pill"><span class="sp-n">${total}</span><span class="sp-l">Horas asignadas<br>(de 35)</span></div>
     <div class="stat-pill"><span class="sp-n" style="color:var(--muted)">${libre}</span><span class="sp-l">Horas libres</span></div>
-    ${c.soc?`<div class="stat-pill asig-soc" style="border-color:var(--c-soc)"><span class="sp-n">${c.soc}</span><span class="sp-l">C. Sociales</span></div>`:''}
-    ${c.dem?`<div class="stat-pill asig-dem" style="border-color:var(--c-dem)"><span class="sp-n">${c.dem}</span><span class="sp-l">Democracia</span></div>`:''}
-    ${c.fil?`<div class="stat-pill asig-fil" style="border-color:var(--c-fil)"><span class="sp-n">${c.fil}</span><span class="sp-l">Filosofía</span></div>`:''}
-    ${c.lib?`<div class="stat-pill asig-lib" style="border-color:var(--c-lib)"><span class="sp-n">${c.lib}</span><span class="sp-l">Libre</span></div>`:''}
+    ${Object.entries(c).map(([m,n])=>`<div class="stat-pill"><span class="sp-n">${n}</span><span class="sp-l">${esc(m)}</span></div>`).join('')}
   `;
 }
 
-/* ── Modal ── */
-let _di=null,_bi=null;
-function abrirModal(di,bi,slot,val){
-  _di=di;_bi=bi;
-  document.getElementById('modal-titulo').textContent=`${DIAS[di]} · Bloque ${bi+1}  (${slot.ini} – ${slot.fin})`;
-  document.getElementById('ed-asig').value=val?.asig||'soc';
-  document.getElementById('ed-grado').value=val?.grado||'9°';
-  // Ajustar opciones de grupo
-  ajustarGrupos(val?.grado||'9°', val?.grupo||'01');
-  document.getElementById('ed-nota').value=val?.nota||'';
-  document.getElementById('modal-ed').classList.remove('hide');
-  document.getElementById('ed-asig').focus();
-}
-function cerrarModal(){document.getElementById('modal-ed').classList.add('hide');_di=null;_bi=null;}
-function guardarCelda(){
-  if(_di===null)return;
-  const existente=(gridData()[_di]||{})[_bi];
-  const mk=(existente&&existente._mk)||ctxMateria();
-  if(!ALL_DATA[mk])ALL_DATA[mk]={};
-  if(!ALL_DATA[mk][_di])ALL_DATA[mk][_di]={};
-  const r={
-    asig:document.getElementById('ed-asig').value,
-    grado:document.getElementById('ed-grado').value,
-    grupo:document.getElementById('ed-grupo').value,
-    nota:document.getElementById('ed-nota').value.trim(),
-  };
-  ALL_DATA[mk][_di][_bi]=r;
-  lsW(ALL_DATA);
-  marcarCeldaSync(_di,_bi,r,mk);
-  cerrarModal();renderGrilla();
-}
-function eliminarCelda(di,bi){
-  const celda=(gridData()[di]||{})[bi];
-  const mk=(celda&&celda._mk)||ctxMateria();
-  const g=ALL_DATA[mk]||{};
-  if(g[di]&&g[di][bi]&&typeof LV_SYNC!=='undefined'){
-    const _id=mk+'_'+di+'_'+bi;
-    // Borrado real en Supabase (no solo marcar _eliminado): así, si
-    // reutilizas la misma celda para otra clase después, no queda una
-    // marca vieja que la vuelva a borrar al sincronizar.
-    LV_SYNC.eliminarRegistro('horario',_id);
+function init(){
+  const h=miHorario();
+  const celdas=h?(h.celdas||{}):{};
+  const hayAlgo=Object.values(celdas).some(dia=>Object.keys(dia||{}).length>0);
+  if(!hayAlgo){
+    document.getElementById('card-vacio').style.display='block';
+    document.getElementById('card-info').style.display='none';
+    document.getElementById('card-grid').style.display='none';
+    return;
   }
-  if(g[di])delete g[di][bi];
-  lsW(ALL_DATA);renderGrilla();
+  document.getElementById('card-vacio').style.display='none';
+  document.getElementById('card-info').style.display='block';
+  document.getElementById('card-grid').style.display='block';
+  renderStats(celdas);
+  renderGrilla(celdas);
 }
-function limpiarTodo(){
-  if(!confirm('¿Borrar TODO tu horario (todas tus materias)? Esta acción también lo borra de la nube.'))return;
-  ['_global',...misMaterias()].forEach(mk=>{
-    const b=ALL_DATA[mk]; if(!b) return;
-    Object.keys(b).forEach(di=>Object.keys(b[di]||{}).forEach(bi=>{
-      if(typeof LV_SYNC!=='undefined') LV_SYNC.eliminarRegistro('horario', mk+'_'+di+'_'+bi);
-    }));
-    ALL_DATA[mk]={};
-  });
-  lsW(ALL_DATA);renderGrilla();
-}
-
-function ajustarGrupos(grado, grupoActual){
-  const sel=document.getElementById('ed-grupo');
-  const es11=grado==='11°';
-  Array.from(sel.options).forEach(o=>{
-    o.disabled=(es11&&o.value==='03');
-  });
-  sel.value=(es11&&grupoActual==='03')?'01':grupoActual;
-}
-document.getElementById('ed-grado').addEventListener('change',function(){
-  ajustarGrupos(this.value, document.getElementById('ed-grupo').value);
-});
-
-function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-
-document.getElementById('modal-ed').addEventListener('click',e=>{if(e.target===document.getElementById('modal-ed'))cerrarModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarModal();});
-
-renderGrilla();
+init();
+setTimeout(init,2500);
 </script>
-<script>window.LV_SYNC_TABLAS=['lv_horario'];</script>
-<script src="../sync.js"></script>
 </body>
 </html>

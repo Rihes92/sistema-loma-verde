@@ -66,6 +66,7 @@ const LV_SYNC = (() => {
     'lv_permisos':       { tabla: 'lv_permisos',       id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_matricula':      { tabla: 'lv_matricula',      id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_preescolar':     { tabla: 'lv_preescolar',     id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_horarios':       { tabla: 'lv_horarios',       id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_centros':               { tabla: 'lv_centros',               id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_centros_inscripciones': { tabla: 'lv_centros_inscripciones', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_centros_asistencia':    { tabla: 'lv_centros_asistencia',    id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
