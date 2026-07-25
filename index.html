@@ -1265,6 +1265,40 @@ function renderPanelCoordinacion(){
     }
   }
 
+  // ---------- 4b) Estudiantes con inasistencia alta (>25%), todo el colegio ----------
+  // Mismo cálculo que ya existe en el dashboard personal del docente (líneas ~831-840
+  // más arriba), pero SIN filtrar por materia — como admin/coordinación ve todo el
+  // colegio. Se agregó aquí porque el dashboard personal (con esa alerta) hace
+  // `if(PERM.esAdmin) return;` al inicio y nunca llega a calcularla para el admin —
+  // por eso Richard nunca la vio (sesión 26, backlog crudo punto 8).
+  const estsAs = safeJSON('lv_as_estudiantes')||{};
+  const asisAs = safeJSON('lv_as_asistencia')||{};
+  const conFallasPC = [];
+  Object.entries(estsAs).forEach(([cId, arr])=>{
+    const curso = cursoById[cId];
+    (arr||[]).forEach(est=>{
+      let F=0, tot=0;
+      Object.entries(asisAs).forEach(([k,reg])=>{
+        if(!k.startsWith(cId+'_')) return;
+        const e=(reg.registros||{})[est.id];
+        if(e){ tot++; if(e==='F') F++; }
+      });
+      if(tot>=4 && (F/tot)>0.25) conFallasPC.push({ nombre: est.nombre, curso: curso?LV_CURSO.etiqueta(curso):'', pct: Math.round((F/tot)*100), F, tot, cursoId: cId });
+    });
+  });
+  conFallasPC.sort((a,b)=>b.pct-a.pct);
+
+  let htmlFallas;
+  if(!conFallasPC.length){
+    htmlFallas = '<div class="act-empty">✅ Ningún estudiante supera el 25% de inasistencias.</div>';
+  } else {
+    htmlFallas = conFallasPC.slice(0,6).map(f=>`
+      <div class="act-row" onclick="location.href='modulos/05-asistencia.html'" style="border-left:3px solid var(--bad);padding-left:14px">
+        <div class="act-text">🚨 <strong>${escPC(f.nombre)}</strong> ${f.curso?'('+escPC(f.curso)+')':''} — ${f.pct}% de inasistencia (${f.F} de ${f.tot} días)</div>
+      </div>`).join('');
+    if(conFallasPC.length>6) htmlFallas += `<div class="act-row" onclick="location.href='modulos/05-asistencia.html'" style="justify-content:center;color:var(--primary);font-weight:700">Ver los ${conFallasPC.length} en total →</div>`;
+  }
+
   // ---------- 4) Eventos de la semana (próximos 7 días) ----------
   const now = new Date();
   const prox7 = eventos.filter(e=>{
@@ -1313,6 +1347,13 @@ function renderPanelCoordinacion(){
         <span style="font-size:1.1rem">📅</span> Eventos de la semana
       </div>
       <div style="padding:10px 0">${htmlEv}</div>
+    </div>
+
+    <div class="act-card" style="padding:0">
+      <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid var(--border);font-weight:800;font-size:.9rem;color:var(--text);display:flex;align-items:center;gap:8px">
+        <span style="font-size:1.1rem">🚨</span> Inasistencia alta (&gt;25%)${conFallasPC.length?` <span style="margin-left:auto;background:var(--bad);color:#fff;border-radius:999px;padding:1px 9px;font-size:.72rem">${conFallasPC.length}</span>`:''}
+      </div>
+      <div style="padding:10px 0">${htmlFallas}</div>
     </div>
   `;
 }

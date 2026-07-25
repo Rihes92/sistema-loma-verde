@@ -63,6 +63,28 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26b): alerta de inasistencia también para admin/coordinación
+
+- **Causa real encontrada del punto 8 del backlog crudo** ("revisar que la alerta de +25%
+  inasistencias funcione"): la alerta YA EXISTÍA y funciona bien — es la tarjeta
+  "🚨 N estudiante(s) con más del 25% de inasistencias" del dashboard personal
+  ("Tu Día en SABIE"). El problema es que ese dashboard entero hace
+  `if(PERM.esAdmin) return;` al inicio (sesión 22, para cederle el espacio al Panel de
+  Coordinación) — así que Richard, que entra como admin, JAMÁS la ve. No era un bug de
+  cálculo, era una tarjeta que solo existía para el rol equivocado.
+- **Corregido:** nueva tarjeta 5ª en `renderPanelCoordinacion()` (Panel de Coordinación,
+  visible solo para admin/coordinación) — "🚨 Inasistencia alta (>25%)", MISMO cálculo que
+  ya usa el dashboard docente pero SIN filtrar por materia (coordinación ve todo el
+  colegio): cuenta faltas (`F`) sobre el total de días registrados por estudiante-curso en
+  `lv_as_asistencia`/`lv_as_estudiantes`, ordenada de mayor a menor %, cada fila enlaza a
+  Asistencia. Se exige mínimo 4 registros antes de alertar (evita falsos positivos con
+  apenas 1-2 días tomados).
+  SW **v86**. `node --check` limpio en index.html (6 bloques).
+- **PENDIENTE:** push; que Richard entre como admin y confirme que la tarjeta aparece (o
+  que diga "✅ Ningún estudiante supera el 25%" si nadie la dispara todavía). Sigue
+  pendiente su pregunta de si esto debería ser además una alerta MÁS proactiva (push/
+  correo) — por ahora queda como tarjeta del panel, igual que las otras 4.
+
 ## ▶ POR DÓNDE RETOMAR (jul 25, 2026 — sesión 26, bug del botón "📝 Mejoramiento")
 
 - **Investigados los 2 bugs que Richard reportó como prioridad (ver backlog crudo arriba,
