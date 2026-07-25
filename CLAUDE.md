@@ -63,6 +63,52 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26j): Boletín descriptivo para preescolar
+
+- **Punto 13 del backlog crudo:** "Boletines — dos plantillas: bachillerato y primaria
+  como hoy, pero prejardín/jardín/transición debe ser MÁS DESCRIPTIVO — toda la info del
+  estudiante e institucional, más un espacio grande para que el docente describa
+  comportamiento y evolución, quizás con opciones estandarizadas (positivas/negativas)."
+  **Hallazgo antes de construir:** revisando el código, NO existían dos plantillas — había
+  UNA sola tabla de notas para todos los grados. Se le señaló esto a Richard antes de
+  construir, junto con dos preguntas de alcance (respondidas): (1) Prejardín/Jardín/
+  Transición NO se califican con notas numéricas — el boletín de esos grados debe ser
+  puramente descriptivo, sin la tabla 1.0–5.0; (2) el espacio de descripción usa las
+  **dimensiones del desarrollo del MEN** (cognitiva, comunicativa, corporal, socio-
+  afectiva, estética), cada una con frases rápidas positivas/negativas para marcar + un
+  comentario corto libre.
+- **Tabla nueva `lv_preescolar`** (`migracion_preescolar.sql`, SIN CORRER; RLS
+  `solo_autenticados`, mismo nivel que `lv_calificaciones`/`lv_observador`): `{id, estId,
+  periodo, dims:{cognitiva:{opciones:[...],texto:''}, comunicativa:{...}, ...}, creado,
+  actualizado}`. Deliberadamente NO se guardó dentro de `lv_calificaciones` — son motores
+  de valoración distintos (numérico vs. descriptivo) y mezclarlos habría arriesgado el
+  cálculo de `defin()`/`calcDefinitiva()` que usa medio sistema. Agregada a `LV_SYNC_TABLAS`
+  de `13-boletines.html` y al `MAPA` de `sync.js`.
+- **`esPreescolar(grado)` nueva** en `13-boletines.html` (usa `LV_CURSO.gradoCanon`, que ya
+  convierte "Transición (0°)" → `'0'`): distingue Prejardín/Jardín/Transición del resto.
+- **Tarjeta nueva "📝 Valoración descriptiva (preescolar)"** en la pantalla de Generar
+  boletines: SOLO aparece cuando el grupo seleccionado es de preescolar. Por estudiante
+  (en un `<details>` plegable), las 5 dimensiones del MEN con frases-chip verdes
+  (positivas) y rojas (negativas) que se marcan con un clic + una casilla de comentario
+  corto; botón "Guardar" por estudiante que escribe en `lv_preescolar` (clave
+  estId+periodo).
+- **`construirBoletines()`/`htmlBoletin()` bifurcan por `esPreescolar(grupo.grado)`:** si
+  es preescolar, arman un objeto liviano (sin `filas`/`prom`/`observacion` de notas) con
+  `dims` + las anotaciones del observador del año (mismo bloque que ya se agregó en la
+  sesión 26f) y lo imprimen con `htmlBoletinPreescolar()` — nueva plantilla con encabezado
+  "INFORME DESCRIPTIVO DEL DESARROLLO", una tabla por dimensión con las frases marcadas +
+  el comentario libre, sin ninguna tabla de valoración numérica. `renderLista()` también
+  se ajustó para no mostrar el aviso de "sin notas" ni "promedio" en boletines de
+  preescolar (ninguno de los dos aplica ahí).
+  SW **v93**. `node --check`-equivalente (3 bloques `<script>`) limpio; balance de
+  `<div>/<table>/<tr>/<td>/<th>/<label>/<select>/<details>/<summary>` verificado en
+  `modulos/13-boletines.html`; `node --check` limpio en `sync.js`.
+- **PENDIENTE:** correr `migracion_preescolar.sql` en Supabase; push; que Richard entre
+  como director de un grupo de Prejardín/Jardín/Transición, marque algunas frases de
+  ejemplo en un par de dimensiones, guarde, y confirme que el boletín impreso se ve bien
+  (sin tabla de notas, con las frases y el comentario). Los grupos de 1°-11° deben seguir
+  viéndose exactamente igual que antes (no se tocó su plantilla).
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26i): Preparación Saber 11 (04) sin selector de materia
 
 - **Punto 1 del backlog crudo:** "Saber 11 (módulo 04) no debería requerir entrar por

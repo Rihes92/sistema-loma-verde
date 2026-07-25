@@ -6,7 +6,7 @@
 <title>Boletines — SABIE</title>
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script>window.LV_SYNC_TABLAS=['lv_boletines','lv_calificaciones','lv_cursos','lv_estudiantes','lv_observador','lv_docentes','lv_asignaciones','lv_as_asistencia'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_boletines','lv_calificaciones','lv_cursos','lv_estudiantes','lv_observador','lv_docentes','lv_asignaciones','lv_as_asistencia','lv_preescolar'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{
@@ -39,6 +39,14 @@
   .bloqueo h3{color:#991b1b;margin-bottom:8px}
   .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.74rem;font-weight:700;background:#fee2e2;color:#991b1b;margin:2px}
   .prev{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .pre-card{border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px}
+  .pre-card summary{cursor:pointer;font-weight:700;font-size:.95rem;color:var(--primary)}
+  .pre-dim{margin-top:10px}
+  .pre-dim h4{font-size:.84rem;margin-bottom:6px}
+  .chip{display:inline-block;border:1px solid #cbd5e1;border-radius:999px;padding:5px 12px;font-size:.78rem;margin:2px 4px 2px 0;cursor:pointer;background:#fff;color:var(--text)}
+  .chip.pos.sel{background:#dcfce7;border-color:#16a34a;color:#166534;font-weight:600}
+  .chip.neg.sel{background:#fee2e2;border-color:#dc2626;color:#991b1b;font-weight:600}
+  .pre-txt{width:100%;margin-top:6px;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;font-size:.85rem;font-family:inherit}
   #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
   #toast.show{opacity:1}
   #print-area{display:none}
@@ -101,6 +109,14 @@
     <div id="gate" style="margin-top:14px"></div>
     <div id="lista" style="margin-top:6px"></div>
   </div>
+
+  <div class="card hide" id="card-preescolar">
+    <h2>📝 Valoración descriptiva (preescolar)</h2>
+    <p class="desc">Prejardín, Jardín y Transición no se califican con la tabla numérica — el boletín de estos grados
+      describe el desarrollo del niño o niña por dimensiones. Marca las frases que apliquen (puedes marcar varias,
+      positivas y/o negativas) y agrega un comentario corto si quieres. Se guarda por estudiante y periodo.</p>
+    <div id="pre-out"></div>
+  </div>
 </main>
 
 <div id="toast" role="alert" aria-live="assertive"></div>
@@ -150,6 +166,49 @@ function desemp(d){
   if(d>=s.passing) return 'Básico';
   return 'Bajo';
 }
+
+// ── Preescolar: valoración descriptiva por dimensiones del MEN ──
+// (backlog crudo sesión 26, punto 13). Prejardín/Jardín/Transición no se
+// califican con la tabla numérica 1.0–5.0 — el boletín de estos grados es
+// puramente descriptivo, por eso vive en su propia tabla `lv_preescolar`
+// (no en lv_calificaciones, para no mezclar dos motores de valoración
+// distintos). RLS igual de abierta que lv_calificaciones/lv_observador
+// (solo_autenticados) — mismo nivel de dato de aula que el resto.
+function esPreescolar(grado){
+  if(typeof LV_CURSO==='undefined') return false;
+  const g=LV_CURSO.gradoCanon(grado);
+  return g==='prejardin'||g==='jardin'||g==='0';
+}
+const DIMENSIONES=[
+  {key:'cognitiva',nombre:'🧠 Dimensión cognitiva',
+    pos:['Explora y se interesa por el medio que lo rodea','Resuelve situaciones sencillas con creatividad','Reconoce nociones básicas (colores, formas, cantidades)'],
+    neg:['Requiere más acompañamiento para concentrarse en las actividades','Le cuesta reconocer nociones básicas de su edad']},
+  {key:'comunicativa',nombre:'💬 Dimensión comunicativa',
+    pos:['Se expresa con claridad y amplía su vocabulario','Participa activamente en conversaciones y rondas','Escucha y sigue instrucciones sencillas'],
+    neg:['Su vocabulario aún es limitado para su edad','Le cuesta expresar sus ideas con palabras']},
+  {key:'corporal',nombre:'🤸 Dimensión corporal / motriz',
+    pos:['Buen desarrollo de motricidad gruesa (correr, saltar, trepar)','Buen desarrollo de motricidad fina (recortar, colorear, trazar)','Tiene buena coordinación y lateralidad'],
+    neg:['Requiere refuerzo en motricidad fina (pinza, trazo)','Requiere refuerzo en motricidad gruesa']},
+  {key:'socioafectiva',nombre:'🤝 Dimensión socio-afectiva',
+    pos:['Se relaciona bien con sus compañeros','Muestra autonomía en sus actividades diarias','Maneja adecuadamente sus emociones y sigue normas'],
+    neg:['Le cuesta relacionarse y compartir con sus compañeros','Presenta dificultad para seguir normas y acuerdos','Requiere acompañamiento en el manejo de sus emociones']},
+  {key:'estetica',nombre:'🎨 Dimensión estética',
+    pos:['Muestra creatividad e imaginación en sus producciones','Disfruta y participa en actividades artísticas y musicales'],
+    neg:['Participa poco en actividades artísticas']}
+];
+function lsPre(){ return lsRead('preescolar'); }
+function getPre(estId,periodo){
+  return lsPre().find(p=>!p._eliminado&&p.estId===estId&&String(p.periodo)===String(periodo))
+    || {id:uid(),estId,periodo,dims:{},creado:Date.now()};
+}
+function guardarPre(reg){
+  reg.actualizado=Date.now();
+  let arr=lsPre().filter(p=>p.id!==reg.id);
+  arr.push(reg);
+  try{ localStorage.setItem(LS+'preescolar', JSON.stringify(arr)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_preescolar', reg);
+}
+const uid=()=>'pre-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 
 // ── configuración institucional (sincronizada) ──
 function cfgBol(){
@@ -213,6 +272,21 @@ function construirBoletines(grupoKey, periodo){
   const dirigente=(lsRead('docentes').find(d=>d.dirige&&grupo&&typeof LV_CURSO!=='undefined'
     &&LV_CURSO.dirigeCurso(d.dirige,{grado:grupo.grado,grupo:grupo.grupo}))||{}).nombre||'';
 
+  // Prejardín/Jardín/Transición: boletín puramente descriptivo, sin tabla de
+  // notas 1.0–5.0 (backlog crudo sesión 26, punto 13; decisión de Richard).
+  if(grupo && esPreescolar(grupo.grado)){
+    const anioBol=new Date().getFullYear();
+    return estudiantes.map(est=>{
+      const estId=est.ids[0];
+      const reg=getPre(estId,periodo);
+      const obsEst=lsRead('observador').filter(o=>!o._eliminado&&normN(o.estNombre)===normN(est.nombre));
+      const observadorAnotaciones=obsEst.filter(o=>new Date(o.creado||0).getFullYear()===anioBol)
+        .sort((a,b)=>new Date(a.fecha||a.creado||0)-new Date(b.fecha||b.creado||0));
+      return {nombre:est.nombre, esPreescolar:true, dims:reg.dims||{}, observadorAnotaciones,
+        grupo:grupo.grado+' - '+(grupo.grupo||'único'), dirigente, cfg:c};
+    });
+  }
+
   return estudiantes.map(est=>{
     const filas=[];
     let suma=0,cont=0;
@@ -254,7 +328,38 @@ function construirBoletines(grupoKey, periodo){
   });
 }
 
+function htmlBoletinPreescolar(b, periodo){
+  const dimsConDatos=DIMENSIONES.filter(d=>b.dims[d.key]&&(b.dims[d.key].opciones||[]).length+((b.dims[d.key].texto||'').length)>0);
+  return `<div class="boletin">
+    <div class="p-head"><img src="../Logo/logo.jpg" alt="">
+      <div><h1>${esc(IE)}</h1><div>INFORME DESCRIPTIVO DEL DESARROLLO · ${esc(PERNOM[periodo]||periodo)} · Año ${new Date().getFullYear()}</div>${membreteLinea()}</div></div>
+    <table><tr>
+      <th style="width:20%">Estudiante</th><td>${esc(b.nombre)}</td>
+      <th style="width:16%">Grupo</th><td>${esc(b.grupo)}</td></tr>
+      <tr><th>Docente</th><td colspan="3">${esc(b.dirigente||'—')}</td></tr>
+    </table>
+    ${dimsConDatos.length?dimsConDatos.map(d=>{
+      const dat=b.dims[d.key];
+      return `<table><tr><th colspan="2" style="background:#eef2ff">${esc(d.nombre)}</th></tr>
+        <tr><td colspan="2">${(dat.opciones||[]).map(o=>`• ${esc(o)}`).join('<br>')}${dat.texto?`${(dat.opciones||[]).length?'<br>':''}${esc(dat.texto)}`:''}</td></tr>
+      </table>`;
+    }).join(''):'<table><tr><td>Aún no se ha registrado la valoración descriptiva de este periodo.</td></tr></table>'}
+    ${b.observadorAnotaciones&&b.observadorAnotaciones.length?`<table>
+      <tr><th colspan="2" style="background:#eef2ff">📔 Observador del estudiante — ${b.observadorAnotaciones.length} anotación(es) en ${new Date().getFullYear()}</th></tr>
+      ${b.observadorAnotaciones.map(o=>`<tr><td style="width:22%"><b>${esc(o.tipo||'')}</b><br><span style="font-size:8pt">${fmtF(o.fecha)}</span></td>
+        <td>${esc((o.descripcion||'').slice(0,220))}${(o.descripcion||'').length>220?'…':''}${o.compromiso?`<br><i>Compromiso: ${esc(o.compromiso)}</i>`:''}</td></tr>`).join('')}
+    </table>`:''}
+    ${b.cfg.mensaje?`<p style="font-size:9pt;margin-top:6px;font-style:italic">${esc(b.cfg.mensaje)}</p>`:''}
+    <div class="firmas">
+      <div>${esc(b.cfg.rector||'Rector(a)')}<br>Rectoría</div>
+      <div>${esc(b.dirigente||'')}<br>Docente</div>
+      <div>Acudiente</div>
+    </div>
+  </div>`;
+}
+
 function htmlBoletin(b, periodo){
+  if(b.esPreescolar) return htmlBoletinPreescolar(b, periodo);
   return `<div class="boletin">
     <div class="p-head"><img src="../Logo/logo.jpg" alt="">
       <div><h1>${esc(IE)}</h1><div>BOLETÍN DE CALIFICACIONES · ${esc(PERNOM[periodo]||periodo)} · Año ${new Date().getFullYear()}</div>${membreteLinea()}</div></div>
@@ -285,10 +390,57 @@ function htmlBoletin(b, periodo){
 // ── UI ──
 let grupoSel=null;
 
+function grupoActual(){ return gruposUnicos().find(g=>g.key===grupoSel); }
+
+function renderPreescolar(){
+  const cont=document.getElementById('pre-out');
+  const periodo=document.getElementById('v-periodo').value;
+  const {estudiantes}=datosGrupo(grupoSel);
+  if(!estudiantes.length){ cont.innerHTML='<div class="empty">Sin estudiantes en este grupo.</div>'; return; }
+  cont.innerHTML=estudiantes.map(est=>{
+    const estId=est.ids[0];
+    const reg=getPre(estId,periodo);
+    return `<details class="pre-card" data-est="${esc(estId)}">
+      <summary>${esc(est.nombre)}</summary>
+      ${DIMENSIONES.map(d=>{
+        const sel=(reg.dims[d.key]&&reg.dims[d.key].opciones)||[];
+        const txt=(reg.dims[d.key]&&reg.dims[d.key].texto)||'';
+        return `<div class="pre-dim" data-dim="${d.key}">
+          <h4>${d.nombre}</h4>
+          ${d.pos.map(f=>`<span class="chip pos${sel.includes(f)?' sel':''}" onclick="this.classList.toggle('sel')">${esc(f)}</span>`).join('')}
+          ${d.neg.map(f=>`<span class="chip neg${sel.includes(f)?' sel':''}" onclick="this.classList.toggle('sel')">${esc(f)}</span>`).join('')}
+          <textarea class="pre-txt" rows="2" placeholder="Comentario adicional (opcional)">${esc(txt)}</textarea>
+        </div>`;
+      }).join('')}
+      <button class="btn ok sm" style="margin-top:10px" onclick="guardarUnoPre('${esc(estId)}','${periodo}')">💾 Guardar</button>
+    </details>`;
+  }).join('');
+}
+window.guardarUnoPre=function(estId, periodo){
+  const card=document.querySelector(`.pre-card[data-est="${estId}"]`);
+  if(!card) return;
+  const reg=getPre(estId,periodo);
+  const dims={};
+  card.querySelectorAll('.pre-dim').forEach(box=>{
+    const key=box.dataset.dim;
+    const opciones=[...box.querySelectorAll('.chip.sel')].map(c=>c.textContent);
+    const texto=box.querySelector('.pre-txt').value.trim();
+    if(opciones.length||texto) dims[key]={opciones,texto};
+  });
+  reg.dims=dims; reg.periodo=periodo;
+  guardarPre(reg);
+  toast('Valoración guardada');
+};
+
 function renderGate(){
   const gate=document.getElementById('gate');
   const lista=document.getElementById('lista');
   const periodo=document.getElementById('v-periodo').value;
+  const preCard=document.getElementById('card-preescolar');
+  const g=grupoActual();
+  const esPre=g&&esPreescolar(g.grado);
+  preCard.classList.toggle('hide', !esPre);
+  if(esPre && grupoSel) renderPreescolar();
   if(!grupoSel){ gate.innerHTML=''; lista.innerHTML='<div class="empty">Selecciona un grupo.</div>'; return; }
   const faltan=faltantesObservador(grupoSel);
   const c=cfgBol();
@@ -314,7 +466,8 @@ window.renderLista=function(forzado){
   const periodo=document.getElementById('v-periodo').value;
   const bols=construirBoletines(grupoSel, periodo);
   if(!bols.length){ lista.innerHTML='<div class="empty">📚 Este grupo no tiene estudiantes registrados en Calificaciones.</div>'; return; }
-  const sinNotas=bols.filter(b=>!b.prom).length;
+  const esPre=bols[0]&&bols[0].esPreescolar;
+  const sinNotas=esPre?0:bols.filter(b=>!b.prom).length;
   lista.innerHTML=`
     ${forzado?'<p class="desc" style="color:#92400e">⚠️ Generado por coordinación con observadores pendientes.</p>':''}
     ${sinNotas?`<p class="desc" style="color:#92400e">⚠️ ${sinNotas} estudiante(s) aún sin notas en el ${PERNOM[periodo].toLowerCase()}.</p>`:''}
@@ -323,7 +476,7 @@ window.renderLista=function(forzado){
     </div>
     ${bols.map((b,i)=>`<div class="prev">
       <div style="flex:1;min-width:180px"><strong>${esc(b.nombre)}</strong>
-        <span style="font-size:.78rem;color:var(--muted)"> · promedio ${b.prom?b.prom.toFixed(1):'—'} (${esc(desemp(b.prom))})</span></div>
+        ${esPre?'':`<span style="font-size:.78rem;color:var(--muted)"> · promedio ${b.prom?b.prom.toFixed(1):'—'} (${esc(desemp(b.prom))})</span>`}</div>
       <button class="btn sec" onclick="imprimirUno(${i})">🖨️ Boletín</button>
     </div>`).join('')}`;
   window._bols=bols; window._per=periodo;
