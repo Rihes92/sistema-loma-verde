@@ -63,6 +63,55 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26d): 09-Acudientes fusionado dentro de Matrícula (20)
+
+- **Punto 11 del backlog crudo:** "creo que 09 no debería existir como módulo aparte — al
+  matricular a un estudiante ya debería quedar con su(s) acudiente(s)… solo coordinación/
+  rector deberían tener acceso (hoy 09 está abierto a cualquier docente)". `20-matricula.html`
+  YA hacía la mitad (vincula/crea acudiente al matricular) desde la sesión 25c — lo que
+  faltaba era la gestión completa (listar/editar/eliminar/buscar todos los acudientes,
+  no solo los recién matriculados) y quitar el acceso abierto del módulo 09.
+- **`modulos/20-matricula.html` gana pestaña nueva "👪 Acudientes"** (además de Matrícula y
+  Resumen, mismo gate `ES_COORD` de todo el módulo): formulario para registrar/editar datos
+  básicos de un acudiente (nombre, parentesco, teléfono, correo, notas), tabla con
+  buscador+filtro por grado, WhatsApp directo, y por cada acudiente un botón
+  **"🔗 Vincular estudiante"** que despliega un `<select>` de estudiantes YA matriculados
+  (`lv_matricula`, no texto libre) para amarrarlos por `estId` — así cualquier vínculo
+  nuevo desde esta pestaña queda siempre atado a un registro real de matrícula, a
+  diferencia del 09 viejo que vinculaba por nombre escrito a mano. Al eliminar un
+  acudiente o quitar un hijo vinculado por `estId`, se limpia también `acudienteId` del
+  lado de `lv_matricula` (consistencia en ambos sentidos).
+- **`migrarAcudientes()` del 09 viejo se portó tal cual a `20-matricula.html`** (agrupa
+  registros planos sin `hijos[]` por teléfono o nombre, corre una vez al cargar si
+  `ES_COORD`) — por si quedaban acudientes de antes de la sesión 2 sin migrar, ya que el
+  09 (que era el único lugar donde corría esta migración) deja de usarse.
+- **`modulos/09-acudientes.html` reemplazado por una página de redirección** (`<meta
+  http-equiv="refresh">` + `location.replace`) a `20-matricula.html?tab=acudientes` — se
+  conserva el archivo (no se borra) solo para que accesos directos/marcadores viejos no
+  queden rotos; si alguien sin ser coordinación llega ahí, cae en el mismo "🔒 acceso
+  restringido" que ya tenía el módulo 20. `20-matricula.html` lee `?tab=` al cargar para
+  abrir directo en la pestaña Acudientes cuando viene de esa redirección.
+- **Enlaces quitados:** el link plano "👪 Acudientes" del sidebar de `index.html` (abierto
+  a cualquier docente) y la tarjeta de Acudientes en `materia-hub.html` (sección
+  institucionales). El link a `20-matricula.html` en el sidebar (`#nav-matricula`, ya
+  oculto salvo `login.esAdmin`) se renombró a "Matrícula y Acudientes" para que quede
+  claro que ahí vive todo ahora.
+- **OJO — no se tocó la RLS de `lv_acudientes`** (sigue `solo_autenticados`, sin
+  restricción por rol en el servidor, igual que antes de esta sesión): la restricción a
+  coordinación/rector es solo de la app (como ya era el caso), no del backend. Si se
+  quiere cerrar ese hueco de verdad, hace falta una migración SQL aparte con
+  `es_coordinacion()` en `lv_acudientes` (mismo patrón que `lv_matricula`) — no se hizo
+  hoy para no mezclarlo con este cambio.
+  SW **v88**. `node --check`-equivalente (3+1+6+2 bloques `<script>`) limpio en
+  `20-matricula.html`, `09-acudientes.html`, `index.html` y `materia-hub.html`; balance de
+  `<div>/<section>/<table>/<tr>/<td>/<th>/<label>/<select>` verificado en `20-matricula.html`.
+- **PENDIENTE:** push; que Richard entre como coordinación/rector a "Matrícula y
+  Acudientes" → pestaña Acudientes y confirme que ve TODOS los acudientes que antes veía
+  en el 09 viejo (la migración los debe traer), que vincular un estudiante ya matriculado
+  funciona, y que entrando con una cuenta docente normal ya no aparece "Acudientes" en el
+  sidebar ni en Áreas académicas. Decidir si vale la pena la migración SQL de RLS de
+  `lv_acudientes` mencionada arriba.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26c): pestaña "Solicitar" oculta para el rector en Permisos
 
 - **Punto 16 del backlog crudo (segunda mitad):** "creo que el rol RECTOR (admin) no
@@ -1667,11 +1716,16 @@ documentos impresos/WhatsApp, que luego será configurable).
   campos opcionales (jul 14, sesión 2, sin migración — es JSONB): `poblacion` (texto),
   `objetivoGeneral` (texto corto) y `fichaUrl` (link a la ficha PTAFI completa en
   OneDrive/Drive) — resumen rápido de la ficha oficial, en vez de transcribirla entera.
-- `modulos/20-matricula.html` — **Matrícula y Acudientes** (jul 2026, sesión 25c): registro
-  MAESTRO de estudiantes (documento, fecha nac., sede, grado, grupo, estado) amarrado a un
-  acudiente de `lv_acudientes`, SOLO coordinación/rector — estructura de partida, pendiente
-  de ajustar con la ficha oficial del colegio. Pestañas Matrícula (form + lista con
-  filtros) y Resumen (conteos + estudiantes sin acudiente + exportar CSV). Tabla nueva
+- `modulos/20-matricula.html` — **Matrícula y Acudientes** (jul 2026, sesión 25c; pestaña
+  Acudientes fusionada aquí en sesión 26d, ver ajuste arriba): registro MAESTRO de
+  estudiantes (documento, fecha nac., sede, grado, grupo, estado) amarrado a un acudiente
+  de `lv_acudientes`, SOLO coordinación/rector — estructura de partida, pendiente de
+  ajustar con la ficha oficial del colegio. Pestañas Matrícula (form + lista con filtros),
+  Acudientes (CRUD completo de acudientes, antes vivía en `09-acudientes.html`, abierto a
+  cualquier docente — ahora restringido) y Resumen (conteos + estudiantes sin acudiente +
+  exportar CSV). `modulos/09-acudientes.html` ya NO es un módulo funcional: solo redirige
+  a `20-matricula.html?tab=acudientes` (se conserva el archivo para no romper accesos
+  directos viejos). Tabla nueva
   `lv_matricula` (ver `migracion_matricula.sql`, RLS `es_coordinacion()` tanto lectura como
   escritura). NO alimenta todavía los rosters por-curso de 01-calificaciones/05-asistencia
   (`lv_estudiantes`, duplicado por materia) — es un registro paralelo; conectarlos es

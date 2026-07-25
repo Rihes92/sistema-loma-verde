@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Matrícula y Acudientes — SABIE</title>
+<!-- sesión 26d: se fusionó aquí el módulo 09-acudientes.html (backlog crudo, punto 11).
+     09-acudientes.html ahora solo redirige a esta página con ?tab=acudientes. -->
+
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script>window.LV_SYNC_TABLAS=['lv_matricula','lv_acudientes','lv_institucion'];</script>
@@ -77,6 +80,7 @@
 <div id="app" class="hide">
   <nav class="tabs" id="tabs">
     <button data-tab="matricula" class="active">📋 Matrícula</button>
+    <button data-tab="acudientes">👪 Acudientes</button>
     <button data-tab="resumen">📊 Resumen</button>
   </nav>
 
@@ -161,6 +165,40 @@
       </div>
     </section>
 
+    <!-- ── ACUDIENTES (fusión del antiguo módulo 09) ── -->
+    <section id="tab-acudientes" class="hide">
+      <div class="card">
+        <h2 id="acu-form-titulo">Registrar acudiente</h2>
+        <p class="desc">La forma normal de vincular un acudiente es al matricular al estudiante (pestaña Matrícula).
+          Usa esto para corregir datos de un acudiente, o para registrar uno que aún no tiene ningún estudiante vinculado.</p>
+        <div class="row">
+          <label class="fld">Nombre del acudiente<input id="ta-nombre" placeholder="Nombre completo"></label>
+          <label class="fld">Parentesco<select id="ta-parentesco">
+            <option>Madre</option><option>Padre</option><option>Abuelo/a</option>
+            <option>Tío/a</option><option>Hermano/a</option><option>Otro</option>
+          </select></label>
+        </div>
+        <div class="row">
+          <label class="fld">Teléfono<input id="ta-telefono" placeholder="Ej: 300 123 4567"></label>
+          <label class="fld">Correo (opcional)<input id="ta-email" type="email" placeholder="correo@ejemplo.com"></label>
+        </div>
+        <label class="fld" style="margin-top:2px">Notas (opcional)<textarea id="ta-notas" rows="2" placeholder="Observaciones adicionales…"></textarea></label>
+        <div style="margin-top:12px;display:flex;gap:10px">
+          <button class="btn ok" id="btn-ta-save">💾 Guardar</button>
+          <button class="btn sec hide" id="btn-ta-cancel">Cancelar edición</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Acudientes registrados</h2>
+        <div class="row" style="margin-bottom:10px">
+          <label class="fld">Buscar<input id="ta-buscar" placeholder="Estudiante, acudiente, teléfono…"></label>
+          <label class="fld">Grado<select id="ta-filtro-grado"><option value="">Todos</option></select></label>
+        </div>
+        <div id="acudientes-out"></div>
+      </div>
+    </section>
+
     <!-- ── RESUMEN ── -->
     <section id="tab-resumen" class="hide">
       <div class="card">
@@ -221,6 +259,7 @@ document.getElementById('tabs').addEventListener('click', e=>{
   document.querySelectorAll('main>section').forEach(s=>s.classList.add('hide'));
   document.getElementById('tab-'+b.dataset.tab).classList.remove('hide');
   if(b.dataset.tab==='resumen') renderResumen();
+  if(b.dataset.tab==='acudientes') renderAcudientesTab();
 });
 
 // ── WhatsApp ─────────────────────────────────────────────────
@@ -230,6 +269,36 @@ let matricula = ES_COORD ? lsRead('matricula') : [];
 let acudientes = ES_COORD ? lsRead('acudientes') : [];
 let editId = null;
 let acuElegidoId = null;
+
+// ── Migración de acudientes viejos (registros planos, sin hijos[]) ──
+// Portada tal cual del antiguo 09-acudientes.html al fusionarlo aquí
+// (sesión 26d). Agrupa por teléfono normalizado; sin teléfono, por nombre.
+// Idempotente: solo toca registros que aún no tengan hijos[].
+function migrarAcudientes(){
+  const viejos = acudientes.filter(a=>!Array.isArray(a.hijos));
+  if(!viejos.length) return;
+  const clave = a => telWa(a.telefono) || ('nom:'+String(a.nombreAcudiente||'').trim().toLowerCase());
+  const grupos = {};
+  viejos.forEach(a=>{ const k=clave(a); (grupos[k]=grupos[k]||[]).push(a); });
+  const nuevos=[], borrar=[];
+  Object.values(grupos).forEach(g=>{
+    const base=g[0];
+    const persona={ id:base.id, nombreAcudiente:base.nombreAcudiente, parentesco:base.parentesco||'',
+      telefono:base.telefono||'', email:base.email||'',
+      notas:[...new Set(g.map(x=>x.notas).filter(Boolean))].join(' · '),
+      hijos:g.map(x=>({estudiante:x.estudiante||'',grado:x.grado||'',grupo:x.grupo||''})).filter(h=>h.estudiante),
+      registradoPor:base.registradoPor||quienEsta(), creado:base.creado||Date.now() };
+    nuevos.push(persona);
+    g.slice(1).forEach(x=>borrar.push(x.id));
+  });
+  acudientes = acudientes.filter(a=>Array.isArray(a.hijos)).concat(nuevos);
+  persistir('acudientes', acudientes);
+  if(typeof LV_SYNC!=='undefined'){
+    nuevos.forEach(n=>LV_SYNC.marcarCambio('lv_acudientes', n));
+    borrar.forEach(id=>LV_SYNC.marcarCambio('lv_acudientes', {id, _eliminado:true}));
+  }
+}
+if(ES_COORD) migrarAcudientes();
 
 function fillSedes(){
   const sedes = (typeof LV_INST!=='undefined') ? LV_INST.sedes() : [];
@@ -381,6 +450,149 @@ window.eliminarMatricula = id=>{
   toast('Enviado a la papelera');
 };
 
+// ── Pestaña Acudientes (fusión del antiguo 09-acudientes.html) ──────
+let editAcuTabId = null;
+
+function cancelarEdicionAcuTab(){
+  editAcuTabId = null;
+  $('#acu-form-titulo').textContent = 'Registrar acudiente';
+  $('#btn-ta-cancel').classList.add('hide');
+  ['ta-nombre','ta-telefono','ta-email','ta-notas'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
+  $('#ta-parentesco').value = 'Madre';
+}
+$('#btn-ta-cancel').addEventListener('click', cancelarEdicionAcuTab);
+
+$('#btn-ta-save').addEventListener('click', ()=>{
+  const nombre = $('#ta-nombre').value.trim();
+  if(!nombre){ toast('Escribe el nombre del acudiente.'); return; }
+  let acu = editAcuTabId ? acudientes.find(a=>a.id===editAcuTabId) : null;
+  if(!acu){
+    acu = { id: uid(), hijos: [], creado: Date.now(), registradoPor: quienEsta() };
+    acudientes.push(acu);
+  }
+  acu.nombreAcudiente = nombre;
+  acu.parentesco = $('#ta-parentesco').value;
+  acu.telefono = $('#ta-telefono').value.trim();
+  acu.email = $('#ta-email').value.trim();
+  acu.notas = $('#ta-notas').value.trim();
+  acu.hijos = acu.hijos || [];
+  guardarUno('acudientes', acu);
+  toast(editAcuTabId?'Acudiente actualizado':'Acudiente registrado');
+  cancelarEdicionAcuTab();
+  fillFiltroGradoAcu(); renderAcudientesTab();
+});
+
+window.editarAcudienteTab = id=>{
+  const a = acudientes.find(x=>x.id===id); if(!a) return;
+  editAcuTabId = id;
+  $('#acu-form-titulo').textContent = 'Editando: '+(a.nombreAcudiente||'');
+  $('#ta-nombre').value = a.nombreAcudiente||'';
+  $('#ta-parentesco').value = a.parentesco||'Madre';
+  $('#ta-telefono').value = a.telefono||'';
+  $('#ta-email').value = a.email||'';
+  $('#ta-notas').value = a.notas||'';
+  $('#btn-ta-cancel').classList.remove('hide');
+  window.scrollTo(0,0);
+};
+
+window.eliminarAcudienteTab = id=>{
+  if(!confirm('¿Eliminar este acudiente y todos sus vínculos? Quedará 30 días en la papelera.')) return;
+  const a = acudientes.find(x=>x.id===id);
+  if(a && typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_acudientes', Object.assign({}, a, {id, _eliminado:true}));
+  acudientes = acudientes.filter(x=>x.id!==id);
+  persistir('acudientes', acudientes);
+  // limpiar el vínculo del lado de matrícula (los que apuntaban a este acudiente)
+  matricula.filter(m=>m.acudienteId===id).forEach(m=>{ m.acudienteId=''; guardarUno('matricula', m); });
+  renderAcudientesTab();
+  toast('Acudiente enviado a la papelera');
+};
+
+window.quitarHijoAcuTab = (acuId, idx)=>{
+  const a = acudientes.find(x=>x.id===acuId); if(!a||!a.hijos) return;
+  const h = a.hijos[idx]; if(!h) return;
+  if(!confirm(`¿Quitar el vínculo con ${h.estudiante}?`)) return;
+  a.hijos.splice(idx,1);
+  guardarUno('acudientes', a);
+  if(h.estId){
+    const m = matricula.find(x=>x.id===h.estId);
+    if(m && m.acudienteId===acuId){ m.acudienteId=''; guardarUno('matricula', m); }
+  }
+  renderAcudientesTab();
+};
+
+// Vincular un estudiante YA MATRICULADO a un acudiente existente (evita
+// texto libre duplicado — siempre queda amarrado por estId a lv_matricula).
+window.togglePickEstudianteAcu = acuId=>{
+  const cont = document.getElementById('acu-pick-'+acuId); if(!cont) return;
+  const abrir = cont.classList.contains('hide');
+  cont.classList.toggle('hide');
+  if(!abrir) return;
+  const acu = acudientes.find(a=>a.id===acuId); if(!acu) return;
+  const yaIds = new Set((acu.hijos||[]).map(h=>h.estId).filter(Boolean));
+  const opciones = matricula.filter(m=>!yaIds.has(m.id)).sort((a,b)=>(a.apellidos||'').localeCompare(b.apellidos||'','es'));
+  if(!opciones.length){ cont.innerHTML = '<p class="desc" style="margin:4px 0 0">No hay estudiantes matriculados sin vincular a este acudiente.</p>'; return; }
+  cont.innerHTML = `<select id="sel-est-${acuId}" style="max-width:280px;display:inline-block">
+    <option value="">— elegir estudiante matriculado —</option>
+    ${opciones.map(m=>`<option value="${m.id}">${esc(m.apellidos)} ${esc(m.nombres)} — ${esc(m.grado||'')}${m.grupo?'-'+esc(m.grupo):''}</option>`).join('')}
+    </select> <button class="btn sm ok" onclick="confirmarVinculoAcu('${acuId}')">Vincular</button>`;
+};
+window.confirmarVinculoAcu = acuId=>{
+  const sel = document.getElementById('sel-est-'+acuId);
+  const estId = sel && sel.value; if(!estId){ toast('Elige un estudiante primero.'); return; }
+  const m = matricula.find(x=>x.id===estId); if(!m) return;
+  const acu = acudientes.find(a=>a.id===acuId); if(!acu) return;
+  acu.hijos = acu.hijos||[];
+  acu.hijos.push({ estudiante: `${m.nombres} ${m.apellidos}`, grado: m.grado, grupo: m.grupo, estId: m.id });
+  guardarUno('acudientes', acu);
+  m.acudienteId = acuId;
+  guardarUno('matricula', m);
+  toast('Estudiante vinculado a '+acu.nombreAcudiente);
+  renderAcudientesTab();
+};
+
+function fillFiltroGradoAcu(){
+  const grados = Array.from(new Set(acudientes.flatMap(a=>(a.hijos||[]).map(h=>h.grado)).filter(Boolean))).sort();
+  $('#ta-filtro-grado').innerHTML = '<option value="">Todos</option>' + grados.map(g=>`<option>${esc(g)}</option>`).join('');
+}
+$('#ta-buscar').addEventListener('input', renderAcudientesTab);
+$('#ta-filtro-grado').addEventListener('change', renderAcudientesTab);
+
+function renderAcudientesTab(){
+  const q = ($('#ta-buscar').value||'').toLowerCase();
+  const filGrado = $('#ta-filtro-grado').value;
+  let lista = acudientes.slice().sort((a,b)=>(a.nombreAcudiente||'').localeCompare(b.nombreAcudiente||'','es'));
+  if(filGrado) lista = lista.filter(a=>(a.hijos||[]).some(h=>h.grado===filGrado));
+  if(q) lista = lista.filter(a=>
+    (a.nombreAcudiente||'').toLowerCase().includes(q) ||
+    (a.telefono||'').toLowerCase().includes(q) ||
+    (a.hijos||[]).some(h=>(h.estudiante||'').toLowerCase().includes(q))
+  );
+  const out = document.getElementById('acudientes-out');
+  if(!lista.length){ out.innerHTML = '<div class="empty">👪 Aún no hay acudientes registrados.<br>Se crean automáticamente al matricular, o regístralos aquí arriba.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Acudiente</th><th>Estudiantes a cargo</th><th>Parentesco</th><th>Teléfono</th><th>Correo</th><th class="c">Acciones</th>
+  </tr></thead><tbody>${lista.map(a=>`<tr>
+    <td><strong>${esc(a.nombreAcudiente)}</strong>${a.notas?`<div style="color:var(--muted);font-size:.75rem">${esc(a.notas)}</div>`:''}</td>
+    <td>${(a.hijos&&a.hijos.length)?a.hijos.map((h,i)=>
+        `<span class="badge" style="margin:2px 3px 2px 0;background:#dbeafe;color:#1e3a8a">${esc(h.estudiante)}${h.grado?' · '+esc(h.grado)+(h.grupo?'-'+esc(h.grupo):''):''}
+         <a href="#" onclick="quitarHijoAcuTab('${a.id}',${i});return false" title="Quitar vínculo" style="color:#991b1b;text-decoration:none;margin-left:3px">✖</a></span>`).join('')
+      :'<span style="color:var(--muted);font-size:.8rem">sin estudiantes</span>'}
+      <div style="margin-top:4px">
+        <button class="btn sm sec" onclick="togglePickEstudianteAcu('${a.id}')">🔗 Vincular estudiante</button>
+        <div id="acu-pick-${a.id}" class="hide" style="margin-top:4px"></div>
+      </div>
+    </td>
+    <td>${esc(a.parentesco||'—')}</td>
+    <td>${a.telefono?`<a href="https://wa.me/${telWa(a.telefono)}" target="_blank"
+        style="color:#16a34a;font-weight:700;text-decoration:none;white-space:nowrap">💬 ${esc(a.telefono)}</a>`:'—'}</td>
+    <td>${esc(a.email||'—')}</td>
+    <td class="c">
+      <button class="btn sm sec" onclick="editarAcudienteTab('${a.id}')" title="Editar">✏️</button>
+      <button class="btn sm bad" onclick="eliminarAcudienteTab('${a.id}')">🗑️</button>
+    </td>
+  </tr>`).join('')}</tbody></table></div>`;
+}
+
 // ── Lista / filtros ──────────────────────────────────────────────
 ['f-buscar','f-sede','f-grado','f-estado'].forEach(id=>{
   document.getElementById(id).addEventListener('input', renderMatricula);
@@ -457,7 +669,19 @@ $('#btn-export-csv').addEventListener('click', ()=>{
   a.href = URL.createObjectURL(blob); a.download = 'matricula_sabie.csv'; a.click();
 });
 
-if(ES_COORD){ fillSedes(); fillGradosFiltro(); renderMatricula(); }
+if(ES_COORD){
+  fillSedes(); fillGradosFiltro(); renderMatricula();
+  fillFiltroGradoAcu(); renderAcudientesTab();
+  // El antiguo 09-acudientes.html redirige aquí con ?tab=acudientes
+  const qtab = new URLSearchParams(location.search).get('tab');
+  if(qtab && document.getElementById('tab-'+qtab)){
+    document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('main>section').forEach(s=>s.classList.add('hide'));
+    const btn = document.querySelector(`#tabs button[data-tab="${qtab}"]`);
+    if(btn) btn.classList.add('active');
+    document.getElementById('tab-'+qtab).classList.remove('hide');
+  }
+}
 </script>
 </body>
 </html>
