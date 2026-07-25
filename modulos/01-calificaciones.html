@@ -80,7 +80,7 @@
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
-<script>window.LV_SYNC_TABLAS=['lv_cursos','lv_estudiantes','lv_calificaciones','lv_as_asistencia','lv_herramientas','lv_malla','lv_docentes','lv_asignaciones'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_cursos','lv_estudiantes','lv_calificaciones','lv_as_asistencia','lv_herramientas','lv_malla','lv_docentes','lv_asignaciones','lv_observador'];</script>
 <script src="../sync.js"></script>
 <header class="appbar">
   <img src="../Logo/logo.jpg" alt="Logo LV" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
@@ -352,6 +352,39 @@
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
       <button class="btn sec" id="impn-cancel">Cancelar</button>
       <button class="btn ok" id="impn-confirm" disabled>Importar notas</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: observación en clase (con foto opcional) -->
+<div id="modal-observar" class="modal-bg hide">
+  <div class="modal">
+    <h2 style="margin-top:0;color:var(--primary)">📔 Observación de clase</h2>
+    <p class="hint" id="obs-target"></p>
+    <div class="row">
+      <label class="fld">Tipo
+        <select id="obs-tipo">
+          <option value="Situación Tipo I">Situación Tipo I (convivencia leve)</option>
+          <option value="Situación Tipo II">Situación Tipo II (agresión/acoso repetido)</option>
+          <option value="Situación Tipo III">Situación Tipo III (presunto delito)</option>
+          <option value="Académica">Anotación académica</option>
+          <option value="Reconocimiento">Reconocimiento positivo ⭐</option>
+          <option value="Visita domiciliaria">Visita domiciliaria 🏠</option>
+        </select>
+      </label>
+      <label class="fld">Fecha<input id="obs-fecha" type="date"></label>
+    </div>
+    <label class="fld" style="margin-top:10px">Descripción
+      <textarea id="obs-desc" rows="3" style="width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;font-family:inherit" placeholder="Describe objetivamente lo ocurrido…"></textarea>
+    </label>
+    <label class="fld" style="margin-top:10px">Foto (opcional)
+      <input type="file" id="obs-foto" accept="image/*" capture="environment">
+    </label>
+    <p class="hint" id="obs-foto-info"></p>
+    <p class="hint">Esta anotación queda en el Observador del estudiante, visible para su director de grupo. La foto se guarda aparte (no viaja en la sincronización general).</p>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button class="btn sec" id="obs-cancel">Cancelar</button>
+      <button class="btn ok" id="obs-guardar">💾 Guardar anotación</button>
     </div>
   </div>
 </div>
@@ -686,6 +719,7 @@ async function renderPlanilla(){
         <strong>${esc(est.nombre)}</strong>
         ${(()=>{const p=pctFallas(cursoId,est.id);return p>25?`<span title="⚠️ ${p}% inasistencias — riesgo de pérdida" style="margin-left:6px;background:#fef2f2;color:#b91c1c;border:1px solid #fca5a5;border-radius:999px;font-size:.68rem;font-weight:700;padding:2px 7px;cursor:default">⚠️ ${p}% fallas</span>`:'';})()}
         ${nb.total>0 && nb.ratio>=0.5?`<button class="btn sm" style="margin-left:6px;background:#dc2626;color:#fff;padding:2px 7px;font-size:.68rem" title="${nb.bajas} de ${nb.total} notas evaluadas están por debajo de ${CFG.scale.passing.toFixed(1)}" onclick="generarAlertaAuto('${cursoId}','${est.id}')">🚨 Alertar</button>`:''}
+        <button class="btn sm sec" style="margin-left:6px;padding:2px 7px;font-size:.68rem" title="Registrar una observación de clase para este estudiante" onclick="abrirObservar('${cursoId}','${est.id}')">📔 Observar</button>
       </td>
       ${cogInputs}
       <td class="c"><strong>${cog?cog.toFixed(1):'—'}</strong></td>
@@ -732,6 +766,65 @@ window.delEst=async id=>{
   for(const k of Object.keys(calMap)){if(calMap[k].estId===id){await dbDel('calificaciones',k);delete calMap[k];}}
   renderPlanilla();
 };
+
+// ---- Observación de clase (con foto opcional) ----
+// Botón "📔 Observar" en la planilla: cualquier docente puede registrar una
+// anotación en el observador del estudiante desde SU clase (no solo el
+// director de grupo, que además la ve de solo-lectura en 10-observador.html).
+// La foto va a Storage (bucket 'observador-fotos'), NO al JSON de sync.
+let obsCursoId=null, obsEstId=null, obsFotoArchivo=null;
+window.abrirObservar=(cursoId, estId)=>{
+  const cur=cursos.find(c=>c.id===cursoId), est=estudiantes.find(e=>e.id===estId);
+  if(!cur||!est) return toast('No se encontró el curso o el estudiante.');
+  obsCursoId=cursoId; obsEstId=estId; obsFotoArchivo=null;
+  $('#obs-target').textContent=`${est.nombre} — ${cur.nombre}`;
+  $('#obs-tipo').value='Académica';
+  $('#obs-fecha').value=new Date().toISOString().slice(0,10);
+  $('#obs-desc').value=''; $('#obs-foto').value=''; $('#obs-foto-info').textContent='';
+  $('#modal-observar').classList.remove('hide');
+};
+$('#obs-cancel').addEventListener('click', ()=>$('#modal-observar').classList.add('hide'));
+$('#obs-foto').addEventListener('change', e=>{
+  obsFotoArchivo = e.target.files && e.target.files[0] || null;
+  $('#obs-foto-info').textContent = obsFotoArchivo ? `📎 ${obsFotoArchivo.name} (${(obsFotoArchivo.size/1024/1024).toFixed(1)} MB)` : '';
+});
+$('#obs-guardar').addEventListener('click', async ()=>{
+  const desc=$('#obs-desc').value.trim();
+  if(!desc) return toast('Describe la situación.');
+  const cur=cursos.find(c=>c.id===obsCursoId), est=estudiantes.find(e=>e.id===obsEstId);
+  if(!cur||!est) return toast('No se encontró el curso o el estudiante.');
+  const btn=$('#obs-guardar'); btn.disabled=true; btn.textContent='Guardando…';
+  try{
+    const nueva={
+      id:uid(), estId:est.id, estNombre:est.nombre, cursoId:cur.id,
+      curso:`${cur.grado} - ${cur.grupo||'único'}`,
+      materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||cur.materia||'',
+      tipo:$('#obs-tipo').value, fecha:$('#obs-fecha').value||new Date().toISOString().slice(0,10),
+      descripcion:desc, compromiso:'', fechaCompromiso:'', estado:'abierto', seguimientos:[],
+      autor:(login&&login.nombre)||'Docente', origen:'planilla', creado:Date.now()
+    };
+    if(obsFotoArchivo){
+      const t=await LV_AUTH.getValidToken();
+      if(!t) throw new Error('Tu sesión expiró. Vuelve a iniciar sesión para adjuntar la foto.');
+      const ext=(obsFotoArchivo.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';
+      const ruta=`${est.id}/${nueva.id}.${ext}`;
+      const r=await fetch(`${LV_AUTH.URL}/storage/v1/object/observador-fotos/${ruta}`, {
+        method:'POST',
+        headers:{ 'apikey':LV_AUTH.KEY, 'Authorization':'Bearer '+t, 'Content-Type':obsFotoArchivo.type||'image/jpeg' },
+        body: obsFotoArchivo
+      });
+      if(!r.ok) throw new Error('No se pudo subir la foto (guardo la anotación sin ella).');
+      nueva.fotoRuta=ruta;
+    }
+    const arr=lsRead('observador'); arr.push(nueva);
+    lsWrite('observador', arr); // lsWrite ya marca el cambio para sync (diff automático)
+    toast('Observación guardada'); $('#modal-observar').classList.add('hide');
+  }catch(err){
+    toast(err.message||'No se pudo guardar la observación.');
+  }finally{
+    btn.disabled=false; btn.textContent='💾 Guardar anotación';
+  }
+});
 
 // ---- Importar estudiantes ----
 let impNames=[];

@@ -323,8 +323,9 @@ function pintarHistorial(){
     <div class="anot ${claseTipo(o.tipo)}">
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         ${badgeTipo(o.tipo,o.icono)}
-        <span class="meta">${fmtF(o.fecha)} · registró: ${esc(o.autor||'—')}</span>
+        <span class="meta">${fmtF(o.fecha)} · registró: ${esc(o.autor||'—')}${o.origen==='planilla'?' (desde la clase)':''}</span>
         <span style="margin-left:auto;display:flex;gap:6px">
+          ${o.fotoRuta?`<button class="btn sec sm" onclick="verFotoObs('${esc(o.fotoRuta)}')">📷 Ver foto</button>`:''}
           <button class="btn sec sm" onclick="agregarSeguimiento('${esc(o.id)}')">➕ Seguimiento</button>
           <button class="btn bad sm" onclick="borrarAnotacion('${esc(o.id)}')">🗑️</button>
         </span>
@@ -494,6 +495,32 @@ window.borrarAnotacion=function(id){
   arr=arr.filter(x=>x.id!==id);
   lsWriteObs(arr,[]);
   toast('Anotación enviada a la papelera'); pintarHistorial(); pintarEstudiantes();
+};
+
+// ── ver foto adjunta a una anotación (descarga autenticada, Storage) ──
+let fotoObsBlobUrl=null;
+window.verFotoObs = async ruta => {
+  const wrap=document.createElement('div');
+  wrap.id='foto-obs-modal';
+  wrap.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(15,23,42,.7);display:flex;align-items:center;justify-content:center;padding:20px';
+  wrap.innerHTML=`<div style="background:#fff;border-radius:14px;padding:16px;max-width:min(92vw,520px);max-height:88vh;overflow:auto;box-shadow:0 12px 40px rgba(0,0,0,.3);text-align:center">
+    <div id="foto-obs-body" style="min-height:120px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem">⬇️ Descargando foto…</div>
+    <button class="btn sec" style="width:100%;margin-top:10px" onclick="document.getElementById('foto-obs-modal').remove()">Cerrar</button>
+  </div>`;
+  document.body.appendChild(wrap);
+  try{
+    const t=await LV_AUTH.getValidToken();
+    if(!t) throw new Error('Tu sesión expiró. Vuelve a iniciar sesión.');
+    const r=await fetch(`${LV_AUTH.URL}/storage/v1/object/authenticated/observador-fotos/${ruta}`,
+      { headers:{ 'apikey': LV_AUTH.KEY, 'Authorization':'Bearer '+t } });
+    if(!r.ok) throw new Error(r.status===404?'La foto ya no está disponible.':'No se pudo descargar la foto ('+r.status+').');
+    const blob=await r.blob();
+    if(fotoObsBlobUrl) URL.revokeObjectURL(fotoObsBlobUrl);
+    fotoObsBlobUrl=URL.createObjectURL(blob);
+    document.getElementById('foto-obs-body').innerHTML=`<img src="${fotoObsBlobUrl}" alt="" style="max-width:100%;max-height:70vh;border-radius:8px">`;
+  }catch(err){
+    document.getElementById('foto-obs-body').innerHTML='❌ '+esc(err.message||'Error de red — ¿tienes internet?');
+  }
 };
 
 // ── alerta WhatsApp por situaciones Tipo II / Tipo III ──

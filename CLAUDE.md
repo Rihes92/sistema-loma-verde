@@ -3,6 +3,66 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25e, observación de clase con foto)
+
+- **Punto 7 del backlog de la auditoría (sesión 24) — CÓDIGO LISTO, sin desplegar.** En la
+  planilla de `01-calificaciones.html`, cada estudiante ahora tiene un botón
+  **"📔 Observar"** (junto al de "🚨 Alertar") que abre un modal con los MISMOS tipos del
+  observador (Situación Tipo I/II/III, Académica, Reconocimiento, Visita domiciliaria),
+  fecha, descripción y una **foto opcional**. Al guardar, crea un registro en
+  `lv_observador` con `estId`, `cursoId`, `curso`, `materia` (de `LV_CTX`) y `autor` — así
+  CUALQUIER docente puede aportar una anotación desde su clase, no solo el director de
+  grupo (que la sigue viendo de solo-lectura en `10-observador.html`, sin cambios en sus
+  permisos). Los registros nuevos llevan `origen:'planilla'` para poder distinguirlos.
+- **La foto va a Storage, NO al JSON de sync** (igual que decidió Francy en la sesión 24):
+  bucket nuevo `observador-fotos`, ruta `{estId}/{idAnotacion}.{ext}`, subida con
+  `fetch POST` autenticado (mismo patrón de token que ya usa `16-actividades.html` para
+  LEER, aquí además para ESCRIBIR). El registro guarda solo `fotoRuta` (texto), no base64.
+  `migracion_observador_foto.sql` (NUEVO, SIN CORRER): bucket privado + política de
+  lectura y escritura para cualquier autenticado — mismo nivel de privacidad que hoy tiene
+  `lv_observador` (`solo_autenticados`, sin filtro por curso; la Fase 2 de arquitectura que
+  restringiría esto sigue pausada a propósito).
+- **`10-observador.html`:** si una anotación trae `fotoRuta`, aparece un botón
+  "📷 Ver foto" que la descarga autenticada desde Storage y la muestra en un overlay
+  (mismo patrón de descarga que el visor de `16-actividades.html`). También se marca junto
+  a la fecha "(desde la clase)" cuando `origen==='planilla'`, para que el director de grupo
+  distinga de un vistazo qué anotaciones llegaron desde otra materia.
+  SW **v82**. `node --check` limpio en 01-calificaciones.html y 10-observador.html (3
+  bloques cada uno); balance de `<div>/<section>/<table>/<tr>/<td>/<th>/<label>/<select>`
+  verificado en ambos (01-calificaciones es un archivo grande, se editó por reemplazos de
+  texto exactos, no reescritura completa — la lógica nueva se insertó DESPUÉS de que `$`,
+  `uid`, `esc`, `toast`, `login`, `cursos` y `estudiantes` ya estuvieran definidos, para no
+  repetir el bug de orden de scripts documentado en sesiones anteriores).
+- **PENDIENTE:** correr `migracion_observador_foto.sql` en Supabase, push, y que Richard
+  pruebe el flujo completo: desde una materia cualquiera, botón "📔 Observar" en un
+  estudiante → adjuntar foto → guardar → entrar como director de ese grupo a
+  `10-observador.html` y confirmar que la anotación aparece con la foto visible.
+
+## ▶ AJUSTE (jul 24, 2026 — sesión 25d): catálogo de sedes corregido
+
+- Richard reportó que el selector de Sede en Matrícula (y en Calificaciones, que comparte
+  el mismo catálogo) no traía todas las sedes reales y sí traía una que no existe:
+  "María Auxiliadora". Causa: `LV_INST.sedes()` en `auth.js` es el respaldo que se usa
+  MIENTRAS nadie haya guardado el campo "Sedes" en Coordinación → Resumen → Institución —
+  y ese respaldo traía una lista corta desactualizada (7 sedes, con María Auxiliadora
+  inventada). Mientras tanto, `coordinacion.html` SÍ tiene el catálogo real y completo
+  (constante `SEDES`, 16 sedes, sacado de la información real de docentes/asignaciones que
+  se importó en la sesión 21 — la fuente que pidió usar Richard).
+- **Corregido:** el respaldo de `LV_INST.sedes()` en `auth.js` ahora tiene las 16 sedes
+  reales (Principal, Juana Julia 1, Juana Julia 2, Cristo Es Mi Luz, El Oyeto, Fronteras de
+  Córdoba, La Octavia, La Popa, Mi Porvenir Es Cristo Jesus, San Diego, San Francisco, San
+  Miguel, Verdinal, El Rincon, La Gloria, Carlos Ospina) — igual a `coordinacion.html`. Como
+  es una fuente central, arregla a la vez el selector de sede en 01-calificaciones y en el
+  módulo nuevo 20-matricula, sin tocar cada archivo. SW **v81**.
+- **OJO — esto NO alcanza si el campo "Sedes" en Coordinación → Resumen → Institución ya
+  quedó GUARDADO alguna vez con datos viejos/incorrectos** (ese valor manda sobre el
+  respaldo). Si Richard ya lo había guardado con "María Auxiliadora" incluida, hay que
+  corregirlo a mano ahí mismo — el respaldo de `auth.js` solo aplica mientras ese campo
+  esté vacío.
+- **PENDIENTE:** push; que Richard confirme en Coordinación → Institución que el campo
+  "Sedes" está vacío (para que tome el respaldo corregido) o, si ya tiene algo guardado,
+  que lo corrija manualmente ahí con la lista real de 16 sedes.
+
 ## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25c, módulo NUEVO de Matrícula + Acudientes)
 
 - **`modulos/20-matricula.html` — CÓDIGO LISTO, sin desplegar.** Punto 6 del backlog de la

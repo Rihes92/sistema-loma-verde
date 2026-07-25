@@ -173,8 +173,14 @@ const LV_INST = {
   resolucion() { return this._get().resolucion || ''; },
   // Catálogo de sedes (jul 2026, unificación de cursos): texto separado
   // por comas editable en Coordinación → Resumen → Institución.
+  // Respaldo (jul 24, sesión 25d): antes traía una lista corta e incluía
+  // "María Auxiliadora", que NO es una sede real del colegio. Corregido a
+  // las 16 sedes reales que ya usa `coordinacion.html` (constante SEDES,
+  // sacada de la información real de docentes/asignaciones importada en
+  // la sesión 21) — así todo el que use este respaldo (01-calificaciones,
+  // 20-matricula) ve las sedes correctas sin duplicar el catálogo.
   sedes() {
-    return String(this._get().sedes || 'Principal, Juana Julia 1, Juana Julia 2, Cristo Es Mi Luz, El Oyeto, Fronteras de Córdoba, María Auxiliadora')
+    return String(this._get().sedes || 'Principal, Juana Julia 1, Juana Julia 2, Cristo Es Mi Luz, El Oyeto, Fronteras de Córdoba, La Octavia, La Popa, Mi Porvenir Es Cristo Jesus, San Diego, San Francisco, San Miguel, Verdinal, El Rincon, La Gloria, Carlos Ospina')
       .split(',').map(s => s.trim()).filter(Boolean);
   }
 };
