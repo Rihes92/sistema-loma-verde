@@ -149,8 +149,8 @@ function guardar(reg){
   const all=lsR().filter(x=>x.id!==reg.id); all.push(reg); lsW(all);
   if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_permisos',reg);
 }
-let LOGIN=null; try{LOGIN=JSON.parse(localStorage.getItem('lv_login')||'null');}catch(_){}
-const ES_COORD=!!(LOGIN&&LOGIN.esAdmin);
+const LOGIN=LV_PERM.login(); // LV_PERM (auth.js, sesión 25f)
+const ES_COORD=LV_PERM.esCoordinacion();
 const HOY=()=>new Date().toISOString().slice(0,10);
 const uid=()=>'perm-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const EST_BADGE={pendiente:'<span class="badge b-pen">⏳ Pendiente</span>',aprobado:'<span class="badge b-apr">✅ Aprobado</span>',rechazado:'<span class="badge b-rec">❌ Rechazado</span>',cancelado:'<span class="badge b-can">🚫 Cancelado</span>'};

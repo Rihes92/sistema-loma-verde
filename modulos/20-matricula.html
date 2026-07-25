@@ -206,8 +206,8 @@ function guardarUno(k, reg){
 }
 
 // ── Permisos: solo coordinación/rector ──────────────────────────
-let LOGIN=null; try{ LOGIN=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
-const ES_COORD = !!(LOGIN && LOGIN.esAdmin);
+const LOGIN=LV_PERM.login(); // LV_PERM (auth.js, sesión 25f)
+const ES_COORD = LV_PERM.esCoordinacion();
 if(!ES_COORD){ $('#sin-acceso').classList.remove('hide'); }
 else { $('#app').classList.remove('hide'); }
 

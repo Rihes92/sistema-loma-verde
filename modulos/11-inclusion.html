@@ -232,23 +232,10 @@ const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José d
 //   que ya usa el Observador (campo "dirige") y el portal (asignaciones). ──
 const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
 const esAdmin=!!(login&&login.esAdmin);
-let PERM_materias=new Set(), PERM_accesoTotal=esAdmin, PERM_gruposDirigidos=new Set(), PERM_dirige='';
-if(login&&!esAdmin){
-  try{
-    const asign=lsRead('asignaciones').filter(a=>a.docenteId===login.docenteId);
-    PERM_accesoTotal = asign.some(a=>a.area==='Primaria'||a.materia==='Todas las materias');
-    asign.forEach(a=>{ if(a.materia) PERM_materias.add(a.materia); });
-    const docentes=lsRead('docentes');
-    const d=docentes.find(x=>x.id===login.docenteId);
-    if(d&&d.dirige){ PERM_dirige=String(d.dirige); }
-  }catch(_){}
-}
+// Delegado a LV_PERM (auth.js, sesión 25f) — misma lógica que antes vivía
+// aquí duplicada (idéntica letra por letra a la de 01-calificaciones.html).
 function estudianteEsMio(cursoObj){
-  if(esAdmin||PERM_accesoTotal) return true;
-  if(!cursoObj) return false;
-  if(cursoObj.materia && PERM_materias.has(cursoObj.materia)) return true;
-  if(PERM_dirige&&typeof LV_CURSO!=='undefined'&&LV_CURSO.dirigeCurso(PERM_dirige,cursoObj)) return true;
-  return false;
+  return LV_PERM.cursoEsMio(cursoObj, lsRead('asignaciones'), lsRead('docentes'));
 }
 
 // ── tabs ──

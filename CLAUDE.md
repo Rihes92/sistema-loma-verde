@@ -3,6 +3,62 @@
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25f, permisos.js central → LV_PERM)
+
+- **Punto 8 del backlog de la auditoría (sesión 24) — CÓDIGO LISTO, sin desplegar.**
+  Hasta hoy, "¿es mío este curso?" / "¿qué grupos dirijo?" / "¿soy coordinación?" se
+  recalculaba POR SEPARADO en cada módulo (a veces con nombres de variable distintos:
+  `esAdmin` vs `ES_COORD`), y cada fuga de privacidad de las auditorías (sesiones 3, 10,
+  24) hubo que corregirla una vez por archivo porque no había una sola fuente de verdad.
+- **`LV_PERM` NUEVO en `auth.js`** (junto a `LV_CURSO`/`LV_INST`, mismo patrón: funciones
+  puras, lee `localStorage` directo, no depende del `lsRead` de cada módulo): `login()`,
+  `esAdmin()`, `esCoordinacion()` (alias de esAdmin, para los módulos "solo coordinación"
+  que lo llamaban `ES_COORD`), `nombre()`, `miDocente(docentes)`, `misAsignaciones(asig)`,
+  `accesoTotal(asig)` (comodín Primaria/Todas las materias), `materiasPermitidas(asig)`,
+  `permiteMateria(materia, asig)`, `cursoEsMio(curso, asig, docentes)` (por materia O por
+  dirigir el grupo) y `gruposDirigidos(cursos, docentes)` (todos los cursos si es admin;
+  si no, los que dirige por `LV_CURSO.dirigeCurso`). Los arrays se PASAN como parámetro
+  (cada módulo ya los tiene en memoria con su propio nombre de variable) — si no se pasan,
+  cae a leer `localStorage` directo.
+- **Migrados a delegar en LV_PERM (mismo comportamiento, sin duplicar código):**
+  `01-calificaciones.html` (`cursoEsMio`), `11-inclusion.html` (`estudianteEsMio` —
+  literalmente la misma función que 01, copiada y pegada antes), `10-observador.html`,
+  `12-director.html`, `13-boletines.html`, `14-analitica.html` (las 4 tenían la MISMA
+  función `gruposDirigidos()` de 6 líneas, copiada tal cual en cada archivo),
+  `17-centros-interes.html` (`SOY_ADMIN`/`MI_DOCENTE_ID`), `18-permisos.html` y
+  `20-matricula.html` (`ES_COORD`).
+- **`index.html` NO se migró — a propósito, no es un descuido.** Verificado con un
+  subagente de investigación: el bloque `PERM`/`calcularPermisos()` del portal corre en un
+  `<script>` inline que está ANTES de `<script src="auth.js">` en el propio archivo (mismo
+  bug de orden de scripts que ya rompió el buscador una vez, documentado en varias
+  sesiones de este archivo). Si ese bloque llamara a `LV_PERM` tal cual, `LV_PERM` todavía
+  no existiría y el portal entero se habría roto al cargar. Se dejó el bloque
+  self-contenido como estaba (misma lógica, duplicada a propósito solo aquí), con un
+  comentario explicando por qué. Mover el bloque de sitio en `index.html` (para que sí
+  pueda usar LV_PERM) es posible pero es su propio cambio de riesgo — no se improvisó hoy.
+- **Hallazgo colateral (NO corregido hoy, a propósito):** `03-examenes.html`,
+  `04-examenes-11.html` y `06-comunicados.html` NO tienen el filtro fuerte de
+  asignaciones/dirige — dependen SOLO de `LV_CTX.filtrar()`, que filtra por el CONTEXTO de
+  navegación (`?materia=` en la URL), no por la asignación real del docente, y no filtra
+  nada si el docente entra por el enlace directo del sidebar. Es el mismo bug que ya se
+  corrigió en 01-calificaciones (sesión 3) pero sigue sin corregirse en estos 3. Migrarlos
+  a `LV_PERM.cursoEsMio`/`permiteMateria` sería a la vez centralizar Y cambiar
+  comportamiento (dejarían de mostrar exámenes/comunicados de materias sin asignación
+  formal) — se dejó fuera de esta sesión para no mezclar un refactor con un cambio de
+  comportamiento; queda como punto pendiente aparte.
+  SW **v83**. `node --check` limpio en auth.js y los 10 archivos tocados (`new Function`
+  sobre cada bloque `<script>` inline); balance de `<div>/<section>/<table>/<tr>/<td>/
+  <th>/<label>/<select>` verificado en los 10 — el único desbalance encontrado
+  (`14-analitica.html`, 14 `<td` vs 13 `</td>`) es PREEXISTENTE (confirmado con `git diff`:
+  mi cambio ahí solo tocó 6 líneas de JS, cero HTML), no es una regresión de hoy.
+- **PENDIENTE:** push, y que Richard pruebe con una cuenta docente normal que Observador/
+  Inclusión/Director/Boletines/Analítica/Centros de Interés/Permisos/Matrícula siguen
+  mostrando exactamente lo mismo que antes (es un refactor de "mismo comportamiento", así
+  que cualquier diferencia visible sería un bug de esta migración). Pendientes de fondo
+  que quedaron señalados: mover el bloque PERM de `index.html` para que también use
+  LV_PERM (sesión aparte, toca el orden de scripts), y cerrar el hueco de 03/04/06 (sesión
+  aparte, es cambio de comportamiento).
+
 ## ▶ POR DÓNDE RETOMAR (jul 24, 2026 — sesión 25e, observación de clase con foto)
 
 - **Punto 7 del backlog de la auditoría (sesión 24) — CÓDIGO LISTO, sin desplegar.** En la

@@ -261,6 +261,79 @@ const LV_CURSO = {
 };
 
 // ═══════════════════════════════════════════════════════════════
+//  LV_PERM — Permisos centralizados (jul 2026, sesión 25f).
+//  Antes, cada módulo recalculaba por su cuenta "¿es mío este curso?"
+//  / "¿qué grupos dirijo?" / "¿soy coordinación?" — la MISMA lógica
+//  copiada y pegada en index.html, 01, 10, 11, 12, 13, 14, 18, 20 (a
+//  veces con nombres de variable distintos: esAdmin / ES_COORD). Cada
+//  fuga de privacidad de las auditorías (sesiones 3, 10, 24) tuvo que
+//  corregirse una vez POR ARCHIVO porque no había una sola fuente de
+//  verdad. LV_PERM es esa fuente única — vive en auth.js (como
+//  LV_CURSO/LV_INST) para no depender del helper `lsRead` de cada
+//  módulo: lee `localStorage` directo, igual que LV_CURSO.
+//  Funciones PURAS: reciben los arrays (cursos/asignaciones/docentes)
+//  que cada módulo ya tiene en memoria — no asumen nombres de
+//  variable ni claves de sync particulares. Si no se pasa el array,
+//  cae a leer `localStorage` directo (útil en páginas simples).
+//  OJO — alcance de este cambio (sesión 25f): se migró la lógica que
+//  YA EXISTÍA en cada módulo (mismo comportamiento, sin duplicar
+//  código). NO se tocó el mecanismo más débil de `LV_CTX.filtrar`
+//  que usan hoy 03-examenes, 04-examenes-11 y 06-comunicados (filtra
+//  por CONTEXTO de navegación, no por asignación real) — eso es un
+//  hueco de privacidad ya documentado aparte, no se resolvió aquí
+//  para no mezclar un refactor con un cambio de comportamiento.
+// ═══════════════════════════════════════════════════════════════
+const LV_PERM = {
+  _ls(clave) { try { return JSON.parse(localStorage.getItem(clave)) || []; } catch (_) { return []; } },
+  login() { try { return JSON.parse(localStorage.getItem('lv_login')) || null; } catch (_) { return null; } },
+  esAdmin() { const l = this.login(); return !!(l && l.esAdmin); },
+  // Alias semántico (mismo booleano) — para los módulos "solo coordinación/
+  // rector" (18-permisos, 20-matricula) que antes lo llamaban ES_COORD.
+  esCoordinacion() { return this.esAdmin(); },
+  nombre() { const l = this.login(); return l ? (l.esAdmin ? 'Administrador' : (l.nombre || 'Docente')) : 'Docente'; },
+  miDocente(docentes) {
+    const l = this.login(); if (!l) return null;
+    return (docentes || this._ls('lv_docentes')).find(d => d.id === l.docenteId) || null;
+  },
+  misAsignaciones(asignaciones) {
+    const l = this.login(); if (!l) return [];
+    return (asignaciones || this._ls('lv_asignaciones')).filter(a => a.docenteId === l.docenteId);
+  },
+  // Comodín: área "Primaria" o materia "Todas las materias" en cualquier asignación.
+  accesoTotal(asignaciones) {
+    if (this.esAdmin()) return true;
+    return this.misAsignaciones(asignaciones).some(a => a.area === 'Primaria' || a.materia === 'Todas las materias');
+  },
+  materiasPermitidas(asignaciones) {
+    const set = new Set();
+    this.misAsignaciones(asignaciones).forEach(a => { if (a.materia) set.add(a.materia); });
+    return set;
+  },
+  permiteMateria(materia, asignaciones) {
+    if (this.accesoTotal(asignaciones)) return true;
+    return this.materiasPermitidas(asignaciones).has(materia);
+  },
+  // ¿Es mío este curso? — por asignación de materia O por dirigir el grupo.
+  cursoEsMio(curso, asignaciones, docentes) {
+    if (this.accesoTotal(asignaciones)) return true;
+    if (!curso) return false;
+    if (curso.materia && this.materiasPermitidas(asignaciones).has(curso.materia)) return true;
+    const d = this.miDocente(docentes);
+    return !!(d && d.dirige && typeof LV_CURSO !== 'undefined' && LV_CURSO.dirigeCurso(d.dirige, curso));
+  },
+  // Cursos que dirijo (o TODOS si soy admin) — Observador/Director/Boletines/Analítica.
+  gruposDirigidos(cursos, docentes) {
+    if (this.esAdmin()) return cursos || [];
+    const d = this.miDocente(docentes);
+    if (!d || !d.dirige) return [];
+    return (cursos || []).filter(c => typeof LV_CURSO !== 'undefined' && LV_CURSO.dirigeCurso(d.dirige, c));
+  },
+  esDirector(cursos, docentes) {
+    return this.esAdmin() || this.gruposDirigidos(cursos, docentes).length > 0;
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
 //  LV_GEMINI — Clave personal de Gemini de CADA docente.
 //  Se guarda SOLO en este dispositivo (localStorage 'lv_gemini_key').
 //  NO está en el MAPA de sync.js, así que NUNCA viaja a Supabase ni a

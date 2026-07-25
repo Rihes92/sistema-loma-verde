@@ -131,13 +131,9 @@ const IE=(window.LV_INST&&LV_INST.nombre())||'Institución Educativa San José d
 const norm=v=>String(v??'').replace(/[°\s]/g,'').toLowerCase();
 let login=null; try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
 const esAdmin=!!(login&&login.esAdmin);
+// Delegado a LV_PERM (auth.js, sesión 25f) — misma lógica del Observador.
 function gruposDirigidos(){
-  const cursos=lsRead('cursos');
-  if(esAdmin) return cursos;
-  const docentes=lsRead('docentes');
-  const d=docentes.find(x=>x.id===(login&&login.docenteId));
-  if(!d||!d.dirige) return [];
-  return cursos.filter(c=>typeof LV_CURSO!=='undefined'&&LV_CURSO.dirigeCurso(d.dirige,c));
+  return LV_PERM.gruposDirigidos(lsRead('cursos'), lsRead('docentes'));
 }
 const COMPETENCIAS=['Pensamiento social','Interpretación y análisis de perspectivas','Pensamiento reflexivo y sistémico'];
 const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};

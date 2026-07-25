@@ -232,11 +232,10 @@ function borrarUno(key, arr, id){
   return out;
 }
 
-// ── Sesión / rol ─────────────────────────────────────────────
-let login = null;
-try{ login = JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
+// ── Sesión / rol (LV_PERM, auth.js, sesión 25f) ───────────────
+const login = LV_PERM.login();
 const MI_DOCENTE_ID = login ? login.docenteId : null;
-const SOY_ADMIN = !!(login && login.esAdmin);
+const SOY_ADMIN = LV_PERM.esAdmin();
 
 // ── Estado / datos ───────────────────────────────────────────
 let CENTROS = [];

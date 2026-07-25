@@ -383,6 +383,12 @@ function irAMateria(area, materia, e){
 //    mecanismo que ya filtra "Áreas académicas"), así que se reutiliza
 //    aquí en vez de tocar la complejidad de "por curso" (esa sigue
 //    pausada a propósito).
+// OJO — este bloque NO puede delegar a LV_PERM (auth.js): este script corre
+// ANTES de que `<script src="auth.js">` se cargue más abajo en este mismo
+// archivo (mismo bug de orden de scripts ya documentado en CLAUDE.md — ver
+// también el comentario de la línea ~1119 sobre LV_CURSO). Por eso se deja
+// self-contenido, leyendo localStorage directo — misma lógica que LV_PERM,
+// duplicada a propósito solo aquí por la restricción de orden de carga.
 let PERM = { login:null, esAdmin:false, accesoTotal:false, materiasPermitidas:new Set() };
 (function calcularPermisos(){
   let login;

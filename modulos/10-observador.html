@@ -216,14 +216,10 @@ const autor = login ? (login.nombre||'Docente') : 'Docente';
 // normaliza "6°" → "6", "601" → "601"
 const norm = v => String(v??'').replace(/[°\s]/g,'').toLowerCase();
 
+// Delegado a LV_PERM (auth.js, sesión 25f) — admin: todos los cursos;
+// docente: cursos cuyo grado-grupo aparezca en su campo "dirige".
 function gruposDirigidos(){
-  // admin: todos los cursos. docente: cursos cuyo grado-grupo aparezca en su campo "dirige"
-  const cursos = lsRead('cursos');
-  if(esAdmin) return cursos;
-  const docentes = lsRead('docentes');
-  const d = docentes.find(x=>x.id===(login&&login.docenteId));
-  if(!d || !d.dirige) return [];
-  return cursos.filter(c => typeof LV_CURSO!=='undefined' && LV_CURSO.dirigeCurso(d.dirige, c));
+  return LV_PERM.gruposDirigidos(lsRead('cursos'), lsRead('docentes'));
 }
 
 // deduplicar cursos por grado-grupo (existen por materia)

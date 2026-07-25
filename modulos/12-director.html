@@ -110,12 +110,9 @@ function defin(cal){
 }
 
 // ── grupos dirigidos (misma lógica del Observador) ──
+// Delegado a LV_PERM (auth.js, sesión 25f) — misma lógica del Observador.
 function gruposDirigidos(){
-  const cursos=lsRead('cursos');
-  if(esAdmin) return cursos;
-  const d=lsRead('docentes').find(x=>x.id===(login&&login.docenteId));
-  if(!d||!d.dirige) return [];
-  return cursos.filter(c=>typeof LV_CURSO!=='undefined'&&LV_CURSO.dirigeCurso(d.dirige,c));
+  return LV_PERM.gruposDirigidos(lsRead('cursos'), lsRead('docentes'));
 }
 function gruposUnicos(){
   const v={},out=[];
