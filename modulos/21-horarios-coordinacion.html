@@ -154,6 +154,9 @@
       <label class="fld">Grado<select id="ed-grado"></select></label>
       <label class="fld">Grupo<input id="ed-grupo" placeholder="Ej: 1, 2, único…"></label>
     </div>
+    <div class="row hide" id="fila-ed-sede" style="margin-bottom:10px">
+      <label class="fld">Sede<select id="ed-sede"><option value="">— sin sede —</option></select></label>
+    </div>
     <div class="row" style="margin-bottom:4px">
       <label class="fld">Aula / nota (opcional)<input id="ed-nota" placeholder="Ej: Salón 12" maxlength="40"></label>
     </div>
@@ -221,13 +224,36 @@ let celdas={};         // {dia:{bloque:{materia,grado,grupo,aula}}} del docente 
 function horariosPublicados(){ return lsRead('horarios'); }
 function horarioPublicadoDe(docenteId){ return horariosPublicados().find(h=>h.id===docenteId); }
 
+// Corrige celdas viejas de primaria que se generaron/guardaron ANTES de que
+// el motor automático guardara la sede en la celda (sesión 30b) — cruza con
+// la propia asignación del docente (que SIEMPRE trae sede en primaria) para
+// rellenarla, sin inventar nada. Devuelve true si corrigió algo.
+function backfillSedePrimaria(celdasObj, docenteId){
+  const asigDoc=lsRead('asignaciones').filter(a=>a.docenteId===docenteId && a.area==='Primaria' && a.grupo);
+  if(!asigDoc.length) return false;
+  let cambiado=false;
+  Object.keys(celdasObj||{}).forEach(di=>{
+    Object.keys(celdasObj[di]||{}).forEach(bi=>{
+      const c=celdasObj[di][bi];
+      if(c && !c.sede && c.materia==='Todas las materias' && c.grado){
+        const asig=asigDoc.find(a=>String(a.grado)===String(c.grado) && String(a.grupo||'')===String(c.grupo||''));
+        if(asig && asig.sede){ c.sede=asig.sede; cambiado=true; }
+      }
+    });
+  });
+  return cambiado;
+}
+
 function cargarDocente(docenteId){
   docenteSel=docenteId;
   const borr=leerBorradores();
-  if(borr[docenteId]) celdas=borr[docenteId];
-  else {
+  if(borr[docenteId]){
+    celdas=borr[docenteId];
+    if(backfillSedePrimaria(celdas, docenteId)) marcarBorrador();
+  } else {
     const pub=horarioPublicadoDe(docenteId);
     celdas = pub ? JSON.parse(JSON.stringify(pub.celdas||{})) : {};
+    backfillSedePrimaria(celdas, docenteId); // corrige en memoria; se guarda de verdad recién al publicar
   }
   const d=lsRead('docentes').find(x=>x.id===docenteId);
   $('#tit-docente').textContent=d?d.nombre:'';
@@ -251,6 +277,19 @@ function renderEstadoBadge(){
 }
 
 // ── Choques: mismo grado-grupo con OTRO docente publicado, en el mismo día/bloque ──
+// Compara si dos celdas son el MISMO grado-grupo real — compara también la
+// sede, pero SOLO si AMBAS la traen (retrocompatible con celdas viejas sin
+// sede, y con bachillerato que no la tiene). Sin esto, dos grupos primaria
+// con el mismo número en sedes distintas (ej. "grupo 1" de Principal y de
+// Juana Julia) se marcaban como cruce sin serlo — reportado por Richard,
+// sesión 30b.
+function mismoGrupoReal(a,b){
+  if(String(a.grado)!==String(b.grado)) return false;
+  if(String(a.grupo||'')!==String(b.grupo||'')) return false;
+  if(a.sede && b.sede && String(a.sede)!==String(b.sede)) return false;
+  return true;
+}
+
 function detectarChoques(){
   const otros=horariosPublicados().filter(h=>h.id!==docenteSel);
   const choques=[]; // {di,bi,con}
@@ -259,7 +298,7 @@ function detectarChoques(){
       const c=celdas[di][bi]; if(!c||!c.grado) return;
       otros.forEach(h=>{
         const otra=((h.celdas||{})[di]||{})[bi];
-        if(otra && String(otra.grado)===String(c.grado) && String(otra.grupo||'')===String(c.grupo||'')){
+        if(otra && mismoGrupoReal(otra,c)){
           choques.push({di:+di,bi:+bi,con:h.docenteNombre||'otro docente',grado:c.grado,grupo:c.grupo});
         }
       });
@@ -302,8 +341,9 @@ function renderGrilla(){
       if(val){
         const inner=document.createElement('div');
         inner.className='celda-inner';
+        const sedeLbl = val.sede && typeof LV_CURSO!=='undefined' ? ' '+LV_CURSO.sedeCode(val.sede) : '';
         inner.innerHTML=`<span class="celda-asig">${esc(val.materia||'')}</span>
-          <span class="celda-grado">${esc(val.grado||'')}${val.grupo?'-'+esc(val.grupo):''}</span>
+          <span class="celda-grado">${esc(val.grado||'')}${val.grupo?'-'+esc(val.grupo):''}${esc(sedeLbl)}</span>
           ${val.aula?`<span style="font-size:.6rem;opacity:.75">${esc(val.aula)}</span>`:''}`;
         cel.appendChild(inner);
         const del=document.createElement('button');
@@ -345,10 +385,14 @@ function renderChoquesOut(choques){
 
 // ── Modal ──
 let _di=null,_bi=null;
+// Sede solo aplica a Primaria (el Excel de bachillerato no la trae — ver
+// sesión 27). Se muestra/oculta el campo según el área elegida, para no
+// confundir a coordinación con un dato que no aplica en bachillerato.
 function fillAreaMateria(areaNombre, materiaSel){
   const area=AREAS.find(a=>a.nombre===areaNombre)||AREAS[1];
   $('#ed-materia').innerHTML=area.materias.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
   if(materiaSel && area.materias.includes(materiaSel)) $('#ed-materia').value=materiaSel;
+  $('#fila-ed-sede').classList.toggle('hide', areaNombre!=='Primaria');
 }
 $('#ed-area').addEventListener('change',()=>fillAreaMateria($('#ed-area').value));
 
@@ -362,6 +406,11 @@ function abrirModal(di,bi,slot,val){
   if($('#ed-grado').options.length===0) $('#ed-grado').innerHTML=GRADOS.map(g=>`<option>${esc(g)}</option>`).join('');
   $('#ed-grado').value=val?.grado||GRADOS[3];
   $('#ed-grupo').value=val?.grupo||'';
+  if($('#ed-sede').options.length<=1){
+    const sedes=(typeof LV_INST!=='undefined'?LV_INST.sedes():[]);
+    $('#ed-sede').innerHTML='<option value="">— sin sede —</option>'+sedes.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('');
+  }
+  $('#ed-sede').value=val?.sede||'';
   $('#ed-nota').value=val?.aula||'';
   $('#btn-quitar-celda').classList.toggle('hide', !val);
   $('#modal-ed').classList.remove('hide');
@@ -374,10 +423,12 @@ function marcarBorrador(){
 window.guardarCelda=function(){
   if(_di===null) return;
   if(!celdas[_di]) celdas[_di]={};
+  const areaSel=$('#ed-area').value;
   celdas[_di][_bi]={
     materia:$('#ed-materia').value,
     grado:$('#ed-grado').value,
     grupo:$('#ed-grupo').value.trim(),
+    sede: areaSel==='Primaria' ? ($('#ed-sede').value||'') : '',
     aula:$('#ed-nota').value.trim()
   };
   marcarBorrador();
@@ -581,7 +632,7 @@ function generarHorariosAuto(asignaciones, celdasPorDocente){
     marcarOcupada(ocupGrupo,gk,di,bi);
     nuevas[u.docenteId]=nuevas[u.docenteId]||{};
     nuevas[u.docenteId][di]=nuevas[u.docenteId][di]||{};
-    nuevas[u.docenteId][di][bi]={materia:u.materia, grado:u.grado, grupo:u.grupo, aula:''};
+    nuevas[u.docenteId][di][bi]={materia:u.materia, grado:u.grado, grupo:u.grupo, sede:u.sede||'', aula:''};
   }
 
   const TODAS=[];
@@ -635,9 +686,15 @@ function generarHorariosAuto(asignaciones, celdasPorDocente){
 // alterar esa función ya probada en producción).
 function celdasActualesDe(docenteId){
   const borr=leerBorradores();
-  if(borr[docenteId]) return borr[docenteId];
+  if(borr[docenteId]){
+    const c=borr[docenteId];
+    if(backfillSedePrimaria(c, docenteId)){ borr[docenteId]=c; guardarBorradores(borr); }
+    return c;
+  }
   const pub=horarioPublicadoDe(docenteId);
-  return pub ? JSON.parse(JSON.stringify(pub.celdas||{})) : {};
+  const c = pub ? JSON.parse(JSON.stringify(pub.celdas||{})) : {};
+  backfillSedePrimaria(c, docenteId); // corrige en memoria; no reescribe lo publicado aquí
+  return c;
 }
 function celdasActualesTodas(){
   const ids=new Set(); lsRead('docentes').forEach(d=>ids.add(d.id));
@@ -675,7 +732,7 @@ function choquesGlobales(){
         Object.keys(a.celdas[di]||{}).forEach(bi=>{
           const ca=a.celdas[di][bi]; if(!ca||!ca.grado) return;
           const cb=((b.celdas[di]||{})[bi]);
-          if(cb && String(cb.grado)===String(ca.grado) && String(cb.grupo||'')===String(ca.grupo||'')){
+          if(cb && mismoGrupoReal(ca,cb)){
             choques.push({di:+di, bi:+bi, grado:ca.grado, grupo:ca.grupo,
               docente1:a.nombre, docente1Id:a.docenteId, docente2:b.nombre, docente2Id:b.docenteId});
           }

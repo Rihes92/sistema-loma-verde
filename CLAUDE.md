@@ -2,6 +2,58 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 30b): fix crítico — cruces falsos por no distinguir sede en primaria — CÓDIGO LISTO, sin desplegar
+
+- **Reporte de Richard tras revisar la tarjeta de cruces (sesión 30):** "Está marcando
+  cruces, porque no se distingue la sede en la que está cada docente." Confirmado con
+  Node contra los datos reales: **6 combinaciones grado+grupo se repiten en hasta 15
+  sedes distintas** (ej. "Preescolar-1" existe en 15 sedes rurales que solo tienen un
+  grupo por grado) — sin sede, el reporte de cruces los trataba a todos como el mismo
+  grupo físico chocando entre sí. Con ~44 docentes de primaria, esto producía decenas de
+  falsos positivos.
+- **Causa raíz encontrada:** el motor automático (sesión 29) SÍ usaba la sede
+  internamente para no chocar grupos al generarlos (`grupoKeyGen` ya la incluía), pero al
+  ESCRIBIR la celda final (`colocar()`) la descartaba — guardaba solo
+  `{materia,grado,grupo,aula}`, sin `sede`. El reporte de cruces (`detectarChoques()` del
+  editor manual, ya existente desde sesión 26k, y `choquesGlobales()` nuevo de la sesión
+  30) comparaban grado+grupo nada más, porque nunca tuvieron con qué comparar sede.
+- **Corregido en 3 puntos de `21-horarios-coordinacion.html`:**
+  1. `colocar()` del motor automático ahora SÍ guarda `sede` en la celda generada.
+  2. El modal manual de "Asignar clase" ganó un campo **Sede** (`#ed-sede`, catálogo de
+     `LV_INST.sedes()`) que solo aparece cuando el Área elegida es "Primaria" — en
+     bachillerato no aplica (el Excel de bachillerato no trae sede, sesión 27).
+     `guardarCelda()` la guarda; se muestra en la celda de la grilla como código corto
+     (ej. "3-1 PRI", vía `LV_CURSO.sedeCode()`).
+  3. **`mismoGrupoReal(a,b)` nueva** — función única usada tanto por `detectarChoques()`
+     (editor de un docente) como por `choquesGlobales()` (reporte de todo el colegio):
+     compara grado+grupo siempre, y sede **solo si AMBAS celdas la traen** (retrocompatible
+     con bachillerato, que nunca la tiene, y con celdas viejas sin sede).
+- **Backfill automático para NO perder el trabajo ya hecho:** el borrador que Richard ya
+  generó y revisó quedó con celdas de primaria SIN sede (por el bug de arriba).
+  `backfillSedePrimaria(celdas, docenteId)` nueva — al leer el horario de un docente
+  (`cargarDocente()` y `celdasActualesDe()`), si una celda de "Todas las materias" no
+  trae sede, la busca en la PROPIA asignación de ese docente (que siempre la trae en
+  primaria) por grado+grupo y la rellena — sin inventar nada, cruzando con la fuente ya
+  importada. Si la celda venía de un BORRADOR, la corrección se guarda de una vez
+  (`marcarBorrador()`/`guardarBorradores()`); si venía de algo ya PUBLICADO, la corrección
+  solo vive en memoria hasta que se publique de nuevo (no reescribe `lv_horarios` fuera
+  del botón "Publicar", respetando el mismo candado de siempre). **Richard NO tiene que
+  regenerar nada** — con solo abrir el reporte o cada docente, la sede se corrige sola.
+- **Verificado con Node contra los datos reales:** (1) generando desde cero con el motor
+  ya corregido, las 735 celdas de primaria quedan con sede, 0 cruces reportados (antes
+  del fix este mismo escenario habría marcado decenas); (2) simulando el escenario EXACTO
+  de Richard — un borrador viejo con celdas sin sede, dos docentes con "Preescolar-1" en
+  sedes distintas (Principal y Juana Julia 1) — `choquesGlobales()` da 0 cruces Y el
+  backfill deja la sede escrita de una vez en el borrador, sin que Richard tenga que
+  tocar nada.
+- SW **v99**. `node --check` limpio en los 3 bloques `<script>`; balance de
+  `div/table/tr/td/th/label/select/button/details/summary` verificado (37/37, resto
+  igual que sesión 30 + 1 label/select nuevos del campo Sede).
+- **PENDIENTE:** push; que Richard recargue "Horarios (Coordinación)", abra el reporte de
+  cruces y confirme que ya no aparecen los falsos positivos entre sedes distintas — y que
+  abriendo cualquier docente de primaria (aunque sea solo para mirar) ya le queda la sede
+  corregida en su borrador sin acción extra.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 30): reporte persistente de conflictos + nuevo modelo de horas (60 min + descanso) — CÓDIGO LISTO, sin desplegar
 
 - **Feedback de Richard tras probar la generación automática (sesión 29):** ya generó y
