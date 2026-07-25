@@ -63,6 +63,37 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 26e): banco de preguntas consolidado en Evaluaciones
+
+- **Punto 6 del backlog crudo:** "existe una opción en el Planeador (02) y otra en
+  Evaluaciones (03). Creo que debería quedar solo en Evaluaciones. Pide sugerencia."
+  Diagnóstico: NO eran la misma tabla — el "Banco de preguntas" del Planeador (`o.banco`,
+  campo `{q,a}` simple guardado DENTRO de cada planeador, para imprimir un quiz junto con
+  la clase) es un dato distinto del banco real y reutilizable de Evaluaciones (`lv_banco`,
+  clasificado por grado/eje/tipo, usado para armar exámenes). Nunca hubo pérdida de datos
+  por "duplicado" — el problema es de EXPERIENCIA: un docente podía escribir la misma
+  pregunta dos veces sin saber que ya la tenía en el banco de Evaluaciones.
+- **Decisión (sugerida y aplicada):** en vez de borrar el campo del Planeador (se
+  perdería la función de "quiz impreso junto con la clase", y son 32 planeadores... datos
+  reales ya guardados con eso), se agregó un botón **"🏦 Del banco de Evaluaciones"** junto
+  al ya existente "+ Pregunta suelta" en la sección de banco del Planeador. Abre un
+  selector (modal `#modal-preguntas`, mismo patrón que "🏦 Importar del Banco" de
+  actividades, sesión 17) que LEE `lv_banco` (filtrado por materia vía `LV_CTX.filtrar` y
+  por el grado ya elegido en el planeador) y al marcar preguntas las agrega como texto
+  plano `{q,a}` al banco del planeador — la respuesta se resuelve sola según el tipo
+  (`opciones[correcta]` en multiple, "Verdadero/Falso" en vf, `x.respuesta` en abierta).
+  El picker es de SOLO LECTURA — no crea, edita ni borra nada en `lv_banco`; la autoría
+  real (crear a mano, importar `.json`, generar con IA) sigue viviendo exclusivamente en
+  Evaluaciones (03), que es justo lo que pedía Richard.
+- `lv_banco` agregado a `LV_SYNC_TABLAS` del Planeador (antes no lo sincronizaba, así que
+  el picker no habría visto preguntas frescas sin pasar antes por el portal o por 03).
+  SW **v89**. `node --check`-equivalente (3 bloques `<script>`) limpio; balance de
+  `<div>/<section>/<table>/<tr>/<td>/<th>/<label>/<select>` verificado en
+  `modulos/02-planeador.html`.
+- **PENDIENTE:** push; que Richard entre a un planeador de una materia que ya tenga
+  preguntas en el banco de Evaluaciones, pruebe "🏦 Del banco de Evaluaciones" y confirme
+  que las trae bien (texto y respuesta) y que el quiz sigue imprimiéndose igual que antes.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26d): 09-Acudientes fusionado dentro de Matrícula (20)
 
 - **Punto 11 del backlog crudo:** "creo que 09 no debería existir como módulo aparte — al

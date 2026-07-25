@@ -83,7 +83,7 @@
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
-<script>window.LV_SYNC_TABLAS=['lv_planeadores','lv_malla','lv_cursos','lv_docentes','lv_asignaciones'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_planeadores','lv_malla','lv_cursos','lv_docentes','lv_asignaciones','lv_banco'];</script>
 <script src="../sync.js"></script>
 <script src="../lib/xlsx.full.min.js"></script>
 <header class="appbar">
@@ -197,9 +197,12 @@
         <label class="fld">Síntesis / ideas clave de cierre<textarea id="f-sintesis"></textarea></label>
         <label class="fld">Errores frecuentes / preconcepciones<textarea id="f-errores"></textarea></label>
       </div>
-      <p class="hint">Banco de preguntas con respuestas (quiz / estilo ICFES)</p>
+      <p class="hint">Banco de preguntas con respuestas (quiz / estilo ICFES). Las preguntas reutilizables (clasificadas por grado/eje) se administran en Evaluaciones de aula — tráelas de ahí en vez de escribirlas dos veces.</p>
       <div id="banco-box"></div>
-      <button class="btn sec sm" id="btn-add-preg" type="button">+ Pregunta</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn sec sm" id="btn-add-preg" type="button">+ Pregunta suelta</button>
+        <button class="btn sec sm" id="btn-preg-bank" type="button">🏦 Del banco de Evaluaciones</button>
+      </div>
     </div>
 
     <!-- 5. Otros -->
@@ -363,6 +366,21 @@
       <label class="fld" style="flex:0 0 auto">Grado<select id="mact-grado"><option value="">Todos los grados</option></select></label>
     </div>
     <div id="mact-grid" style="display:flex;flex-direction:column;gap:10px;overflow-y:auto;padding-right:4px;flex:1"></div>
+  </div>
+</div>
+
+<!-- Modal: traer preguntas del banco de Evaluaciones (lv_banco) -->
+<div id="modal-preguntas" class="hide" style="position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;z-index:70;padding:16px">
+  <div style="background:#fff;border-radius:14px;padding:20px;max-width:760px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <h2 style="margin:0;color:var(--primary)">Traer preguntas del banco de Evaluaciones</h2>
+      <button class="btn sec sm" id="mpb-close">Cerrar</button>
+    </div>
+    <p class="hint" id="mpb-info"></p>
+    <div id="mpb-list" style="overflow-y:auto;padding-right:4px;flex:1"></div>
+    <div style="margin-top:10px;text-align:right">
+      <button class="btn ok sm" id="mpb-add">+ Añadir seleccionadas</button>
+    </div>
   </div>
 </div>
 
@@ -689,6 +707,41 @@ function addPreg(q='',a=''){
   $('#banco-box').appendChild(div);
 }
 function readBanco(){return [...$('#banco-box').children].map(r=>({q:r.querySelector('.p-q').value.trim(),a:r.querySelector('.p-a').value.trim()})).filter(x=>x.q);}
+
+// ── Traer preguntas del banco reutilizable de Evaluaciones (lv_banco) ──
+// Evita reescribir a mano lo que ya existe clasificado en 03-examenes.html
+// (backlog crudo sesión 26, punto 6: "el banco de preguntas debería quedar
+// solo en Evaluaciones"). Este picker solo LEE lv_banco, no lo edita —
+// la autoría real (crear/importar/generar con IA) sigue viviendo en 03.
+const PB_TIPO_LBL={multiple:'Opción múltiple',vf:'Falso / Verdadero',abierta:'Abierta'};
+function pbRespuesta(x){
+  if(x.tipo==='multiple'&&Array.isArray(x.opciones)&&Number.isInteger(x.correcta)) return x.opciones[x.correcta]||'';
+  if(x.tipo==='vf') return x.correcta?'Verdadero':'Falso';
+  return x.respuesta||'';
+}
+function abrirPreguntasBanco(){
+  let all=lsRead('banco');
+  if(typeof LV_CTX!=='undefined') all=LV_CTX.filtrar(all);
+  const g=$('#f-grado').value;
+  let list=all.slice();
+  if(g&&all.some(x=>x.grado===g)) list=all.filter(x=>x.grado===g);
+  $('#mpb-info').textContent=list.length?`Marca las preguntas a traer${g?' (filtradas para '+g+')':''}. Se agregan como pregunta + respuesta.`:'El banco de Evaluaciones está vacío para esta materia. Créalo en Evaluaciones de aula → Banco de preguntas.';
+  $('#mpb-list').innerHTML=list.map(x=>`<label style="display:flex;gap:10px;padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:8px;cursor:pointer">
+    <input type="checkbox" class="mpb-chk" value="${x.id}" style="width:auto;flex:0 0 auto;margin-top:3px">
+    <span><span class="hint">${esc(x.grado||'')} · ${esc(x.tema||x.periodo||'')} · ${PB_TIPO_LBL[x.tipo]||x.tipo}</span><br>
+    <strong style="font-size:.88rem">${esc(x.enunciado||'')}</strong></span></label>`).join('');
+  $('#modal-preguntas').classList.remove('hide');
+}
+$('#btn-preg-bank').onclick=abrirPreguntasBanco;
+$('#mpb-close').onclick=()=>$('#modal-preguntas').classList.add('hide');
+$('#mpb-add').onclick=()=>{
+  const ids=[...$('#mpb-list').querySelectorAll('.mpb-chk:checked')].map(c=>c.value);
+  if(!ids.length){ toast('Marca al menos una pregunta'); return; }
+  const byId={}; lsRead('banco').forEach(x=>byId[x.id]=x);
+  ids.forEach(id=>{ const x=byId[id]; if(!x) return; addPreg(x.enunciado||'', pbRespuesta(x)); });
+  $('#modal-preguntas').classList.add('hide');
+  toast(ids.length+' pregunta(s) traídas del banco');
+};
 
 // ---------- Anexos (imágenes con downscale) ----------
 function downscale(file,maxDim=1000,q=0.72){
