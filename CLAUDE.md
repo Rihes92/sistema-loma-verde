@@ -2,6 +2,104 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 27): Importador de Asignación Académica (Excel) + Hoja de Vida — CÓDIGO LISTO, sin desplegar
+
+- **Pedido de Richard, 3 puntos:** (1) tomar el Excel oficial "V2_1. FORMATO ASIGNACION
+  ACADEMICA_2026" (dos hojas: bachillerato y primaria) y reemplazar TODO lo que hay hoy
+  en Asignaciones; (2) construir algo con esos datos para una "hoja de vida" del docente;
+  (3) generar los horarios automáticamente a partir de la asignación. Antes de construir
+  se le hicieron 3 preguntas de alcance (respondidas): hacer las 3 fases aunque tome
+  varias sesiones; reemplazar el comodín "Todas las materias" de primaria por la
+  asignación PRECISA grado+grupo+sede que trae el Excel; la hoja de vida vive en una
+  pestaña nueva dentro de Coordinación (no un módulo aparte), por ser dato sensible
+  (cédula) igual que Matrícula.
+- **Estructura real del Excel (verificada leyendo el archivo, no asumida):** hoja
+  "PROYECCION DE ASIG BACHILLERATO" (23 docentes, 6°-11°) — cada docente ocupa VARIAS
+  filas (una por materia que dicta), y cada materia trae, por cada grado, un par
+  Horas/Nº de grupos (NO un número de grupo específico — el Excel dice "este docente
+  dicta Matemáticas a 2 grupos de 9°", pero no dice si son 9-1 y 9-2 o cuáles). Hoja
+  "ASIG PRIMARIA" (22 docentes, Preescolar-5°) — una fila por docente, "INTEGRADA" (dicta
+  todo), con GRUPO + Nº estudiantes por cada grado que cubre, más SEDE y JORNADA exactas.
+- **Import 100% en el cliente (nada de servidor nuevo):** nuevo importador dentro de `coordinacion.html` →
+  pestaña Asignaciones → tarjeta "📥 Importar Asignación Académica (Excel)". Usa
+  `lib/xlsx.full.min.js` (ya estaba en el proyecto, mismo patrón que el importador de
+  notas de 01-calificaciones). Parsea AMBAS hojas con funciones nuevas
+  `impParseBachillerato()`/`impParsePrimaria()`, empareja cada docente del Excel contra
+  `docentes` existentes por NOMBRE normalizado (sin tildes/mayúsculas) — si no hay
+  coincidencia exacta, se crea un docente nuevo (nunca fusiona por "parecido", para no
+  mezclar dos personas distintas por error). **Verificado con Node contra el archivo real**
+  (harness en `/tmp`, no se subió al repo): 23+22=45 docentes, 196 asignaciones de
+  bachillerato + 88 de primaria = 284 en total, **0 materias sin reconocer** (la tabla de
+  equivalencias cubre el 100% de lo que trae el archivo real).
+- **Tabla de equivalencias Excel→catálogo de la app** (`IMP_MATERIA_MAP`, normaliza tildes/
+  mayúsculas/puntuación antes de comparar): cubre variantes y errores de tipeo reales del
+  archivo ("Ciencias  Sociales" con doble espacio, "Lengua castellna" con la "a" que
+  falta, "Matematicas" sin tilde, etc.). Decisiones de mapeo no triviales: **"Democracia"
+  → "Competencias Ciudadanas"** (mismo concepto, nombre distinto); **"Edu. Artistica" +
+  "Emprendimiento" (filas separadas en el Excel) se FUSIONAN** en la única materia
+  combinada que ya tiene la app ("Artística y Emprendimiento") — se SUMAN las horas de
+  ambas filas y se toma el MÁXIMO de "número de grupos" (no se suma, para no duplicar el
+  conteo de secciones).
+- **Grado "Preescolar" genérico (limitación real del archivo, no una decisión mía):** el
+  Excel de primaria NO distingue Prejardín/Jardín/Transición — trae una sola columna
+  "PREESCOLAR". Se importa tal cual como grado **"Preescolar"**, que NO coincide con
+  ninguno de los 3 grados oficiales de `GRADOS` en la app. Si Richard sabe qué nivel
+  específico cubre cada docente, toca ajustarlo a mano después en Asignaciones —
+  documentado en la propia página (comentario en el código) para que quede claro por qué.
+- **Bachillerato: el campo "grupo" de la asignación queda VACÍO a propósito.** El Excel
+  da un CONTEO de grupos por materia-grado, no el número específico (9-1 vs 9-2). Inventar
+  esa asignación específica sería adivinar. La decisión (documentada aquí, no se le
+  preguntó a Richard porque se resuelve sola): el número de grupo específico se termina
+  de decidir cuando coordinación arma el horario real en el módulo 21
+  (`21-horarios-coordinacion.html`, sesión 26k) — ahí sí se elige, celda por celda, a qué
+  grado-grupo-aula concreto va cada clase. Dos campos nuevos en cada asignación para
+  soportar esto: `horas` (número) y `numGrupos` (número) — sin migración SQL, JSONB.
+- **Primaria: SÍ trae grupo+sede exactos** (columna "GRUPO" + "SEDE" del Excel) → cada
+  asignación de primaria queda con `area:'Primaria', materia:'Todas las materias',
+  grado, grupo, sede` precisos, reemplazando lo que antes era un comodín sin acotar.
+- **⚠️ HALLAZGO IMPORTANTE, NO RESUELTO HOY (avisado, no se improvisó):** Richard aprobó
+  "reemplazar el comodín por asignación precisa", pero investigando se encontró que el
+  comodín vive en DOS sitios distintos: (1) el RLS de Supabase (`lv_acceso_total()`), que
+  YA se corrigió en la sesión 24 (exige coordinación, ya no comodín); (2) **`LV_PERM.
+  accesoTotal()` en `auth.js`, que TODAVÍA trata CUALQUIER asignación con `area==='Primaria'`
+  o `materia==='Todas las materias'` como acceso total SIN mirar grado/grupo/sede** — es
+  el motor de permisos que usan ~10 módulos (index.html, 01, 10, 11, 12, 13, 14, 17, 18,
+  20). Importar datos precisos con este import NO cambia el comportamiento real todavía:
+  un docente de primaria seguirá viendo TODA primaria en el buscador/dashboard, porque
+  `accesoTotal()` no filtra por curso. Cerrar esto de verdad requiere tocar
+  `LV_PERM.cursoEsMio()`/`accesoTotal()` para que, cuando la materia sea "Todas las
+  materias", compare grado+grupo+sede de la asignación contra el curso en cuestión — un
+  cambio con radio de impacto grande (toca la función más compartida del proyecto) que,
+  siguiendo el mismo criterio que pausó la Fase 2 de arquitectura durante meses, se dejó
+  señalado para una sesión propia con pruebas, en vez de mezclarlo con el import de hoy.
+- **Nueva pestaña "🪪 Hoja de Vida" en Coordinación:** lista todos los docentes con
+  cédula/título profesional/área de desempeño (se llenan solos con el import; también
+  editables a mano, botón ✏️ por fila). Campos nuevos en `lv_docentes` (sin migración
+  SQL): `cedula`, `tituloProfesional`, `areaDesempeno`. Solo visible para coordinación/
+  rector (mismo nivel de acceso que el resto de `coordinacion.html`).
+- **Vista previa obligatoria antes de aplicar (destructivo):** el importador NUNCA borra
+  nada hasta que Richard vea la vista previa completa (cuántas asignaciones actuales se
+  reemplazan, cuántos docentes nuevos se crean, cuántos se actualizan, y una lista de
+  docentes YA registrados que no aparecen en el Excel y quedarán sin ninguna asignación —
+  para detectar fallos de emparejamiento por nombre) y toque "✅ Reemplazar todo y
+  aplicar" + un `confirm()` explícito. El borrado real usa el mismo patrón ya establecido
+  en el proyecto (`LV_SYNC.marcarCambio(..., {_eliminado:true})` por cada registro viejo
+  antes de sobrescribir el arreglo local).
+- SW **v95**. `node --check` limpio en los 2 bloques `<script>` de `coordinacion.html`;
+  balance de `div/section/table/tr/td/th/label/select/button` verificado. Lógica de
+  parseo probada con Node + la librería real `xlsx.full.min.js` contra el archivo real
+  del colegio (no una prueba sintética) antes de darla por buena.
+- **PENDIENTE:** push; correr el import de verdad desde Coordinación → Asignaciones con
+  el archivo real y revisar la vista previa con cuidado antes de confirmar (sobre todo la
+  lista de "docentes sin asignación después" — sirve para detectar nombres que no
+  calzaron). Después, en orden: (a) decidir si se cierra el hueco de `LV_PERM.
+  accesoTotal()` señalado arriba (cambio de mayor riesgo, sesión propia); (b) el punto 3
+  del pedido original — generación automática de horarios a partir de esta asignación —
+  es un motor de programación con restricciones (sin cruces de docente/grupo, horas
+  exactas por semana, cabe en la grilla de 7 bloques × 5 días del módulo 21) y queda
+  como su propia fase futura, tal como ya se había decidido en la sesión 26k al construir
+  el editor manual de horarios.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26l): recordatorio por correo de Eventos — CÓDIGO LISTO, requiere pasos manuales de Richard
 
 - **Punto 10 del backlog crudo (segunda mitad):** "2 días antes de un evento, enviar un

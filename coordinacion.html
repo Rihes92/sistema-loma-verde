@@ -84,6 +84,7 @@
 <nav class="tabs" id="tabs">
   <button class="active" data-tab="docentes">👩‍🏫 Docentes</button>
   <button data-tab="asignaciones">📋 Asignaciones</button>
+  <button data-tab="hojadevida">🪪 Hoja de Vida</button>
   <button data-tab="centros">🌟 Centros de Interés</button>
   <button data-tab="resumen">📊 Resumen</button>
   <button data-tab="roles" id="tabbtn-roles" class="hide">🔑 Roles</button>
@@ -123,6 +124,13 @@
   <!-- ───────── ASIGNACIONES ───────── -->
   <section id="tab-asignaciones" class="hide">
     <div class="card">
+      <h2>📥 Importar Asignación Académica (Excel)</h2>
+      <p class="desc">Sube el formato oficial de asignación académica del colegio (hojas "PROYECCION DE ASIG BACHILLERATO" y "ASIG PRIMARIA"). <b>Esto reemplaza TODAS las asignaciones actuales</b> — antes de aplicar nada vas a ver una vista previa completa (docentes nuevos, docentes actualizados, cuántas asignaciones se crean, y quién queda sin ninguna) y debes confirmar explícitamente.</p>
+      <input type="file" id="imp-asig-file" accept=".xls,.xlsx">
+      <div id="imp-asig-msg" class="desc" style="margin-top:8px"></div>
+      <div id="imp-asig-preview" class="hide" style="margin-top:14px"></div>
+    </div>
+    <div class="card">
       <h2>Asignar materia y curso a un docente</h2>
       <p class="desc">Esto define qué le corresponde a cada docente: útil para los cruces de horario y, más adelante, para que cada quien vea solo lo suyo al ingresar.</p>
       <div class="row">
@@ -151,6 +159,18 @@
       <h2>🏫 Cursos y sedes</h2>
       <p class="desc">Cada curso creado en la app (desde Calificaciones) puede vincularse a una sede. En primaria, la sede aparece junto al grupo (ej. <b>3-1 CRI</b>) para distinguir el mismo grado entre sedes.</p>
       <div class="tableScroll" id="cs-tabla"><p class="desc">Cargando…</p></div>
+    </div>
+  </section>
+
+  <!-- ───────── HOJA DE VIDA ───────── -->
+  <section id="tab-hojadevida" class="hide">
+    <div class="card">
+      <h2>🪪 Hoja de Vida — datos oficiales de asignación académica</h2>
+      <p class="desc">Cédula, título profesional y área de desempeño oficial de cada docente. Se completa sola al importar la Asignación Académica en Excel (pestaña Asignaciones) y también se puede editar aquí a mano. Es información sensible — esta pestaña solo la ve coordinación/rector.</p>
+      <div class="row" style="margin-bottom:10px">
+        <label class="fld">Buscar<input id="hv-buscar" placeholder="Nombre, cédula o título…"></label>
+      </div>
+      <div id="hv-out"></div>
     </div>
   </section>
 
@@ -282,6 +302,7 @@
 
 <div id="toast" role="alert" aria-live="assertive"></div>
 
+<script src="./lib/xlsx.full.min.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════
 //  Coordinación — gestión de docentes y sus asignaciones
@@ -422,11 +443,13 @@ document.getElementById('tabs').addEventListener('click', e=>{
   const t=b.dataset.tab;
   document.getElementById('tab-docentes').classList.toggle('hide', t!=='docentes');
   document.getElementById('tab-asignaciones').classList.toggle('hide', t!=='asignaciones');
+  document.getElementById('tab-hojadevida').classList.toggle('hide', t!=='hojadevida');
   document.getElementById('tab-centros').classList.toggle('hide', t!=='centros');
   document.getElementById('tab-resumen').classList.toggle('hide', t!=='resumen');
   document.getElementById('tab-roles').classList.toggle('hide', t!=='roles');
   document.getElementById('tab-papelera').classList.toggle('hide', t!=='papelera');
   if (t==='asignaciones') { fillDocenteSelects(); renderAsignaciones(); renderCursosSedes(); }
+  if (t==='hojadevida') { renderHojaVida(); }
   if (t==='centros') { fillLineaSelects(); fillLiderSelect(); renderDocentesCheckList(document.getElementById('c-doc-buscar').value); renderCentros(); }
   if (t==='resumen') { renderResumen(); renderEstado(); }
   if (t==='roles') { renderRoles(); }
@@ -830,7 +853,7 @@ function renderAsignaciones(){
   const out = document.getElementById('asignaciones-out');
   if(!lista.length){ out.innerHTML = '<div class="empty">Sin asignaciones con este filtro.</div>'; return; }
   out.innerHTML = `<div class="tableScroll"><table><thead><tr>
-    <th>Docente</th><th>Área</th><th>Materia</th><th>Grado</th><th>Grupo</th><th class="c">Acciones</th>
+    <th>Docente</th><th>Área</th><th>Materia</th><th>Grado</th><th>Grupo</th><th class="c">Horas</th><th class="c">Grupos</th><th class="c">Acciones</th>
   </tr></thead><tbody>${lista.map(a=>{
     const d = docentes.find(x=>x.id===a.docenteId);
     return `<tr>
@@ -838,11 +861,347 @@ function renderAsignaciones(){
       <td>${esc(a.area)}</td>
       <td>${esc(a.materia)}</td>
       <td>${esc(a.grado)}</td>
-      <td>${esc(a.grupo||'—')}</td>
+      <td>${esc(a.grupo||'—')}${a.sede?' <span class="desc">'+esc(a.sede)+'</span>':''}</td>
+      <td class="c">${a.horas!=null?a.horas:'—'}</td>
+      <td class="c">${a.numGrupos!=null?a.numGrupos:'—'}</td>
       <td class="c"><button class="btn sm bad" onclick="eliminarAsignacion('${a.id}')">🗑️</button></td>
     </tr>`;
   }).join('')}</tbody></table></div>`;
 }
+
+// ---------- Importar Asignación Académica desde Excel (formato oficial, 2 hojas) ----------
+// Ver CLAUDE.md (sesión jul 25) para el detalle de por qué cada decisión se tomó así:
+// bachillerato trae HORAS + NÚMERO DE GRUPOS por materia-grado (sin número de grupo
+// específico — eso se decide después, al armar el horario real en el módulo 21);
+// primaria trae grado+GRUPO+sede ya precisos, reemplazando el comodín "Todas las
+// materias" por asignaciones exactas.
+const IMP_GRADOS_BACH = ['6°','7°','8°','9°','10°','11°'];
+const IMP_COLS_BACH = [[8,9,10],[11,12,13],[14,15,16],[17,18,19],[20,21,22],[23,24,25]];
+// El Excel NO distingue Prejardín/Jardín/Transición (una sola columna "PREESCOLAR") —
+// se importa como grado genérico "Preescolar" (no coincide con ninguno de los 3 grados
+// oficiales de GRADOS); si un docente cubre un nivel específico, ajústalo a mano después.
+const IMP_GRADOS_PRIM = ['Preescolar','1°','2°','3°','4°','5°'];
+const IMP_COLS_PRIM = [[16,17],[18,19],[20,21],[22,23],[24,25],[26,27]];
+
+function impNorm(s){
+  return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[.,]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+}
+const IMP_MATERIA_MAP = {
+  'artistica':         {area:'Artística y Emprendimiento', materia:'Artística y Emprendimiento'},
+  'edu artistica':     {area:'Artística y Emprendimiento', materia:'Artística y Emprendimiento'},
+  'emprendimiento':    {area:'Artística y Emprendimiento', materia:'Artística y Emprendimiento'},
+  'biologia':          {area:'Ciencias Naturales', materia:'Biología'},
+  'ciencias sociales': {area:'Ciencias Sociales', materia:'Sociales'},
+  'democracia':        {area:'Ciencias Sociales', materia:'Competencias Ciudadanas'},
+  'ed fis rec y dep':  {area:'Educación Física', materia:'Educación Física'},
+  'estadistica':       {area:'Matemáticas', materia:'Estadística'},
+  'etica y valores':   {area:'Ética', materia:'Ética'},
+  'filosofia':         {area:'Ciencias Sociales', materia:'Filosofía'},
+  'fisica':            {area:'Ciencias Naturales', materia:'Física'},
+  'geometria':         {area:'Matemáticas', materia:'Geometría'},
+  'ingles':            {area:'Humanidades', materia:'Inglés'},
+  'lengua castellana': {area:'Humanidades', materia:'Lengua Castellana'},
+  'lengua castellna':  {area:'Humanidades', materia:'Lengua Castellana'}, // typo real del archivo
+  'matematicas':       {area:'Matemáticas', materia:'Matemáticas'},
+  'plan lector':       {area:'Humanidades', materia:'Plan Lector'},
+  'quimica':           {area:'Ciencias Naturales', materia:'Química'},
+  'religion':          {area:'Religión', materia:'Religión'},
+  'tecnol e informa':  {area:'Tecnología e Informática', materia:'Tecnología e Informática'},
+};
+function impSede(s){
+  const t = impNorm(s);
+  const hit = SEDES.find(x=>impNorm(x)===t);
+  return hit || String(s||'').trim().toUpperCase();
+}
+const IMP_MATERIAS_NO_RECONOCIDAS = new Set();
+
+function impParseBachillerato(rows){
+  const docs = [];
+  let actual = null;
+  for(let r=5; r<rows.length; r++){
+    const row = rows[r] || [];
+    const nCell = row[0];
+    if(nCell!==undefined && nCell!==null && String(nCell).trim()!==''){
+      const apellidos = String(row[1]||'').trim();
+      const nombres = String(row[3]||'').trim();
+      if(!apellidos && !nombres){ actual = null; continue; }
+      actual = {
+        nombreCompleto: (nombres+' '+apellidos).replace(/\s+/g,' ').trim(),
+        cedula: row[5]!=null? String(row[5]).trim() : '',
+        titulo: String(row[6]||'').trim(),
+        areaDesempeno: String(row[7]||'').trim(),
+        sede:'', jornada:'',
+        asigs: []
+      };
+      docs.push(actual);
+    }
+    if(!actual) continue;
+    const subj = row[7];
+    if(subj===undefined || subj===null || String(subj).trim()==='') continue;
+    const map = IMP_MATERIA_MAP[impNorm(subj)];
+    if(!map){ IMP_MATERIAS_NO_RECONOCIDAS.add(String(subj).trim()); continue; }
+    IMP_COLS_BACH.forEach((cols, i)=>{
+      const [aC,hC,gC] = cols;
+      if(row[aC]!==undefined && row[aC]!==null && String(row[aC]).trim()!==''){
+        const horas = Number(row[hC])||0;
+        const numGrupos = Number(row[gC])||0;
+        const existente = actual.asigs.find(a=>a.area===map.area && a.materia===map.materia && a.grado===IMP_GRADOS_BACH[i]);
+        if(existente){
+          existente.horas += horas;
+          existente.numGrupos = Math.max(existente.numGrupos, numGrupos);
+        } else {
+          actual.asigs.push({area:map.area, materia:map.materia, grado:IMP_GRADOS_BACH[i], horas, numGrupos});
+        }
+      }
+    });
+  }
+  return docs;
+}
+
+function impParsePrimaria(rows){
+  const docs = [];
+  for(let r=6; r<rows.length; r++){
+    const row = rows[r] || [];
+    const nCell = row[0];
+    if(nCell===undefined || nCell===null || !/^\d+$/.test(String(nCell).trim())) continue;
+    const apellidos = String(row[1]||'').trim();
+    const nombres = String(row[5]||'').trim();
+    if(!apellidos && !nombres) continue;
+    const cedula = row[9]!=null? String(row[9]).trim() : '';
+    const areaDesempeno = String(row[11]||'').trim();
+    const sede = row[29]? impSede(row[29]) : '';
+    const jn = impNorm(row[32]);
+    const jornada = jn.includes('manana')?'Mañana':(jn.includes('tarde')?'Tarde':(jn.includes('unica')?'Única':(row[32]?String(row[32]).trim():'Única')));
+    const doc = {
+      nombreCompleto: (nombres+' '+apellidos).replace(/\s+/g,' ').trim(),
+      cedula, titulo:'', areaDesempeno, sede, jornada,
+      asigs: []
+    };
+    IMP_COLS_PRIM.forEach((cols,i)=>{
+      const [gC,nC] = cols;
+      const grupoVal = row[gC];
+      if(grupoVal!==undefined && grupoVal!==null && String(grupoVal).trim()!==''){
+        doc.asigs.push({
+          area:'Primaria', materia:'Todas las materias',
+          grado: IMP_GRADOS_PRIM[i], grupo: String(grupoVal).trim(), sede,
+          horas: null, numGrupos: null,
+          numEstudiantes: row[nC]!=null? (Number(row[nC])||0) : null
+        });
+      }
+    });
+    docs.push(doc);
+  }
+  return docs;
+}
+
+let IMP_RESULTADO = null;
+
+function impAnalizar(docsBach, docsPrim){
+  const todos = [...docsBach.map(d=>({...d,nivel:'Bachillerato'})), ...docsPrim.map(d=>({...d,nivel:'Primaria'}))];
+  const nuevosDocentes = [];
+  const actualizados = [];
+  const nuevasAsignaciones = [];
+
+  todos.forEach(d=>{
+    let existente = docentes.find(x=>impNorm(x.nombre)===impNorm(d.nombreCompleto));
+    let docenteId;
+    if(existente){
+      docenteId = existente.id;
+      actualizados.push({id:existente.id, nombre:existente.nombre, datos:d});
+    } else {
+      const yaNuevo = nuevosDocentes.find(nd=>impNorm(nd.nombre)===impNorm(d.nombreCompleto));
+      if(yaNuevo){
+        docenteId = yaNuevo.idTemporal;
+        yaNuevo.datos.cedula = yaNuevo.datos.cedula || d.cedula;
+        yaNuevo.datos.titulo = yaNuevo.datos.titulo || d.titulo;
+        yaNuevo.datos.areaDesempeno = yaNuevo.datos.areaDesempeno || d.areaDesempeno;
+        yaNuevo.datos.sede = yaNuevo.datos.sede || d.sede;
+        yaNuevo.datos.jornada = yaNuevo.datos.jornada || d.jornada;
+      } else {
+        docenteId = 'nuevo-'+uid();
+        nuevosDocentes.push({idTemporal:docenteId, nombre:d.nombreCompleto, datos:d});
+      }
+    }
+    d.asigs.forEach(a=>{
+      nuevasAsignaciones.push({docenteId, docenteNombre:d.nombreCompleto, nuevo:!existente, ...a});
+    });
+  });
+
+  const nombresExcel = new Set(todos.map(d=>impNorm(d.nombreCompleto)));
+  const sinAsignacionDespues = docentes.filter(d=>!nombresExcel.has(impNorm(d.nombre)));
+
+  return { nuevosDocentes, actualizados, nuevasAsignaciones, sinAsignacionDespues };
+}
+
+function impRenderPreview(r){
+  const prev = document.getElementById('imp-asig-preview');
+  prev.classList.remove('hide');
+  const totalAsigActuales = asignaciones.length;
+  const avisoMaterias = IMP_MATERIAS_NO_RECONOCIDAS.size
+    ? `<p class="desc" style="color:#b45309">• ⚠️ Materias del Excel sin equivalencia conocida (se ignoraron): ${Array.from(IMP_MATERIAS_NO_RECONOCIDAS).map(esc).join(', ')}</p>` : '';
+  prev.innerHTML = `
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px;margin-bottom:12px">
+      <p style="margin:0 0 8px;font-weight:700;color:#1e3a8a">Vista previa — nada se ha guardado todavía</p>
+      <p class="desc">• Se <b>reemplazarán las ${totalAsigActuales} asignación(es) actuales</b> por <b>${r.nuevasAsignaciones.length}</b> nuevas.</p>
+      <p class="desc">• <b>${r.nuevosDocentes.length}</b> docente(s) nuevo(s) se crearán (nombre no coincidía con ninguno registrado).</p>
+      <p class="desc">• <b>${r.actualizados.length}</b> docente(s) existentes se actualizarán (cédula, título, área de desempeño, sede/jornada si vienen en el Excel).</p>
+      ${r.sinAsignacionDespues.length? `<p class="desc" style="color:#b45309">• ⚠️ ${r.sinAsignacionDespues.length} docente(s) ya registrados NO aparecen en este Excel y quedarán SIN ninguna asignación: ${r.sinAsignacionDespues.map(d=>esc(d.nombre)).join(', ')}</p>` : ''}
+      ${avisoMaterias}
+    </div>
+    <div class="tableScroll" style="max-height:340px;overflow:auto">
+      <table><thead><tr><th>Docente</th><th>Estado</th><th>Área</th><th>Materia</th><th>Grado</th><th>Grupo</th><th class="c">Horas</th><th class="c"># Grupos</th></tr></thead>
+      <tbody>${r.nuevasAsignaciones.map(a=>`<tr>
+        <td>${esc(a.docenteNombre)}</td>
+        <td>${a.nuevo?'<span style="color:#166534">nuevo</span>':'existente'}</td>
+        <td>${esc(a.area)}</td><td>${esc(a.materia)}</td><td>${esc(a.grado)}</td>
+        <td>${esc(a.grupo||'—')}${a.sede?' '+esc(a.sede):''}</td>
+        <td class="c">${a.horas!=null?a.horas:'—'}</td>
+        <td class="c">${a.numGrupos!=null?a.numGrupos:'—'}</td>
+      </tr>`).join('')}</tbody></table>
+    </div>
+    <div style="margin-top:14px;display:flex;gap:10px">
+      <button class="btn ok" id="btn-imp-confirmar">✅ Reemplazar todo y aplicar</button>
+      <button class="btn sec" id="btn-imp-cancelar">Cancelar</button>
+    </div>
+  `;
+  document.getElementById('btn-imp-cancelar').addEventListener('click', ()=>{
+    prev.classList.add('hide'); prev.innerHTML=''; IMP_RESULTADO=null;
+    document.getElementById('imp-asig-file').value='';
+    document.getElementById('imp-asig-msg').textContent='';
+  });
+  document.getElementById('btn-imp-confirmar').addEventListener('click', impAplicar);
+}
+
+function impAplicar(){
+  if(!IMP_RESULTADO) return;
+  const r = IMP_RESULTADO;
+  if(!confirm(`¿Confirmas? Esto va a BORRAR las ${asignaciones.length} asignación(es) actuales y crear ${r.nuevasAsignaciones.length} nuevas. Se sube a la nube y afecta a todos los docentes de inmediato.`)) return;
+
+  asignaciones.forEach(a=>{ if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_asignaciones', {id:a.id, _eliminado:true}); });
+
+  const mapaIdTemporal = {};
+  r.nuevosDocentes.forEach(nd=>{
+    const id = uid();
+    mapaIdTemporal[nd.idTemporal] = id;
+    docentes.push({
+      id, nombre: nd.nombre,
+      sede: nd.datos.sede || '', jornada: nd.datos.jornada || 'Única',
+      email:'', telefono:'', dirige:'',
+      cedula: nd.datos.cedula||'', tituloProfesional: nd.datos.titulo||'', areaDesempeno: nd.datos.areaDesempeno||'',
+      creado: Date.now()
+    });
+  });
+
+  r.actualizados.forEach(act=>{
+    const i = docentes.findIndex(d=>d.id===act.id);
+    if(i>=0){
+      docentes[i] = {...docentes[i],
+        cedula: act.datos.cedula || docentes[i].cedula || '',
+        tituloProfesional: act.datos.titulo || docentes[i].tituloProfesional || '',
+        areaDesempeno: act.datos.areaDesempeno || docentes[i].areaDesempeno || '',
+        sede: act.datos.sede || docentes[i].sede,
+        jornada: act.datos.jornada || docentes[i].jornada
+      };
+    }
+  });
+  lsWrite('docentes', docentes);
+
+  asignaciones = r.nuevasAsignaciones.map(a=>({
+    id: uid(),
+    docenteId: mapaIdTemporal[a.docenteId] || a.docenteId,
+    area: a.area, materia: a.materia, grado: a.grado,
+    grupo: a.grupo || '',
+    sede: a.sede || undefined,
+    horas: a.horas!=null? a.horas: undefined,
+    numGrupos: a.numGrupos!=null? a.numGrupos: undefined,
+    numEstudiantes: a.numEstudiantes!=null? a.numEstudiantes: undefined,
+    creado: Date.now()
+  }));
+  lsWrite('asignaciones', asignaciones);
+
+  document.getElementById('imp-asig-preview').classList.add('hide');
+  document.getElementById('imp-asig-preview').innerHTML='';
+  document.getElementById('imp-asig-file').value='';
+  document.getElementById('imp-asig-msg').textContent='✅ Importación aplicada: '+asignaciones.length+' asignaciones, '+docentes.length+' docentes.';
+  IMP_RESULTADO=null;
+  fillDocenteSelects(); renderDocentes(); renderAsignaciones(); renderCursosSedes();
+  toast('Asignación académica importada');
+}
+
+document.getElementById('imp-asig-file').addEventListener('change', async (e)=>{
+  const f = e.target.files[0]; if(!f) return;
+  const msg = document.getElementById('imp-asig-msg');
+  const prev = document.getElementById('imp-asig-preview');
+  prev.classList.add('hide'); prev.innerHTML=''; IMP_RESULTADO=null;
+  IMP_MATERIAS_NO_RECONOCIDAS.clear();
+  msg.textContent = 'Leyendo archivo…';
+  try{
+    if(typeof XLSX==='undefined'){ msg.textContent='No se pudo cargar la librería de Excel.'; return; }
+    const wb = XLSX.read(new Uint8Array(await f.arrayBuffer()), {type:'array'});
+    const nombreBach = wb.SheetNames.find(n=>/BACHILLERATO/i.test(n));
+    const nombrePrim = wb.SheetNames.find(n=>/PRIMARIA/i.test(n));
+    if(!nombreBach && !nombrePrim){ msg.textContent='No se encontraron las hojas esperadas ("...BACHILLERATO" / "...PRIMARIA"). Revisa que sea el formato oficial de asignación académica.'; return; }
+    const rowsBach = nombreBach? XLSX.utils.sheet_to_json(wb.Sheets[nombreBach],{header:1,blankrows:true,defval:null}) : [];
+    const rowsPrim = nombrePrim? XLSX.utils.sheet_to_json(wb.Sheets[nombrePrim],{header:1,blankrows:true,defval:null}) : [];
+    const docsBach = rowsBach.length? impParseBachillerato(rowsBach) : [];
+    const docsPrim = rowsPrim.length? impParsePrimaria(rowsPrim) : [];
+    if(!docsBach.length && !docsPrim.length){ msg.textContent='No se encontraron docentes en el archivo. Revisa el formato.'; return; }
+    IMP_RESULTADO = impAnalizar(docsBach, docsPrim);
+    impRenderPreview(IMP_RESULTADO);
+    msg.textContent = `Archivo leído: ${docsBach.length} docente(s) de bachillerato, ${docsPrim.length} de primaria.`;
+  }catch(err){
+    msg.textContent = 'Error leyendo el archivo: '+(err && err.message || err);
+  }
+});
+
+// ---------- Hoja de Vida (cédula, título, área de desempeño) ----------
+let hvEditId = null;
+document.getElementById('hv-buscar').addEventListener('input', renderHojaVida);
+function renderHojaVida(){
+  const q = (document.getElementById('hv-buscar').value||'').toLowerCase();
+  let lista = docentes.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||''));
+  if(q) lista = lista.filter(d=>(d.nombre||'').toLowerCase().includes(q)||(d.cedula||'').toLowerCase().includes(q)||(d.tituloProfesional||'').toLowerCase().includes(q));
+  const out = document.getElementById('hv-out');
+  if(!lista.length){ out.innerHTML = '<div class="empty">Sin docentes registrados.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Nombre</th><th>Cédula</th><th>Título profesional</th><th>Área de desempeño</th><th class="c">Acciones</th>
+  </tr></thead><tbody>${lista.map(d=>{
+    if(hvEditId===d.id){
+      return `<tr>
+        <td>${esc(d.nombre)}</td>
+        <td><input id="hv-e-cedula" value="${esc(d.cedula||'')}" style="width:130px"></td>
+        <td><input id="hv-e-titulo" value="${esc(d.tituloProfesional||'')}" style="width:240px"></td>
+        <td><input id="hv-e-area" value="${esc(d.areaDesempeno||'')}" style="width:170px"></td>
+        <td class="c">
+          <button class="btn sm ok" onclick="hvGuardar('${d.id}')">💾</button>
+          <button class="btn sm sec" onclick="hvCancelar()">✕</button>
+        </td>
+      </tr>`;
+    }
+    return `<tr>
+      <td>${esc(d.nombre)}</td>
+      <td>${esc(d.cedula||'—')}</td>
+      <td>${esc(d.tituloProfesional||'—')}</td>
+      <td>${esc(d.areaDesempeno||'—')}</td>
+      <td class="c"><button class="btn sm sec" onclick="hvEditar('${d.id}')">✏️</button></td>
+    </tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+window.hvEditar = id=>{ hvEditId = id; renderHojaVida(); };
+window.hvCancelar = ()=>{ hvEditId = null; renderHojaVida(); };
+window.hvGuardar = id=>{
+  const i = docentes.findIndex(d=>d.id===id); if(i<0) return;
+  docentes[i] = {...docentes[i],
+    cedula: document.getElementById('hv-e-cedula').value.trim(),
+    tituloProfesional: document.getElementById('hv-e-titulo').value.trim(),
+    areaDesempeno: document.getElementById('hv-e-area').value.trim()
+  };
+  lsWrite('docentes', docentes);
+  hvEditId = null;
+  renderHojaVida();
+  toast('Hoja de vida actualizada');
+};
 
 // ---------- Resumen / Dashboard ----------
 document.getElementById('r-buscar').addEventListener('input', renderResumen);
