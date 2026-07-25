@@ -100,7 +100,12 @@ module.exports = async (req, res) => {
   try {
     const hoy = hoyBogota();
 
-    const eventosRaw = await supaGet('lv_eventos?select=*');
+    // OJO: la tabla real en Supabase se llama "eventos" (sin prefijo lv_) —
+    // la clave localStorage "lv_eventos" se mapea a la tabla "eventos" en
+    // sync.js (MAPA). Mismo caso para "notas"/"asistencia" en el resto del
+    // proyecto: solo unas pocas tablas pierden el prefijo lv_ al llegar a
+    // Supabase; la mayoría (lv_docentes, lv_examenes, etc.) sí lo conservan.
+    const eventosRaw = await supaGet('eventos?select=*');
     const eventos = eventosRaw.map(r => ({ _row: r, ...(r.datos || {}) }));
 
     // Eventos cuyo aviso cae exactamente hoy y que aún no se avisaron por correo
@@ -146,7 +151,7 @@ module.exports = async (req, res) => {
 
     // Marcar los eventos como avisados hoy (evita reenvíos si el cron corre de nuevo)
     for (const ev of disparan) {
-      await supaPatch('lv_eventos?id=eq.' + encodeURIComponent(ev._row.id),
+      await supaPatch('eventos?id=eq.' + encodeURIComponent(ev._row.id),
         { datos: Object.assign({}, ev._row.datos, { recordatorioEnviadoFecha: hoy }) });
     }
 
