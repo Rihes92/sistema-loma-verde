@@ -63,6 +63,22 @@ este bloque, o en la sesión donde se retome cada punto).
     (el rector solo aprueba).
 > qué decisiones se han tomado y qué falta. Actualízalo cuando hagas cambios importantes.
 
+## ▶ DECISIÓN (jul 25, 2026 — sesión 26g): Analítica (14) se queda — sí cumple función
+
+- **Punto 15 del backlog crudo:** "Analítica: ¿no cumple ninguna función? Pregunta si se
+  podría suprimir." Revisado a fondo (sin tocar código): el módulo SÍ cumple dos funciones
+  reales, distintas de todo lo demás en la app:
+  1. **Radiografía ICFES 11°** — cruza resultados de simulacros (módulo 04) por
+     competencia de la Matriz Saber 11, muestra dónde el grupo está débil y enlaza a
+     Inclusión/Exámenes 11° para reforzar. No existe en ningún otro módulo.
+  2. **Perfil del estudiante** — "hoja de vida académica" imprimible en una sola vista
+     (notas por materia/periodo, asistencia, observador, PIAR, acudiente, herramientas
+     formativas). Pensada para empalme entre docentes o consulta de coordinación/director
+     de grupo. Es MÁS completa que la tarjeta de `12-director.html` (que es un tablero de
+     alertas en vivo del grupo, no un documento de entrega/impresión).
+- **Decisión de Richard: dejarlo como está.** No es una función muerta — es un módulo con
+  poca visibilidad/uso, no sin propósito. No se tocó código.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 26f): anotaciones del Observador ahora imprimen en el boletín
 
 - **Punto 12 del backlog crudo:** "las anotaciones del observador deberían aparecer en el
