@@ -93,6 +93,11 @@
         nunca toca celdas ya publicadas o en borrador. Antes de guardar nada, revisa la vista
         previa: cuántas horas quedaron ubicadas y cuáles no cupieron sin cruces.</p>
       <button class="btn" id="btn-generar-auto">🤖 Generar automáticamente</button>
+      <button class="btn sec" id="btn-limpiar-todo-borrador" style="margin-left:8px">🧹 Descartar TODOS los borradores sin publicar</button>
+      <p class="desc" style="margin-top:6px">Usa el botón de limpiar TODOS los borradores si ya habías generado antes (por
+        ejemplo, antes de una corrección del sistema) y ahora aparecen muchas horas "sin ubicar" que no tenían sentido —
+        el motor nunca sobrescribe un borrador viejo, así que si ese borrador quedó incompleto, le gana el puesto a las
+        horas nuevas y ya correctas. Esto NO borra ningún horario ya <b>publicado</b>, solo los cambios sin publicar.</p>
       <div id="gen-resumen" style="margin-top:14px"></div>
       <div id="gen-conflictos" style="margin-top:10px"></div>
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
@@ -852,6 +857,24 @@ function renderGenResumen(){
         </div>`).join('') + `</details>`;
   }
 }
+
+// Borra TODOS los borradores sin publicar de golpe (lv_horarios_borrador,
+// solo local, nunca sincroniza) — para cuando un borrador viejo (generado
+// ANTES de una corrección del motor) ya ocupa huecos con datos incompletos
+// y le "gana el puesto" a las horas nuevas y correctas al regenerar (sesión
+// 30d). NO toca lv_horarios (lo ya publicado) — mismo candado de siempre.
+$('#btn-limpiar-todo-borrador').addEventListener('click', ()=>{
+  const borr=leerBorradores();
+  const n=Object.keys(borr).length;
+  if(!n){ toast('No hay ningún borrador sin publicar guardado en este equipo.'); return; }
+  if(!confirm(`¿Descartar los ${n} borrador(es) sin publicar de este equipo? Esto NO toca ningún horario ya publicado — solo los cambios sin publicar de cada docente. Úsalo antes de "Generar automáticamente" si vienes de una corrección del sistema.`)) return;
+  guardarBorradores({});
+  _reporte=null; _genNuevas=null; borrarReporte();
+  renderGenResumen();
+  renderListaDocentes();
+  if(docenteSel) cargarDocente(docenteSel);
+  toast(`✅ ${n} borrador(es) descartado(s) — ya puedes generar de nuevo desde cero.`);
+});
 
 $('#btn-generar-auto').addEventListener('click', ()=>{
   const asignaciones = lsRead('asignaciones');

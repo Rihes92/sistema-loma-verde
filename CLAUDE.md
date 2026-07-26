@@ -2,6 +2,45 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 30e): botón para descartar TODOS los borradores sin publicar — CÓDIGO LISTO, sin desplegar
+
+- **Reporte de Richard tras el push de la sesión 30d:** captura con una lista larguísima
+  de "horas sin ubicar" (decenas de docentes, cada uno con varias materias-grado con horas
+  faltantes) — muy por encima del "17 horas sin ubicar (98.6%)" documentado en la sesión
+  29. Antes de tocar código se le preguntó (AskUserQuestion) si ya tenía un borrador
+  guardado de antes de hoy: **confirmó que sí.**
+- **Causa raíz (sin bug de cálculo nuevo — confirmado con Node comparando el algoritmo
+  VIEJO de la sesión 29 contra el NUEVO de la sesión 30c con los datos reales: 245
+  unidades y 525 horas en AMBOS, 0 de diferencia):** el motor automático tiene una regla
+  de seguridad — "solo llena huecos vacíos, nunca sobrescribe una celda ya ocupada (ni
+  publicada ni en borrador)". El borrador que Richard ya tenía guardado se generó ANTES
+  de los fixes de sede de esta sesión (30b-30d) con la lógica vieja de `gruposBachPorGrado`
+  (máximo de una sola fila) que en el escenario general puede dejar huecos ocupados de
+  forma incompleta/imprecisa en ciertos grados. Al regenerar HOY, el motor respeta ese
+  borrador viejo tal cual — y como ya "ocupa" buena parte de la semana de cada docente,
+  las horas nuevas (ahora correctamente calculadas) ya no tienen dónde caber → aparecen
+  como conflicto, aunque el cálculo en sí no cambió. No es un bug de la sesión 30c/30d —
+  es la consecuencia esperada de la regla "nunca sobrescribir" chocando con un borrador
+  desactualizado.
+- **Botón nuevo "🧹 Descartar TODOS los borradores sin publicar"** en la tarjeta de
+  generación automática de `modulos/21-horarios-coordinacion.html`, junto al de "Generar
+  automáticamente". Vacía `lv_horarios_borrador` COMPLETO de un solo golpe (con confirm
+  explícito y conteo de cuántos borradores se van a perder) — **NO toca `lv_horarios`**
+  (lo ya publicado), mismo candado de siempre; solo limpia cambios sin publicar. Antes,
+  solo existía el botón "Descartar borrador" del editor manual, uno por uno por docente
+  (`btn-limpiar-borrador`) — impráctico con ~45 docentes bachillerato afectados. Se agregó
+  un texto explicativo junto al botón para que quede claro CUÁNDO usarlo (justo este
+  escenario: borrador viejo de antes de una corrección del sistema).
+- SW **v102**. `node --check` limpio en los 3 bloques `<script>`; balance de
+  `div/table/tr/td/th/label/select/button/details/summary` verificado (37/37, resto igual
+  que sesión 30d + 1 button nuevo).
+- **PENDIENTE:** push; que Richard toque "🧹 Descartar TODOS los borradores sin publicar"
+  (confirma que solo afecta lo sin publicar, no lo ya publicado), luego "🤖 Generar
+  automáticamente" desde cero, y confirme que el número de horas sin ubicar vuelve a un
+  rango parecido al documentado (17 horas, 98.6% ubicadas) — si sigue apareciendo una
+  lista larga después de descartar y regenerar limpio, ahí sí habría que investigar un
+  problema de cálculo real, no de borrador viejo.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 30d): fix crítico — LV_CURSO.sedeCode() colapsaba sedes reales distintas — CÓDIGO LISTO, sin desplegar
 
 - **Reporte de Richard tras el push de la sesión 30c:** "Ahora aparecieron un sin número de
