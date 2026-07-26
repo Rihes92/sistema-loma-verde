@@ -228,9 +228,40 @@ const LV_CURSO = {
     return g === '' ? '0' : g;
   },
   key(grado, grupo) { return this.gradoCanon(grado) + '-' + this.grupoCanon(grado, grupo); },
+  // Código corto de sede — normalmente las 3 primeras letras ("Cristo Es Mi
+  // Luz" → "CRI"), PERO crece o agrega el número del nombre cuando hace
+  // falta para no colisionar con otra sede real. BUG REAL corregido (sesión
+  // 30d, reportado por Richard como cruces falsos): la versión anterior
+  // SIEMPRE truncaba a 3 letras y DESCARTABA los dígitos — "Juana Julia 1" y
+  // "Juana Julia 2" (sedes reales y distintas) daban las dos "JUA", y "San
+  // Diego"/"San Francisco"/"San Miguel" las tres daban "SAN". Cualquier
+  // comparación por sedeCode (choques de horario, permisos, dirige de
+  // grupo) trataba esas sedes como si fueran la misma. Ahora: se agregan los
+  // dígitos del nombre al final (distingue "Juana Julia 1/2" sin alargar el
+  // código), y si aun así colisiona con otra sede del catálogo real
+  // (`LV_INST.sedes()`), se toman más letras hasta ser único (distingue
+  // "San Diego/Francisco/Miguel" → SAND/SANF/SANM). Las sedes que NUNCA
+  // colisionaron (14 de las 16 reales) devuelven exactamente el mismo
+  // código de 3 letras que antes — no rompe nada ya guardado con ellas.
+  _sedePartes(s) {
+    const t = String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase();
+    return { letras: t.replace(/[^A-Z]/g, ''), digitos: (t.match(/[0-9]+/g) || []).join('') };
+  },
   sedeCode(s) {
-    const t = String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-zA-Z]/g, '');
-    return t.slice(0, 3).toUpperCase();
+    const miT = String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase();
+    const { letras, digitos } = this._sedePartes(s);
+    if (!letras && !digitos) return '';
+    let catalogo = [];
+    try { catalogo = (typeof LV_INST !== 'undefined' ? LV_INST.sedes() : []); } catch (_) {}
+    const otras = catalogo
+      .filter(o => String(o ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase() !== miT)
+      .map(o => this._sedePartes(o));
+    let len = Math.min(3, letras.length || 1);
+    const candidato = () => letras.slice(0, len) + digitos;
+    while (len < letras.length && otras.some(o => (o.letras.slice(0, len) + o.digitos) === candidato())) {
+      len++;
+    }
+    return candidato() || miT.slice(0, 3);
   },
   esPrimaria(grado) {
     const g = this.gradoCanon(grado);

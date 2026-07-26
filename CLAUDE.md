@@ -2,6 +2,58 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (jul 25, 2026 — sesión 30d): fix crítico — LV_CURSO.sedeCode() colapsaba sedes reales distintas — CÓDIGO LISTO, sin desplegar
+
+- **Reporte de Richard tras el push de la sesión 30c:** "Ahora aparecieron un sin número de
+  cruces" — captura con **140 cruces** detectados entre "Danarlys Elena Martínez Medrano" y
+  "Diana Marcela Montero Jiménez" para "Preescolar-1" y "1°-1", en casi todos los
+  bloques/días de la semana.
+- **Causa raíz encontrada:** `LV_CURSO.sedeCode()` (auth.js, función compartida por toda la
+  app desde sesión 21) truncaba SIEMPRE a las primeras 3 letras y **descartaba los
+  dígitos** del nombre. Contra el catálogo REAL de 16 sedes (`LV_INST.sedes()`), esto
+  producía dos colisiones reales: **"Juana Julia 1" y "Juana Julia 2" daban las dos
+  "JUA"**, y **"San Diego"/"San Francisco"/"San Miguel" daban las tres "SAN"**. Verificado
+  con Node contra el catálogo real: exactamente esas 2 colisiones, 0 más. Danarlys
+  (docente semilla, sede "JUANA JULIA 1") y Diana (semilla, sede "JUANA JULIA 2") son
+  sedes DISTINTAS y reales — la sesión 30b había arreglado que la sede SÍ viajara hasta la
+  celda y SÍ se comparara en los cruces (`mismoGrupoReal`), lo cual expuso esta colisión
+  preexistente que antes nunca importaba (nadie comparaba sede en cruces todavía). No es
+  una regresión de la sesión 30c (grupos de bachillerato) — es un bug de `sedeCode()` en sí
+  mismo, activado indirectamente por el fix de la sesión 30b.
+- **Corregido `LV_CURSO.sedeCode()` en `auth.js`:** ahora agrega los DÍGITOS del nombre al
+  final del código (distingue "Juana Julia 1/2" sin alargar el código: `JUA1`/`JUA2`), y si
+  aun así el código colisiona con OTRA sede real del catálogo (`LV_INST.sedes()`), toma más
+  letras hasta ser único (distingue "San Diego/Francisco/Miguel": `SAND`/`SANF`/`SANM`).
+  Las 14 sedes que nunca colisionaron devuelven EXACTAMENTE el mismo código de 3 letras
+  que antes (retrocompatible — no rompe nada ya guardado con esos códigos, como cursos con
+  sede en su etiqueta corta "3-1 CRI"). Función pura, un solo lugar (`auth.js`), usada por
+  `LV_CURSO.etiqueta()`, `LV_CURSO.dirigeCurso()`, `LV_PERM.cursoEsMio()`, el `permiteMateria`
+  duplicado de `index.html`, y ahora también `mismoGrupoReal()` de
+  `21-horarios-coordinacion.html` — un solo fix corrige los 5 usos, no había copias sueltas
+  (verificado con grep, sin otra implementación duplicada del truncado viejo).
+- **Verificado con Node contra el catálogo real de 16 sedes:** 16/16 códigos únicos, 0
+  colisiones. Simulado el escenario EXACTO del reporte de Richard (Preescolar-1, Danarlys
+  en Juana Julia 1 vs Diana en Juana Julia 2): `mismoGrupoReal()` ahora da `false` (correcto
+  — sedes distintas, no es cruce); la misma comparación con dos celdas de la MISMA sede
+  sigue dando `true` (un cruce real de verdad se sigue detectando, no se rompió lo que sí
+  funcionaba).
+- **OJO — no confundir con el campo `dirige` de cada docente** (texto tipo "9-3, 1-1 JUA"
+  usado para "¿qué grupos dirige?"): revisado con cuidado, la semilla real de docentes NO
+  trae sufijo de sede en ningún token `dirige` (ej. Danarlys: `"Prejardin-2, 0-1, 1-101"`,
+  sin " JUA" al final) — así que `dirigeCurso()` ya no distinguía sede ahí de todas formas
+  (el chequeo de sede se salta cuando el token no la trae), y este fix no cambia ese
+  comportamiento para nadie. Si en el futuro coordinación empieza a escribir sufijos de
+  sede en `dirige` a mano (ej. "1-1 JUA"), ahora sí conviene que use el código nuevo y
+  preciso (`JUA1`/`JUA2`) en vez del ambiguo "JUA" viejo — documentado aquí para que quede
+  claro por qué.
+- SW **v101**. `node --check` limpio en `auth.js`; balance/sintaxis verificado en los
+  bloques `<script>` de `index.html`, `coordinacion.html` y
+  `21-horarios-coordinacion.html` (los 3 archivos que llaman a `LV_CURSO.sedeCode`).
+- **PENDIENTE:** push; que Richard recargue "Horarios (Coordinación)" y confirme que los
+  140 cruces falsos entre Danarlys y Diana (y cualquier otro par de docentes de Juana
+  Julia 1 vs 2, o San Diego/Francisco/Miguel) ya no aparecen, y que un cruce REAL (mismo
+  grado-grupo-sede con dos docentes distintos a la misma hora) se sigue detectando bien.
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 30c): grupos de bachillerato numerados por sede (Principal/Juana Julia 1) — CÓDIGO LISTO, sin desplegar
 
 - **Pregunta de Richard tras la sesión 30b:** "¿Cómo vamos a resolver lo de los grupos? Es
