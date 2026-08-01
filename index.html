@@ -452,6 +452,32 @@ function permiteMateria(materia, registro){
     if(nh) nh.style.display='';
   }
 
+  // Docente designada orientadora (módulo 22, ago 2026) SIN asignaciones de
+  // materia: no dicta clase, así que los módulos "por materia" no le sirven
+  // — solo recargan el menú de cosas que no aplican a su rol (decisión de
+  // Richard, sesión 32 ronda 4). Se basa en asignaciones REALES, no solo en
+  // ser la orientadora: si en el futuro también le asignan una materia,
+  // vuelve a verlos todos como cualquier docente. Observador queda visible
+  // a propósito (ahora en modo lectura ampliada) y también Orientación,
+  // Eventos, Permisos, Centros de Interés y Herramientas pedagógicas.
+  try{
+    const soyOrientadora = !!(login.docenteId && typeof LV_INST!=='undefined'
+      && LV_INST.orientadorDocenteId() && LV_INST.orientadorDocenteId()===login.docenteId);
+    if(soyOrientadora && !login.esAdmin){
+      const misAsig = (JSON.parse(localStorage.getItem('lv_asignaciones')||'[]')||[]).filter(a=>a.docenteId===login.docenteId);
+      if(!misAsig.length){
+        ['modulos/01-calificaciones.html','modulos/05-asistencia.html','modulos/02-planeador.html',
+         'modulos/03-examenes.html','modulos/04-examenes-11.html','modulos/07-horario.html',
+         'modulos/11-inclusion.html','modulos/13-boletines.html','modulos/12-director.html',
+         'modulos/06-comunicados.html'
+        ].forEach(href=>{
+          const a = document.querySelector('.sb-link[href="'+href+'"]');
+          if(a) a.style.display='none';
+        });
+      }
+    }
+  }catch(_){}
+
   const infoBox = document.getElementById('login-info');
   if(infoBox){
     infoBox.innerHTML = `👋 ${esc(nombre)}`

@@ -130,6 +130,25 @@ create policy "orientador_lee_todo" on lv_observador
   for select to authenticated
   using (public.es_orientador());
 
+-- Sin esto, "ver todo el colegio en Observador" queda solo en el papel: la
+-- app pide TODOS los cursos/estudiantes al servidor, pero sin esta política
+-- las tablas "cursos" y "estudiantes" (RLS "por_curso", de
+-- migracion_etapa2_fase2.sql) le siguen devolviendo solo lo suyo — y como
+-- la orientadora normalmente no tiene asignaciones propias, el servidor le
+-- devuelve una lista vacía y el módulo se ve sin ningún curso. Misma lógica
+-- que arriba: política ADICIONAL de solo SELECT, no toca insert/update/
+-- delete (crear/editar cursos o estudiantes sigue siendo del docente
+-- dueño/coordinación, sin cambios).
+drop policy if exists "orientador_lee_todo" on cursos;
+create policy "orientador_lee_todo" on cursos
+  for select to authenticated
+  using (public.es_orientador());
+
+drop policy if exists "orientador_lee_todo" on estudiantes;
+create policy "orientador_lee_todo" on estudiantes
+  for select to authenticated
+  using (public.es_orientador());
+
 select 'lv_orientacion_casos y lv_orientacion_detalle listas' as resultado;
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -146,3 +165,5 @@ select 'lv_orientacion_casos y lv_orientacion_detalle listas' as resultado;
 -- drop table if exists lv_orientacion_casos;
 -- drop function if exists public.es_orientador();
 -- drop policy if exists "orientador_lee_todo" on lv_observador;
+-- drop policy if exists "orientador_lee_todo" on cursos;
+-- drop policy if exists "orientador_lee_todo" on estudiantes;

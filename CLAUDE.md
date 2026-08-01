@@ -121,27 +121,62 @@
   y de `10-observador.html`; balance de tags verificado en ambos (22-orientacion: 72/72 ·
   7/7 · 15/15 · 29/29 · 29/29 · 24/24 · 5/5 · 10/10 · 2/2 — 10-observador: 43/43 · 1/1 ·
   2/2 · 4/4 · 4/4 · 12/12 · 4/4 · 10/10).
-- **PENDIENTE:** correr `migracion_orientacion.sql` en Supabase (incluye la política nueva
-  de `lv_observador` — si ya lo habías corrido antes de esta ronda, hay que volver a
-  correrlo completo, es idempotente); push; que Richard: (a) confirme en Coordinación →
+- **Ajuste el mismo día, ronda 4 (Richard probó de nuevo con la cuenta real de la
+  orientadora y trajo 3 problemas/preguntas más):**
+  1. **BUG REAL encontrado y corregido — "no le aparece ningún curso":** la política
+     nueva `orientador_lee_todo` de la ronda 3 solo se había agregado a `lv_observador`.
+     El cliente (`gruposVisibles()`) SÍ pedía "todos los cursos", pero el SERVIDOR seguía
+     aplicando la política `por_curso` de `cursos`/`estudiantes` (RLS de
+     `migracion_etapa2_fase2.sql`, sin `es_orientador()`) — como ella normalmente no tiene
+     ninguna asignación propia, esa consulta le devolvía una lista VACÍA, así que su
+     espejo local de `lv_cursos`/`lv_estudiantes` quedaba vacío sin importar qué dijera el
+     código del módulo. **Corregido:** 2 políticas SELECT-only nuevas, mismo patrón que la
+     de observador, agregadas a `migracion_orientacion.sql` — `orientador_lee_todo` en
+     `cursos` y en `estudiantes`. Con esto sí llegan a su equipo los cursos/estudiantes de
+     TODO el colegio (solo lectura; crear/editar sigue siendo del docente dueño).
+  2. **Duda de Richard sobre dónde quedaron CE-F002 a CE-F005:** SÍ están — viven dentro
+     del detalle de cada caso (pestaña "🗂️ Casos" → clic en un caso), debajo del CE-F001,
+     visibles solo para el orientador. No son pestañas nuevas del módulo a propósito
+     (cada proceso es POR CASO/estudiante, no una bandeja compartida entre casos — calca
+     el expediente físico en papel). Para que se note mejor: cada tarjeta de la lista de
+     casos ahora muestra un resumen ("📋 CE-F002 ✓ · 2 entrevista(s) · 1 seguimiento(s)"
+     o "Sin ficha de intervención todavía"), y al abrir un caso aparece una barra "Ir a:"
+     con enlaces directos a cada sección (con el conteo de cada una) que saltan con ancla
+     HTML (`#sec-ce002`..`#sec-ce005`) — sin tocar la estructura de una sola página por
+     caso, solo la hace más fácil de recorrer.
+  3. **Menú lateral recargado con módulos que no le sirven** (pregunta directa a Richard,
+     "Solo Observador + Orientación + genéricas"): en `index.html`, si la cuenta es la
+     orientadora Y no tiene ninguna asignación de materia propia (`lv_asignaciones` vacío
+     para su `docenteId` — la condición mira asignaciones REALES, no solo el rol, así que
+     si algún día también le asignan una materia vuelve a ver todo como cualquier
+     docente), se ocultan los enlaces de Calificaciones, Asistencia, Planeador,
+     Evaluaciones de aula, Preparación Saber 11, Horario, Inclusión, Boletines y Mi grupo
+     (director) y Comunicados. Quedan visibles: Observador (ahora en modo lectura
+     ampliada), Orientación Escolar, Eventos, Permisos, Centros de Interés y Herramientas
+     pedagógicas.
+  SW **v112**. `node --check` limpio en `sw.js` y los bloques `<script>` de
+  `22-orientacion.html` (3) e `index.html` (6); balance de tags verificado en
+  `22-orientacion.html` (77/77 · 7/7 · 15/15 · 29/29 · 29/29 · 24/24 · 5/5 · 10/10 · 2/2 ·
+  6/6 `<a>`).
+- **PENDIENTE:** correr `migracion_orientacion.sql` COMPLETO en Supabase (aunque ya lo
+  hayas corrido antes, vuelve a correrlo — trae las 2 políticas nuevas de `cursos`/
+  `estudiantes`, es idempotente); push; que Richard: (a) confirme en Coordinación →
   Docentes que la ficha de María Mónica Olea Muñoz tenga el correo
   `maria.oleamu@gmail.com` guardado EXACTO en el campo de correo (el error "usuario válido
   pero no vinculado a ningún docente" del login significa que ese campo no coincide
-  todavía — crear el usuario de Auth y designarla orientadora en Institución son pasos
-  aparte de esto); (b) con una cuenta docente cualquiera, remita un caso de prueba desde
+  todavía); (b) con una cuenta docente cualquiera, remita un caso de prueba desde
   "Orientación Escolar" usando el selector de curso/estudiante nuevo y confirme que trae
-  el nombre correcto; (c) con la cuenta de la orientadora, confirme que ve el estado y
-  puede imprimir su CE-F001, que le aparece la pestaña "Casos", que puede llenar y guardar
-  la ficha de intervención/entrevistas/remisiones/seguimiento, cambiar el estado, e
-  imprimir cada uno de los 5 formatos; (d) EN OBSERVADOR (no en Orientación), que la
-  orientadora vea el historial de un grupo que NO dirige en modo solo lectura (sin
-  formulario ni botones de escritura) y el de un grupo que si dirige con edición completa;
-  (e) con la cuenta de coordinación (sin ser el orientador), confirme que ve la lista de
-  casos y el CE-F001 en Orientación, pero el detalle sensible le aparece bloqueado. **NO
-  hecho a propósito en esta sesión:** el módulo separado de "Actas de reuniones
-  institucionales" (Consejo Directivo, Comisión de Evaluación y Promoción, actas de
-  compromiso, amonestación) señalado en la misma sesión 31 — sigue en el backlog, sin
-  tocar.
+  el nombre correcto; (c) con la cuenta de la orientadora, confirme que YA ve cursos reales
+  en Observador (el fix de esta ronda), que puede imprimir su CE-F001, llenar y guardar la
+  ficha de intervención/entrevistas/remisiones/seguimiento usando la barra "Ir a:", cambiar
+  el estado, e imprimir cada uno de los 5 formatos; (d) EN OBSERVADOR, que vea el historial
+  de un grupo que NO dirige en modo solo lectura y el de un grupo que sí dirige con edición
+  completa; (e) que su menú lateral ya no muestre Calificaciones/Asistencia/etc.; (f) con
+  la cuenta de coordinación (sin ser el orientador), confirme que ve la lista de casos y el
+  CE-F001 en Orientación, pero el detalle sensible le aparece bloqueado. **NO hecho a
+  propósito en esta sesión:** el módulo separado de "Actas de reuniones institucionales"
+  (Consejo Directivo, Comisión de Evaluación y Promoción, actas de compromiso,
+  amonestación) señalado en la misma sesión 31 — sigue en el backlog, sin tocar.
 
 ## ▶ AJUSTE (ago 1, 2026 — sesión 31c): campos de SIMAT en Matrícula (zona/dirección + discapacidad/PIAR) — CÓDIGO LISTO, sin desplegar
 

@@ -345,11 +345,21 @@ function renderListaCasos(){
   let lista = casos.slice().sort((a,b)=>(b.creado||0)-(a.creado||0));
   if(fEstado) lista = lista.filter(c=>c.estado===fEstado);
   if(!lista.length){ wrap.innerHTML = '<div class="empty">No hay casos con ese filtro.</div>'; return; }
-  wrap.innerHTML = lista.map(c=>`
+  wrap.innerHTML = lista.map(c=>{
+    const d = SOY_ORIENTADOR ? detalleDeCaso(c.id) : null;
+    const resumen = d ? [
+      d.intervencion&&d.intervencion.motivo ? 'CE-F002 ✓' : '',
+      (d.entrevistas||[]).length ? `${d.entrevistas.length} entrevista(s)` : '',
+      (d.remisionesExternas||[]).length ? `${d.remisionesExternas.length} remisión(es) externa(s)` : '',
+      (d.seguimientos||[]).length ? `${d.seguimientos.length} seguimiento(s)` : ''
+    ].filter(Boolean).join(' · ') : '';
+    return `
     <div class="caso ${c.id===casoSelId?'sel':''}" onclick="abrirCaso('${c.id}')">
       <div class="top"><strong>${esc(c.estudiante)}</strong><span class="badge ${ESTADO_CLS[c.estado]||'b-rec'}">${ESTADO_LBL[c.estado]||c.estado}</span></div>
       <div class="meta">${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''} · remitido por ${esc(c.remitidoPorNombre||'—')} · ${fmtF(c.fecha)}</div>
-    </div>`).join('');
+      ${resumen?`<div class="meta" style="margin-top:2px">📋 ${resumen}</div>`:(SOY_ORIENTADOR?'<div class="meta" style="margin-top:2px;color:var(--warn)">Sin ficha de intervención todavía</div>':'')}
+    </div>`;
+  }).join('');
 }
 $('#fc-estado').addEventListener('change', renderListaCasos);
 
@@ -537,7 +547,17 @@ function renderDetalleCaso(){
   const d = detalleOCrear(c.id);
   const iv = d.intervencion || {};
 
-  html += `<div class="card">
+  html += `<div class="card" style="padding:10px 14px">
+    <div style="font-size:.8rem;font-weight:700;color:var(--muted);margin-bottom:4px">Ir a:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <a href="#sec-ce002" class="btn sec sm" style="text-decoration:none">CE-F002 Ficha</a>
+      <a href="#sec-ce003" class="btn sec sm" style="text-decoration:none">CE-F003 Entrevistas (${(d.entrevistas||[]).length})</a>
+      <a href="#sec-ce004" class="btn sec sm" style="text-decoration:none">CE-F004 Remisiones (${(d.remisionesExternas||[]).length})</a>
+      <a href="#sec-ce005" class="btn sec sm" style="text-decoration:none">CE-F005 Seguimiento (${(d.seguimientos||[]).length})</a>
+    </div>
+  </div>`;
+
+  html += `<div class="card" id="sec-ce002">
     <h3>CE-F002 · Ficha de intervención</h3>
     <div class="row">
       <label class="fld">Motivo de la atención<textarea id="fi-motivo" rows="2">${esc(iv.motivo||'')}</textarea></label>
@@ -573,21 +593,21 @@ function renderDetalleCaso(){
     {id:'ent-desarrollo', l:'Desarrollo de la entrevista', area:true},
     {id:'ent-compromisos', l:'Compromisos', area:true},
     {id:'ent-proxima', l:'Próxima citación (fecha, opcional)'}
-  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.conquien||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.desarrollo?`<div><strong>Desarrollo:</strong> ${esc(e.desarrollo)}</div>`:''}${e.compromisos?`<div><strong>Compromisos:</strong> ${esc(e.compromisos)}</div>`:''}${e.proxima?`<div><strong>Próxima citación:</strong> ${esc(e.proxima)}</div>`:''}`, 'imprimirCE003');
+  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.conquien||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.desarrollo?`<div><strong>Desarrollo:</strong> ${esc(e.desarrollo)}</div>`:''}${e.compromisos?`<div><strong>Compromisos:</strong> ${esc(e.compromisos)}</div>`:''}${e.proxima?`<div><strong>Próxima citación:</strong> ${esc(e.proxima)}</div>`:''}`, 'imprimirCE003', 'sec-ce003');
 
   html += seccionRepetible('remisionesExternas', 'CE-F004 · Remisiones externas (activación de ruta)', c.id, d.remisionesExternas, [
     {id:'re-entidad', l:'Entidad a donde se remite (EPS, ICBF, Comisaría…)'},
     {id:'re-motivo', l:'Motivo de remisión', area:true},
     {id:'re-descripcion', l:'Descripción de la activación de ruta', area:true},
     {id:'re-solicitud', l:'Qué se solicita', area:true}
-  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.entidad||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.descripcion?`<div><strong>Descripción:</strong> ${esc(e.descripcion)}</div>`:''}${e.solicitud?`<div><strong>Solicitud:</strong> ${esc(e.solicitud)}</div>`:''}`, 'imprimirCE004');
+  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.entidad||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.descripcion?`<div><strong>Descripción:</strong> ${esc(e.descripcion)}</div>`:''}${e.solicitud?`<div><strong>Solicitud:</strong> ${esc(e.solicitud)}</div>`:''}`, 'imprimirCE004', 'sec-ce004');
 
   html += seccionRepetible('seguimientos', 'CE-F005 · Seguimiento', c.id, d.seguimientos, [
     {id:'sg-anteriores', l:'Observaciones sobre compromisos anteriores', area:true},
     {id:'sg-recomendaciones', l:'Recomendaciones o actividades a poner en práctica', area:true},
     {id:'sg-acuerdos', l:'Nuevos acuerdos y compromisos', area:true},
     {id:'sg-proximo', l:'Fecha del próximo encuentro (opcional)'}
-  ], (e,i)=>`<div class="f">Seguimiento N° ${i+1} — ${fmtF(e.fecha)}</div>${e.anteriores?`<div><strong>Compromisos anteriores:</strong> ${esc(e.anteriores)}</div>`:''}${e.recomendaciones?`<div><strong>Recomendaciones:</strong> ${esc(e.recomendaciones)}</div>`:''}${e.acuerdos?`<div><strong>Nuevos acuerdos:</strong> ${esc(e.acuerdos)}</div>`:''}${e.proximo?`<div><strong>Próximo encuentro:</strong> ${esc(e.proximo)}</div>`:''}`, 'imprimirCE005');
+  ], (e,i)=>`<div class="f">Seguimiento N° ${i+1} — ${fmtF(e.fecha)}</div>${e.anteriores?`<div><strong>Compromisos anteriores:</strong> ${esc(e.anteriores)}</div>`:''}${e.recomendaciones?`<div><strong>Recomendaciones:</strong> ${esc(e.recomendaciones)}</div>`:''}${e.acuerdos?`<div><strong>Nuevos acuerdos:</strong> ${esc(e.acuerdos)}</div>`:''}${e.proximo?`<div><strong>Próximo encuentro:</strong> ${esc(e.proximo)}</div>`:''}`, 'imprimirCE005', 'sec-ce005');
 
   wrap.innerHTML = html;
   const sel = $('#dc-estado'); if(sel) sel.value = c.estado||'remitido';
@@ -595,7 +615,7 @@ function renderDetalleCaso(){
 
 // Genera una sección con formulario de captura + lista de entradas ya
 // guardadas, para las 3 partes repetibles (entrevistas/remisiones/seguimientos).
-function seccionRepetible(campo, titulo, casoId, entradas, campos, renderEntrada, imprimirFn){
+function seccionRepetible(campo, titulo, casoId, entradas, campos, renderEntrada, imprimirFn, sectionId){
   entradas = entradas || [];
   const form = campos.map(cfg => `<label class="fld" style="margin-top:8px">${esc(cfg.l)}${cfg.area?`<textarea id="${cfg.id}" rows="2"></textarea>`:`<input id="${cfg.id}">`}</label>`).join('');
   const lista = entradas.length
@@ -606,7 +626,7 @@ function seccionRepetible(campo, titulo, casoId, entradas, campos, renderEntrada
         </div>`;
       }).join('')
     : '<p class="desc" style="margin:0">Sin registros todavía.</p>';
-  return `<div class="card">
+  return `<div class="card"${sectionId?` id="${sectionId}"`:''}>
     <h3>${esc(titulo)}</h3>
     ${form}
     <button class="btn sec sm" style="margin-top:10px" onclick="agregarEntrada('${campo}','${casoId}')">+ Agregar</button>
