@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Orientación Escolar — SABIE</title>
+<!-- Digitaliza el flujo real del colegio (formatos CE-F001 a CE-F005,
+     adaptados del Plan Nacional de Orientación Escolar, MEN 2021).
+     Cualquier docente puede REMITIR un caso (pestaña "Remitir"); solo
+     ve el estado después. Solo el orientador designado (Coordinación →
+     Institución) ve/gestiona el detalle sensible (pestaña "Casos").
+     Ver migracion_orientacion.sql para la arquitectura de privacidad. -->
+<script src="../auth.js"></script>
+<script>LV_AUTH.exigirSesion();</script>
+<script>window.LV_SYNC_TABLAS=['lv_orientacion_casos','lv_orientacion_detalle','lv_docentes','lv_institucion'];</script>
+<script src="../sync.js"></script>
+<style>
+  :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626;--warn:#b45309;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+  header.appbar{background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header.appbar img{width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0}
+  header.appbar h1{font-size:1.1rem;margin:0;font-weight:700;flex:1}
+  header.appbar .pill{background:rgba(255,255,255,.15);padding:4px 10px;border-radius:999px;font-size:.78rem}
+  header.appbar a.portal-btn{color:rgba(255,255,255,.85);text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.3);padding:5px 10px;border-radius:7px}
+  header.appbar a.portal-btn:hover{background:rgba(255,255,255,.18)}
+  nav.tabs{display:flex;gap:4px;background:var(--surface);padding:6px;overflow-x:auto;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+  nav.tabs button{border:0;background:transparent;padding:10px 16px;border-radius:8px;font-size:.9rem;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+  nav.tabs button.active{background:var(--primary);color:#fff}
+  main{max-width:1000px;margin:0 auto;padding:18px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;margin-bottom:16px}
+  .card h2{margin:0 0 12px;font-size:1.05rem;color:var(--primary)}
+  .card h3{margin:14px 0 8px;font-size:.92rem;color:var(--primary)}
+  .desc{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>*{flex:1;min-width:150px}
+  label.fld{display:flex;flex-direction:column;gap:4px;font-size:.82rem;font-weight:600;color:var(--muted)}
+  input,select,textarea{padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.92rem;width:100%;background:#fff;color:var(--text);font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+  button.btn{border:0;border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:600;cursor:pointer;background:var(--primary);color:#fff}
+  button.btn.sec{background:#e2e8f0;color:var(--text)} button.btn.ok{background:var(--ok)} button.btn.bad{background:var(--bad)}
+  button.btn.sm{padding:6px 10px;font-size:.8rem}
+  button.btn:hover{filter:brightness(1.07)}
+  .hide{display:none!important}
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+  th{background:#f8fafc;font-weight:700;color:var(--primary)}
+  td.c,th.c{text-align:center}
+  .tableScroll{overflow-x:auto}
+  .empty{text-align:center;padding:30px;color:var(--muted)}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:700}
+  .b-rec{background:#fef3c7;color:#92400e}.b-pro{background:#dbeafe;color:#1e3a8a}.b-cer{background:#dcfce7;color:#166534}
+  .caso{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:#fff;cursor:pointer}
+  .caso:hover{border-color:var(--primary-light)}
+  .caso.sel{border-color:var(--primary);background:#eff6ff}
+  .caso .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .caso .top strong{flex:1;min-width:160px}
+  .meta{font-size:.8rem;color:var(--muted)}
+  .entrada{border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;background:#f8fafc;font-size:.85rem}
+  .entrada .f{font-weight:700;color:var(--primary);font-size:.78rem;margin-bottom:4px}
+  .lock{background:#f1f5f9;border:1px dashed var(--border);border-radius:10px;padding:16px;text-align:center;color:var(--muted);font-size:.88rem}
+  #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
+  #toast.show{opacity:1}
+</style>
+<link rel="stylesheet" href="../lv-tema.css">
+</head>
+<body>
+
+<header class="appbar">
+  <img src="../Logo/logo.jpg" alt="">
+  <h1>🧭 Orientación Escolar</h1>
+  <span class="pill">SABIE</span>
+  <a href="../index.html" class="portal-btn" style="margin-left:auto" title="Volver a la página anterior" onclick="if(history.length>1){history.back();return false}">← Atrás</a>
+  <a href="../index.html" class="portal-btn">← Portal</a>
+</header>
+
+<div id="app">
+  <nav class="tabs" id="tabs">
+    <button data-tab="remitir" class="active">📋 Remitir un caso</button>
+    <button data-tab="casos" id="tabbtn-casos" class="hide">🗂️ Casos</button>
+  </nav>
+
+  <main>
+    <!-- ── REMITIR (cualquier docente) ── -->
+    <section id="tab-remitir">
+      <div class="card">
+        <h2>Remisión interna a orientación escolar</h2>
+        <p class="desc">Cualquier docente puede remitir un caso. Después de enviarlo, verás el ESTADO del caso
+          (recibido / en proceso / cerrado) pero no el detalle que registre el orientador — es privado desde
+          que lo toma, para proteger la información de salud y familia del estudiante.</p>
+        <div class="row">
+          <label class="fld">Nombre del estudiante<input id="rm-estudiante" placeholder="Nombres y apellidos"></label>
+          <label class="fld">Grado<input id="rm-grado" placeholder="Ej: Noveno (9°)"></label>
+          <label class="fld">Grupo/curso<input id="rm-grupo" placeholder="Ej: 1"></label>
+        </div>
+        <label class="fld" style="margin-top:10px">Motivo de remisión<textarea id="rm-motivo" rows="3" placeholder="Describe la situación que motiva la remisión…"></textarea></label>
+        <label class="fld" style="margin-top:10px">Acciones pedagógicas ya implementadas por el docente<textarea id="rm-acciones" rows="2" placeholder="Qué has intentado tú antes de remitir…"></textarea></label>
+        <label class="fld" style="margin-top:10px">Observaciones (opcional)<textarea id="rm-obs" rows="2"></textarea></label>
+        <button class="btn ok" id="btn-remitir" style="margin-top:14px">📨 Enviar remisión</button>
+      </div>
+
+      <div class="card">
+        <h2>Mis remisiones</h2>
+        <p class="desc">Los casos que tú has remitido, con su estado actual.</p>
+        <div id="mis-remisiones-out"></div>
+      </div>
+    </section>
+
+    <!-- ── CASOS (solo orientador/coordinación) ── -->
+    <section id="tab-casos" class="hide">
+      <div id="sin-orientador" class="card hide">
+        <div class="empty">⚠️ Todavía no hay nadie designado como orientador(a) escolar.<br>
+          Asígnalo en <strong>Coordinación → Resumen → Institución</strong> para poder ver el detalle de los casos.</div>
+      </div>
+      <div class="row" style="align-items:flex-start;gap:16px">
+        <div style="flex:1;min-width:280px">
+          <div class="card">
+            <h2>Casos</h2>
+            <label class="fld">Filtrar por estado
+              <select id="fc-estado">
+                <option value="">Todos</option>
+                <option value="remitido">Recibido</option>
+                <option value="en_proceso">En proceso</option>
+                <option value="cerrado">Cerrado</option>
+              </select>
+            </label>
+            <div id="lista-casos" style="margin-top:12px"></div>
+          </div>
+        </div>
+        <div style="flex:2;min-width:320px">
+          <div id="detalle-caso"><div class="card"><div class="empty">Selecciona un caso de la lista.</div></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" role="alert" aria-live="assertive"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+const uid=()=>'ori-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+function fmtF(f){ if(!f) return '—'; try{ const d=new Date(f); return isNaN(d)?String(f):d.toLocaleDateString('es-CO'); }catch(_){ return String(f); } }
+
+function lsRead(k){ try{ return JSON.parse(localStorage.getItem(k))||[]; }catch(_){ return []; } }
+function guardarUno(tabla, reg){
+  const all = lsRead(tabla).filter(x=>x.id!==reg.id);
+  all.push(reg);
+  try{ localStorage.setItem(tabla, JSON.stringify(all)); }catch(_){}
+  if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio(tabla, reg);
+  return all;
+}
+
+// ── Permisos ──────────────────────────────────────────────────
+const LOGIN = LV_PERM.login();
+const MI_DOCENTE_ID = LOGIN ? LOGIN.docenteId : null;
+const ES_COORD = LV_PERM.esCoordinacion();
+const ORIENTADOR_ID = (typeof LV_INST!=='undefined') ? LV_INST.orientadorDocenteId() : '';
+const SOY_ORIENTADOR = !!(MI_DOCENTE_ID && ORIENTADOR_ID && ORIENTADOR_ID===MI_DOCENTE_ID);
+const VEO_CASOS = ES_COORD || SOY_ORIENTADOR; // pestaña "Casos" completa (estado)
+function nombreOrientador(){
+  if(!ORIENTADOR_ID) return '';
+  const d = lsRead('lv_docentes').find(x=>x.id===ORIENTADOR_ID);
+  return d ? (d.nombre||'') : '';
+}
+function quienEsta(){ return LOGIN ? (LOGIN.esAdmin?'Administrador':(LOGIN.nombre||'')) : ''; }
+
+if(VEO_CASOS) $('#tabbtn-casos').classList.remove('hide');
+
+// ── Datos ─────────────────────────────────────────────────────
+let casos = lsRead('lv_orientacion_casos');
+// El detalle (lv_orientacion_detalle) solo llega a este equipo si RLS lo
+// permite (es_orientador()) — para cualquier otro usuario simplemente
+// nunca se descarga, así que el arreglo queda vacío por sí solo.
+let detalle = lsRead('lv_orientacion_detalle');
+
+// ── Tabs ──────────────────────────────────────────────────────
+document.getElementById('tabs').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-tab]'); if(!b || b.classList.contains('hide')) return;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.querySelectorAll('main>section').forEach(s=>s.classList.add('hide'));
+  document.getElementById('tab-'+b.dataset.tab).classList.remove('hide');
+  if(b.dataset.tab==='remitir') renderMisRemisiones();
+  if(b.dataset.tab==='casos'){
+    document.getElementById('sin-orientador').classList.toggle('hide', !!ORIENTADOR_ID);
+    renderListaCasos();
+  }
+});
+
+// ── Estados ───────────────────────────────────────────────────
+const ESTADO_LBL = {remitido:'Recibido', en_proceso:'En proceso', cerrado:'Cerrado'};
+const ESTADO_CLS = {remitido:'b-rec', en_proceso:'b-pro', cerrado:'b-cer'};
+
+// ── REMITIR ───────────────────────────────────────────────────
+document.getElementById('btn-remitir').addEventListener('click', ()=>{
+  const estudiante = $('#rm-estudiante').value.trim();
+  const motivo = $('#rm-motivo').value.trim();
+  if(!estudiante){ toast('Escribe el nombre del estudiante.'); return; }
+  if(!motivo){ toast('Escribe el motivo de la remisión.'); return; }
+  if(!MI_DOCENTE_ID){ toast('No se pudo identificar tu ficha de docente — pídele a coordinación que la revise.'); return; }
+  const reg = {
+    id: uid(), estudiante, grado: $('#rm-grado').value.trim(), grupo: $('#rm-grupo').value.trim(),
+    motivo, accionesPedagogicas: $('#rm-acciones').value.trim(), observaciones: $('#rm-obs').value.trim(),
+    estado: 'remitido',
+    remitidoPorId: MI_DOCENTE_ID, remitidoPorNombre: quienEsta(),
+    fecha: new Date().toISOString(), creado: Date.now(), actualizado: Date.now()
+  };
+  casos = casos.filter(c=>c.id!==reg.id); casos.push(reg);
+  guardarUno('lv_orientacion_casos', reg);
+  ['rm-estudiante','rm-grado','rm-grupo','rm-motivo','rm-acciones','rm-obs'].forEach(id=>document.getElementById(id).value='');
+  toast('✅ Remisión enviada a orientación escolar.');
+  renderMisRemisiones();
+});
+
+function renderMisRemisiones(){
+  const out = $('#mis-remisiones-out');
+  const mias = casos.filter(c=>c.remitidoPorId===MI_DOCENTE_ID).sort((a,b)=>(b.creado||0)-(a.creado||0));
+  if(!mias.length){ out.innerHTML = '<div class="empty">Aún no has remitido ningún caso.</div>'; return; }
+  out.innerHTML = `<div class="tableScroll"><table><thead><tr>
+    <th>Estudiante</th><th>Grado-Grupo</th><th>Fecha</th><th class="c">Estado</th>
+  </tr></thead><tbody>${mias.map(c=>`<tr>
+    <td>${esc(c.estudiante)}</td>
+    <td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td>
+    <td>${fmtF(c.fecha)}</td>
+    <td class="c"><span class="badge ${ESTADO_CLS[c.estado]||'b-rec'}">${ESTADO_LBL[c.estado]||c.estado}</span></td>
+  </tr>`).join('')}</tbody></table></div>`;
+}
+
+// ── CASOS (orientador / coordinación) ──────────────────────────
+let casoSelId = null;
+
+function renderListaCasos(){
+  if(!VEO_CASOS) return;
+  const wrap = $('#lista-casos');
+  const fEstado = $('#fc-estado').value;
+  let lista = casos.slice().sort((a,b)=>(b.creado||0)-(a.creado||0));
+  if(fEstado) lista = lista.filter(c=>c.estado===fEstado);
+  if(!lista.length){ wrap.innerHTML = '<div class="empty">No hay casos con ese filtro.</div>'; return; }
+  wrap.innerHTML = lista.map(c=>`
+    <div class="caso ${c.id===casoSelId?'sel':''}" onclick="abrirCaso('${c.id}')">
+      <div class="top"><strong>${esc(c.estudiante)}</strong><span class="badge ${ESTADO_CLS[c.estado]||'b-rec'}">${ESTADO_LBL[c.estado]||c.estado}</span></div>
+      <div class="meta">${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''} · remitido por ${esc(c.remitidoPorNombre||'—')} · ${fmtF(c.fecha)}</div>
+    </div>`).join('');
+}
+$('#fc-estado').addEventListener('change', renderListaCasos);
+
+window.abrirCaso = id=>{
+  casoSelId = id;
+  renderListaCasos();
+  renderDetalleCaso();
+};
+
+function detalleDeCaso(casoId){
+  return detalle.find(d=>d.casoId===casoId) || null;
+}
+function detalleOCrear(casoId, estId, estNombre){
+  let d = detalleDeCaso(casoId);
+  if(!d){
+    d = { id: uid(), casoId, intervencion:{}, entrevistas:[], remisionesExternas:[], seguimientos:[], creado:Date.now(), actualizado:Date.now() };
+  }
+  return d;
+}
+function guardarDetalle(d){
+  d.actualizado = Date.now();
+  detalle = detalle.filter(x=>x.id!==d.id); detalle.push(d);
+  guardarUno('lv_orientacion_detalle', d);
+}
+
+window.cambiarEstadoCaso = (id, nuevo)=>{
+  const c = casos.find(x=>x.id===id); if(!c) return;
+  c.estado = nuevo; c.actualizado = Date.now();
+  guardarUno('lv_orientacion_casos', c);
+  renderListaCasos(); renderDetalleCaso();
+  toast('Estado actualizado a: '+(ESTADO_LBL[nuevo]||nuevo));
+};
+
+function renderDetalleCaso(){
+  const wrap = $('#detalle-caso');
+  const c = casos.find(x=>x.id===casoSelId);
+  if(!c){ wrap.innerHTML = '<div class="card"><div class="empty">Selecciona un caso de la lista.</div></div>'; return; }
+
+  let html = `<div class="card">
+    <h2>${esc(c.estudiante)}</h2>
+    <p class="meta">${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''} · remitido por <strong>${esc(c.remitidoPorNombre||'—')}</strong> el ${fmtF(c.fecha)}</p>
+    <h3>CE-F001 · Remisión interna</h3>
+    <p><strong>Motivo:</strong> ${esc(c.motivo||'—')}</p>
+    ${c.accionesPedagogicas?`<p style="margin-top:6px"><strong>Acciones pedagógicas ya intentadas:</strong> ${esc(c.accionesPedagogicas)}</p>`:''}
+    ${c.observaciones?`<p style="margin-top:6px"><strong>Observaciones:</strong> ${esc(c.observaciones)}</p>`:''}
+    <div class="row" style="margin-top:14px;align-items:flex-end">
+      <label class="fld">Estado del caso
+        <select id="dc-estado">
+          <option value="remitido">Recibido</option>
+          <option value="en_proceso">En proceso</option>
+          <option value="cerrado">Cerrado</option>
+        </select>
+      </label>
+      <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span>
+        <button class="btn ok sm" onclick="cambiarEstadoCaso('${c.id}', document.getElementById('dc-estado').value)">💾 Actualizar estado</button>
+      </label>
+    </div>
+  </div>`;
+
+  if(!SOY_ORIENTADOR){
+    html += `<div class="card"><div class="lock">🔒 El detalle clínico de este caso (ficha de intervención, entrevistas, remisiones, seguimiento) solo lo puede ver
+      ${ORIENTADOR_ID ? `<strong>${esc(nombreOrientador()||'el orientador designado')}</strong>` : 'la persona que designes como orientador(a)'}.
+      ${ES_COORD?'Puedes reasignar el rol en Institución si hace falta consultarlo.':''}</div></div>`;
+    wrap.innerHTML = html;
+    setTimeout(()=>{ const s=$('#dc-estado'); if(s) s.value=c.estado||'remitido'; },0);
+    return;
+  }
+
+  const d = detalleOCrear(c.id);
+  const iv = d.intervencion || {};
+
+  html += `<div class="card">
+    <h3>CE-F002 · Ficha de intervención</h3>
+    <div class="row">
+      <label class="fld">Motivo de la atención<textarea id="fi-motivo" rows="2">${esc(iv.motivo||'')}</textarea></label>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <label class="fld">EPS afiliada<input id="fi-eps" value="${esc(iv.eps||'')}"></label>
+      <label class="fld">Diagnóstico médico (si aplica)<input id="fi-diagnostico" value="${esc(iv.diagnostico||'')}"></label>
+    </div>
+    <label class="fld" style="margin-top:8px">Tratamiento / terapias en curso<textarea id="fi-tratamiento" rows="2">${esc(iv.tratamiento||'')}</textarea></label>
+    <label class="fld" style="margin-top:8px">Información familiar (con quién vive, madre/padre/cuidador, ocupación, convivencia)<textarea id="fi-familia" rows="3">${esc(iv.familia||'')}</textarea></label>
+    <div class="row" style="margin-top:8px">
+      <label class="fld">Grupo étnico<input id="fi-etnia" value="${esc(iv.etnia||'')}"></label>
+      <label class="fld">¿Víctima del conflicto armado?
+        <select id="fi-victima">
+          <option value="">— sin especificar —</option>
+          <option ${iv.victimaConflicto==='Sí'?'selected':''}>Sí</option>
+          <option ${iv.victimaConflicto==='No'?'selected':''}>No</option>
+        </select>
+      </label>
+    </div>
+    <label class="fld" style="margin-top:8px">Capacidad cognitiva<textarea id="fi-cognitiva" rows="2">${esc(iv.capacidadCognitiva||'')}</textarea></label>
+    <label class="fld" style="margin-top:8px">Salud emocional<textarea id="fi-emocional" rows="2">${esc(iv.saludEmocional||'')}</textarea></label>
+    <label class="fld" style="margin-top:8px">Recomendaciones y sugerencias<textarea id="fi-recomendaciones" rows="2">${esc(iv.recomendaciones||'')}</textarea></label>
+    <button class="btn ok sm" style="margin-top:10px" onclick="guardarFicha('${c.id}')">💾 Guardar ficha de intervención</button>
+  </div>`;
+
+  html += seccionRepetible('entrevistas', 'CE-F003 · Entrevistas con acudiente', c.id, d.entrevistas, [
+    {id:'ent-conquien', l:'Con quién (nombre y parentesco)'},
+    {id:'ent-motivo', l:'Motivo', area:true},
+    {id:'ent-desarrollo', l:'Desarrollo de la entrevista', area:true},
+    {id:'ent-compromisos', l:'Compromisos', area:true},
+    {id:'ent-proxima', l:'Próxima citación (fecha, opcional)'}
+  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.conquien||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.desarrollo?`<div><strong>Desarrollo:</strong> ${esc(e.desarrollo)}</div>`:''}${e.compromisos?`<div><strong>Compromisos:</strong> ${esc(e.compromisos)}</div>`:''}${e.proxima?`<div><strong>Próxima citación:</strong> ${esc(e.proxima)}</div>`:''}`);
+
+  html += seccionRepetible('remisionesExternas', 'CE-F004 · Remisiones externas (activación de ruta)', c.id, d.remisionesExternas, [
+    {id:'re-entidad', l:'Entidad a donde se remite (EPS, ICBF, Comisaría…)'},
+    {id:'re-motivo', l:'Motivo de remisión', area:true},
+    {id:'re-descripcion', l:'Descripción de la activación de ruta', area:true},
+    {id:'re-solicitud', l:'Qué se solicita', area:true}
+  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.entidad||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.descripcion?`<div><strong>Descripción:</strong> ${esc(e.descripcion)}</div>`:''}${e.solicitud?`<div><strong>Solicitud:</strong> ${esc(e.solicitud)}</div>`:''}`);
+
+  html += seccionRepetible('seguimientos', 'CE-F005 · Seguimiento', c.id, d.seguimientos, [
+    {id:'sg-anteriores', l:'Observaciones sobre compromisos anteriores', area:true},
+    {id:'sg-recomendaciones', l:'Recomendaciones o actividades a poner en práctica', area:true},
+    {id:'sg-acuerdos', l:'Nuevos acuerdos y compromisos', area:true},
+    {id:'sg-proximo', l:'Fecha del próximo encuentro (opcional)'}
+  ], (e,i)=>`<div class="f">Seguimiento N° ${i+1} — ${fmtF(e.fecha)}</div>${e.anteriores?`<div><strong>Compromisos anteriores:</strong> ${esc(e.anteriores)}</div>`:''}${e.recomendaciones?`<div><strong>Recomendaciones:</strong> ${esc(e.recomendaciones)}</div>`:''}${e.acuerdos?`<div><strong>Nuevos acuerdos:</strong> ${esc(e.acuerdos)}</div>`:''}${e.proximo?`<div><strong>Próximo encuentro:</strong> ${esc(e.proximo)}</div>`:''}`);
+
+  wrap.innerHTML = html;
+  const sel = $('#dc-estado'); if(sel) sel.value = c.estado||'remitido';
+}
+
+// Genera una sección con formulario de captura + lista de entradas ya
+// guardadas, para las 3 partes repetibles (entrevistas/remisiones/seguimientos).
+function seccionRepetible(campo, titulo, casoId, entradas, campos, renderEntrada){
+  entradas = entradas || [];
+  const form = campos.map(cfg => `<label class="fld" style="margin-top:8px">${esc(cfg.l)}${cfg.area?`<textarea id="${cfg.id}" rows="2"></textarea>`:`<input id="${cfg.id}">`}</label>`).join('');
+  const lista = entradas.length
+    ? entradas.slice().reverse().map((e,i)=>`<div class="entrada">${renderEntrada(e, entradas.length-1-i)}</div>`).join('')
+    : '<p class="desc" style="margin:0">Sin registros todavía.</p>';
+  return `<div class="card">
+    <h3>${esc(titulo)}</h3>
+    ${form}
+    <button class="btn sec sm" style="margin-top:10px" onclick="agregarEntrada('${campo}','${casoId}')">+ Agregar</button>
+    <div style="margin-top:12px">${lista}</div>
+  </div>`;
+}
+
+window.guardarFicha = casoId=>{
+  const d = detalleOCrear(casoId);
+  d.intervencion = {
+    motivo: $('#fi-motivo').value.trim(),
+    eps: $('#fi-eps').value.trim(),
+    diagnostico: $('#fi-diagnostico').value.trim(),
+    tratamiento: $('#fi-tratamiento').value.trim(),
+    familia: $('#fi-familia').value.trim(),
+    etnia: $('#fi-etnia').value.trim(),
+    victimaConflicto: $('#fi-victima').value,
+    capacidadCognitiva: $('#fi-cognitiva').value.trim(),
+    saludEmocional: $('#fi-emocional').value.trim(),
+    recomendaciones: $('#fi-recomendaciones').value.trim()
+  };
+  guardarDetalle(d);
+  toast('✅ Ficha de intervención guardada.');
+};
+
+window.agregarEntrada = (campo, casoId)=>{
+  const d = detalleOCrear(casoId);
+  let entrada = { fecha: new Date().toISOString() };
+  if(campo==='entrevistas'){
+    entrada.conquien = $('#ent-conquien').value.trim();
+    entrada.motivo = $('#ent-motivo').value.trim();
+    entrada.desarrollo = $('#ent-desarrollo').value.trim();
+    entrada.compromisos = $('#ent-compromisos').value.trim();
+    entrada.proxima = $('#ent-proxima').value.trim();
+    if(!entrada.motivo){ toast('Escribe al menos el motivo de la entrevista.'); return; }
+  } else if(campo==='remisionesExternas'){
+    entrada.entidad = $('#re-entidad').value.trim();
+    entrada.motivo = $('#re-motivo').value.trim();
+    entrada.descripcion = $('#re-descripcion').value.trim();
+    entrada.solicitud = $('#re-solicitud').value.trim();
+    if(!entrada.entidad){ toast('Escribe la entidad a donde se remite.'); return; }
+  } else if(campo==='seguimientos'){
+    entrada.anteriores = $('#sg-anteriores').value.trim();
+    entrada.recomendaciones = $('#sg-recomendaciones').value.trim();
+    entrada.acuerdos = $('#sg-acuerdos').value.trim();
+    entrada.proximo = $('#sg-proximo').value.trim();
+  }
+  if(!Array.isArray(d[campo])) d[campo] = [];
+  d[campo].push(entrada);
+  guardarDetalle(d);
+  toast('✅ Agregado.');
+  renderDetalleCaso();
+};
+
+// ── Arranque ──────────────────────────────────────────────────
+renderMisRemisiones();
+</script>
+</body>
+</html>

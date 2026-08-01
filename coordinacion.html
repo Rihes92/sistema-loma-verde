@@ -258,8 +258,14 @@
         <label class="fld">Ciudad / municipio<input id="inst-ciudad" placeholder="Montería – Córdoba"></label>
         <label class="fld">Correo institucional<input id="inst-correo" type="email" placeholder="correo@sem...gov.co"></label>
         <label class="fld">Sedes (separadas por coma)<input id="inst-sedes" placeholder="Principal, El Oyeto, ..."></label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="fld">Orientador(a) escolar
+          <select id="inst-orientador"><option value="">— sin designar —</option></select>
+        </label>
         <label class="fld" style="flex:0 0 auto;justify-content:flex-end"><button class="btn ok" id="btn-inst-guardar">💾 Guardar</button></label>
       </div>
+      <p class="desc" style="margin-top:2px">Quien elijas aquí es la única persona (junto con este panel) que ve el detalle sensible del módulo de Orientación Escolar (ficha de intervención, entrevistas, remisiones). Los demás docentes solo ven el estado de los casos que ellos mismos remiten.</p>
       <p class="desc" style="margin-top:8px">El escudo/logo que aparece en documentos impresos es el archivo <code>Logo/logo.jpg</code> del repositorio (para cambiarlo, reemplaza ese archivo).</p>
     </div>
     <div class="card" id="card-forzar-limpieza" style="display:none">
@@ -1483,9 +1489,14 @@ fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
         $icfes=document.getElementById('inst-icfes'), $res=document.getElementById('inst-resolucion'),
         $sec=document.getElementById('inst-secretaria'), $ciu=document.getElementById('inst-ciudad'),
         $cor=document.getElementById('inst-correo'),
-        $sed=document.getElementById('inst-sedes');
+        $sed=document.getElementById('inst-sedes'),
+        $ori=document.getElementById('inst-orientador');
   function leerInst(){ try{ const a=JSON.parse(localStorage.getItem('lv_institucion'))||[]; return (Array.isArray(a)?a.find(x=>x&&!x._eliminado):null)||null; }catch(_){ return null; } }
   const r=leerInst()||{};
+  if($ori){
+    $ori.innerHTML='<option value="">— sin designar —</option>'+docentes.filter(d=>!d._eliminado).map(d=>`<option value="${d.id}">${esc(d.nombre||'(sin nombre)')}</option>`).join('');
+    $ori.value=r.orientadorDocenteId||'';
+  }
   $n.value=r.nombre||'Institución Educativa San José de Loma Verde';
   $c.value=r.nombreCorto||'I.E. San José de Loma Verde';
   $s.value=r.sede||'Sede Principal';
@@ -1498,14 +1509,18 @@ fillLineaSelects(); fillLiderSelect(); limpiarFormCentro(); renderCentros();
   $cor.value=r.correo||(typeof LV_INST!=='undefined'?LV_INST.correo():'');
   $sed.value=r.sedes||SEDES.join(', ');
   document.getElementById('btn-inst-guardar').addEventListener('click',()=>{
-    const reg={
+    // Merge con lo ya guardado (no solo los campos de este formulario) para
+    // no perder de camino otros valores que se escriben desde otro lado,
+    // como dataEpoch ("Forzar limpieza remota") u orientadorDocenteId si
+    // este botón se pulsa antes de que $ori termine de poblarse.
+    const reg=Object.assign({}, leerInst()||{}, {
       id:(leerInst()||{}).id||'principal',
       nombre:$n.value.trim(), nombreCorto:$c.value.trim()||$n.value.trim(), sede:$s.value.trim(),
       nit:$nit.value.trim(), dane:$dane.value.trim(), icfes:$icfes.value.trim(), resolucion:$res.value.trim(),
       secretaria:$sec.value.trim(), ciudad:$ciu.value.trim(), correo:$cor.value.trim(),
-      sedes:$sed.value.trim(),
+      sedes:$sed.value.trim(), orientadorDocenteId:$ori?$ori.value:'',
       actualizado_en:new Date().toISOString()
-    };
+    });
     if(!reg.nombre){ toast('Escribe el nombre de la institución'); return; }
     localStorage.setItem('lv_institucion', JSON.stringify([reg]));
     if(typeof LV_SYNC!=='undefined') LV_SYNC.marcarCambio('lv_institucion', reg);

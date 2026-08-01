@@ -2,6 +2,86 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (ago 1, 2026 — sesión 32): módulo nuevo "Orientación Escolar" — CÓDIGO LISTO, sin desplegar
+
+- **Retoma el backlog señalado en sesión 31** ("Psico-orientación / Orientación escolar…
+  cada uno su propia sesión de diseño"). Antes de escribir código se investigó el "Plan
+  Nacional de Orientación Escolar" (MEN, 2021, dentro del Sistema Nacional de Convivencia
+  Escolar) citado por el propio formato oficial CE-F001 — confirma el flujo de 3 pilares
+  (Atención/Asesoría/Seguimiento) que ya reflejan los 5 formatos que Richard adjuntó en
+  sesión 31 (CE-F001 remisión → CE-F002 ficha de intervención → CE-F003 entrevistas →
+  CE-F004 remisiones externas → CE-F005 seguimiento), y que "cualquier miembro de la
+  comunidad educativa" puede remitir un caso (corresponsabilidad), no solo el orientador.
+- **3 preguntas de alcance resueltas con Richard (AskUserQuestion, las 3 "Recomendado"):**
+  1. El rol de orientación lo tiene **un docente/persona específica designada** (no
+     coordinación automáticamente) — nuevo campo `lv_institucion.orientadorDocenteId`,
+     se asigna desde Coordinación → Resumen → Institución (selector con los docentes ya
+     cargados). Reasignar este campo es también la válvula de emergencia si el
+     orientador cambia o no hay nadie disponible — no se le dio a coordinación un acceso
+     directo permanente al detalle sensible (ver punto 3).
+  2. El docente que remite un caso (CE-F001) **solo ve el estado** después
+     (recibido/en proceso/cerrado) — no el detalle clínico que registre el orientador.
+  3. Es un módulo **aparte del Observador** (Situación Tipo I/II/III) — sin cruce
+     automático, para no mezclar convivencia con datos de salud/familia por ahora.
+- **Arquitectura de privacidad — DOS tablas, no una** (`migracion_orientacion.sql`, SIN
+  CORRER): `lv_orientacion_casos` (el "expediente público" — motivo, acciones pedagógicas
+  ya intentadas, observaciones, estado; cualquier docente autenticado puede INSERTAR un
+  caso a su propio nombre `datos->>'remitidoPorId' = lv_mi_docente_id()`, y solo puede
+  LEER los que él mismo remitió — coordinación y el orientador ven y cambian el estado de
+  todos) y `lv_orientacion_detalle` (CE-F002 salud/familia/etnia/víctima del conflicto,
+  CE-F003, CE-F004, CE-F005 — **el más sensible del proyecto, más que `lv_matricula`**:
+  su política RLS es `es_orientador()` a secas, **sin `es_coordinacion()`** — ni siquiera
+  coordinación/rector tiene acceso de servidor a esta tabla, a propósito). Función nueva
+  `es_orientador()` reutiliza `lv_mi_docente_id()` (ya existe desde
+  `migracion_etapa2_fase2.sql`) comparándola contra `lv_institucion.orientadorDocenteId`.
+- **`modulos/22-orientacion.html` NUEVO** (gate por función, no por rol fijo — visible a
+  TODOS los docentes, a diferencia de Matrícula/Coordinación que son solo-admin, porque
+  cualquiera puede remitir): pestaña **"📋 Remitir un caso"** (visible siempre) con el
+  formulario CE-F001 + una lista "Mis remisiones" de solo estado; pestaña **"🗂️ Casos"**
+  (visible solo si `ES_COORD || SOY_ORIENTADOR`) con lista+filtro por estado y detalle de
+  cada caso — el CE-F001 se ve siempre en el detalle (motivo/acciones/observaciones,
+  visible para coordinación también porque vive en `lv_orientacion_casos`), pero las 4
+  secciones sensibles (ficha de intervención CE-F002, entrevistas CE-F003 repetibles,
+  remisiones externas CE-F004 repetibles, seguimientos CE-F005 repetibles) solo se
+  renderizan si `SOY_ORIENTADOR` — a `ES_COORD` sin ser también el orientador designado
+  le aparece un aviso de candado en su lugar, no un formulario vacío ni un error. El
+  detalle nunca llega siquiera a descargarse a un equipo que no sea del orientador (RLS,
+  no solo ocultamiento de UI) — declarado en `LV_SYNC_TABLAS` igual que cualquier tabla,
+  la política del servidor hace el resto. Ambas tablas agregadas al `MAPA` de `sync.js`.
+- **Enlaces:** `index.html` → link nuevo "🧭 Orientación Escolar" en la sidebar, grupo
+  Institución, junto a Permisos — **sin gate de admin**, visible a cualquier docente
+  (a diferencia de Matrícula/Coordinación). `materia-hub.html` → agregado a
+  `MODULOS_INST` (institucional, no depende de la materia con la que se entró). No se
+  agregó a la lista de módulos "por materia" de `navToModule()` (el regex
+  `modulos\/0[1-9]-` no lo alcanza, es el comportamiento correcto — no necesita contexto
+  de materia).
+- **Corregido de paso en `coordinacion.html`:** el botón "Guardar" de la tarjeta
+  Institución reconstruía el registro `lv_institucion` SOLO con los campos de su propio
+  formulario, descartando en silencio cualquier otro campo escrito desde otro lado (p.ej.
+  `dataEpoch`, de "Forzar limpieza remota", sesión 25g) — bug preexistente, encontrado al
+  agregar el selector de orientador a esa misma tarjeta. Cambiado a
+  `Object.assign({}, leerInst()||{}, {...})` (merge, no reemplazo).
+  SW **v107**. `node --check` limpio en `auth.js`, `sync.js`, `sw.js` y los 3 bloques
+  `<script>` inline de `22-orientacion.html` (más los de `index.html`/`materia-hub.html`,
+  sin cambios de JS ahí, solo un link/entrada nueva); balance de
+  `div/table/tr/td/th/label/select/button/section` verificado en `22-orientacion.html`
+  (49/49 · 1/1 · 2/2 · 4/4 · 4/4 · 20/20 · 3/3 · 6/6 · 2/2).
+- **PENDIENTE:** correr `migracion_orientacion.sql` en Supabase; push; que Richard: (a)
+  en Coordinación → Institución, designe a alguien como orientador(a) escolar; (b) con
+  una cuenta docente cualquiera, remita un caso de prueba desde "Orientación Escolar" y
+  confirme que ve el estado pero no una pestaña "Casos"; (c) con la cuenta del orientador
+  designado, confirme que SÍ ve la pestaña "Casos", el CE-F001 remitido, y puede llenar
+  la ficha de intervención/entrevistas/remisiones/seguimiento y cambiar el estado; (d)
+  con la cuenta de coordinación (sin ser el orientador), confirme que ve la lista de
+  casos y el estado/CE-F001, pero el detalle sensible le aparece bloqueado. **NO hecho a
+  propósito en esta sesión** (para mantener el alcance entregable): actas/formatos
+  imprimibles de los 5 CE-F00x (el módulo captura los datos en pantalla, no genera un PDF
+  con el formato oficial todavía — se puede agregar después con el mismo patrón de
+  membrete `LV_INST` que ya usan Boletines/Observador/PIAR); el módulo separado de
+  "Actas de reuniones institucionales" (Consejo Directivo, Comisión de Evaluación y
+  Promoción, actas de compromiso, amonestación) señalado en la misma sesión 31 — sigue en
+  el backlog, sin tocar.
+
 ## ▶ AJUSTE (ago 1, 2026 — sesión 31c): campos de SIMAT en Matrícula (zona/dirección + discapacidad/PIAR) — CÓDIGO LISTO, sin desplegar
 
 - Richard adjuntó la ficha de matrícula prometida: no era un formato del colegio, es una
@@ -2772,6 +2852,14 @@ documentos impresos/WhatsApp, que luego será configurable).
   (mejor esfuerzo — marca lo que no cupo), respetando siempre lo ya publicado/borrador;
   el resultado se guarda como borrador para revisar y publicar docente por docente, igual
   que el flujo manual — ver ajuste de sesión 29 para el detalle completo.
+- `modulos/22-orientacion.html` — **Orientación Escolar** (ago 2026, sesión 32): digitaliza
+  el flujo CE-F001→CE-F005. Visible a TODOS los docentes (cualquiera puede remitir un
+  caso, pestaña "Remitir"); pestaña "Casos" (estado + detalle sensible) solo visible para
+  coordinación/rector y para el docente designado como orientador
+  (`lv_institucion.orientadorDocenteId`, se asigna en Coordinación → Institución). El
+  detalle clínico (`lv_orientacion_detalle`: salud, familia, etnia, víctima del
+  conflicto) tiene RLS que excluye incluso a coordinación — solo `es_orientador()`. Ver
+  ajuste de sesión 32 para el detalle completo de la arquitectura de privacidad.
 - `modulos/herramientas/` — 9 herramientas formativas (test lectura, cálculo mental,
   rúbricas, sociograma, etc.) que envían notas a la planilla.
 - `coordinacion.html` — pestañas: Docentes, Asignaciones, **🌟 Centros de Interés** (crear/

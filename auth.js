@@ -171,6 +171,10 @@ const LV_INST = {
   secretaria() { return this._get().secretaria || 'Secretaría de Educación Municipal de Montería'; },
   ciudad()     { return this._get().ciudad     || 'Montería – Córdoba'; },
   resolucion() { return this._get().resolucion || ''; },
+  // Docente designado como orientador(a) escolar (módulo de Orientación,
+  // ago 2026) — id de lv_docentes. Se asigna en Coordinación → Institución.
+  // Vacío = nadie designado todavía (el módulo lo explica en su UI).
+  orientadorDocenteId() { return this._get().orientadorDocenteId || ''; },
   // Época de datos (jul 2026, sesión 25g — "forzar limpieza" remota).
   // Coordinación la sube desde su panel; cada equipo la compara contra
   // la última que vio (sync.js) para saber si debe limpiar su espejo

@@ -70,6 +70,8 @@ const LV_SYNC = (() => {
     'lv_centros':               { tabla: 'lv_centros',               id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_centros_inscripciones': { tabla: 'lv_centros_inscripciones', id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_centros_asistencia':    { tabla: 'lv_centros_asistencia',    id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_orientacion_casos':     { tabla: 'lv_orientacion_casos',     id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_orientacion_detalle':   { tabla: 'lv_orientacion_detalle',   id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Sincronización por demanda ──────────────────────────────
