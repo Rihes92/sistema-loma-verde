@@ -61,26 +61,44 @@
   `dataEpoch`, de "Forzar limpieza remota", sesión 25g) — bug preexistente, encontrado al
   agregar el selector de orientador a esa misma tarjeta. Cambiado a
   `Object.assign({}, leerInst()||{}, {...})` (merge, no reemplazo).
-  SW **v107**. `node --check` limpio en `auth.js`, `sync.js`, `sw.js` y los 3 bloques
+- **Ajuste el mismo día (Richard vio la pestaña "🔑 Roles de usuario" de Coordinación y
+  no encontró ahí un rol "docente orientador" — confusión legítima, aclarada y corregida
+  con 2 mejoras):** el orientador NUNCA fue un rol de esa tabla (Docente/Coordinador/
+  Admin, permisos generales de la app) — es una designación aparte, a propósito, para que
+  cualquier docente normal pueda ser orientador sin heredar acceso a Coordinación. Vive en
+  Resumen → Institución. Con eso aclarado, se agregaron los **5 formatos oficiales
+  imprimibles** (CE-F001 a CE-F005), que faltaban de la primera pasada de esta sesión:
+  mismo patrón de membrete/firmas que Observador/Boletines/PIAR (`pHead()`+
+  `membreteLinea()`, imprime solo `#print-area` con `body>*{display:none!important}` en
+  `@media print`). Botón "🖨️" por remisión en "Mis remisiones" (el propio docente puede
+  imprimir SU CE-F001); botón "🖨️ Imprimir CE-F001" en el detalle del caso (coordinación/
+  orientador); botón "🖨️ Imprimir CE-F002" junto a "Guardar ficha de intervención"
+  (imprime lo último GUARDADO, no el borrador sin guardar — hay que guardar primero); y
+  un botón "🖨️ Imprimir" por cada entrada ya guardada de CE-F003/CE-F004/CE-F005 (son
+  repetibles — cada entrevista/remisión externa/seguimiento se imprime como documento
+  aparte, no todas juntas, igual que en papel). El CE-F004 imprime con la nota "esto NO es
+  un diagnóstico médico" y el CE-F002 con nota de confidencialidad (Ley 1581 de 2012)
+  igual que exige el formato original.
+  SW **v108**. `node --check` limpio en `auth.js`, `sync.js`, `sw.js` y los 3 bloques
   `<script>` inline de `22-orientacion.html` (más los de `index.html`/`materia-hub.html`,
   sin cambios de JS ahí, solo un link/entrada nueva); balance de
   `div/table/tr/td/th/label/select/button/section` verificado en `22-orientacion.html`
-  (49/49 · 1/1 · 2/2 · 4/4 · 4/4 · 20/20 · 3/3 · 6/6 · 2/2).
+  tras agregar lo imprimible (71/71 · 7/7 · 15/15 · 29/29 · 29/29 · 21/21 · 3/3 · 10/10 ·
+  2/2).
 - **PENDIENTE:** correr `migracion_orientacion.sql` en Supabase; push; que Richard: (a)
-  en Coordinación → Institución, designe a alguien como orientador(a) escolar; (b) con
-  una cuenta docente cualquiera, remita un caso de prueba desde "Orientación Escolar" y
-  confirme que ve el estado pero no una pestaña "Casos"; (c) con la cuenta del orientador
-  designado, confirme que SÍ ve la pestaña "Casos", el CE-F001 remitido, y puede llenar
-  la ficha de intervención/entrevistas/remisiones/seguimiento y cambiar el estado; (d)
-  con la cuenta de coordinación (sin ser el orientador), confirme que ve la lista de
-  casos y el estado/CE-F001, pero el detalle sensible le aparece bloqueado. **NO hecho a
-  propósito en esta sesión** (para mantener el alcance entregable): actas/formatos
-  imprimibles de los 5 CE-F00x (el módulo captura los datos en pantalla, no genera un PDF
-  con el formato oficial todavía — se puede agregar después con el mismo patrón de
-  membrete `LV_INST` que ya usan Boletines/Observador/PIAR); el módulo separado de
-  "Actas de reuniones institucionales" (Consejo Directivo, Comisión de Evaluación y
-  Promoción, actas de compromiso, amonestación) señalado en la misma sesión 31 — sigue en
-  el backlog, sin tocar.
+  en Coordinación → Resumen → Institución, designe a alguien como orientador(a) escolar
+  (NO en la pestaña Roles); (b) con una cuenta docente cualquiera, remita un caso de
+  prueba desde "Orientación Escolar" y confirme que ve el estado y puede imprimir su
+  CE-F001, pero no le aparece una pestaña "Casos"; (c) con la cuenta del orientador
+  designado, confirme que SÍ ve la pestaña "Casos", el CE-F001 remitido, puede llenar y
+  guardar la ficha de intervención/entrevistas/remisiones/seguimiento, cambiar el estado,
+  e imprimir cada uno de los 5 formatos y que se vean bien con el membrete; (d) con la
+  cuenta de coordinación (sin ser el orientador), confirme que ve la lista de casos, el
+  estado/CE-F001 (y lo puede imprimir), pero el detalle sensible le aparece bloqueado. **NO
+  hecho a propósito en esta sesión:** el módulo separado de "Actas de reuniones
+  institucionales" (Consejo Directivo, Comisión de Evaluación y Promoción, actas de
+  compromiso, amonestación) señalado en la misma sesión 31 — sigue en el backlog, sin
+  tocar.
 
 ## ▶ AJUSTE (ago 1, 2026 — sesión 31c): campos de SIMAT en Matrícula (zona/dirección + discapacidad/PIAR) — CÓDIGO LISTO, sin desplegar
 

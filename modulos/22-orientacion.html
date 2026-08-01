@@ -61,6 +61,23 @@
   .lock{background:#f1f5f9;border:1px dashed var(--border);border-radius:10px;padding:16px;text-align:center;color:var(--muted);font-size:.88rem}
   #toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:10px 18px;border-radius:8px;font-size:.85rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:999}
   #toast.show{opacity:1}
+  /* ── impresión: solo el área imprimible, mismo patrón de Observador/Boletines ── */
+  #print-area{display:none}
+  @media print{
+    body>*{display:none!important}
+    #print-area{display:block!important;font-size:11pt;color:#000}
+    #print-area .p-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid #1e3a8a;padding-bottom:10px;margin-bottom:12px}
+    #print-area .p-head img{width:64px;height:64px;object-fit:contain}
+    #print-area h1{font-size:15pt;color:#1e3a8a;margin:0}
+    #print-area h2{font-size:12pt;margin:14px 0 6px;color:#1e3a8a}
+    #print-area table{width:100%;border-collapse:collapse;font-size:9.5pt;margin-bottom:8px}
+    #print-area th,#print-area td{border:1px solid #666;padding:5px 7px;text-align:left;vertical-align:top}
+    #print-area th{background:#e8eef9}
+    #print-area p{margin:0 0 8px}
+    #print-area .nota-conf{font-size:8pt;color:#666;margin-top:10px;border-top:1px dashed #999;padding-top:6px}
+    #print-area .firmas{display:flex;gap:40px;margin-top:60px}
+    #print-area .firmas div{flex:1;border-top:1px solid #000;text-align:center;font-size:9pt;padding-top:4px}
+  }
 </style>
 <link rel="stylesheet" href="../lv-tema.css">
 </head>
@@ -135,6 +152,7 @@
   </main>
 </div>
 
+<div id="print-area"></div>
 <div id="toast" role="alert" aria-live="assertive"></div>
 
 <script>
@@ -143,6 +161,23 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
 const uid=()=>'ori-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 function fmtF(f){ if(!f) return '—'; try{ const d=new Date(f); return isNaN(d)?String(f):d.toLocaleDateString('es-CO'); }catch(_){ return String(f); } }
+// Línea de membrete (NIT/DANE/ICFES/resolución) para documentos impresos —
+// mismo patrón de Observador/Boletines/PIAR. Datos en Coordinación → Institución.
+function membreteLinea(){
+  if(typeof LV_INST==='undefined') return '';
+  const p=[LV_INST.resolucion()?('Resolución '+LV_INST.resolucion()):'', 'NIT '+LV_INST.nit(), 'DANE '+LV_INST.dane(), 'Código ICFES '+LV_INST.icfes()].filter(Boolean).join(' · ');
+  return `<div style="font-size:8pt;color:#555">${esc(p)}</div>`;
+}
+function pHead(subtitulo){
+  return `<div class="p-head">
+    <img src="../Logo/logo.jpg" alt="">
+    <div>
+      <h1>${esc((typeof LV_INST!=='undefined'&&LV_INST.nombre())||'Institución Educativa San José de Loma Verde')}</h1>
+      <div>${esc(subtitulo)}</div>
+      ${membreteLinea()}
+    </div>
+  </div>`;
+}
 
 function lsRead(k){ try{ return JSON.parse(localStorage.getItem(k))||[]; }catch(_){ return []; } }
 function guardarUno(tabla, reg){
@@ -220,12 +255,13 @@ function renderMisRemisiones(){
   const mias = casos.filter(c=>c.remitidoPorId===MI_DOCENTE_ID).sort((a,b)=>(b.creado||0)-(a.creado||0));
   if(!mias.length){ out.innerHTML = '<div class="empty">Aún no has remitido ningún caso.</div>'; return; }
   out.innerHTML = `<div class="tableScroll"><table><thead><tr>
-    <th>Estudiante</th><th>Grado-Grupo</th><th>Fecha</th><th class="c">Estado</th>
+    <th>Estudiante</th><th>Grado-Grupo</th><th>Fecha</th><th class="c">Estado</th><th class="c">CE-F001</th>
   </tr></thead><tbody>${mias.map(c=>`<tr>
     <td>${esc(c.estudiante)}</td>
     <td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td>
     <td>${fmtF(c.fecha)}</td>
     <td class="c"><span class="badge ${ESTADO_CLS[c.estado]||'b-rec'}">${ESTADO_LBL[c.estado]||c.estado}</span></td>
+    <td class="c"><button class="btn sec sm" onclick="imprimirCE001('${c.id}')" title="Imprimir tu remisión (CE-F001)">🖨️</button></td>
   </tr>`).join('')}</tbody></table></div>`;
 }
 
@@ -269,6 +305,119 @@ function guardarDetalle(d){
   guardarUno('lv_orientacion_detalle', d);
 }
 
+// ── Impresión de los 5 formatos oficiales (CE-F001 a CE-F005) ────────────
+// Mismo patrón de membrete/firmas que Observador/Boletines/PIAR. Cada uno
+// imprime lo que esté GUARDADO (si acabas de editar, guarda primero).
+window.imprimirCE001 = casoId=>{
+  const c = casos.find(x=>x.id===casoId); if(!c) return;
+  document.getElementById('print-area').innerHTML = `
+    ${pHead('FORMATO CE-F001 · REMISIÓN INTERNA A DOCENTE ORIENTADOR')}
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(c.estudiante)}</td>
+          <th style="width:18%">Grado - Grupo</th><td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td></tr>
+      <tr><th>Remitido por</th><td>${esc(c.remitidoPorNombre||'—')}</td>
+          <th>Fecha</th><td>${fmtF(c.fecha)}</td></tr>
+      <tr><th>Estado actual</th><td colspan="3">${esc(ESTADO_LBL[c.estado]||c.estado)}</td></tr>
+    </table>
+    <h2>Motivo de la remisión</h2><p>${esc(c.motivo||'—')}</p>
+    <h2>Acciones pedagógicas ya implementadas por el docente</h2><p>${esc(c.accionesPedagogicas||'Ninguna registrada.')}</p>
+    <h2>Observaciones</h2><p>${esc(c.observaciones||'—')}</p>
+    <div class="firmas"><div>Docente que remite</div><div>Docente orientador(a) — recibido</div></div>`;
+  window.print();
+};
+
+window.imprimirCE002 = casoId=>{
+  const c = casos.find(x=>x.id===casoId); if(!c) return;
+  const d = detalleDeCaso(casoId);
+  const iv = (d && d.intervencion) || {};
+  document.getElementById('print-area').innerHTML = `
+    ${pHead('FORMATO CE-F002 · FICHA DE INTERVENCIÓN')}
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(c.estudiante)}</td>
+          <th style="width:18%">Grado - Grupo</th><td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td></tr>
+      <tr><th>Fecha de impresión</th><td colspan="3">${new Date().toLocaleDateString('es-CO')}</td></tr>
+    </table>
+    <h2>Motivo de la atención</h2><p>${esc(iv.motivo||'—')}</p>
+    <table>
+      <tr><th style="width:22%">EPS</th><td>${esc(iv.eps||'—')}</td>
+          <th style="width:22%">Diagnóstico médico</th><td>${esc(iv.diagnostico||'—')}</td></tr>
+      <tr><th>Grupo étnico</th><td>${esc(iv.etnia||'—')}</td>
+          <th>Víctima del conflicto armado</th><td>${esc(iv.victimaConflicto||'— sin especificar —')}</td></tr>
+    </table>
+    <h2>Tratamiento / terapias en curso</h2><p>${esc(iv.tratamiento||'—')}</p>
+    <h2>Información familiar</h2><p>${esc(iv.familia||'—')}</p>
+    <h2>Capacidad cognitiva</h2><p>${esc(iv.capacidadCognitiva||'—')}</p>
+    <h2>Salud emocional</h2><p>${esc(iv.saludEmocional||'—')}</p>
+    <h2>Recomendaciones y sugerencias</h2><p>${esc(iv.recomendaciones||'—')}</p>
+    <div class="firmas"><div>Orientador(a) escolar</div><div>V°B° Coordinación</div></div>
+    <p class="nota-conf">Documento de uso confidencial — contiene información sensible de salud, familia y datos
+    protegidos por la Ley 1581 de 2012 (Habeas Data). Solo debe circular entre orientación escolar y las
+    entidades autorizadas.</p>`;
+  window.print();
+};
+
+window.imprimirCE003 = (casoId, idx)=>{
+  const c = casos.find(x=>x.id===casoId); if(!c) return;
+  const d = detalleDeCaso(casoId); const e = d && (d.entrevistas||[])[idx];
+  if(!e){ toast('No se encontró esa entrevista.'); return; }
+  document.getElementById('print-area').innerHTML = `
+    ${pHead('FORMATO CE-F003 · ENTREVISTA CON ACUDIENTE')}
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(c.estudiante)}</td>
+          <th style="width:18%">Grado - Grupo</th><td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td></tr>
+      <tr><th>Entrevistado(a)</th><td>${esc(e.conquien||'—')}</td>
+          <th>Fecha</th><td>${fmtF(e.fecha)}</td></tr>
+    </table>
+    <h2>Motivo</h2><p>${esc(e.motivo||'—')}</p>
+    <h2>Desarrollo de la entrevista</h2><p>${esc(e.desarrollo||'—')}</p>
+    <h2>Compromisos</h2><p>${esc(e.compromisos||'—')}</p>
+    <h2>Próxima citación</h2><p>${esc(e.proxima||'—')}</p>
+    <div class="firmas"><div>Acudiente</div><div>Orientador(a) escolar</div></div>`;
+  window.print();
+};
+
+window.imprimirCE004 = (casoId, idx)=>{
+  const c = casos.find(x=>x.id===casoId); if(!c) return;
+  const d = detalleDeCaso(casoId); const e = d && (d.remisionesExternas||[])[idx];
+  if(!e){ toast('No se encontró esa remisión externa.'); return; }
+  document.getElementById('print-area').innerHTML = `
+    ${pHead('FORMATO CE-F004 · REMISIÓN EXTERNA (ACTIVACIÓN DE RUTA)')}
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(c.estudiante)}</td>
+          <th style="width:18%">Grado - Grupo</th><td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td></tr>
+      <tr><th>Entidad a donde se remite</th><td>${esc(e.entidad||'—')}</td>
+          <th>Fecha</th><td>${fmtF(e.fecha)}</td></tr>
+    </table>
+    <h2>Motivo de remisión</h2><p>${esc(e.motivo||'—')}</p>
+    <h2>Descripción de la activación de ruta</h2><p>${esc(e.descripcion||'—')}</p>
+    <h2>Qué se solicita</h2><p>${esc(e.solicitud||'—')}</p>
+    <div class="firmas"><div>Orientador(a) escolar</div><div>V°B° Coordinación</div></div>
+    <p class="nota-conf">Este formato NO constituye un diagnóstico médico ni psicológico — es la activación de una
+    ruta de atención con una entidad externa (EPS, ICBF, Comisaría de Familia u otra). Manéjese con
+    confidencialidad.</p>`;
+  window.print();
+};
+
+window.imprimirCE005 = (casoId, idx)=>{
+  const c = casos.find(x=>x.id===casoId); if(!c) return;
+  const d = detalleDeCaso(casoId); const lista = (d && d.seguimientos) || []; const e = lista[idx];
+  if(!e){ toast('No se encontró ese seguimiento.'); return; }
+  document.getElementById('print-area').innerHTML = `
+    ${pHead('FORMATO CE-F005 · SEGUIMIENTO')}
+    <table>
+      <tr><th style="width:22%">Estudiante</th><td>${esc(c.estudiante)}</td>
+          <th style="width:18%">Grado - Grupo</th><td>${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''}</td></tr>
+      <tr><th>Seguimiento N°</th><td>${idx+1}</td>
+          <th>Fecha</th><td>${fmtF(e.fecha)}</td></tr>
+    </table>
+    <h2>Observaciones sobre compromisos anteriores</h2><p>${esc(e.anteriores||'—')}</p>
+    <h2>Recomendaciones / actividades a poner en práctica</h2><p>${esc(e.recomendaciones||'—')}</p>
+    <h2>Nuevos acuerdos y compromisos</h2><p>${esc(e.acuerdos||'—')}</p>
+    <h2>Próximo encuentro</h2><p>${esc(e.proximo||'—')}</p>
+    <div class="firmas"><div>Acudiente / estudiante</div><div>Orientador(a) escolar</div></div>`;
+  window.print();
+};
+
 window.cambiarEstadoCaso = (id, nuevo)=>{
   const c = casos.find(x=>x.id===id); if(!c) return;
   c.estado = nuevo; c.actualizado = Date.now();
@@ -299,6 +448,9 @@ function renderDetalleCaso(){
       </label>
       <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span>
         <button class="btn ok sm" onclick="cambiarEstadoCaso('${c.id}', document.getElementById('dc-estado').value)">💾 Actualizar estado</button>
+      </label>
+      <label class="fld" style="flex:0 0 auto"><span>&nbsp;</span>
+        <button class="btn sec sm" onclick="imprimirCE001('${c.id}')">🖨️ Imprimir CE-F001</button>
       </label>
     </div>
   </div>`;
@@ -339,7 +491,10 @@ function renderDetalleCaso(){
     <label class="fld" style="margin-top:8px">Capacidad cognitiva<textarea id="fi-cognitiva" rows="2">${esc(iv.capacidadCognitiva||'')}</textarea></label>
     <label class="fld" style="margin-top:8px">Salud emocional<textarea id="fi-emocional" rows="2">${esc(iv.saludEmocional||'')}</textarea></label>
     <label class="fld" style="margin-top:8px">Recomendaciones y sugerencias<textarea id="fi-recomendaciones" rows="2">${esc(iv.recomendaciones||'')}</textarea></label>
-    <button class="btn ok sm" style="margin-top:10px" onclick="guardarFicha('${c.id}')">💾 Guardar ficha de intervención</button>
+    <div class="row" style="margin-top:10px">
+      <button class="btn ok sm" onclick="guardarFicha('${c.id}')">💾 Guardar ficha de intervención</button>
+      <button class="btn sec sm" onclick="imprimirCE002('${c.id}')">🖨️ Imprimir CE-F002</button>
+    </div>
   </div>`;
 
   html += seccionRepetible('entrevistas', 'CE-F003 · Entrevistas con acudiente', c.id, d.entrevistas, [
@@ -348,21 +503,21 @@ function renderDetalleCaso(){
     {id:'ent-desarrollo', l:'Desarrollo de la entrevista', area:true},
     {id:'ent-compromisos', l:'Compromisos', area:true},
     {id:'ent-proxima', l:'Próxima citación (fecha, opcional)'}
-  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.conquien||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.desarrollo?`<div><strong>Desarrollo:</strong> ${esc(e.desarrollo)}</div>`:''}${e.compromisos?`<div><strong>Compromisos:</strong> ${esc(e.compromisos)}</div>`:''}${e.proxima?`<div><strong>Próxima citación:</strong> ${esc(e.proxima)}</div>`:''}`);
+  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.conquien||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.desarrollo?`<div><strong>Desarrollo:</strong> ${esc(e.desarrollo)}</div>`:''}${e.compromisos?`<div><strong>Compromisos:</strong> ${esc(e.compromisos)}</div>`:''}${e.proxima?`<div><strong>Próxima citación:</strong> ${esc(e.proxima)}</div>`:''}`, 'imprimirCE003');
 
   html += seccionRepetible('remisionesExternas', 'CE-F004 · Remisiones externas (activación de ruta)', c.id, d.remisionesExternas, [
     {id:'re-entidad', l:'Entidad a donde se remite (EPS, ICBF, Comisaría…)'},
     {id:'re-motivo', l:'Motivo de remisión', area:true},
     {id:'re-descripcion', l:'Descripción de la activación de ruta', area:true},
     {id:'re-solicitud', l:'Qué se solicita', area:true}
-  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.entidad||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.descripcion?`<div><strong>Descripción:</strong> ${esc(e.descripcion)}</div>`:''}${e.solicitud?`<div><strong>Solicitud:</strong> ${esc(e.solicitud)}</div>`:''}`);
+  ], e=>`<div class="f">${fmtF(e.fecha)} — ${esc(e.entidad||'')}</div><div><strong>Motivo:</strong> ${esc(e.motivo||'—')}</div>${e.descripcion?`<div><strong>Descripción:</strong> ${esc(e.descripcion)}</div>`:''}${e.solicitud?`<div><strong>Solicitud:</strong> ${esc(e.solicitud)}</div>`:''}`, 'imprimirCE004');
 
   html += seccionRepetible('seguimientos', 'CE-F005 · Seguimiento', c.id, d.seguimientos, [
     {id:'sg-anteriores', l:'Observaciones sobre compromisos anteriores', area:true},
     {id:'sg-recomendaciones', l:'Recomendaciones o actividades a poner en práctica', area:true},
     {id:'sg-acuerdos', l:'Nuevos acuerdos y compromisos', area:true},
     {id:'sg-proximo', l:'Fecha del próximo encuentro (opcional)'}
-  ], (e,i)=>`<div class="f">Seguimiento N° ${i+1} — ${fmtF(e.fecha)}</div>${e.anteriores?`<div><strong>Compromisos anteriores:</strong> ${esc(e.anteriores)}</div>`:''}${e.recomendaciones?`<div><strong>Recomendaciones:</strong> ${esc(e.recomendaciones)}</div>`:''}${e.acuerdos?`<div><strong>Nuevos acuerdos:</strong> ${esc(e.acuerdos)}</div>`:''}${e.proximo?`<div><strong>Próximo encuentro:</strong> ${esc(e.proximo)}</div>`:''}`);
+  ], (e,i)=>`<div class="f">Seguimiento N° ${i+1} — ${fmtF(e.fecha)}</div>${e.anteriores?`<div><strong>Compromisos anteriores:</strong> ${esc(e.anteriores)}</div>`:''}${e.recomendaciones?`<div><strong>Recomendaciones:</strong> ${esc(e.recomendaciones)}</div>`:''}${e.acuerdos?`<div><strong>Nuevos acuerdos:</strong> ${esc(e.acuerdos)}</div>`:''}${e.proximo?`<div><strong>Próximo encuentro:</strong> ${esc(e.proximo)}</div>`:''}`, 'imprimirCE005');
 
   wrap.innerHTML = html;
   const sel = $('#dc-estado'); if(sel) sel.value = c.estado||'remitido';
@@ -370,11 +525,16 @@ function renderDetalleCaso(){
 
 // Genera una sección con formulario de captura + lista de entradas ya
 // guardadas, para las 3 partes repetibles (entrevistas/remisiones/seguimientos).
-function seccionRepetible(campo, titulo, casoId, entradas, campos, renderEntrada){
+function seccionRepetible(campo, titulo, casoId, entradas, campos, renderEntrada, imprimirFn){
   entradas = entradas || [];
   const form = campos.map(cfg => `<label class="fld" style="margin-top:8px">${esc(cfg.l)}${cfg.area?`<textarea id="${cfg.id}" rows="2"></textarea>`:`<input id="${cfg.id}">`}</label>`).join('');
   const lista = entradas.length
-    ? entradas.slice().reverse().map((e,i)=>`<div class="entrada">${renderEntrada(e, entradas.length-1-i)}</div>`).join('')
+    ? entradas.slice().reverse().map((e,i)=>{
+        const idx = entradas.length-1-i;
+        return `<div class="entrada">${renderEntrada(e, idx)}
+          ${imprimirFn?`<div style="margin-top:6px"><button class="btn sec sm" onclick="${imprimirFn}('${casoId}', ${idx})">🖨️ Imprimir</button></div>`:''}
+        </div>`;
+      }).join('')
     : '<p class="desc" style="margin:0">Sin registros todavía.</p>';
   return `<div class="card">
     <h3>${esc(titulo)}</h3>
