@@ -9,8 +9,11 @@
 
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script>window.LV_SYNC_TABLAS=['lv_matricula','lv_acudientes','lv_institucion'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_matricula','lv_acudientes','lv_institucion','lv_piar'];</script>
 <script src="../sync.js"></script>
+<!-- CATEGORIAS_PIAR (mismas categorías que ya usa SIMAT/el módulo de Inclusión) —
+     se reutiliza aquí para que la matrícula pueda cruzarse con quién ya tiene PIAR. -->
+<script src="inclusion-catalogo.js"></script>
 <style>
   :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626;--warn:#b45309;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08)}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -123,6 +126,15 @@
             <select id="m-jornada"><option>Única</option><option>Mañana</option><option>Tarde</option></select>
           </label>
         </div>
+        <div class="row">
+          <label class="fld">Dirección de residencia<input id="m-direccion" placeholder="Ej: Corregimiento de Loma Verde, vereda…"></label>
+          <label class="fld">Zona
+            <select id="m-zona"><option value="">— sin especificar —</option><option>Rural</option><option>Urbana</option></select>
+          </label>
+          <label class="fld">Discapacidad / capacidad excepcional
+            <select id="m-piar"><option value="">— sin marcar —</option></select>
+          </label>
+        </div>
         <label class="fld" style="margin-top:2px">Observaciones (opcional)<textarea id="m-obs" rows="2" placeholder="Notas de matrícula…"></textarea></label>
 
         <h2 style="margin-top:18px">Acudiente</h2>
@@ -219,6 +231,13 @@
         <p class="desc">Estudiantes activos que aún no tienen un acudiente vinculado.</p>
         <div id="r-sinacu"></div>
       </div>
+      <div class="card">
+        <h2>🧩 Posible necesidad de PIAR sin ficha registrada</h2>
+        <p class="desc">Estudiantes activos con una categoría de discapacidad/capacidad excepcional marcada en su
+          matrícula, cuyo nombre no aparece todavía con una ficha PIAR en el módulo de Inclusión (cruce por nombre —
+          revisar a mano si el nombre está escrito distinto en cada lado).</p>
+        <div id="r-sinpiar"></div>
+      </div>
     </section>
   </main>
 </div>
@@ -251,6 +270,16 @@ else { $('#app').classList.remove('hide'); }
 
 function quienEsta(){ return LOGIN ? (LOGIN.esAdmin?'Administrador':(LOGIN.nombre||'')) : ''; }
 
+// Categorías de discapacidad/capacidad excepcional (mismo catálogo que ya
+// usa Inclusión/PIAR — así lo marcado aquí en matrícula sirve luego para
+// avisar en Resumen quién podría necesitar un PIAR y aún no lo tiene).
+(function(){
+  const sel=$('#m-piar');
+  if(sel && typeof CATEGORIAS_PIAR!=='undefined'){
+    sel.innerHTML = '<option value="">— sin marcar —</option>' + CATEGORIAS_PIAR.map(c=>`<option>${esc(c)}</option>`).join('');
+  }
+})();
+
 // ── Tabs ──────────────────────────────────────────────────────
 document.getElementById('tabs').addEventListener('click', e=>{
   const b = e.target.closest('button[data-tab]'); if(!b) return;
@@ -267,6 +296,7 @@ function telWa(t){ let n=String(t||'').replace(/\D/g,''); if(n.length===10 && n.
 
 let matricula = ES_COORD ? lsRead('matricula') : [];
 let acudientes = ES_COORD ? lsRead('acudientes') : [];
+const normN = v => String(v??'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,' ').trim();
 let editId = null;
 let acuElegidoId = null;
 
@@ -374,6 +404,8 @@ $('#btn-mat-save').addEventListener('click', ()=>{
     fechaNacimiento: $('#m-fechanac').value, genero: $('#m-genero').value,
     nombres, apellidos,
     sede: $('#m-sede').value, grado, grupo, jornada: $('#m-jornada').value,
+    direccion: $('#m-direccion').value.trim(), zona: $('#m-zona').value,
+    categoriaPIAR: $('#m-piar').value,
     estado: editId ? (matricula.find(m=>m.id===editId)||{}).estado || 'activo' : 'activo',
     acudienteId: acudienteId || '',
     observaciones: $('#m-obs').value.trim(),
@@ -406,8 +438,9 @@ function cancelarEdicion(){
   $('#btn-mat-cancel').classList.add('hide');
   $('#acu-elegido').classList.add('hide');
   $('#acu-form-nuevo').classList.add('hide');
-  ['m-documento','m-fechanac','m-nombres','m-apellidos','m-grupo','m-obs','m-buscaracu','na-nombre','na-telefono','na-email'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
+  ['m-documento','m-fechanac','m-nombres','m-apellidos','m-grupo','m-obs','m-direccion','m-buscaracu','na-nombre','na-telefono','na-email'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
   $('#m-tipodoc').value='RC'; $('#m-genero').value=''; $('#m-sede').value=''; $('#m-jornada').value='Única';
+  $('#m-zona').value=''; $('#m-piar').value='';
   $('#acu-matches').innerHTML='';
 }
 $('#btn-mat-cancel').addEventListener('click', cancelarEdicion);
@@ -421,6 +454,8 @@ window.editarMatricula = id=>{
   $('#m-nombres').value = m.nombres||''; $('#m-apellidos').value = m.apellidos||'';
   $('#m-sede').value = m.sede||''; $('#m-grado').value = m.grado||'Sexto (6°)';
   $('#m-grupo').value = m.grupo||''; $('#m-jornada').value = m.jornada||'Única';
+  $('#m-direccion').value = m.direccion||''; $('#m-zona').value = m.zona||'';
+  $('#m-piar').value = m.categoriaPIAR||'';
   $('#m-obs').value = m.observaciones||'';
   if(m.acudienteId) elegirAcudiente(m.acudienteId);
   $('#btn-mat-cancel').classList.remove('hide');
@@ -615,7 +650,7 @@ function renderMatricula(){
   </tr></thead><tbody>${lista.map(m=>{
     const acu = m.acudienteId ? acudientes.find(a=>a.id===m.acudienteId) : null;
     return `<tr>
-    <td><strong>${esc(m.apellidos)} ${esc(m.nombres)}</strong></td>
+    <td><strong>${esc(m.apellidos)} ${esc(m.nombres)}</strong>${m.categoriaPIAR?` <span title="${esc(m.categoriaPIAR)}">🧩</span>`:''}${m.zona?` <span style="color:var(--muted);font-size:.74rem">(${esc(m.zona)})</span>`:''}</td>
     <td>${esc(m.tipoDoc||'')} ${esc(m.documento||'—')}</td>
     <td>${esc(m.grado||'—')}${m.grupo?'-'+esc(m.grupo):''}</td>
     <td>${esc(m.sede||'—')}</td>
@@ -655,13 +690,25 @@ function renderResumen(){
   $('#r-sinacu').innerHTML = sinAcu.length
     ? `<div class="tableScroll"><table><thead><tr><th>Estudiante</th><th>Grado-Grupo</th><th>Sede</th></tr></thead><tbody>${sinAcu.map(m=>`<tr><td>${esc(m.apellidos)} ${esc(m.nombres)}</td><td>${esc(m.grado||'—')}${m.grupo?'-'+esc(m.grupo):''}</td><td>${esc(m.sede||'—')}</td></tr>`).join('')}</tbody></table></div>`
     : '<div class="empty">✅ Todos los estudiantes activos tienen acudiente.</div>';
+
+  // Cruce con PIAR: solo lectura, por nombre normalizado (no hay un id
+  // compartido entre lv_matricula y las fichas de Inclusión — ver CLAUDE.md).
+  const piars = lsRead('piar').filter(p=>!p._eliminado);
+  const nombresConPiar = new Set(piars.map(p=>normN(p.estNombre)));
+  const conCategoria = activos.filter(m=>m.categoriaPIAR);
+  const sinFicha = conCategoria.filter(m=>!nombresConPiar.has(normN(`${m.nombres} ${m.apellidos}`)));
+  $('#r-sinpiar').innerHTML = !conCategoria.length
+    ? '<div class="empty">Ningún estudiante activo tiene marcada una categoría de discapacidad/capacidad excepcional en su matrícula todavía.</div>'
+    : sinFicha.length
+      ? `<div class="tableScroll"><table><thead><tr><th>Estudiante</th><th>Grado-Grupo</th><th>Categoría</th></tr></thead><tbody>${sinFicha.map(m=>`<tr><td>${esc(m.apellidos)} ${esc(m.nombres)}</td><td>${esc(m.grado||'—')}${m.grupo?'-'+esc(m.grupo):''}</td><td>${esc(m.categoriaPIAR)}</td></tr>`).join('')}</tbody></table></div>`
+      : '<div class="empty">✅ Todos los estudiantes con categoría marcada ya tienen ficha PIAR.</div>';
 }
 
 $('#btn-export-csv').addEventListener('click', ()=>{
-  const filas = [['Apellidos','Nombres','TipoDoc','Documento','FechaNacimiento','Genero','Sede','Grado','Grupo','Jornada','Estado','Acudiente','TelefonoAcudiente']];
+  const filas = [['Apellidos','Nombres','TipoDoc','Documento','FechaNacimiento','Genero','Sede','Grado','Grupo','Jornada','Direccion','Zona','CategoriaPIAR','Estado','Acudiente','TelefonoAcudiente']];
   matricula.forEach(m=>{
     const acu = m.acudienteId ? acudientes.find(a=>a.id===m.acudienteId) : null;
-    filas.push([m.apellidos,m.nombres,m.tipoDoc,m.documento,m.fechaNacimiento,m.genero,m.sede,m.grado,m.grupo,m.jornada,m.estado||'activo',acu?acu.nombreAcudiente:'',acu?acu.telefono:'']);
+    filas.push([m.apellidos,m.nombres,m.tipoDoc,m.documento,m.fechaNacimiento,m.genero,m.sede,m.grado,m.grupo,m.jornada,m.direccion||'',m.zona||'',m.categoriaPIAR||'',m.estado||'activo',acu?acu.nombreAcudiente:'',acu?acu.telefono:'']);
   });
   const csv = filas.map(f=>f.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});

@@ -2,6 +2,42 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (ago 1, 2026 — sesión 31c): campos de SIMAT en Matrícula (zona/dirección + discapacidad/PIAR) — CÓDIGO LISTO, sin desplegar
+
+- Richard adjuntó la ficha de matrícula prometida: no era un formato del colegio, es una
+  **exportación real de SIMAT** (sistema nacional) de una estudiante real, con ~40 campos
+  oficiales (identificación, dirección/zona, salud, víctima del conflicto, SISBEN/estrato,
+  discapacidad/capacidades excepcionales, familiares). Antes de copiar todo el catálogo a
+  la tabla más sensible del proyecto, se le preguntó (AskUserQuestion, multiSelect) qué
+  grupos agregar — eligió **Zona y dirección** + **Discapacidad/capacidades excepcionales**
+  (dejó fuera salud básica: EPS/tipo de sangre).
+- **`modulos/20-matricula.html`** gana 3 campos nuevos en el formulario (sin migración SQL,
+  JSONB): `direccion` (texto), `zona` (Rural/Urbana) y `categoriaPIAR` — este último
+  **reutiliza el catálogo `CATEGORIAS_PIAR` que ya existía en `inclusion-catalogo.js`**
+  (creado para el módulo 11-Inclusión, explícitamente etiquetado ahí "SIMAT, para el
+  PIAR") en vez de inventar uno nuevo — mismo vocabulario en los dos lados. Se agrega
+  `inclusion-catalogo.js` como script nuevo en el módulo (mismo archivo compartido, sin
+  duplicar el catálogo).
+- **Cruce nuevo en Resumen: "🧩 Posible necesidad de PIAR sin ficha registrada"** — de
+  solo lectura, compara los estudiantes activos con `categoriaPIAR` marcada contra
+  `lv_piar` (las fichas reales del módulo de Inclusión) por nombre normalizado (`normN`,
+  sin tildes/mayúsculas — no existe un id compartido entre ambas tablas, documentado como
+  limitación conocida). Avisa cuáles NO tienen ficha todavía, para que coordinación/el
+  orientador los revise; no crea ni modifica nada en Inclusión, es solo un aviso.
+  `lv_piar` agregado a `LV_SYNC_TABLAS` del módulo (antes no lo descargaba).
+- En la tabla de matriculados, un ícono 🧩 junto al nombre (con `title` = la categoría)
+  cuando aplica, y la zona entre paréntesis. CSV exportado también incluye los 3 campos
+  nuevos.
+- SW **v106**. `node --check` limpio en los 3 bloques `<script>` de `20-matricula.html` y
+  en `inclusion-catalogo.js`; balance de
+  `div/table/tr/td/th/label/select/button/section` verificado (57/57 · 4/4 · 8/8 · 19/19
+  · 19/19 · 30/30 · 14/14 · 17/17 · 3/3).
+- **PENDIENTE:** push; que Richard registre o edite una matrícula marcando Zona y una
+  categoría de discapacidad/capacidad excepcional, confirme que se ve el ícono 🧩 en la
+  tabla, y que en Resumen aparece (o no) en la lista de "sin ficha PIAR" según corresponda.
+  Salud básica (EPS/tipo de sangre) quedó descartada por ahora — se puede retomar si hace
+  falta más adelante, mismo patrón.
+
 ## ▶ AJUSTE (ago 1, 2026 — sesión 31b): importar estudiantes de Matrícula al curso — CÓDIGO LISTO, sin desplegar
 
 - **Retoma el pendiente señalado desde la sesión 25c** ("conectar matrícula con los rosters
