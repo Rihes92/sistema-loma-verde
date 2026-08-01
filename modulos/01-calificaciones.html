@@ -80,7 +80,7 @@
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
-<script>window.LV_SYNC_TABLAS=['lv_cursos','lv_estudiantes','lv_calificaciones','lv_as_asistencia','lv_herramientas','lv_malla','lv_docentes','lv_asignaciones','lv_observador'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_cursos','lv_estudiantes','lv_calificaciones','lv_as_asistencia','lv_herramientas','lv_malla','lv_docentes','lv_asignaciones','lv_observador','lv_matricula'];</script>
 <script src="../sync.js"></script>
 <header class="appbar">
   <img src="../Logo/logo.jpg" alt="Logo LV" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
@@ -655,6 +655,7 @@ function renderCursos(){
       <td class="c">${n}</td>
       <td class="c no-print">
         <button class="btn sm" onclick="goPlanilla('${c.id}')">Notas</button>
+        <button class="btn sm sec" onclick="importarDeMatricula('${c.id}')" title="Traer los estudiantes ACTIVOS de la matrícula oficial para este grado/grupo/sede (no copia documento ni fecha de nacimiento)">📥 Matrícula</button>
         <button class="btn sm bad" onclick="delCurso('${c.id}')">Eliminar</button>
       </td></tr>`;}).join('')}
   </tbody></table></div>`;
@@ -670,6 +671,41 @@ window.delCurso=async id=>{
 window.goPlanilla=id=>{
   document.querySelector('[data-tab="planilla"]').click();
   $('#p-curso').value=id; renderPlanilla();
+};
+
+// ---- Importar estudiantes desde la Matrícula oficial (lv_matricula) ----
+// Trae solo NOMBRE (apellidos+nombres) + un enlace de referencia (matriculaId).
+// A propósito NO copia documento ni fecha de nacimiento — esos datos son
+// sensibles y viven exclusivamente en Matrícula (solo coordinación los ve).
+// Coincide por grado+grupo, y por sede solo si AMBOS registros la traen
+// (mismo criterio que ya usa el proyecto para no bloquear por falta de dato).
+// Es una importación puntual: se puede repetir cuando lleguen matriculados
+// nuevos, nunca borra ni edita lo que el docente ya tiene cargado.
+window.importarDeMatricula=async function(cursoId){
+  const curso=cursos.find(c=>c.id===cursoId);
+  if(!curso)return;
+  const matricula=await dbAll('matricula');
+  if(!matricula.length){toast('No hay datos de matrícula cargados todavía en este equipo (los trae Coordinación → Matrícula).');return;}
+  const candidatos=matricula.filter(m=>
+    (m.estado||'activo')==='activo' &&
+    !m._eliminado &&
+    String(m.grado||'').trim()===String(curso.grado||'').trim() &&
+    String(m.grupo||'').trim()===String(curso.grupo||'').trim() &&
+    (!curso.sede || !m.sede || String(m.sede).trim()===String(curso.sede).trim())
+  );
+  if(!candidatos.length){toast(`No hay estudiantes activos en matrícula para ${curso.grado} ${curso.grupo||''}.`);return;}
+  const existentes=new Set(estudiantes.filter(e=>e.cursoId===cursoId).map(e=>normN(e.nombre)));
+  const nuevos=candidatos.map(m=>({m,nombre:`${(m.apellidos||'').trim()} ${(m.nombres||'').trim()}`.replace(/\s+/g,' ').trim()}))
+    .filter(x=>x.nombre && !existentes.has(normN(x.nombre)));
+  if(!nuevos.length){toast(`Ya tienes cargados los ${candidatos.length} estudiante(s) activos de matrícula para este grupo.`);return;}
+  if(!confirm(`Se importarán ${nuevos.length} estudiante(s) desde la matrícula oficial (${curso.grado} ${curso.grupo||''}). Solo se copia el nombre — no documento ni fecha de nacimiento. ¿Continuar?`))return;
+  for(const {m,nombre} of nuevos){
+    const est={id:uid(),cursoId,nombre,matriculaId:m.id,creado:Date.now()};
+    await dbPut('estudiantes',est); estudiantes.push(est);
+  }
+  toast(`${nuevos.length} estudiante(s) importado(s) desde matrícula ✓`);
+  renderCursos();
+  if($('#p-curso').value===cursoId)renderPlanilla();
 };
 
 function fillCursoSelects(){

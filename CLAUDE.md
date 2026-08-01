@@ -2,6 +2,42 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (ago 1, 2026 — sesión 31b): importar estudiantes de Matrícula al curso — CÓDIGO LISTO, sin desplegar
+
+- **Retoma el pendiente señalado desde la sesión 25c** ("conectar matrícula con los rosters
+  por-curso… punto de riesgo alto, no hacer sin planificarlo"). Antes de tocar código se
+  investigó a fondo la estructura real de ambos sistemas (con un subagente de solo lectura)
+  y se le preguntó a Richard qué tan profunda debía ser la conexión — confirmó la opción de
+  **menor riesgo: importación puntual al crear/gestionar el curso**, no sincronía
+  permanente (eso habría exigido resolver que hoy un mismo estudiante real vive como
+  registros sueltos independientes en cada curso-materia-docente, sin ningún identificador
+  compartido, y que `lv_matricula` es sensible — documento/fecha de nacimiento, RLS solo
+  coordinación — mientras `lv_cursos`/`lv_estudiantes` los ve cualquier docente).
+- **Botón nuevo "📥 Matrícula" por curso** en `01-calificaciones.html` → pestaña Cursos →
+  tabla "Mis cursos" (junto a "Notas"/"Eliminar"). `importarDeMatricula(cursoId)`: busca en
+  `lv_matricula` los estudiantes con `estado==='activo'` cuyo grado+grupo coincidan con el
+  curso (mismo enum de texto que ya comparten los dos formularios, verificado), y la sede
+  solo si AMBOS registros la traen (mismo criterio de "no bloquear por falta de dato" que ya
+  usa el proyecto en `mismoGrupoReal`/`cursoEsMio`). Evita duplicados comparando por nombre
+  normalizado (`normN`, sin tildes/mayúsculas) contra los estudiantes que el curso ya tiene.
+  **A propósito NO copia documento ni fecha de nacimiento** — solo nombre (apellidos +
+  nombres) y un campo nuevo `matriculaId` de referencia (sin más uso todavía, groundwork
+  para el futuro) — así no se expone el dato sensible de matrícula a un docente cualquiera.
+  Es repetible sin riesgo: nunca borra ni edita lo que el docente ya tenía, solo agrega lo
+  que falte; sirve tanto justo al crear el curso como más adelante si llegan matriculados
+  nuevos. Pide confirmación explícita mostrando cuántos se van a importar antes de escribir
+  nada. `lv_matricula` agregado a `LV_SYNC_TABLAS` del módulo (antes no la descargaba).
+- SW **v105**. `node --check`-equivalente limpio; balance de
+  `div/table/tr/td/th/label/select/button/section` verificado (90/90 · 9/9 · 20/20 · 57/57
+  · 51/51 · 38/38 · 10/10 · 36/36 · 7/7).
+- **PENDIENTE:** push; que Richard pruebe con un curso cuyo grado/grupo/sede ya tengan
+  matriculados activos en `20-matricula.html`, toque "📥 Matrícula" y confirme que trae los
+  nombres correctos sin duplicar a quien ya estaba en la lista, y que un curso sin
+  coincidencias avisa claramente en vez de fallar en silencio. Sigue pendiente la conexión
+  MÁS profunda (sincronía permanente / que un retiro en matrícula limpie al estudiante de
+  todas las listas) — descartada a propósito por ahora por el riesgo que señala arriba;
+  retomar solo si esta importación puntual resulta insuficiente en la práctica.
+
 ## ▶ AJUSTE (ago 1, 2026 — sesión 31): feedback post-lanzamiento — 5 mejoras CÓDIGO LISTO, sin desplegar; 2 módulos grandes quedan documentados como backlog
 
 - **Contexto:** tras la presentación del lunes a todos los docentes, Richard recogió
