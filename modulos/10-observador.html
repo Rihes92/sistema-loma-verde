@@ -105,7 +105,7 @@
     <div>
       <div class="card">
         <h2>Mis estudiantes</h2>
-        <label class="fld">Grupo que dirijo
+        <label class="fld"><span id="lbl-grupo-sel">Grupo que dirijo</span>
           <select id="sel-curso"></select>
         </label>
         <label class="fld" style="margin-top:10px">Buscar estudiante
@@ -124,7 +124,11 @@
         <button class="btn sec sm" id="btn-imprimir">🖨️ Imprimir observador</button>
       </div>
 
-      <div class="card">
+      <div class="card hide" id="aviso-solo-lectura">
+        <p class="desc" style="margin:0">🔒 <b>Modo solo lectura</b> — como orientador(a) escolar ves el historial completo de este grupo, pero registrar o editar anotaciones sigue siendo del director(a) de grupo.</p>
+      </div>
+
+      <div class="card" id="card-nueva-anot">
         <h2>Nueva anotación</h2>
         <div class="row">
           <label class="fld">Tipo
@@ -213,6 +217,15 @@ try{ login=JSON.parse(localStorage.getItem('lv_login')||'null'); }catch(_){}
 const esAdmin = !!(login&&login.esAdmin);
 const autor = login ? (login.nombre||'Docente') : 'Docente';
 
+// Orientador(a) escolar designado (Coordinación → Institución, módulo 22) —
+// ago 2026. Ve TODO el observador en modo SOLO LECTURA (le da contexto de
+// convivencia antes de que le remitan un caso formal); editar/crear sigue
+// siendo del director de grupo. Respaldado por RLS: "orientador_lee_todo"
+// en lv_observador (migracion_orientacion.sql) solo da SELECT, nunca
+// insert/update/delete.
+const SOY_ORIENTADOR = !!(login && login.docenteId && typeof LV_INST!=='undefined'
+  && LV_INST.orientadorDocenteId() && LV_INST.orientadorDocenteId()===login.docenteId);
+
 // normaliza "6°" → "6", "601" → "601"
 const norm = v => String(v??'').replace(/[°\s]/g,'').toLowerCase();
 
@@ -222,10 +235,24 @@ function gruposDirigidos(){
   return LV_PERM.gruposDirigidos(lsRead('cursos'), lsRead('docentes'));
 }
 
+// Grupos que puedo VER (no necesariamente editar) — admin y orientador ven
+// TODOS los cursos del colegio; cualquier otro docente, solo los que dirige.
+function gruposVisibles(){
+  if(SOY_ORIENTADOR && !esAdmin) return lsRead('cursos');
+  return gruposDirigidos();
+}
+// ¿Puedo escribir (crear/editar/borrar anotaciones) en este grupo? Admin:
+// siempre. Cualquier otro (incluida la orientadora): solo si de verdad lo
+// dirige — ver el colegio entero no da permiso de editar el de otro grupo.
+function puedeEditarGrupo(key){
+  if(esAdmin) return true;
+  return gruposDirigidos().some(c=>norm(c.grado)+'-'+norm(c.grupo)===key);
+}
+
 // deduplicar cursos por grado-grupo (existen por materia)
-function gruposUnicos(){
+function gruposUnicos(origen){
   const vistos={}, out=[];
-  gruposDirigidos().forEach(c=>{
+  (origen || gruposDirigidos()).forEach(c=>{
     const k=norm(c.grado)+'-'+norm(c.grupo);
     if(!vistos[k]){ vistos[k]=1; out.push({key:k, grado:c.grado, grupo:c.grupo}); }
   });
@@ -254,10 +281,14 @@ const badgeTipo = (t,icono) => `<span class="badge b-${claseTipo(t)}">${icono?ic
 let grupoSel=null, estSel=null;
 
 function initSelector(){
-  const grupos = gruposUnicos();
+  if(SOY_ORIENTADOR && !esAdmin){
+    document.getElementById('lbl-grupo-sel').textContent = 'Grupo (todos — orientación escolar, solo lectura)';
+  }
+  const grupos = gruposUnicos(gruposVisibles());
   if(!grupos.length){
-    document.getElementById('card-sin-grupo').style.display = esAdmin ? 'none' : 'block';
-    if(esAdmin){ document.getElementById('zona-principal').style.display='grid'; pintarEstudiantes(); }
+    const puedeVerVacio = esAdmin || SOY_ORIENTADOR;
+    document.getElementById('card-sin-grupo').style.display = puedeVerVacio ? 'none' : 'block';
+    if(puedeVerVacio){ document.getElementById('zona-principal').style.display='grid'; pintarEstudiantes(); }
     return;
   }
   document.getElementById('zona-principal').style.display='grid';
@@ -273,8 +304,8 @@ function pintarEstudiantes(){
   const cont=document.getElementById('lista-est');
   const filtro=norm(document.getElementById('buscar-est').value||'');
   let ests = grupoSel ? estudiantesDe(grupoSel) : [];
-  if(esAdmin && !grupoSel){
-    // admin sin cursos definidos: mostrar todos los estudiantes
+  if((esAdmin||SOY_ORIENTADOR) && !grupoSel){
+    // admin/orientador sin cursos definidos: mostrar todos los estudiantes
     ests = lsRead('estudiantes');
   }
   if(filtro) ests = ests.filter(e=>norm(e.nombre).includes(filtro));
@@ -294,6 +325,9 @@ function seleccionarEst(e){
   document.getElementById('zona-est').style.display='block';
   document.getElementById('tit-est').textContent='📔 '+e.nombre;
   document.getElementById('n-fecha').value=hoyISO();
+  const soloLectura = SOY_ORIENTADOR && !puedeEditarGrupo(grupoSel);
+  document.getElementById('card-nueva-anot').classList.toggle('hide', soloLectura);
+  document.getElementById('aviso-solo-lectura').classList.toggle('hide', !soloLectura);
   pintarEstudiantes();
   pintarHistorial();
 }
@@ -309,6 +343,7 @@ function pintarResumen(lista){
 
 function pintarHistorial(){
   if(!estSel) return;
+  const soloLectura = SOY_ORIENTADOR && !puedeEditarGrupo(grupoSel);
   const filtro=document.getElementById('f-tipo').value;
   let lista=obsDe(estSel);
   pintarResumen(lista);
@@ -322,8 +357,8 @@ function pintarHistorial(){
         <span class="meta">${fmtF(o.fecha)} · registró: ${esc(o.autor||'—')}${o.origen==='planilla'?' (desde la clase)':''}</span>
         <span style="margin-left:auto;display:flex;gap:6px">
           ${o.fotoRuta?`<button class="btn sec sm" onclick="verFotoObs('${esc(o.fotoRuta)}')">📷 Ver foto</button>`:''}
-          <button class="btn sec sm" onclick="agregarSeguimiento('${esc(o.id)}')">➕ Seguimiento</button>
-          <button class="btn bad sm" onclick="borrarAnotacion('${esc(o.id)}')">🗑️</button>
+          ${soloLectura?'':`<button class="btn sec sm" onclick="agregarSeguimiento('${esc(o.id)}')">➕ Seguimiento</button>
+          <button class="btn bad sm" onclick="borrarAnotacion('${esc(o.id)}')">🗑️</button>`}
         </span>
       </div>
       <div class="desc-txt">${esc(o.descripcion)}</div>
@@ -335,7 +370,7 @@ function pintarHistorial(){
       ${o.compromiso?`<div class="comp"><b>Compromiso:</b> ${esc(o.compromiso)}
         ${o.fechaCompromiso?` <span class="meta">(límite: ${fmtF(o.fechaCompromiso)})</span>`:''}
         &nbsp;<span class="badge b-${esc(o.estado||'abierto')}">${esc(o.estado||'abierto')}</span>
-        ${o.estado==='abierto'?`
+        ${(o.estado==='abierto' && !soloLectura)?`
           <span style="margin-left:6px">
             <button class="btn ok sm" onclick="marcarCompromiso('${esc(o.id)}','cumplido')">✔ Cumplido</button>
             <button class="btn bad sm" onclick="marcarCompromiso('${esc(o.id)}','incumplido')">✖ Incumplido</button>

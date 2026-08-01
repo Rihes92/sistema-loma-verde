@@ -114,6 +114,22 @@ create policy "solo_orientador" on lv_orientacion_detalle
   using (public.es_orientador())
   with check (public.es_orientador());
 
+-- ── Lectura ampliada para el orientador: ve el Observador de TODO el
+--    colegio (decisión de Richard, ago 2026 — le da contexto de convivencia
+--    ANTES de que le remitan un caso formal, que es justo su trabajo), pero
+--    SOLO LECTURA — crear/editar/borrar anotaciones sigue siendo del
+--    director de grupo (política "por_curso" ya existente en
+--    migracion_etapa2_fase2.sql, que NO se toca). Esta es una política
+--    ADICIONAL de SELECT — en Postgres, varias políticas para el mismo
+--    comando se combinan con OR — así que solo AMPLÍA la lectura, nunca
+--    reduce ni afecta escritura (insert/update/delete siguen exigiendo
+--    lv_est_visible/lv_acceso_total, igual que para cualquier otro
+--    docente sin ser director de ese grupo).
+drop policy if exists "orientador_lee_todo" on lv_observador;
+create policy "orientador_lee_todo" on lv_observador
+  for select to authenticated
+  using (public.es_orientador());
+
 select 'lv_orientacion_casos y lv_orientacion_detalle listas' as resultado;
 
 -- ═══════════════════════════════════════════════════════════════════════
@@ -129,3 +145,4 @@ select 'lv_orientacion_casos y lv_orientacion_detalle listas' as resultado;
 -- drop table if exists lv_orientacion_detalle;
 -- drop table if exists lv_orientacion_casos;
 -- drop function if exists public.es_orientador();
+-- drop policy if exists "orientador_lee_todo" on lv_observador;

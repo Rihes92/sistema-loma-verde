@@ -12,7 +12,7 @@
      Ver migracion_orientacion.sql para la arquitectura de privacidad. -->
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script>window.LV_SYNC_TABLAS=['lv_orientacion_casos','lv_orientacion_detalle','lv_docentes','lv_institucion'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_orientacion_casos','lv_orientacion_detalle','lv_docentes','lv_institucion','lv_cursos','lv_estudiantes','lv_asignaciones'];</script>
 <script src="../sync.js"></script>
 <style>
   :root{--primary:#1e3a8a;--primary-light:#3b82f6;--bg:#f1f5f9;--surface:#fff;--text:#1f2937;--muted:#475569;--border:#e2e8f0;--ok:#15803d;--bad:#dc2626;--warn:#b45309;--radius:12px;--shadow:0 1px 3px rgba(0,0,0,.08)}
@@ -106,6 +106,17 @@
           (recibido / en proceso / cerrado) pero no el detalle que registre el orientador — es privado desde
           que lo toma, para proteger la información de salud y familia del estudiante.</p>
         <div class="row">
+          <label class="fld">Curso (de tus materias)
+            <select id="rm-curso"><option value="">— elige un curso —</option></select>
+          </label>
+          <label class="fld">Estudiante
+            <select id="rm-est"><option value="">— elige un curso primero —</option></select>
+          </label>
+        </div>
+        <label style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:.82rem;color:var(--muted);cursor:pointer">
+          <input type="checkbox" id="rm-manual" style="width:16px;height:16px"> No lo encuentro en la lista (estudiante de otro curso, u ocurrido fuera de clase) — escribir el nombre a mano
+        </label>
+        <div id="rm-manual-campos" class="row hide" style="margin-top:8px">
           <label class="fld">Nombre del estudiante<input id="rm-estudiante" placeholder="Nombres y apellidos"></label>
           <label class="fld">Grado<input id="rm-grado" placeholder="Ej: Noveno (9°)"></label>
           <label class="fld">Grupo/curso<input id="rm-grupo" placeholder="Ej: 1"></label>
@@ -229,15 +240,71 @@ document.getElementById('tabs').addEventListener('click', e=>{
 const ESTADO_LBL = {remitido:'Recibido', en_proceso:'En proceso', cerrado:'Cerrado'};
 const ESTADO_CLS = {remitido:'b-rec', en_proceso:'b-pro', cerrado:'b-cer'};
 
+// ── Selector Curso → Estudiante para "Remitir un caso" ──────────
+// Fuente: los propios cursos/estudiantes del docente (mismos que ya ve en
+// Calificaciones/Asistencia) — el servidor (RLS por_curso) ya solo le
+// entrega SUS cursos, y aquí se filtra otra vez con LV_PERM.cursoEsMio()
+// como refuerzo, mismo patrón del resto del proyecto. lv_matricula (el
+// roster oficial completo) NO se usa aquí a propósito: es coordinación-
+// only, un docente normal no tiene acceso de servidor a esa tabla.
+const todosCursos = lsRead('lv_cursos');
+const todosEstudiantes = lsRead('lv_estudiantes');
+const todasAsignaciones = lsRead('lv_asignaciones');
+const todosDocentesArr = lsRead('lv_docentes');
+function misCursos(){
+  return todosCursos.filter(c=>!c._eliminado && LV_PERM.cursoEsMio(c, todasAsignaciones, todosDocentesArr))
+    .sort((a,b)=> String(a.grado||'').localeCompare(String(b.grado||''),'es') || String(a.grupo||'').localeCompare(String(b.grupo||''),'es') || String(a.nombre||'').localeCompare(String(b.nombre||''),'es'));
+}
+function poblarCursosRemitir(){
+  const sel = $('#rm-curso');
+  const cursos = misCursos();
+  if(!cursos.length){
+    sel.innerHTML = '<option value="">— no tienes cursos propios, usa la opción manual —</option>';
+    return;
+  }
+  sel.innerHTML = '<option value="">— elige un curso —</option>' + cursos.map(c=>
+    `<option value="${c.id}">${esc(c.grado||'—')}${c.grupo?'-'+esc(c.grupo):''} · ${esc(c.nombre||c.materia||'')}</option>`
+  ).join('');
+}
+function poblarEstudiantesRemitir(cursoId){
+  const sel = $('#rm-est');
+  if(!cursoId){ sel.innerHTML = '<option value="">— elige un curso primero —</option>'; return; }
+  const lista = todosEstudiantes.filter(e=>e.cursoId===cursoId && !e._eliminado).sort((a,b)=>String(a.nombre||'').localeCompare(String(b.nombre||''),'es'));
+  if(!lista.length){ sel.innerHTML = '<option value="">— ese curso no tiene estudiantes cargados —</option>'; return; }
+  sel.innerHTML = '<option value="">— elige un estudiante —</option>' + lista.map(e=>`<option value="${e.id}">${esc(e.nombre)}</option>`).join('');
+}
+poblarCursosRemitir();
+$('#rm-curso').addEventListener('change', e=>poblarEstudiantesRemitir(e.target.value));
+$('#rm-manual').addEventListener('change', e=>{
+  const manual = e.target.checked;
+  $('#rm-manual-campos').classList.toggle('hide', !manual);
+  $('#rm-curso').closest('label').parentElement.querySelectorAll('select').forEach(s=>s.disabled=manual);
+});
+
 // ── REMITIR ───────────────────────────────────────────────────
 document.getElementById('btn-remitir').addEventListener('click', ()=>{
-  const estudiante = $('#rm-estudiante').value.trim();
+  const manual = $('#rm-manual').checked;
+  let estudiante = '', grado = '', grupo = '';
+  if(manual){
+    estudiante = $('#rm-estudiante').value.trim();
+    grado = $('#rm-grado').value.trim();
+    grupo = $('#rm-grupo').value.trim();
+    if(!estudiante){ toast('Escribe el nombre del estudiante.'); return; }
+  } else {
+    const cursoId = $('#rm-curso').value;
+    const estId = $('#rm-est').value;
+    if(!cursoId){ toast('Elige el curso del estudiante (o marca la opción manual).'); return; }
+    if(!estId){ toast('Elige el estudiante de la lista.'); return; }
+    const curso = todosCursos.find(c=>c.id===cursoId);
+    const est = todosEstudiantes.find(e=>e.id===estId);
+    if(!est){ toast('No se encontró ese estudiante — intenta de nuevo.'); return; }
+    estudiante = est.nombre; grado = curso?curso.grado||'':''; grupo = curso?curso.grupo||'':'';
+  }
   const motivo = $('#rm-motivo').value.trim();
-  if(!estudiante){ toast('Escribe el nombre del estudiante.'); return; }
   if(!motivo){ toast('Escribe el motivo de la remisión.'); return; }
   if(!MI_DOCENTE_ID){ toast('No se pudo identificar tu ficha de docente — pídele a coordinación que la revise.'); return; }
   const reg = {
-    id: uid(), estudiante, grado: $('#rm-grado').value.trim(), grupo: $('#rm-grupo').value.trim(),
+    id: uid(), estudiante, grado, grupo,
     motivo, accionesPedagogicas: $('#rm-acciones').value.trim(), observaciones: $('#rm-obs').value.trim(),
     estado: 'remitido',
     remitidoPorId: MI_DOCENTE_ID, remitidoPorNombre: quienEsta(),
@@ -246,6 +313,9 @@ document.getElementById('btn-remitir').addEventListener('click', ()=>{
   casos = casos.filter(c=>c.id!==reg.id); casos.push(reg);
   guardarUno('lv_orientacion_casos', reg);
   ['rm-estudiante','rm-grado','rm-grupo','rm-motivo','rm-acciones','rm-obs'].forEach(id=>document.getElementById(id).value='');
+  $('#rm-curso').value=''; poblarEstudiantesRemitir(''); $('#rm-manual').checked=false;
+  $('#rm-manual-campos').classList.add('hide');
+  $('#rm-curso').closest('label').parentElement.querySelectorAll('select').forEach(s=>s.disabled=false);
   toast('✅ Remisión enviada a orientación escolar.');
   renderMisRemisiones();
 });

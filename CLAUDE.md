@@ -85,16 +85,59 @@
   `div/table/tr/td/th/label/select/button/section` verificado en `22-orientacion.html`
   tras agregar lo imprimible (71/71 · 7/7 · 15/15 · 29/29 · 29/29 · 21/21 · 3/3 · 10/10 ·
   2/2).
-- **PENDIENTE:** correr `migracion_orientacion.sql` en Supabase; push; que Richard: (a)
-  en Coordinación → Resumen → Institución, designe a alguien como orientador(a) escolar
-  (NO en la pestaña Roles); (b) con una cuenta docente cualquiera, remita un caso de
-  prueba desde "Orientación Escolar" y confirme que ve el estado y puede imprimir su
-  CE-F001, pero no le aparece una pestaña "Casos"; (c) con la cuenta del orientador
-  designado, confirme que SÍ ve la pestaña "Casos", el CE-F001 remitido, puede llenar y
-  guardar la ficha de intervención/entrevistas/remisiones/seguimiento, cambiar el estado,
-  e imprimir cada uno de los 5 formatos y que se vean bien con el membrete; (d) con la
-  cuenta de coordinación (sin ser el orientador), confirme que ve la lista de casos, el
-  estado/CE-F001 (y lo puede imprimir), pero el detalle sensible le aparece bloqueado. **NO
+- **Ajuste el mismo día, ronda 3 (Richard probó con la cuenta real de la orientadora —
+  María Mónica Olea Muñoz — y trajo 2 pedidos más de alcance):**
+  1. **Selector de curso/estudiante al remitir un caso** (`22-orientacion.html`): los
+     campos de texto libre "Nombre del estudiante"/"Grado"/"Grupo" se reemplazaron por un
+     desplegable en cascada **Curso → Estudiante**, sourced de `lv_cursos`/`lv_estudiantes`
+     — los MISMOS que el docente ya ve en Calificaciones/Asistencia (agregados a
+     `LV_SYNC_TABLAS` junto con `lv_asignaciones`). Filtrado con `LV_PERM.cursoEsMio()`
+     como refuerzo cliente (la RLS `por_curso` del servidor ya solo le entrega sus propios
+     cursos). A propósito NO se usa `lv_matricula` (el roster oficial completo) como
+     fuente — esa tabla es `es_coordinacion()`-only, un docente normal no tiene acceso de
+     servidor a ella. Checkbox **"No lo encuentro en la lista"** revela los 3 campos de
+     texto libre como respaldo (para un estudiante que no es de ninguno de sus cursos, o
+     un incidente fuera de clase) — el flujo manual original sigue existiendo, solo dejó
+     de ser el único camino.
+  2. **La docente orientadora ahora ve el Observador de TODO el colegio, en modo SOLO
+     LECTURA** (decisión de Richard vía pregunta directa — le da contexto de convivencia
+     antes de que le remitan un caso formal, que es justo su trabajo; académico/notas
+     quedó fuera a propósito, no es su rol). Dos piezas: (a) **RLS nueva** en
+     `lv_observador` (agregada a `migracion_orientacion.sql`, sección al final —
+     `"orientador_lee_todo" for select using (es_orientador())`, política ADICIONAL de
+     SOLO SELECT — en Postgres las políticas del mismo comando se combinan con OR, así que
+     amplía la lectura sin tocar ni debilitar la política `por_curso` existente de
+     insert/update/delete, que sigue exigiendo ser director real de ese grupo); (b)
+     **`10-observador.html`** gana `SOY_ORIENTADOR` + `gruposVisibles()` (admin/orientador:
+     TODOS los cursos; cualquier otro: solo los que dirige, sin cambios) +
+     `puedeEditarGrupo(key)`. Si la orientadora NO dirige el grupo del estudiante
+     seleccionado, la tarjeta "Nueva anotación" se oculta y aparece un aviso
+     "🔒 Modo solo lectura", y en el historial se quitan los botones de Seguimiento/
+     Borrar/Cumplido/Incumplido — el respaldo real es la RLS (si algún botón quedara
+     expuesto por un bug de UI, el servidor rechazaría la escritura de todas formas). Si
+     la orientadora SÍ dirige ese grupo (caso normal si además de orientar da clase),
+     conserva edición completa ahí, igual que cualquier director.
+  SW **v110**. `node --check` limpio en los 3 bloques `<script>` de `22-orientacion.html`
+  y de `10-observador.html`; balance de tags verificado en ambos (22-orientacion: 72/72 ·
+  7/7 · 15/15 · 29/29 · 29/29 · 24/24 · 5/5 · 10/10 · 2/2 — 10-observador: 43/43 · 1/1 ·
+  2/2 · 4/4 · 4/4 · 12/12 · 4/4 · 10/10).
+- **PENDIENTE:** correr `migracion_orientacion.sql` en Supabase (incluye la política nueva
+  de `lv_observador` — si ya lo habías corrido antes de esta ronda, hay que volver a
+  correrlo completo, es idempotente); push; que Richard: (a) confirme en Coordinación →
+  Docentes que la ficha de María Mónica Olea Muñoz tenga el correo
+  `maria.oleamu@gmail.com` guardado EXACTO en el campo de correo (el error "usuario válido
+  pero no vinculado a ningún docente" del login significa que ese campo no coincide
+  todavía — crear el usuario de Auth y designarla orientadora en Institución son pasos
+  aparte de esto); (b) con una cuenta docente cualquiera, remita un caso de prueba desde
+  "Orientación Escolar" usando el selector de curso/estudiante nuevo y confirme que trae
+  el nombre correcto; (c) con la cuenta de la orientadora, confirme que ve el estado y
+  puede imprimir su CE-F001, que le aparece la pestaña "Casos", que puede llenar y guardar
+  la ficha de intervención/entrevistas/remisiones/seguimiento, cambiar el estado, e
+  imprimir cada uno de los 5 formatos; (d) EN OBSERVADOR (no en Orientación), que la
+  orientadora vea el historial de un grupo que NO dirige en modo solo lectura (sin
+  formulario ni botones de escritura) y el de un grupo que si dirige con edición completa;
+  (e) con la cuenta de coordinación (sin ser el orientador), confirme que ve la lista de
+  casos y el CE-F001 en Orientación, pero el detalle sensible le aparece bloqueado. **NO
   hecho a propósito en esta sesión:** el módulo separado de "Actas de reuniones
   institucionales" (Consejo Directivo, Comisión de Evaluación y Promoción, actas de
   compromiso, amonestación) señalado en la misma sesión 31 — sigue en el backlog, sin
