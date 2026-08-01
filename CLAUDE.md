@@ -2,6 +2,127 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (ago 1, 2026 — sesión 31): feedback post-lanzamiento — 5 mejoras CÓDIGO LISTO, sin desplegar; 2 módulos grandes quedan documentados como backlog
+
+- **Contexto:** tras la presentación del lunes a todos los docentes, Richard recogió
+  sugerencias reales de uso y adjuntó 15 formatos/actas oficiales del colegio (algunos ya
+  usados en papel: FA_009 Nivelación, AC_001/002 Actas de compromiso, FBE_001 Amonestación,
+  FAC_007 Acta Comisión de Evaluación y Promoción, Acta de Consejo Directivo, y los 5
+  formatos CE-F001 a CE-F005 de orientación escolar/psico-orientación). Se leyeron todos
+  (texto + tablas) con python-docx antes de tocar código, para que los cambios reflejen el
+  formato REAL del colegio y no una aproximación.
+- **Hecho hoy (5 mejoras, todas de alcance acotado — no tocan RLS ni tablas nuevas):**
+  1. **Asistencia — observación por estudiante** (`05-asistencia.html`): columna nueva "📝"
+     por fila en la planilla diaria — un clic abre un `prompt()` con la nota existente
+     (ej. "se lo llevó la profesora de Artística para el mural"), se guarda dentro del
+     mismo registro `asistencia[cursoId_fecha].observaciones{estId:texto}` — no requiere
+     tabla nueva, es JSONB dentro de lo que ya sincroniza.
+  2. **Asistencia — nota general del día** (mismo archivo): campo de texto arriba de la
+     planilla (`asistencia[clave].nota`) para dejar constancia de por qué no se tomó lista
+     un día (ej. "el docente titular estaba de permiso"). Vive en la MISMA pantalla de
+     Asistencia — cualquiera con acceso a ese curso (el docente, o coordinación si tiene
+     acceso a esa materia/grupo) puede escribirla; no se construyó un panel aparte para
+     coordinación porque el acceso cruzado a la asistencia de otro docente es una pregunta
+     de permisos más grande (ver Etapa 2 · Fase 2, pendiente) — si en la práctica esto no
+     alcanza, hace falta una vista dedicada en Coordinación.
+  3. **Asistencia — vista "multigrado" para primaria** (mismo archivo): checkbox
+     "👨‍👩‍👧‍👦 Ver todos mis grados juntos" (solo aparece si el docente tiene 2+ cursos)
+     que junta a TODOS sus estudiantes de TODOS sus grados en una sola tabla (con columna
+     Grado, ordenada por grado y luego nombre) para pasar lista una sola vez. Por debajo,
+     el guardado sigue escribiendo el registro de asistencia de CADA estudiante en la clave
+     `cursoId_fecha` de SU curso real — así Estadísticas/CSV/citación automática no
+     necesitaron ningún cambio, siguen leyendo por curso individual como siempre.
+  4. **Nivelaciones — observación por estudiante + acta ajustada al formato oficial**
+     (`01-calificaciones.html`): columna "Observación" nueva junto a la nota de nivelación
+     (`cal.nivelacionObs`, texto libre). El acta imprimible se rehízo para acercarse al
+     formato real `FA_009_NIVELACIÓN.docx` que envió Richard: cabecera
+     área/grado/grupo/periodo/docente, tabla de "Actividades valorativas propuestas" (3
+     filas en blanco para llenar a mano — la app no registra actividad por actividad),
+     listado de estudiantes con N°/nota/AP/RP (marca automática según superó o no)/
+     Asistió (en blanco, se firma a mano)/Observaciones, y tres firmas (docente de
+     asignatura, director de grupo, VoBo coordinación) en vez de solo la del docente.
+  5. **Boletín — muestra ambas notas cuando se ganó por nivelación** (`13-boletines.html`):
+     nueva función `defBase(cal)` (definitiva SIN nivelación, separada de `defin(cal)` que
+     sigue aplicando la nivelación como antes). En la fila de cada materia, si el
+     estudiante había REPROBADO con la nota original y la nivelación lo hizo superarla
+     (`dBase<passing` y `d>=passing`), la columna Valoración muestra
+     "`2.4 → 3.5 (niv.)`" en vez de solo la nota final — así el acudiente ve que superó
+     la materia por nivelación, no que sacó esa nota de entrada. Si nunca reprobó, o
+     reprobó y la nivelación no alcanzó a superar la materia, se muestra igual que antes
+     (una sola nota).
+  6. **Comunicados — celular/correo del docente en el mensaje al acudiente**
+     (`06-comunicados.html`): tarjeta "Datos del docente" en Configuración gana 2 campos
+     nuevos (Celular, Correo) que se AUTO-LLENAN una sola vez desde la propia ficha del
+     docente (`lv_docentes`, campos `telefono`/`email` ya gestionados en Coordinación) si
+     el docente nunca los ha tocado en este módulo — editable ahí si quiere usar otro dato
+     solo para lo que ve el acudiente. Se agregan al final de los 4 tipos de comunicado
+     (citación, felicitación, mejoramiento, circular) tanto en el texto de WhatsApp como
+     en el pie de la carta impresa, con la línea "Cualquier respuesta, por favor
+     escríbeme directo a mí: 📱 ... · ✉️ ...", SOLO si el docente tiene alguno de los dos
+     datos cargados (si están vacíos, no aparece nada, no rompe cartas ya usadas).
+  SW **v104**. `node --check`-equivalente limpio en los 4 archivos tocados; balance de
+  `div/table/tr/td/th/label/select/button/section` verificado en los 4 (todos cuadran).
+- **PENDIENTE — push, y que Richard pruebe:** (a) en Asistencia, agregar una observación a
+  un estudiante y confirmar que queda guardada al recargar; activar el modo multigrado con
+  un docente real de primaria de varios grados y confirmar que Estadísticas de cada curso
+  individual sigue funcionando igual; (b) en Nivelaciones, cargar una nota y una
+  observación, imprimir el acta y comparar contra el formato FA_009 real; (c) generar el
+  boletín de un estudiante que haya superado una materia por nivelación y confirmar que
+  aparecen ambas notas; (d) en Comunicados → Configuración, confirmar que el celular/
+  correo se auto-llenó (o completarlo a mano) y enviar una citación de prueba por
+  WhatsApp para ver la línea de contacto al final.
+- **NO hecho hoy — quedan como 2 módulos grandes, cada uno su propia sesión de diseño**
+  (no se improvisó código sobre esto, siguiendo la misma cautela de siempre del proyecto
+  con datos sensibles y con módulos nuevos que tocan RLS):
+  1. **Psico-orientación / Orientación escolar.** Richard adjuntó 5 formatos oficiales que
+     ya usa el colegio en papel y que describen el flujo real completo:
+     `CE-F001` Remisión interna a Docente Orientador (motivo, acciones pedagógicas ya
+     intentadas por el docente, observaciones — es el punto de ENTRADA: un docente
+     cualquiera remite un caso); `CE-F002` Ficha de intervención — la más sensible con
+     diferencia: datos de salud (EPS, diagnóstico médico, tratamiento farmacológico,
+     terapias), datos familiares (madre/padre/cuidador, ocupación, nivel educativo,
+     convivencia), grupo étnico, víctima de conflicto armado, capacidad cognitiva, salud
+     emocional, recomendaciones; `CE-F003` Entrevista con acudiente (motivo, desarrollo,
+     compromisos, próxima citación); `CE-F004` Remisión externa (activación de ruta con
+     una entidad externa — EPS, ICBF, Comisaría — con nota explícita de que NO es un
+     diagnóstico médico y exige confidencialidad); `CE-F005` Seguimiento (número de
+     seguimiento, compromisos anteriores, nuevos acuerdos, próximo encuentro). Es
+     literalmente un módulo de gestión de casos con 5 etapas encadenadas por estudiante,
+     alimentado por CUALQUIER docente (remisión) pero solo editable/visible en profundidad
+     por quien tenga el rol de orientación escolar. La tabla nueva que le corresponde
+     (`lv_orientacion` o similar) tendría que ser de las más restringidas del proyecto —
+     más que `lv_matricula` incluso, porque mezcla salud + convivencia + familia — y exige
+     decidir con Richard: ¿quién tiene ese rol nuevo (un docente específico, o coordinación
+     hace también de orientador)?, ¿los demás docentes pueden ver el estado de un caso que
+     ellos mismos remitieron (CE-F001) o eso ya es privado desde que lo remiten?, ¿se
+     integra con el Observador existente (que ya tiene Situación Tipo I/II/III) o es
+     paralelo? El propio CE-F001 cita el "Plan Nacional de Orientación Escolar" del MEN
+     (2021) como marco — antes de diseñar la tabla conviene revisar esa normativa (web) para
+     no dejar campos legalmente obligatorios por fuera.
+  2. **Actas de reuniones institucionales.** También con formatos reales adjuntos:
+     Acta de Consejo Directivo (formato libre — orden del día, desarrollo por punto,
+     firmas de rector/docentes/padres/estudiantes/representante sector productivo/
+     egresados — este es el más flexible, básicamente un editor de texto estructurado);
+     `FAC_007` Acta de Comisión de Evaluación y Promoción — esta SÍ se podría autollenar en
+     buena parte desde datos que la app ya tiene (grado, periodo, listado de aprobados/
+     reprobados sale directo de `lv_calificaciones` vía `defFinal`, ya usado en Reportes);
+     `AC_001`/`AC_002` Actas de compromiso académico/disciplinario (estudiante, acudiente,
+     áreas en bajo/básico, compromisos — con firma de acudiente/estudiante/director de
+     grupo/coordinación) — estas dos se parecen mucho a lo que ya hace Comunicados
+     (citación) pero con estructura de acta firmada, no de mensaje; `FBE_001` Amonestación
+     (formato corto, casi un anexo del Observador). Antes de construir conviene decidir con
+     Richard: ¿un solo módulo "Actas" con varios tipos de plantilla (como Comunicados ya
+     hace con PLANTILLAS), o las actas de compromiso/amonestación viven mejor DENTRO de
+     Observador/Comunicados (ya tienen el contexto del estudiante ahí) y el módulo nuevo
+     "Actas" queda solo para las institucionales (Consejo Directivo/Académico, Comisión de
+     Evaluación y Promoción)? La Comisión de Evaluación y Promoción en particular es la de
+     mayor valor/menor esfuerzo por el autollenado desde datos reales — buena candidata a
+     hacerse primero si se retoma este backlog.
+  Los 15 archivos originales (formatos + la ficha de matrícula oficial que Richard
+  prometió) quedan en `uploads/` de la sesión de Cowork, no en el repo — si se retoma este
+  trabajo, pedirle a Richard que los vuelva a adjuntar (o guardarlos en una carpeta
+  `Formatos/` del proyecto, mismo patrón que `Mallas/`).
+
 ## ▶ AJUSTE (jul 25, 2026 — sesión 30e): botón para descartar TODOS los borradores sin publicar — CÓDIGO LISTO, sin desplegar
 
 - **Reporte de Richard tras el push de la sesión 30d:** captura con una lista larguísima

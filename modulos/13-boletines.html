@@ -146,16 +146,20 @@ const PERNOM={'1':'Primer periodo','2':'Segundo periodo','3':'Tercer periodo'};
 // ── escala y pesos reales del módulo de Calificaciones ──
 let CFG={scale:{min:1,max:5,passing:3.0,alto:4.0,superior:4.6},weights:{cognitivo:60,acumulativo:25,auto:5,co:5,hetero:5}};
 (function(){ const c=lsRead('config').find?lsRead('config').find(x=>x&&x.id==='grading'):null; if(c) CFG=Object.assign(CFG,c); })();
-function defin(cal){
+// Definitiva SIN nivelación (la calculada solo con las notas del periodo).
+function defBase(cal){
   if(!cal) return 0;
   const v=(cal.cognitivas||[]).filter(n=>typeof n==='number'&&n>0);
   const cog=v.length?v.reduce((a,b)=>a+b,0)/v.length:0;
   const w=CFG.weights;
   const acu=cal.acumulativo||0,au=cal.auto||0,co=cal.co||0,he=cal.hetero||0;
   if(!cog&&!acu&&!au&&!co&&!he) return 0;
-  let def=Math.min(CFG.scale.max,Math.max(CFG.scale.min,(cog*w.cognitivo+acu*w.acumulativo+au*w.auto+co*w.co+he*w.hetero)/100));
+  return Math.min(CFG.scale.max,Math.max(CFG.scale.min,(cog*w.cognitivo+acu*w.acumulativo+au*w.auto+co*w.co+he*w.hetero)/100));
+}
+function defin(cal){
+  const def=defBase(cal);
   // Nivelación: si hay nota de nivelación y es mayor a la definitiva, la reemplaza (ver módulo Calificaciones).
-  if(typeof cal.nivelacion==='number'&&cal.nivelacion>0&&cal.nivelacion>def) def=cal.nivelacion;
+  if(cal&&typeof cal.nivelacion==='number'&&cal.nivelacion>0&&cal.nivelacion>def) return cal.nivelacion;
   return def;
 }
 function desemp(d){
@@ -292,10 +296,14 @@ function construirBoletines(grupoKey, periodo){
     let suma=0,cont=0;
     cursos.forEach(cur=>{
       const cal=notas.find(n=>n.cursoId===cur.id && String(n.periodo)===String(periodo) && est.ids.includes(n.estId));
-      const d=defin(cal);
+      const dBase=defBase(cal), d=defin(cal);
       const inas=cal?(cal.inas||0):0;
       if(d>0){suma+=d;cont++;}
-      filas.push({materia:materiaDe[cur.id], def:d, des:desemp(d), inas});
+      // Si el estudiante había REPROBADO con la nota original y la nivelación
+      // lo hizo superar la materia, se muestran ambas notas en el boletín
+      // (la que reprobó y la de nivelación que le permitió superarla).
+      const superoPorNivelacion = dBase>0 && dBase<CFG.scale.passing && d>=CFG.scale.passing && d>dBase;
+      filas.push({materia:materiaDe[cur.id], def:d, defOriginal: superoPorNivelacion?dBase:null, des:desemp(d), inas});
     });
     // consolidar materias duplicadas (mismo nombre en varios cursos)
     const vist={},filasU=[];
@@ -370,7 +378,7 @@ function htmlBoletin(b, periodo){
     </table>
     <table>
       <tr><th>Asignatura</th><th class="c" style="width:14%">Valoración</th><th class="c" style="width:16%">Desempeño</th><th class="c" style="width:14%">Inasistencias</th></tr>
-      ${b.filas.map(f=>`<tr><td>${esc(f.materia)}</td><td class="c">${f.def?f.def.toFixed(1):'—'}</td><td class="c">${esc(f.des)}</td><td class="c">${f.inas||0}</td></tr>`).join('')}
+      ${b.filas.map(f=>`<tr><td>${esc(f.materia)}</td><td class="c">${f.defOriginal!=null?`<span style="color:#991b1b">${f.defOriginal.toFixed(1)}</span> → <b>${f.def.toFixed(1)}</b> <span style="font-size:7.5pt">(niv.)</span>`:(f.def?f.def.toFixed(1):'—')}</td><td class="c">${esc(f.des)}</td><td class="c">${f.inas||0}</td></tr>`).join('')}
     </table>
     ${b.observacion?`<table><tr><th style="width:20%">Observaciones</th><td>${esc(b.observacion)}</td></tr></table>`:''}
     ${b.observadorAnotaciones&&b.observadorAnotaciones.length?`<table>

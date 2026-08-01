@@ -97,7 +97,7 @@
   <section id="tab-registro">
     <div class="card">
       <div class="row" style="align-items:flex-end">
-        <label class="fld">
+        <label class="fld" id="fld-curso">
           Curso / grupo
           <select id="sel-curso" onchange="selCurso()">
             <option value="">— Seleccionar —</option>
@@ -111,6 +111,18 @@
           <button class="btn sec sm" onclick="marcarTodos('P')" title="Marcar todos Presente">✅ Todos P</button>
           <button class="btn ok sm" onclick="guardar()">💾 Guardar</button>
         </div>
+      </div>
+      <div class="row" id="fila-multigrado" style="display:none;margin-top:10px">
+        <label class="fld" style="flex-direction:row;align-items:center;gap:8px;font-weight:600">
+          <input type="checkbox" id="chk-multigrado" onchange="toggleMultigrado()">
+          <span>👨‍👩‍👧‍👦 Ver todos mis grados juntos (multigrado — pasar lista una sola vez)</span>
+        </label>
+      </div>
+      <div class="row" style="margin-top:10px">
+        <label class="fld" style="flex:1 1 100%">
+          📝 Nota general del día <span class="muted" style="font-weight:400">(ej. "El docente no asistió por permiso — asistencia sin tomar" o cualquier novedad del grupo)</span>
+          <input id="inp-nota-dia" placeholder="Sin novedades" onblur="guardarNotaDia()">
+        </label>
       </div>
     </div>
 
@@ -256,6 +268,7 @@ let asistencia  = lsR('asistencia')  || {}; // {cursoId_fecha: {registros:[{id,e
 let cursoActual = null;
 let fechaActual = hoy();
 let mesVista    = new Date();
+let modoMultigrado = (lsR('multigrado')===true);
 
 function hoy(){return new Date().toISOString().split('T')[0]}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
@@ -283,7 +296,42 @@ function init(){
   document.getElementById('inp-fecha').max   = hoy();
   document.getElementById('inp-anio').value  = new Date().getFullYear();
   poblarSelectores();
+  // El toggle de multigrado solo tiene sentido con 2+ cursos propios
+  // (típico de un docente de primaria con varios grados en un mismo salón).
+  if(cursos.length>1){
+    document.getElementById('fila-multigrado').style.display='block';
+    document.getElementById('chk-multigrado').checked = modoMultigrado;
+  }
+  if(modoMultigrado){
+    document.getElementById('fld-curso').style.display='none';
+    cursoActual = null;
+  }
+  renderLista();
   renderCalendario();
+}
+
+function toggleMultigrado(){
+  modoMultigrado = document.getElementById('chk-multigrado').checked;
+  lsW('multigrado', modoMultigrado);
+  document.getElementById('fld-curso').style.display = modoMultigrado?'none':'flex';
+  if(modoMultigrado) cursoActual = null;
+  else cursoActual = document.getElementById('sel-curso').value || null;
+  renderLista();
+  renderCalendario();
+}
+
+// Todos los estudiantes de TODOS mis cursos, con su cursoId/grado real,
+// ordenados por grado y luego nombre — para pasar lista una sola vez.
+function estudiantesMultigrado(){
+  const lista=[];
+  cursos.forEach(c=>{
+    (estudiantes[c.id]||[]).forEach(e=>lista.push({...e, cursoId:c.id, cursoNombre:c.nombre, grado:c.grado||''}));
+  });
+  lista.sort((a,b)=>{
+    const g = String(a.grado).localeCompare(String(b.grado),'es',{numeric:true});
+    return g!==0 ? g : String(a.nombre).localeCompare(String(b.nombre),'es');
+  });
+  return lista;
 }
 
 function poblarSelectores(){
@@ -309,16 +357,57 @@ function selFecha(){
   renderLista();
 }
 
+// ── NOTA GENERAL DEL DÍA (por curso+fecha; también sirve para que
+//    coordinación deje constancia de por qué no se tomó asistencia,
+//    ej. el docente titular estaba de permiso) ───────────────────
+function claveNotaDia(){
+  // En modo multigrado la nota es del "día" en general (no de un curso
+  // puntual), se guarda contra una clave especial fija por fecha.
+  if(modoMultigrado) return '__multigrado__'+'_'+fechaActual;
+  if(!cursoActual) return null;
+  return cursoActual+'_'+fechaActual;
+}
+function cargarNotaDia(){
+  const key = claveNotaDia();
+  const inp = document.getElementById('inp-nota-dia');
+  inp.value = key ? ((asistencia[key]||{}).nota||'') : '';
+}
+function guardarNotaDia(){
+  const key = claveNotaDia();
+  if(!key) return;
+  const txt = document.getElementById('inp-nota-dia').value.trim();
+  if(!asistencia[key]) asistencia[key]={};
+  asistencia[key].nota = txt;
+  if(modoMultigrado) asistencia[key].fecha = fechaActual;
+  lsW('asistencia', asistencia);
+}
+
+// ── OBSERVACIÓN POR ESTUDIANTE (ej. "se lo llevó otro docente para
+//    la actividad X") — se guarda dentro del registro de ese curso+día,
+//    aunque el estudiante se esté viendo desde la vista multigrado. ──
+function obsClick(estId, cId){
+  const key = cId+'_'+fechaActual;
+  const actual = ((asistencia[key]||{}).observaciones||{})[estId] || '';
+  const txt = prompt('Observación para este estudiante en '+fechaActual+':', actual);
+  if(txt===null) return;
+  if(!asistencia[key]) asistencia[key]={};
+  if(!asistencia[key].observaciones) asistencia[key].observaciones={};
+  if(txt.trim()) asistencia[key].observaciones[estId]=txt.trim();
+  else delete asistencia[key].observaciones[estId];
+  asistencia[key].fecha=fechaActual; asistencia[key].cursoId=cId;
+  lsW('asistencia', asistencia);
+  renderLista();
+}
+
 // ── LISTA DE ASISTENCIA ───────────────────────────────────────
 function renderLista(){
   const wrap = document.getElementById('lista-wrap');
-  if(!cursoActual){wrap.innerHTML='<div class="empty">Selecciona un curso.</div>';return;}
-  const ests = estudiantes[cursoActual]||[];
-  if(!ests.length){wrap.innerHTML='<div class="empty">Sin estudiantes en este grupo.<br>Agrégalos en la pestaña <strong>Cursos y grupos</strong>.</div>';return;}
+  cargarNotaDia();
 
-  const key     = cursoActual+'_'+fechaActual;
-  const regHoy  = asistencia[key] || {};
-  const estados = regHoy.registros || {};
+  const ests = modoMultigrado ? estudiantesMultigrado() : (cursoActual?(estudiantes[cursoActual]||[]).map(e=>({...e,cursoId:cursoActual})):[]);
+
+  if(!modoMultigrado && !cursoActual){wrap.innerHTML='<div class="empty">Selecciona un curso.</div>';return;}
+  if(!ests.length){wrap.innerHTML='<div class="empty">Sin estudiantes '+(modoMultigrado?'en tus grupos':'en este grupo')+'.<br>Agrégalos en la pestaña <strong>Cursos y grupos</strong>.</div>';return;}
 
   const LABELS = {P:{e:'✅',l:'Presente',c:'radio-p'},F:{e:'❌',l:'Falla',c:'radio-f'},T:{e:'⚠️',l:'Tarde',c:'radio-t'},E:{e:'🏥',l:'Excusa',c:'radio-e'}};
 
@@ -326,16 +415,22 @@ function renderLista(){
   for(const[k,v] of Object.entries(LABELS))
     html+=`<span style="color:${k==='P'?'#16a34a':k==='F'?'#dc2626':k==='T'?'#d97706':'#0369a1'}">${v.e} ${v.l}</span>`;
   html+=`</div><div class="tableScroll"><table><thead><tr>
-    <th>#</th><th>Estudiante</th>
+    <th>#</th>${modoMultigrado?'<th>Grado</th>':''}<th>Estudiante</th>
     ${Object.entries(LABELS).map(([k,v])=>`<th class="c" title="${v.l}">${v.e}<br><span style="font-size:.7rem;font-weight:700;opacity:.7">${k}</span></th>`).join('')}
+    <th class="c" title="Observación (ej. lo solicitó otro docente)">📝</th>
   </tr></thead><tbody>`;
 
   ests.forEach((est,i)=>{
-    const actual = estados[est.id]||'P';
-    html+=`<tr><td class="c muted">${i+1}</td><td>${esc(est.nombre)}</td>`;
+    const key     = est.cursoId+'_'+fechaActual;
+    const estados = (asistencia[key]||{}).registros || {};
+    const obs     = (asistencia[key]||{}).observaciones || {};
+    const actual  = estados[est.id]||'P';
+    const tieneObs= !!(obs[est.id]||'').trim();
+    html+=`<tr data-curso="${est.cursoId}"><td class="c muted">${i+1}</td>${modoMultigrado?`<td>${esc(est.grado||'—')}</td>`:''}<td>${esc(est.nombre)}</td>`;
     for(const k of ['P','F','T','E']){
       html+=`<td class="c"><input type="radio" name="est_${est.id}" value="${k}" class="${LABELS[k].c}" ${actual===k?'checked':''}></td>`;
     }
+    html+=`<td class="c"><button type="button" class="btn sec sm" style="padding:3px 8px;${tieneObs?'background:#fef9c3':''}" title="${tieneObs?esc(obs[est.id]):'Agregar observación'}" onclick="obsClick('${est.id}','${est.cursoId}')">${tieneObs?'📝':'➕'}</button></td>`;
     html+=`</tr>`;
   });
   html+=`</tbody></table></div>`;
@@ -344,22 +439,29 @@ function renderLista(){
 
 // ── GUARDAR ───────────────────────────────────────────────────
 function guardar(){
-  if(!cursoActual){toast('Selecciona un curso primero.');return;}
-  const ests = estudiantes[cursoActual]||[];
-  if(!ests.length){toast('No hay estudiantes en este grupo.');return;}
+  const ests = modoMultigrado ? estudiantesMultigrado() : (cursoActual?(estudiantes[cursoActual]||[]).map(e=>({...e,cursoId:cursoActual})):[]);
+  if(!modoMultigrado && !cursoActual){toast('Selecciona un curso primero.');return;}
+  if(!ests.length){toast('No hay estudiantes.');return;}
 
-  const registros = {};
+  // Agrupar por curso real (en multigrado, cada estudiante pertenece a
+  // un curso distinto, pero cada uno guarda su registro en SU propia
+  // clave cursoId_fecha para que Estadísticas/CSV sigan funcionando igual).
+  const porCurso = {};
   ests.forEach(est=>{
     const r = document.querySelector(`input[name="est_${est.id}"]:checked`);
-    registros[est.id] = r?r.value:'P';
+    if(!porCurso[est.cursoId]) porCurso[est.cursoId]={};
+    porCurso[est.cursoId][est.id] = r?r.value:'P';
   });
 
-  const key = cursoActual+'_'+fechaActual;
-  if(!asistencia[key]) asistencia[key]={};
-  asistencia[key].registros = registros;
-  asistencia[key].fecha     = fechaActual;
-  asistencia[key].cursoId   = cursoActual;
+  Object.entries(porCurso).forEach(([cId,registros])=>{
+    const key = cId+'_'+fechaActual;
+    if(!asistencia[key]) asistencia[key]={};
+    asistencia[key].registros = registros;
+    asistencia[key].fecha     = fechaActual;
+    asistencia[key].cursoId   = cId;
+  });
   lsW('asistencia', asistencia);
+  guardarNotaDia();
   toast('Asistencia guardada ✓');
   renderCalendario();
 }
@@ -387,11 +489,13 @@ function renderCalendario(){
   const dias  = new Date(año,mes+1,0).getDate();
   const HOY   = hoy();
 
-  // Fechas con registro para el curso actual
+  // Fechas con registro — del curso actual, o de CUALQUIERA de mis
+  // cursos si estoy en la vista multigrado.
   const conReg = new Set();
-  if(cursoActual){
+  const prefijos = modoMultigrado ? cursos.map(c=>c.id+'_') : (cursoActual?[cursoActual+'_']:[]);
+  if(prefijos.length){
     Object.keys(asistencia).forEach(k=>{
-      if(k.startsWith(cursoActual+'_')){
+      if(prefijos.some(p=>k.startsWith(p))){
         const f = k.split('_').slice(1).join('_');
         if(f.startsWith(`${año}-${String(mes+1).padStart(2,'0')}`)) conReg.add(f);
       }

@@ -163,6 +163,10 @@
         </label>
         <label class="fld" style="flex:0 0 auto">
           <span>&nbsp;</span>
+          <button class="btn sec" id="btn-planilla-excel">📊 Descargar planilla (Excel)</button>
+        </label>
+        <label class="fld" style="flex:0 0 auto">
+          <span>&nbsp;</span>
           <button class="btn sec sm no-print" onclick="window.print()">🖨️ Imprimir</button>
         </label>
       </div>
@@ -958,7 +962,7 @@ async function renderNivelacion(){
   }
   if(!filas.length){wrap.innerHTML='<div class="empty">No hay estudiantes reprobados en este curso y periodo (o aún no hay notas registradas). 🎉</div>';return;}
   wrap.innerHTML=`<table><thead><tr>
-    <th>Estudiante</th><th class="c">Definitiva original</th><th class="c">Nota de nivelación</th><th class="c">Definitiva final</th><th class="c">Desempeño final</th>
+    <th>Estudiante</th><th class="c">Definitiva original</th><th class="c">Nota de nivelación</th><th class="c">Definitiva final</th><th class="c">Desempeño final</th><th>Observación</th>
   </tr></thead><tbody>
   ${filas.map(({est,cal,defOriginal})=>{
     const dFinal=defFinal(cal), d=desempeno(dFinal);
@@ -968,10 +972,12 @@ async function renderNivelacion(){
       <td class="c"><input class="grade-in" type="number" min="1" max="5" step="0.1" value="${cal.nivelacion??''}" data-est="${est.id}" data-niv="1"></td>
       <td class="c def" style="color:${dFinal>=CFG.scale.passing?'var(--ok)':'var(--bad)'}">${dFinal.toFixed(1)}</td>
       <td class="c"><span class="badge ${d.cls}">${d.k}</span></td>
+      <td><input type="text" class="grade-in" placeholder="Opcional" value="${esc(cal.nivelacionObs||'')}" data-est="${est.id}" data-nivobs="1"></td>
     </tr>`;
   }).join('')}
   </tbody></table>`;
   wrap.querySelectorAll('input[data-niv]').forEach(inp=>inp.addEventListener('input',onNivelacionInput));
+  wrap.querySelectorAll('input[data-nivobs]').forEach(inp=>inp.addEventListener('change',onNivelacionObsInput));
 }
 async function onNivelacionInput(e){
   const inp=e.target, estId=inp.dataset.est, cursoId=$('#n-curso').value, periodo=$('#n-periodo').value;
@@ -984,6 +990,12 @@ async function onNivelacionInput(e){
   const defTd=tr.querySelector('.def'); defTd.textContent=dFinal.toFixed(1);
   defTd.style.color=dFinal>=CFG.scale.passing?'var(--ok)':'var(--bad)';
   tr.querySelector('.badge').className='badge '+d.cls; tr.querySelector('.badge').textContent=d.k;
+}
+async function onNivelacionObsInput(e){
+  const inp=e.target, estId=inp.dataset.est, cursoId=$('#n-curso').value, periodo=$('#n-periodo').value;
+  const cal=await getCal(cursoId,periodo,estId);
+  cal.nivelacionObs=inp.value.trim();
+  await dbPut('calificaciones',cal); calMap[cal.id]=cal;
 }
 $('#n-curso').addEventListener('change',renderNivelacion);
 $('#n-periodo').addEventListener('change',renderNivelacion);
@@ -1007,19 +1019,35 @@ function generarActaNivelacion(){
   const materia=(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||curso.materia||'';
   let docenteNombre='';
   try{docenteNombre=(JSON.parse(localStorage.getItem('lv_login')||'null')||{}).nombre||'';}catch(_){}
-  const filasHtml=filas.map(({est,cal,defOriginal})=>{
+  // Formato calcado del acta oficial FA_009_NIVELACIÓN: cabecera área/grado/
+  // grupo/periodo/docente, tabla de actividades valorativas propuestas (se
+  // llena a mano — la app no registra actividad por actividad), listado con
+  // N°/nota/AP-RP/asistió/observación, y firmas de docente + director de
+  // grupo + VoBo de coordinación (para firmar a mano al imprimir).
+  const filasHtml=filas.map(({est,cal,defOriginal},i)=>{
     const dFinal=defFinal(cal), d=desempeno(dFinal);
-    return `<tr><td>${esc(est.nombre)}</td><td class="c">${cal.nivelacion!=null?(+cal.nivelacion).toFixed(1):'—'}</td>
-      <td class="c">${esc(d.k)}</td><td class="c">${defOriginal.toFixed(1)} → ${dFinal.toFixed(1)}</td></tr>`;
+    const aprobo=dFinal>=CFG.scale.passing;
+    return `<tr><td class="c">${i+1}</td><td>${esc(est.nombre)}</td>
+      <td class="c">${cal.nivelacion!=null?(+cal.nivelacion).toFixed(1):'—'}</td>
+      <td class="c">${aprobo?'✔':''}</td><td class="c">${aprobo?'':'✔'}</td>
+      <td class="c">&nbsp;</td>
+      <td>${esc(cal.nivelacionObs||'')}</td></tr>`;
   }).join('');
   $('#acta-print').innerHTML=`
-    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>ACTA DE NIVELACIÓN POR PERIODO</div>${membreteLinea()}</div></div>
-    <table style="margin-bottom:10px"><tr><th>Curso</th><th>Grado</th><th>Grupo</th><th>Periodo</th><th>Fecha</th></tr>
-      <tr><td class="c">${esc(curso.nombre)}</td><td class="c">${esc(curso.grado||'')}</td><td class="c">${esc(curso.grupo||'')}</td><td class="c">${esc(perTxt)}</td><td class="c">${new Date().toLocaleDateString('es-CO')}</td></tr></table>
-    <p><strong>Asignatura:</strong> ${esc(materia)}</p>
-    <table><thead><tr><th>Estudiante</th><th class="c">Nota de nivelación</th><th class="c">Desempeño final</th><th class="c">Definitiva (antes → después)</th></tr></thead>
+    <div class="p-head"><img src="../Logo/logo.jpg" alt=""><div><h1>${esc(IE)}</h1><div>ACTA DE NIVELACIÓN — ACTIVIDADES PROPUESTAS POR EL DOCENTE</div>${membreteLinea()}</div></div>
+    <table style="margin-bottom:10px"><tr><th>Área o asignatura</th><th>Grado</th><th>Grupo</th><th>Periodo</th><th>Docente</th><th>Fecha</th></tr>
+      <tr><td class="c">${esc(materia)}</td><td class="c">${esc(curso.grado||'')}</td><td class="c">${esc(curso.grupo||'')}</td><td class="c">${esc(perTxt)}</td><td class="c">${esc(docenteNombre)}</td><td class="c">${new Date().toLocaleDateString('es-CO')}</td></tr></table>
+    <p style="font-weight:700;margin:6px 0 4px">Actividades valorativas propuestas</p>
+    <table style="margin-bottom:10px"><thead><tr><th>Fecha</th><th>Actividad valorativa</th><th>Tema</th></tr></thead>
+      <tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table>
+    <p style="font-weight:700;margin:6px 0 4px">Listado de estudiantes</p>
+    <table><thead><tr><th>N°</th><th>Estudiante</th><th class="c">Nota</th><th class="c">AP</th><th class="c">RP</th><th class="c">Asistió</th><th>Observaciones</th></tr></thead>
     <tbody>${filasHtml}</tbody></table>
-    <div class="firma">${esc(docenteNombre)}<br>DOCENTE</div>`;
+    <div style="display:flex;gap:40px;flex-wrap:wrap">
+      <div class="firma">${esc(docenteNombre)}<br>FIRMA DEL DOCENTE DE ASIGNATURA</div>
+      <div class="firma">&nbsp;<br>FIRMA DEL DIRECTOR DE GRUPO</div>
+      <div class="firma">&nbsp;<br>VoBo DE COORDINACIÓN</div>
+    </div>`;
   document.body.classList.add('printing-acta');
   window.print();
   setTimeout(()=>document.body.classList.remove('printing-acta'),500);
@@ -1322,6 +1350,67 @@ $('#btn-export-csv').addEventListener('click',()=>{
     toast('CSV exportado');
   }
 });
+// ── Descargar LA PLANILLA del curso+periodo seleccionado, tal como se ve ──
+// A diferencia de "Exportar notas a Excel/CSV" (que resume TODOS los cursos y
+// entrega el cognitivo ya promediado), esto entrega la planilla completa con
+// cada nota individual (N1, N2, N3…), para poder reconstruirla o entregarla.
+$('#btn-planilla-excel').addEventListener('click', async ()=>{
+  const cursoId=$('#p-curso').value, periodo=$('#p-periodo').value;
+  if(!cursoId) return toast('Selecciona primero un curso.');
+  const curso=cursos.find(c=>c.id===cursoId);
+  if(!curso) return toast('No se encontró el curso.');
+  const lista=estudiantes.filter(e=>e.cursoId===cursoId).sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  if(!lista.length) return toast('Este curso no tiene estudiantes.');
+  if(typeof XLSX==='undefined') return toast('No se cargó la librería de Excel. Revisa tu conexión y recarga.');
+
+  const slots=CFG.cognitivoSlots;
+  const perLbl=(['','Primer','Segundo','Tercer','Cuarto'][+periodo]||('P'+periodo))+' Periodo';
+  const inst=(typeof LV_INST!=='undefined'?LV_INST.nombre():'Institución Educativa');
+
+  // Encabezado informativo (aparece arriba de la tabla, como en las planillas oficiales)
+  const filas=[
+    [inst],
+    ['Planilla de calificaciones — '+perLbl],
+    ['Curso: '+(curso.nombre||''), 'Grado: '+(curso.grado||''), 'Grupo: '+(curso.grupo||'—'),
+     'Sede: '+(curso.sede||'—'), 'Docente: '+((login&&login.nombre)||'')],
+    ['Generado: '+new Date().toLocaleString('es-CO')],
+    []
+  ];
+  const cab=['#','Estudiante'];
+  for(let i=1;i<=slots;i++) cab.push('N'+i);
+  cab.push('Cognitivo','Acumulativo','Autoeval.','Coeval.','Heteroeval.','Definitiva','Desempeño','Inasist.');
+  filas.push(cab);
+
+  let n=0;
+  for(const est of lista){
+    const cal=await getCal(cursoId,periodo,est.id);
+    const cog=calcCognitivo(cal.cognitivas), def=defFinal(cal);
+    const fila=[++n, est.nombre];
+    for(let i=0;i<slots;i++){
+      const v=(cal.cognitivas||[])[i];
+      fila.push(typeof v==='number'&&v>0 ? v : '');
+    }
+    fila.push(cog>0?+cog.toFixed(1):'', cal.acumulativo||'', cal.auto||'', cal.co||'', cal.hetero||'',
+              def>0?+def.toFixed(1):'', def>0?desempeno(def).k:'', cal.inas||0);
+    // marca cuando la definitiva viene de una nivelación
+    if(cal.nivelacion && cal.nivelacion>calcDefinitiva(cal)) fila[fila.length-2]=desempeno(def).k+' (niv)';
+    filas.push(fila);
+  }
+
+  const ws=XLSX.utils.aoa_to_sheet(filas);
+  ws['!cols']=[{wch:4},{wch:32}].concat(Array(slots).fill({wch:6}),
+              [{wch:11},{wch:12},{wch:10},{wch:10},{wch:12},{wch:11},{wch:12},{wch:9}]);
+  ws['!merges']=[
+    {s:{r:0,c:0},e:{r:0,c:cab.length-1}},
+    {s:{r:1,c:0},e:{r:1,c:cab.length-1}},
+  ];
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,'Planilla');
+  const nom=(curso.grado||'')+'-'+(curso.grupo||'')+'_'+(curso.nombre||'curso')+'_P'+periodo;
+  XLSX.writeFile(wb, ('planilla_'+nom+'_'+stamp()+'.xlsx').replace(/[\\/:*?"<>|]+/g,'_'));
+  toast('Planilla descargada');
+});
+
 $('#btn-wipe').addEventListener('click',async()=>{
   if(!confirm('¿BORRAR TODO de forma permanente? Exporta un respaldo antes.'))return;
   if(!confirm('Confirmación final: esta acción no se puede deshacer.'))return;

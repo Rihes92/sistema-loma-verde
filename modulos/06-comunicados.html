@@ -213,10 +213,15 @@
   <section id="tab-config" class="hide">
     <div class="card">
       <h2>Datos del docente (para cartas y mensajes)</h2>
+      <p class="hint">El celular y correo se llenan solos desde tu ficha (Coordinación → Docentes) si están ahí; puedes ajustarlos aquí solo para lo que ven los acudientes en los comunicados. Se agregan al final del mensaje para que la respuesta del padre/madre te llegue directo a ti, no a coordinación.</p>
       <div class="config-row">
         <label class="fld">Nombre del docente<input id="cfg-docente" placeholder="Richard Miguel Hernández Sabié"></label>
         <label class="fld">Institución<input id="cfg-inst" placeholder="I.E. San José de Loma Verde"></label>
         <label class="fld">Sede<input id="cfg-sede" placeholder="Sede Principal"></label>
+      </div>
+      <div class="config-row">
+        <label class="fld">Celular del docente<input id="cfg-tel-docente" placeholder="300 123 4567"></label>
+        <label class="fld">Correo del docente<input id="cfg-correo-docente" placeholder="docente@correo.com"></label>
       </div>
       <button class="btn ok" style="margin-top:14px" onclick="guardarConfig()">💾 Guardar configuración</button>
     </div>
@@ -284,6 +289,25 @@ let cursos      = _c01 || lsR('cursos') || lsRas('cursos') || [];
 let estudiantes = (_c01 ? cargarEstudiantesDesde01() : null) || lsR('estudiantes') || lsRas('estudiantes') || {};
 let historial   = lsR('historial')   || [];
 let config      = lsR('config')      || {docente:'Richard Miguel Hernández Sabié', inst:(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde', sede:(window.LV_INST&&LV_INST.sede())||'Sede Principal'};
+// Celular/correo del docente: si aún no los ha configurado a mano aquí,
+// se toman una sola vez de su propia ficha (Coordinación → Docentes) —
+// así la mayoría no tiene que escribir nada para que aparezcan en los
+// comunicados que le llegan al acudiente.
+(function(){
+  if(config.telDocente!=null && config.correoDocente!=null) return;
+  try{
+    const login=JSON.parse(localStorage.getItem('lv_login')||'null');
+    const docentes=JSON.parse(localStorage.getItem('lv_docentes')||'[]');
+    const mi=login&&docentes.find(d=>(d.datos?d.datos.id:d.id)===login.docenteId);
+    const dd=mi&&(mi.datos||mi);
+    if(dd){
+      if(config.telDocente==null)    config.telDocente    = dd.telefono||'';
+      if(config.correoDocente==null) config.correoDocente = dd.email||'';
+    }
+  }catch(_){}
+  if(config.telDocente==null) config.telDocente='';
+  if(config.correoDocente==null) config.correoDocente='';
+})();
 (function(){ const el=document.getElementById('carta-inst-nombre'); const n=(config&&config.inst)||(window.LV_INST&&LV_INST.nombre()); if(el&&n) el.textContent=String(n).toUpperCase(); })();
 // Datos oficiales del membrete (NIT/DANE/ICFES/resolución/correo/ciudad),
 // configurables en Coordinación → Resumen → Institución (backlog F, jul 2026).
@@ -319,7 +343,7 @@ const PLANTILLAS = {
       {key:'hora_cit',   label:'Hora de la citación',  tipo:'time',   req:true},
       {key:'motivo',     label:'Motivo / Asunto',       tipo:'text',   req:true, ph:'Ej.: Rendimiento académico y convivencia'}
     ],
-    wa:(d)=>`*🚨 CITACIÓN URGENTE DE PADRES DE FAMILIA*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\nEstimado(a) acudiente de *${d.est}* (${d.curso}),\n\nSe le solicita comparecer URGENTE a la institución el próximo *${fmtF(d.fecha_cit)}* a las *${d.hora_cit}*.\n\n*Motivo:* ${d.motivo}.\n\nSu asistencia es fundamental. Agradecemos puntualidad y compromiso.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}`,
+    wa:(d)=>`*🚨 CITACIÓN URGENTE DE PADRES DE FAMILIA*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\nEstimado(a) acudiente de *${d.est}* (${d.curso}),\n\nSe le solicita comparecer URGENTE a la institución el próximo *${fmtF(d.fecha_cit)}* a las *${d.hora_cit}*.\n\n*Motivo:* ${d.motivo}.\n\nSu asistencia es fundamental. Agradecemos puntualidad y compromiso.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}${(d.docTel||d.docCorreo)?'\n\nCualquier respuesta, por favor escríbeme directo a mí:\n'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · '):''}`,
     carta:(d)=>`
       <p style="text-align:right"><strong>Loma Verde, ${fmtF(hoy())}</strong></p><br>
       <p>Señor(a):<br><strong>ACUDIENTE DE ${(d.est||'').toUpperCase()}</strong><br>${d.curso}<br>Sede: ${d.sede}</p><br>
@@ -329,7 +353,7 @@ const PLANTILLAS = {
       <p>Motivo: <strong>${d.motivo}</strong>.</p>
       <p>Esperamos contar con su valiosa asistencia, recordando que la educación es un compromiso compartido.</p><br><br>
       <p>Atentamente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}${(d.docTel||d.docCorreo)?('<br><span style="font-size:.85em">'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · ')+'</span>'):''}</p>`
   },
   felicitacion:{
     emoji:'🎉', nombre:'Felicitación y reconocimiento',
@@ -339,7 +363,7 @@ const PLANTILLAS = {
       {key:'logro',     label:'Logro destacado',  tipo:'text',   req:true,  ph:'Ej.: Excelente desempeño en operaciones matemáticas'},
       {key:'comentario',label:'Mensaje de elogio',tipo:'textarea',ph:'Mensaje motivador…'}
     ],
-    wa:(d)=>`*🎉 FELICITACIÓN Y RECONOCIMIENTO ACADÉMICO*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\nEstimado(a) acudiente de *${d.est}* (${d.curso}),\n\nNos complace comunicarle que el estudiante ha tenido un desempeño sobresaliente en *${d.materia}*, logrando: *${d.logro}*.\n\n${d.comentario?`*"${d.comentario}"*\n\n`:''}Felicitamos su acompañamiento e instamos a continuar con la misma dedicación.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}`,
+    wa:(d)=>`*🎉 FELICITACIÓN Y RECONOCIMIENTO ACADÉMICO*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\nEstimado(a) acudiente de *${d.est}* (${d.curso}),\n\nNos complace comunicarle que el estudiante ha tenido un desempeño sobresaliente en *${d.materia}*, logrando: *${d.logro}*.\n\n${d.comentario?`*"${d.comentario}"*\n\n`:''}Felicitamos su acompañamiento e instamos a continuar con la misma dedicación.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}${(d.docTel||d.docCorreo)?'\n\nCualquier respuesta, por favor escríbeme directo a mí:\n'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · '):''}`,
     carta:(d)=>`
       <p style="text-align:right"><strong>Loma Verde, ${fmtF(hoy())}</strong></p><br>
       <p>Señor(a):<br><strong>ACUDIENTE DE ${(d.est||'').toUpperCase()}</strong><br>${d.curso}</p><br>
@@ -349,7 +373,7 @@ const PLANTILLAS = {
       ${d.comentario?`<p style="border-left:3px solid #16a34a;padding:8px 12px;background:#f0fdf4;font-style:italic">"${d.comentario}"</p>`:''}
       <p>Los buenos resultados son fruto del esfuerzo conjunto. Lo animamos a continuar brindando su valioso acompañamiento.</p><br><br>
       <p>Atentamente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}${(d.docTel||d.docCorreo)?('<br><span style="font-size:.85em">'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · ')+'</span>'):''}</p>`
   },
   mejoramiento:{
     emoji:'📝', nombre:'Plan de mejoramiento',
@@ -359,7 +383,7 @@ const PLANTILLAS = {
       {key:'actividades',   label:'Actividades a desarrollar',tipo:'textarea',req:true,  ph:'Describe los talleres, temas o sustentaciones a recuperar…'},
       {key:'fecha_entrega', label:'Fecha límite de entrega',  tipo:'date',    req:true}
     ],
-    wa:(d)=>`*📝 PLAN DE MEJORAMIENTO ACADÉMICO*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\nEstimado(a) acudiente de *${d.est}* (${d.curso}),\n\nEl estudiante presenta logros pendientes en *${d.materia}*. Se asignó el siguiente plan:\n\n*Actividades:* ${d.actividades}\n\n*Fecha límite:* ${fmtF(d.fecha_entrega)}\n\nAgradecemos su apoyo en casa para cumplir a tiempo.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}`,
+    wa:(d)=>`*📝 PLAN DE MEJORAMIENTO ACADÉMICO*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\nEstimado(a) acudiente de *${d.est}* (${d.curso}),\n\nEl estudiante presenta logros pendientes en *${d.materia}*. Se asignó el siguiente plan:\n\n*Actividades:* ${d.actividades}\n\n*Fecha límite:* ${fmtF(d.fecha_entrega)}\n\nAgradecemos su apoyo en casa para cumplir a tiempo.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}${(d.docTel||d.docCorreo)?'\n\nCualquier respuesta, por favor escríbeme directo a mí:\n'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · '):''}`,
     carta:(d)=>`
       <p style="text-align:right"><strong>Loma Verde, ${fmtF(hoy())}</strong></p><br>
       <p>Señor(a):<br><strong>ACUDIENTE DE ${(d.est||'').toUpperCase()}</strong><br>${d.curso}</p><br>
@@ -369,7 +393,7 @@ const PLANTILLAS = {
       <div style="background:#f9fafb;border:1px solid #e5e7eb;padding:10px 14px;border-radius:8px;white-space:pre-wrap;font-size:10pt;margin:10px 0">${d.actividades||''}</div>
       <p>Fecha máxima de entrega: <strong>${fmtF(d.fecha_entrega)}</strong>. Solicitamos acompañar al estudiante en la preparación de estas actividades.</p><br><br>
       <p>Atentamente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}${(d.docTel||d.docCorreo)?('<br><span style="font-size:.85em">'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · ')+'</span>'):''}</p>`
   },
   circular:{
     emoji:'🏫', nombre:'Circular general / informativa',
@@ -378,7 +402,7 @@ const PLANTILLAS = {
       {key:'titulo',    label:'Título de la circular',tipo:'text',    req:true, ph:'Ej.: Reunión de entrega de informes'},
       {key:'contenido', label:'Mensaje de la circular',tipo:'textarea',req:true, ph:'Redacta el cuerpo del mensaje…'}
     ],
-    wa:(d)=>`*🏫 CIRCULAR GENERAL / INFORMATIVA*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\n*Para:* Padres de familia – ${d.curso}\n*Asunto:* *${d.titulo}*\n\n${d.contenido}\n\nAgradecemos su constante colaboración.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}`,
+    wa:(d)=>`*🏫 CIRCULAR GENERAL / INFORMATIVA*\n\n*I.E. SAN JOSÉ DE LOMA VERDE*\n\n*Para:* Padres de familia – ${d.curso}\n*Asunto:* *${d.titulo}*\n\n${d.contenido}\n\nAgradecemos su constante colaboración.\n\nAtentamente,\n*${d.doc}*\nDocente – ${d.inst}${(d.docTel||d.docCorreo)?'\n\nCualquier respuesta, por favor escríbeme directo a mí:\n'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · '):''}`,
     carta:(d)=>`
       <p style="text-align:right"><strong>Loma Verde, ${fmtF(hoy())}</strong></p><br>
       <p style="text-align:center;font-size:13pt"><strong>CIRCULAR GENERAL</strong></p>
@@ -388,7 +412,7 @@ const PLANTILLAS = {
       <div style="white-space:pre-wrap;margin:10px 0">${d.contenido||''}</div>
       <p>Agradecemos su apoyo, colaboración y corresponsabilidad en los proyectos formativos de nuestra comunidad rural.</p><br><br>
       <p>Cordialmente,</p><br><br>
-      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}</p>`
+      <p>____________________________<br><strong>${(d.doc||'').toUpperCase()}</strong><br>Docente – ${d.inst}${(d.docTel||d.docCorreo)?('<br><span style="font-size:.85em">'+[d.docTel?('📱 '+d.docTel):'',d.docCorreo?('✉️ '+d.docCorreo):''].filter(Boolean).join(' · ')+'</span>'):''}</p>`
   }
 };
 
@@ -549,6 +573,8 @@ function getDatos(){
     inst: config.inst||(window.LV_INST&&LV_INST.corto())||'I.E. San José de Loma Verde',
     acudiente:document.getElementById('inp-acudiente').value||'______',
     telefono: document.getElementById('inp-telefono').value||'',
+    docTel:    config.telDocente||'',
+    docCorreo: config.correoDocente||'',
     ...estado.campos
   };
 }
@@ -669,6 +695,8 @@ function renderConfiguracion(){
   document.getElementById('cfg-docente').value=config.docente||'';
   document.getElementById('cfg-inst').value=config.inst||'';
   document.getElementById('cfg-sede').value=config.sede||'';
+  document.getElementById('cfg-tel-docente').value=config.telDocente||'';
+  document.getElementById('cfg-correo-docente').value=config.correoDocente||'';
   renderCursosCfg();
 }
 
@@ -676,6 +704,8 @@ function guardarConfig(){
   config.docente=document.getElementById('cfg-docente').value.trim()||config.docente;
   config.inst   =document.getElementById('cfg-inst').value.trim()||config.inst;
   config.sede   =document.getElementById('cfg-sede').value.trim()||config.sede;
+  config.telDocente    = document.getElementById('cfg-tel-docente').value.trim();
+  config.correoDocente = document.getElementById('cfg-correo-docente').value.trim();
   lsW('config',config);
   toast('Configuración guardada ✓');
   actualizar();
