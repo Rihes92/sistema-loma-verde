@@ -130,6 +130,18 @@
   grado/grupo/sede tal como están. Lo único que conviene revisar después del import es que
   cada curso viejo tenga la **sede** correcta (si está vacía, el botón "📥 Matrícula" ahora
   la pregunta y la guarda).
+- **Ajuste el mismo día (Richard preguntó si hacía falta una pestaña nueva con todos los
+  estudiantes y filtros):** NO se creó — la pestaña **Matrícula** ya tenía buscador por
+  nombre/documento y filtros de sede, grado y estado; otra pestaña habría sido un
+  duplicado. En su lugar se cerraron los 3 huecos reales que sí tenía para manejar 675
+  estudiantes: (1) **filtro de Grupo** (antes se podía filtrar por grado pero no por
+  grupo — con 99 grupos, pedir "9-1 de Principal" era imposible); (2) **conteo de
+  resultados** ("24 de 675 estudiante(s)") + botón "✕ Limpiar filtros"; (3) botón
+  **"⬇️ Exportar esta lista"** que baja en CSV exactamente lo que se está viendo con los
+  filtros puestos — el de Resumen sigue exportando el colegio completo, sin cambio
+  (`exportarCSV(fuente, archivo)` se extrajo como función común para los dos). De paso, el
+  desplegable de Grado ahora sale en orden escolar (Prejardín → 11°) y no alfabético.
+  SW **v115**.
 - **PENDIENTE:** correr `migracion_grupos.sql` en Supabase; push; que Richard: (a) entre a
   Matrícula → "📥 Importar archivo plano de SIMAT" con el archivo **COMPLETO** (sin
   recortar columnas), revise la vista previa —sobre todo que diga 647 activos / 28

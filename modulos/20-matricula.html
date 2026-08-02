@@ -191,7 +191,15 @@
           <label class="fld">Buscar<input id="f-buscar" placeholder="Nombre, documento…"></label>
           <label class="fld">Sede<select id="f-sede"><option value="">Todas</option></select></label>
           <label class="fld">Grado<select id="f-grado"><option value="">Todos</option></select></label>
+          <label class="fld">Grupo<select id="f-grupo"><option value="">Todos</option></select></label>
           <label class="fld">Estado<select id="f-estado"><option value="activo">Activos</option><option value="retirado">Retirados</option><option value="">Todos</option></select></label>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+          <div id="f-conteo" class="desc" style="margin:0;font-weight:700"></div>
+          <div style="display:flex;gap:6px">
+            <button class="btn sec sm" id="btn-export-filtrado" title="Descarga en CSV exactamente los estudiantes que estás viendo">⬇️ Exportar esta lista</button>
+            <button class="btn sec sm" id="btn-limpiar-filtros">✕ Limpiar filtros</button>
+          </div>
         </div>
         <div id="matricula-out"></div>
       </div>
@@ -364,8 +372,18 @@ function fillSedes(){
   $('#f-sede').innerHTML = '<option value="">Todas</option>' + opts;
 }
 function fillGradosFiltro(){
-  const grados = Array.from(new Set(matricula.map(m=>m.grado).filter(Boolean)));
+  // Ordenados como en el colegio (Prejardín → 11°), no alfabéticamente.
+  const orden = ['Prejardín','Jardín','Transición (0°)','Primero (1°)','Segundo (2°)','Tercero (3°)','Cuarto (4°)','Quinto (5°)','Sexto (6°)','Séptimo (7°)','Octavo (8°)','Noveno (9°)','Décimo (10°)','Undécimo (11°)'];
+  const grados = Array.from(new Set(matricula.map(m=>m.grado).filter(Boolean)))
+    .sort((a,b)=>{ const ia=orden.indexOf(a), ib=orden.indexOf(b);
+      return (ia<0?99:ia)-(ib<0?99:ib) || String(a).localeCompare(String(b),'es'); });
   $('#f-grado').innerHTML = '<option value="">Todos</option>' + grados.map(g=>`<option>${esc(g)}</option>`).join('');
+  const selG = $('#f-grupo');
+  if(selG){
+    const grupos = Array.from(new Set(matricula.map(m=>String(m.grupo||'')).filter(Boolean)))
+      .sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
+    selG.innerHTML = '<option value="">Todos</option>' + grupos.map(g=>`<option>${esc(g)}</option>`).join('');
+  }
 }
 
 // ── Buscador de acudiente existente ─────────────────────────────
@@ -656,21 +674,49 @@ function renderAcudientesTab(){
 }
 
 // ── Lista / filtros ──────────────────────────────────────────────
-['f-buscar','f-sede','f-grado','f-estado'].forEach(id=>{
-  document.getElementById(id).addEventListener('input', renderMatricula);
-  document.getElementById(id).addEventListener('change', renderMatricula);
+['f-buscar','f-sede','f-grado','f-grupo','f-estado'].forEach(id=>{
+  const el = document.getElementById(id); if(!el) return;
+  el.addEventListener('input', renderMatricula);
+  el.addEventListener('change', renderMatricula);
 });
+(function(){
+  const b = document.getElementById('btn-limpiar-filtros'); if(!b) return;
+  b.addEventListener('click', ()=>{
+    $('#f-buscar').value=''; $('#f-sede').value=''; $('#f-grado').value='';
+    if($('#f-grupo')) $('#f-grupo').value='';
+    $('#f-estado').value='activo';
+    renderMatricula();
+  });
+})();
 
-function renderMatricula(){
+// Lista filtrada según los controles de arriba. Se usa tanto para pintar la
+// tabla como para exportar el CSV — así lo que descargas es exactamente lo
+// que estás viendo, no siempre el colegio entero.
+function matriculaFiltrada(){
   const q = $('#f-buscar').value.trim().toLowerCase();
-  const fSede = $('#f-sede').value, fGrado = $('#f-grado').value, fEstado = $('#f-estado').value;
+  const fSede = $('#f-sede').value, fGrado = $('#f-grado').value;
+  const fGrupo = $('#f-grupo') ? $('#f-grupo').value : '';
+  const fEstado = $('#f-estado').value;
   let lista = matricula.slice().sort((a,b)=>(a.apellidos||'').localeCompare(b.apellidos||'','es'));
   if(fSede) lista = lista.filter(m=>m.sede===fSede);
   if(fGrado) lista = lista.filter(m=>m.grado===fGrado);
+  if(fGrupo) lista = lista.filter(m=>String(m.grupo||'')===fGrupo);
   if(fEstado) lista = lista.filter(m=>(m.estado||'activo')===fEstado);
   if(q) lista = lista.filter(m=>
     `${m.nombres} ${m.apellidos}`.toLowerCase().includes(q) || (m.documento||'').toLowerCase().includes(q));
+  return lista;
+}
+
+function renderMatricula(){
+  const lista = matriculaFiltrada();
   const out = $('#matricula-out');
+  const cont = $('#f-conteo');
+  if(cont){
+    const total = matricula.length;
+    cont.textContent = lista.length===total
+      ? `${total} estudiante(s)`
+      : `${lista.length} de ${total} estudiante(s)`;
+  }
   if(!lista.length){ out.innerHTML = '<div class="empty">🎓 No hay estudiantes que coincidan con el filtro.</div>'; return; }
   out.innerHTML = `<div class="tableScroll"><table><thead><tr>
     <th>Estudiante</th><th>Documento</th><th>Grado-Grupo</th><th>Sede</th><th>Acudiente</th><th class="c">Estado</th><th class="c">Acciones</th>
@@ -774,17 +820,28 @@ function renderResumen(){
       : '<div class="empty">✅ Todos los estudiantes con categoría marcada ya tienen ficha PIAR.</div>';
 }
 
-$('#btn-export-csv').addEventListener('click', ()=>{
+function exportarCSV(fuente, archivo){
   const filas = [['Apellidos','Nombres','TipoDoc','Documento','FechaNacimiento','Genero','Sede','Grado','Grupo','Jornada','Direccion','Zona','CategoriaPIAR','Estado','Acudiente','TelefonoAcudiente']];
-  matricula.forEach(m=>{
+  fuente.forEach(m=>{
     const acu = m.acudienteId ? acudientes.find(a=>a.id===m.acudienteId) : null;
     filas.push([m.apellidos,m.nombres,m.tipoDoc,m.documento,m.fechaNacimiento,m.genero,m.sede,m.grado,m.grupo,m.jornada,m.direccion||'',m.zona||'',m.categoriaPIAR||'',m.estado||'activo',acu?acu.nombreAcudiente:'',acu?acu.telefono:'']);
   });
   const csv = filas.map(f=>f.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob(['﻿'+csv], {type:'text/csv;charset=utf-8'});
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob); a.download = 'matricula_sabie.csv'; a.click();
-});
+  a.href = URL.createObjectURL(blob); a.download = archivo; a.click();
+}
+// Resumen: el colegio completo. Matrícula: solo lo que se está viendo con
+// los filtros puestos (para sacar el listado de un grupo puntual).
+$('#btn-export-csv').addEventListener('click', ()=> exportarCSV(matricula, 'matricula_sabie.csv'));
+(function(){
+  const b = document.getElementById('btn-export-filtrado'); if(!b) return;
+  b.addEventListener('click', ()=>{
+    const lista = matriculaFiltrada();
+    if(!lista.length){ toast('No hay estudiantes en la vista actual.'); return; }
+    exportarCSV(lista, 'matricula_filtrada.csv');
+  });
+})();
 
 // ═══════════════════════════════════════════════════════════════════════
 //  IMPORTADOR DEL ARCHIVO PLANO DE SIMAT  (ago 2026, sesión 33)
