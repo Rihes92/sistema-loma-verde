@@ -9,8 +9,11 @@
 
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
-<script>window.LV_SYNC_TABLAS=['lv_matricula','lv_acudientes','lv_institucion','lv_piar'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_matricula','lv_acudientes','lv_institucion','lv_piar','lv_grupos','lv_cursos'];</script>
 <script src="../sync.js"></script>
+<!-- Lectura del archivo plano de SIMAT (.xlsx) — misma librería que ya usan
+     el importador de notas (01) y el de asignación académica (coordinacion). -->
+<script src="../lib/xlsx.full.min.js"></script>
 <!-- CATEGORIAS_PIAR (mismas categorías que ya usa SIMAT/el módulo de Inclusión) —
      se reutiliza aquí para que la matrícula pueda cruzarse con quién ya tiene PIAR. -->
 <script src="inclusion-catalogo.js"></script>
@@ -90,13 +93,30 @@
   <main>
     <!-- ── MATRÍCULA ── -->
     <section id="tab-matricula">
+      <!-- ── Importador del archivo plano de SIMAT (ago 2026, sesión 33) ── -->
+      <div class="card" style="border-left:4px solid var(--primary)">
+        <h2>📥 Importar archivo plano de SIMAT</h2>
+        <p class="desc">Trae de una sola vez a TODOS los estudiantes matriculados desde el archivo oficial de SIMAT,
+          y de paso registra los grupos reales del colegio (grado-grupo-sede) para que los docentes ya no tengan
+          que escribirlos a mano al crear un curso.<br>
+          <b>Nada se guarda hasta que revises la vista previa y confirmes.</b> Puedes reimportarlo cuantas veces
+          quieras: los estudiantes se emparejan por número de documento, así que se actualizan en vez de duplicarse.
+          Sube el archivo <b>completo</b> — las columnas que la app no usa se ignoran solas.</p>
+        <div class="row" style="align-items:flex-end">
+          <label class="fld">Archivo de SIMAT (.xlsx)
+            <input type="file" id="simat-file" accept=".xlsx,.xlsm,.xls">
+          </label>
+        </div>
+        <div id="simat-preview" style="margin-top:14px"></div>
+      </div>
+
       <div class="card">
         <h2 id="form-titulo">Nuevo estudiante</h2>
         <p class="desc">Registro oficial del estudiante, amarrado a un acudiente. Esta es una estructura de partida —
           se ajustará cuando llegue la ficha oficial del colegio.</p>
         <div class="row">
           <label class="fld">Tipo de documento
-            <select id="m-tipodoc"><option>RC</option><option>TI</option><option>CC</option><option>CE</option><option>PPT</option><option>Otro</option></select>
+            <select id="m-tipodoc"><option>RC</option><option>TI</option><option>CC</option><option>CE</option><option>PPT</option><option>NES</option><option>Otro</option></select>
           </label>
           <label class="fld">N° de documento<input id="m-documento" placeholder="Sin puntos ni espacios"></label>
           <label class="fld">Fecha de nacimiento<input type="date" id="m-fechanac"></label>
@@ -225,6 +245,13 @@
       <div class="card">
         <h2>Por grado</h2>
         <div id="r-grados"></div>
+      </div>
+      <div class="card">
+        <h2>🏫 Grupos del colegio y cobertura</h2>
+        <p class="desc">Los grupos reales (grado-grupo-sede) que trajo el import de SIMAT, y si algún docente ya
+          creó al menos un curso para ese grupo. Un grupo <b>sin curso</b> significa que todavía ningún docente
+          está cargando notas ni asistencia ahí.</p>
+        <div id="r-grupos"></div>
       </div>
       <div class="card">
         <h2>⚠️ Estudiantes sin acudiente</h2>
@@ -667,12 +694,55 @@ function renderMatricula(){
 }
 
 // ── Resumen ──────────────────────────────────────────────────────
+// Grupos reales (lv_grupos) cruzados con los cursos que los docentes ya
+// crearon. El cruce es por grado+grupo+sede canonizados (LV_CURSO), no por
+// texto crudo — mismo criterio que usa el resto de la app desde la sesión 21.
+function renderGrupos(){
+  const wrap = $('#r-grupos'); if(!wrap) return;
+  const grupos = lsRead('grupos').filter(g=>!g._eliminado);
+  if(!grupos.length){
+    wrap.innerHTML = '<div class="empty">Todavía no hay grupos registrados. Impórtalos con el archivo de SIMAT desde la pestaña Matrícula.</div>';
+    return;
+  }
+  const cursos = lsRead('cursos').filter(c=>!c._eliminado);
+  const claveCurso = c => grupoId(c.grado, c.grupo, c.sede);
+  const porGrupo = {};
+  cursos.forEach(c=>{ const k=claveCurso(c); (porGrupo[k]=porGrupo[k]||[]).push(c); });
+
+  const orden = Object.values(SIMAT_GRADOS);
+  const lista = grupos.slice().sort((a,b)=>
+    String(a.sede||'').localeCompare(String(b.sede||''),'es') ||
+    (orden.indexOf(a.grado)-orden.indexOf(b.grado)) ||
+    String(a.grupo||'').localeCompare(String(b.grupo||''),'es',{numeric:true}));
+
+  const sinCurso = lista.filter(g=>!(porGrupo[g.id]||[]).length).length;
+  wrap.innerHTML = `
+    <div class="stats" style="margin-bottom:10px">
+      <div class="stat"><b>${lista.length}</b>Grupos</div>
+      <div class="stat"><b>${lista.length-sinCurso}</b>Con al menos un curso</div>
+      <div class="stat"><b>${sinCurso}</b>Sin ningún curso</div>
+    </div>
+    <div class="tableScroll"><table><thead><tr>
+      <th>Sede</th><th>Grado</th><th class="c">Grupo</th><th class="c">Matriculados</th><th class="c">Cursos creados</th><th>Materias</th>
+    </tr></thead><tbody>${lista.map(g=>{
+      const cs = porGrupo[g.id]||[];
+      const materias = [...new Set(cs.map(c=>c.materia).filter(Boolean))];
+      return `<tr>
+        <td>${esc(g.sede||'—')}</td><td>${esc(g.grado)}</td><td class="c">${esc(g.grupo)}</td>
+        <td class="c">${g.estudiantes||0}</td>
+        <td class="c">${cs.length ? cs.length : '<span style="color:var(--warn);font-weight:700">0</span>'}</td>
+        <td style="font-size:.8rem;color:var(--muted)">${materias.length?esc(materias.join(' · ')):'—'}</td>
+      </tr>`;
+    }).join('')}</tbody></table></div>`;
+}
+
 function renderResumen(){
   const activos = matricula.filter(m=>(m.estado||'activo')==='activo');
   $('#r-stats').innerHTML = `
     <div class="stat"><b>${activos.length}</b>Estudiantes activos</div>
     <div class="stat"><b>${matricula.length-activos.length}</b>Retirados</div>
     <div class="stat"><b>${acudientes.length}</b>Acudientes registrados</div>`;
+  renderGrupos();
 
   const porSede = {};
   activos.forEach(m=>{ const s=m.sede||'— sin sede —'; porSede[s]=(porSede[s]||0)+1; });
@@ -715,6 +785,339 @@ $('#btn-export-csv').addEventListener('click', ()=>{
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = 'matricula_sabie.csv'; a.click();
 });
+
+// ═══════════════════════════════════════════════════════════════════════
+//  IMPORTADOR DEL ARCHIVO PLANO DE SIMAT  (ago 2026, sesión 33)
+//  Lee las columnas POR NOMBRE, así que funciona igual con la exportación
+//  completa de SIMAT (53 columnas) o con una recortada — las que no se
+//  usan se ignoran solas y las que faltan se avisan en la vista previa.
+// ═══════════════════════════════════════════════════════════════════════
+
+// Nombres OFICIALES de SIMAT → catálogo de sedes de la app (LV_INST.sedes()).
+// Verificado contra el archivo real de ago 2026: las 16 sedes calzan.
+const SIMAT_SEDES = {
+  'IE SAN JOSE DE LOMA VERDE': 'Principal',
+  'CENT DOC JUANA JULIA 1': 'Juana Julia 1',
+  'ESC RUR MIX JUANA JULIA 2': 'Juana Julia 2',
+  'CENTRO EDUCATIVO CRISTO ES MI LUZ': 'Cristo Es Mi Luz',
+  'CENTRO EDUCATIVO EL OYETO': 'El Oyeto',
+  'CENTRO EDUCATIVO FRONTERAS DE CORDOBA': 'Fronteras de Córdoba',
+  'CENTRO EDUCATIVO LA OCTAVIA': 'La Octavia',
+  'CENTRO EDUCATIVO LA POPA': 'La Popa',
+  'CENTRO EDUCATIVO MI PORVENIR ES CRISTO JESUS': 'Mi Porvenir Es Cristo Jesus',
+  'CENTRO EDUCATIVO SAN DIEGO': 'San Diego',
+  'CENTRO EDUCATIVO SAN FRANCISCO': 'San Francisco',
+  'CENTRO EDUCATIVO SAN MIGUEL': 'San Miguel',
+  'CENTRO EDUCATIVO VERDINAL': 'Verdinal',
+  'ESC RUR MIX EL RINCON': 'El Rincon',
+  'ESC RURAL MIX LA GLORIA': 'La Gloria',
+  'CENTRO EDUCATIVO CARLOS OSPINA': 'Carlos Ospina'
+};
+// Sedes que aparecen en el archivo pero NO son de esta institución
+// (Richard: "Arenas monas no corresponde a nuestra institución").
+const SIMAT_SEDES_OMITIR = ['ARENAS MONAS'];
+
+// GRADO_COD de SIMAT → los grados exactos que ya usa la app.
+// -2 y -1 son los códigos nacionales de Prejardín y Jardín: con esto queda
+// resuelta la limitación de la sesión 27 (el Excel de asignación académica
+// solo traía un "Preescolar" genérico, sin distinguir los tres niveles).
+const SIMAT_GRADOS = {
+  '-2':'Prejardín', '-1':'Jardín', '0':'Transición (0°)',
+  '1':'Primero (1°)', '2':'Segundo (2°)', '3':'Tercero (3°)', '4':'Cuarto (4°)',
+  '5':'Quinto (5°)', '6':'Sexto (6°)', '7':'Séptimo (7°)', '8':'Octavo (8°)',
+  '9':'Noveno (9°)', '10':'Décimo (10°)', '11':'Undécimo (11°)'
+};
+
+const simatNorm = s => String(s??'').normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/\s+/g,' ').trim();
+
+// El GRUPO de SIMAT trae el grado pegado adelante: "901" = grado 9 grupo 1,
+// "1002" = grado 10 grupo 2, "-201" = prejardín grupo 1. Los dos últimos
+// dígitos son el número de grupo. En Transición viene ya suelto ("1"/"2"),
+// y esta misma regla lo respeta.
+function simatGrupo(v){
+  const s = String(v??'').replace(/[^0-9]/g,'');
+  if(!s) return '';
+  const n = parseInt(s.length>=2 ? s.slice(-2) : s, 10);
+  return isNaN(n) ? '' : String(n);
+}
+
+// La fecha puede llegar como Date (si XLSX se leyó con cellDates), como
+// número de serie de Excel, o como texto. Se cubren los tres.
+// OJO — NO usar toISOString() aquí: convierte a UTC y en cualquier zona
+// horaria por delante de Greenwich devuelve el DÍA ANTERIOR (probado: en
+// Asia/Tokyo una fecha de nacimiento del 24 salía como 23). La librería
+// XLSX construye el Date en hora LOCAL, así que hay que leer los
+// componentes locales; para el número de serie, que sí es UTC, se leen los
+// componentes UTC. Corregido antes de importar 675 fechas reales.
+const _ymd = (y,m,d) => `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+function simatFecha(v){
+  if(!v && v!==0) return '';
+  if(v instanceof Date && !isNaN(v)) return _ymd(v.getFullYear(), v.getMonth()+1, v.getDate());
+  if(typeof v === 'number'){
+    const d = new Date(Math.round((v - 25569) * 86400000));
+    return isNaN(d) ? '' : _ymd(d.getUTCFullYear(), d.getUTCMonth()+1, d.getUTCDate());
+  }
+  const t = String(v).trim();
+  let m = t.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
+  if(m) return `${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`;
+  m = t.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})/);
+  if(m) return `${m[3]}-${String(m[2]).padStart(2,'0')}-${String(m[1]).padStart(2,'0')}`;
+  const d = new Date(t);
+  return isNaN(d) ? '' : d.toISOString().slice(0,10);
+}
+
+// Clave estable de un grupo, para que reimportar ACTUALICE en vez de duplicar.
+function grupoId(grado, grupo, sede){
+  const gc = (typeof LV_CURSO!=='undefined') ? LV_CURSO.gradoCanon(grado) : String(grado||'');
+  const pc = (typeof LV_CURSO!=='undefined') ? LV_CURSO.grupoCanon(grado, grupo) : String(grupo||'');
+  const sc = (typeof LV_CURSO!=='undefined') ? LV_CURSO.sedeCode(sede) : String(sede||'');
+  return `g|${gc}|${pc}|${sc}`;
+}
+
+// Lee el .xlsx y devuelve {estudiantes, grupos, avisos, columnas}.
+// NO escribe nada — solo interpreta el archivo.
+function simatParse(rows){
+  const avisos = [];
+  // La fila de encabezados es la primera que traiga alguna columna conocida.
+  let hIdx = -1;
+  for(let i=0; i<Math.min(rows.length, 20); i++){
+    const celdas = (rows[i]||[]).map(simatNorm);
+    if(celdas.includes('DOC') && (celdas.includes('SEDE') || celdas.includes('GRADO_COD'))){ hIdx = i; break; }
+  }
+  if(hIdx < 0) throw new Error('No se encontró la fila de encabezados (se esperan columnas como DOC, SEDE, GRADO_COD).');
+
+  const col = {};
+  (rows[hIdx]||[]).forEach((c,i)=>{ const k = simatNorm(c); if(k && !(k in col)) col[k] = i; });
+  const val = (fila, nombre) => (nombre in col) ? fila[col[nombre]] : undefined;
+  const tiene = n => n in col;
+
+  ['SEDE','GRADO_COD','GRUPO','DOC','APELLIDO1','NOMBRE1'].forEach(c=>{
+    if(!tiene(c)) avisos.push(`Falta la columna <b>${c}</b> en el archivo — sin ella el import quedaría incompleto.`);
+  });
+  if(!tiene('ESTADO')) avisos.push('Este archivo <b>no trae la columna ESTADO</b>, así que no se puede saber quién está retirado: todos entrarán como <b>activos</b>. Si quieres que los retirados se marquen bien, vuelve a exportar de SIMAT sin quitar esa columna.');
+  if(!tiene('JORNADA')) avisos.push('No trae la columna JORNADA — ese campo quedará vacío (lo puedes completar a mano después).');
+
+  const estudiantes = [], grupos = {};
+  const omitidos = { otraSede: 0, sinDocumento: 0, sedeDesconocida: [], gradoDesconocido: [] };
+  const vistos = new Set();
+
+  for(let i=hIdx+1; i<rows.length; i++){
+    const fila = rows[i] || [];
+    if(!fila.length) continue;
+    const sedeRaw = simatNorm(val(fila,'SEDE'));
+    if(!sedeRaw) continue;
+
+    if(SIMAT_SEDES_OMITIR.some(o=>sedeRaw.includes(o))){ omitidos.otraSede++; continue; }
+
+    const sede = SIMAT_SEDES[sedeRaw];
+    if(!sede){ if(!omitidos.sedeDesconocida.includes(sedeRaw)) omitidos.sedeDesconocida.push(sedeRaw); continue; }
+
+    const gradoCod = String(val(fila,'GRADO_COD') ?? '').trim();
+    const grado = SIMAT_GRADOS[gradoCod];
+    if(!grado){ if(gradoCod && !omitidos.gradoDesconocido.includes(gradoCod)) omitidos.gradoDesconocido.push(gradoCod); continue; }
+
+    const documento = String(val(fila,'DOC') ?? '').replace(/[^0-9A-Za-z]/g,'').trim();
+    if(!documento){ omitidos.sinDocumento++; continue; }
+    if(vistos.has(documento)) continue;   // el archivo no debería traer repetidos, pero por si acaso
+    vistos.add(documento);
+
+    const grupo = simatGrupo(val(fila,'GRUPO'));
+    const apellidos = [val(fila,'APELLIDO1'), val(fila,'APELLIDO2')].map(x=>String(x??'').trim()).filter(Boolean).join(' ');
+    const nombres   = [val(fila,'NOMBRE1'),   val(fila,'NOMBRE2')  ].map(x=>String(x??'').trim()).filter(Boolean).join(' ');
+
+    const tipoRaw = String(val(fila,'TIPODOC') ?? '').trim();
+    const tipoDoc = (tipoRaw.split(':')[0] || '').trim().toUpperCase() || 'Otro';
+
+    const gRaw = simatNorm(val(fila,'GENERO'));
+    const genero = gRaw.startsWith('F') ? 'F' : gRaw.startsWith('M') ? 'M' : '';
+
+    const estRaw = simatNorm(val(fila,'ESTADO'));
+    // Solo MATRICULADO cuenta como activo; RETIRADO y TRASLADADO no.
+    const estado = !tiene('ESTADO') ? 'activo' : (estRaw === 'MATRICULADO' ? 'activo' : 'retirado');
+
+    const jorRaw = simatNorm(val(fila,'JORNADA'));
+    const jornada = jorRaw.startsWith('UNICA') ? 'Única' : jorRaw.startsWith('MANANA') ? 'Mañana'
+                  : jorRaw.startsWith('TARDE') ? 'Tarde' : jorRaw.startsWith('COMPLETA') ? 'Única' : '';
+
+    const zonaRaw = simatNorm(val(fila,'ZONA_SEDE'));
+    const zona = zonaRaw.startsWith('RURAL') ? 'Rural' : zonaRaw.startsWith('URBAN') ? 'Urbana' : '';
+
+    const discRaw = simatNorm(val(fila,'DISCAPACIDAD'));
+    const categoriaPIAR = (!discRaw || discRaw==='NO APLICA' || discRaw==='NINGUNO') ? '' : String(val(fila,'DISCAPACIDAD')).trim();
+
+    estudiantes.push({
+      documento, tipoDoc, apellidos, nombres, genero,
+      fechaNacimiento: simatFecha(val(fila,'FECHA_NACIMIENTO')),
+      sede, grado, grupo, jornada, zona, categoriaPIAR, estado,
+      direccion: String(val(fila,'BARRIO') ?? '').trim()
+    });
+
+    // El catálogo de grupos se arma solo con los ACTIVOS: un grupo que quedó
+    // únicamente con estudiantes retirados ya no existe en la práctica.
+    if(estado === 'activo'){
+      const gid = grupoId(grado, grupo, sede);
+      if(!grupos[gid]) grupos[gid] = { id: gid, grado, grupo, sede, jornada, estudiantes: 0, origen: 'simat' };
+      grupos[gid].estudiantes++;
+      if(!grupos[gid].jornada && jornada) grupos[gid].jornada = jornada;
+    }
+  }
+
+  if(omitidos.otraSede) avisos.push(`Se omitieron <b>${omitidos.otraSede}</b> fila(s) de sedes que no son de esta institución (${SIMAT_SEDES_OMITIR.join(', ')}).`);
+  if(omitidos.sinDocumento) avisos.push(`Se omitieron <b>${omitidos.sinDocumento}</b> fila(s) sin número de documento.`);
+  omitidos.sedeDesconocida.forEach(s=>avisos.push(`Sede no reconocida: <b>${esc(s)}</b> — sus estudiantes NO se importaron. Avísame para agregarla al catálogo.`));
+  omitidos.gradoDesconocido.forEach(g=>avisos.push(`Código de grado no reconocido: <b>${esc(g)}</b> — sus estudiantes NO se importaron.`));
+
+  return { estudiantes, grupos: Object.values(grupos), avisos };
+}
+
+let _simatDatos = null;
+
+document.getElementById('simat-file').addEventListener('change', async e=>{
+  const f = e.target.files && e.target.files[0];
+  const out = document.getElementById('simat-preview');
+  if(!f) return;
+  if(typeof XLSX === 'undefined'){ out.innerHTML = '<p class="desc" style="color:var(--bad)">No se cargó la librería de Excel. Recarga la página e intenta de nuevo.</p>'; return; }
+  out.innerHTML = '<p class="desc">Leyendo el archivo…</p>';
+  try{
+    const wb = XLSX.read(new Uint8Array(await f.arrayBuffer()), { type:'array', cellDates:true });
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(ws, { header:1, blankrows:false, raw:true });
+    _simatDatos = simatParse(rows);
+    simatPreview();
+  }catch(err){
+    console.error(err);
+    out.innerHTML = `<p class="desc" style="color:var(--bad)">No se pudo leer el archivo: ${esc(err.message||err)}</p>`;
+  }
+});
+
+function simatPreview(){
+  const out = document.getElementById('simat-preview');
+  const d = _simatDatos;
+  if(!d) return;
+  if(!d.estudiantes.length){
+    out.innerHTML = `<p class="desc" style="color:var(--bad)">No se pudo leer ningún estudiante del archivo.</p>`
+      + (d.avisos.length ? `<ul class="desc">${d.avisos.map(a=>`<li>${a}</li>`).join('')}</ul>` : '');
+    return;
+  }
+  const porDoc = {};
+  matricula.filter(m=>!m._eliminado).forEach(m=>{ const k=String(m.documento||'').trim(); if(k) porDoc[k]=m; });
+  const nuevos = d.estudiantes.filter(e=>!porDoc[e.documento]).length;
+  const actualiza = d.estudiantes.length - nuevos;
+  const activos = d.estudiantes.filter(e=>e.estado==='activo').length;
+  const retirados = d.estudiantes.length - activos;
+  const sedes = {}; d.grupos.forEach(g=>{ sedes[g.sede] = (sedes[g.sede]||0)+1; });
+
+  // Los ya registrados en la app que el archivo NO trae: probablemente se
+  // retiraron o cambiaron de colegio; se avisa pero NO se tocan.
+  const enArchivo = new Set(d.estudiantes.map(e=>e.documento));
+  const ausentes = matricula.filter(m=>!m._eliminado && m.documento && !enArchivo.has(String(m.documento).trim()));
+
+  const ordenGrado = Object.values(SIMAT_GRADOS);
+  const gruposOrd = d.grupos.slice().sort((a,b)=>
+    a.sede.localeCompare(b.sede,'es') ||
+    (ordenGrado.indexOf(a.grado)-ordenGrado.indexOf(b.grado)) ||
+    String(a.grupo).localeCompare(String(b.grupo),'es',{numeric:true}));
+
+  out.innerHTML = `
+    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin-bottom:12px">
+      <div style="font-weight:800;color:var(--primary);margin-bottom:6px">Vista previa — todavía no se ha guardado nada</div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;font-size:.88rem">
+        <div><b>${d.estudiantes.length}</b> estudiantes leídos</div>
+        <div style="color:var(--ok)"><b>${nuevos}</b> nuevos</div>
+        <div><b>${actualiza}</b> ya existen (se actualizan)</div>
+        <div style="color:var(--ok)"><b>${activos}</b> activos</div>
+        <div style="color:var(--warn)"><b>${retirados}</b> retirados/trasladados</div>
+        <div><b>${d.grupos.length}</b> grupos en <b>${Object.keys(sedes).length}</b> sedes</div>
+      </div>
+    </div>
+    ${d.avisos.length ? `<div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:12px 14px;margin-bottom:12px">
+      <div style="font-weight:800;color:var(--warn);margin-bottom:6px">⚠️ Revisa esto antes de aplicar</div>
+      <ul style="font-size:.85rem;margin:0;padding-left:18px">${d.avisos.map(a=>`<li style="margin-bottom:3px">${a}</li>`).join('')}</ul>
+    </div>` : ''}
+    ${ausentes.length ? `<div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:12px 14px;margin-bottom:12px;font-size:.85rem">
+      <b>${ausentes.length} estudiante(s) que ya tienes registrados no vienen en este archivo.</b>
+      No se van a tocar (siguen como están). Si de verdad ya no pertenecen al colegio, retíralos a mano desde la tabla de abajo.
+      <div style="margin-top:4px;color:var(--muted)">${ausentes.slice(0,8).map(m=>esc(`${m.nombres} ${m.apellidos}`)).join(' · ')}${ausentes.length>8?` … y ${ausentes.length-8} más`:''}</div>
+    </div>` : ''}
+    <details style="margin-bottom:12px">
+      <summary style="cursor:pointer;font-weight:700;color:var(--primary);font-size:.9rem">Ver los ${d.grupos.length} grupos que se van a registrar</summary>
+      <div class="tableScroll" style="margin-top:8px;max-height:320px;overflow-y:auto">
+        <table><thead><tr><th>Sede</th><th>Grado</th><th class="c">Grupo</th><th class="c">Estudiantes</th></tr></thead>
+        <tbody>${gruposOrd.map(g=>`<tr><td>${esc(g.sede)}</td><td>${esc(g.grado)}</td><td class="c">${esc(g.grupo)}</td><td class="c">${g.estudiantes}</td></tr>`).join('')}</tbody></table>
+      </div>
+    </details>
+    <details style="margin-bottom:12px">
+      <summary style="cursor:pointer;font-weight:700;color:var(--primary);font-size:.9rem">Ver los primeros 20 estudiantes leídos</summary>
+      <div class="tableScroll" style="margin-top:8px">
+        <table><thead><tr><th>Apellidos y nombres</th><th>Doc.</th><th>Sede</th><th>Grado</th><th class="c">Grupo</th><th class="c">Estado</th></tr></thead>
+        <tbody>${d.estudiantes.slice(0,20).map(e=>`<tr>
+          <td>${esc(e.apellidos)} ${esc(e.nombres)}</td><td>${esc(e.tipoDoc)} ${esc(e.documento)}</td>
+          <td>${esc(e.sede)}</td><td>${esc(e.grado)}</td><td class="c">${esc(e.grupo)}</td>
+          <td class="c">${e.estado==='activo'?'✅':'⛔'}</td></tr>`).join('')}</tbody></table>
+      </div>
+    </details>
+    <button class="btn ok" id="simat-aplicar">✅ Aplicar import (${d.estudiantes.length} estudiantes · ${d.grupos.length} grupos)</button>`;
+
+  document.getElementById('simat-aplicar').addEventListener('click', simatAplicar);
+}
+
+function simatAplicar(){
+  const d = _simatDatos;
+  if(!d) return;
+  if(!confirm(`Se van a registrar/actualizar ${d.estudiantes.length} estudiantes y ${d.grupos.length} grupos.\n\n`
+    + `Lo que ya esté escrito a mano (acudiente vinculado, observaciones) se conserva.\n¿Continuar?`)) return;
+
+  const porDoc = {};
+  matricula.filter(m=>!m._eliminado).forEach(m=>{ const k=String(m.documento||'').trim(); if(k) porDoc[k]=m; });
+
+  let nuevos=0, actualizados=0;
+  d.estudiantes.forEach(e=>{
+    const previo = porDoc[e.documento];
+    // Los campos que vienen de SIMAT se sobreescriben (es la fuente oficial);
+    // los que solo existen en la app (acudiente, observaciones, quién lo
+    // registró) se conservan tal cual — reimportar no debe borrar el trabajo
+    // manual de coordinación.
+    const reg = Object.assign({}, previo || {}, {
+      id: previo ? previo.id : uid(),
+      tipoDoc: e.tipoDoc, documento: e.documento,
+      fechaNacimiento: e.fechaNacimiento || (previo ? previo.fechaNacimiento : '') || '',
+      genero: e.genero || (previo ? previo.genero : '') || '',
+      nombres: e.nombres, apellidos: e.apellidos,
+      sede: e.sede, grado: e.grado, grupo: e.grupo,
+      jornada: e.jornada || (previo ? previo.jornada : '') || '',
+      direccion: e.direccion || (previo ? previo.direccion : '') || '',
+      zona: e.zona || (previo ? previo.zona : '') || '',
+      // Si SIMAT no reporta discapacidad, NO se borra lo que coordinación
+      // haya marcado a mano en la app.
+      categoriaPIAR: e.categoriaPIAR || (previo ? previo.categoriaPIAR : '') || '',
+      estado: e.estado,
+      acudienteId: previo ? (previo.acudienteId || '') : '',
+      observaciones: previo ? (previo.observaciones || '') : '',
+      creado: previo ? (previo.creado || Date.now()) : Date.now(),
+      actualizado: Date.now(),
+      registradoPor: previo ? (previo.registradoPor || quienEsta()) : quienEsta(),
+      origen: 'simat'
+    });
+    matricula = matricula.filter(m=>m.id!==reg.id); matricula.push(reg);
+    guardarUno('matricula', reg);
+    if(previo) actualizados++; else nuevos++;
+  });
+
+  const ahora = Date.now(), quien = quienEsta();
+  d.grupos.forEach(g=>{
+    guardarUno('grupos', Object.assign({}, g, { importadoEn: ahora, importadoPor: quien }));
+  });
+
+  fillSedes(); fillGradosFiltro(); renderMatricula();
+  document.getElementById('simat-preview').innerHTML =
+    `<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:12px 14px">
+      <b style="color:var(--ok)">✅ Import aplicado.</b> ${nuevos} estudiante(s) nuevo(s), ${actualizados} actualizado(s),
+      ${d.grupos.length} grupo(s) registrados. Los docentes ya pueden elegir su grupo al crear un curso.
+    </div>`;
+  document.getElementById('simat-file').value = '';
+  _simatDatos = null;
+  toast('✅ Import de SIMAT aplicado');
+}
 
 if(ES_COORD){
   fillSedes(); fillGradosFiltro(); renderMatricula();

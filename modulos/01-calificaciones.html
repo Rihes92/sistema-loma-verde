@@ -80,7 +80,7 @@
 <script src="../auth.js"></script>
 <script>LV_AUTH.exigirSesion();</script>
 <script src="../materia-context.js"></script>
-<script>window.LV_SYNC_TABLAS=['lv_cursos','lv_estudiantes','lv_calificaciones','lv_as_asistencia','lv_herramientas','lv_malla','lv_docentes','lv_asignaciones','lv_observador','lv_matricula'];</script>
+<script>window.LV_SYNC_TABLAS=['lv_cursos','lv_estudiantes','lv_calificaciones','lv_as_asistencia','lv_herramientas','lv_malla','lv_docentes','lv_asignaciones','lv_observador','lv_matricula','lv_grupos'];</script>
 <script src="../sync.js"></script>
 <header class="appbar">
   <img src="../Logo/logo.jpg" alt="Logo LV" style="width:34px;height:34px;object-fit:contain;border-radius:6px;background:#fff;padding:2px;flex-shrink:0">
@@ -108,7 +108,13 @@
         <label class="fld">Nombre del curso
           <input id="c-nombre" placeholder="Ej: Sociales 9°-01 / Democracia 10°-02 / Filosofía 11°">
         </label>
-        <label class="fld">Grado
+        <!-- Grupo real del colegio (catálogo lv_grupos, importado de SIMAT por
+             coordinación — sesión 33). Elegir de aquí evita los errores de
+             tipeo en grado/grupo/sede que rompían "dirige" y los horarios. -->
+        <label class="fld" id="fld-grupo-real" style="display:none">Grupo del colegio
+          <select id="c-grupo-real"></select>
+        </label>
+        <label class="fld" id="fld-grado">Grado
           <select id="c-grado">
             <option>Sexto (6°)</option><option>Séptimo (7°)</option><option>Octavo (8°)</option>
             <option>Noveno (9°)</option><option>Décimo (10°)</option><option>Undécimo (11°)</option>
@@ -117,10 +123,10 @@
             <option>Cuarto (4°)</option><option>Quinto (5°)</option>
           </select>
         </label>
-        <label class="fld">Grupo
+        <label class="fld" id="fld-grupo">Grupo
           <input id="c-grupo" placeholder="Ej: 1, 2, 3...">
         </label>
-        <label class="fld">Sede
+        <label class="fld" id="fld-sede">Sede
           <select id="c-sede"><option value="">— sin sede —</option></select>
         </label>
         <label class="fld" style="flex:0 0 auto;justify-content:flex-end">
@@ -632,7 +638,16 @@ $('#tabs').addEventListener('click',e=>{
 $('#btn-add-curso').addEventListener('click',async()=>{
   const nombre=$('#c-nombre').value.trim();
   if(!nombre)return toast('Escribe el nombre del curso');
-  const curso={id:uid(),nombre,grado:$('#c-grado').value,grupo:$('#c-grupo').value.trim(),sede:($('#c-sede')&&$('#c-sede').value)||'',area:(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'Ciencias Sociales',materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',creado:Date.now()};
+  // Si el colegio ya tiene el catálogo de grupos importado de SIMAT, el
+  // grado/grupo/sede salen del grupo elegido (exactos, sin tipeo); si no,
+  // se usan los campos manuales de siempre.
+  const g = grupoRealElegido();
+  const curso={id:uid(),nombre,
+    grado: g ? g.grado : $('#c-grado').value,
+    grupo: g ? String(g.grupo||'') : $('#c-grupo').value.trim(),
+    sede:  g ? (g.sede||'') : (($('#c-sede')&&$('#c-sede').value)||''),
+    grupoId: g ? g.id : '',
+    area:(typeof LV_CTX!=='undefined'&&LV_CTX.area)||'Ciencias Sociales',materia:(typeof LV_CTX!=='undefined'&&LV_CTX.materia)||'Sociales',creado:Date.now()};
   await dbPut('cursos',curso); cursos.push(curso);
   $('#c-nombre').value='';$('#c-grupo').value='';
   toast('Curso creado'); renderCursos(); fillCursoSelects();
@@ -644,6 +659,35 @@ $('#btn-add-curso').addEventListener('click',async()=>{
     sel.innerHTML='<option value="">— sin sede —</option>'+LV_INST.sedes().map(x=>`<option>${x}</option>`).join('');
   }
 })();
+
+// ── Catálogo de grupos reales (lv_grupos, importado de SIMAT — sesión 33) ──
+// Si está cargado, se reemplazan los tres campos manuales por UN desplegable
+// con los grupos que de verdad existen. Si está vacío (todavía no se ha
+// importado SIMAT), no cambia nada: sigue el formulario manual de siempre.
+function gruposReales(){ return lsRead('grupos').filter(g=>!g._eliminado); }
+function grupoRealElegido(){
+  const sel=$('#c-grupo-real');
+  if(!sel || $('#fld-grupo-real').style.display==='none' || !sel.value) return null;
+  return gruposReales().find(g=>g.id===sel.value)||null;
+}
+function fillGruposReales(){
+  const sel=$('#c-grupo-real'); if(!sel) return;
+  const lista=gruposReales();
+  const usarCatalogo = lista.length>0;
+  $('#fld-grupo-real').style.display = usarCatalogo ? '' : 'none';
+  ['#fld-grado','#fld-grupo','#fld-sede'].forEach(s=>{ const el=$(s); if(el) el.style.display = usarCatalogo ? 'none' : ''; });
+  if(!usarCatalogo) return;
+  const orden=['Prejardín','Jardín','Transición (0°)','Primero (1°)','Segundo (2°)','Tercero (3°)','Cuarto (4°)','Quinto (5°)','Sexto (6°)','Séptimo (7°)','Octavo (8°)','Noveno (9°)','Décimo (10°)','Undécimo (11°)'];
+  lista.sort((a,b)=> String(a.sede||'').localeCompare(String(b.sede||''),'es')
+    || (orden.indexOf(a.grado)-orden.indexOf(b.grado))
+    || String(a.grupo||'').localeCompare(String(b.grupo||''),'es',{numeric:true}));
+  sel.innerHTML='<option value="">— elige el grupo —</option>'+lista.map(g=>
+    `<option value="${esc(g.id)}">${esc(g.sede||'sin sede')} · ${esc(g.grado)}-${esc(g.grupo)}${g.estudiantes?` (${g.estudiantes} est.)`:''}</option>`
+  ).join('');
+}
+fillGruposReales();
+// El catálogo puede llegar de Supabase después de pintar la página.
+setTimeout(fillGruposReales, 3000);
 function renderCursos(){
   const el=$('#cursos-list');
   const cursosVista=(typeof LV_CTX!=='undefined')?LV_CTX.filtrar(cursos):cursos;

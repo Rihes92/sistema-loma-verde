@@ -2,6 +2,121 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AJUSTE (ago 2, 2026 — sesión 33): import del ARCHIVO PLANO DE SIMAT + catálogo de grupos — CÓDIGO LISTO, sin desplegar
+
+- **Richard adjuntó el archivo plano REAL de SIMAT** (`ARCHIVO PLANO SIMAT_01.08.2026.xlsx`,
+  676 filas, 53 columnas) — la base de datos oficial de TODOS los estudiantes matriculados.
+  Es la pieza que faltaba desde la sesión 25c ("conectar matrícula con los rosters por-curso").
+  Cambio de modelo a Opus para esta sesión, a pedido de Richard.
+- **2 decisiones de alcance con Richard (AskUserQuestion, las 2 "Recomendado"):**
+  1. **Matrícula + catálogo de grupos** (no solo matrícula, y no crear los cursos
+     automáticamente): importar los estudiantes Y registrar los grupos reales
+     grado-grupo-sede como catálogo institucional. Se descartó a propósito la opción de
+     crear los cursos de cada docente cruzando `lv_asignaciones` — las asignaciones de
+     bachillerato NO dicen QUÉ grupo cubre cada docente (solo cuántos, limitación
+     documentada desde la sesión 27/30c), así que habría que repartirlos a mano y crearía
+     varios cientos de cursos de un golpe, difícil de deshacer.
+  2. **Los retirados se marcan bien** usando la exportación completa (ver el hallazgo de
+     abajo), no importándolos todos como activos.
+- **HALLAZGO al revisar el archivo — Richard había recortado las columnas "que no aportan"
+  de 53 a 28, pero eso borró `ESTADO`, y las 29 filas no-activas SIGUEN en el archivo**
+  (28 RETIRADO + 1 TRASLADADO; verificado cruzando ambos archivos por documento). Sin esa
+  columna el import los habría marcado a todos como activos. **Por eso el importador lee
+  las columnas POR NOMBRE y tolera que falten**: funciona igual con la exportación completa
+  o con una recortada, ignora solo las que no usa, y AVISA en la vista previa cuando falta
+  `ESTADO` ("todos entrarán como activos") o `JORNADA`. Conclusión práctica: **subir el
+  archivo COMPLETO, sin recortar nada** — probado con los dos y producen exactamente los
+  mismos 675 estudiantes y 99 grupos, solo que el completo además distingue retirados,
+  jornada y zona.
+- **Mapeo (verificado contra el archivo real, no asumido):**
+  · **Sedes:** los nombres oficiales de SIMAT ("CENT DOC JUANA JULIA 1") NO son los del
+    catálogo de la app ("Juana Julia 1") → tabla `SIMAT_SEDES` con las 16 equivalencias.
+    Verificado: **16/16 calzan, ninguna sobra ni falta.** `C. E. R. ARENAS MONAS` (1 fila)
+    se omite a propósito — Richard confirmó que no es de esta institución (constante
+    `SIMAT_SEDES_OMITIR`, no un descarte silencioso: se reporta en los avisos).
+  · **Grados:** `GRADO_COD` numérico → los grados exactos de la app. **`-2` y `-1` son los
+    códigos nacionales de Prejardín y Jardín** — con esto queda RESUELTA la limitación de
+    la sesión 27 (el Excel de asignación académica solo traía un "Preescolar" genérico sin
+    distinguir los tres niveles).
+  · **Grupos:** SIMAT pega el grado adelante (`901` = grado 9 grupo 1; `1002` = grado 10
+    grupo 2; `-201` = prejardín grupo 1) → los dos últimos dígitos son el grupo. En
+    Transición viene ya suelto (`1`/`2`) y la misma regla lo respeta.
+  · Nombres = `APELLIDO1+APELLIDO2` / `NOMBRE1+NOMBRE2`; `TIPODOC` se corta en el `:`
+    ("RC:REGISTRO CIVIL…" → "RC"); `BARRIO` → `direccion`; `DISCAPACIDAD` → `categoriaPIAR`
+    (ignorando "NO APLICA"). **`NES` agregado al selector de tipo de documento** (11
+    estudiantes reales lo usan y no estaba en la lista).
+  · **Descartadas a propósito** (no existen en `lv_matricula`, mismo criterio de la sesión
+    31c cuando Richard descartó salud básica): EPS, tipo de sangre, estrato, SISBEN,
+    `HA_ESTADO_VINCULADO_SRPA`/`ESTA_ACTIVO_SRPA` (responsabilidad penal adolescente —
+    especialmente sensible), país de origen, datos de contrato/internado, PER_ID.
+    `CORREO` (54 con dato) y `TELEFONO` (189) tampoco entran: sin el NOMBRE del acudiente
+    no se puede crear un registro de `lv_acudientes` de verdad — queda anotado por si
+    después se quiere usar para completar contactos.
+- **BUG REAL encontrado y corregido durante las pruebas (no se habría visto sin probarlo):**
+  la primera versión convertía la fecha de nacimiento con `toISOString()`, que pasa a UTC
+  y **en cualquier zona horaria por delante de Greenwich devuelve el DÍA ANTERIOR**
+  (probado: en `Asia/Tokyo` un nacido el 24 salía como 23). En Colombia (UTC-5) funcionaba
+  de casualidad. Corregido leyendo los componentes LOCALES del Date (`getFullYear/Month/
+  Date`) y los UTC solo para el número de serie de Excel. Verificado: la huella MD5 de las
+  675 fechas es IDÉNTICA en UTC, America/Bogota, Asia/Tokyo y Pacific/Kiritimati.
+- **Tabla nueva `lv_grupos`** (`migracion_grupos.sql`, SIN CORRER): catálogo de los grupos
+  físicos reales `{id, grado, grupo, sede, jornada, estudiantes, origen:'simat'}`. **NO
+  reemplaza a `lv_cursos`** — un curso sigue siendo POR MATERIA (creado por su docente); un
+  grupo es el grupo real, existe una sola vez y no es de nadie. `id` = clave estable
+  `g|grado|grupo|sedeCode` canonizada con `LV_CURSO`, para que reimportar ACTUALICE en vez
+  de duplicar. **RLS distinta a `lv_matricula`**: aquí la LECTURA sí es para cualquier
+  docente autenticado (la necesitan para el desplegable de crear curso — no hay ningún dato
+  personal, solo "existe 9-1 en Principal con 22 estudiantes"); escribir es solo
+  `es_coordinacion()`. Agregada al `MAPA` de `sync.js`.
+- **`20-matricula.html`:** tarjeta nueva **"📥 Importar archivo plano de SIMAT"** al inicio
+  de la pestaña Matrícula. Vista previa OBLIGATORIA antes de escribir nada (leídos, nuevos,
+  actualizados, activos vs retirados, grupos por sede, avisos, la lista completa de grupos
+  y una muestra de 20 estudiantes, todo en `<details>` plegables) + `confirm()` explícito.
+  **Idempotente y no destructivo:** empareja por número de documento; los campos que vienen
+  de SIMAT se sobreescriben (es la fuente oficial) pero **acudiente vinculado, observaciones
+  y `categoriaPIAR` marcada a mano se conservan** — reimportar no borra el trabajo de
+  coordinación. Los ya registrados que el archivo NO trae se avisan pero **no se tocan**.
+  El catálogo de grupos se arma solo con los ACTIVOS (un grupo que quedó únicamente con
+  retirados ya no existe en la práctica).
+- **`20-matricula.html` → Resumen: tarjeta nueva "🏫 Grupos del colegio y cobertura"** —
+  cruza `lv_grupos` con los cursos que los docentes ya crearon (por grado+grupo+sede
+  canonizado con `LV_CURSO`, no por texto crudo) y muestra cuántos grupos no tienen NINGÚN
+  curso todavía, con las materias ya cubiertas en cada uno.
+- **`01-calificaciones.html` — el cambio que más se va a notar:** si el catálogo de grupos
+  está cargado, los tres campos manuales (Grado + Grupo escrito a mano + Sede) se
+  reemplazan por **UN solo desplegable "Grupo del colegio"** con los grupos reales
+  ("Principal · Noveno (9°)-1 (22 est.)"). Esto ataca la causa raíz de dos sesiones enteras
+  de arreglos: los errores de tipeo en grado/grupo/sede que rompían al director de grupo
+  (sesión 21) y generaban cruces falsos en los horarios (sesiones 30b/30d). El curso creado
+  guarda además `grupoId` (referencia al grupo real). **Si el catálogo está vacío (todavía
+  no se importó SIMAT), no cambia nada**: sigue el formulario manual de siempre — es un
+  fallback, no un bloqueo.
+- **Verificado con Node contra el archivo REAL** (no datos sintéticos): se extrajo el
+  parser tal cual del HTML, con el `LV_CURSO`/`LV_INST` reales de `auth.js`, y se corrió
+  contra los dos archivos. Resultado: **675 estudiantes** (676 menos Arenas Monas),
+  **647 activos / 28 retirados**, **99 grupos en 16 sedes**, 0 documentos duplicados, 0 ids
+  de grupo duplicados, 0 sin fecha de nacimiento, 0 sin grupo, 0 sin género, 0 sin jornada.
+  Los dos archivos (completo y recortado) dan **0 diferencias** en los datos comunes.
+  Probada aparte la **idempotencia del merge**: segunda corrida con el mismo archivo → 675
+  registros (no 1350), 0 nuevos, mismo `id`, y acudiente/observaciones/PIAR manuales
+  intactos. SW **v113**. `node --check` limpio en `sw.js`/`sync.js` y en los bloques
+  `<script>` de `20-matricula.html` (3) y `01-calificaciones.html` (4); balance de tags
+  verificado en ambos (20-matricula: 84/84 · 7/7 · 14/14 · 35/35 · 35/35 · 31/31 · 14/14 ·
+  18/18 · 3/3 · 2/2 · 2/2 — 01-calificaciones: 90/90 · 9/9 · 20/20 · 57/57 · 51/51 · 39/39
+  · 11/11 · 36/36 · 7/7).
+- **PENDIENTE:** correr `migracion_grupos.sql` en Supabase; push; que Richard: (a) entre a
+  Matrícula → "📥 Importar archivo plano de SIMAT" con el archivo **COMPLETO** (sin
+  recortar columnas), revise la vista previa —sobre todo que diga 647 activos / 28
+  retirados, no 675 activos— y aplique; (b) confirme en Resumen que los conteos por sede y
+  grado cuadran con la realidad, y revise la tarjeta de cobertura de grupos; (c) con una
+  cuenta docente, cree un curso y confirme que ahora aparece el desplegable "Grupo del
+  colegio" con los grupos reales, y que el botón "📥 Matrícula" del curso le trae los
+  estudiantes correctos; (d) **decida sobre Transición**: SIMAT dice que Principal y Juana
+  Julia 1 tienen Transición **grupo 2 sin grupo 1** (las demás sedes sí tienen grupo 1) —
+  se importó tal cual; si es un dato viejo de SIMAT hay que corregirlo allá o a mano en la
+  app. **NO hecho a propósito:** crear los cursos de cada docente automáticamente (ver
+  decisión 1 arriba); el módulo de "Actas de reuniones institucionales" sigue en el backlog.
+
 ## ▶ AJUSTE (ago 1, 2026 — sesión 32): módulo nuevo "Orientación Escolar" — CÓDIGO LISTO, sin desplegar
 
 - **Retoma el backlog señalado en sesión 31** ("Psico-orientación / Orientación escolar…
@@ -2948,6 +3063,13 @@ documentos impresos/WhatsApp, que luego será configurable).
   (mejor esfuerzo — marca lo que no cupo), respetando siempre lo ya publicado/borrador;
   el resultado se guarda como borrador para revisar y publicar docente por docente, igual
   que el flujo manual — ver ajuste de sesión 29 para el detalle completo.
+- **`lv_grupos`** (tabla, ago 2026, sesión 33) — catálogo de los GRUPOS reales del colegio
+  (grado-grupo-sede), importado del archivo plano de SIMAT desde Matrícula. No es un módulo
+  sino una fuente de verdad compartida: alimenta el desplegable de "crear curso" en
+  01-calificaciones (se acabó escribir grado/grupo/sede a mano) y la tarjeta de cobertura en
+  el Resumen de Matrícula. **No reemplaza a `lv_cursos`** — un curso es por MATERIA y tiene
+  dueño; un grupo es el grupo físico, existe una sola vez y no es de nadie. Ver
+  `migracion_grupos.sql` y el ajuste de la sesión 33.
 - `modulos/22-orientacion.html` — **Orientación Escolar** (ago 2026, sesión 32): digitaliza
   el flujo CE-F001→CE-F005. Visible a TODOS los docentes (cualquiera puede remitir un
   caso, pestaña "Remitir"); pestaña "Casos" (estado + detalle sensible) solo visible para

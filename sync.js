@@ -72,6 +72,7 @@ const LV_SYNC = (() => {
     'lv_centros_asistencia':    { tabla: 'lv_centros_asistencia',    id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_orientacion_casos':     { tabla: 'lv_orientacion_casos',     id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
     'lv_orientacion_detalle':   { tabla: 'lv_orientacion_detalle',   id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
+    'lv_grupos':                { tabla: 'lv_grupos',                id: 'id', transform: (r) => ({ id: r.id, datos: r }) },
   };
 
   // ── Sincronización por demanda ──────────────────────────────
