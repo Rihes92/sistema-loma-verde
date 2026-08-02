@@ -730,14 +730,45 @@ window.importarDeMatricula=async function(cursoId){
   if(!curso)return;
   const matricula=await dbAll('matricula');
   if(!matricula.length){toast('No hay datos de matrícula cargados todavía en este equipo (los trae Coordinación → Matrícula).');return;}
-  const candidatos=matricula.filter(m=>
-    (m.estado||'activo')==='activo' &&
-    !m._eliminado &&
-    String(m.grado||'').trim()===String(curso.grado||'').trim() &&
-    String(m.grupo||'').trim()===String(curso.grupo||'').trim() &&
-    (!curso.sede || !m.sede || String(m.sede).trim()===String(curso.sede).trim())
+
+  // Emparejamiento CANÓNICO (sesión 33): antes se comparaba el texto crudo,
+  // así que un curso con el grupo escrito "1002" no calzaba con el "2" que
+  // trae SIMAT. Ahora se usa LV_CURSO, igual que el resto de la app.
+  const gc = v => (typeof LV_CURSO!=='undefined') ? LV_CURSO.gradoCanon(v) : String(v||'').trim();
+  const pc = (g,v) => (typeof LV_CURSO!=='undefined') ? LV_CURSO.grupoCanon(g,v) : String(v||'').trim();
+  const sc = v => (typeof LV_CURSO!=='undefined') ? LV_CURSO.sedeCode(v) : String(v||'').trim();
+
+  let candidatos=matricula.filter(m=>
+    (m.estado||'activo')==='activo' && !m._eliminado &&
+    gc(m.grado)===gc(curso.grado) &&
+    pc(m.grado,m.grupo)===pc(curso.grado,curso.grupo)
   );
   if(!candidatos.length){toast(`No hay estudiantes activos en matrícula para ${curso.grado} ${curso.grupo||''}.`);return;}
+
+  // Si el curso tiene sede, se filtra por ella. Si NO la tiene, OJO: el mismo
+  // grado-grupo existe en varias sedes (ej. "Tercero (3°) grupo 1" está en 14
+  // sedes) — antes se importaban TODAS juntas en silencio. Ahora se pregunta.
+  if(curso.sede){
+    candidatos=candidatos.filter(m=>!m.sede || sc(m.sede)===sc(curso.sede));
+  }else{
+    const sedes=[...new Set(candidatos.map(m=>m.sede).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
+    if(sedes.length>1){
+      const elegida=prompt(
+        `Este curso no tiene sede guardada, y ${curso.grado} ${curso.grupo||''} existe en ${sedes.length} sedes distintas.\n`+
+        `Escribe el NÚMERO de la sede de tu curso (o cancela para no importar nada):\n\n`+
+        sedes.map((s,i)=>`${i+1}. ${s} (${candidatos.filter(m=>m.sede===s).length} est.)`).join('\n')
+      );
+      if(elegida===null) return;
+      const idx=parseInt(String(elegida).trim(),10)-1;
+      if(isNaN(idx)||idx<0||idx>=sedes.length){toast('No se reconoció esa opción; no se importó nada.');return;}
+      const sedeSel=sedes[idx];
+      candidatos=candidatos.filter(m=>m.sede===sedeSel);
+      // Deja la sede escrita en el curso, para no volver a preguntar y para
+      // que los cruces de horario/director dejen de ser ambiguos.
+      curso.sede=sedeSel; await dbPut('cursos',curso);
+    }
+  }
+  if(!candidatos.length){toast(`No hay estudiantes activos en matrícula para ${curso.grado} ${curso.grupo||''} en esa sede.`);return;}
   const existentes=new Set(estudiantes.filter(e=>e.cursoId===cursoId).map(e=>normN(e.nombre)));
   const nuevos=candidatos.map(m=>({m,nombre:`${(m.apellidos||'').trim()} ${(m.nombres||'').trim()}`.replace(/\s+/g,' ').trim()}))
     .filter(x=>x.nombre && !existentes.has(normN(x.nombre)));

@@ -104,6 +104,32 @@
   verificado en ambos (20-matricula: 84/84 · 7/7 · 14/14 · 35/35 · 35/35 · 31/31 · 14/14 ·
   18/18 · 3/3 · 2/2 · 2/2 — 01-calificaciones: 90/90 · 9/9 · 20/20 · 57/57 · 51/51 · 39/39
   · 11/11 · 36/36 · 7/7).
+- **BUG REAL corregido después, al preguntar Richard qué pasa con los cursos que YA tienen
+  notas (docente Richard Miguel Hernández Sabié):** el import en sí no toca nada de eso
+  (`simatAplicar` solo escribe `lv_matricula` y `lv_grupos` — verificado leyendo la
+  función), pero revisando el camino completo apareció un problema serio en
+  `importarDeMatricula` (el botón "📥 Matrícula" de la sesión 31b), que **hasta ahora nunca
+  había importado porque `lv_matricula` estaba prácticamente vacía**: (1) comparaba el
+  TEXTO CRUDO de grado/grupo, así que un curso con el grupo guardado como `1002` NO calzaba
+  con el `2` que produce SIMAT; (2) peor, si el curso no tenía `sede` guardada, se saltaba
+  el filtro de sede por completo — y **12 combinaciones grado+grupo existen en varias sedes
+  a la vez** (`Tercero (3°) grupo 1` está en **14 sedes**, 59 estudiantes): un docente de
+  primaria habría importado en silencio los 59 estudiantes de las 14 sedes a su curso.
+  **Corregido:** el emparejamiento ahora es CANÓNICO (`LV_CURSO.gradoCanon/grupoCanon/
+  sedeCode`, igual que el resto de la app) y, si el curso no trae sede y hay más de una
+  candidata, **pregunta cuál es** (lista con el conteo por sede) en vez de traerlas todas;
+  la sede elegida se guarda en el curso para no volver a preguntar y de paso desambiguar
+  horarios/director. Verificado con Node contra los datos reales: `grupo "2"` y `grupo
+  "1002"` dan los mismos 24 estudiantes de Décimo en Principal; `"901"` da 21 en Noveno;
+  Juana Julia 1 y Juana Julia 2 se distinguen bien (5 y 5, gracias al fix de `sedeCode` de
+  la sesión 30d); y el caso ambiguo detecta las 14 sedes y pregunta. SW **v114**.
+- **Respuesta a la pregunta de Richard, para el registro: los cursos y notas ya cargados NO
+  se tocan.** El import escribe únicamente en `lv_matricula` y `lv_grupos`; `lv_cursos`,
+  `lv_estudiantes` y `lv_calificaciones` quedan intactos. El desplegable nuevo de "Grupo
+  del colegio" solo aplica al CREAR un curso nuevo — los existentes conservan su
+  grado/grupo/sede tal como están. Lo único que conviene revisar después del import es que
+  cada curso viejo tenga la **sede** correcta (si está vacía, el botón "📥 Matrícula" ahora
+  la pregunta y la guarda).
 - **PENDIENTE:** correr `migracion_grupos.sql` en Supabase; push; que Richard: (a) entre a
   Matrícula → "📥 Importar archivo plano de SIMAT" con el archivo **COMPLETO** (sin
   recortar columnas), revise la vista previa —sobre todo que diga 647 activos / 28
