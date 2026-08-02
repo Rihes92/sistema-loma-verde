@@ -1,0 +1,57 @@
+# ═══════════════════════════════════════════════════════════════════════
+# Archivos que NO deben publicarse en sanjosedelomaverde.com
+#
+# POR QUÉ EXISTE ESTE ARCHIVO (auditoría ago 2, 2026):
+# Vercel publica TODO lo que esté en el repositorio, no solo los .html de
+# la app. Se comprobó que estos archivos se podían descargar desde el sitio
+# sin necesidad de iniciar sesión:
+#   · Excel/correo docentes loma verde.xlsx  → los 57 correos de los docentes
+#   · PASO_FINAL_correos_y_duplicados.sql    → 33 correos reales embebidos
+# Con esos correos, cualquiera podía intentar entrar a las cuentas.
+#
+# OJO: esto evita que se PUBLIQUEN, pero los archivos siguen en el
+# historial de GitHub. Si el repositorio es público, además hay que
+# sacarlos de ahí (ver la nota al final).
+# ═══════════════════════════════════════════════════════════════════════
+
+# ── Datos personales de docentes ──
+Excel/
+docentes.json
+PASO_FINAL_correos_y_duplicados.sql
+FUSIONAR_DOCENTES_DUPLICADOS.sql
+ALTA_MASIVA_DOCENTES.sql
+VERIFICAR_ACCESO_DOCENTES.sql
+REVISION_DIRECTORES_GRUPO.sql
+diagnostico_aislamiento.sql
+VERIFICACION_PRELANZAMIENTO.sql
+
+# ── Datos de estudiantes ──
+ARCHIVO PLANO SIMAT*.xlsx
+*.xlsx
+*.xls
+
+# ── Documentos internos (guías, propuesta económica, credenciales) ──
+Documentacion/
+SABIE_Guia_de_acceso_docentes.docx
+SABIE_Guia_de_acceso_docentes.pdf
+*.docx
+*.pdf
+
+# ── Migraciones y material de trabajo (no los necesita el navegador) ──
+*.sql
+Mallas/
+GEMs/
+CLAUDE.md
+*.md
+gen.js
+
+# ═══════════════════════════════════════════════════════════════════════
+# PENDIENTE MANUAL — sacar del historial de GitHub los que ya se subieron:
+#   git rm --cached "Excel/correo docentes loma verde.xlsx"
+#   git rm --cached PASO_FINAL_correos_y_duplicados.sql
+#   git commit -m "Quitar del repo archivos con datos personales de docentes"
+#   git push
+# (Siguen en tu computador; solo dejan de viajar al repositorio.)
+# Si el repositorio de GitHub es PÚBLICO, cámbialo a privado:
+#   github.com/Rihes92/sistema-loma-verde → Settings → abajo → Change visibility
+# ═══════════════════════════════════════════════════════════════════════

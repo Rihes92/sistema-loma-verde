@@ -751,9 +751,15 @@ function renderGrupos(){
     return;
   }
   const cursos = lsRead('cursos').filter(c=>!c._eliminado);
-  const claveCurso = c => grupoId(c.grado, c.grupo, c.sede);
+  // Los cursos SIN sede guardada no se pueden atribuir a un grupo concreto
+  // (el mismo grado-grupo existe en varias sedes), así que se cuentan aparte
+  // en vez de ensuciar el cruce o inflar la cobertura falsamente.
+  const sinSede = cursos.filter(c=>!c.sede);
   const porGrupo = {};
-  cursos.forEach(c=>{ const k=claveCurso(c); (porGrupo[k]=porGrupo[k]||[]).push(c); });
+  cursos.filter(c=>c.sede).forEach(c=>{
+    const k = grupoId(c.grado, c.grupo, c.sede);
+    (porGrupo[k]=porGrupo[k]||[]).push(c);
+  });
 
   const orden = Object.values(SIMAT_GRADOS);
   const lista = grupos.slice().sort((a,b)=>
@@ -768,6 +774,12 @@ function renderGrupos(){
       <div class="stat"><b>${lista.length-sinCurso}</b>Con al menos un curso</div>
       <div class="stat"><b>${sinCurso}</b>Sin ningún curso</div>
     </div>
+    ${sinSede.length ? `<div style="background:#fffbeb;border:1px solid #fcd34d;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:.85rem">
+      ⚠️ <b>${sinSede.length} curso(s) no tienen sede guardada</b>, así que no se pueden atribuir a un grupo concreto
+      (el mismo grado-grupo existe en varias sedes) y no cuentan en los números de arriba. El docente la completa solo
+      la primera vez que use el botón "📥 Matrícula" en su curso; también se puede corregir en Coordinación → Asignaciones.
+      <div style="margin-top:4px;color:var(--muted)">${sinSede.slice(0,8).map(c=>esc(`${c.nombre} (${c.grado||'—'}${c.grupo?'-'+c.grupo:''})`)).join(' · ')}${sinSede.length>8?` … y ${sinSede.length-8} más`:''}</div>
+    </div>` : ''}
     <div class="tableScroll"><table><thead><tr>
       <th>Sede</th><th>Grado</th><th class="c">Grupo</th><th class="c">Matriculados</th><th class="c">Cursos creados</th><th>Materias</th>
     </tr></thead><tbody>${lista.map(g=>{

@@ -2,6 +2,75 @@
 
 > Lee este archivo completo antes de trabajar en el proyecto. Resume qué es, cómo funciona,
 
+## ▶ AUDITORÍA (ago 2, 2026 — sesión 34): revisión profunda + 2 bugs corregidos
+
+- **Barrido automático de TODO el proyecto** (scripts en `/tmp`, no se subieron): 8 archivos
+  `.js` y 103 bloques `<script>` inline en 42 HTML → **0 errores de sintaxis**; **0**
+  `<script src>` que además traiga código inline (el bug histórico del proyecto); **0**
+  archivos del precache del SW que no existan; **0** enlaces `href`/`src` estáticos rotos;
+  **0** funciones invocadas desde `onclick=` sin definir; balance de etiquetas correcto en
+  todos los módulos. Cruce de cada `LV_SYNC_TABLAS` declarado contra el `MAPA` de
+  `sync.js`: **todas las tablas declaradas están mapeadas** (el aparente hueco de `lv11_*`
+  era un falso positivo de mi propio regex, que exigía prefijo `lv_`).
+- **BUG 1 corregido — crear un curso sin elegir grupo (`01-calificaciones.html`):** con el
+  catálogo de SIMAT cargado, los campos manuales de grado/grupo/sede quedan ocultos. Si el
+  docente no elegía nada en el desplegable nuevo, `grupoRealElegido()` devolvía `null` y el
+  código caía al valor por defecto del `<select>` OCULTO — creaba el curso en silencio como
+  **"Sexto (6°)" sin grupo**, sin importar el grado real. Ahora exige elegir el grupo
+  ("Elige el grupo del colegio") cuando el catálogo está visible.
+- **BUG 2 corregido — cobertura de grupos engañosa (`20-matricula.html`):** el cruce de
+  `lv_grupos` con los cursos usaba `grupoId(grado,grupo,sede)`, pero **`sedeCode('')`
+  devuelve `''`**, así que un curso SIN sede guardada producía `g|9|1|` que nunca calza con
+  el `g|9|1|PRI` del grupo real → esos cursos salían como inexistentes y casi todos los
+  grupos aparecerían como "sin ningún curso". Como la mayoría de cursos viejos no tienen
+  sede, el reporte habría sido inútil. Ahora los cursos sin sede se cuentan y se listan
+  APARTE (aviso propio con la lista), en vez de contaminar el cruce o inflar la cobertura
+  atribuyéndolos a las 14 sedes donde existe ese grado-grupo.
+- **`VERIFICAR_ACCESO_DOCENTES.sql` NUEVO** (solo lectura salvo una sección comentada):
+  responde con datos reales quién puede entrar y quién no — tablero general, estado de cada
+  docente (sin correo / correo sucio / sin usuario / nunca ha entrado / ya entró), correos
+  duplicados entre fichas, inventario de las 33 tablas que la app espera, y conteo de la
+  matrícula/grupos importados de SIMAT.
+- **HALLAZGO en la lista de correos de los docentes** (`correo docentes loma verde.xlsx`,
+  58 filas): **57 docentes reales** (Arleineth Diaz Pacheco está repetida en las filas 5 y
+  6), **1 sin correo** (DANIEL SAENZ — no puede entrar hasta que se le registre uno), y
+  **7 correos con el carácter invisible U+00A0** (espacio duro, se cuela al copiar de
+  Excel/Word): Arleineth, Gary Daniel Lara, Israel De Jesus Hernandez, Julio Samir Salgado,
+  Luis Alberto Herrera, María Camila López y Sor Margarita Palacios. **`trim()` de Postgres
+  NO quita U+00A0**, así que si esos correos entraron así a `lv_docentes`/`auth.users`, el
+  docente escribe su correo "bien" y el login no lo encuentra. El `.trim()` de JavaScript SÍ
+  lo quita, así que el síntoma depende de por dónde se compare — por eso la sección 2 del
+  SQL nuevo lo detecta explícitamente y la 4 (comentada) lo limpia.
+  SW **v116**.
+- **🔴 HALLAZGO CRÍTICO DE PRIVACIDAD — archivos con datos personales PUBLICADOS en el
+  sitio.** Vercel sirve TODO lo que esté en el repositorio, no solo los `.html` de la app,
+  y nunca hubo un `.vercelignore`. **Verificado en producción con una petición real**:
+  `https://sanjosedelomaverde.com/Excel/correo%20docentes%20loma%20verde.xlsx` **respondía
+  200 y descargaba el archivo con los 57 correos de los docentes**, sin necesidad de
+  iniciar sesión. Igual `PASO_FINAL_correos_y_duplicados.sql` (33 correos embebidos), más
+  las guías internas y la propuesta económica de `Documentacion/`. Con esos correos
+  cualquiera podía intentar entrar a las cuentas (el correo es la mitad de la credencial).
+  **Lo bueno:** la clave temporal NO estaba expuesta — `ALTA_MASIVA_DOCENTES.sql` conserva
+  el marcador `'ESCRIBE_AQUI_LA_CLAVE_TEMPORAL'`, Richard nunca lo commiteó con la clave
+  real. **Corregido:** `.vercelignore` NUEVO (bloquea `Excel/`, `Documentacion/`, `*.xlsx`,
+  `*.docx`, `*.pdf`, `*.sql`, `*.md`, `Mallas/`, `GEMs/`, `docentes.json`) + entradas
+  nuevas en `.gitignore`. Verificado antes de aplicarlo que **la app no referencia ninguno
+  de esos archivos** (grep de `href`/`src` y de `fetch()` a `.md`/`.sql`: cero
+  coincidencias), así que no rompe nada; `lib/xlsx.full.min.js` no lo alcanza el patrón
+  `*.xlsx` porque termina en `.js`.
+  **PENDIENTE MANUAL de Richard** (el `.vercelignore` evita que se sigan publicando, pero
+  los archivos ya están en el historial de GitHub): `git rm --cached "Excel/correo docentes
+  loma verde.xlsx"` y `git rm --cached PASO_FINAL_correos_y_duplicados.sql`, commit y push;
+  y confirmar que el repositorio `Rihes92/sistema-loma-verde` sea **privado** (Settings →
+  Change visibility). Regla para el futuro: **esta carpeta de trabajo ES el repositorio y
+  se publica**, así que nada con datos personales debe quedar aquí sin estar en
+  `.vercelignore`/`.gitignore`.
+- **PENDIENTE de la auditoría:** correr `VERIFICAR_ACCESO_DOCENTES.sql` y actuar según lo
+  que muestre (limpiar correos sucios, registrar el de DANIEL SAENZ, crear los usuarios que
+  falten con `ALTA_MASIVA_DOCENTES.sql`). Cosmético, sin tocar: el archivo huérfano
+  `Noveno_PrimerPeriodo_Eje1_Tematica_2.html` en la raíz (de jun 16, nadie lo referencia,
+  no está en el precache) se puede borrar.
+
 ## ▶ AJUSTE (ago 2, 2026 — sesión 33): import del ARCHIVO PLANO DE SIMAT + catálogo de grupos — CÓDIGO LISTO, sin desplegar
 
 - **Richard adjuntó el archivo plano REAL de SIMAT** (`ARCHIVO PLANO SIMAT_01.08.2026.xlsx`,

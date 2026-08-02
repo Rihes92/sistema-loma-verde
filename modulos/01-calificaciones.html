@@ -641,7 +641,11 @@ $('#btn-add-curso').addEventListener('click',async()=>{
   // Si el colegio ya tiene el catálogo de grupos importado de SIMAT, el
   // grado/grupo/sede salen del grupo elegido (exactos, sin tipeo); si no,
   // se usan los campos manuales de siempre.
+  const usaCatalogo = $('#fld-grupo-real') && $('#fld-grupo-real').style.display!=='none';
   const g = grupoRealElegido();
+  // Sin esto, no elegir grupo creaba el curso en silencio con el grado por
+  // defecto del selector oculto ("Sexto (6°)") y sin grupo.
+  if(usaCatalogo && !g) return toast('Elige el grupo del colegio');
   const curso={id:uid(),nombre,
     grado: g ? g.grado : $('#c-grado').value,
     grupo: g ? String(g.grupo||'') : $('#c-grupo').value.trim(),
