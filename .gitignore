@@ -13,6 +13,8 @@ Subir_a_Supabase/
 # Estos traen datos personales de los docentes y la contraseña temporal.
 docentes.json
 gen.js
+# Trae la contraseña temporal en texto plano — no debe viajar al repositorio.
+NUEVA_CLAVE_TEMPORAL.sql
 SABIE_Guia_de_acceso_docentes.docx
 SABIE_Guia_de_acceso_docentes.pdf
 correo docentes loma verde.xlsx
